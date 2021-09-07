@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89810E26E5FD400086D2D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810D26E5FD400086D2D6 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		603A43172F64662304C1A921 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */,
+				1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BBDDB91F2933C652DB1543A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EE8980FD26E5FD400086D2D6 = {
 			isa = PBXGroup;
 			children = (
 				EE89810826E5FD400086D2D6 /* bamboo-iOS */,
 				EE89810726E5FD400086D2D6 /* Products */,
+				603A43172F64662304C1A921 /* Pods */,
+				BBDDB91F2933C652DB1543A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE89811A26E5FD410086D2D6 /* Build configuration list for PBXNativeTarget "bamboo-iOS" */;
 			buildPhases = (
+				C66135E8F3CB0BB5B417E75E /* [CP] Check Pods Manifest.lock */,
 				EE89810226E5FD400086D2D6 /* Sources */,
 				EE89810326E5FD400086D2D6 /* Frameworks */,
 				EE89810426E5FD400086D2D6 /* Resources */,
+				19D3299EA64FA9698AFDD314 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19D3299EA64FA9698AFDD314 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C66135E8F3CB0BB5B417E75E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bamboo-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE89810226E5FD400086D2D6 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		EE89811B26E5FD410086D2D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		EE89811C26E5FD410086D2D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
