@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
-		EE89810E26E5FD400086D2D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810D26E5FD400086D2D6 /* ViewController.swift */; };
-		EE89811126E5FD400086D2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89810F26E5FD400086D2D6 /* Main.storyboard */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
 		EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */; };
+		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
+		EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +23,15 @@
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE89810D26E5FD400086D2D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EE89811026E5FD400086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE89811226E5FD410086D2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE89811526E5FD410086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
+		EE9F0D1A26E78F130015E81B /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
+		EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
+		EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EE9F0D5726E8B82C0015E81B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +52,6 @@
 				450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */,
 				1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,15 +84,107 @@
 		EE89810826E5FD400086D2D6 /* bamboo-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EE89810926E5FD400086D2D6 /* AppDelegate.swift */,
-				EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */,
-				EE89810D26E5FD400086D2D6 /* ViewController.swift */,
-				EE89810F26E5FD400086D2D6 /* Main.storyboard */,
-				EE89811226E5FD410086D2D6 /* Assets.xcassets */,
-				EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */,
 				EE89811726E5FD410086D2D6 /* Info.plist */,
+				EE9F0CDC26E747560015E81B /* AppDelegate */,
+				EE9F0CE226E748D40015E81B /* Font */,
+				EE9F0D5626E8B8130015E81B /* Utils */,
+				EE9F0CDD26E7485C0015E81B /* MVVM */,
+				EE9F0CE126E748AF0015E81B /* Controller */,
+				EE9F0CE326E748FE0015E81B /* Splash */,
+				EE9F0D5926E8B8650015E81B /* Service */,
+				EE9F0D5A26E8B8860015E81B /* Image */,
 			);
 			path = "bamboo-iOS";
+			sourceTree = "<group>";
+		};
+		EE9F0CDC26E747560015E81B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				EE89810926E5FD400086D2D6 /* AppDelegate.swift */,
+				EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		EE9F0CDD26E7485C0015E81B /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0CE026E748700015E81B /* Model */,
+				EE9F0CDE26E748650015E81B /* View */,
+				EE9F0CDF26E7486A0015E81B /* ViewModel */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		EE9F0CDE26E748650015E81B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE9F0CDF26E7486A0015E81B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EE9F0CE026E748700015E81B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE9F0CE126E748AF0015E81B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EE9F0CE226E748D40015E81B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */,
+				EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */,
+				EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */,
+				EE9F0D1A26E78F130015E81B /* NanumSquareRoundR.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		EE9F0CE326E748FE0015E81B /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		EE9F0D5626E8B8130015E81B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5726E8B82C0015E81B /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		EE9F0D5926E8B8650015E81B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EE9F0D5A26E8B8860015E81B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				EE89811226E5FD410086D2D6 /* Assets.xcassets */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +248,6 @@
 			files = (
 				EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */,
 				EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */,
-				EE89811126E5FD400086D2D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,23 +300,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE89810E26E5FD400086D2D6 /* ViewController.swift in Sources */,
+				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
+				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EE89810F26E5FD400086D2D6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE89811026E5FD400086D2D6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
