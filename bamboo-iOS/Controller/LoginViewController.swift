@@ -21,8 +21,8 @@ class LoginViewController : UIViewController {
     
     private let ManagerBtn = LoginButton(placeholder: "관리자")
     
-    private let btnStackView : UIStackView = {
-        let stack = UIStackView()
+    private lazy var btnStackView : UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [userBtn,ManagerBtn])
         stack.axis = .vertical
         stack.backgroundColor = .clear
         stack.distribution = .fillEqually
@@ -43,8 +43,6 @@ class LoginViewController : UIViewController {
         location()
     }
     func stackViewSetting(){
-        btnStackView.addArrangedSubview(userBtn)
-        btnStackView.addArrangedSubview(ManagerBtn)
         btnStackView.spacing = view.frame.height/54.13333
     }
     func addView(){
