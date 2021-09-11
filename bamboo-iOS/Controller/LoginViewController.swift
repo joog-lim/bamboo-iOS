@@ -18,8 +18,10 @@ class LoginViewController : UIViewController {
         $0.contentMode = .scaleAspectFill
     }
     private let userBtn = LoginButton(placeholder: "사용자")
+    private var popup = ManagerPopUp()
     
     private let ManagerBtn = LoginButton(placeholder: "관리자")
+    
     
     private lazy var btnStackView : UIStackView = {
         let stack = UIStackView(arrangedSubviews: [userBtn,ManagerBtn])
@@ -48,6 +50,7 @@ class LoginViewController : UIViewController {
     func addView(){
         view.addSubview(logo)
         view.addSubview(btnStackView)
+        view.addSubview(popup)
     }
     func location(){
         logo.snp.makeConstraints { (make) in
