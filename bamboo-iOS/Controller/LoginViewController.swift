@@ -17,10 +17,17 @@ class LoginViewController : UIViewController {
         $0.image = UIImage(named: "BAMBOO_splash")
         $0.contentMode = .scaleAspectFill
     }
-    private let userBtn = LoginButton(placeholder: "사용자")
-    private var popup = ManagerPopUp()
+    private let userBtn = LoginButton(placeholder: "사용자").then{
+        $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+    }
+    private var popup = ManagerPopUp().then{
+        $0.alpha = 0
+    }
     
-    private let ManagerBtn = LoginButton(placeholder: "관리자")
+    private let ManagerBtn = LoginButton(placeholder: "관리자").then{
+        $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+        $0.addTarget(self, action: #selector(ClickManagerBtn), for: .touchDown)
+    }
     
     
     private lazy var btnStackView : UIStackView = {
@@ -36,6 +43,17 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    //MARK: - Selectors
+    @objc func ClickManagerBtn(){
+        UIView.animate(withDuration: 0.3) {
+            self.popup.alpha = 1
+        }
+    }
+    @objc func popupClose(){
+        UIView.animate(withDuration: 0.3) {
+            self.popup.alpha = 0
+        }
     }
     //MARK: - Helper
     
@@ -55,8 +73,8 @@ class LoginViewController : UIViewController {
     func location(){
         logo.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.width.equalTo(view.frame.width/1.875)
-            make.height.equalTo(view.frame.height/10.61854)
+            make.height.equalTo(bounds.height/11.768)
+            make.width.equalTo(bounds.width/2.30)
             make.top.equalToSuperview().offset(bounds.height/3.776744)
         }
         btnStackView.snp.makeConstraints { (make) in
@@ -66,32 +84,4 @@ class LoginViewController : UIViewController {
         }
     }
 }
-
-////MARK: - Preview
-//#if DEBUG
-//import SwiftUI
-//struct LoginViewControllerRepresentable: UIViewControllerRepresentable {
-//
-//func updateUIViewController(_ uiView: UIViewController,context: Context) {
-//        // leave this empty
-//}
-//    @available(iOS 13.0.0, *)
-//    func makeUIViewController(context: Context) -> UIViewController{
-//        LoginViewController()
-//
-//    }
-//
-//}
-//@available(iOS 13.0, *)
-//struct LoginViewControllerRepresentable_PreviewProvider: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            LoginViewControllerRepresentable()
-//                .ignoresSafeArea()
-//                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-//                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-//        }
-//
-//    }
-//} #endif
 

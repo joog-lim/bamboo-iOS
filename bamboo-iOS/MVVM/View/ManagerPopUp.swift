@@ -9,7 +9,7 @@ import UIKit
 
 class ManagerPopUp : UIView {
     
-    
+    let bgview = UIView()
     let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
@@ -35,7 +35,6 @@ class ManagerPopUp : UIView {
     }()
     
     fileprivate let loginBtn : LoginButton = {
-        
         let btn = LoginButton(placeholder: "로그인")
         btn.label.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
@@ -44,14 +43,21 @@ class ManagerPopUp : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .gray.withAlphaComponent(0.5)
+        self.bgview.backgroundColor = .gray.withAlphaComponent(0.5)
         self.frame = UIScreen.main.bounds
+        self.bgview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateOut)))
         configure()
+    }
+    @objc func animateOut(){
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 0
+        }
     }
     func configure(){
         addView()
     }
     func addView(){
+        addSubview(bgview)
         addSubview(view)
         view.addSubview(icon)
         view.addSubview(titleLabel)
@@ -61,6 +67,9 @@ class ManagerPopUp : UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        bgview.snp.makeConstraints { (make) in
+            make.top.right.left.bottom.equalToSuperview()
+        }
         view.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.height.equalTo(frame.height/3.5771)
@@ -92,6 +101,7 @@ class ManagerPopUp : UIView {
             make.left.right.equalToSuperview().inset(frame.width/15.625)
         }
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

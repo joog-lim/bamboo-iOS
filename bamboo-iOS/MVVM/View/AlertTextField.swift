@@ -11,9 +11,7 @@ class AlertTextField : UITextField {
     
     init(placeholder :String) {
         super.init(frame: .zero)
-        
         spacing()
-        
         layer.cornerRadius = 5
         dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.rgb(red: 196, green: 196, blue: 196)])
