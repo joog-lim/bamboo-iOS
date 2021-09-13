@@ -9,31 +9,24 @@ import UIKit
 
 class AlertTextField : UITextField {
     
-    init(placeholder : String) {
+    init(placeholder :String) {
         super.init(frame: .zero)
-        let spacer = UIView()
-        spacer.snp.makeConstraints { (make) in
-            make.height.equalToSuperview()
-            make.width.equalTo(20)
+        let view = UIView()
+        view.snp.makeConstraints { (make) in
+            make.height.equalTo(10)
+            make.width.equalTo(10)
         }
-        leftView = spacer
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.rgb(red: 196, green: 196, blue: 196)])
+        leftView = view
         leftViewMode = .always
-        
         borderStyle = .none
         textColor = .black
-        keyboardAppearance = .dark
         backgroundColor = .white
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 196, green: 196, blue: 196)])
+        layer.applySketchShadow(x: 1, y: 1, blur: 4)
         
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        snp.makeConstraints { (make) in
-            make.height.equalTo(100)
-        }
-    }
+        
 
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

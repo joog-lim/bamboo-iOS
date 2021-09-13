@@ -23,11 +23,22 @@ class ManagerPopUp : UIView {
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
-    fileprivate let WritePassWorld = UITextField().then{
-        $0.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력하세요", attributes: [NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 196, green: 196, blue: 196)])
+    fileprivate let humanAffairsLabel = UILabel().then{
+        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.text = "관리자님 환영합니다!"
+        $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
-    fileprivate let LoginBtn : LoginButton = {
+    
+    fileprivate let WritePassWorld : AlertTextField = {
+        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!")
+        return tf
+    }()
+    
+    fileprivate let loginBtn : LoginButton = {
+        
         let btn = LoginButton(placeholder: "로그인")
+        btn.label.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         return btn
     }()
     
@@ -44,6 +55,9 @@ class ManagerPopUp : UIView {
         addSubview(view)
         view.addSubview(icon)
         view.addSubview(titleLabel)
+        view.addSubview(humanAffairsLabel)
+        view.addSubview(WritePassWorld)
+        view.addSubview(loginBtn)
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -61,6 +75,21 @@ class ManagerPopUp : UIView {
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(icon.snp.bottom).offset(frame.height/68.81)
             make.centerX.equalToSuperview()
+        }
+        humanAffairsLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left).offset(frame.width/15.625)
+            make.top.equalTo(titleLabel.snp.bottom).offset(frame.height/54.133)
+        }
+        WritePassWorld.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(frame.width/15.625)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(humanAffairsLabel.snp.bottom)
+            make.height.equalTo(10)
+        }
+        loginBtn.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().inset(frame.height/47.7)
+            make.height.equalTo(frame.height/32.48)
+            make.left.right.equalToSuperview().inset(frame.width/15.625)
         }
     }
     required init?(coder: NSCoder) {

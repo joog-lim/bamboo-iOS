@@ -10,7 +10,7 @@ import UIKit
 class LoginButton: UIButton {
     let label = UILabel().then{
         $0.textColor = .white
-        $0.dynamicFont(fontSize: 15, currentFontName: "NanumSquareRoundR.ttf")
+        $0.dynamicFont(fontSize: 15, currentFontName: "NanumSquareRoundR")
     }
     init(placeholder : String) {
         super.init(frame: .zero)
