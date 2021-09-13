@@ -83,8 +83,8 @@ class ManagerPopUp : UIView {
         WritePassWorld.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().inset(frame.width/15.625)
             make.centerX.equalToSuperview()
-            make.top.equalTo(humanAffairsLabel.snp.bottom)
-            make.height.equalTo(10)
+            make.top.equalTo(humanAffairsLabel.snp.bottom).offset(frame.height/54.133)
+            make.height.equalTo(frame.height/30.074)
         }
         loginBtn.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().inset(frame.height/47.7)
