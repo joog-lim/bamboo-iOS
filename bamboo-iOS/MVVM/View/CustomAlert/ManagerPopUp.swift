@@ -15,7 +15,7 @@ class ManagerPopUp : UIView {
         $0.layer.cornerRadius = 5
     }
     fileprivate let icon = UIImageView().then{
-        $0.image = UIImage(named: "BAMBOO_splash")
+        $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFill
     }
     fileprivate let titleLabel = UILabel().then{

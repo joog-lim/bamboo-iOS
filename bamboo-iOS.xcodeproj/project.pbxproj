@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
+		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,46 @@
 				C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE7C6F7526EEEC410071031C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EE7C6F7626EEEC4E0071031C /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
+		EE7C6F7726EEEC680071031C /* CustomTextfield */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5FDD226ECF202004856F3 /* AlertTextField.swift */,
+			);
+			path = CustomTextfield;
+			sourceTree = "<group>";
+		};
+		EE7C6F7826EEEC720071031C /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		EE7C6F7926EEEC880071031C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		EE8980FD26E5FD400086D2D6 = {
@@ -129,9 +171,9 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */,
-				EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */,
-				EEA5FDD226ECF202004856F3 /* AlertTextField.swift */,
+				EE7C6F7826EEEC720071031C /* CustomAlert */,
+				EE7C6F7726EEEC680071031C /* CustomTextfield */,
+				EE7C6F7626EEEC4E0071031C /* CustomButton */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,7 +195,8 @@
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */,
+				EE7C6F7526EEEC410071031C /* Login */,
+				EE7C6F7926EEEC880071031C /* Main */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +367,7 @@
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
+				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
