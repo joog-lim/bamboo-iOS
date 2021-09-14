@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
+		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
+		EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
+		EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardTableVIewCell.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,22 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		EE7C6FD826EF74AD0071031C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6FD926EF75980071031C /* CustomTabbar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		EE7C6FFB26F07C250071031C /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		EE8980FD26E5FD400086D2D6 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +191,8 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE7C6FFB26F07C250071031C /* TableView */,
+				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
@@ -360,9 +382,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
+				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
