@@ -101,6 +101,11 @@ class ManagerPopUp : UIView {
             make.left.right.equalToSuperview().inset(frame.width/15.625)
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
