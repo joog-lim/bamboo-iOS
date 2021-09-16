@@ -29,7 +29,7 @@ class ManagerPopUp : UIView {
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
     
-    fileprivate let WritePassWorld : AlertTextField = {
+    let WritePassWorld : AlertTextField = {
         let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!")
         return tf
     }()
