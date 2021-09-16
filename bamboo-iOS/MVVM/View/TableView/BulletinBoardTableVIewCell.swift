@@ -35,11 +35,11 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
         $0.text = "새벽 코딩이 개꿀임. 진심 집중도 잘 되고 뭔가 날 방해하는 것도 없어. 이걸 참아??????????????????? 가능???????????"
+        
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         addSubview(view)
         view.addSubview(cellTitle)
         view.addSubview(dateLabel)
@@ -52,7 +52,7 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.right.equalToSuperview().inset(frame.width/18.75)
-            make.bottom.equalTo(contentTv.snp.bottom)
+            make.bottom.equalToSuperview()
         }
         cellTitle.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top)
@@ -73,7 +73,6 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         contentTv.snp.makeConstraints { (make) in
             make.top.equalTo(writeTitleLabel.snp.bottom)
             make.left.equalTo(cellTitle)
-            make.bottom.equalToSuperview()
         }
     }
     
