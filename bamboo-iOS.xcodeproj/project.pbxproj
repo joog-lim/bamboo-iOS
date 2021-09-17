@@ -135,6 +135,22 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		EE80467326F45E78007D3206 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5726E8B82C0015E81B /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EE80467426F463E8007D3206 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6FFB26F07C250071031C /* TableView */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EE8980FD26E5FD400086D2D6 = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +207,7 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE7C6FFB26F07C250071031C /* TableView */,
+				EE80467426F463E8007D3206 /* Cell */,
 				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
@@ -245,7 +261,7 @@
 		EE9F0D5626E8B8130015E81B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5726E8B82C0015E81B /* Extensions.swift */,
+				EE80467326F45E78007D3206 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

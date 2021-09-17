@@ -52,6 +52,7 @@ class ManagerPopUp : UIView {
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
         }
+        isHidden = true
     }
     func configure(){
         addView()

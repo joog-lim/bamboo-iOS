@@ -35,6 +35,7 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
         $0.text = "새벽 코딩이 개꿀임. 진심 집중도 잘 되고 뭔가 날 방해하는 것도 없어. 이걸 참아??????????????????? 가능???????????"
+        $0.sizeToFit()
         
     }
     
@@ -52,7 +53,7 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         view.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.right.equalToSuperview().inset(frame.width/18.75)
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(contentTv.snp.bottom)
         }
         cellTitle.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top)
@@ -73,10 +74,16 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         contentTv.snp.makeConstraints { (make) in
             make.top.equalTo(writeTitleLabel.snp.bottom)
             make.left.equalTo(cellTitle)
+            make.bottom.equalTo(view.snp.bottom)
+            make.right.equalTo(view)
         }
     }
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

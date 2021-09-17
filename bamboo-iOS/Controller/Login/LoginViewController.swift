@@ -64,9 +64,11 @@ class LoginViewController : UIViewController {
 
     
     @objc func ClickManagerBtn(){
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.42) {
             self.popup.alpha = 1
         }
+        popup.WritePassWorld.text = ""
+        popup.isHidden = false
     }
     @objc func ClickUserBtn(){
         navigationController?.pushViewController(MainViewController(), animated: true)
@@ -76,6 +78,7 @@ class LoginViewController : UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.popup.alpha = 0
         }
+        popup.isHidden = true
     }
     
     //MARK: - Helper
