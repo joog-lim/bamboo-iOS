@@ -179,7 +179,7 @@
 				EE9F0CDD26E7485C0015E81B /* MVVM */,
 				EE9F0CE126E748AF0015E81B /* Controller */,
 				EE9F0CE326E748FE0015E81B /* Splash */,
-				EE9F0D5926E8B8650015E81B /* Service */,
+				EE9F0D5926E8B8650015E81B /* API */,
 				EE9F0D5A26E8B8860015E81B /* Image */,
 			);
 			path = "bamboo-iOS";
@@ -266,11 +266,11 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		EE9F0D5926E8B8650015E81B /* Service */ = {
+		EE9F0D5926E8B8650015E81B /* API */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Service;
+			path = API;
 			sourceTree = "<group>";
 		};
 		EE9F0D5A26E8B8860015E81B /* Image */ = {

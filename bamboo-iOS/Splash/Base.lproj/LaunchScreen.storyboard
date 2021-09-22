@@ -18,16 +18,13 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BAMBOO_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="185-pk-WhX">
                                 <rect key="frame" x="125.5" y="418.5" width="163" height="69"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="69" id="2vF-Lq-wYd"/>
-                                    <constraint firstAttribute="width" constant="163" id="Ka1-YJ-3I6"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="185-pk-WhX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LgH-Gg-gJb"/>
+                            <constraint firstItem="185-pk-WhX" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="163:896" id="Swq-D6-mpp"/>
                             <constraint firstItem="185-pk-WhX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="v70-PA-71b"/>
                         </constraints>
                     </view>
