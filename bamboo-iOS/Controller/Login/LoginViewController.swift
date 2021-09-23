@@ -15,11 +15,12 @@ class LoginViewController : UIViewController {
     
     //MARK: - Properties
     private let logo = UIImageView().then{
-        $0.image = UIImage(named: "BAMBOO_splash")
+        $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFill
     }
     private let userBtn = LoginButton(placeholder: "사용자").then{
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+        $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
     }
     private var popup = ManagerPopUp().then{
         $0.alpha = 0
@@ -44,10 +45,13 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ManagerPopUp().WritePassWorld.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        keyboardSetting()
         configureUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     //MARK: - Selectors
     @objc func keyboardWillShow(_ sender: Notification) {
          self.view.frame.origin.y = -150 // Move view 150 points upward
@@ -59,18 +63,25 @@ class LoginViewController : UIViewController {
 
     
     @objc func ClickManagerBtn(){
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.42) {
             self.popup.alpha = 1
         }
+        popup.WritePassWorld.text = ""
+        popup.isHidden = false
+    }
+    @objc func ClickUserBtn(){
+        navigationController?.pushViewController(MainTabbar(), animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
     @objc func popupClose(){
         UIView.animate(withDuration: 0.3) {
             self.popup.alpha = 0
         }
+        popup.isHidden = true
     }
     
     //MARK: - Helper
-    
+
     func configureUI(){
         stackViewSetting()
         addView()
@@ -96,6 +107,18 @@ class LoginViewController : UIViewController {
             make.bottom.equalToSuperview().inset(bounds.height/5.5616)
             make.left.right.equalToSuperview().inset(bounds.width/18.75)
         }
+        popup.snp.makeConstraints { (make) in
+            make.height.equalTo(view.frame.height)
+            make.top.right.bottom.left.equalToSuperview()
+        }
+    }
+    //MARK: - KeyboardSetting
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    func keyboardSetting(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 extension LoginViewController : UITextFieldDelegate{

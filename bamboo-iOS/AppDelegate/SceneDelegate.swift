@@ -12,15 +12,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
         let mainViewController = LoginViewController()
-//        let navigationController = UINavigationController(rootViewController: mainViewController())
-
+        let navigationController = UINavigationController(rootViewController: mainViewController)
+  
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.shadowImage = UIImage()
         window?.backgroundColor = .white
-        window?.rootViewController = mainViewController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         for fontFaily in UIFont.familyNames{
             for fontName in UIFont.fontNames(forFamilyName: fontFaily){

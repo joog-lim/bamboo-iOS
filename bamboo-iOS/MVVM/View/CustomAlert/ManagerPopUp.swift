@@ -16,8 +16,9 @@ class ManagerPopUp : UIView {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
     }
+
     private let icon = UIImageView().then{
-        $0.image = UIImage(named: "BAMBOO_splash")
+        $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFill
     }
     private let titleLabel = UILabel().then{
@@ -58,6 +59,7 @@ class ManagerPopUp : UIView {
             self.view.endEditing(true)
             self.WritePassWorld.text = ""
         }
+        isHidden = true
     }
     //MARK: - Helper
     func configure(){
@@ -110,7 +112,7 @@ class ManagerPopUp : UIView {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

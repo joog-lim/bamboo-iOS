@@ -36,7 +36,7 @@ extension UIColor{
     static func rgba(red: CGFloat ,green: CGFloat,blue:CGFloat, alpha:CGFloat) -> UIColor{
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
-    
+    static let bamBoo_57CC4D = rgb(red: 87, green: 204, blue: 77)
     
 }
 
@@ -294,4 +294,23 @@ func applySketchShadow(color: UIColor = .black,alpha: Float = 0.5,x:CGFloat,y:CG
         }
     }
 }
+//MARK: - Navigation Setting
+extension UINavigationItem {
+    func applyImageNavigation(){
+        let iv = UIImageView(image: UIImage(named: "BAMBOO_Logo"))
+        iv.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(44)
+        }
+        titleView = iv
+    }
+}
 
+extension UINavigationController{
+    func navigationCustomBar(){
+        navigationBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
+        navigationBar.isTranslucent = false
+        navigationBar.shadowImage = UIImage()
+        
+    }
+}
