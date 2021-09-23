@@ -16,6 +16,7 @@ class RuleViewController: UIViewController{
         $0.showsVerticalScrollIndicator = true
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
+    private let titleLabel = RulePageTitleLabel()
     
     
     //MARK: - Lifecycle
@@ -33,10 +34,15 @@ class RuleViewController: UIViewController{
     }
     func addView(){
         view.addSubview(backGroundScrollView)
+        backGroundScrollView.addSubview(titleLabel)
     }
     func location(){
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
+        }
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalToSuperview()
         }
         backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.938728)
     }
