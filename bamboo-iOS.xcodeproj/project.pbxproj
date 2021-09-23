@@ -28,7 +28,6 @@
 		EEBDA34126FB5C0300B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* RuleViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */; };
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
-		EEBDA34926FC50DD00B966E3 /* RulePageTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34826FC50DD00B966E3 /* RulePageTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +56,6 @@
 		EEBDA34026FB5C0300B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
-		EEBDA34826FC50DD00B966E3 /* RulePageTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulePageTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +217,6 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EEBDA34726FC50C800B966E3 /* RulePageTitle */,
 				EE80467426F463E8007D3206 /* Cell */,
 				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
@@ -319,14 +316,6 @@
 				EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		EEBDA34726FC50C800B966E3 /* RulePageTitle */ = {
-			isa = PBXGroup;
-			children = (
-				EEBDA34826FC50DD00B966E3 /* RulePageTitleLabel.swift */,
-			);
-			path = RulePageTitle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,7 +443,6 @@
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
-				EEBDA34926FC50DD00B966E3 /* RulePageTitleLabel.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
