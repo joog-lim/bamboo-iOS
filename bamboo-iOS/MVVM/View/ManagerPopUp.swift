@@ -8,22 +8,25 @@
 import UIKit
 
 class ManagerPopUp : UIView {
-    
-    let bgview = UIView()
+    //MARK: - Properties
+    let bgview = UIButton().then{
+        $0.addTarget(self, action: #selector(keyboardDown), for: .touchUpInside)
+        $0.backgroundColor = .gray.withAlphaComponent(0.5)
+    }
     let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
     }
-    fileprivate let icon = UIImageView().then{
+    private let icon = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_splash")
         $0.contentMode = .scaleAspectFill
     }
-    fileprivate let titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.text = "로그인하기"
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
-    fileprivate let humanAffairsLabel = UILabel().then{
+    private let humanAffairsLabel = UILabel().then{
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         $0.text = "관리자님 환영합니다!"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
@@ -36,23 +39,30 @@ class ManagerPopUp : UIView {
     
     fileprivate let loginBtn : LoginButton = {
         let btn = LoginButton(placeholder: "로그인")
-        btn.label.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        btn.label.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         return btn
     }()
-    
+    //MARK: - Initalizer
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.bgview.backgroundColor = .gray.withAlphaComponent(0.5)
+        
         self.frame = UIScreen.main.bounds
         self.bgview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateOut)))
         configure()
     }
+    
+    //MARK: - Keyboard Down
+    @objc func keyboardDown(){
+        self.view.endEditing(true)
+    }
+    //MARK: - PopUp page animateOff
     @objc func animateOut(){
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
         }
     }
+    //MARK: - Helper
     func configure(){
         addView()
     }
@@ -65,6 +75,7 @@ class ManagerPopUp : UIView {
         view.addSubview(WritePassWorld)
         view.addSubview(loginBtn)
     }
+    //MARK: - layout
     override func layoutSubviews() {
         super.layoutSubviews()
         bgview.snp.makeConstraints { (make) in
@@ -73,7 +84,7 @@ class ManagerPopUp : UIView {
         view.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.height.equalTo(frame.height/3.5771)
-            make.width.equalTo(frame.width/1.28425)
+            make.width.equalTo(frame.width/1.1718)
         }
         icon.snp.makeConstraints { (make) in
             make.centerX.equalTo(view)
@@ -93,19 +104,14 @@ class ManagerPopUp : UIView {
             make.left.right.equalToSuperview().inset(frame.width/15.625)
             make.centerX.equalToSuperview()
             make.top.equalTo(humanAffairsLabel.snp.bottom).offset(frame.height/54.133)
-            make.height.equalTo(frame.height/30.074)
+            make.height.equalTo(frame.height/29)
         }
         loginBtn.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().inset(frame.height/47.7)
-            make.height.equalTo(frame.height/32.48)
+            make.height.equalTo(frame.height/27.1)
             make.left.right.equalToSuperview().inset(frame.width/15.625)
         }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
