@@ -11,12 +11,16 @@ class DetailViewController : UIViewController {
     //MARK: - Properties
     let bounds = UIScreen.main.bounds
     
+    
     private let titleLabel = UILabel().then{
         $0.text = "규칙"
         $0.textColor = .bamBoo_57CC4D
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
     }
-    
+        
+//    private let tv = UITextView().then{
+//        $0.
+//    }
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = true
@@ -36,6 +40,7 @@ class DetailViewController : UIViewController {
         addView()
         location()
     }
+
     func addView(){
         view.addSubview(backGroundScrollView)
         backGroundScrollView.addSubview(titleLabel)
@@ -46,9 +51,9 @@ class DetailViewController : UIViewController {
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/28)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
+            $0.left.equalToSuperview().offset(bounds.width/26.8)
         }
         
-        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.61796)
+        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.6)
     }
 }

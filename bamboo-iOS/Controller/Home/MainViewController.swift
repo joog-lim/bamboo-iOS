@@ -38,7 +38,6 @@ class MainViewController : UIViewController{
         tv.rowHeight = UITableView.automaticDimension
         return tv
     }()
-    private let tabbarCustomView = CustomTabbar()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -80,7 +79,6 @@ class MainViewController : UIViewController{
     //MARK: - AddView
     func addView(){
         view.addSubview(mainTableView)
-        view.addSubview(tabbarCustomView)
     }
     //MARK: - Location
     func location(){

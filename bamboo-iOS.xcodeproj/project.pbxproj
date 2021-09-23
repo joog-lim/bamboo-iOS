@@ -246,8 +246,8 @@
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
 				EE7C6F7526EEEC410071031C /* Login */,
+				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
 				EE7C6F7926EEEC880071031C /* Home */,
 				EEBDA33F26FB5BF200B966E3 /* Rule */,
 				EEBDA34226FB5C3F00B966E3 /* Detail */,
