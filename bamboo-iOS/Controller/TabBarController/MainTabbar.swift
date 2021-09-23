@@ -36,8 +36,6 @@ class MainTabbar : UIViewController{
         removeRule()
         removeDetail()
         mainTabBarView.homeBtn.tintColor = .bamBoo_57CC4D
-        mainTabBarView.ruleBtn.tintColor = .lightGray
-        mainTabBarView.detailsBtn.tintColor = .lightGray
     }
     @objc func rule(sender:UIButton){
         self.addChild(ruleViewController)
@@ -46,8 +44,6 @@ class MainTabbar : UIViewController{
         removeMain()
         removeDetail()
         mainTabBarView.ruleBtn.tintColor = .bamBoo_57CC4D
-        mainTabBarView.homeBtn.tintColor = .lightGray
-        mainTabBarView.detailsBtn.tintColor = .lightGray
     }
     @objc func detail(sender:UIButton){
         self.addChild(detailViewController)
@@ -56,19 +52,20 @@ class MainTabbar : UIViewController{
         removeMain()
         removeRule()
         mainTabBarView.detailsBtn.tintColor = .bamBoo_57CC4D
-        mainTabBarView.homeBtn.tintColor = .lightGray
-        mainTabBarView.ruleBtn.tintColor = .lightGray
     }
     //MARK: - Remove Page
     func removeMain(){
         mainViewController.removeFromParent()
         mainViewController.view.removeFromSuperview()
+        mainTabBarView.homeBtn.tintColor = .lightGray
     }
     func removeRule(){
         ruleViewController.removeFromParent()
         ruleViewController.view.removeFromSuperview()
+        mainTabBarView.ruleBtn.tintColor = .lightGray
     }
     func removeDetail(){
+        mainTabBarView.detailsBtn.tintColor = .lightGray
         detailViewController.removeFromParent()
         detailViewController.view.removeFromSuperview()
     }

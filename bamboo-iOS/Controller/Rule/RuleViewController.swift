@@ -19,11 +19,8 @@ class RuleViewController: UIViewController{
     
     private let titleLabel = UILabel().then{
         $0.textColor = .bamBoo_57CC4D
-        let text = "안녕하세요!"
-        let attributedStr = NSMutableAttributedString(string: text)
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "집"))
-        $0.attributedText = attributedStr
+        $0.text = "안녕하세요!"
     }
     
 
@@ -44,7 +41,7 @@ class RuleViewController: UIViewController{
     }
     func addView(){
         view.addSubview(backGroundScrollView)
-        view.addSubview(titleLabel)
+        backGroundScrollView.addSubview(titleLabel)
     }
     func location(){
         titleLabel.snp.makeConstraints {
