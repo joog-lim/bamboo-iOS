@@ -9,9 +9,8 @@ import UIKit
 
 class ManagerPopUp : UIView {
     //MARK: - Properties
-    let bgview = UIButton().then{
-        $0.addTarget(self, action: #selector(keyboardDown), for: .touchUpInside)
-        $0.backgroundColor = .gray.withAlphaComponent(0.5)
+    let bgview = UIView().then{
+        $0.backgroundColor = .gray.withAlphaComponent(0.25)
     }
     let view = UIView().then{
         $0.backgroundColor = .white
@@ -46,20 +45,18 @@ class ManagerPopUp : UIView {
     //MARK: - Initalizer
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.frame = UIScreen.main.bounds
         self.bgview.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateOut)))
         configure()
     }
     
-    //MARK: - Keyboard Down
-    @objc func keyboardDown(){
-        self.view.endEditing(true)
-    }
+
     //MARK: - PopUp page animateOff
     @objc func animateOut(){
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
+            self.view.endEditing(true)
+            self.WritePassWorld.text = ""
         }
     }
     //MARK: - Helper
