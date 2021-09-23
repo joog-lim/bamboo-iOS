@@ -17,13 +17,15 @@ class CustomTabbar : UIView {
 
     let homeBtn = UIButton().then{
         $0.setImage(UIImage(named: "BAMBOO_home")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        $0.tintColor = .red
+        $0.tintColor = .bamBoo_57CC4D
     }
     let ruleBtn = UIButton().then{
         $0.setImage(UIImage(named: "BAMBOO_rule")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .lightGray
     }
     let detailsBtn = UIButton().then{
         $0.setImage(UIImage(named: "BAMBOO_detail")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .lightGray
     }
     
     override init(frame: CGRect) {

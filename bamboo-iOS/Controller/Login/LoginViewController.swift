@@ -45,21 +45,19 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ManagerPopUp().WritePassWorld.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        keyboardSetting()
         configureUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
+    
     //MARK: - Selectors
     @objc func keyboardWillShow(_ sender: Notification) {
          self.view.frame.origin.y = -150 // Move view 150 points upward
         }
     @objc func keyboardWillHide(_ sender: Notification) {
-
-    self.view.frame.origin.y = 0 // Move view to original position
-
+        self.view.frame.origin.y = 0 // Move view to original position
     }
 
     
@@ -71,7 +69,7 @@ class LoginViewController : UIViewController {
         popup.isHidden = false
     }
     @objc func ClickUserBtn(){
-        navigationController?.pushViewController(MainViewController(), animated: true)
+        navigationController?.pushViewController(MainTabbar(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
     @objc func popupClose(){
@@ -82,9 +80,7 @@ class LoginViewController : UIViewController {
     }
     
     //MARK: - Helper
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-         self.view.endEditing(true)
-   }
+
     func configureUI(){
         stackViewSetting()
         addView()
@@ -114,7 +110,14 @@ class LoginViewController : UIViewController {
             make.height.equalTo(view.frame.height)
             make.top.right.bottom.left.equalToSuperview()
         }
-
+    }
+    //MARK: - KeyboardSetting
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    func keyboardSetting(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 extension LoginViewController : UITextFieldDelegate{

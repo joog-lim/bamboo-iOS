@@ -43,17 +43,9 @@ class MainViewController : UIViewController{
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        navigationSetting()
+        configureUI()
+    }
 
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        DispatchQueue.main.async {[self] in
-            configureUI()
-        }
-    }
     
     //MARK: - Helper
     func configureUI(){
@@ -63,11 +55,7 @@ class MainViewController : UIViewController{
         tableViewHeaderSetting()
     }
     //MARK: - NavigationBar Setting
-    func navigationSetting(){
-        navigationController?.navigationCustomBar()
-        navigationItem.hidesBackButton = true
-        navigationItem.applyImageNavigation()
-    }
+
     //MARK: - TableViewHeaderSetting
     func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -100,10 +88,7 @@ class MainViewController : UIViewController{
             make.top.equalToSuperview()
             make.bottom.left.right.equalToSuperview()
         }
-        tabbarCustomView.snp.makeConstraints {
-            $0.right.left.bottom.equalToSuperview()
-            $0.height.equalTo(bounds.height/9.9024)
-        }
+
     }
 }
 //MARK: - TableView
