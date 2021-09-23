@@ -16,9 +16,16 @@ class RuleViewController: UIViewController{
         $0.showsVerticalScrollIndicator = true
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    private let titleLabel = RulePageTitleLabel()
     
+    private let titleLabel = UILabel().then{
+        $0.textColor = .bamBoo_57CC4D
+        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.text = "안녕하세요!"
+    }
     
+
+
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +44,15 @@ class RuleViewController: UIViewController{
         backGroundScrollView.addSubview(titleLabel)
     }
     func location(){
-        backGroundScrollView.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
-        }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.equalToSuperview()
+            
         }
+        backGroundScrollView.snp.makeConstraints {
+            $0.top.left.right.bottom.equalToSuperview()
+        }
+        
         backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.938728)
     }
 }
