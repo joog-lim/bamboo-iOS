@@ -18,13 +18,17 @@ class RuleViewController: UIViewController{
     }
     
     private let titleLabel = UILabel().then{
+        let string : NSMutableAttributedString = NSMutableAttributedString(string: "안녕하세요!이곳은\n광대숲입니다!")
+        $0.numberOfLines = 2
         $0.textColor = .bamBoo_57CC4D
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
-        $0.text = "안녕하세요!"
+        string.setColorForText(textToFind: "이곳은", withColor: .black)
+        string.setColorForText(textToFind: "입니다!", withColor: .black)
+        $0.attributedText = string
     }
     
-
-
+    
+    
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -45,10 +49,10 @@ class RuleViewController: UIViewController{
     }
     func location(){
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.left.equalToSuperview()
-            
+            $0.top.equalToSuperview().offset(bounds.height/40.6)
+            $0.left.equalToSuperview().offset(bounds.width/26.786)
         }
+
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }

@@ -217,6 +217,7 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EEA3008326FD471100EA6374 /* UIView */,
 				EE80467426F463E8007D3206 /* Cell */,
 				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
@@ -292,6 +293,13 @@
 				EE89811226E5FD410086D2D6 /* Assets.xcassets */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		EEA3008326FD471100EA6374 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
