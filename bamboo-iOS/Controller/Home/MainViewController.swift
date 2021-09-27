@@ -11,6 +11,8 @@ class MainViewController : UIViewController{
     
     //MARK: - Properties
     private let bounds = UIScreen.main.bounds
+    let i = 100
+    let data = ["집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집","집집집집집집집집집","집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집"]
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -89,12 +91,16 @@ class MainViewController : UIViewController{
 //MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardTableVIewCell.identifier, for: indexPath) as? BulletinBoardTableVIewCell else{return UITableViewCell()}
-        
+        cell.contentLabel.text = data[indexPath.row]
+        cell.numberLabel.text = "#\(i)번째 알고리즘"
+        cell.dataLabel.text = "2021년 9월 27일"
+        cell.titleLabel.text = "곰"
+        cell.tagLabel.text = "#공부"
         return cell
     }
     
