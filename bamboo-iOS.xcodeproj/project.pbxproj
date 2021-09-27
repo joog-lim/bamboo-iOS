@@ -13,6 +13,7 @@
 		EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */; };
 		EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* RuleText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
+		EE8141FE2701CEA000ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* DetailText.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardTableVIewCell.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
+		EE8141FD2701CEA000ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,22 @@
 				EE8141F727018AAA00ECFDCC /* RuleText.swift */,
 			);
 			path = RuleText;
+			sourceTree = "<group>";
+		};
+		EE8141FB2701CE7A00ECFDCC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
+			isa = PBXGroup;
+			children = (
+				EE8141FD2701CEA000ECFDCC /* DetailText.swift */,
+			);
+			path = DetailText;
 			sourceTree = "<group>";
 		};
 		EE8980FD26E5FD400086D2D6 = {
@@ -343,7 +361,8 @@
 		EEBDA34226FB5C3F00B966E3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */,
+				EE8141FB2701CE7A00ECFDCC /* ViewController */,
+				EE8141FC2701CE8B00ECFDCC /* DetailText */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -468,6 +487,7 @@
 				EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* DetailViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
+				EE8141FE2701CEA000ECFDCC /* DetailText.swift in Sources */,
 				EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* RuleViewController.swift in Sources */,
