@@ -10,13 +10,13 @@ import UIKit
 class MainTabbar : UIViewController{
     //MARK: - Properties
 
-    lazy var mainTabBarView = CustomTabbar()
+    private lazy var mainTabBarView = CustomTabbar()
     
-    let mainViewController = MainViewController()
-    let ruleViewController = RuleViewController()
-    let detailViewController = DetailViewController()
+    private lazy var mainViewController = MainViewController()
+    private lazy var ruleViewController = RuleViewController()
+    private lazy var detailViewController = DetailViewController()
     
-    let viewControllerBoxView = UIView()
+    private lazy var viewControllerBoxView = UIView()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
