@@ -9,12 +9,13 @@ import UIKit
 
 class ExplanationLabel : UILabel{
     
-    init(textLabel : String, fontSize : CGFloat, fontStyle: String) {
+    init( fontSize : CGFloat, fontStyle: String, labelColor : UIColor) {
         super.init(frame: .zero)
         dynamicFont(fontSize: fontSize, currentFontName: fontStyle)
-        textColor = .black
+        textColor = labelColor
         numberOfLines = 0
-        text = textLabel
+        isUserInteractionEnabled = true
+
     }
 
     required init?(coder: NSCoder) {

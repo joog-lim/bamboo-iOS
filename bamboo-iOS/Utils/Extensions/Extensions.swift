@@ -329,4 +329,3 @@ extension NSMutableAttributedString {
         }
     }
 }
-
