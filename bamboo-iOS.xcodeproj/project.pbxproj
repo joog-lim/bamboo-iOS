@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
+		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
+		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
+		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
-		EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */; };
 		EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* RuleText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* DetailText.swift */; };
@@ -37,9 +39,11 @@
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
+		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
-		EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardTableVIewCell.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
@@ -95,6 +99,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE3BA5712702DF4B00281096 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA57A2702F09600281096 /* TableViewCell */,
+				EE3BA5772702EFB000281096 /* Base */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		EE3BA5772702EFB000281096 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EE3BA57A2702F09600281096 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EE3BA57F270301F200281096 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA57D2702F2A100281096 /* Data.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,14 +180,6 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		EE7C6FFB26F07C250071031C /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				EE7C6FFC26F081D80071031C /* BulletinBoardTableVIewCell.swift */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		EE80467326F45E78007D3206 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +191,7 @@
 		EE80467426F463E8007D3206 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				EE7C6FFB26F07C250071031C /* TableView */,
+				EE3BA5712702DF4B00281096 /* TableView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -245,7 +274,7 @@
 		EE9F0CDD26E7485C0015E81B /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0CE026E748700015E81B /* Model */,
+				EE3BA57F270301F200281096 /* Model */,
 				EE9F0CDE26E748650015E81B /* View */,
 				EE9F0CDF26E7486A0015E81B /* ViewModel */,
 			);
@@ -270,13 +299,6 @@
 			children = (
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		EE9F0CE026E748700015E81B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
@@ -488,12 +510,14 @@
 				EEBDA34426FB5C7500B966E3 /* DetailViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* DetailText.swift in Sources */,
-				EE7C6FFD26F081D80071031C /* BulletinBoardTableVIewCell.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* RuleViewController.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
+				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
+				EE3BA57E2702F2A100281096 /* Data.swift in Sources */,
+				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
