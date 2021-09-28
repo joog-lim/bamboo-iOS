@@ -28,20 +28,19 @@ class MainViewController : UIViewController{
         
     }
 
-    fileprivate let mainTableView : UITableView = {
-        let tv = UITableView()
-        tv.register(BulletinBoardTableVIewCell.self, forCellReuseIdentifier: BulletinBoardTableVIewCell.identifier)
-        tv.showsVerticalScrollIndicator = false
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .clear
-        tv.separatorColor = .clear
-        tv.allowsSelection = false
-        tv.rowHeight = 300
-        tv.estimatedRowHeight = 300
-        tv.rowHeight = UITableView.automaticDimension
-        return tv
+    fileprivate let mainCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.register(BulletinBoardCollectionViewCell.self, forCellWithReuseIdentifier: BulletinBoardCollectionViewCell.identifier)
+        cv.backgroundColor = .clear
+        cv.showsVerticalScrollIndicator = false
+        cv.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        return cv
     }()
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,57 +52,56 @@ class MainViewController : UIViewController{
     func configureUI(){
         addView()
         location()
-        tableviewSetting()
-        tableViewHeaderSetting()
+        collectionViewSetting()
+//        tableViewHeaderSetting()
     }
     //MARK: - NavigationBar Setting
 
     //MARK: - TableViewHeaderSetting
-    func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/40.6)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
-       
-    }
-    //MARK: - tableViewSetting
-    func tableviewSetting(){
-        mainTableView.dataSource = self
-        mainTableView.delegate = self
-        mainTableView.estimatedRowHeight = 200
-        mainTableView.rowHeight = UITableView.automaticDimension
+//    func tableViewHeaderSetting(){
+//        mainCollectionView.collectionViewHeder = tableViewHeader
+//        mainCollectionView.addSubview(titleLabel)
+//        titleLabel.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(bounds.height/40.6)
+//            $0.left.equalToSuperview().offset(bounds.width/18.75)
+//        }
+//
+//    }
+    //MARK: - CollectionViewViewSetting
+    func collectionViewSetting(){
+        mainCollectionView.dataSource = self
+        mainCollectionView.delegate = self
     }
     //MARK: - AddView
     func addView(){
-        view.addSubview(mainTableView)
+        view.addSubview(mainCollectionView)
     }
     //MARK: - Location
     func location(){
-        mainTableView.snp.makeConstraints { (make) in
+        mainCollectionView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.bottom.left.right.equalToSuperview()
         }
-
     }
 }
-//MARK: - TableView
-extension MainViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainViewController : UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardTableVIewCell.identifier, for: indexPath) as? BulletinBoardTableVIewCell else{return UITableViewCell()}
-        cell.contentLabel.text = data[indexPath.row]
-        cell.numberLabel.text = "#\(i)번째 알고리즘"
-        cell.dataLabel.text = "2021년 9월 27일"
-        cell.titleLabel.text = "곰"
-        cell.tagLabel.text = "#공부"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletinBoardCollectionViewCell.identifier, for: indexPath) as? BulletinBoardCollectionViewCell else {return UICollectionViewCell()}
+        
         return cell
     }
+
     
-    
+}
+extension MainViewController : UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width/1.12, height: 100)
+    }
+}
+extension MainViewController : UICollectionViewDelegateFlowLayout{
     
 }

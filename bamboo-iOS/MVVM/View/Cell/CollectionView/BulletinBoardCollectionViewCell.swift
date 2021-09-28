@@ -1,47 +1,51 @@
 //
-//  BulletinBoardTableVIewCell.swift
+//  BulletinBoardCollectionViewCell.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/09/14.
+//  Created by Ji-hoon Ahn on 2021/09/28.
 //
 
 import UIKit
-class BulletinBoardTableVIewCell: UITableViewCell {
-    
-    static let identifier = "BulletinBoardTableVIewCell"
+
+class BulletinBoardCollectionViewCell : UICollectionViewCell{
+    static let identifier = "BulletinBoardCollectionViewCell"
     
     let view = UIView().then{
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 5
-        $0.layer.applySketchShadow(color: UIColor.black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
     }
     let numberLabel = UILabel().then{
         $0.dynamicFont(fontSize: 15, currentFontName: "AppleSDGothicNeo-Bold")
         $0.textColor = .bamBoo_57CC4D
+        $0.text = "#192번째 알고리즘"
     }
     let dataLabel = UILabel().then{
         $0.dynamicFont(fontSize: 11, currentFontName: "AppleSDGothicNeo-Regular")
         $0.textColor = .lightGray
+        $0.text = "2021년 6월 3일"
     }
     let tagLabel = UILabel().then{
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Regular")
         $0.textColor = .bamBoo_57CC4D
+        $0.text = "#공부"
     }
     let titleLabel = UILabel().then{
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Bold")
         $0.textColor = .black
+        $0.text = "오늘 급식 뭐냐"
     }
     let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Regular")
         $0.textColor = .black
-    }
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addView()
-        
+        $0.text = "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addView()
+        contentView.backgroundColor = .white
+        contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
+    }
     func addView(){
         contentView.addSubview(view)
         view.addSubview(numberLabel)
@@ -53,7 +57,7 @@ class BulletinBoardTableVIewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         view.snp.makeConstraints { make in
-            make.top.right.left.bottom.equalToSuperview()
+            make.top.left.right.bottom.equalToSuperview()
         }
         numberLabel.snp.makeConstraints { make in
             make.top.left.equalToSuperview().offset(bounds.width/32.5)
@@ -74,18 +78,13 @@ class BulletinBoardTableVIewCell: UITableViewCell {
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.width/53.57)
             $0.left.right.equalToSuperview().inset(bounds.width/31.75)
-            $0.bottom.equalTo(view.snp.bottom).inset(bounds.width/62.5)
+            $0.bottom.equalToSuperview().inset(bounds.width/62.5)
         }
-
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        contentLabel.numberOfLines = 0
-        contentLabel.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Regular")
-        contentLabel.textColor = .black
-    }
+    
+    
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
+    
 }
-
