@@ -36,23 +36,8 @@ extension UIColor{
     static func rgba(red: CGFloat ,green: CGFloat,blue:CGFloat, alpha:CGFloat) -> UIColor{
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
+    static let bamBoo_57CC4D = rgb(red: 87, green: 204, blue: 77)
     
-    static let EZY_BAC8FF = UIColor.rgb(red: 186, green: 200, blue: 255)
-    static let EZY_CFCBFF = UIColor.rgb(red: 207, green: 203, blue: 255)
-    static let EZY_AFADFF = UIColor.rgb(red: 175, green: 173, blue: 255)
-    static let EZY_968DFF = UIColor.rgb(red: 150, green: 141, blue: 255)
-    static let EZY_6B40FF = UIColor.rgb(red: 107, green: 64,  blue: 255)
-    static let EZY_C9BCFF = UIColor.rgb(red: 201, green: 188, blue: 255)
-    static let EZY_B2B2B2 = UIColor.rgb(red: 178, green: 178, blue: 178)
-    static let EZY_000000 = UIColor.rgb(red: 0, green: 0, blue: 0)
-    static let EZY_FCA1A1 = UIColor.rgb(red: 252, green: 161, blue: 161)
-    static let EZY_747474 = UIColor.rgb(red: 116, green: 116, blue: 116)
-    static let EZY_E3E3E3 = UIColor.rgb(red: 227, green: 227, blue: 227)
-    static let EZY_FAFAFA = UIColor.rgb(red: 250, green: 250, blue: 250)
-    static let EZY_AFAFAF = UIColor.rgb(red: 175, green: 175, blue: 175)
-    static let EZY_E1E1E1 = UIColor.rgb(red: 225, green: 225, blue: 225)
-    static let EZY_FFFFFF = UIColor.rgb(red: 255, green: 255, blue: 255)
-    static let EZY_656565 = UIColor.rgb(red: 101, green: 101, blue: 101)
 }
 
 //MARK: - UILabel dynamic font extension
@@ -309,54 +294,38 @@ func applySketchShadow(color: UIColor = .black,alpha: Float = 0.5,x:CGFloat,y:CG
         }
     }
 }
-
-//MARK: - TextField placeholder dynamic font
-extension UITextField {
-    func dynamicFont(fontSize size: CGFloat, weight: UIFont.Weight) {
-        let currentFontName = self.font?.fontName
-      var calculatedFont: UIFont?
-      let bounds = UIScreen.main.bounds
-      let height = bounds.size.height
-      
-      switch height {
-      case 480.0: //Iphone 3,4S => 3.5 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 0.7)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 568.0: //iphone 5, SE => 4 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 0.8)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 667.0: //iphone 6, 6s, 7, 8 => 4.7 inch // iphone SE2 -> 4.7 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 0.92)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 736.0: //iphone 6s+ 6+, 7+, 8+ => 5.5 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 0.95)
-       resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 812.0: //iphone X, XS => 5.8 inch // iphone 11 pro => 5.8 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 844.0 : // iphone 12 & iphone 12 pro => 6.1 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 1.08)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 896.0: //iphone XR => 6.1 inch  // iphone XS MAX => 6.5 inch // iphone 11 => 6.1 inch // iphone 11 pro max => 6.5 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 1.15)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      case 926.0 : //iphone 12 pro max => 6.7 inch
-        calculatedFont = UIFont(name: currentFontName!, size: size * 1.18)
-        resizeFont(calculatedFont: calculatedFont, weight: weight)
-        break
-      default:
-        print("not an iPhone")
-        break
-      }
+//MARK: - Navigation Setting
+extension UINavigationItem {
+    func applyImageNavigation(){
+        let iv = UIImageView(image: UIImage(named: "BAMBOO_Logo"))
+        iv.snp.makeConstraints { (make) in
+            make.height.equalTo(19)
+            make.width.equalTo(44)
+        }
+        titleView = iv
     }
 }
 
-
-
+extension UINavigationController{
+    func navigationCustomBar(){
+        navigationBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
+        navigationBar.isTranslucent = false
+        navigationBar.shadowImage = UIImage()
+        
+    }
+}
+extension NSMutableAttributedString {
+    func setColorForText(textToFind: String, withColor color: UIColor) {
+         let range: NSRange = self.mutableString.range(of: textToFind, options: .caseInsensitive)
+          if range != nil {
+            self.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+          }
+        }
+    func setFontForText(textToFind: String, withFont font: UIFont
+    ){
+        let range : NSRange = self.mutableString.range(of: textToFind,options: .caseInsensitive)
+        if range != nil{
+            self.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+        }
+    }
+}

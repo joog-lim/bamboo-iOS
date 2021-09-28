@@ -16,17 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BAMBOO_splash" translatesAutoresizingMaskIntoConstraints="NO" id="PN7-pj-vk5">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BAMBOO_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="185-pk-WhX">
+                                <rect key="frame" x="125.5" y="418.5" width="163" height="69"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PN7-pj-vk5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="IvN-kF-huL"/>
-                            <constraint firstItem="PN7-pj-vk5" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.142857" id="JGl-2P-sx3"/>
-                            <constraint firstItem="PN7-pj-vk5" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.57971" id="Z4C-ZN-ZHu"/>
-                            <constraint firstItem="PN7-pj-vk5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rfF-hU-Qzv"/>
+                            <constraint firstItem="185-pk-WhX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LgH-Gg-gJb"/>
+                            <constraint firstItem="185-pk-WhX" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="163:896" id="Swq-D6-mpp"/>
+                            <constraint firstItem="185-pk-WhX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="v70-PA-71b"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,7 +35,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BAMBOO_splash" width="200" height="76"/>
+        <image name="BAMBOO_Logo" width="163" height="69"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
