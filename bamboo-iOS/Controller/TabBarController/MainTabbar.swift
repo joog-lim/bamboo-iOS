@@ -7,9 +7,11 @@
 
 import UIKit
 
+
+
 class MainTabbar : UIViewController{
     //MARK: - Properties
-
+    
     private lazy var mainTabBarView = CustomTabbar()
     
     private lazy var mainViewController = MainViewController()
@@ -89,6 +91,7 @@ class MainTabbar : UIViewController{
         mainViewController.view.frame = viewControllerBoxView.frame
         viewControllerBoxView.addSubview(mainViewController.view)
     }
+    
     //MARK: - Navigation Setting
     func navigationSetting(){
         navigationController?.navigationCustomBar()

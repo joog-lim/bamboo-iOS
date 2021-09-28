@@ -45,17 +45,17 @@ class DetailViewController : UIViewController {
     //MARK: - Selectors
     
     //MARK: - Helper
-    func configureUI(){
+    private func configureUI(){
         addView()
         location()
     }
 
-    func addView(){
+    private func addView(){
         view.addSubview(backGroundScrollView)
         backGroundScrollView.addSubview(titleLabel)
         backGroundScrollView.addSubview(ruleLabel)
     }
-    func location(){
+    private func location(){
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }
