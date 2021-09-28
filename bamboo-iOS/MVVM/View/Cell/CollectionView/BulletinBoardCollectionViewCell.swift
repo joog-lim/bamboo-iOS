@@ -9,10 +9,7 @@ import UIKit
 
 class BulletinBoardCollectionViewCell : UICollectionViewCell{
     static let identifier = "BulletinBoardCollectionViewCell"
-    
-    let view = UIView().then{
-        $0.backgroundColor = .white
-    }
+
     let numberLabel = UILabel().then{
         $0.dynamicFont(fontSize: 15, currentFontName: "AppleSDGothicNeo-Bold")
         $0.textColor = .bamBoo_57CC4D
@@ -34,33 +31,38 @@ class BulletinBoardCollectionViewCell : UICollectionViewCell{
         $0.text = "오늘 급식 뭐냐"
     }
     let contentLabel = UILabel().then{
-        $0.numberOfLines = 0
         $0.dynamicFont(fontSize: 13, currentFontName: "AppleSDGothicNeo-Regular")
         $0.textColor = .black
-        $0.text = "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"
+        $0.lineBreakMode = .byWordWrapping
+        $0.numberOfLines = 0
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addView()
-        contentView.backgroundColor = .white
+        contentViewSetting()
+    }
+    func contentViewSetting(){
+        contentView.backgroundColor = .red
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
+        contentView.layer.cornerRadius = 5
     }
     func addView(){
-        contentView.addSubview(view)
-        view.addSubview(numberLabel)
-        view.addSubview(dataLabel)
-        view.addSubview(tagLabel)
-        view.addSubview(titleLabel)
-        view.addSubview(contentLabel)
+        contentView.addSubview(numberLabel)
+        contentView.addSubview(dataLabel)
+        contentView.addSubview(tagLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(contentLabel)
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        view.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalToSuperview()
+        contentView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalTo(contentLabel.snp.bottom).offset(5)
+            make.left.right.equalToSuperview()
         }
         numberLabel.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().offset(bounds.width/32.5)
+            make.top.left.equalToSuperview().offset(bounds.width/37.5)
         }
         dataLabel.snp.makeConstraints {
             $0.centerY.equalTo(numberLabel)
@@ -71,17 +73,18 @@ class BulletinBoardCollectionViewCell : UICollectionViewCell{
             $0.right.equalToSuperview().inset(bounds.width/31.75)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(numberLabel.snp.bottom).offset(bounds.width/53.57)
+            $0.top.equalTo(numberLabel.snp.bottom).offset(10)
             $0.left.equalTo(numberLabel)
             $0.right.equalToSuperview().inset(bounds.width/31.75)
         }
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.width/53.57)
             $0.left.right.equalToSuperview().inset(bounds.width/31.75)
-            $0.bottom.equalToSuperview().inset(bounds.width/62.5)
         }
     }
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

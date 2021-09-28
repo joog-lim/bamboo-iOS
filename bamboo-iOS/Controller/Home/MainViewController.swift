@@ -12,7 +12,7 @@ class MainViewController : UIViewController{
     //MARK: - Properties
     private let bounds = UIScreen.main.bounds
     let i = 100
-    let data = ["집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집","집집집집집집집집집","집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집","집집집집집집집집집"]
+    let data : [Data] = [.init(numberOfAlgorithm: "#192번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -28,80 +28,81 @@ class MainViewController : UIViewController{
         
     }
 
-    fileprivate let mainCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.scrollDirection = .vertical
-        
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(BulletinBoardCollectionViewCell.self, forCellWithReuseIdentifier: BulletinBoardCollectionViewCell.identifier)
-        cv.backgroundColor = .clear
-        cv.showsVerticalScrollIndicator = false
-        cv.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        return cv
+    fileprivate let mainTableView : UITableView = {
+        let tv = UITableView()
+        tv.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        tv.showsVerticalScrollIndicator = false
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = .clear
+        tv.separatorColor = .clear
+        tv.allowsSelection = false
+        tv.rowHeight = 300
+        tv.estimatedRowHeight = 300
+        tv.rowHeight = UITableView.automaticDimension
+        return tv
     }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+    }
     
     //MARK: - Helper
     func configureUI(){
         addView()
         location()
-        collectionViewSetting()
-//        tableViewHeaderSetting()
+        tableviewSetting()
+        tableViewHeaderSetting()
     }
     //MARK: - NavigationBar Setting
 
     //MARK: - TableViewHeaderSetting
-//    func tableViewHeaderSetting(){
-//        mainCollectionView.collectionViewHeder = tableViewHeader
-//        mainCollectionView.addSubview(titleLabel)
-//        titleLabel.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(bounds.height/40.6)
-//            $0.left.equalToSuperview().offset(bounds.width/18.75)
-//        }
-//
-//    }
-    //MARK: - CollectionViewViewSetting
-    func collectionViewSetting(){
-        mainCollectionView.dataSource = self
-        mainCollectionView.delegate = self
+    func tableViewHeaderSetting(){
+        mainTableView.tableHeaderView = tableViewHeader
+        mainTableView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(bounds.height/40.6)
+            $0.left.equalToSuperview().offset(bounds.width/18.75)
+        }
+       
+    }
+    //MARK: - tableViewSetting
+    func tableviewSetting(){
+        mainTableView.dataSource = self
+        mainTableView.delegate = self
+        mainTableView.estimatedRowHeight = 200
+        mainTableView.rowHeight = UITableView.automaticDimension
     }
     //MARK: - AddView
     func addView(){
-        view.addSubview(mainCollectionView)
+        view.addSubview(mainTableView)
     }
     //MARK: - Location
     func location(){
-        mainCollectionView.snp.makeConstraints { (make) in
+        mainTableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.bottom.left.right.equalToSuperview()
         }
+
     }
 }
-extension MainViewController : UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//MARK: - TableView
+extension MainViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BulletinBoardCollectionViewCell.identifier, for: indexPath) as? BulletinBoardCollectionViewCell else {return UICollectionViewCell()}
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
+        cell.model = data[indexPath.row]
         return cell
     }
-
     
-}
-extension MainViewController : UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width/1.12, height: 100)
-    }
-}
-extension MainViewController : UICollectionViewDelegateFlowLayout{
+    
     
 }
