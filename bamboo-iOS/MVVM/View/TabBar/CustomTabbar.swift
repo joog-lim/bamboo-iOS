@@ -41,7 +41,8 @@ class CustomTabbar : UIView {
         super.layoutSubviews()
         stackView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(frame.height/4.1)
-            $0.top.bottom.equalToSuperview().inset(frame.height/4.1)
+            $0.top.equalToSuperview().offset(frame.height/4.1)
+            
         }
     }
     required init?(coder: NSCoder) {

@@ -11,6 +11,7 @@
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
 		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
+		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
 		EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* RuleText.swift */; };
@@ -42,6 +43,7 @@
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
+		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -130,6 +132,22 @@
 				EE3BA57D2702F2A100281096 /* Data.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EE3BA58027032A3D00281096 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA58127032A5500281096 /* BulletinBoardWriteModal */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		EE3BA58127032A5500281096 /* BulletinBoardWriteModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
+			);
+			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
 		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
@@ -304,6 +322,7 @@
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EE3BA58027032A3D00281096 /* Modal */,
 				EE7C6F7526EEEC410071031C /* Login */,
 				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
 				EE7C6F7926EEEC880071031C /* Home */,
@@ -516,6 +535,7 @@
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
+				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* Data.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
