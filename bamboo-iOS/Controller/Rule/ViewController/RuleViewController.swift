@@ -7,12 +7,11 @@
 
 import UIKit
 
+
 class RuleViewController: UIViewController{
     //MARK: - Properties
     let bounds = UIScreen.main.bounds
-    
-    let rule : String = ""
-    
+        
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
@@ -30,7 +29,7 @@ class RuleViewController: UIViewController{
         $0.text = "누구한테도 말하기 어려웠던 이야기부터\n사소하고 조그만 이야기까지."
     }
     
-    let divider = UIView().then{
+    private let divider = UIView().then{
         $0.backgroundColor = .bamBoo_57CC4D
     }
     
@@ -74,17 +73,18 @@ class RuleViewController: UIViewController{
     }
     
     //MARK: - Helper
-    func configureUI(){
+    private func configureUI(){
         addView()
         location()
         gestureLabel()
+        animate()
     }
     //MARK: - Gesture
-    func gestureLabel(){
+    private func gestureLabel(){
         clickLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gesture)))
     }
     //MARK: - addView
-    func addView(){
+    private func addView(){
         view.addSubview(backGroundScrollView)
         backGroundScrollView.addSubview(titleLabel)
         backGroundScrollView.addSubview(explanationLabel)
@@ -94,8 +94,16 @@ class RuleViewController: UIViewController{
         backGroundScrollView.addSubview(clickLabel)
         backGroundScrollView.addSubview(bottomLabel)
     }
+
+    func animate(){
+        self.divider.frame = CGRect(x: 14, y: 140, width: 0, height: 0.3)
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.divider.frame = CGRect(x: 14, y: 140, width: (self?.bounds.width)!/1.23 ?? 0, height: 0.3)
+        }
+    }
+    
     //MARK: - Location
-    func location(){
+    private func location(){
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/40.6)
             $0.left.equalToSuperview().offset(bounds.width/26.786)
@@ -104,12 +112,7 @@ class RuleViewController: UIViewController{
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/40.6)
             $0.left.equalTo(titleLabel)
         }
-        divider.snp.makeConstraints {
-            $0.top.equalTo(explanationLabel.snp.bottom).offset(bounds.height/25.375)
-            $0.left.equalTo(explanationLabel)
-            $0.width.equalTo(307)
-            $0.height.equalTo(0.3)
-        }
+        
         greetingsLabel.snp.makeConstraints {
             $0.top.equalTo(divider.snp.bottom).offset(bounds.height/23.88)
             $0.left.equalTo(titleLabel)
