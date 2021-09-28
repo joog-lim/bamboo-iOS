@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
-		EE3BA5702702816800281096 /* BulletinBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA56F2702816800281096 /* BulletinBoardCollectionViewCell.swift */; };
-		EE3BA5762702E87200281096 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5752702E87200281096 /* HeaderCollectionView.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
 		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
@@ -41,8 +39,6 @@
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE3BA56F2702816800281096 /* BulletinBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardCollectionViewCell.swift; sourceTree = "<group>"; };
-		EE3BA5752702E87200281096 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
@@ -103,15 +99,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EE3BA56E2702814E00281096 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA5742702E86000281096 /* Header */,
-				EE3BA56F2702816800281096 /* BulletinBoardCollectionViewCell.swift */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,14 +106,6 @@
 				EE3BA5772702EFB000281096 /* Base */,
 			);
 			path = TableView;
-			sourceTree = "<group>";
-		};
-		EE3BA5742702E86000281096 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA5752702E87200281096 /* HeaderCollectionView.swift */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		EE3BA5772702EFB000281096 /* Base */ = {
@@ -213,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				EE3BA5712702DF4B00281096 /* TableView */,
-				EE3BA56E2702814E00281096 /* CollectionView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -529,7 +507,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */,
-				EE3BA5762702E87200281096 /* HeaderCollectionView.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* DetailViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* DetailText.swift in Sources */,
@@ -544,7 +521,6 @@
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
-				EE3BA5702702816800281096 /* BulletinBoardCollectionViewCell.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
