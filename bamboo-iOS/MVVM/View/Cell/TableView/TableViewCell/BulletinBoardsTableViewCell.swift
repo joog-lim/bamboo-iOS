@@ -9,6 +9,8 @@ import UIKit
 class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     static let identifier = "BulletinBoardsTableVIewCell"
     
+    private lazy var view = UIView()
+    
     private lazy var algorithm = UILabel().then{
         $0.dynamicFont(fontSize: 15, currentFontName: "NanumSquareRoundB")
         $0.textColor = .bamBoo_57CC4D
@@ -27,13 +29,14 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
+        
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20   ))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: bounds.width/18.75, bottom: 5, right: bounds.width/18.75   ))
     }
     override func configure() {
         super.configure()
@@ -44,13 +47,19 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         location()
     }
     private func addSubviews(){
-        contentView.addSubview(algorithm)
-        contentView.addSubview(dataLabel)
-        contentView.addSubview(tagLabel)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(contentLabel)
+        contentView.addSubview(view)
+        view.addSubview(algorithm)
+        view.addSubview(dataLabel)
+        view.addSubview(tagLabel)
+        view.addSubview(titleLabel)
+        view.addSubview(contentLabel)
     }
     private func location(){
+        view.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.left.right.equalToSuperview().inset(bounds.width/34)
+            make.bottom.equalToSuperview()
+        }
         algorithm.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
@@ -65,12 +74,12 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         }
         titleLabel.snp.makeConstraints {
             $0.left.equalTo(algorithm)
-            $0.top.equalTo(algorithm.snp.bottom)
+            $0.top.equalTo(algorithm.snp.bottom).offset(bounds.width/37.5)
         }
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.width/53.57)
             $0.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(6)
         }
     }
     override func bind(_ model: Data) {

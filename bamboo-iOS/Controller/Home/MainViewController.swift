@@ -11,8 +11,7 @@ class MainViewController : UIViewController{
     
     //MARK: - Properties
     private let bounds = UIScreen.main.bounds
-    let i = 100
-    let data : [Data] = [.init(numberOfAlgorithm: "#192번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: "#192번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: "#192번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
+    let data : [Data] = [.init(numberOfAlgorithm: "#193번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: "#192번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: "#191번째 알고리즘", data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -25,10 +24,9 @@ class MainViewController : UIViewController{
         $0.numberOfLines = 2
         string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
         $0.attributedText = string
-        
     }
 
-    fileprivate let mainTableView : UITableView = {
+    private let mainTableView : UITableView = {
         let tv = UITableView()
         tv.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
         tv.showsVerticalScrollIndicator = false
@@ -36,16 +34,22 @@ class MainViewController : UIViewController{
         tv.backgroundColor = .clear
         tv.separatorColor = .clear
         tv.allowsSelection = false
-        tv.rowHeight = 300
         tv.estimatedRowHeight = 300
         tv.rowHeight = UITableView.automaticDimension
         return tv
     }()
     
+    private lazy var writeBtn = UIButton(type: .system).then{
+        $0.backgroundColor = .bamBoo_57CC4D
+        $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .white
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,56 +57,60 @@ class MainViewController : UIViewController{
     }
     
     //MARK: - Helper
-    func configureUI(){
+    private func configureUI(){
         addView()
         location()
         tableviewSetting()
         tableViewHeaderSetting()
+        cornerRadius()
     }
-    //MARK: - NavigationBar Setting
+
 
     //MARK: - TableViewHeaderSetting
-    func tableViewHeaderSetting(){
+    private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/40.6)
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
-       
     }
     //MARK: - tableViewSetting
-    func tableviewSetting(){
+    private func tableviewSetting(){
         mainTableView.dataSource = self
         mainTableView.delegate = self
         mainTableView.estimatedRowHeight = 200
         mainTableView.rowHeight = UITableView.automaticDimension
     }
     //MARK: - AddView
-    func addView(){
+    private func addView(){
         view.addSubview(mainTableView)
+        view.addSubview(writeBtn)
     }
     //MARK: - Location
-    func location(){
+    private func location(){
         mainTableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.bottom.left.right.equalToSuperview()
         }
-
+        writeBtn.snp.makeConstraints {
+            $0.height.width.equalTo(bounds.height/13.53)
+            $0.right.bottom.equalToSuperview()
+        }
     }
+    private func cornerRadius(){
+        writeBtn.layer.cornerRadius = bounds.height/27
+    }
+    
 }
 //MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
         cell.model = data[indexPath.row]
         return cell
     }
-    
-    
-    
 }
