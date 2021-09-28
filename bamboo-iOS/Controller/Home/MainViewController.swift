@@ -42,6 +42,7 @@ class MainViewController : UIViewController{
     private lazy var writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
         $0.tintColor = .white
     }
     
@@ -55,6 +56,12 @@ class MainViewController : UIViewController{
         super.viewWillAppear(animated)
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
+    
+    //MARK: - Selectors
+    @objc private func writeBtnClick(){
+        
+    }
+    
     
     //MARK: - Helper
     private func configureUI(){
@@ -95,7 +102,7 @@ class MainViewController : UIViewController{
         }
         writeBtn.snp.makeConstraints {
             $0.height.width.equalTo(bounds.height/13.53)
-            $0.right.bottom.equalToSuperview()
+            $0.right.bottom.equalToSuperview().inset(bounds.height/40.6)
         }
     }
     private func cornerRadius(){
