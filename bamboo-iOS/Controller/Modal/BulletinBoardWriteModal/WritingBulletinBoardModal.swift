@@ -20,4 +20,5 @@ class WritingBulletinBoardModal: UIViewController{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 40
     }
+    
 }
