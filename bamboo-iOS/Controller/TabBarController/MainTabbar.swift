@@ -11,14 +11,12 @@ import UIKit
 
 class MainTabbar : UIViewController{
     //MARK: - Properties
-    
     private lazy var mainTabBarView = CustomTabbar()
-    
     private lazy var mainViewController = MainViewController()
     private lazy var ruleViewController = RuleViewController()
     private lazy var detailViewController = DetailViewController()
-    
     private lazy var viewControllerBoxView = UIView()
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -29,7 +27,6 @@ class MainTabbar : UIViewController{
     }
     //MARK: - Selectors
    
-    
     @objc func home(sender:UIButton){
         self.addChild(mainViewController)
         mainViewController.view.frame = viewControllerBoxView.frame
@@ -54,6 +51,7 @@ class MainTabbar : UIViewController{
         removeRule()
         mainTabBarView.detailsBtn.tintColor = .bamBoo_57CC4D
     }
+    
     //MARK: - Remove Page
     private func removeMain(){
         mainViewController.removeFromParent()
@@ -73,11 +71,24 @@ class MainTabbar : UIViewController{
     
     //MARK: - Helper
     private func configureUI(){
+        addView()
+        buttonTargetting()
+        location()
+        tabbarInitalizer()
+    }
+    //MARK: - AddView
+    private  func addView(){
         self.view.addSubview(mainTabBarView)
         self.view.addSubview(viewControllerBoxView)
-        mainTabBarView.homeBtn.addTarget(self, action: #selector(home(sender:)), for: .touchUpInside)
-        mainTabBarView.ruleBtn.addTarget(self, action: #selector(rule(sender:)), for: .touchUpInside)
-        mainTabBarView.detailsBtn.addTarget(self, action: #selector(detail(sender:)), for: .touchUpInside)
+    }
+    //MARK: - tabbar Initalizer
+    private func tabbarInitalizer(){
+        self.addChild(mainViewController)
+        mainViewController.view.frame = viewControllerBoxView.frame
+        viewControllerBoxView.addSubview(mainViewController.view)
+    }
+    //MARK: - Location
+    private func location(){
         viewControllerBoxView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(mainTabBarView.snp.top)
@@ -86,9 +97,12 @@ class MainTabbar : UIViewController{
             $0.height.equalTo(view.frame.height/9.9024)
             $0.left.right.bottom.equalToSuperview()
         }
-        self.addChild(mainViewController)
-        mainViewController.view.frame = viewControllerBoxView.frame
-        viewControllerBoxView.addSubview(mainViewController.view)
+    }
+    //MARK: - button Targetting
+    private func buttonTargetting(){
+        mainTabBarView.homeBtn.addTarget(self, action: #selector(home(sender:)), for: .touchUpInside)
+        mainTabBarView.ruleBtn.addTarget(self, action: #selector(rule(sender:)), for: .touchUpInside)
+        mainTabBarView.detailsBtn.addTarget(self, action: #selector(detail(sender:)), for: .touchUpInside)
     }
     
     //MARK: - Navigation Setting
