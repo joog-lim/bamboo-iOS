@@ -17,11 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let mainViewController = LoginViewController()
+        let mainViewController = noWifiViewController()
         let navigationController = UINavigationController(rootViewController: mainViewController)
   
-  
-        navigationController.navigationCustomBar()
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.shadowImage = UIImage()
         window?.backgroundColor = .white
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
