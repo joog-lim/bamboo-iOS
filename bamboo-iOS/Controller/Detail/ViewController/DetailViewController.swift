@@ -32,7 +32,7 @@ class DetailViewController : UIViewController {
 
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
-        $0.showsVerticalScrollIndicator = true
+        $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     

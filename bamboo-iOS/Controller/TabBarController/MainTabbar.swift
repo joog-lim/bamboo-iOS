@@ -25,7 +25,6 @@ class MainTabbar : UIViewController{
         super.viewDidLoad()
         configureUI()
         navigationSetting()
-        view.backgroundColor = .white
         
     }
     //MARK: - Selectors
@@ -56,24 +55,24 @@ class MainTabbar : UIViewController{
         mainTabBarView.detailsBtn.tintColor = .bamBoo_57CC4D
     }
     //MARK: - Remove Page
-    func removeMain(){
+    private func removeMain(){
         mainViewController.removeFromParent()
         mainViewController.view.removeFromSuperview()
         mainTabBarView.homeBtn.tintColor = .lightGray
     }
-    func removeRule(){
+    private func removeRule(){
         ruleViewController.removeFromParent()
         ruleViewController.view.removeFromSuperview()
         mainTabBarView.ruleBtn.tintColor = .lightGray
     }
-    func removeDetail(){
+    private func removeDetail(){
         mainTabBarView.detailsBtn.tintColor = .lightGray
         detailViewController.removeFromParent()
         detailViewController.view.removeFromSuperview()
     }
     
     //MARK: - Helper
-    func configureUI(){
+    private func configureUI(){
         self.view.addSubview(mainTabBarView)
         self.view.addSubview(viewControllerBoxView)
         mainTabBarView.homeBtn.addTarget(self, action: #selector(home(sender:)), for: .touchUpInside)

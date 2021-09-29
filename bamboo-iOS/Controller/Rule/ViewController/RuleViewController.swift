@@ -77,7 +77,6 @@ class RuleViewController: UIViewController{
         addView()
         location()
         gestureLabel()
-        animate()
     }
     //MARK: - Gesture
     private func gestureLabel(){
@@ -95,12 +94,7 @@ class RuleViewController: UIViewController{
         backGroundScrollView.addSubview(bottomLabel)
     }
 
-    func animate(){
-        self.divider.frame = CGRect(x: 14, y: 140, width: 0, height: 0.3)
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.divider.frame = CGRect(x: 14, y: 140, width: (self?.bounds.width)!/1.23 ?? 0, height: 0.3)
-        }
-    }
+
     
     //MARK: - Location
     private func location(){
@@ -111,6 +105,12 @@ class RuleViewController: UIViewController{
         explanationLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/40.6)
             $0.left.equalTo(titleLabel)
+        }
+        divider.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(bounds.width/26.7857)
+            make.top.equalTo(explanationLabel.snp.bottom).offset(bounds.height/25.375)
+            make.height.equalTo(0.3)
+            make.width.equalTo(bounds.width/1.23)
         }
         
         greetingsLabel.snp.makeConstraints {
