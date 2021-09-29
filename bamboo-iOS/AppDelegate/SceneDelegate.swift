@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let mainViewController = LoginViewController()
+        let mainViewController = noWifiViewController()
         let navigationController = UINavigationController(rootViewController: mainViewController)
   
         navigationController.navigationBar.isTranslucent = false

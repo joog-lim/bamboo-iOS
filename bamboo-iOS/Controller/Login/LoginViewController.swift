@@ -18,19 +18,17 @@ class LoginViewController : UIViewController {
         $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFill
     }
-    private let userBtn = LoginButton(placeholder: "사용자").then{
+    private let userBtn = LoginButton(placeholder: "사용자",cornerRadius: 15).then{
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
     }
-    private var popup = ManagerPopUp().then{
+    private lazy var popup = ManagerPopUp().then{
         $0.alpha = 0
     }
     
-    private let ManagerBtn = LoginButton(placeholder: "관리자").then{
-        $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+    private let ManagerBtn = LoginButton(placeholder: "관리자",cornerRadius: 15).then{
         $0.addTarget(self, action: #selector(ClickManagerBtn), for: .touchDown)
     }
-    
     
     private lazy var btnStackView : UIStackView = {
         let stack = UIStackView(arrangedSubviews: [userBtn,ManagerBtn])
@@ -41,6 +39,7 @@ class LoginViewController : UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
