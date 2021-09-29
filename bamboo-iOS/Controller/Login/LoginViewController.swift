@@ -72,29 +72,24 @@ class LoginViewController : UIViewController {
         navigationController?.pushViewController(MainTabbar(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
-    @objc func popupClose(){
-        UIView.animate(withDuration: 0.3) {
-            self.popup.alpha = 0
-        }
-        popup.isHidden = true
-    }
+
     
     //MARK: - Helper
 
-    func configureUI(){
+    private func configureUI(){
         stackViewSetting()
         addView()
         location()
     }
-    func stackViewSetting(){
+    private func stackViewSetting(){
         btnStackView.spacing = view.frame.height/54.13333
     }
-    func addView(){
+    private func addView(){
         view.addSubview(logo)
         view.addSubview(btnStackView)
         view.addSubview(popup)
     }
-    func location(){
+    private func location(){
         logo.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.height.equalTo(bounds.height/11.768)
@@ -111,10 +106,7 @@ class LoginViewController : UIViewController {
             make.top.right.bottom.left.equalToSuperview()
         }
     }
-    //MARK: - KeyboardSetting
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
-    }
+
     func keyboardSetting(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
