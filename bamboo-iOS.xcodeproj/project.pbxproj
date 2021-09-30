@@ -28,6 +28,7 @@
 		EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* Extensions.swift */; };
 		EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */; };
 		EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */; };
+		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
@@ -67,6 +68,7 @@
 		EE9F0D5726E8B82C0015E81B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPopUp.swift; sourceTree = "<group>"; };
+		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +161,8 @@
 		EE3BA5842703D45400281096 /* NoWifi */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA5852703D47400281096 /* noWifiViewController.swift */,
+				EEA5AF302705BA8E000FF48A /* NoWifiViewController */,
+				EEA5AF312705BA9B000FF48A /* NoWifiSystem */,
 			);
 			path = NoWifi;
 			sourceTree = "<group>";
@@ -397,6 +400,22 @@
 			path = CustomLabel;
 			sourceTree = "<group>";
 		};
+		EEA5AF302705BA8E000FF48A /* NoWifiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA5852703D47400281096 /* noWifiViewController.swift */,
+			);
+			path = NoWifiViewController;
+			sourceTree = "<group>";
+		};
+		EEA5AF312705BA9B000FF48A /* NoWifiSystem */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */,
+			);
+			path = NoWifiSystem;
+			sourceTree = "<group>";
+		};
 		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +568,7 @@
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
+				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,

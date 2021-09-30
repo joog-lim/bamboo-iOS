@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class MainTabbar : UIViewController{
     //MARK: - Properties
     private lazy var mainTabBarView = CustomTabbar()
@@ -22,7 +20,9 @@ class MainTabbar : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        NetworkStatus()
         navigationSetting()
+        view.backgroundColor = .white
         
     }
     //MARK: - Selectors
@@ -106,9 +106,20 @@ class MainTabbar : UIViewController{
     }
     
     //MARK: - Navigation Setting
-    func navigationSetting(){
+    private func navigationSetting(){
         navigationController?.navigationCustomBar()
         navigationItem.hidesBackButton = true
         navigationItem.applyImageNavigation()
+    }
+    //MARK: - Network Connect
+    private func NetworkStatus(){
+        if NetWorkStatus.shared.isConnect{
+            print("wifi connect")
+        }else{
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(noWifiViewController(), animated: false)
+            }
+            print("wifi not connect")
+        }
     }
 }

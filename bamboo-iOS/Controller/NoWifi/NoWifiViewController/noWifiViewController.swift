@@ -75,9 +75,18 @@ class noWifiViewController : UIViewController{
     }
     //MARK: - Navigation Setting
     func navigationSetting(){
-//        navigationController?.navigationCustomBar()
         navigationItem.hidesBackButton = true
         navigationItem.applyImageNavigation()
+    }
+    //MARK: - NetWork Status
+    private func NetworkStatus(){
+        if NetWorkStatus.shared.isConnect{
+            
+            print("wifi connect")
+        }else{
+ 
+            print("wifi not connect")
+        }
     }
 }
 

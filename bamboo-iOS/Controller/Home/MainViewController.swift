@@ -79,7 +79,7 @@ class MainViewController : UIViewController{
     private func addDim() {
         view.addSubview(bgView)
         bgView.snp.makeConstraints { (make) in
-            make.edges.equalTo(0)
+            make.top.left.right.bottom.equalToSuperview()
         }
         DispatchQueue.main.async { [weak self] in
             self?.bgView.alpha = 0.1
@@ -91,7 +91,6 @@ class MainViewController : UIViewController{
         DispatchQueue.main.async { [weak self] in
             self?.bgView.removeFromSuperview()
             self?.navigationController?.navigationBar.backgroundColor = .clear
-
         }
     }
     //MARK: - Helper
