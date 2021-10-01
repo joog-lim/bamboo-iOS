@@ -44,10 +44,13 @@ enum ruleString : String{
     또한 부적절한 내용으로 검토 및 삭제가 되었을 수 있습니다.
     """
     
+    
     case bottomsomethingIAskOften = """
     자세한 내용은 규칙을 참고해주세요.
     """
-    case inquiry = """
+    
+    case inquiry =
+    """
     문의
     
     github : https://github.com/joog-lim/bamboo-iOS

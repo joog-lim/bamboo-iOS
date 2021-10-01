@@ -17,6 +17,12 @@ class MainViewController : UIViewController{
         $0.backgroundColor = .clear
     }
     
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     private let titleLabel = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
@@ -44,25 +50,49 @@ class MainViewController : UIViewController{
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
         $0.tintColor = .white
+        $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureUI()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     
     //MARK: - Selectors
     @objc private func writeBtnClick(){
-        
+        let WritingBulletinBoardModalModalsVC = WritingBulletinBoardModal.instance()
+        WritingBulletinBoardModalModalsVC.delegate = self
+        addDim()
+        present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
     }
-    
-    
+    //MARK: - 모달 위치
+    static func instance() -> MainViewController{
+        MainViewController(nibName: nil, bundle: nil)
+    }
+    //모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    //모달 취소시 Action
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
     //MARK: - Helper
     private func configureUI(){
         addView()
@@ -120,4 +150,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         cell.model = data[indexPath.row]
         return cell
     }
+}
+
+extension MainViewController : WriteModalDelegate {
+    func onTapClose() {
+        self.removeDim()
+    }
+    
+    
 }
