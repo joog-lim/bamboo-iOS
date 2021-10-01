@@ -7,8 +7,10 @@
 
 import UIKit
 class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
+    //MARK: - Identifier
     static let identifier = "BulletinBoardsTableVIewCell"
     
+    //MARK: - Properties
     private lazy var view = UIView()
     
     private lazy var algorithm = UILabel().then{
@@ -33,11 +35,12 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
     }
-    
+    //MARK: - layoutSubview
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: bounds.width/18.75, bottom: 5, right: bounds.width/18.75   ))
     }
+    //MARK: - Configure
     override func configure() {
         super.configure()
         contentView.backgroundColor = .white
@@ -82,11 +85,12 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
             $0.bottom.equalToSuperview().inset(6)
         }
     }
+    //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: Data) {
         super.bind(model)
         algorithm.text = model.numberOfAlgorithm
         dataLabel.text = model.data
-        tagLabel.text = "#" + String(describing: model.tag)
+        tagLabel.text = "#" +  model.tag.rawValue
         titleLabel.text = model.title
         contentLabel.text = model.content
     }

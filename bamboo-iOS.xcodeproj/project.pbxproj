@@ -10,6 +10,7 @@
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E5772706C86B00B9AF8A /* webRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5762706C86B00B9AF8A /* webRuleViewController.swift */; };
+		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
 		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
@@ -48,6 +49,7 @@
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E5762706C86B00B9AF8A /* webRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webRuleViewController.swift; sourceTree = "<group>"; };
+		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
@@ -135,15 +137,32 @@
 			isa = PBXGroup;
 			children = (
 				EE3BA57A2702F09600281096 /* TableViewCell */,
-				EE3BA5772702EFB000281096 /* Base */,
 			);
 			path = MainPageTableView;
+			sourceTree = "<group>";
+		};
+		EE30E5792706E7D000B9AF8A /* DropDownTableView */ = {
+			isa = PBXGroup;
+			children = (
+				EE30E57B2706E7E900B9AF8A /* TableViewCell */,
+			);
+			path = DropDownTableView;
+			sourceTree = "<group>";
+		};
+		EE30E57B2706E7E900B9AF8A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
+				EE3BA5772702EFB000281096 /* Base */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -272,7 +291,7 @@
 		EE8141F627018A1900ECFDCC /* RuleText */ = {
 			isa = PBXGroup;
 			children = (
-				EE8141F727018AAA00ECFDCC /* DetailText.swift */,
+				EE8141FD2701CEA000ECFDCC /* RuleText.swift */,
 			);
 			path = RuleText;
 			sourceTree = "<group>";
@@ -288,7 +307,7 @@
 		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
 			isa = PBXGroup;
 			children = (
-				EE8141FD2701CEA000ECFDCC /* RuleText.swift */,
+				EE8141F727018AAA00ECFDCC /* DetailText.swift */,
 			);
 			path = DetailText;
 			sourceTree = "<group>";
@@ -609,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,

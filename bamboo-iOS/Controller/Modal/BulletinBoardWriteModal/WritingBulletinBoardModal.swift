@@ -12,12 +12,21 @@ protocol WriteModalDelegate : class{
     func onTapClose()
 }
 class WritingBulletinBoardModal: UIViewController{
+    //MARK - Tag Data
+    private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     
     //MARK: - Properties
     let bounds = UIScreen.main.bounds
     
     weak var delegate : WriteModalDelegate?
     
+    private let tagChoose = UITableView().then{
+        $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.identifier)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .clear
+        $0.separatorColor = .clear
+        $0.allowsSelection = false
+    }
     private let bgView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 40
@@ -94,11 +103,20 @@ class WritingBulletinBoardModal: UIViewController{
     
     //MARK: - HELPERS
     private func configureUI(){
-        contentTv.delegate = self
         addView()
         location()
         StackViewSizing()
+        DelegateAndDatasource()
         addTransparentsview(frame: transparentView.frame)
+    }
+    //MARK: - Delegate & DateSource
+    private func DelegateAndDatasource(){
+        //TextView Delegate
+        contentTv.delegate = self
+        //TableView Delegate
+        tagChoose.delegate = self
+        //TableView Datasource
+        tagChoose.dataSource = self
     }
     //MARK: - AddView
     private func addView(){
@@ -178,4 +196,18 @@ extension WritingBulletinBoardModal : UITextViewDelegate{
             textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
         }
     }
+}
+//MARK: - TableView
+extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tagDataSection.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.identifier, for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
+        cell.model = tagDataSection[indexPath.row]
+        return cell
+    }
+    
+    
 }
