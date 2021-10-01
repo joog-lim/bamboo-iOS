@@ -10,10 +10,12 @@ import SnapKit
 
 class noWifiViewController : UIViewController{
     //MARK: - Properties
+    
     let bounds = UIScreen.main.bounds
     
-    private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
-    
+    private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{
+        $0.contentMode = .scaleAspectFit
+    }
     private lazy var NoWifiLabel = UILabel().then{
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
         $0.text = "인터넷 연결"
@@ -26,19 +28,21 @@ class noWifiViewController : UIViewController{
     }
     private lazy var tryAgainBtn = LoginButton(placeholder: "다시 시도",cornerRadius: 10).then{
         $0.layer.cornerRadius = 10
-        $0.addTarget(self, action: #selector(wifiTryAgain), for: .touchUpInside)
     }
-    
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
     //MARK: - Selectors
+<<<<<<< HEAD:bamboo-iOS/Controller/NoWifi/NoWifiViewController/noWifiViewController.swift
     @objc private func wifiTryAgain(){
         NetworkStatus()
         LodingAction()
     }
+=======
+>>>>>>> 83b68481f0e0aa32b4475ff8a538a3664e85cef8:bamboo-iOS/Controller/NoWifi/noWifiViewController.swift
     
     //MARK: - Helper
     private func configureUI(){
@@ -46,7 +50,6 @@ class noWifiViewController : UIViewController{
         location()
         navigationSetting()
     }
-    
     private func addView(){
         view.addSubview(icon)
         view.addSubview(NoWifiLabel)
@@ -76,6 +79,10 @@ class noWifiViewController : UIViewController{
     }
     //MARK: - Navigation Setting
     func navigationSetting(){
+<<<<<<< HEAD:bamboo-iOS/Controller/NoWifi/NoWifiViewController/noWifiViewController.swift
+=======
+        navigationController?.navigationCustomBar()
+>>>>>>> 83b68481f0e0aa32b4475ff8a538a3664e85cef8:bamboo-iOS/Controller/NoWifi/noWifiViewController.swift
         navigationItem.hidesBackButton = true
         navigationItem.applyImageNavigation()
     }

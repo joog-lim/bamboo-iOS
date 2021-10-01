@@ -51,17 +51,15 @@ class ManagerPopUp : UIView {
         configure()
     }
     
-    
+
     //MARK: - PopUp page animateOff
     @objc func animateOut(){
         UIView.animate(withDuration: 0.3) {
             self.alpha = 0
+            self.view.endEditing(true)
             self.WritePassWorld.text = ""
         }
         isHidden = true
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
     //MARK: - Helper
     func configure(){

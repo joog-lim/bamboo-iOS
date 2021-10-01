@@ -13,8 +13,7 @@
 		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
-		EE3BA58927040AC300281096 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
-		EE3BA58A27040ACA00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
+		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
 		EE8141F827018AAA00ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* RuleText.swift */; };
@@ -38,6 +37,7 @@
 		EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */; };
 		EEBDA34126FB5C0300B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* RuleViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* DetailViewController.swift */; };
+		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,8 +84,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */,
-				EE3BA58927040AC300281096 /* OSLog.framework in Frameworks */,
-				EE3BA58A27040ACA00281096 /* Network.framework in Frameworks */,
+				EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */,
+				EE3BA5882703EDED00281096 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
