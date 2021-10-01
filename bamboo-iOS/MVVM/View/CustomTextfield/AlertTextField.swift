@@ -9,11 +9,11 @@ import UIKit
 
 class AlertTextField : UITextField {
     
-    init(placeholder :String) {
+    init(placeholder :String,fontSize : CGFloat) {
         super.init(frame: .zero)
         spacing()
         layer.cornerRadius = 5
-        dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        dynamicFont(fontSize: fontSize, currentFontName: "NanumSquareRoundR")
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.rgb(red: 196, green: 196, blue: 196)])
         textColor = .black
         backgroundColor = .white
