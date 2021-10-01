@@ -17,6 +17,12 @@ class MainViewController : UIViewController{
         $0.backgroundColor = .clear
     }
     
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     private let titleLabel = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
@@ -44,6 +50,7 @@ class MainViewController : UIViewController{
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
         $0.tintColor = .white
+        $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
     
     //MARK: - Lifecycle
@@ -59,7 +66,6 @@ class MainViewController : UIViewController{
     
     //MARK: - Selectors
     @objc private func writeBtnClick(){
-<<<<<<< HEAD
         let WritingBulletinBoardModalModalsVC = WritingBulletinBoardModal.instance()
         WritingBulletinBoardModalModalsVC.delegate = self
         addDim()
@@ -86,12 +92,7 @@ class MainViewController : UIViewController{
             self?.bgView.removeFromSuperview()
             self?.navigationController?.navigationBar.backgroundColor = .clear
         }
-=======
-        
->>>>>>> 83b68481f0e0aa32b4475ff8a538a3664e85cef8
     }
-    
-    
     //MARK: - Helper
     private func configureUI(){
         addView()
@@ -149,4 +150,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         cell.model = data[indexPath.row]
         return cell
     }
+}
+
+extension MainViewController : WriteModalDelegate {
+    func onTapClose() {
+        self.removeDim()
+    }
+    
+    
 }
