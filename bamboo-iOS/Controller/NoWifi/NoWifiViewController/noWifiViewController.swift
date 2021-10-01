@@ -36,7 +36,8 @@ class noWifiViewController : UIViewController{
     }
     //MARK: - Selectors
     @objc private func wifiTryAgain(){
-        print("집")
+        NetworkStatus()
+        LodingAction()
     }
     
     //MARK: - Helper
@@ -81,11 +82,20 @@ class noWifiViewController : UIViewController{
     //MARK: - NetWork Status
     private func NetworkStatus(){
         if NetWorkStatus.shared.isConnect{
-            
+            DispatchQueue.main.async { [weak self] in
+                self?.navigationController?.popViewController(animated: false)
+            }
             print("wifi connect")
         }else{
  
             print("wifi not connect")
+        }
+    }
+    //MARK: - Loding Action
+    private func LodingAction(){
+        LoadingIndicator.showLoading()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            LoadingIndicator.hideLoading()
         }
     }
 }

@@ -19,11 +19,18 @@ class MainTabbar : UIViewController{
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        NetworkStatus()
+
+        self.NetworkStatus()
+        tabbarInitalizer()
         navigationSetting()
         view.backgroundColor = .white
         
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureUI()
+
     }
     //MARK: - Selectors
    
@@ -74,7 +81,6 @@ class MainTabbar : UIViewController{
         addView()
         buttonTargetting()
         location()
-        tabbarInitalizer()
     }
     //MARK: - AddView
     private  func addView(){
@@ -109,6 +115,7 @@ class MainTabbar : UIViewController{
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
         navigationItem.hidesBackButton = true
+        
         navigationItem.applyImageNavigation()
     }
     //MARK: - Network Connect
@@ -121,5 +128,8 @@ class MainTabbar : UIViewController{
             }
             print("wifi not connect")
         }
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
