@@ -19,10 +19,9 @@ class MainTabbar : UIViewController{
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationSetting()
         self.NetworkStatus()
         tabbarInitalizer()
-        navigationSetting()
         view.backgroundColor = .white
         
     }
@@ -30,7 +29,6 @@ class MainTabbar : UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureUI()
-
     }
     //MARK: - Selectors
    
@@ -115,7 +113,6 @@ class MainTabbar : UIViewController{
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
         navigationItem.hidesBackButton = true
-        
         navigationItem.applyImageNavigation()
     }
     //MARK: - Network Connect
