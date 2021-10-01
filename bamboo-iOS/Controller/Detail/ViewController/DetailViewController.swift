@@ -11,7 +11,6 @@ class DetailViewController : UIViewController {
     //MARK: - Properties
     let bounds = UIScreen.main.bounds
     
-    
     private let titleLabel = UILabel().then{
         $0.text = "규칙"
         $0.textColor = .bamBoo_57CC4D
@@ -29,7 +28,7 @@ class DetailViewController : UIViewController {
         string.setFontForText(textToFind: "제 1항) 특정 이슈로 대나무숲이 과열이 되는 조짐을 보일 경우, 관리자들의 자체적인 판단에 따라, 해당 주제에 관한 제보 업로드를 보류하는 시스템으로, 관리자의 판단 하에 공지 없이 시행될 수 있다.", withFont: .boldSystemFont(ofSize: 15))
         $0.attributedText = string
     }
-
+    
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
@@ -68,6 +67,6 @@ class DetailViewController : UIViewController {
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/5.4347)
         }
-        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.58)
+        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.56)
     }
 }
