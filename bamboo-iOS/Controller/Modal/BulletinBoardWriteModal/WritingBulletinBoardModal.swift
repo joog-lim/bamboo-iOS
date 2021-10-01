@@ -22,9 +22,7 @@ class WritingBulletinBoardModal: UIViewController{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 40
     }
-    
-    let transparentView = UIView()
-    
+    private let transparentView = UIView()
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
         $0.dynamicFont(fontSize: 16, currentFontName: "NanumSquareRoundB")
@@ -102,6 +100,7 @@ class WritingBulletinBoardModal: UIViewController{
         StackViewSizing()
         addTransparentsview(frame: transparentView.frame)
     }
+    //MARK: - AddView
     private func addView(){
         view.addSubview(transparentView)
         view.addSubview(bgView)
@@ -111,6 +110,7 @@ class WritingBulletinBoardModal: UIViewController{
         bgView.addSubview(passwordStackView)
         bgView.addSubview(sendBtn)
     }
+    //MARK: - Location
     private func location(){
         bgView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -152,7 +152,7 @@ class WritingBulletinBoardModal: UIViewController{
         }
     }
     
-    
+    //MARK: - Gesture
     private func addTransparentsview(frame : CGRect){
         let window = UIApplication.shared.keyWindow
         transparentView.frame = window?.frame ?? self.view.frame
@@ -164,14 +164,12 @@ class WritingBulletinBoardModal: UIViewController{
 
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
-        
         // TextView Place Holder
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
             textView.text = ""
             textView.textColor = UIColor.black
         }
-            
     }
         // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {

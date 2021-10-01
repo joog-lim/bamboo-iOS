@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - Rule Page Text
-enum ruleString : String{
+enum detailString : String{
     case titleString = """
     안녕하세요! 이곳은
     광대숲입니다!

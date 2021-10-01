@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - detailString
-enum detailString : String{
+enum ruleString : String{
     case rule = """
     제 1조 목적
 
