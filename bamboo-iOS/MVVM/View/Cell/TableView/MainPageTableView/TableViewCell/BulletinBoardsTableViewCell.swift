@@ -88,7 +88,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: Data) {
         super.bind(model)
-        algorithm.text = model.numberOfAlgorithm
+        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
         dataLabel.text = model.data
         tagLabel.text = "#" +  model.tag.rawValue
         titleLabel.text = model.title
