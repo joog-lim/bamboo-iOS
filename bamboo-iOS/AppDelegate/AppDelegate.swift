@@ -13,8 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        NetWorkStatus.shared.StartMonitoring()
+
         Thread.sleep(forTimeInterval: 0.6)
+//        NetWorkStatus.shared.StartMonitoring()
         return true
     }
 

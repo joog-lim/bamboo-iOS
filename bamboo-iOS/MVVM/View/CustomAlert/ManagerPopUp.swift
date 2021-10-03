@@ -33,7 +33,7 @@ class ManagerPopUp : UIView {
     }
     
     let WritePassWorld : AlertTextField = {
-        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!")
+        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!", fontSize: 10)
         return tf
     }()
     
@@ -59,7 +59,6 @@ class ManagerPopUp : UIView {
             self.view.endEditing(true)
             self.WritePassWorld.text = ""
         }
-        isHidden = true
     }
     //MARK: - Helper
     func configure(){
