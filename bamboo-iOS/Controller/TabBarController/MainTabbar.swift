@@ -9,26 +9,29 @@ import UIKit
 
 class MainTabbar : UIViewController{
     //MARK: - Properties
-
     private lazy var mainTabBarView = CustomTabbar()
-    
     private lazy var mainViewController = MainViewController()
     private lazy var ruleViewController = RuleViewController()
     private lazy var detailViewController = DetailViewController()
-    
     private lazy var viewControllerBoxView = UIView()
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         navigationSetting()
+        NetworkStatus()
+        tabbarInitalizer()
         view.backgroundColor = .white
         
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureUI()
+    }
     //MARK: - Selectors
    
-    
     @objc func home(sender:UIButton){
         self.addChild(mainViewController)
         mainViewController.view.frame = viewControllerBoxView.frame
@@ -53,30 +56,43 @@ class MainTabbar : UIViewController{
         removeRule()
         mainTabBarView.detailsBtn.tintColor = .bamBoo_57CC4D
     }
+    
     //MARK: - Remove Page
-    func removeMain(){
+    private func removeMain(){
         mainViewController.removeFromParent()
         mainViewController.view.removeFromSuperview()
         mainTabBarView.homeBtn.tintColor = .lightGray
     }
-    func removeRule(){
+    private func removeRule(){
         ruleViewController.removeFromParent()
         ruleViewController.view.removeFromSuperview()
         mainTabBarView.ruleBtn.tintColor = .lightGray
     }
-    func removeDetail(){
+    private func removeDetail(){
         mainTabBarView.detailsBtn.tintColor = .lightGray
         detailViewController.removeFromParent()
         detailViewController.view.removeFromSuperview()
     }
     
     //MARK: - Helper
-    func configureUI(){
+    private func configureUI(){
+        addView()
+        buttonTargetting()
+        location()
+    }
+    //MARK: - AddView
+    private  func addView(){
         self.view.addSubview(mainTabBarView)
         self.view.addSubview(viewControllerBoxView)
-        mainTabBarView.homeBtn.addTarget(self, action: #selector(home(sender:)), for: .touchUpInside)
-        mainTabBarView.ruleBtn.addTarget(self, action: #selector(rule(sender:)), for: .touchUpInside)
-        mainTabBarView.detailsBtn.addTarget(self, action: #selector(detail(sender:)), for: .touchUpInside)
+    }
+    //MARK: - tabbar Initalizer
+    private func tabbarInitalizer(){
+        self.addChild(mainViewController)
+        mainViewController.view.frame = viewControllerBoxView.frame
+        viewControllerBoxView.addSubview(mainViewController.view)
+    }
+    //MARK: - Location
+    private func location(){
         viewControllerBoxView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(mainTabBarView.snp.top)
@@ -85,14 +101,32 @@ class MainTabbar : UIViewController{
             $0.height.equalTo(view.frame.height/9.9024)
             $0.left.right.bottom.equalToSuperview()
         }
-        self.addChild(mainViewController)
-        mainViewController.view.frame = viewControllerBoxView.frame
-        viewControllerBoxView.addSubview(mainViewController.view)
     }
+    //MARK: - button Targetting
+    private func buttonTargetting(){
+        mainTabBarView.homeBtn.addTarget(self, action: #selector(home(sender:)), for: .touchUpInside)
+        mainTabBarView.ruleBtn.addTarget(self, action: #selector(rule(sender:)), for: .touchUpInside)
+        mainTabBarView.detailsBtn.addTarget(self, action: #selector(detail(sender:)), for: .touchUpInside)
+    }
+    
     //MARK: - Navigation Setting
-    func navigationSetting(){
+    private func navigationSetting(){
         navigationController?.navigationCustomBar()
         navigationItem.hidesBackButton = true
         navigationItem.applyImageNavigation()
+    }
+    //MARK: - Network Connect
+    private func NetworkStatus(){
+        if NetWorkStatus.shared.isConnect{
+            print("wifi connect")
+        }else{
+            DispatchQueue.global(qos: .background).async {
+                self.navigationController?.pushViewController(noWifiViewController(), animated: false)
+            }
+            print("wifi not connect")
+        }
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
