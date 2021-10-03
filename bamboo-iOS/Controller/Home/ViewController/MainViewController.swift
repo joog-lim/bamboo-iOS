@@ -104,24 +104,6 @@ class MainViewController : UIViewController{
         tableViewHeaderSetting()
         cornerRadius()
     }
-
-
-    //MARK: - TableViewHeaderSetting
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/40.6)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
-    }
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        mainTableView.dataSource = self
-        mainTableView.delegate = self
-        mainTableView.estimatedRowHeight = 200
-        mainTableView.rowHeight = UITableView.automaticDimension
-    }
     //MARK: - AddView
     private func addView(){
         view.addSubview(mainTableView)
@@ -138,6 +120,7 @@ class MainViewController : UIViewController{
             $0.right.bottom.equalToSuperview().inset(bounds.height/40.6)
         }
     }
+    //MARK: - CornerRadius
     private func cornerRadius(){
         writeBtn.layer.cornerRadius = bounds.height/27
     }
@@ -149,6 +132,7 @@ class MainViewController : UIViewController{
             let end = data.count + 3
             DispatchQueue.global().async {
                 sleep(2)
+                
                 for i in start...end{
                     if i < 0{
                         TableViewLoadingCell().noAlgorithm.isHidden = false
@@ -164,6 +148,23 @@ class MainViewController : UIViewController{
             }
         }
     }
+    //MARK: - TableViewHeaderSetting
+    private func tableViewHeaderSetting(){
+        mainTableView.tableHeaderView = tableViewHeader
+        mainTableView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(bounds.height/40.6)
+            $0.left.equalToSuperview().offset(bounds.width/18.75)
+        }
+    }
+    //MARK: - tableViewSetting
+    private func tableviewSetting(){
+        mainTableView.dataSource = self
+        mainTableView.delegate = self
+        mainTableView.estimatedRowHeight = 200
+        mainTableView.rowHeight = UITableView.automaticDimension
+    }
+    
 }
 
 
@@ -205,6 +206,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
+            
         }
     }
 }
