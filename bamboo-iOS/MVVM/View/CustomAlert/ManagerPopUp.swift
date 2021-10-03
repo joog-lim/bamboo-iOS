@@ -33,12 +33,12 @@ class ManagerPopUp : UIView {
     }
     
     let WritePassWorld : AlertTextField = {
-        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!")
+        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!", fontSize: 10)
         return tf
     }()
     
     fileprivate let loginBtn : LoginButton = {
-        let btn = LoginButton(placeholder: "로그인")
+        let btn = LoginButton(placeholder: "로그인",cornerRadius: 5)
         btn.label.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         return btn
@@ -59,7 +59,6 @@ class ManagerPopUp : UIView {
             self.view.endEditing(true)
             self.WritePassWorld.text = ""
         }
-        isHidden = true
     }
     //MARK: - Helper
     func configure(){
