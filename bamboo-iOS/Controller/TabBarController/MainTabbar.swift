@@ -20,7 +20,7 @@ class MainTabbar : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetting()
-        self.NetworkStatus()
+        NetworkStatus()
         tabbarInitalizer()
         view.backgroundColor = .white
         
@@ -120,7 +120,7 @@ class MainTabbar : UIViewController{
         if NetWorkStatus.shared.isConnect{
             print("wifi connect")
         }else{
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .background).async {
                 self.navigationController?.pushViewController(noWifiViewController(), animated: false)
             }
             print("wifi not connect")
