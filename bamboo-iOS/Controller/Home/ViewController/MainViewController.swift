@@ -146,11 +146,16 @@ class MainViewController : UIViewController{
         if !self.isLoaing{
             self.isLoaing = true
             let start = data.count
-            let end = data.count + 13
+            let end = data.count + 3
             DispatchQueue.global().async {
                 sleep(2)
                 for i in start...end{
-                    self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
+                    if i < 0{
+                        TableViewLoadingCell().noAlgorithm.isHidden = false
+                        TableViewLoadingCell().activityIndicatorView.isHidden = true
+                    }else{
+                        self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
+                    }
                 }
                 DispatchQueue.main.async {
                     self.mainTableView.reloadData()
@@ -159,8 +164,6 @@ class MainViewController : UIViewController{
             }
         }
     }
-    
-    
 }
 
 
@@ -194,7 +197,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 0 {
             return UITableView.automaticDimension
         }else{
-            return 80
+            return 50
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
