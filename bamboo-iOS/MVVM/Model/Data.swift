@@ -17,7 +17,7 @@ struct Data {
         case Relationship = "관계"
         case etc = "기타"
     }
-    let numberOfAlgorithm : String
+    let numberOfAlgorithm : Int
     let data : String
     let tag : tag
     let title : String
