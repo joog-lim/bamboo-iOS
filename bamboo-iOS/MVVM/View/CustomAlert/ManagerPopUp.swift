@@ -59,7 +59,6 @@ class ManagerPopUp : UIView {
             self.view.endEditing(true)
             self.WritePassWorld.text = ""
         }
-        isHidden = true
     }
     //MARK: - Helper
     func configure(){

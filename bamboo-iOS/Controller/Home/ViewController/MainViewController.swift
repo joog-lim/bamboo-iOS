@@ -140,6 +140,7 @@ class MainViewController : UIViewController{
     }
     
 }
+
 //MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,6 +157,4 @@ extension MainViewController : WriteModalDelegate {
     func onTapClose() {
         self.removeDim()
     }
-    
-    
 }

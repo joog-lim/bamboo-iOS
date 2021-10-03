@@ -33,6 +33,6 @@ class DropDownTableViewCell : BaseTableViewCell<Data.tag>{
     
     override func bind(_ model: Data.tag) {
         super.bind(model)
-        cellListTitle.text = model.rawValue
+        cellListTitle.text = "#" + model.rawValue
     }
 }

@@ -33,6 +33,7 @@
 		EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */; };
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
+		EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -78,6 +79,7 @@
 		EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPopUp.swift; sourceTree = "<group>"; };
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModalProtocol.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +204,8 @@
 		EE3BA58127032A5500281096 /* BulletinBoardWriteModal */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
+				EEB46BCA2708C90500ED679B /* Protocol */,
+				EEB46BC92708C79000ED679B /* ViewController */,
 			);
 			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
@@ -251,7 +254,7 @@
 		EE7C6F7926EEEC880071031C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
+				EEB46BCD2708CA0F00ED679B /* ViewController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -483,6 +486,30 @@
 			path = NoWifiSystem;
 			sourceTree = "<group>";
 		};
+		EEB46BC92708C79000ED679B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EEB46BCA2708C90500ED679B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EEB46BCD2708CA0F00ED679B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
