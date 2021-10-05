@@ -8,11 +8,10 @@
 import UIKit
 import SnapKit
 
-class WritingBulletinBoardModal: UIViewController{
+class WritingBulletinBoardModal: BaseViewController{
     //MARK - Tag Data
     let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties
-    let bounds = UIScreen.main.bounds
     weak var delegate : WriteModalDelegate?
     private let transparentView = UIView()
     private let tagSelectView = UIView()
@@ -79,12 +78,6 @@ class WritingBulletinBoardModal: UIViewController{
         }
     }
     
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-    
     //MARK: - Selectors
     @objc func onTapClose() {
         delegate?.onTapClose()
@@ -112,7 +105,7 @@ class WritingBulletinBoardModal: UIViewController{
     }
     
     //MARK: - HELPERS
-    private func configureUI(){
+    override func configure() {
         addView()
         location()
         keyboardSetting()
@@ -120,6 +113,7 @@ class WritingBulletinBoardModal: UIViewController{
         DelegateAndDatasource()
         addTransparentsview(frame: transparentView.frame)
     }
+    
     //MARK: - Delegate & DateSource
     private func DelegateAndDatasource(){
         contentTv.delegate = self

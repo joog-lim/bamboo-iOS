@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NetWorkStatus.shared.StartMonitoring()
         navigationController.navigationCustomBar()
 
+        window?.backgroundColor = .white
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         for fontFaily in UIFont.familyNames{
