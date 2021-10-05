@@ -22,11 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        for fontFaily in UIFont.familyNames{
-            for fontName in UIFont.fontNames(forFamilyName: fontFaily){
-                print(fontName)
-            }
-        }
     }
     //MARK: - BackGround 진입시 정보 가리기
     func callBackgroundImage(_ bShow: Bool) {

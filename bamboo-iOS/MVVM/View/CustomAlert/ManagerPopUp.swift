@@ -37,7 +37,7 @@ class ManagerPopUp : UIView {
         return tf
     }()
     
-    fileprivate let loginBtn : LoginButton = {
+    let loginBtn : LoginButton = {
         let btn = LoginButton(placeholder: "로그인",cornerRadius: 5)
         btn.label.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)

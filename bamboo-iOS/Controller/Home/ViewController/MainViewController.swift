@@ -38,6 +38,7 @@ class MainViewController : BaseViewController{
         tv.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
         tv.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
         tv.showsVerticalScrollIndicator = false
+        tv.separatorColor = .clear
         tv.allowsSelection = false
         tv.estimatedRowHeight = 300
         tv.rowHeight = UITableView.automaticDimension
@@ -103,8 +104,7 @@ class MainViewController : BaseViewController{
     //MARK: - Location
     private func location(){
         mainTableView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.bottom.left.right.equalToSuperview()
+            make.top.bottom.left.right.equalToSuperview()
         }
         writeBtn.snp.makeConstraints {
             $0.height.width.equalTo(bounds.height/13.53)
@@ -123,7 +123,6 @@ class MainViewController : BaseViewController{
             let end = data.count + 3
             DispatchQueue.global().async {
                 sleep(2)
-                
                 for i in start...end{
                     if i < 0{
                         TableViewLoadingCell().noAlgorithm.isHidden = false
@@ -155,10 +154,7 @@ class MainViewController : BaseViewController{
         mainTableView.estimatedRowHeight = 200
         mainTableView.rowHeight = UITableView.automaticDimension
     }
-    
 }
-
-
 
 //MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
@@ -197,12 +193,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         let contentHeight = scrollView.contentSize.height
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
-            
         }
     }
 }
-
-
+//MARK: - Modal Delegate
 extension MainViewController : WriteModalDelegate {
     func onTapClose() {
         self.removeDim()

@@ -94,7 +94,6 @@ class WritingBulletinBoardModal: BaseViewController{
     //MARK: - Keyboard Setting
     @objc private func keyboardWillShow(_ sender: Notification) {
          self.view.frame.origin.y = -175 // Move view 150 points upward
-        
     }
     @objc private func keyboardWillHide(_ sender: Notification) {
         self.view.frame.origin.y = 0 // Move view to original position

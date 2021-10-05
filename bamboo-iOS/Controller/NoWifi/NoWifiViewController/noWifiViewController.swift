@@ -11,7 +11,6 @@ import SnapKit
 class noWifiViewController : BaseViewController{
     //MARK: - Properties
     private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
-    
     private lazy var NoWifiLabel = UILabel().then{
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
         $0.text = "인터넷 연결"

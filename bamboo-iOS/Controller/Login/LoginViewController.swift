@@ -9,8 +9,12 @@ import UIKit
 import SnapKit
 import Then
 
+
 class LoginViewController : BaseViewController {
     //MARK: - Properties
+    
+    private var vcChoose = UIViewController()
+    
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFill
@@ -19,8 +23,10 @@ class LoginViewController : BaseViewController {
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
     }
+
     private lazy var popup = ManagerPopUp().then{
         $0.alpha = 0
+        $0.loginBtn.addTarget(self, action: #selector(clickLoginBtn), for: .touchUpInside)
     }
     
     private let ManagerBtn = LoginButton(placeholder: "관리자",cornerRadius: 15).then{
@@ -54,6 +60,7 @@ class LoginViewController : BaseViewController {
         popup.WritePassWorld.text = ""
     }
     @objc func ClickUserBtn(){
+        vcChoose = MainViewController()
         navigationController?.pushViewController(MainTabbar(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
@@ -61,6 +68,11 @@ class LoginViewController : BaseViewController {
         UIView.animate(withDuration: 0.3) {
             self.popup.alpha = 0
         }
+    }
+    @objc func clickLoginBtn(){
+        vcChoose = ManagerViewController()
+        navigationController?.pushViewController(MainTabbar(), animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Helper

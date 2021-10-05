@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol ChoosingViewControllerDelegate: class{
+    var vc : UIViewController {get}
+}
 class MainTabbar : BaseViewController{
     //MARK: - Properties
-    private lazy var mainTabBarView = CustomTabbar()
+    
+    weak var delegate : ChoosingViewControllerDelegate?
+    
+    private let mainTabBarView = CustomTabbar()
     private lazy var mainViewController = MainViewController()
-    private lazy var ruleViewController = RuleViewController()
-    private lazy var detailViewController = DetailViewController()
-    private lazy var viewControllerBoxView = UIView()
+    private let ruleViewController = RuleViewController()
+    private let detailViewController = DetailViewController()
+    private let viewControllerBoxView = UIView()
 
     //MARK: - Selectors
    
