@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 
-class noWifiViewController : UIViewController{
+class noWifiViewController : BaseViewController{
     //MARK: - Properties
-    let bounds = UIScreen.main.bounds
-    
     private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
     
     private lazy var NoWifiLabel = UILabel().then{
@@ -28,12 +26,6 @@ class noWifiViewController : UIViewController{
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(wifiTryAgain), for: .touchUpInside)
     }
-    
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
     //MARK: - Selectors
     @objc private func wifiTryAgain(){
         NetworkStatus()
@@ -41,7 +33,8 @@ class noWifiViewController : UIViewController{
     }
     
     //MARK: - Helper
-    private func configureUI(){
+    override func configure() {
+        super.configure()
         addView()
         location()
         navigationSetting()
@@ -99,5 +92,3 @@ class noWifiViewController : UIViewController{
         }
     }
 }
-
-

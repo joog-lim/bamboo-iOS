@@ -8,17 +8,13 @@
 import UIKit
 
 
-class DetailViewController : UIViewController{
+class DetailViewController : BaseViewController{
     //MARK: - Properties
-    let bounds = UIScreen.main.bounds
-        
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-
     private let titleLabel = ExplanationLabel(fontSize: 20, fontStyle: "NanumSquareRoundB", labelColor: .bamBoo_57CC4D).then{
         let string = NSMutableAttributedString(string: detailString.titleString.rawValue)
         string.setColorForText(textToFind: "이곳은", withColor: .black)
@@ -32,14 +28,11 @@ class DetailViewController : UIViewController{
     private let divider = UIView().then{
         $0.backgroundColor = .bamBoo_57CC4D
     }
-    
-
     private let greetingsLabel = ExplanationLabel( fontSize: 15, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: detailString.greetings.rawValue)
         string.setFontForText(textToFind: "안녕하세요, 광대숲 개발자입니다.", withFont: .boldSystemFont(ofSize: 18))
         $0.attributedText = string
     }
-    
     private let somethingIAskOften = ExplanationLabel( fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: detailString.somethingIAskOften.rawValue)
         string.setFontForText(textToFind: "자주 묻는 말", withFont: .boldSystemFont(ofSize: 18))
@@ -60,20 +53,15 @@ class DetailViewController : UIViewController{
         $0.attributedText = string
     }
     
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-
-    }
     
     //MARK: - Selectors
     @objc func gesture(sender:UITapGestureRecognizer){
         print("집")
     }
-    
+
     //MARK: - Helper
-    private func configureUI(){
+    override func configure() {
+        super.configure()
         addView()
         location()
         gestureLabel()

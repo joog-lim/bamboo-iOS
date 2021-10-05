@@ -15,7 +15,6 @@ class MainTabbar : UIViewController{
     private lazy var detailViewController = DetailViewController()
     private lazy var viewControllerBoxView = UIView()
     
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,10 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class LoginViewController : UIViewController {
-    //MARK: - Bound Setting
-    let bounds = UIScreen.main.bounds
-    
+class LoginViewController : BaseViewController {
     //MARK: - Properties
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
@@ -39,17 +36,6 @@ class LoginViewController : UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    
-    //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        ManagerPopUp().WritePassWorld.delegate = self
-        keyboardSetting()
-        configureUI()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
     
     //MARK: - Selectors
     @objc func keyboardWillShow(_ sender: Notification) {
@@ -78,11 +64,17 @@ class LoginViewController : UIViewController {
     }
     
     //MARK: - Helper
-
-    private func configureUI(){
+    override func configure() {
+        super.configure()
+        ManagerPopUp().WritePassWorld.delegate = self
+        keyboardSetting()
         stackViewSetting()
         addView()
         location()
+        navigationControllerSetting()
+    }
+    private func navigationControllerSetting(){
+        navigationController?.isNavigationBarHidden = true
     }
     private func stackViewSetting(){
         btnStackView.spacing = view.frame.height/54.13333

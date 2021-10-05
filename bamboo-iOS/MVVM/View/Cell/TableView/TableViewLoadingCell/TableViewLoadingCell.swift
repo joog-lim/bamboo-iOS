@@ -17,9 +17,7 @@ class TableViewLoadingCell : UITableViewCell{
         $0.isHidden = true
     }
     
-    let activityIndicatorView = UIActivityIndicatorView().then{
-        $0.tintColor = .bamBoo_57CC4D
-    }
+    let activityIndicatorView = UIActivityIndicatorView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,8 +33,6 @@ class TableViewLoadingCell : UITableViewCell{
             make.center.equalToSuperview()
         }
     }
-    
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }

@@ -7,10 +7,8 @@
 
 import UIKit
 
-class RuleViewController : UIViewController {
+class RuleViewController : BaseViewController {
     //MARK: - Properties
-    let bounds = UIScreen.main.bounds
-    
     private let titleLabel = UILabel().then{
         $0.text = "규칙"
         $0.textColor = .bamBoo_57CC4D
@@ -34,21 +32,14 @@ class RuleViewController : UIViewController {
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-    
     //MARK: - Selectors
     
     //MARK: - Helper
-    private func configureUI(){
+    override func configure() {
+        super.configure()
         addView()
         location()
     }
-
     private func addView(){
         view.addSubview(backGroundScrollView)
         backGroundScrollView.addSubview(titleLabel)

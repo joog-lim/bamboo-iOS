@@ -43,6 +43,8 @@
 		EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */; };
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
+		EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F12270BD9BA0088043F /* ManagerViewController.swift */; };
+		EEF42F17270BDAD00088043F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
+		EEF42F12270BD9BA0088043F /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
+		EEF42F16270BDAD00088043F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				EEF42F0E270BC2240088043F /* UserDropDownTableView */,
 				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
@@ -390,9 +395,9 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE80467426F463E8007D3206 /* Cell */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE80467426F463E8007D3206 /* Cell */,
 				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
@@ -412,6 +417,8 @@
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EEF42F14270BDAA50088043F /* Base */,
+				EEF42F10270BD90F0088043F /* Manager */,
 				EE3BA5842703D45400281096 /* NoWifi */,
 				EE3BA58027032A3D00281096 /* Modal */,
 				EE7C6F7526EEEC410071031C /* Login */,
@@ -546,6 +553,53 @@
 				EE8141FC2701CE8B00ECFDCC /* DetailText */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		EEF42F0E270BC2240088043F /* UserDropDownTableView */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F0F270BC23C0088043F /* TableViewCell */,
+			);
+			path = UserDropDownTableView;
+			sourceTree = "<group>";
+		};
+		EEF42F0F270BC23C0088043F /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEF42F10270BD90F0088043F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F11270BD9A70088043F /* ViewController */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EEF42F11270BD9A70088043F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F12270BD9BA0088043F /* ManagerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EEF42F14270BDAA50088043F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F15270BDAB30088043F /* BaseViewController */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EEF42F15270BDAB30088043F /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F16270BDAD00088043F /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,6 +739,7 @@
 				EE3BA57E2702F2A100281096 /* Data.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
+				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
@@ -692,6 +747,7 @@
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
+				EEF42F17270BDAD00088043F /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
