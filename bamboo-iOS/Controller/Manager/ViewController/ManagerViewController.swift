@@ -97,15 +97,12 @@ class ManagerViewController: BaseViewController{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         mainTableView.dataSource = self
-        mainTableView.delegate = self
         mainTableView.estimatedRowHeight = 200
         mainTableView.rowHeight = UITableView.automaticDimension
     }
 
 }
-extension ManagerViewController : UITableViewDelegate{
-    
-}
+
 extension ManagerViewController : UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2

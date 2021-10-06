@@ -13,10 +13,12 @@
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
-		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
+		EE3BA57E2702F2A100281096 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* UserData.swift */; };
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
+		EE559238270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */; };
+		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
@@ -57,10 +59,12 @@
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
-		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
+		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/MVVM/Model/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerStatusDropDownTableViewCell.swift; sourceTree = "<group>"; };
+		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
@@ -172,7 +176,7 @@
 			children = (
 				EE3BA5772702EFB000281096 /* Base */,
 				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
-				EEF42F0E270BC2240088043F /* UserDropDownTableView */,
+				EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */,
 				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
@@ -199,7 +203,8 @@
 		EE3BA57F270301F200281096 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA57D2702F2A100281096 /* Data.swift */,
+				EE55923A270DEC1200223D22 /* UserData */,
+				EE559239270DEC0600223D22 /* ManagerData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +233,22 @@
 				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
+			sourceTree = "<group>";
+		};
+		EE559239270DEC0600223D22 /* ManagerData */ = {
+			isa = PBXGroup;
+			children = (
+				EE55923B270DEC4E00223D22 /* ManagerData.swift */,
+			);
+			path = ManagerData;
+			sourceTree = "<group>";
+		};
+		EE55923A270DEC1200223D22 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA57D2702F2A100281096 /* UserData.swift */,
+			);
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
@@ -590,17 +611,18 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		EEF42F0E270BC2240088043F /* UserDropDownTableView */ = {
+		EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */ = {
 			isa = PBXGroup;
 			children = (
 				EEF42F0F270BC23C0088043F /* TableViewCell */,
 			);
-			path = UserDropDownTableView;
+			path = ManagerStatusDropDownTableView;
 			sourceTree = "<group>";
 		};
 		EEF42F0F270BC23C0088043F /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -755,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
@@ -771,7 +794,8 @@
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
-				EE3BA57E2702F2A100281096 /* Data.swift in Sources */,
+				EE559238270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift in Sources */,
+				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
