@@ -8,5 +8,5 @@ target 'bamboo-iOS' do
   # Pods for bamboo-iOS
     pod 'SnapKit', '~> 5.0.0'
     pod 'Then'
-    pod 'Alamofire', '~> 5.2'
+    pod 'AlamofireObjectMapper', '~> 5.2'
 end

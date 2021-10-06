@@ -33,6 +33,7 @@
 		EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */; };
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
+		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
 		EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */; };
 		EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
@@ -82,6 +83,7 @@
 		EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPopUp.swift; sourceTree = "<group>"; };
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
 		EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModalProtocol.swift; sourceTree = "<group>"; };
 		EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingCell.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
 				EEF42F0E270BC2240088043F /* UserDropDownTableView */,
 				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
@@ -496,6 +499,38 @@
 			path = NoWifiSystem;
 			sourceTree = "<group>";
 		};
+		EEAA062C270D7424000EA78D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA062E270D80D1000EA78D /* TableViewCell */,
+			);
+			path = ManagerMainTableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA062E270D80D1000EA78D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA0631270D8462000EA78D /* Accept */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA0631270D8462000EA78D /* Accept */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
+			);
+			path = Accept;
+			sourceTree = "<group>";
+		};
 		EEB46BC92708C79000ED679B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,7 +558,7 @@
 		EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */ = {
 			isa = PBXGroup;
 			children = (
-				EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */,
+				EEAA062C270D7424000EA78D /* TableViewCell */,
 			);
 			path = TableViewLoadingCell;
 			sourceTree = "<group>";
@@ -744,6 +779,7 @@
 				EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
+				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,

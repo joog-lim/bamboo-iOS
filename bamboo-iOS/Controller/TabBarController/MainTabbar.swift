@@ -16,7 +16,7 @@ class MainTabbar : BaseViewController{
     weak var delegate : ChoosingViewControllerDelegate?
     
     private let mainTabBarView = CustomTabbar()
-    private lazy var mainViewController = MainViewController()
+    private lazy var mainViewController = ManagerViewController()
     private let ruleViewController = RuleViewController()
     private let detailViewController = DetailViewController()
     private let viewControllerBoxView = UIView()
