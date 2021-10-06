@@ -9,7 +9,7 @@ import UIKit
 
 class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
     //MARK: - Identifier
-    static let identifier = "ManagerTableViewCell"
+    static let identifier = "AcceptManagerTableViewCell"
     
     //MARK: - Properties
     private lazy var view = UIView()
@@ -18,14 +18,18 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var tagLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
-        $0.textColor = .bamBoo_57CC4D
+    private lazy var dataLabel = UILabel().then{
+        $0.dynamicFont(fontSize: 9, currentFontName: "NanumSquareRoundR")
+        $0.textColor = .lightGray
     }
     private lazy var modifyBtn = UIButton().then{
         $0.setTitle("수정", for: .normal)
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         $0.setTitleColor(.lightGray, for: .normal)
+    }
+    private lazy var tagLabel = UILabel().then{
+        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.textColor = .bamBoo_57CC4D
     }
     private lazy var titleLabel = UILabel().then{
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundB")
@@ -54,6 +58,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubview(algorithm)
+        view.addSubview(dataLabel)
         view.addSubview(tagLabel)
         view.addSubview(titleLabel)
         view.addSubview(contentLabel)
@@ -69,9 +74,12 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
         }
-
+        dataLabel.snp.makeConstraints {
+            $0.centerY.equalTo(algorithm)
+            $0.left.equalTo(algorithm.snp.right).offset(bounds.width/75)
+        }
         tagLabel.snp.makeConstraints{
-            $0.right.equalTo(modifyBtn.snp.left)
+            $0.right.equalToSuperview()
             $0.top.equalTo(algorithm)
         }
         modifyBtn.snp.makeConstraints {
@@ -92,6 +100,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
     override func bind(_ model: Data) {
         super.bind(model)
         algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
+        dataLabel.text = model.data
         tagLabel.text = "#" +  model.tag.rawValue
         titleLabel.text = model.title
         contentLabel.text = model.content

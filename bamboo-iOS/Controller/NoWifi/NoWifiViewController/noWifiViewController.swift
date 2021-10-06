@@ -25,6 +25,7 @@ class noWifiViewController : BaseViewController{
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(wifiTryAgain), for: .touchUpInside)
     }
+    
     //MARK: - Selectors
     @objc private func wifiTryAgain(){
         NetworkStatus()

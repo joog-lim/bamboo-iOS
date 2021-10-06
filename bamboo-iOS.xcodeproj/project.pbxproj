@@ -170,12 +170,12 @@
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				EE3BA5772702EFB000281096 /* Base */,
 				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
 				EEF42F0E270BC2240088043F /* UserDropDownTableView */,
 				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
-				EE3BA5772702EFB000281096 /* Base */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA5AF302705BA8E000FF48A /* NoWifiViewController */,
-				EEA5AF312705BA9B000FF48A /* NoWifiSystem */,
+				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
 			sourceTree = "<group>";
@@ -491,12 +491,12 @@
 			path = NoWifiViewController;
 			sourceTree = "<group>";
 		};
-		EEA5AF312705BA9B000FF48A /* NoWifiSystem */ = {
+		EEA5AF312705BA9B000FF48A /* WifiSystem */ = {
 			isa = PBXGroup;
 			children = (
 				EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */,
 			);
-			path = NoWifiSystem;
+			path = WifiSystem;
 			sourceTree = "<group>";
 		};
 		EEAA062C270D7424000EA78D /* TableViewCell */ = {
