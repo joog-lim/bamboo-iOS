@@ -8,27 +8,31 @@ target 'bamboo-iOS' do
   # Pods for bamboo-iOS
   
   # Utils
-    pod 'SnapKit', '~> 5.0.0'
-    pod 'Then'
-   
-  #Rx
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
+  pod 'RxKeyboard'
+
+  # Networking
+  pod 'Moya/RxSwift'
   
+  #Rx
   pod 'RxSwift'
   pod 'RxCocoa'
   
   #RxFramework
-  
+  pod 'RxViewController'
   pod 'RxFlow'
   pod 'ReactorKit'
+  pod "RxAppState"
   
   #Pod for testing
   
-target 'bamboo-iOSTests' do
-  inherit! :search_paths
-  #Pods for testing
-  
-  pod 'RxNimble', subspecs: ['RxBlocking', 'RxTest']
-  end
+#target 'bamboo-iOSTests' do
+#  inherit! :search_paths
+#  #Pods for testing
+#  
+#  pod 'RxNimble', subspecs: ['RxBlocking', 'RxTest']
+#  end
 end
 
 post_install do |installer|
