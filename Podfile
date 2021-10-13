@@ -6,7 +6,35 @@ target 'bamboo-iOS' do
   use_frameworks!
 
   # Pods for bamboo-iOS
+  
+  # Utils
     pod 'SnapKit', '~> 5.0.0'
     pod 'Then'
-    pod 'AlamofireObjectMapper', '~> 5.2'
+   
+  #Rx
+  
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  
+  #RxFramework
+  
+  pod 'RxFlow'
+  pod 'ReactorKit'
+  
+  #Pod for testing
+  
+target 'bamboo-iOSTests' do
+  inherit! :search_paths
+  #Pods for testing
+  
+  pod 'RxNimble', subspecs: ['RxBlocking', 'RxTest']
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+    end
+  end
 end

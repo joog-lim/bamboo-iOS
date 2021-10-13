@@ -34,7 +34,6 @@ final class NetWorkStatus {
             print(self?.isConnect ?? "N/A")
         }
         monitor.start(queue: queue)
-
     }
     
     public func StopMonitoring(){

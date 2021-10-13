@@ -16,7 +16,7 @@ class MainTabbar : BaseViewController{
     weak var delegate : ChoosingViewControllerDelegate?
     
     private let mainTabBarView = CustomTabbar()
-    private lazy var mainViewController = ManagerViewController()
+    private lazy var mainViewController = MainViewController()
     private let ruleViewController = RuleViewController()
     private let detailViewController = DetailViewController()
     private let viewControllerBoxView = UIView()
@@ -119,7 +119,7 @@ class MainTabbar : BaseViewController{
         if NetWorkStatus.shared.isConnect{
             print("wifi connect")
         }else{
-            DispatchQueue.global(qos: .background).async {
+            DispatchQueue.main.async {
                 self.navigationController?.pushViewController(noWifiViewController(), animated: false)
             }
             print("wifi not connect")

@@ -7,4 +7,6 @@
 
 import UIKit
 
-class ManagerStatusDropDownTableViewCell : BaseTableViewCell<String>
+class ManagerStatusDropDownTableViewCell : BaseTableViewCell<String>{
+    
+}
