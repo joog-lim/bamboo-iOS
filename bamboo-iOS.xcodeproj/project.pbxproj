@@ -13,10 +13,12 @@
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
-		EE3BA57E2702F2A100281096 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* Data.swift */; };
+		EE3BA57E2702F2A100281096 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* UserData.swift */; };
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
+		EE559238270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */; };
+		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
@@ -33,6 +35,7 @@
 		EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */; };
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
+		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
 		EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */; };
 		EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
@@ -43,6 +46,8 @@
 		EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */; };
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
+		EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F12270BD9BA0088043F /* ManagerViewController.swift */; };
+		EEF42F17270BDAD00088043F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,10 +59,12 @@
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
-		EE3BA57D2702F2A100281096 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = "bamboo-iOS/MVVM/Model/Data.swift"; sourceTree = SOURCE_ROOT; };
+		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/Sources/MVVM/Model/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerStatusDropDownTableViewCell.swift; sourceTree = "<group>"; };
+		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
@@ -68,7 +75,7 @@
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EE89811226E5FD410086D2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE89811526E5FD410086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -80,12 +87,15 @@
 		EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPopUp.swift; sourceTree = "<group>"; };
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
 		EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModalProtocol.swift; sourceTree = "<group>"; };
 		EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingCell.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
+		EEF42F12270BD9BA0088043F /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
+		EEF42F16270BDAD00088043F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +174,12 @@
 		EE3BA5712702DF4B00281096 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				EE3BA5772702EFB000281096 /* Base */,
+				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
+				EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */,
 				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
-				EE3BA5772702EFB000281096 /* Base */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -191,7 +203,8 @@
 		EE3BA57F270301F200281096 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA57D2702F2A100281096 /* Data.swift */,
+				EE55923A270DEC1200223D22 /* UserData */,
+				EE559239270DEC0600223D22 /* ManagerData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,9 +230,25 @@
 			isa = PBXGroup;
 			children = (
 				EEA5AF302705BA8E000FF48A /* NoWifiViewController */,
-				EEA5AF312705BA9B000FF48A /* NoWifiSystem */,
+				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
+			sourceTree = "<group>";
+		};
+		EE559239270DEC0600223D22 /* ManagerData */ = {
+			isa = PBXGroup;
+			children = (
+				EE55923B270DEC4E00223D22 /* ManagerData.swift */,
+			);
+			path = ManagerData;
+			sourceTree = "<group>";
+		};
+		EE55923A270DEC1200223D22 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA57D2702F2A100281096 /* UserData.swift */,
+			);
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
@@ -339,15 +368,9 @@
 		EE89810826E5FD400086D2D6 /* bamboo-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EE89811726E5FD410086D2D6 /* Info.plist */,
-				EE9F0CDC26E747560015E81B /* AppDelegate */,
-				EE9F0CE226E748D40015E81B /* Font */,
-				EE9F0D5626E8B8130015E81B /* Utils */,
-				EE9F0CDD26E7485C0015E81B /* MVVM */,
-				EE9F0CE126E748AF0015E81B /* Controller */,
-				EE9F0CE326E748FE0015E81B /* Splash */,
-				EE9F0D5926E8B8650015E81B /* API */,
-				EE9F0D5A26E8B8860015E81B /* Image */,
+				EEA47AA5271726B600867C2F /* Sources */,
+				EEA47AA6271726EF00867C2F /* Resources */,
+				EEA47AA4271725EF00867C2F /* Supporting */,
 			);
 			path = "bamboo-iOS";
 			sourceTree = "<group>";
@@ -390,9 +413,9 @@
 		EE9F0CDE26E748650015E81B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE80467426F463E8007D3206 /* Cell */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE80467426F463E8007D3206 /* Cell */,
 				EE7C6FD826EF74AD0071031C /* TabBar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
@@ -412,6 +435,8 @@
 		EE9F0CE126E748AF0015E81B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EEF42F14270BDAA50088043F /* Base */,
+				EEF42F10270BD90F0088043F /* Manager */,
 				EE3BA5842703D45400281096 /* NoWifi */,
 				EE3BA58027032A3D00281096 /* Modal */,
 				EE7C6F7526EEEC410071031C /* Login */,
@@ -454,7 +479,8 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = API;
+			name = API;
+			path = ../API;
 			sourceTree = "<group>";
 		};
 		EE9F0D5A26E8B8860015E81B /* Image */ = {
@@ -473,6 +499,36 @@
 			path = CustomLabel;
 			sourceTree = "<group>";
 		};
+		EEA47AA4271725EF00867C2F /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				EE89811726E5FD410086D2D6 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		EEA47AA5271726B600867C2F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5926E8B8650015E81B /* API */,
+				EE9F0CDC26E747560015E81B /* AppDelegate */,
+				EE9F0CE226E748D40015E81B /* Font */,
+				EE9F0D5626E8B8130015E81B /* Utils */,
+				EE9F0CDD26E7485C0015E81B /* MVVM */,
+				EE9F0CE126E748AF0015E81B /* Controller */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EEA47AA6271726EF00867C2F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5A26E8B8860015E81B /* Image */,
+				EE9F0CE326E748FE0015E81B /* Splash */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		EEA5AF302705BA8E000FF48A /* NoWifiViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,12 +537,44 @@
 			path = NoWifiViewController;
 			sourceTree = "<group>";
 		};
-		EEA5AF312705BA9B000FF48A /* NoWifiSystem */ = {
+		EEA5AF312705BA9B000FF48A /* WifiSystem */ = {
 			isa = PBXGroup;
 			children = (
 				EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */,
 			);
-			path = NoWifiSystem;
+			path = WifiSystem;
+			sourceTree = "<group>";
+		};
+		EEAA062C270D7424000EA78D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA062E270D80D1000EA78D /* TableViewCell */,
+			);
+			path = ManagerMainTableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA062E270D80D1000EA78D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA0631270D8462000EA78D /* Accept */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEAA0631270D8462000EA78D /* Accept */ = {
+			isa = PBXGroup;
+			children = (
+				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
+			);
+			path = Accept;
 			sourceTree = "<group>";
 		};
 		EEB46BC92708C79000ED679B /* ViewController */ = {
@@ -516,7 +604,7 @@
 		EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */ = {
 			isa = PBXGroup;
 			children = (
-				EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */,
+				EEAA062C270D7424000EA78D /* TableViewCell */,
 			);
 			path = TableViewLoadingCell;
 			sourceTree = "<group>";
@@ -546,6 +634,54 @@
 				EE8141FC2701CE8B00ECFDCC /* DetailText */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F0F270BC23C0088043F /* TableViewCell */,
+			);
+			path = ManagerStatusDropDownTableView;
+			sourceTree = "<group>";
+		};
+		EEF42F0F270BC23C0088043F /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE559237270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EEF42F10270BD90F0088043F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F11270BD9A70088043F /* ViewController */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EEF42F11270BD9A70088043F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F12270BD9BA0088043F /* ManagerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EEF42F14270BDAA50088043F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F15270BDAB30088043F /* BaseViewController */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EEF42F15270BDAB30088043F /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F16270BDAD00088043F /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
@@ -682,16 +819,20 @@
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
-				EE3BA57E2702F2A100281096 /* Data.swift in Sources */,
+				EE559238270DEB8D00223D22 /* ManagerStatusDropDownTableViewCell.swift in Sources */,
+				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
+				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
+				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
+				EEF42F17270BDAD00088043F /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,7 +974,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JA353ZJMP;
-				INFOPLIST_FILE = "bamboo-iOS/Info.plist";
+				INFOPLIST_FILE = "bamboo-iOS/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -853,7 +994,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7JA353ZJMP;
-				INFOPLIST_FILE = "bamboo-iOS/Info.plist";
+				INFOPLIST_FILE = "bamboo-iOS/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

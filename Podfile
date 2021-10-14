@@ -6,7 +6,17 @@ target 'bamboo-iOS' do
   use_frameworks!
 
   # Pods for bamboo-iOS
-    pod 'SnapKit', '~> 5.0.0'
-    pod 'Then'
-    pod 'Alamofire', '~> 5.2'
+  
+  # Utils
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+    end
+  end
 end
