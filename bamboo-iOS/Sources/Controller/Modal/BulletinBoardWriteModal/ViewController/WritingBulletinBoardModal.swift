@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxKeyboard
 
 class WritingBulletinBoardModal: BaseViewController{
     //MARK - Tag Data

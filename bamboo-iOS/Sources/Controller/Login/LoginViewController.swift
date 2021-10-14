@@ -42,7 +42,6 @@ class LoginViewController : BaseViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    
     //MARK: - Selectors
     @objc func keyboardWillShow(_ sender: Notification) {
          self.view.frame.origin.y = -150 // Move view 150 points upward

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
-		EE30E5772706C86B00B9AF8A /* webRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5762706C86B00B9AF8A /* webRuleViewController.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
-		EE30E5762706C86B00B9AF8A /* webRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webRuleViewController.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,20 +129,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EE1D8AE72717F085003614BE /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
 				EE30E5732706B04A00B9AF8A /* AlertTextView.swift */,
 			);
 			path = CustomTextView;
-			sourceTree = "<group>";
-		};
-		EE30E5752706C85000B9AF8A /* WebViewRule */ = {
-			isa = PBXGroup;
-			children = (
-				EE30E5762706C86B00B9AF8A /* webRuleViewController.swift */,
-			);
-			path = WebViewRule;
 			sourceTree = "<group>";
 		};
 		EE30E5782706E5E600B9AF8A /* MainPageTableView */ = {
@@ -391,13 +388,13 @@
 			path = "Network Loading";
 			sourceTree = "<group>";
 		};
-		EE9F0CDC26E747560015E81B /* AppDelegate */ = {
+		EE9F0CDC26E747560015E81B /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				EE89810926E5FD400086D2D6 /* AppDelegate.swift */,
 				EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */,
 			);
-			path = AppDelegate;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		EE9F0CDD26E7485C0015E81B /* MVVM */ = {
@@ -511,9 +508,9 @@
 			isa = PBXGroup;
 			children = (
 				EE9F0D5926E8B8650015E81B /* API */,
-				EE9F0CDC26E747560015E81B /* AppDelegate */,
-				EE9F0CE226E748D40015E81B /* Font */,
+				EE9F0CDC26E747560015E81B /* Application */,
 				EE9F0D5626E8B8130015E81B /* Utils */,
+				EE1D8AE72717F085003614BE /* Flow */,
 				EE9F0CDD26E7485C0015E81B /* MVVM */,
 				EE9F0CE126E748AF0015E81B /* Controller */,
 			);
@@ -523,6 +520,7 @@
 		EEA47AA6271726EF00867C2F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EE9F0CE226E748D40015E81B /* Font */,
 				EE9F0D5A26E8B8860015E81B /* Image */,
 				EE9F0CE326E748FE0015E81B /* Splash */,
 			);
@@ -620,7 +618,6 @@
 		EEBDA33F26FB5BF200B966E3 /* Rule */ = {
 			isa = PBXGroup;
 			children = (
-				EE30E5752706C85000B9AF8A /* WebViewRule */,
 				EE8141F5270189EB00ECFDCC /* ViewController */,
 				EE8141F627018A1900ECFDCC /* RuleText */,
 			);
@@ -815,7 +812,6 @@
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
-				EE30E5772706C86B00B9AF8A /* webRuleViewController.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,

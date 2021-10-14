@@ -7,15 +7,18 @@
 
 import UIKit
 
+
 class BaseViewController: UIViewController{
     
     let bounds = UIScreen.main.bounds
-
+    
     @available(*,unavailable)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureAppear()
