@@ -9,7 +9,7 @@ import UIKit
 import RxViewController
 import RxSwift
 
-class BaseViewController: UIViewController{
+class BaseVC: UIViewController{
     var disposeBag : DisposeBag = .init()
     
     let bounds = UIScreen.main.bounds

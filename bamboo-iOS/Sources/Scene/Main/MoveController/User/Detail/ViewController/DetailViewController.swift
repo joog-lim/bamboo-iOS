@@ -8,7 +8,7 @@
 import UIKit
 
 
-class DetailViewController : BaseViewController{
+class DetailViewController : BaseVC{
     //MARK: - Properties
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear

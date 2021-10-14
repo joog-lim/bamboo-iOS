@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ManagerViewController: BaseViewController{
+class ManagerViewController: BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
     

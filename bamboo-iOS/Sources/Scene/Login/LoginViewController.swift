@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 import Then
-import Rswift
+import RxSwift
 
-class LoginViewController : BaseViewController {
+
+class LoginViewController : BaseVC {
     //MARK: - Properties
     
     private var vcChoose = UIViewController()

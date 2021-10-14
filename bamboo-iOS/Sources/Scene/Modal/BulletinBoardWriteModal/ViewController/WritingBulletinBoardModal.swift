@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxKeyboard
 
-class WritingBulletinBoardModal: BaseViewController{
+class WritingBulletinBoardModal: BaseVC{
     //MARK - Tag Data
     let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties

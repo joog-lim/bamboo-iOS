@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController : BaseViewController{
+class MainViewController : BaseVC{
     
     //MARK: - Properties
     private var isLoaing : Bool = false

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RuleViewController : BaseViewController {
+class RuleViewController : BaseVC {
     //MARK: - Properties
     private let titleLabel = UILabel().then{
         $0.text = "규칙"

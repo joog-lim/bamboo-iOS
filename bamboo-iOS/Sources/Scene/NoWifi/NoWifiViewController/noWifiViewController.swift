@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class noWifiViewController : BaseViewController{
+class noWifiViewController : BaseVC{
     //MARK: - Properties
     private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
     private lazy var NoWifiLabel = UILabel().then{
