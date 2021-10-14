@@ -24,7 +24,7 @@ target 'bamboo-iOS' do
   pod 'RxViewController'
   pod 'RxFlow'
   pod 'ReactorKit'
-  pod 'ReusableKit/RxSwift'
+#  pod 'ReusableKit/RxSwift'
   pod 'R.swift'
 
 end

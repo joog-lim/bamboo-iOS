@@ -57,7 +57,7 @@
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
-		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/Sources/MVVM/Model/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
+		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/Sources/Models/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
@@ -132,8 +132,79 @@
 		EE1D8AE72717F085003614BE /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				EE1D8AEE27180DA3003614BE /* Step */,
+				EE1D8AEF27180DA9003614BE /* Flows */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		EE1D8AE827180A21003614BE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EE1D8AE927180BC5003614BE /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EE3BA5842703D45400281096 /* NoWifi */,
+				EE7C6F7526EEEC410071031C /* Login */,
+				EE1D8AEB27180D1F003614BE /* Main */,
+				EE3BA58027032A3D00281096 /* Modal */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		EE1D8AEA27180C06003614BE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F15270BDAB30088043F /* BaseVC */,
+				EE3BA5772702EFB000281096 /* BaseTableViewCell */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EE1D8AEB27180D1F003614BE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EE1D8AEC27180D3C003614BE /* MoveController */,
+				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EE1D8AEC27180D3C003614BE /* MoveController */ = {
+			isa = PBXGroup;
+			children = (
+				EEF42F10270BD90F0088043F /* Manager */,
+				EE1D8AED27180D4E003614BE /* User */,
+			);
+			path = MoveController;
+			sourceTree = "<group>";
+		};
+		EE1D8AED27180D4E003614BE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				EE7C6F7926EEEC880071031C /* Home */,
+				EEBDA33F26FB5BF200B966E3 /* Rule */,
+				EEBDA34226FB5C3F00B966E3 /* Detail */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		EE1D8AEE27180DA3003614BE /* Step */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
+		EE1D8AEF27180DA9003614BE /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flows;
 			sourceTree = "<group>";
 		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
@@ -168,25 +239,12 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		EE3BA5712702DF4B00281096 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA5772702EFB000281096 /* Base */,
-				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
-				EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */,
-				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
-				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
-				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
-		EE3BA5772702EFB000281096 /* Base */ = {
+		EE3BA5772702EFB000281096 /* BaseTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */,
 			);
-			path = Base;
+			path = BaseTableViewCell;
 			sourceTree = "<group>";
 		};
 		EE3BA57A2702F09600281096 /* TableViewCell */ = {
@@ -197,13 +255,13 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		EE3BA57F270301F200281096 /* Model */ = {
+		EE3BA57F270301F200281096 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				EE55923A270DEC1200223D22 /* UserData */,
 				EE559239270DEC0600223D22 /* ManagerData */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EE3BA58027032A3D00281096 /* Modal */ = {
@@ -307,7 +365,11 @@
 		EE80467426F463E8007D3206 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA5712702DF4B00281096 /* TableView */,
+				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
+				EEF42F0E270BC2240088043F /* ManagerStatusDropDownTableView */,
+				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
+				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
+				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -397,17 +459,7 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		EE9F0CDD26E7485C0015E81B /* MVVM */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA57F270301F200281096 /* Model */,
-				EE9F0CDE26E748650015E81B /* View */,
-				EE9F0CDF26E7486A0015E81B /* ViewModel */,
-			);
-			path = MVVM;
-			sourceTree = "<group>";
-		};
-		EE9F0CDE26E748650015E81B /* View */ = {
+		EE9F0CDE26E748650015E81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EE80467426F463E8007D3206 /* Cell */,
@@ -419,30 +471,22 @@
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EE9F0CDF26E7486A0015E81B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = MVVM/ViewModel;
 			sourceTree = "<group>";
 		};
-		EE9F0CE126E748AF0015E81B /* Controller */ = {
+		EE9F0CE126E748AF0015E81B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EEF42F14270BDAA50088043F /* Base */,
-				EEF42F10270BD90F0088043F /* Manager */,
-				EE3BA5842703D45400281096 /* NoWifi */,
-				EE3BA58027032A3D00281096 /* Modal */,
-				EE7C6F7526EEEC410071031C /* Login */,
-				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
-				EE7C6F7926EEEC880071031C /* Home */,
-				EEBDA33F26FB5BF200B966E3 /* Rule */,
-				EEBDA34226FB5C3F00B966E3 /* Detail */,
 			);
-			path = Controller;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		EE9F0CE226E748D40015E81B /* Font */ = {
@@ -472,12 +516,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		EE9F0D5926E8B8650015E81B /* API */ = {
+		EE9F0D5926E8B8650015E81B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = API;
-			path = ../API;
+			name = Networking;
+			path = ../Networking;
 			sourceTree = "<group>";
 		};
 		EE9F0D5A26E8B8860015E81B /* Image */ = {
@@ -507,12 +551,17 @@
 		EEA47AA5271726B600867C2F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5926E8B8650015E81B /* API */,
+				EE9F0D5926E8B8650015E81B /* Networking */,
+				EE1D8AE827180A21003614BE /* Service */,
 				EE9F0CDC26E747560015E81B /* Application */,
 				EE9F0D5626E8B8130015E81B /* Utils */,
 				EE1D8AE72717F085003614BE /* Flow */,
-				EE9F0CDD26E7485C0015E81B /* MVVM */,
-				EE9F0CE126E748AF0015E81B /* Controller */,
+				EE1D8AE927180BC5003614BE /* Scene */,
+				EE3BA57F270301F200281096 /* Models */,
+				EE9F0CDE26E748650015E81B /* Views */,
+				EE9F0CDF26E7486A0015E81B /* ViewModel */,
+				EE9F0CE126E748AF0015E81B /* ViewControllers */,
+				EE1D8AEA27180C06003614BE /* Base */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -665,20 +714,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		EEF42F14270BDAA50088043F /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				EEF42F15270BDAB30088043F /* BaseViewController */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		EEF42F15270BDAB30088043F /* BaseViewController */ = {
+		EEF42F15270BDAB30088043F /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
 				EEF42F16270BDAD00088043F /* BaseViewController.swift */,
 			);
-			path = BaseViewController;
+			path = BaseVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
