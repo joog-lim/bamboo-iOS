@@ -5,6 +5,9 @@ PODS:
   - Moya/RxSwift (15.0.0):
     - Moya/Core
     - RxSwift (~> 6.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
   - ReactorKit (3.1.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
@@ -37,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - Moya/RxSwift
+  - R.swift
   - ReactorKit
   - ReusableKit/RxSwift
   - RxAppState
@@ -52,6 +56,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - R.swift
+    - R.swift.Library
     - ReactorKit
     - ReusableKit
     - RxAppState
@@ -68,6 +74,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   ReusableKit: d0b040de03b293288b0ca27a78602691d3346d9b
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
@@ -81,6 +89,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: ec06f2f87d1455ee45ef3db3ac4009e7377c7774
+PODFILE CHECKSUM: bbdc752b5220490980d86d44efb58bed21565d45
 
 COCOAPODS: 1.11.2

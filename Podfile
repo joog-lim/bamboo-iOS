@@ -25,6 +25,8 @@ target 'bamboo-iOS' do
   pod 'RxFlow'
   pod 'ReactorKit'
   pod 'ReusableKit/RxSwift'
+  pod 'R.swift'
+
 end
 
 post_install do |installer|
