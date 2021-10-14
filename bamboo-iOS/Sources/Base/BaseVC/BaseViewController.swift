@@ -15,11 +15,17 @@ class BaseViewController: UIViewController{
     let bounds = UIScreen.main.bounds
     
     @available(*,unavailable)
-    
-    self.rx.viewDidLoad
-        .subscribe(onNext:{
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
         configure()
-    })
+    }
+    
+//    self.rx.viewDidLoad
+//        .subscribe(onNext:{
+//        configure()
+//    })
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureAppear()
