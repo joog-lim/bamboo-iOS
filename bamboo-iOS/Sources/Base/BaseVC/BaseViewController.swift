@@ -6,19 +6,20 @@
 //
 
 import UIKit
-
+import RxViewController
+import RxSwift
 
 class BaseViewController: UIViewController{
+    var disposeBag : DisposeBag = .init()
     
     let bounds = UIScreen.main.bounds
     
     @available(*,unavailable)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    self.rx.viewDidLoad
+        .subscribe(onNext:{
         configure()
-    }
-    
+    })
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureAppear()

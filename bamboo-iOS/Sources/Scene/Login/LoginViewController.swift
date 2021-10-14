@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 import Then
-
+import Rswift
 
 class LoginViewController : BaseViewController {
     //MARK: - Properties
@@ -60,7 +60,7 @@ class LoginViewController : BaseViewController {
     }
     @objc func ClickUserBtn(){
         vcChoose = MainViewController()
-        navigationController?.pushViewController(MainTabbar(), animated: true)
+        navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
     @objc func popupClose(){
@@ -70,7 +70,7 @@ class LoginViewController : BaseViewController {
     }
     @objc func clickLoginBtn(){
         vcChoose = ManagerViewController()
-        navigationController?.pushViewController(MainTabbar(), animated: true)
+        navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
     

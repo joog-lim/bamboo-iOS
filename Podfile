@@ -10,6 +10,7 @@ target 'bamboo-iOS' do
   # Utils
   pod 'SnapKit', '~> 5.0.0'
   pod 'Then'
+  pod 'R.swift'
   pod 'RxKeyboard'
 
   # Networking
@@ -25,7 +26,6 @@ target 'bamboo-iOS' do
   pod 'RxFlow'
   pod 'ReactorKit'
 #  pod 'ReusableKit/RxSwift'
-  pod 'R.swift'
 
 end
 

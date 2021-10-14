@@ -482,13 +482,6 @@
 			path = MVVM/ViewModel;
 			sourceTree = "<group>";
 		};
-		EE9F0CE126E748AF0015E81B /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		EE9F0CE226E748D40015E81B /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,7 +553,6 @@
 				EE3BA57F270301F200281096 /* Models */,
 				EE9F0CDE26E748650015E81B /* Views */,
 				EE9F0CDF26E7486A0015E81B /* ViewModel */,
-				EE9F0CE126E748AF0015E81B /* ViewControllers */,
 				EE1D8AEA27180C06003614BE /* Base */,
 			);
 			path = Sources;
