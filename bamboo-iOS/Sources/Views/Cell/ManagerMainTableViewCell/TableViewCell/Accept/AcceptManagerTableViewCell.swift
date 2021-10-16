@@ -67,19 +67,21 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         }
         algorithm.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
+            $0.left.equalTo(view.snp.left)
         }
         dataLabel.snp.makeConstraints {
             $0.centerY.equalTo(algorithm)
             $0.left.equalTo(algorithm.snp.right).offset(bounds.width/75)
         }
         tagLabel.snp.makeConstraints{
-            $0.right.equalToSuperview()
+            $0.right.equalTo(modifyBtn.snp.left)
             $0.top.equalTo(algorithm)
         }
         modifyBtn.snp.makeConstraints {
-            $0.right.equalToSuperview()
-            $0.top.equalTo(algorithm)
+            $0.right.equalTo(view.snp.right)
+            $0.height.equalTo(10)
+            $0.width.equalTo(bounds.width/10.714)
+            $0.centerY.equalTo(tagLabel)
         }
         titleLabel.snp.makeConstraints {
             $0.left.equalTo(algorithm)
