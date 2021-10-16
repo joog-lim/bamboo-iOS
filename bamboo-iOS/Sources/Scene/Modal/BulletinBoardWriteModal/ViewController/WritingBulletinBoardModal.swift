@@ -41,7 +41,7 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let titleTf = AlertTextField(placeholder: "제목을 입력하세요.", fontSize: 10)
     private let tagChooseBtn = LoginButton(placeholder: "태그선택", cornerRadius: 5).then{
-        $0.label.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
+        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
         $0.addTarget(self, action: #selector(tagChooseBtnClick), for: .touchUpInside)
     }
     private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.")
@@ -123,17 +123,10 @@ class WritingBulletinBoardModal: BaseVC{
     
     //MARK: - AddView
     private func addView(){
-        view.addSubview(transparentView)
-        view.addSubview(bgView)
-        bgView.addSubview(tagSelectView)
-        bgView.addSubview(titleLabel)
-        bgView.addSubview(questionTitle)
-        bgView.addSubview(writeContentStackView)
-        bgView.addSubview(passwordStackView)
-        bgView.addSubview(sendBtn)
-        bgView.addSubview(tagChoose)
-
+        [transparentView,bgView].forEach { view.addSubview($0)}
+        [tagSelectView,titleLabel,questionTitle,writeContentStackView,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
     }
+    
     //MARK: - Location
     private func location(){
         bgView.snp.makeConstraints { (make) in
@@ -243,12 +236,12 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 25
+        return bounds.height/32.48
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(tagDataSection[indexPath.row].rawValue)
-        tagChooseBtn.label.text = tagDataSection[indexPath.row].rawValue
+        tagChooseBtn.setTitle(tagDataSection[indexPath.row].rawValue, for: .normal)
         removeDropDown()
     }
 }

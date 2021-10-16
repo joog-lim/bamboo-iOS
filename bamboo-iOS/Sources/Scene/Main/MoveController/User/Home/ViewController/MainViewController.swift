@@ -98,9 +98,9 @@ class MainViewController : BaseVC{
     }
     //MARK: - AddView
     private func addView(){
-        view.addSubview(mainTableView)
-        view.addSubview(writeBtn)
+        [mainTableView,writeBtn].forEach{view.addSubview($0)}
     }
+    
     //MARK: - Location
     private func location(){
         mainTableView.snp.makeConstraints { (make) in
@@ -149,8 +149,7 @@ class MainViewController : BaseVC{
     }
     //MARK: - tableViewSetting
     private func tableviewSetting(){
-        mainTableView.dataSource = self
-        mainTableView.delegate = self
+        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
         mainTableView.estimatedRowHeight = 200
         mainTableView.rowHeight = UITableView.automaticDimension
     }

@@ -42,8 +42,7 @@ class RuleViewController : BaseVC {
     }
     private func addView(){
         view.addSubview(backGroundScrollView)
-        backGroundScrollView.addSubview(titleLabel)
-        backGroundScrollView.addSubview(ruleLabel)
+        [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
     }
     private func location(){
         backGroundScrollView.snp.makeConstraints {

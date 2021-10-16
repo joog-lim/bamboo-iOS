@@ -28,6 +28,7 @@
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
 		EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
+		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* Extensions.swift */; };
 		EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */; };
@@ -75,6 +76,7 @@
 		EE89811526E5FD410086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		EE9F0D1A26E78F130015E81B /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
@@ -317,7 +319,8 @@
 		EE7C6F7626EEEC4E0071031C /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */,
+				EE97B73A271B08B800479A06 /* LoginButton */,
+				EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */,
 			);
 			path = CustomButton;
 			sourceTree = "<group>";
@@ -448,6 +451,22 @@
 				EE953A39270678CC00D4E133 /* LoadingIndicator.swift */,
 			);
 			path = "Network Loading";
+			sourceTree = "<group>";
+		};
+		EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */ = {
+			isa = PBXGroup;
+			children = (
+				EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */,
+			);
+			path = "DropDownBtn + DropDownTable";
+			sourceTree = "<group>";
+		};
+		EE97B73A271B08B800479A06 /* LoginButton */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */,
+			);
+			path = LoginButton;
 			sourceTree = "<group>";
 		};
 		EE9F0CDC26E747560015E81B /* Application */ = {
@@ -860,6 +879,7 @@
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
+				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

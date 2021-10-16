@@ -51,11 +51,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        view.addSubview(algorithm)
-        view.addSubview(dataLabel)
-        view.addSubview(tagLabel)
-        view.addSubview(titleLabel)
-        view.addSubview(contentLabel)
+        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
     private func location(){
         view.snp.makeConstraints { make in

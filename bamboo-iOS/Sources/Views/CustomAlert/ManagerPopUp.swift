@@ -39,7 +39,7 @@ class ManagerPopUp : UIView {
     
     let loginBtn : LoginButton = {
         let btn = LoginButton(placeholder: "로그인",cornerRadius: 5)
-        btn.label.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        btn.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         return btn
     }()
@@ -67,11 +67,7 @@ class ManagerPopUp : UIView {
     func addView(){
         addSubview(bgview)
         addSubview(view)
-        view.addSubview(icon)
-        view.addSubview(titleLabel)
-        view.addSubview(humanAffairsLabel)
-        view.addSubview(WritePassWorld)
-        view.addSubview(loginBtn)
+        [icon,titleLabel,humanAffairsLabel,WritePassWorld,loginBtn].forEach { view.addSubview($0)}
     }
     //MARK: - layout
     override func layoutSubviews() {

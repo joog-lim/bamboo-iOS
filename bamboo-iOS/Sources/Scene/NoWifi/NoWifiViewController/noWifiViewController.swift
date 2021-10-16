@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import ReactorKit
 
 class noWifiViewController : BaseVC{
     //MARK: - Properties
@@ -41,11 +43,9 @@ class noWifiViewController : BaseVC{
     }
     
     private func addView(){
-        view.addSubview(icon)
-        view.addSubview(NoWifiLabel)
-        view.addSubview(subNoWifiLabel)
-        view.addSubview(tryAgainBtn)
+        [icon,NoWifiLabel,subNoWifiLabel,tryAgainBtn].forEach{view.addSubview($0)}
     }
+    
     private func location(){
         icon.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/4.7485)

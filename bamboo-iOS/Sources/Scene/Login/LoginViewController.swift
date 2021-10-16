@@ -91,11 +91,11 @@ class LoginViewController : BaseVC {
     private func stackViewSetting(){
         btnStackView.spacing = view.frame.height/54.13333
     }
+    
     private func addView(){
-        view.addSubview(logo)
-        view.addSubview(btnStackView)
-        view.addSubview(popup)
+        [logo,btnStackView,popup].forEach { view.addSubview($0)}
     }
+    
     private func location(){
         logo.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()

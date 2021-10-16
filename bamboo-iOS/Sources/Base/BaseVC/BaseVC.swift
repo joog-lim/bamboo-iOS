@@ -21,10 +21,7 @@ class BaseVC: UIViewController{
         configure()
     }
     
-//    self.rx.viewDidLoad
-//        .subscribe(onNext:{
-//        configure()
-//    })
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

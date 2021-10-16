@@ -55,8 +55,8 @@ class DetailViewController : BaseVC{
     
     
     //MARK: - Selectors
-    @objc func gesture(sender:UITapGestureRecognizer){
-        print("집")
+    @objc private func gesture(sender:UITapGestureRecognizer){
+        
     }
 
     //MARK: - Helper
@@ -73,16 +73,8 @@ class DetailViewController : BaseVC{
     //MARK: - addView
     private func addView(){
         view.addSubview(backGroundScrollView)
-        backGroundScrollView.addSubview(titleLabel)
-        backGroundScrollView.addSubview(explanationLabel)
-        backGroundScrollView.addSubview(divider)
-        backGroundScrollView.addSubview(greetingsLabel)
-        backGroundScrollView.addSubview(somethingIAskOften)
-        backGroundScrollView.addSubview(clickLabel)
-        backGroundScrollView.addSubview(bottomLabel)
+        [titleLabel,explanationLabel,divider,greetingsLabel,somethingIAskOften,clickLabel,bottomLabel].forEach{backGroundScrollView.addSubview($0)}
     }
-
-
     
     //MARK: - Location
     private func location(){
