@@ -14,4 +14,5 @@ struct ManagerData{
         case Refusal = "거절"
         case Delete = "삭제"
     }
+    let menuStatus : status
 }

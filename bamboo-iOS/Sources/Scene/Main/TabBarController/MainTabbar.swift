@@ -34,6 +34,7 @@ class MainTabbarController : UITabBarController{
         detailVc.tabBarItem.image = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
         //MARK: - 무슨 페이지를 보여줄지
         viewControllers = [homeVc,ruleVc,detailVc]
+        
     }
     
     //MARK: - Tabbar Setting

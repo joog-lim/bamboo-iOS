@@ -66,6 +66,7 @@ class DetailViewController : BaseVC{
         location()
         gestureLabel()
     }
+
     //MARK: - Gesture
     private func gestureLabel(){
         clickLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gesture)))

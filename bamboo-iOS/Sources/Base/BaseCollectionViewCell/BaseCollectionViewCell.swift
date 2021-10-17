@@ -12,14 +12,13 @@ class BaseCollectionViewCell<T>: UICollectionViewCell{
         super.init(frame: frame)
         configure()
     }
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     func configure(){ }
-    var model : T{
-        didSet{if let model = model { bind(model) }}
+    var model: T? {
+        didSet { if let model = model { bind(model) } }
     }
-    func bind(_ model : T){}
-    
-
+    func bind(_ model: T){}
 }

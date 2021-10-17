@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import RxViewController
 class RuleViewController : BaseVC {
     //MARK: - Properties
     private let titleLabel = UILabel().then{
@@ -40,6 +40,8 @@ class RuleViewController : BaseVC {
         addView()
         location()
     }
+
+    
     private func addView(){
         view.addSubview(backGroundScrollView)
         [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
