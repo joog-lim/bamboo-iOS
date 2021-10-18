@@ -21,6 +21,10 @@
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */; };
 		EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CC271D03D9003140CD /* PageCell.swift */; };
+		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
+		EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */; };
+		EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */; };
+		EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -69,6 +73,10 @@
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
 		EE7CA2CC271D03D9003140CD /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
+		EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByViewController.swift; sourceTree = "<group>"; };
+		EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalViewController.swift; sourceTree = "<group>"; };
+		EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -376,6 +384,38 @@
 				EE7CA2CC271D03D9003140CD /* PageCell.swift */,
 			);
 			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		EE7CA2CE271D3A70003140CD /* Accept */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */,
+			);
+			path = Accept;
+			sourceTree = "<group>";
+		};
+		EE7CA2D1271D6CAF003140CD /* StandBy */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */,
+			);
+			path = StandBy;
+			sourceTree = "<group>";
+		};
+		EE7CA2D2271D6CCB003140CD /* Refusal */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */,
+			);
+			path = Refusal;
+			sourceTree = "<group>";
+		};
+		EE7CA2D3271D6CEE003140CD /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */,
+			);
+			path = Delete;
 			sourceTree = "<group>";
 		};
 		EE80467326F45E78007D3206 /* Extensions */ = {
@@ -758,17 +798,21 @@
 		EEF42F10270BD90F0088043F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				EEF42F11270BD9A70088043F /* ViewController */,
+				EE7CA2D3271D6CEE003140CD /* Delete */,
+				EE7CA2D2271D6CCB003140CD /* Refusal */,
+				EE7CA2D1271D6CAF003140CD /* StandBy */,
+				EE7CA2CE271D3A70003140CD /* Accept */,
+				EEF42F11270BD9A70088043F /* ManagerViewControllerFrame */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		EEF42F11270BD9A70088043F /* ViewController */ = {
+		EEF42F11270BD9A70088043F /* ManagerViewControllerFrame */ = {
 			isa = PBXGroup;
 			children = (
 				EEF42F12270BD9BA0088043F /* ManagerViewController.swift */,
 			);
-			path = ViewController;
+			path = ManagerViewControllerFrame;
 			sourceTree = "<group>";
 		};
 		EEF42F15270BDAB30088043F /* BaseVC */ = {
@@ -898,9 +942,11 @@
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
+				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
+				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
 				EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
@@ -913,12 +959,14 @@
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,
+				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
+				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,

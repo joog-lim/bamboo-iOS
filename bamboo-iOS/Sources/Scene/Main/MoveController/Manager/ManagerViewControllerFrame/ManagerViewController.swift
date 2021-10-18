@@ -8,8 +8,8 @@
 import UIKit
 
 class ManagerViewController: BaseVC{
-    
-    //MARK: Outltes
+        
+    //MARK: Properties
     let pageCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -60,7 +60,7 @@ class ManagerViewController: BaseVC{
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageCell.identifier, for: indexPath) as? PageCell else {return UICollectionViewCell()}
-        
+
         return cell
     }
     

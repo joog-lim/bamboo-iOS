@@ -10,24 +10,22 @@ import UIKit
 class PageCell : UICollectionViewCell{
     //MARK: - id
     static let identifier = "PageCell"
-    
-    let mainTableView = UITableView().then{
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
-        $0.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
-        $0.showsVerticalScrollIndicator = false
-        $0.separatorColor = .clear
-        $0.allowsSelection = false
-        $0.estimatedRowHeight = 300
-        $0.rowHeight = UITableView.automaticDimension
-    }
+    let vc = AcceptViewController()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        addView()
+        location()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    private func addView(){
+        addSubview(vc.view)
+    }
+    private func location(){
+        vc.view.snp.makeConstraints {
+            $0.top.trailing.leading.bottom.equalToSuperview()
+        }
+    }
 }

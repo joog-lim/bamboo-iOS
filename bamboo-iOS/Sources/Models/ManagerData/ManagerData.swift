@@ -15,4 +15,5 @@ struct ManagerData{
         case Delete = "삭제"
     }
     let menuStatus : status
+
 }
