@@ -59,6 +59,6 @@ class RuleViewController : BaseVC {
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/5.4347)
         }
-        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.56)
+        backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/0.56)
     }
 }

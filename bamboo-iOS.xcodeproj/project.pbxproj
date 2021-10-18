@@ -19,7 +19,8 @@
 		EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */; };
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
-		EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6FD926EF75980071031C /* CustomTabbar.swift */; };
+		EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */; };
+		EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CC271D03D9003140CD /* PageCell.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -66,7 +67,8 @@
 		EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerStatusMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		EE7C6FD926EF75980071031C /* CustomTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbar.swift; sourceTree = "<group>"; };
+		EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
+		EE7CA2CC271D03D9003140CD /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -352,12 +354,28 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		EE7C6FD826EF74AD0071031C /* TabBar */ = {
+		EE7CA2C7271CEFFC003140CD /* CustomMenubar */ = {
 			isa = PBXGroup;
 			children = (
-				EE7C6FD926EF75980071031C /* CustomTabbar.swift */,
+				EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */,
 			);
-			path = TabBar;
+			path = CustomMenubar;
+			sourceTree = "<group>";
+		};
+		EE7CA2CA271D03AA003140CD /* PageCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2CB271D03BB003140CD /* CollectionViewCell */,
+			);
+			path = PageCollectionView;
+			sourceTree = "<group>";
+		};
+		EE7CA2CB271D03BB003140CD /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2CC271D03D9003140CD /* PageCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		EE80467326F45E78007D3206 /* Extensions */ = {
@@ -491,6 +509,7 @@
 		EE97B75F271B472C00479A06 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				EE7CA2CA271D03AA003140CD /* PageCollectionView */,
 				EEF42F0E270BC2240088043F /* ManagerStatusMenuCollectionView */,
 			);
 			path = CollectionView;
@@ -511,7 +530,7 @@
 				EE80467426F463E8007D3206 /* Cell */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE7C6FD826EF74AD0071031C /* TabBar */,
+				EE7CA2C7271CEFFC003140CD /* CustomMenubar */,
 				EE7C6F7826EEEC720071031C /* CustomAlert */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
@@ -882,6 +901,7 @@
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
+				EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
@@ -891,9 +911,9 @@
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
-				EE7C6FDA26EF75980071031C /* CustomTabbar.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,
+				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,

@@ -33,17 +33,14 @@ class MainViewController : BaseVC{
         $0.attributedText = string
     }
 
-    private let mainTableView : UITableView = {
-        let tv = UITableView()
-        tv.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
-        tv.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
-        tv.showsVerticalScrollIndicator = false
-        tv.separatorColor = .clear
-        tv.allowsSelection = false
-        tv.estimatedRowHeight = 300
-        tv.rowHeight = UITableView.automaticDimension
-        return tv
-    }()
+    private let mainTableView = UITableView().then {
+        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        $0.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
+        $0.showsVerticalScrollIndicator = false
+        $0.separatorColor = .clear
+        $0.allowsSelection = false
+        $0.estimatedRowHeight = 300
+    }
     
     private lazy var writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
@@ -150,8 +147,6 @@ class MainViewController : BaseVC{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-        mainTableView.estimatedRowHeight = 200
-        mainTableView.rowHeight = UITableView.automaticDimension
     }
 }
 

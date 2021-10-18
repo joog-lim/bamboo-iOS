@@ -6,30 +6,17 @@
 //
 
 import UIKit
+import Pods_bamboo_iOS
 
 class ManagerStatusMenuCollectionView : BaseCollectionViewCell<ManagerData.status>{
     static let identifier = "ManagerStatusMenuCollectionView"
     let menuLabel = UILabel().then{
         $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundB")
-        $0.textColor = .black
-    }
-    lazy var  view = UIView().then{
-        $0.backgroundColor = .bamBoo_57CC4D
-        $0.frame = CGRect(x: 0, y: contentView.frame.height - 3, width: 0, height: 0)
+        $0.textColor = .lightGray
     }
     override var isSelected: Bool{
         didSet{
-            if isSelected{
-                UIView.animate(withDuration: 0.3) { [self] in
-                    view.frame = CGRect(x: 0, y: contentView.frame.height - 3, width: contentView.frame.width, height: 3)
-                    menuLabel.textColor = .bamBoo_57CC4D
-                }
-            }else{
-                UIView.animate(withDuration: 0.3) { [self] in
-                    view.frame = CGRect(x: 0, y: contentView.frame.height - 3, width: 0, height: 3)
-                    menuLabel.textColor = .black
-                }
-            }
+            self.menuLabel.textColor = isSelected ? UIColor.bamBoo_57CC4D : .lightGray
         }
     }
     
@@ -40,10 +27,9 @@ class ManagerStatusMenuCollectionView : BaseCollectionViewCell<ManagerData.statu
         location()
     }
     private func addSubView(){
-        [menuLabel,view].forEach { contentView.addSubview($0)}
+        contentView.addSubview(menuLabel)
     }
     private func location(){
-        contentView.backgroundColor = .white
         menuLabel.snp.makeConstraints{
             $0.center.equalToSuperview()
         }

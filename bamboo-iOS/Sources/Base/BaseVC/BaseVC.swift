@@ -21,8 +21,6 @@ class BaseVC: UIViewController{
         configure()
     }
     
-
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureAppear()

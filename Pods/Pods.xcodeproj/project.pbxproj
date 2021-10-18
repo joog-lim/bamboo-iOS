@@ -862,7 +862,7 @@
 		6182244802D3C74AA73F96A5781AAE81 /* RxKeyboard-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RxKeyboard-Info.plist"; sourceTree = "<group>"; };
 		621373895B33291836310723D74D5C55 /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = Sources/Moya/Endpoint.swift; sourceTree = "<group>"; };
 		6293A6D3C9F880029B4B2112C272689E /* ScheduledDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScheduledDisposable.swift; path = RxSwift/Disposables/ScheduledDisposable.swift; sourceTree = "<group>"; };
-		63273FF6884015663B12D14E0FB80BE9 /* Pods-bamboo-iOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-bamboo-iOS"; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63273FF6884015663B12D14E0FB80BE9 /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A9577777235FB4552568A4D48C098 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
 		639A595A068302D8EC9DA8378A0ACF5A /* Repeat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repeat.swift; path = RxSwift/Observables/Repeat.swift; sourceTree = "<group>"; };
 		63AC080C1E88BF11948987FEA9F9F95F /* NopDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NopDisposable.swift; path = RxSwift/Disposables/NopDisposable.swift; sourceTree = "<group>"; };
@@ -979,7 +979,7 @@
 		9CB150E3211B1A8E88F7398F5618AE7B /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		9CD700F4CF76948495B7AE0ADFF7023B /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
 		9CFE88AEFBE07C7022760EAA13354AB0 /* ScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScheduledItem.swift; path = RxSwift/Schedulers/Internal/ScheduledItem.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0696AD68DDEA6C1BC906E42809E0D61 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		A0E5EBFC1FA6FBC1F49A86DDAF132317 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Rx.swift"; path = "Sources/RxViewController/UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		A160B042163FCA915DA7073D1CE5DC1C /* ObservableType+PrimitiveSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObservableType+PrimitiveSequence.swift"; path = "RxSwift/Traits/PrimitiveSequence/ObservableType+PrimitiveSequence.swift"; sourceTree = "<group>"; };
@@ -1306,7 +1306,6 @@
 				3E0155D8162F1769A3082389949FDF92 /* RxSwift */,
 				85968ACAD13990CAE5D36BF0C6D54C33 /* Support Files */,
 			);
-			name = Moya;
 			path = Moya;
 			sourceTree = "<group>";
 		};
@@ -1316,7 +1315,6 @@
 				1A17EA59D110E5B453A355F09256B6E8 /* Then.swift */,
 				C89998378EEE3AFA653C8025960ECEAB /* Support Files */,
 			);
-			name = Then;
 			path = Then;
 			sourceTree = "<group>";
 		};
@@ -1342,7 +1340,6 @@
 				8723D1815F9AA1956998B517D3CC17D1 /* WeakMapTable.swift */,
 				1F2BD9833C32C03352015B2AAA7FEB69 /* Support Files */,
 			);
-			name = WeakMapTable;
 			path = WeakMapTable;
 			sourceTree = "<group>";
 		};
@@ -1448,7 +1445,6 @@
 				8068FDA4AC130CC1938EA34C2DE66E74 /* UILayoutSupport+Extensions.swift */,
 				A4D5E61C2DD65BA78EE9D438FD211529 /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -1542,7 +1538,6 @@
 				2030EA063510B247D0BBEC461830171D /* Validation.swift */,
 				D054D158D0249BEA040AA8706F538122 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1551,7 +1546,7 @@
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
 				3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya */,
-				63273FF6884015663B12D14E0FB80BE9 /* Pods-bamboo-iOS */,
+				63273FF6884015663B12D14E0FB80BE9 /* Pods_bamboo_iOS.framework */,
 				B410DCBE90B3B7A03D73EA32F863D844 /* ReactorKit */,
 				ED208E682DFD1434E270075258C18E51 /* RxAppState */,
 				BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa */,
@@ -1574,7 +1569,6 @@
 				7A75F350DF5711AD39C3B2A79A18F864 /* UIViewController+Rx.swift */,
 				F2CE1E2AE84A7F0E58C9C9A1078868D2 /* Support Files */,
 			);
-			name = RxAppState;
 			path = RxAppState;
 			sourceTree = "<group>";
 		};
@@ -1742,7 +1736,6 @@
 				05640750058D2E0C16456C1688295FEA /* WKWebView+Rx.swift */,
 				24AC6F0D8C225D09B396673AAE2DC6BB /* Support Files */,
 			);
-			name = RxCocoa;
 			path = RxCocoa;
 			sourceTree = "<group>";
 		};
@@ -1779,7 +1772,6 @@
 				17005F6364AFFFACCFF4F4F643C84039 /* View.swift */,
 				E692A901C9E860CB6F4388D2B83FE1EE /* Support Files */,
 			);
-			name = ReactorKit;
 			path = ReactorKit;
 			sourceTree = "<group>";
 		};
@@ -1804,7 +1796,6 @@
 				8EC5CB95D87FEC93E3DA5B13A0C0E74E /* RxKeyboard.swift */,
 				A93045FD33A9AE09AC17BB970021EDCF /* Support Files */,
 			);
-			name = RxKeyboard;
 			path = RxKeyboard;
 			sourceTree = "<group>";
 		};
@@ -1842,7 +1833,6 @@
 				2F13D0C87FA3EE224BD0231C52013439 /* UIWindow+Presentable.swift */,
 				AF12E4ADFC2419BE3A220895AABD9F3C /* Support Files */,
 			);
-			name = RxFlow;
 			path = RxFlow;
 			sourceTree = "<group>";
 		};
@@ -2081,7 +2071,6 @@
 				E3BA1BC4411F250F130860C9E57E9DB1 /* Zip+Collection.swift */,
 				BD4D9EE396CDE7144AFFE15C669DE2C0 /* Support Files */,
 			);
-			name = RxSwift;
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
@@ -2107,7 +2096,6 @@
 				A0E5EBFC1FA6FBC1F49A86DDAF132317 /* UIViewController+Rx.swift */,
 				72669834963CA404072B4803AB9CD51F /* Support Files */,
 			);
-			name = RxViewController;
 			path = RxViewController;
 			sourceTree = "<group>";
 		};
@@ -2121,7 +2109,6 @@
 				300F659168C7B97CB534CE37E25052A8 /* Utils.swift */,
 				6D228CB5446A2CD06CE76451AEBCF756 /* Support Files */,
 			);
-			name = RxRelay;
 			path = RxRelay;
 			sourceTree = "<group>";
 		};
@@ -2395,7 +2382,7 @@
 			);
 			name = "Pods-bamboo-iOS";
 			productName = Pods_bamboo_iOS;
-			productReference = 63273FF6884015663B12D14E0FB80BE9 /* Pods-bamboo-iOS */;
+			productReference = 63273FF6884015663B12D14E0FB80BE9 /* Pods_bamboo_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6 /* RxCocoa */ = {
