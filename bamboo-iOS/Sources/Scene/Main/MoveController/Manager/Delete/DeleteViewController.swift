@@ -16,7 +16,7 @@ class DeleteViewController : BaseVC{
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
     }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
         $0.backgroundColor = .clear
     }
     
@@ -97,7 +97,7 @@ class DeleteViewController : BaseVC{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-        
+
     }
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
@@ -117,7 +117,7 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item == 0{
@@ -137,7 +137,7 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableView.automaticDimension
         }
         else if indexPath.item == 1{
-            return 10
+            return bounds.height/81.2
         }
         return 0
     }

@@ -11,7 +11,7 @@ import RxViewController
 
 class MainTabbarController : UITabBarController{
     
-    let homeVc = ManagerViewController()
+    let homeVc = MainViewController()
     let ruleVc = RuleViewController()
     let detailVc = DetailViewController()
 

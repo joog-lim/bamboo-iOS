@@ -45,7 +45,6 @@
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
 		EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */; };
-		EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -105,7 +104,6 @@
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
 		EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModalProtocol.swift; sourceTree = "<group>"; };
-		EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingCell.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
@@ -551,7 +549,6 @@
 			isa = PBXGroup;
 			children = (
 				EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */,
-				EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */,
 				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
 				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
 			);
@@ -700,14 +697,6 @@
 			path = WifiSystem;
 			sourceTree = "<group>";
 		};
-		EEAA062C270D7424000EA78D /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				EEB46BD22709B3E200ED679B /* TableViewLoadingCell.swift */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
 		EEAA062D270D8072000EA78D /* ManagerMainTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,14 +746,6 @@
 				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EEB46BD12709B3CF00ED679B /* TableViewLoadingCell */ = {
-			isa = PBXGroup;
-			children = (
-				EEAA062C270D7424000EA78D /* TableViewCell */,
-			);
-			path = TableViewLoadingCell;
 			sourceTree = "<group>";
 		};
 		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
@@ -983,7 +964,6 @@
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
-				EEB46BD32709B3E200ED679B /* TableViewLoadingCell.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */,

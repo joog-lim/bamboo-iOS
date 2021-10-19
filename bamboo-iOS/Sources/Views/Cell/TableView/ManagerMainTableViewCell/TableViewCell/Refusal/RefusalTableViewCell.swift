@@ -41,11 +41,7 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
     }
-    //MARK: - layoutSubview
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: bounds.width/18.75, bottom: 5, right: bounds.width/18.75   ))
-    }
+
     //MARK: - Configure
     override func configure() {
         super.configure()

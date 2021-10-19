@@ -51,11 +51,7 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
         $0.numberOfLines = 0
         $0.textColor = .black
     }
-    //MARK: - layoutSubview
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: bounds.width/18.75, bottom: 0, right: bounds.width/18.75   ))
-    }
+
     //MARK: - Configure
     override func configure() {
         super.configure()
