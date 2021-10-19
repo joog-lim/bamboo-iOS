@@ -1,22 +1,22 @@
 //
-//  ManagerTableViewCell.swift
+//  DeleteTableViewCell.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/10/06.
+//  Created by Ji-hoon Ahn on 2021/10/18.
 //
 
 import UIKit
 
-class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
+class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     //MARK: - Identifier
-    static let identifier = "AcceptManagerTableViewCell"
+    static let identifier = "DeleteTableViewCell"
     
     //MARK: - Properties
     private lazy var view = UIView()
     
     private lazy var algorithm = UILabel().then{
         $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
-        $0.textColor = .bamBoo_57CC4D
+        $0.textColor = .systemRed
     }
     private lazy var dataLabel = UILabel().then{
         $0.dynamicFont(fontSize: 9, currentFontName: "NanumSquareRoundR")
@@ -27,7 +27,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         $0.textColor = .bamBoo_57CC4D
     }
     private lazy var cellSettingbtn = UILabel().then{
-        $0.text = "수정"
+        $0.text = "더보기"
         $0.textColor = .lightGray
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
     }
@@ -36,15 +36,25 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         $0.textColor = .black
     }
     private lazy var contentLabel = UILabel().then{
-        $0.numberOfLines = 0
-        
+        $0.numberOfLines = 10
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.textColor = .black
+    }
+    private lazy var deleteReasonTitle = UILabel().then{
+        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
+        $0.text = "삭제요청사유"
+        $0.textColor = .black
+    }
+    private lazy var deleteReasonContent = UILabel().then{
+        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.text = "집집집집집집집집집집집집집집집집집집집집집집집집집집집집"
+        $0.numberOfLines = 0
         $0.textColor = .black
     }
     //MARK: - layoutSubview
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: bounds.width/18.75, bottom: 0, right: bounds.width/18.75   ))
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: bounds.width/18.75, bottom: 0, right: bounds.width/18.75   ))
     }
     //MARK: - Configure
     override func configure() {
@@ -88,16 +98,19 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.width/53.57)
             $0.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(6)
+            $0.bottom.equalToSuperview().inset(7)
         }
     }
     //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: Data) {
+    override func bind(_ model: DeleteContent) {
         super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
+        algorithm.text = "#\(model.numberOfAlgorithm)번째 삭제요청"
         dataLabel.text = model.data
         tagLabel.text = "#" +  model.tag.rawValue
         titleLabel.text = model.title
         contentLabel.text = model.content
+        deleteReasonContent.text = model.deleteContente
     }
 }
+
+

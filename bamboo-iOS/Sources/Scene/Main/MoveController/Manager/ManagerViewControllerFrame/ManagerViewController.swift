@@ -9,6 +9,7 @@ import UIKit
 
 class ManagerViewController: BaseVC{
         
+    let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
     //MARK: Properties
     let pageCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,7 +18,7 @@ class ManagerViewController: BaseVC{
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
-        cv.register(PageCell.self, forCellWithReuseIdentifier: PageCell.identifier)
+        cv.register(UICollectionViewCell.self                    , forCellWithReuseIdentifier: "cell")
         return cv
     }()
     private let customMenuBar = CustomMenuBar().then{
@@ -59,8 +60,8 @@ class ManagerViewController: BaseVC{
 //MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageCell.identifier, for: indexPath) as? PageCell else {return UICollectionViewCell()}
-
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UICollectionViewCell else {return UICollectionViewCell()}
+        cell.addSubview(vc[indexPath.row].view)
         return cell
     }
     

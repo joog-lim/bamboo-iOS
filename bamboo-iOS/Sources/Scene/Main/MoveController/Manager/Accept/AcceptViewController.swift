@@ -8,10 +8,11 @@
 import UIKit
 
 class AcceptViewController : BaseVC {
+    
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    var data : [Data] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
+    var data : [Data] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -19,30 +20,24 @@ class AcceptViewController : BaseVC {
     
     
     private let titleLabel = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "안녕하세요,관리자님!")
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
-        $0.textColor = .rgb(red: 87, green: 204, blue: 77)
-        $0.numberOfLines = 2
-        string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
-        $0.attributedText = string
+        $0.text = "수락"
+        $0.textColor = .bamBoo_57CC4D
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.identifier)
         $0.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
         $0.estimatedRowHeight = 300
     }
-    
-    //MARK: - Selectors
-
 
     //MARK: - Helper
     override func configure() {
         super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/4.06, right: 0)
     }
     override func configureAppear() {
         super.configureAppear()
@@ -62,6 +57,7 @@ class AcceptViewController : BaseVC {
         mainTableView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
         }
+
     }
 
     //MARK: - Data load More
@@ -92,7 +88,7 @@ class AcceptViewController : BaseVC {
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/40.6)
+            $0.centerY.equalTo(tableViewHeader)
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
@@ -118,7 +114,7 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.identifier, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
             cell.model = data[indexPath.row]
             return cell
         }else{

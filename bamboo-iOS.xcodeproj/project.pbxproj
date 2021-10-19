@@ -20,11 +20,13 @@
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */; };
-		EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CC271D03D9003140CD /* PageCell.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
 		EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */; };
 		EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */; };
 		EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */; };
+		EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */; };
+		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
+		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -72,11 +74,13 @@
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
-		EE7CA2CC271D03D9003140CD /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
+		EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewCell.swift; sourceTree = "<group>"; };
+		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
+		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -370,22 +374,6 @@
 			path = CustomMenubar;
 			sourceTree = "<group>";
 		};
-		EE7CA2CA271D03AA003140CD /* PageCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				EE7CA2CB271D03BB003140CD /* CollectionViewCell */,
-			);
-			path = PageCollectionView;
-			sourceTree = "<group>";
-		};
-		EE7CA2CB271D03BB003140CD /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				EE7CA2CC271D03D9003140CD /* PageCell.swift */,
-			);
-			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
 		EE7CA2CE271D3A70003140CD /* Accept */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +402,30 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		EE7CA2E1271D91E2003140CD /* StandBy */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */,
+			);
+			path = StandBy;
+			sourceTree = "<group>";
+		};
+		EE7CA2E3271D9201003140CD /* Refusal */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */,
+			);
+			path = Refusal;
+			sourceTree = "<group>";
+		};
+		EE7CA2E4271D920A003140CD /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -549,7 +561,6 @@
 		EE97B75F271B472C00479A06 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				EE7CA2CA271D03AA003140CD /* PageCollectionView */,
 				EEF42F0E270BC2240088043F /* ManagerStatusMenuCollectionView */,
 			);
 			path = CollectionView;
@@ -708,6 +719,9 @@
 		EEAA062E270D80D1000EA78D /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				EE7CA2E4271D920A003140CD /* Delete */,
+				EE7CA2E3271D9201003140CD /* Refusal */,
+				EE7CA2E1271D91E2003140CD /* StandBy */,
 				EEAA0631270D8462000EA78D /* Accept */,
 			);
 			path = TableViewCell;
@@ -941,14 +955,15 @@
 			files = (
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
+				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
-				EE7CA2CD271D03D9003140CD /* PageCell.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
+				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
 				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
@@ -957,6 +972,7 @@
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
+				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,

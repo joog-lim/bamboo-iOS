@@ -19,16 +19,13 @@ class StandByViewController : BaseVC{
     
     
     private let titleLabel = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "안녕하세요,\n관리자님!")
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
-        $0.textColor = .rgb(red: 87, green: 204, blue: 77)
-        $0.numberOfLines = 2
-        string.setColorForText(textToFind: "관리자님!", withColor: .black)
-        $0.attributedText = string
+        $0.text = "대기"
+        $0.textColor = .systemYellow
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.identifier)
         $0.register(TableViewLoadingCell.self, forCellReuseIdentifier: TableViewLoadingCell.identifier)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
@@ -42,7 +39,7 @@ class StandByViewController : BaseVC{
     //MARK: - Helper
     override func configure() {
         super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/4.06, right: 0)
     }
     override func configureAppear() {
         super.configureAppear()
@@ -118,7 +115,7 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
             cell.model = data[indexPath.row]
             return cell
         }else{
