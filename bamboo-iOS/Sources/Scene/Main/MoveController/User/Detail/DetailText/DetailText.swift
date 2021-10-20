@@ -18,9 +18,7 @@ enum detailString : String{
     광대숲은 저희 학교만의 익명 커뮤니티를 만들고 운영하며
     학교 사람들이 담아두기만 하던 어려운 이야기부터
     사소하고 조그만 이야기까지 함께 나눴으면 하는 마음으로 개발을 시작하게 되었습니다.
-    """
     
-    case somethingIAskOften = """
     자주 묻는 말
     
     Q. 광대숲이란 무엇인가요?
@@ -42,15 +40,8 @@ enum detailString : String{
     
     A. 광대숲은 모든 글이 관리자의 허가를 맡아서 올라가기에 올라갈 때 시간이 걸릴 수 있습니다.
     또한 부적절한 내용으로 검토 및 삭제가 되었을 수 있습니다.
-    """
-    
-    
-    case bottomsomethingIAskOften = """
     자세한 내용은 규칙을 참고해주세요.
-    """
     
-    case inquiry =
-    """
     문의
     
     github : https://github.com/joog-lim/bamboo-iOS

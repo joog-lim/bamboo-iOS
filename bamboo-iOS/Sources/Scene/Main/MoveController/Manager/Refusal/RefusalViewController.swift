@@ -74,9 +74,7 @@ class RefusalViewController : BaseVC{
             DispatchQueue.global().async {
                 sleep(2)
                 for i in start...end{
-
                     self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
-                    
                 }
                 DispatchQueue.main.async {
                     self.mainTableView.reloadData()
@@ -97,11 +95,11 @@ class RefusalViewController : BaseVC{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-
     }
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
+        activityIndicatorView.tintColor = .lightGray
         mainTableView.tableFooterView = tableViewFooter
         mainTableView.addSubview(activityIndicatorView)
         activityIndicatorView.snp.makeConstraints { make in
@@ -130,7 +128,6 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         return UITableViewCell()
-
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item == 0{

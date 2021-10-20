@@ -30,3 +30,4 @@ class BaseVC: UIViewController{
     }
     func configureAppear(){ }
 }
+

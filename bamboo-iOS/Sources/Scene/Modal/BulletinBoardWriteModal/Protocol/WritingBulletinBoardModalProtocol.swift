@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol WriteModalDelegate : class{
+protocol WriteModalDelegate : AnyObject{
     func onTapClose()
 }

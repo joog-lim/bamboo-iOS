@@ -102,6 +102,7 @@ class DeleteViewController : BaseVC{
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
+        activityIndicatorView.tintColor = .lightGray
         mainTableView.tableFooterView = tableViewFooter
         mainTableView.addSubview(activityIndicatorView)
         activityIndicatorView.snp.makeConstraints { make in

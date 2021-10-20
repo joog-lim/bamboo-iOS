@@ -10,6 +10,19 @@ import UIKit
 
 class DetailViewController : BaseVC{
     //MARK: - Properties
+    
+    let fifthFont : [String] = ["자주 묻는 말",
+                                "문의"]
+    
+    let thirdFont : [String] = ["안녕하세요, 광대숲 개발자입니다.",
+                                "Q. 광대숲이란 무엇인가요?",
+                                "Q. 댓글을 달 순 없나요?",
+                                "Q. 글에 반응을 달고 싶어요.",
+                                "Q. 내 의견을 찾을 수 없어요.",
+                                "Q. 댓글을 달 순 없나요?",
+                                "Q. 글에 반응을 달고 싶어요.",
+                                "Q. 내 의견을 찾을 수 없어요."]
+    
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
@@ -28,57 +41,36 @@ class DetailViewController : BaseVC{
     private let divider = UIView().then{
         $0.backgroundColor = .bamBoo_57CC4D
     }
-    private let greetingsLabel = ExplanationLabel( fontSize: 15, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
+    private lazy var  greetingsLabel = ExplanationLabel( fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: detailString.greetings.rawValue)
-        string.setFontForText(textToFind: "안녕하세요, 광대숲 개발자입니다.", withFont: .boldSystemFont(ofSize: 18))
-        $0.attributedText = string
-    }
-    private let somethingIAskOften = ExplanationLabel( fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
-        let string = NSMutableAttributedString(string: detailString.somethingIAskOften.rawValue)
-        string.setFontForText(textToFind: "자주 묻는 말", withFont: .boldSystemFont(ofSize: 18))
-        string.setFontForText(textToFind: "Q. 광대숲이란 무엇인가요?", withFont: .boldSystemFont(ofSize: 15))
-        string.setFontForText(textToFind: "Q. 댓글을 달 순 없나요?", withFont: .boldSystemFont(ofSize: 15))
-        string.setFontForText(textToFind: "Q. 글에 반응을 달고 싶어요.", withFont: .boldSystemFont(ofSize: 15))
-        string.setFontForText(textToFind: "Q. 내 의견을 찾을 수 없어요.", withFont: .boldSystemFont(ofSize: 15))
-        $0.attributedText = string
-    }
-    private let clickLabel = ExplanationLabel(fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
-        let string = NSMutableAttributedString(string: detailString.bottomsomethingIAskOften.rawValue)
+        fifthFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 15, currentFontName: "NanumSquareRoundB", textstyle: .body))}
+        thirdFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 13, currentFontName: "NanumSquareRoundB", textstyle: .body))}
         string.setColorForText(textToFind: "규칙", withColor: .bamBoo_57CC4D)
         $0.attributedText = string
     }
-    private let bottomLabel = ExplanationLabel(fontSize: 13, fontStyle: "NanumSquareRoundB", labelColor: .black).then{
-        let string = NSMutableAttributedString(string: detailString.inquiry.rawValue)
-        string.setFontForText(textToFind: "문의", withFont: .boldSystemFont(ofSize: 18))
-        $0.attributedText = string
-    }
-    
+
     
     //MARK: - Selectors
-    @objc private func gesture(sender:UITapGestureRecognizer){
-        
-    }
+
 
     //MARK: - Helper
     override func configure() {
         super.configure()
         addView()
         location()
-        gestureLabel()
     }
 
     //MARK: - Gesture
-    private func gestureLabel(){
-        clickLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gesture)))
-    }
+
     //MARK: - addView
     private func addView(){
         view.addSubview(backGroundScrollView)
-        [titleLabel,explanationLabel,divider,greetingsLabel,somethingIAskOften,clickLabel,bottomLabel].forEach{backGroundScrollView.addSubview($0)}
+        [titleLabel,explanationLabel,divider,greetingsLabel].forEach{backGroundScrollView.addSubview($0); $0.sizeToFit()}
     }
     
     //MARK: - Location
     private func location(){
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/40.6)
             $0.left.equalToSuperview().offset(bounds.width/26.786)
@@ -98,26 +90,15 @@ class DetailViewController : BaseVC{
             $0.top.equalTo(divider.snp.bottom).offset(bounds.height/23.88)
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/26.786)
-            
         }
-        somethingIAskOften.snp.makeConstraints {
-            $0.top.equalTo(greetingsLabel.snp.bottom).offset(bounds.height/27.06666)
-            $0.left.equalTo(titleLabel)
-            $0.right.equalTo(view).inset(bounds.width/26.786)
-        }
-        clickLabel.snp.makeConstraints {
-            $0.top.equalTo(somethingIAskOften.snp.bottom)
-            $0.left.equalTo(somethingIAskOften)
-        }
-        bottomLabel.snp.makeConstraints {
-            $0.top.equalTo(clickLabel.snp.bottom).offset(bounds.height/27.067)
-            $0.left.equalTo(clickLabel)
-        }
+
         
         //MARK: - ScrollView
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }
-        backGroundScrollView.contentSize = CGSize(width: view.frame.width, height: bounds.height/0.938728)
+        backGroundScrollView.contentSize = CGSize(width: view.frame.width,
+                                                  height:  titleLabel.frame.height + bounds.height/3.4
+                                                  +  explanationLabel.frame.height  + greetingsLabel .frame.height)
     }
 }

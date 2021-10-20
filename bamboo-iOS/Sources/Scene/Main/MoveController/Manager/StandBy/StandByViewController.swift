@@ -20,7 +20,6 @@ class StandByViewController : BaseVC{
         $0.backgroundColor = .clear
     }
     
-    
     private let titleLabel = UILabel().then{
         $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
         $0.text = "대기"
@@ -102,6 +101,7 @@ class StandByViewController : BaseVC{
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
+        activityIndicatorView.tintColor = .lightGray
         mainTableView.tableFooterView = tableViewFooter
         mainTableView.addSubview(activityIndicatorView)
         activityIndicatorView.snp.makeConstraints { make in

@@ -18,6 +18,8 @@
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
 		EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */; };
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
+		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
+		EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E56271EBA47006D0F03 /* BaseView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -71,6 +73,8 @@
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerStatusMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
+		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
+		EE680E56271EBA47006D0F03 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		EE1D8AEA27180C06003614BE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EE680E55271EBA3F006D0F03 /* BaseView */,
 				EEF42F15270BDAB30088043F /* BaseVC */,
 				EE3BA5772702EFB000281096 /* BaseTableViewCell */,
 				EE97B75B271B3DBE00479A06 /* BaseCollectionViewCell */,
@@ -323,6 +328,30 @@
 			path = UserData;
 			sourceTree = "<group>";
 		};
+		EE680E50271EB911006D0F03 /* Custom Alert */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */,
+			);
+			path = "Custom Alert";
+			sourceTree = "<group>";
+		};
+		EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */ = {
+			isa = PBXGroup;
+			children = (
+				EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */,
+			);
+			path = "Custom PostLikeOrDisLike";
+			sourceTree = "<group>";
+		};
+		EE680E55271EBA3F006D0F03 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				EE680E56271EBA47006D0F03 /* BaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,12 +377,13 @@
 			path = CustomTextfield;
 			sourceTree = "<group>";
 		};
-		EE7C6F7826EEEC720071031C /* CustomAlert */ = {
+		EE7C6F7826EEEC720071031C /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */,
+				EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */,
+				EE680E50271EB911006D0F03 /* Custom Alert */,
 			);
-			path = CustomAlert;
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		EE7C6F7926EEEC880071031C /* Home */ = {
@@ -579,7 +609,7 @@
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
 				EE7CA2C7271CEFFC003140CD /* CustomMenubar */,
-				EE7C6F7826EEEC720071031C /* CustomAlert */,
+				EE7C6F7826EEEC720071031C /* CustomView */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
@@ -934,6 +964,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
@@ -952,6 +983,7 @@
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
+				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,

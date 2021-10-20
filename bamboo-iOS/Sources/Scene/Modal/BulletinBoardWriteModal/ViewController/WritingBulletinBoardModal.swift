@@ -14,6 +14,9 @@ class WritingBulletinBoardModal: BaseVC{
     let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties
     weak var delegate : WriteModalDelegate?
+    
+    private lazy var dropDownStatus : Bool = false
+    
     private let transparentView = UIView()
     private let tagSelectView = UIView()
     private let tagChoose = UITableView().then{
@@ -89,7 +92,7 @@ class WritingBulletinBoardModal: BaseVC{
         dismiss(animated: true, completion: nil)
     }
     @objc func tagChooseBtnClick(){
-        addTagTableViewSetting(frames: tagChooseBtn.frame)
+        dropDownStatus == false ? addTagTableViewSetting(frames: tagChooseBtn.frame) : nil
     }
     
     //MARK: - Keyboard Setting
@@ -195,13 +198,15 @@ class WritingBulletinBoardModal: BaseVC{
         tagSelectView.alpha = 0
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut) { [self] in
             tagSelectView.alpha = 0.5
-            tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + frames.height, width: frames.width, height: CGFloat(tagDataSection.count * 25))
+            dropDownStatus = true
+            tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + frames.height, width: frames.width, height: CGFloat(CGFloat(tagDataSection.count) * bounds.height/32.48))
         }
     }
     //MARK: - DropDown remove
     private func removeDropDown(){
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut) { [self] in
             tagSelectView.alpha = 0
+            dropDownStatus = false
             tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + tagChooseBtn.frame.height, width: tagChooseBtn.frame.width, height: 0)
         }
     }

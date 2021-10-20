@@ -18,7 +18,7 @@ class ManagerViewController: BaseVC{
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.isPagingEnabled = true
         cv.showsHorizontalScrollIndicator = false
-        cv.register(UICollectionViewCell.self                    , forCellWithReuseIdentifier: "cell")
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
     private let customMenuBar = CustomMenuBar().then{
@@ -60,7 +60,7 @@ class ManagerViewController: BaseVC{
 //MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UICollectionViewCell else {return UICollectionViewCell()}
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
         cell.addSubview(vc[indexPath.row].view)
         return cell
     }
