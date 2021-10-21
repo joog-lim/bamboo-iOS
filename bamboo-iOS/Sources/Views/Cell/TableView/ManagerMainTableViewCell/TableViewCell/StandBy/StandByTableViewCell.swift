@@ -34,9 +34,9 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundB")
         $0.textColor = .black
     }
-    private lazy var cellSettingbtn = UILabel().then{
-        $0.text = "더보기"
-        $0.textColor = .lightGray
+    private lazy var cellSettingbtn = UIButton().then{
+        $0.setTitle("더보기", for: .normal)
+        $0.setTitleColor(.lightGray, for: .normal)
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
     }
     private lazy var contentLabel = UILabel().then{
@@ -44,7 +44,7 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
     }
-
+    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -55,6 +55,8 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
+
+
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -75,6 +77,7 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         }
         cellSettingbtn.snp.makeConstraints {
             $0.top.equalTo(algorithm)
+            $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
         }
         titleLabel.snp.makeConstraints {

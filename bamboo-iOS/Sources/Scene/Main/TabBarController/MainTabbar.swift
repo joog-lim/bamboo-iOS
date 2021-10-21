@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 import RxViewController
 
+
 class MainTabbarController : UITabBarController{
     
-    let homeVc = MainViewController()
+
+    private lazy var homeVc = MainViewController()
     let ruleVc = RuleViewController()
     let detailVc = DetailViewController()
 
@@ -20,12 +22,10 @@ class MainTabbarController : UITabBarController{
         view.backgroundColor = .white
         navigationSetting()
         NetworkStatus()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         vcSetting()
         setTabBarBackgroundColor()
     }
+
     
     //MARK: - Moving ViewController Setting
     private func vcSetting(){
@@ -35,6 +35,9 @@ class MainTabbarController : UITabBarController{
         //MARK: - 무슨 페이지를 보여줄지
         viewControllers = [homeVc,ruleVc,detailVc]
         
+    }
+    static func instance() -> MainTabbarController {
+        return MainTabbarController(nibName: nil, bundle: nil)
     }
     
     //MARK: - Tabbar Setting
@@ -67,3 +70,4 @@ class MainTabbarController : UITabBarController{
         navigationItem.applyImageNavigation()
     }
 }
+

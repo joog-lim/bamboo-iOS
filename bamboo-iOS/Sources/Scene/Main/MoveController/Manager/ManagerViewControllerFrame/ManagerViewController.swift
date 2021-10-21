@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ManagerViewController: BaseVC{
         
     let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]

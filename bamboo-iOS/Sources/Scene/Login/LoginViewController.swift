@@ -10,11 +10,11 @@ import SnapKit
 import Then
 import RxSwift
 
-
 class LoginViewController : BaseVC {
     //MARK: - Properties
     
-    private var vcChoose = UIViewController()
+    
+    private var vcChoose : UIViewController?
     
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
@@ -61,6 +61,7 @@ class LoginViewController : BaseVC {
     }
     @objc func ClickUserBtn(){
         vcChoose = MainViewController()
+        print(vcChoose ?? UIViewController())
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
@@ -71,6 +72,7 @@ class LoginViewController : BaseVC {
     }
     @objc func clickLoginBtn(){
         vcChoose = ManagerViewController()
+        print(vcChoose ?? UIViewController())
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }

@@ -363,6 +363,7 @@
 		EE7C6F7626EEEC4E0071031C /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
+				EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */,
 				EE97B73A271B08B800479A06 /* LoginButton */,
 				EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */,
 			);
@@ -380,7 +381,6 @@
 		EE7C6F7826EEEC720071031C /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */,
 				EE680E50271EB911006D0F03 /* Custom Alert */,
 			);
 			path = CustomView;

@@ -96,7 +96,6 @@ class StandByViewController : BaseVC{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-
     }
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()

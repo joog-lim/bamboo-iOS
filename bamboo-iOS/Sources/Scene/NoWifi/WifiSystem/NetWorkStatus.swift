@@ -29,7 +29,7 @@ final class NetWorkStatus {
     
     public func StartMonitoring(){
         monitor.pathUpdateHandler = { [weak self] path in
-            self?.isConnect = path.status == .unsatisfied
+            self?.isConnect = path.status != .unsatisfied
             self?.getConnectionType(path)
             print(self?.isConnect ?? "N/A")
         }

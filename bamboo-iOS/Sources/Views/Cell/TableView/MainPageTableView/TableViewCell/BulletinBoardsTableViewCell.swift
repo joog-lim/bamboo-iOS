@@ -40,6 +40,12 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private lazy var footerView = UIView().then{
         $0.backgroundColor = .clear
     }
+    private lazy var likeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Good")?.withRenderingMode(.alwaysTemplate) ).then{
+        $0.iv.tintColor = .blue
+    }
+    private lazy var dislikeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Hate")?.withRenderingMode(.alwaysTemplate)).then{
+        $0.iv.tintColor = .gray
+    }
     
     //MARK: - Configure
     override func configure() {
@@ -49,7 +55,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn].forEach { view.addSubview($0)}
     }
     private func location(){
         view.snp.makeConstraints { make in
@@ -83,6 +89,18 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
             $0.height.equalTo(bounds.width/7.5)
             $0.width.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+        likeBtn.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(11)
+            $0.right.equalTo(dislikeBtn.snp.left).offset(bounds.width/22.26 * -1)
+            $0.height.equalTo(16)
+            $0.width.equalTo(bounds.width/12.83)
+        }
+        dislikeBtn.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(11)
+            $0.right.equalToSuperview().inset(bounds.width/29)
+            $0.height.equalTo(16)
+            $0.width.equalTo(bounds.width/12.83)
         }
     }
     //MARK: - bind로 데이터 넘겨줌

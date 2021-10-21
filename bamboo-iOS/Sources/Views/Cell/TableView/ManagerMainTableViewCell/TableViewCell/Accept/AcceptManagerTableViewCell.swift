@@ -43,7 +43,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
         $0.textColor = .black
     }
-
+    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -54,6 +54,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<Data>{
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
+
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
