@@ -41,10 +41,10 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         $0.backgroundColor = .clear
     }
     private lazy var likeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Good")?.withRenderingMode(.alwaysTemplate) ).then{
-        $0.iv.tintColor = .blue
+        $0.iv.tintColor = .systemBlue
     }
     private lazy var dislikeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Hate")?.withRenderingMode(.alwaysTemplate)).then{
-        $0.iv.tintColor = .gray
+        $0.iv.tintColor = .lightGray
     }
     
     //MARK: - Configure

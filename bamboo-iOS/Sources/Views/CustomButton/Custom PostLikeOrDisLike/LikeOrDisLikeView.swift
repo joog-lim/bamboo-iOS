@@ -14,7 +14,7 @@ class LikeOrDisLikeView : UIButton{
     }
     let label = UILabel().then{
         $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR", textStyle: .body)
-        $0.textColor = .gray
+        $0.textColor = .lightGray
         $0.text = "1"
     }
     init(imageLikeOrDisLike : UIImage?){
@@ -30,7 +30,17 @@ class LikeOrDisLikeView : UIButton{
         super.layoutSubviews()
         location()
     }
-    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                iv.tintColor = .lightGray
+            }
+            else{
+                iv.tintColor = .systemBlue
+            }
+            
+        }
+    }
     private func addView(){
         [iv,label].forEach{ addSubview($0)}
     }
