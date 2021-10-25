@@ -22,7 +22,7 @@ class DeleteViewController : BaseVC{
     
     
     private let titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "삭제"
         $0.textColor = .red
     }
@@ -36,7 +36,6 @@ class DeleteViewController : BaseVC{
     }
     
     //MARK: - Selectors
-
 
     //MARK: - Helper
     override func configure() {
@@ -64,7 +63,7 @@ class DeleteViewController : BaseVC{
             $0.left.right.equalToSuperview()
         }
     }
-
+    
     //MARK: - Data load More
     private func loadMoreData(){
         if !self.isLoaing{
@@ -116,7 +115,6 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }

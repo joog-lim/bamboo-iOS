@@ -21,13 +21,14 @@ class RuleViewController : BaseVC {
     private let titleLabel = UILabel().then{
         $0.text = "규칙"
         $0.textColor = .bamBoo_57CC4D
-        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
     }
     
     private lazy var  ruleLabel = ExplanationLabel(fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: ruleString.rule.rawValue)
-        fifteenFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 15))}
-        thirdTeenFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 13))}
+        
+        fifteenFont.forEach{string.setFontForText(textToFind: $0, withFont:  UIFont(name: "NanumSquareRoundR", size: 15) ?? UIFont())}
+        thirdTeenFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundR", size: 13) ?? UIFont())}
         $0.attributedText = string
     }
     

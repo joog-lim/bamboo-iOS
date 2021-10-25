@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefusalTableViewCell : BaseTableViewCell<Data>{
+class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "RefusalTableViewCell"
     
@@ -18,31 +18,35 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
         $0.layer.cornerRadius = 5
     }
     private lazy var algorithm = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemRed
     }
     private lazy var dataLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
     private lazy var tagLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var cellSettingbtn = UILabel().then{
-        $0.text = "거절취소"
-        $0.textColor = .systemRed
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+    let cellSettingbtn = UIButton().then{
+        $0.setTitle("거절취소", for: .normal)
+        $0.setTitleColor(.systemRed, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private lazy var titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
+    
+    //MARK: - Selector
+
+    
 
     //MARK: - Configure
     override func configure() {
@@ -50,6 +54,7 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
         addSubviews()
         location()
     }
+    
     private func addSubviews(){
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
@@ -57,7 +62,7 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(bounds.width/29)
+            make.left.right.equalToSuperview().inset(bounds.width/18.75)
             make.bottom.equalToSuperview()
         }
         algorithm.snp.makeConstraints {
@@ -69,11 +74,12 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
             $0.centerX.equalToSuperview()
         }
         tagLabel.snp.makeConstraints{
-            $0.top.equalTo(algorithm)
+            $0.centerY.equalTo(algorithm)
             $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
         }
         cellSettingbtn.snp.makeConstraints {
-            $0.top.equalTo(algorithm)
+            $0.centerY.equalTo(algorithm)
+            $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
         }
         titleLabel.snp.makeConstraints {
@@ -87,7 +93,7 @@ class RefusalTableViewCell : BaseTableViewCell<Data>{
         }
     }
     //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: Data) {
+    override func bind(_ model: ManagerTextData) {
         super.bind(model)
         algorithm.text = "#\(model.numberOfAlgorithm)번째 거절됨"
         dataLabel.text = model.data

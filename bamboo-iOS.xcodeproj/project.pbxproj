@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
+		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
+		EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -63,6 +65,8 @@
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
+		EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalProtocol.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +233,31 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
+		EE210FEB2725A13800320FFD /* EditContentModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FEF2725A20800320FFD /* ViewController */,
+				EE210FEE2725A20100320FFD /* Protocol */,
+			);
+			path = EditContentModal;
+			sourceTree = "<group>";
+		};
+		EE210FEE2725A20100320FFD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE210FEF2725A20800320FFD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FEC2725A1DE00320FFD /* EditContentModal.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +318,7 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EE210FEB2725A13800320FFD /* EditContentModal */,
 				EE3BA58127032A5500281096 /* BulletinBoardWriteModal */,
 			);
 			path = Modal;
@@ -991,6 +1021,7 @@
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
+				EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
@@ -1001,6 +1032,7 @@
 				EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
+				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,

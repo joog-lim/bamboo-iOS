@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CustomMenuBarDelegate: class {
+protocol CustomMenuBarDelegate: AnyObject {
     func customMenuBar(scrollTo index: Int)
 }
 class CustomMenuBar : UIView{

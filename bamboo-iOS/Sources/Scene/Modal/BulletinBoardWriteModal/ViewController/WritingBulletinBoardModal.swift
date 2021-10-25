@@ -34,24 +34,24 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
-        $0.dynamicFont(fontSize: 16, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
         $0.textColor = .bamBoo_57CC4D
     }
     private let questionTitle = UILabel().then{
         $0.textColor = .black
         $0.text = "올리고 싶은 글을 입력해주세요!"
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
     private let titleTf = AlertTextField(placeholder: "제목을 입력하세요.", fontSize: 10)
     private let tagChooseBtn = LoginButton(placeholder: "태그선택", cornerRadius: 5).then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundB", size: 12)
         $0.addTarget(self, action: #selector(tagChooseBtnClick), for: .touchUpInside)
     }
-    private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.")
+    private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.", fontSize: 10)
     private let passwordTitle = UILabel().then{
         $0.text = "Q. 학교 와이파이 비번은 무엇일까요?"
         $0.textColor = .black
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
     private let passwordTf = AlertTextField(placeholder: "답변을 입력하세요.", fontSize: 10)
     private let sendBtn = LoginButton(placeholder: "전송", cornerRadius: 10).then{
@@ -139,7 +139,7 @@ class WritingBulletinBoardModal: BaseVC{
             make.height.equalToSuperview().dividedBy(1.75)
         }
         titleLabel.snp.makeConstraints {
-            $0.left.top.equalToSuperview().offset(bounds.height/33.83)
+            $0.left.top.equalToSuperview().offset(bounds.width/15.625)
         }
         questionTitle.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
@@ -211,6 +211,7 @@ class WritingBulletinBoardModal: BaseVC{
         }
     }
 }
+
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
         // TextView Place Holder

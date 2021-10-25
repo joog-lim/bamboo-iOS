@@ -14,12 +14,12 @@ class noWifiViewController : BaseVC{
     //MARK: - Properties
     private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
     private lazy var NoWifiLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "인터넷 연결"
         $0.textColor = .black
     }
     private lazy var subNoWifiLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.text = "오프라인 상태입니다. 인터넷 연결을 확인해주세요."
         $0.textColor = .black
     }
@@ -31,6 +31,7 @@ class noWifiViewController : BaseVC{
     //MARK: - Selectors
     @objc private func wifiTryAgain(){
         NetworkStatus()
+
         LodingAction()
     }
     

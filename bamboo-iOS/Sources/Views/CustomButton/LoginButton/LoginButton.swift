@@ -11,7 +11,7 @@ class LoginButton: UIButton {
 
     init(placeholder : String, cornerRadius : CGFloat) {
         super.init(frame: .zero)
-        self.backgroundColor = .rgb(red: 87, green: 204, blue: 77)
+        self.backgroundColor = .bamBoo_57CC4D
         layer.cornerRadius = cornerRadius
         setTitle(placeholder, for: .normal)
         setTitleColor(.white, for: .normal)

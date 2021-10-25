@@ -10,6 +10,8 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - Identifier
     static let identifier = "BulletinBoardsTableVIewCell"
     
+    private lazy var emotionStatus : Bool = false
+    
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
@@ -17,35 +19,66 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         $0.layer.cornerRadius = 5
     }
     private lazy var algorithm = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .bamBoo_57CC4D
     }
     private lazy var dataLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .lightGray
     }
     private lazy var tagLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .bamBoo_57CC4D
     }
     private lazy var titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
-    private lazy var footerView = UIView().then{
-        $0.backgroundColor = .clear
-    }
+    private lazy var footerView = UIView()
+    
     private lazy var likeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Good")?.withRenderingMode(.alwaysTemplate) ).then{
-        $0.iv.tintColor = .systemBlue
+        $0.iv.tintColor = .lightGray
+        $0.isSelected = true
+        $0.addTarget(self, action: #selector(clickLike), for: .touchUpInside)
     }
     private lazy var dislikeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Hate")?.withRenderingMode(.alwaysTemplate)).then{
         $0.iv.tintColor = .lightGray
+        $0.addTarget(self, action: #selector(clickDisLike), for: .touchUpInside)
+        $0.isSelected = true
     }
+    
+    
+    //MARK: - Selector
+    @objc func clickLike(){
+        if likeBtn.isSelected{
+            [likeBtn].forEach{ $0.iv.tintColor = .systemBlue; $0.label.textColor = .systemBlue; $0.isSelected = false}
+            disLikeBtnIsNotSelect()
+        }else{
+            LikeBtnIsNotSelect()
+        }
+    }
+    
+    @objc func clickDisLike(){
+        if dislikeBtn.isSelected{
+            [dislikeBtn].forEach{ $0.iv.tintColor = .systemBlue; $0.label.textColor = .systemBlue; $0.isSelected = false}
+            LikeBtnIsNotSelect()
+        }else{
+            disLikeBtnIsNotSelect()
+        }
+    }
+    //MARK: - Like Or DisLike Effect Method
+    private func disLikeBtnIsNotSelect(){
+        [dislikeBtn].forEach{ $0.iv.tintColor = .lightGray; $0.label.textColor = .lightGray; $0.isSelected = true}
+    }
+    private func LikeBtnIsNotSelect(){
+        [likeBtn].forEach{$0.iv.tintColor = .lightGray; $0.label.textColor = .lightGray; $0.isSelected = true}
+    }
+    
     
     //MARK: - Configure
     override func configure() {
@@ -57,10 +90,18 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn].forEach { view.addSubview($0)}
     }
+    
+    //Cell 재사용
+    override func Reuse() {
+        super.Reuse()
+        likeBtn.tintColor = .lightGray
+        dislikeBtn.tintColor = .lightGray
+    }
+    
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(bounds.width/29)
+            make.left.right.equalToSuperview().inset(bounds.width/18.75)
             make.bottom.equalToSuperview()
         }
         algorithm.snp.makeConstraints {
@@ -103,6 +144,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
             $0.width.equalTo(bounds.width/12.83)
         }
     }
+    
     //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: Data) {
         super.bind(model)
@@ -111,5 +153,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         tagLabel.text = "#" +  model.tag.rawValue
         titleLabel.text = model.title
         contentLabel.text = model.content
+        likeBtn.label.text = String(model.like)
+        dislikeBtn.label.text = String(model.disLike)
     }
 }

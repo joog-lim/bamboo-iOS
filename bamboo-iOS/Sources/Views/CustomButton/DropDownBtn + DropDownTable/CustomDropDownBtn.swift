@@ -10,7 +10,7 @@ import UIKit
 class CustomDropDownBtn : UIButton{
     
     let btnTitle = UILabel().then{
-        $0.dynamicFont(fontSize: 9, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 9)
         $0.textColor = .black
     }
     let iv = UIImageView(image: UIImage(named: "BAMBOO_Check")?.withRenderingMode(.alwaysTemplate)).then{

@@ -7,16 +7,6 @@
 
 import UIKit
 
-private let standard: CGFloat = 375
-private let bound = UIScreen.main.bounds
-
-//MARK: - TextField 재정의
-extension UITextField {
-      private func resizeFont(calculatedFont: UIFont?, weight: UIFont.Weight) {
-          self.font = calculatedFont
-          self.font = UIFont.systemFont(ofSize: calculatedFont!.pointSize, weight: weight)
-    }
-}
 
 //MARK: - dateFormatter extension
 extension String {
@@ -41,47 +31,6 @@ extension UIColor{
     static let bamBoo_57CC4D = rgb(red: 87, green: 204, blue: 77)
     
 }
-extension UILabel {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UIFont{
-    func dynamicfont(fontSize size : CGFloat, currentFontName : String = "NanumSquareRoundB",textstyle : UIFont.TextStyle = .body) -> UIFont{
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        return f
-    }
-}
-extension UITextField {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UITextView {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UIButton {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.titleLabel?.adjustsFontForContentSizeCategory = true
-        self.titleLabel?.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-
-
 
 //MARK: - UIView roundCornerRadius extension
 extension UIView {

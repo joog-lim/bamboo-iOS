@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StandByTableViewCell : BaseTableViewCell<Data>{
+class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "StandByTableViewCell"
     
@@ -19,29 +19,29 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
     }
     
     private lazy var algorithm = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemYellow
     }
     private lazy var dataLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
     private lazy var tagLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
     private lazy var titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 11)
         $0.textColor = .black
     }
-    private lazy var cellSettingbtn = UIButton().then{
+    let cellSettingbtn = UIButton().then{
         $0.setTitle("더보기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
     
@@ -56,11 +56,11 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
 
-
+    //MARK: - Location
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(bounds.width/29)
+            make.left.right.equalToSuperview().inset(bounds.width/18.75)
             make.bottom.equalToSuperview()
         }
         algorithm.snp.makeConstraints {
@@ -72,11 +72,11 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
             $0.centerX.equalToSuperview()
         }
         tagLabel.snp.makeConstraints{
-            $0.top.equalTo(algorithm)
+            $0.centerY.equalTo(algorithm)
             $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
         }
         cellSettingbtn.snp.makeConstraints {
-            $0.top.equalTo(algorithm)
+            $0.centerY.equalTo(algorithm)
             $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
         }
@@ -91,7 +91,7 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         }
     }
     //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: Data) {
+    override func bind(_ model: ManagerTextData) {
         super.bind(model)
         algorithm.text = "#\(model.numberOfAlgorithm)번째 대기중"
         dataLabel.text = model.data
@@ -100,4 +100,3 @@ class StandByTableViewCell : BaseTableViewCell<Data>{
         contentLabel.text = model.content
     }
 }
-

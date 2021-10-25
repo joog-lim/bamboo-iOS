@@ -43,8 +43,8 @@ class DetailViewController : BaseVC{
     }
     private lazy var  greetingsLabel = ExplanationLabel( fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: detailString.greetings.rawValue)
-        fifthFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 15, currentFontName: "NanumSquareRoundB", textstyle: .body))}
-        thirdFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont().dynamicfont(fontSize: 13, currentFontName: "NanumSquareRoundB", textstyle: .body))}
+        fifthFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 15) ?? UIFont())}
+        thirdFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 13) ?? UIFont())}
         string.setColorForText(textToFind: "규칙", withColor: .bamBoo_57CC4D)
         $0.attributedText = string
     }
