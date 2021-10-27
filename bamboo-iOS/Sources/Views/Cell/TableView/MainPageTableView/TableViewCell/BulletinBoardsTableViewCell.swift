@@ -10,6 +10,9 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - Identifier
     static let identifier = "BulletinBoardsTableVIewCell"
     
+    //MARK: - Delegate
+    weak var delegate : ClickReportBtnActionDelegate?
+    
     private lazy var emotionStatus : Bool = false
     
     //MARK: - Properties
@@ -42,48 +45,22 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private lazy var cellSettingbtn = UIButton().then{
         $0.setTitle("신고", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
+        $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private lazy var footerView = UIView()
     
     private lazy var likeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Good")?.withRenderingMode(.alwaysTemplate) ).then{
         $0.iv.tintColor = .lightGray
-        $0.isSelected = true
-        $0.addTarget(self, action: #selector(clickLike), for: .touchUpInside)
     }
     private lazy var dislikeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Hate")?.withRenderingMode(.alwaysTemplate)).then{
         $0.iv.tintColor = .lightGray
-        $0.addTarget(self, action: #selector(clickDisLike), for: .touchUpInside)
-        $0.isSelected = true
     }
-    
     
     //MARK: - Selector
-    @objc func clickLike(){
-        if likeBtn.isSelected{
-            [likeBtn].forEach{ $0.iv.tintColor = .systemBlue; $0.label.textColor = .systemBlue; $0.isSelected = false}
-            disLikeBtnIsNotSelect()
-        }else{
-            LikeBtnIsNotSelect()
-        }
+    @objc private func reportBtnclickAction(){
+        delegate?.clickReportBtnAction()
     }
-    
-    @objc func clickDisLike(){
-        if dislikeBtn.isSelected{
-            [dislikeBtn].forEach{ $0.iv.tintColor = .systemBlue; $0.label.textColor = .systemBlue; $0.isSelected = false}
-            LikeBtnIsNotSelect()
-        }else{
-            disLikeBtnIsNotSelect()
-        }
-    }
-    //MARK: - Like Or DisLike Effect Method
-    private func disLikeBtnIsNotSelect(){
-        [dislikeBtn].forEach{ $0.iv.tintColor = .lightGray; $0.label.textColor = .lightGray; $0.isSelected = true}
-    }
-    private func LikeBtnIsNotSelect(){
-        [likeBtn].forEach{$0.iv.tintColor = .lightGray; $0.label.textColor = .lightGray; $0.isSelected = true}
-    }
-    
     
     //MARK: - Configure
     override func configure() {
@@ -103,6 +80,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         dislikeBtn.tintColor = .lightGray
     }
     
+    //MARK: - Location(나중 정리 예정)
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -165,4 +143,8 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         likeBtn.label.text = String(model.like)
         dislikeBtn.label.text = String(model.disLike)
     }
+}
+//MARK: - 신고 버튼 눌렸을때 동작
+protocol ClickReportBtnActionDelegate : AnyObject{
+    func clickReportBtnAction()
 }

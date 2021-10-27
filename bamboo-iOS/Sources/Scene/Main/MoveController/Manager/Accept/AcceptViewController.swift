@@ -17,22 +17,16 @@ class AcceptViewController : BaseVC {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
-    
+    //MARK: - dummyData
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
-    
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "수락"
         $0.textColor = .bamBoo_57CC4D
     }
-
+    
+    //MARK: - TableView
     private let mainTableView = UITableView().then {
         $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.identifier)
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "cellSpace")
@@ -40,13 +34,15 @@ class AcceptViewController : BaseVC {
         $0.separatorColor = .clear
         $0.allowsSelection = false
     }
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+        $0.backgroundColor = .clear
+    }
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
+        $0.backgroundColor = .clear
+    }
     
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/4.06, right: 0)
-    }
     override func configureAppear() {
         super.configureAppear()
         addView()
@@ -54,6 +50,7 @@ class AcceptViewController : BaseVC {
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/4.06, right: 0)
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     //MARK: - AddView
@@ -68,14 +65,15 @@ class AcceptViewController : BaseVC {
             $0.left.right.equalToSuperview()
         }
     }
+    
     //MARK: - Modal action
+    //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
     private func writeBtnClick(){
         let EditContentModalModalsVC = EditContentModal.instance()
         EditContentModalModalsVC.delegate = self
         addDim()
         present(EditContentModalModalsVC, animated: true, completion: nil)
     }
-    
     //MARK: - 모달 실행시 Action
     private func addDim() {
         view.addSubview(bgView)
@@ -87,6 +85,7 @@ class AcceptViewController : BaseVC {
             self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
         }
     }
+    //MARK: - 모달 닫기
     private func removeDim() {
         DispatchQueue.main.async { [weak self] in
             self?.bgView.removeFromSuperview()
@@ -146,7 +145,6 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.count
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -154,7 +152,7 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.identifier, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
-            cell.cellDelegate = self
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}

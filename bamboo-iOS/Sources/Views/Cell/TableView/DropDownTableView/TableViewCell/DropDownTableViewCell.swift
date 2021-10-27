@@ -18,7 +18,7 @@ class DropDownTableViewCell : BaseTableViewCell<Data.tag>{
         super.configure()
         contentView.backgroundColor = .white
         contentView.layer.borderColor = UIColor.bamBoo_57CC4D.cgColor
-        contentView.layer.borderWidth = 0.3
+        contentView.layer.borderWidth = 0.5
         addSubviews()
         location()
     }

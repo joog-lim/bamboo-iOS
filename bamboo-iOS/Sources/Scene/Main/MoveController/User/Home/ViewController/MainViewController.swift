@@ -14,8 +14,7 @@ class MainViewController : BaseVC{
     
     lazy var data : [Data] = [.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, disLike: 2),.init(numberOfAlgorithm: 2, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, disLike: 2),.init(numberOfAlgorithm: 3, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, disLike: 2)]
     
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
+
     
     //MARK: - 모달 background 설정
     let bgView = UIView().then {
@@ -40,6 +39,8 @@ class MainViewController : BaseVC{
         $0.allowsSelection = false
         $0.estimatedRowHeight = 300
     }
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     private lazy var writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
@@ -55,6 +56,14 @@ class MainViewController : BaseVC{
         addDim()
         present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
     }
+    //MARK: - ReportModal action
+    @objc private func reportBtnClick(){
+        let ReportModalModalsVC = ReportModal.instance()
+        ReportModalModalsVC.delegate = self
+        addDim()
+        present(ReportModalModalsVC, animated: true, completion: nil)
+    }
+    
     //MARK: - 모달 실행시 Action
     private func addDim() {
         view.addSubview(bgView)
@@ -103,10 +112,12 @@ class MainViewController : BaseVC{
             $0.right.bottom.equalToSuperview().inset(bounds.height/40.6)
         }
     }
+    
     //MARK: - CornerRadius
     private func cornerRadius(){
         writeBtn.layer.cornerRadius = bounds.height/27
     }
+    
     //MARK: - Data load More
     private func loadMoreData(){
         if !self.isLoaing{
@@ -116,7 +127,6 @@ class MainViewController : BaseVC{
             DispatchQueue.global().async {
                 sleep(2)
                 for i in start...end{
-
                     self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집",like: 3,disLike: 1))
                 }
                 DispatchQueue.main.async {
@@ -126,7 +136,12 @@ class MainViewController : BaseVC{
             }
         }
     }
-    //MARK: - TableViewHeaderSetting
+
+    //MARK: - tableViewSetting
+    private func tableviewSetting(){
+        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
+    }
+    //MARK: - Header
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
@@ -135,10 +150,7 @@ class MainViewController : BaseVC{
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-    }
+    //MARK: - Footer
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
@@ -162,6 +174,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -191,9 +204,23 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-//MARK: - Modal Delegate
+//MARK: - Write Modal Delegate
 extension MainViewController : WriteModalDelegate {
     func onTapClose() {
         self.removeDim()
+    }
+}
+//MARK: - Report Modal Delegate
+extension MainViewController : ReportModalDelegate{    
+    func onTapReportModalClose() {
+        self.removeDim()
+    }
+}
+
+
+//MARK: - tableView Cell inside ReportBtn Click Action Protocol
+extension MainViewController : ClickReportBtnActionDelegate{
+    func clickReportBtnAction() {
+        self.reportBtnClick()
     }
 }

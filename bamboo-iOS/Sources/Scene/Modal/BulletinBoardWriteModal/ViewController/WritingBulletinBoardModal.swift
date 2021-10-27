@@ -30,7 +30,7 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let bgView = UIView().then{
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 40
     }
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
@@ -55,6 +55,7 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let passwordTf = AlertTextField(placeholder: "답변을 입력하세요.", fontSize: 10)
     private let sendBtn = LoginButton(placeholder: "전송", cornerRadius: 10).then{
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.addTarget(self, action: #selector(sendTapClose), for: .touchUpInside)
     }
     
@@ -83,15 +84,15 @@ class WritingBulletinBoardModal: BaseVC{
     }
     
     //MARK: - Selectors
-    @objc func onTapClose() {
+    @objc private func onTapClose() {
         delegate?.onTapClose()
         dismiss(animated: true, completion: nil)
     }
-    @objc func sendTapClose(){
+    @objc private func sendTapClose(){
         delegate?.onTapClose()
         dismiss(animated: true, completion: nil)
     }
-    @objc func tagChooseBtnClick(){
+    @objc private func tagChooseBtnClick(){
         dropDownStatus == false ? addTagTableViewSetting(frames: tagChooseBtn.frame) : nil
     }
     
@@ -120,8 +121,7 @@ class WritingBulletinBoardModal: BaseVC{
     //MARK: - Delegate & DateSource
     private func DelegateAndDatasource(){
         contentTv.delegate = self
-        tagChoose.delegate = self
-        tagChoose.dataSource = self
+        [tagChoose].forEach{ $0.delegate = self; $0.dataSource = self}
     }
     
     //MARK: - AddView

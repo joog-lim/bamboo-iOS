@@ -11,7 +11,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "AcceptManagerTableViewCell"
     
-    weak var cellDelegate : AcceptManagerTableViewCellDelegate?
+    weak var delegate : AcceptManagerTableViewCellDelegate?
     
     //MARK: - Properties
     private lazy var view = UIView().then{
@@ -31,7 +31,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private let cellSettingbtn = UIButton().then{
+    private lazy var cellSettingbtn = UIButton().then{
         $0.setTitle("수정", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
@@ -47,8 +47,8 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.textColor = .black
     }
     //MARK: - Selector
-    @objc func SettingBtnClickAction(){
-        cellDelegate?.cellSettingbtnClick()
+    @objc private func SettingBtnClickAction(){
+        delegate?.cellSettingbtnClick()
     }
     
     //MARK: - Configure

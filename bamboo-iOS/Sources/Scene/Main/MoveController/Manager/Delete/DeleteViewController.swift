@@ -11,15 +11,13 @@ class DeleteViewController : BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     var data : [DeleteContent] = [.init(numberOfAlgorithm: 2, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요"),.init(numberOfAlgorithm: 1, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요")]
-    
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
-    
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
@@ -34,8 +32,26 @@ class DeleteViewController : BaseVC{
         $0.separatorColor = .clear
         $0.allowsSelection = false
     }
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+        $0.backgroundColor = .clear
+    }
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
+        $0.backgroundColor = .clear
+    }
     
-    //MARK: - Selectors
+    //MARK: - Action
+    private func SeeMoreDetailBtnAction(){
+        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
+            self.writeBtnClick()
+        }
+        let refusalAction : UIAlertAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+            print("삭제")
+        }
+        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
+        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
+        present(actionSheetController, animated: true)
+    }
 
     //MARK: - Helper
     override func configure() {
@@ -108,8 +124,8 @@ class DeleteViewController : BaseVC{
             make.center.equalTo(tableViewFooter)
         }
     }
+    
 }
-
 //MARK: - TableView
 extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,6 +138,7 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DeleteTableViewCell.identifier, for: indexPath) as? DeleteTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -149,6 +166,47 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
         }
+    }
+}
+
+//MARK: - Modal 관련 Setting
+extension DeleteViewController{
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+    private func writeBtnClick(){
+        let RefusalModalModalsVC = RefusalModal.instance()
+        RefusalModalModalsVC.delegate = self
+        addDim()
+        present(RefusalModalModalsVC, animated: true, completion: nil)
+    }
+}
+
+//MARK: - Delete Modal
+extension DeleteViewController : RefusalModalProtocol{
+    func onTapClose() {
+        self.removeDim()
+    }
+}
+
+//MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
+extension DeleteViewController : cellSeeMoreDetailActionDelegate{
+    func clickSeeMoreDetailBtnAction() {
+        SeeMoreDetailBtnAction()
     }
 }
 

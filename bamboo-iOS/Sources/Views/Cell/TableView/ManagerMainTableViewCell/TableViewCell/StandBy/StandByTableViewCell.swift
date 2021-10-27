@@ -11,6 +11,9 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "StandByTableViewCell"
     
+    //MARK: - connect Protocol
+    weak var delegate : StandBytableViewCellBtnClickDelegate?
+    
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
@@ -34,16 +37,23 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 11)
         $0.textColor = .black
     }
-    let cellSettingbtn = UIButton().then{
+    private lazy var cellSeeMoreDetailBtn = UIButton().then{
         $0.setTitle("더보기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
+        $0.addTarget(self, action: #selector(SeeMoreDetailBtnClickAction), for: .touchUpInside)
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
+    
+    //MARK: - Selector
+    @objc private func SeeMoreDetailBtnClickAction(){
+        delegate?.clickSeeMoreDetailBtn()
+    }
+    
     
     //MARK: - Configure
     override func configure() {
@@ -53,7 +63,7 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,cellSeeMoreDetailBtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
 
     //MARK: - Location
@@ -73,9 +83,9 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
         }
         tagLabel.snp.makeConstraints{
             $0.centerY.equalTo(algorithm)
-            $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
+            $0.right.equalTo(cellSeeMoreDetailBtn.snp.left).inset(bounds.width/29 * -1)
         }
-        cellSettingbtn.snp.makeConstraints {
+        cellSeeMoreDetailBtn.snp.makeConstraints {
             $0.centerY.equalTo(algorithm)
             $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
@@ -99,4 +109,7 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
         titleLabel.text = model.title
         contentLabel.text = model.content
     }
+}
+protocol StandBytableViewCellBtnClickDelegate : AnyObject{
+    func clickSeeMoreDetailBtn()
 }

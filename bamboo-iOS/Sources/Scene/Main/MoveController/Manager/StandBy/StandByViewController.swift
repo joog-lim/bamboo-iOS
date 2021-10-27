@@ -20,13 +20,6 @@ class StandByViewController : BaseVC{
     //MARK: - Dummy Data
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
 
-
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
@@ -41,23 +34,13 @@ class StandByViewController : BaseVC{
         $0.separatorColor = .clear
         $0.allowsSelection = false
     }
-    
-    
-    //MARK: - Selectors
-    @objc private func clickAction(){
-        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
-        }
-        let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
-            print("거절")
-            self.writeBtnClick()
-        }
-        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
-        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
-        present(actionSheetController, animated: true)
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+        $0.backgroundColor = .clear
+    }
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
+        $0.backgroundColor = .clear
     }
 
-    
     //MARK: - Helper
     override func configure() {
         super.configure()
@@ -104,6 +87,7 @@ class StandByViewController : BaseVC{
             }
         }
     }
+    
     //MARK: - TableViewHeaderSetting
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -127,6 +111,19 @@ class StandByViewController : BaseVC{
         activityIndicatorView.snp.makeConstraints { make in
             make.center.equalTo(tableViewFooter)
         }
+    }
+    //MARK: - Action
+    private func cellInsideBtnClickAction(){
+        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
+        }
+        let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
+            print("거절")
+            self.writeBtnClick()
+        }
+        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
+        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
+        present(actionSheetController, animated: true)
     }
 }
 
@@ -156,12 +153,6 @@ extension StandByViewController{
         present(RefusalModalModalsVC, animated: true, completion: nil)
     }
 }
-//MARK: - Refusal Modal Protocol
-extension StandByViewController : RefusalModalProtocol{
-    func onTapClose() {
-        removeDim()
-    }
-}
 
 //MARK: - TableView
 extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
@@ -176,7 +167,7 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
-            cell.cellSettingbtn.addTarget(self, action: #selector(clickAction), for: .touchUpInside)
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -206,3 +197,16 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+//MARK: - Refusal Modal Protocol
+extension StandByViewController : RefusalModalProtocol{
+    func onTapClose() {
+        removeDim()
+    }
+}
+
+//MARK: - Click Cell inside Btn Action
+extension StandByViewController : StandBytableViewCellBtnClickDelegate{
+    func clickSeeMoreDetailBtn() {
+        cellInsideBtnClickAction()
+    }
+}

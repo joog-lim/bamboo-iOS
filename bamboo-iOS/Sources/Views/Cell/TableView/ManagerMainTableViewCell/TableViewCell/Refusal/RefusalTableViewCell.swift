@@ -11,6 +11,9 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "RefusalTableViewCell"
     
+    //MARK: - Delegate
+    weak var delegate : RefusalCancelBtnDelegate?
+    
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
@@ -29,10 +32,11 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    let cellSettingbtn = UIButton().then{
+    private lazy var refusalCancelBtn = UIButton().then{
         $0.setTitle("거절취소", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
+        $0.addTarget(self, action: #selector(clickRefusalBtn), for: .touchUpInside)
     }
     private lazy var titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
@@ -45,8 +49,9 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     }
     
     //MARK: - Selector
-    
-    
+    @objc private func clickRefusalBtn(){
+        delegate?.refusalCancelBtnAction()
+    }
 
     //MARK: - Configure
     override func configure() {
@@ -57,7 +62,7 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
     }
     private func location(){
         view.snp.makeConstraints { make in
@@ -75,9 +80,9 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
         }
         tagLabel.snp.makeConstraints{
             $0.centerY.equalTo(algorithm)
-            $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
+            $0.right.equalTo(refusalCancelBtn.snp.left).inset(bounds.width/29 * -1)
         }
-        cellSettingbtn.snp.makeConstraints {
+        refusalCancelBtn.snp.makeConstraints {
             $0.centerY.equalTo(algorithm)
             $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
@@ -103,4 +108,7 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     }
 }
 
-
+//MARK: - Refusal Button action Protocol
+protocol RefusalCancelBtnDelegate : AnyObject{
+    func refusalCancelBtnAction()
+}
