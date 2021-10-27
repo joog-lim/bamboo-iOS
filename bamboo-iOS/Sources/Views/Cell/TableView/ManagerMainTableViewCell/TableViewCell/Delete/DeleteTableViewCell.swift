@@ -11,6 +11,9 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     //MARK: - Identifier
     static let identifier = "DeleteTableViewCell"
     
+    //MARK: - Delegate
+    weak var delegate : cellSeeMoreDetailActionDelegate?
+    
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
@@ -19,43 +22,47 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     }
     
     private lazy var algorithm = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemRed
     }
     private lazy var dataLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
     private lazy var tagLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var cellSettingbtn = UILabel().then{
-        $0.text = "더보기"
-        $0.textColor = .lightGray
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundR")
+    private lazy var cellSeeMoreDetail = UIButton().then{
+        $0.setTitle("더보기", for: .normal)
+        $0.setTitleColor(.lightGray, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
+        $0.addTarget(self, action: #selector(clickSeeMoreDetailBtnAction), for: .touchUpInside)
     }
     private lazy var titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
     private lazy var contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
     private lazy var deleteReasonTitle = UILabel().then{
-        $0.dynamicFont(fontSize: 15, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 15)
         $0.text = "삭제요청사유"
         $0.textColor = .black
     }
     private lazy var deleteReasonContent = UILabel().then{
-        $0.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
-        $0.text = "집집집집집집집집집집집집집집집집집집집집집집집집집집집집"
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.numberOfLines = 0
         $0.textColor = .black
     }
-
+    //MARK: - Action
+    @objc private func clickSeeMoreDetailBtnAction(){
+        delegate?.clickSeeMoreDetailBtnAction()
+    }
+    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -64,12 +71,12 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel,deleteReasonTitle,deleteReasonContent].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,cellSeeMoreDetail,titleLabel,contentLabel,deleteReasonTitle,deleteReasonContent].forEach { view.addSubview($0)}
     }
     private func location(){
         view.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(bounds.width/29)
+            make.left.right.equalToSuperview().inset(bounds.width/18.75)
             make.bottom.equalToSuperview()
         }
         algorithm.snp.makeConstraints {
@@ -81,11 +88,12 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
             $0.centerX.equalToSuperview()
         }
         tagLabel.snp.makeConstraints{
-            $0.top.equalTo(algorithm)
-            $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
+            $0.centerY.equalTo(algorithm)
+            $0.right.equalTo(cellSeeMoreDetail.snp.left).inset(bounds.width/29 * -1)
         }
-        cellSettingbtn.snp.makeConstraints {
-            $0.top.equalTo(algorithm)
+        cellSeeMoreDetail.snp.makeConstraints {
+            $0.centerY.equalTo(algorithm)
+            $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
         }
         titleLabel.snp.makeConstraints {
@@ -117,5 +125,7 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
         deleteReasonContent.text = model.deleteContente
     }
 }
-
-
+//MARK: - 더보기 버튼 눌렀을때 Action Protocol
+protocol cellSeeMoreDetailActionDelegate : AnyObject{
+    func clickSeeMoreDetailBtnAction()
+}

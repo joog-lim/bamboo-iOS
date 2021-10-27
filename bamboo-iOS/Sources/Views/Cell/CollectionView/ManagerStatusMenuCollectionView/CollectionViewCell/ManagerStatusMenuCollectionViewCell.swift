@@ -11,7 +11,7 @@ import Pods_bamboo_iOS
 class ManagerStatusMenuCollectionView : BaseCollectionViewCell<ManagerData.status>{
     static let identifier = "ManagerStatusMenuCollectionView"
     let menuLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 11, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 11)
         $0.textColor = .lightGray
     }
     override var isSelected: Bool{

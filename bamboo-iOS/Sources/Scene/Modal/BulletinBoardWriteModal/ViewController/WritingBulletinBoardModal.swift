@@ -34,27 +34,28 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
-        $0.dynamicFont(fontSize: 16, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
         $0.textColor = .bamBoo_57CC4D
     }
     private let questionTitle = UILabel().then{
         $0.textColor = .black
         $0.text = "올리고 싶은 글을 입력해주세요!"
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
     private let titleTf = AlertTextField(placeholder: "제목을 입력하세요.", fontSize: 10)
     private let tagChooseBtn = LoginButton(placeholder: "태그선택", cornerRadius: 5).then{
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundB")
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundB", size: 12)
         $0.addTarget(self, action: #selector(tagChooseBtnClick), for: .touchUpInside)
     }
-    private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.")
+    private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.", fontSize: 10)
     private let passwordTitle = UILabel().then{
         $0.text = "Q. 학교 와이파이 비번은 무엇일까요?"
         $0.textColor = .black
-        $0.dynamicFont(fontSize: 12, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
     private let passwordTf = AlertTextField(placeholder: "답변을 입력하세요.", fontSize: 10)
     private let sendBtn = LoginButton(placeholder: "전송", cornerRadius: 10).then{
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.addTarget(self, action: #selector(sendTapClose), for: .touchUpInside)
     }
     
@@ -83,15 +84,15 @@ class WritingBulletinBoardModal: BaseVC{
     }
     
     //MARK: - Selectors
-    @objc func onTapClose() {
+    @objc private func onTapClose() {
         delegate?.onTapClose()
         dismiss(animated: true, completion: nil)
     }
-    @objc func sendTapClose(){
+    @objc private func sendTapClose(){
         delegate?.onTapClose()
         dismiss(animated: true, completion: nil)
     }
-    @objc func tagChooseBtnClick(){
+    @objc private func tagChooseBtnClick(){
         dropDownStatus == false ? addTagTableViewSetting(frames: tagChooseBtn.frame) : nil
     }
     
@@ -120,8 +121,7 @@ class WritingBulletinBoardModal: BaseVC{
     //MARK: - Delegate & DateSource
     private func DelegateAndDatasource(){
         contentTv.delegate = self
-        tagChoose.delegate = self
-        tagChoose.dataSource = self
+        [tagChoose].forEach{ $0.delegate = self; $0.dataSource = self}
     }
     
     //MARK: - AddView
@@ -139,7 +139,7 @@ class WritingBulletinBoardModal: BaseVC{
             make.height.equalToSuperview().dividedBy(1.75)
         }
         titleLabel.snp.makeConstraints {
-            $0.left.top.equalToSuperview().offset(bounds.height/33.83)
+            $0.left.top.equalToSuperview().offset(bounds.width/15.625)
         }
         questionTitle.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
@@ -211,20 +211,21 @@ class WritingBulletinBoardModal: BaseVC{
         }
     }
 }
+
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
-        // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
-        // TextView Place Holder
+    // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "내용을 입력하세요."
             textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
+        }
+    }
+    // TextView Place Holder
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
+            textView.text = ""
+            textView.textColor = UIColor.black
         }
     }
 }

@@ -23,26 +23,21 @@ class ManagerPopUp : UIView {
     }
     private let titleLabel = UILabel().then{
         $0.text = "로그인하기"
-        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
     private let humanAffairsLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR")
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
         $0.text = "관리자님 환영합니다!"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
     
-    let WritePassWorld : AlertTextField = {
-        let tf = AlertTextField(placeholder: "비밀번호를 입력하세요!", fontSize: 10)
-        return tf
-    }()
+    let WritePassWorld = AlertTextField(placeholder: "비밀번호를 입력하세요!", fontSize: 10)
     
-    let loginBtn : LoginButton = {
-        let btn = LoginButton(placeholder: "로그인",cornerRadius: 5)
-        btn.dynamicFont(fontSize: 13, currentFontName: "NanumSquareRoundR")
-        btn.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
-        return btn
-    }()
+    let loginBtn = LoginButton(placeholder: "로그인", cornerRadius: 5).then{
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
+        $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+    }
     //MARK: - Initalizer
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,6 +55,7 @@ class ManagerPopUp : UIView {
             self.WritePassWorld.text = ""
         }
     }
+    
     //MARK: - Helper
     func configure(){
         addView()

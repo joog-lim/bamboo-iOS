@@ -11,22 +11,14 @@ class RefusalViewController : BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    var data : [Data] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
-    
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
-    
+    var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private let titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "거절"
         $0.textColor = .systemRed
     }
-
+    //MARK: - TableView
     private let mainTableView = UITableView().then {
         $0.register(RefusalTableViewCell.self, forCellReuseIdentifier: RefusalTableViewCell.identifier)
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "cellSpace")
@@ -34,9 +26,17 @@ class RefusalViewController : BaseVC{
         $0.separatorColor = .clear
         $0.allowsSelection = false
     }
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+        $0.backgroundColor = .clear
+    }
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
+        $0.backgroundColor = .clear
+    }
     
-    //MARK: - Selectors
-
+    //MARK: - Action
+    private func cellinsideRefusalCancelBtnClick(){
+        print("거절취소")
+    }
 
     //MARK: - Helper
     override func configure() {
@@ -74,7 +74,7 @@ class RefusalViewController : BaseVC{
             DispatchQueue.global().async {
                 sleep(2)
                 for i in start...end{
-                    self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
+                    self.data.append(ManagerTextData.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
                 }
                 DispatchQueue.main.async {
                     self.mainTableView.reloadData()
@@ -83,7 +83,12 @@ class RefusalViewController : BaseVC{
             }
         }
     }
-    //MARK: - TableViewHeaderSetting
+
+    //MARK: - tableViewSetting
+    private func tableviewSetting(){
+        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
+    }
+    //MARK: - Header
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
@@ -92,10 +97,7 @@ class RefusalViewController : BaseVC{
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-    }
+    //MARK: - Footer
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
@@ -120,7 +122,8 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.identifier, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
-            cell.model = data[ indexPath.section]
+            cell.model = data[indexPath.section]
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -149,4 +152,8 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-
+extension RefusalViewController : RefusalCancelBtnDelegate{
+    func refusalCancelBtnAction() {
+        self.cellinsideRefusalCancelBtnClick()
+    }
+}

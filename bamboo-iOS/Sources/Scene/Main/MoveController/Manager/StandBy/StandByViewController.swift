@@ -11,17 +11,18 @@ class StandByViewController : BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    var data : [Data] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
     
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
+    //MARK: - Dummy Data
+    var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
+
     
     private let titleLabel = UILabel().then{
-        $0.dynamicFont(fontSize: 20, currentFontName: "NanumSquareRoundB")
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "대기"
         $0.textColor = .systemYellow
     }
@@ -33,9 +34,12 @@ class StandByViewController : BaseVC{
         $0.separatorColor = .clear
         $0.allowsSelection = false
     }
-    
-    //MARK: - Selectors
-
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
+        $0.backgroundColor = .clear
+    }
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
+        $0.backgroundColor = .clear
+    }
 
     //MARK: - Helper
     override func configure() {
@@ -74,8 +78,7 @@ class StandByViewController : BaseVC{
                 sleep(2)
                 for i in start...end{
 
-                    self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
-                    
+                    self.data.append(ManagerTextData.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
                 }
                 DispatchQueue.main.async {
                     self.mainTableView.reloadData()
@@ -84,6 +87,7 @@ class StandByViewController : BaseVC{
             }
         }
     }
+    
     //MARK: - TableViewHeaderSetting
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -97,6 +101,7 @@ class StandByViewController : BaseVC{
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
     }
+    //MARK: - tableViewFooter
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
@@ -106,6 +111,46 @@ class StandByViewController : BaseVC{
         activityIndicatorView.snp.makeConstraints { make in
             make.center.equalTo(tableViewFooter)
         }
+    }
+    //MARK: - Action
+    private func cellInsideBtnClickAction(){
+        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
+        }
+        let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
+            print("거절")
+            self.writeBtnClick()
+        }
+        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
+        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
+        present(actionSheetController, animated: true)
+    }
+}
+
+//MARK: - Refusal Modal action
+extension StandByViewController{
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+    private func writeBtnClick(){
+        let RefusalModalModalsVC = RefusalModal.instance()
+        RefusalModalModalsVC.delegate = self
+        addDim()
+        present(RefusalModalModalsVC, animated: true, completion: nil)
     }
 }
 
@@ -122,6 +167,7 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
+            cell.delegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -129,7 +175,6 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         return UITableViewCell()
-
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item == 0{
@@ -149,5 +194,19 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
         }
+    }
+}
+
+//MARK: - Refusal Modal Protocol
+extension StandByViewController : RefusalModalProtocol{
+    func onTapClose() {
+        removeDim()
+    }
+}
+
+//MARK: - Click Cell inside Btn Action
+extension StandByViewController : StandBytableViewCellBtnClickDelegate{
+    func clickSeeMoreDetailBtn() {
+        cellInsideBtnClickAction()
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
+		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
+		EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -29,6 +31,8 @@
 		EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */; };
 		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
+		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
+		EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80642A272704450040B295 /* RefusalModalProtocol.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -37,6 +41,8 @@
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
 		EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
+		EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */; };
+		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
@@ -63,6 +69,8 @@
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
+		EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalProtocol.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -84,6 +92,8 @@
 		EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
+		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
+		EE80642A272704450040B295 /* RefusalModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalProtocol.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -94,6 +104,8 @@
 		EE89811526E5FD410086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModalProtocol.swift; sourceTree = "<group>"; };
+		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
@@ -229,6 +241,31 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
+		EE210FEB2725A13800320FFD /* EditContentModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FEF2725A20800320FFD /* ViewController */,
+				EE210FEE2725A20100320FFD /* Protocol */,
+			);
+			path = EditContentModal;
+			sourceTree = "<group>";
+		};
+		EE210FEE2725A20100320FFD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE210FEF2725A20800320FFD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE210FEC2725A1DE00320FFD /* EditContentModal.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +326,9 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EE9582C92729AC2800AAEC8A /* ReportModal */,
+				EE806425272701170040B295 /* RefusalModal */,
+				EE210FEB2725A13800320FFD /* EditContentModal */,
 				EE3BA58127032A5500281096 /* BulletinBoardWriteModal */,
 			);
 			path = Modal;
@@ -475,6 +515,31 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EE806425272701170040B295 /* RefusalModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE8064272727013D0040B295 /* ViewController */,
+				EE806426272701310040B295 /* Protocol */,
+			);
+			path = RefusalModal;
+			sourceTree = "<group>";
+		};
+		EE806426272701310040B295 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EE80642A272704450040B295 /* RefusalModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE8064272727013D0040B295 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE8064282727034E0040B295 /* RefusalModal.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		EE8141F5270189EB00ECFDCC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +614,31 @@
 				EE953A39270678CC00D4E133 /* LoadingIndicator.swift */,
 			);
 			path = "Network Loading";
+			sourceTree = "<group>";
+		};
+		EE9582C92729AC2800AAEC8A /* ReportModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE9582CB2729AC3E00AAEC8A /* ViewController */,
+				EE9582CA2729AC3800AAEC8A /* Protocol */,
+			);
+			path = ReportModal;
+			sourceTree = "<group>";
+		};
+		EE9582CA2729AC3800AAEC8A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE9582CB2729AC3E00AAEC8A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE9582CF2729AD1600AAEC8A /* ReportModal.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */ = {
@@ -971,6 +1061,7 @@
 				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
+				EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
@@ -984,13 +1075,17 @@
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
+				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
+				EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
+				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
+				EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
@@ -1001,6 +1096,7 @@
 				EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
+				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,

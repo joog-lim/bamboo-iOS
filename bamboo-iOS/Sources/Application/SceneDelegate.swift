@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainViewController = LoginViewController()
         let navigationController = UINavigationController(rootViewController: mainViewController)
         NetWorkStatus.shared.StartMonitoring()
+        
         navigationController.navigationCustomBar()
-
         window?.backgroundColor = .white
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

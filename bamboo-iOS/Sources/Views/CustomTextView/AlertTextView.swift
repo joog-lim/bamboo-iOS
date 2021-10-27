@@ -8,10 +8,11 @@
 import UIKit
 
 class AlertTextView : UITextView{
-    init(placeholder : String){
+    init(placeholder : String, fontSize : Int){
         super.init(frame: CGRect.zero, textContainer: nil)
         textColor = .rgb(red: 196, green: 196, blue: 196)
         textAlignment = .left
+        
         backgroundColor = .white
         layer.applySketchShadow(color: .black, alpha: 0.25, x: 1, y: 1, blur: 4, spread: 0)
         layer.cornerRadius = 5

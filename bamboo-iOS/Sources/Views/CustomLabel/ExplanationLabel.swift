@@ -11,7 +11,7 @@ class ExplanationLabel : UILabel{
     
     init( fontSize : CGFloat, fontStyle: String, labelColor : UIColor) {
         super.init(frame: .zero)
-        dynamicFont(fontSize: fontSize, currentFontName: fontStyle)
+        font = UIFont(name: fontStyle, size: fontSize)
         textColor = labelColor
         numberOfLines = 0
         isUserInteractionEnabled = true

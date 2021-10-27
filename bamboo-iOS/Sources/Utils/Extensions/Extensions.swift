@@ -7,16 +7,6 @@
 
 import UIKit
 
-private let standard: CGFloat = 375
-private let bound = UIScreen.main.bounds
-
-//MARK: - TextField 재정의
-extension UITextField {
-      private func resizeFont(calculatedFont: UIFont?, weight: UIFont.Weight) {
-          self.font = calculatedFont
-          self.font = UIFont.systemFont(ofSize: calculatedFont!.pointSize, weight: weight)
-    }
-}
 
 //MARK: - dateFormatter extension
 extension String {
@@ -28,7 +18,6 @@ extension String {
         return dateFormatter.string(from: now)
     }
 }
-
 // MARK: - EZY_ reuse color extension
 extension UIColor{
     static func rgb(red: CGFloat ,green: CGFloat,blue:CGFloat) -> UIColor{
@@ -41,48 +30,6 @@ extension UIColor{
     static let bamBoo_57CC4D = rgb(red: 87, green: 204, blue: 77)
     
 }
-extension UILabel {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UIFont{
-    func dynamicfont(fontSize size : CGFloat, currentFontName : String = "NanumSquareRoundB",textstyle : UIFont.TextStyle = .body) -> UIFont{
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        return f
-    }
-}
-extension UITextField {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UITextView {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.adjustsFontForContentSizeCategory = true
-        self.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-extension UIButton {
-    func dynamicFont(fontSize size: CGFloat, currentFontName: String = "NanumSquareRoundR", textStyle: UIFont.TextStyle = .body){
-        let resize = bound.width * (size/standard)
-        let f = UIFont(name: currentFontName, size: resize)!
-        self.titleLabel?.adjustsFontForContentSizeCategory = true
-        self.titleLabel?.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: f)
-    }
-}
-
-
-
 //MARK: - UIView roundCornerRadius extension
 extension UIView {
     func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
@@ -91,9 +38,6 @@ extension UIView {
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
 }
-
-
-
 //MARK: - label gradient extension
 extension UILabel{
     public func updateGradientTextColor_horizontal(gradientColors: [UIColor] = [UIColor(white: 0, alpha: 0.95), UIColor(white: 0, alpha: 0.6)]){
@@ -121,7 +65,6 @@ extension UILabel{
             self.textColor = UIColor(patternImage: image)
         }
     }
-    
     public func updateGradientTextColor_vertical(gradientColors: [UIColor] = [UIColor(white: 0, alpha: 0.95), UIColor(white: 0, alpha: 0.6)]){
         let size = CGSize(width: intrinsicContentSize.width, height: intrinsicContentSize.height)
         
@@ -167,8 +110,6 @@ extension UIView {
         return gradient
     }
 }
-
-
 //MARK: - Shadow extension
 extension CALayer {
 func applySketchShadow(color: UIColor = .black,alpha: Float = 0.5,x:CGFloat,y:CGFloat,blur: CGFloat,spread: CGFloat = 0){
@@ -198,7 +139,6 @@ extension UINavigationItem {
         titleView = iv
     }
 }
-
 extension UINavigationController{
     func navigationCustomBar(){
         navigationBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)

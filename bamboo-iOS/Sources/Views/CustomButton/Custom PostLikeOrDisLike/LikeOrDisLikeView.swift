@@ -13,7 +13,7 @@ class LikeOrDisLikeView : UIButton{
         $0.contentMode = .scaleAspectFit
     }
     let label = UILabel().then{
-        $0.dynamicFont(fontSize: 10, currentFontName: "NanumSquareRoundR", textStyle: .body)
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
         $0.textColor = .lightGray
         $0.text = "1"
     }
@@ -23,6 +23,7 @@ class LikeOrDisLikeView : UIButton{
         iv.tintColor = .blue
         addView()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,17 +31,7 @@ class LikeOrDisLikeView : UIButton{
         super.layoutSubviews()
         location()
     }
-    override var isSelected: Bool{
-        didSet{
-            if isSelected{
-                iv.tintColor = .lightGray
-            }
-            else{
-                iv.tintColor = .systemBlue
-            }
-            
-        }
-    }
+    
     private func addView(){
         [iv,label].forEach{ addSubview($0)}
     }

@@ -9,17 +9,19 @@ import UIKit
 import SnapKit
 import RxViewController
 
+protocol LoginStatue : AnyObject{
+    var MoveControllerStatue : UIViewController {get}
+}
 
 class MainTabbarController : UITabBarController{
-    
-
-    private lazy var homeVc = MainViewController()
+    private lazy var homeVc = ManagerViewController()
     let ruleVc = RuleViewController()
     let detailVc = DetailViewController()
-
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        print("\(homeVc)")
         navigationSetting()
         NetworkStatus()
         vcSetting()
@@ -50,7 +52,7 @@ class MainTabbarController : UITabBarController{
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
     }
-    
+
     //MARK: - Network Connect
     private func NetworkStatus(){
         if NetWorkStatus.shared.isConnect{
