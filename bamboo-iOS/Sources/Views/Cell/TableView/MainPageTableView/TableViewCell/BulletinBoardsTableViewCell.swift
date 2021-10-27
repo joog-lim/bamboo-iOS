@@ -27,7 +27,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         $0.textColor = .lightGray
     }
     private lazy var tagLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
     private lazy var titleLabel = UILabel().then{
@@ -38,6 +38,11 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
+    }
+    private lazy var cellSettingbtn = UIButton().then{
+        $0.setTitle("신고", for: .normal)
+        $0.setTitleColor(.systemRed, for: .normal)
+        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private lazy var footerView = UIView()
     
@@ -88,7 +93,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn,cellSettingbtn].forEach { view.addSubview($0)}
     }
     
     //Cell 재사용
@@ -113,10 +118,14 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
             $0.centerX.equalToSuperview()
         }
         tagLabel.snp.makeConstraints{
-            $0.top.equalTo(algorithm)
+            $0.centerY.equalTo(algorithm)
+            $0.right.equalTo(cellSettingbtn.snp.left).inset(bounds.width/29 * -1)
+        }
+        cellSettingbtn.snp.makeConstraints {
+            $0.centerY.equalTo(algorithm)
+            $0.height.equalTo(tagLabel.snp.height)
             $0.right.equalToSuperview().inset(bounds.width/29)
         }
-
         titleLabel.snp.makeConstraints {
             $0.left.equalTo(algorithm)
             $0.top.equalTo(algorithm.snp.bottom).offset(bounds.width/37.5)

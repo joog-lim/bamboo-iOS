@@ -45,7 +45,7 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     }
     
     //MARK: - Selector
-
+    
     
 
     //MARK: - Configure

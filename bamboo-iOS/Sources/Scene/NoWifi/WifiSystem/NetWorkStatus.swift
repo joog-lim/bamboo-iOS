@@ -6,8 +6,10 @@
 //
 
 import Network
+import WeakMapTable
+import UIKit
 
-final class NetWorkStatus {
+final class NetWorkStatus{
     //MARK: - 싱글턴 패턴
     static let shared = NetWorkStatus()
     private let queue = DispatchQueue.global()
@@ -19,7 +21,6 @@ final class NetWorkStatus {
     private init(){
         monitor = NWPathMonitor()
     }
-    
     enum ConnectionType {
         case wifi
         case cellular
@@ -28,12 +29,13 @@ final class NetWorkStatus {
     }
     
     public func StartMonitoring(){
+        monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
+            print("path :\(path)")
             self?.isConnect = path.status != .unsatisfied
             self?.getConnectionType(path)
-            print(self?.isConnect ?? "N/A")
         }
-        monitor.start(queue: queue)
+
     }
     
     public func StopMonitoring(){

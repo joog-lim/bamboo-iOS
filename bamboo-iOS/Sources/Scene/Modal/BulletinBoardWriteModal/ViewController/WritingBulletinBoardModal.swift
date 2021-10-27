@@ -30,7 +30,7 @@ class WritingBulletinBoardModal: BaseVC{
     }
     private let bgView = UIView().then{
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 40
+        $0.layer.cornerRadius = 5
     }
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
@@ -214,18 +214,18 @@ class WritingBulletinBoardModal: BaseVC{
 
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
-        // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
-        // TextView Place Holder
+    // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "내용을 입력하세요."
             textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
+        }
+    }
+    // TextView Place Holder
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
+            textView.text = ""
+            textView.textColor = UIColor.black
         }
     }
 }

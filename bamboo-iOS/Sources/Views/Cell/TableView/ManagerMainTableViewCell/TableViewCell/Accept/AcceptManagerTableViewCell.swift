@@ -11,6 +11,8 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
     //MARK: - Identifier
     static let identifier = "AcceptManagerTableViewCell"
     
+    weak var cellDelegate : AcceptManagerTableViewCellDelegate?
+    
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
@@ -29,10 +31,11 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var cellSettingbtn = UIButton().then{
+    private let cellSettingbtn = UIButton().then{
         $0.setTitle("수정", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
+        $0.addTarget(self, action: #selector(SettingBtnClickAction), for: .touchUpInside)
     }
     private lazy var titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
@@ -42,6 +45,10 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
+    }
+    //MARK: - Selector
+    @objc func SettingBtnClickAction(){
+        cellDelegate?.cellSettingbtnClick()
     }
     
     //MARK: - Configure
@@ -97,4 +104,7 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         titleLabel.text = model.title
         contentLabel.text = model.content
     }
+}
+protocol AcceptManagerTableViewCellDelegate : AnyObject{
+    func cellSettingbtnClick()
 }

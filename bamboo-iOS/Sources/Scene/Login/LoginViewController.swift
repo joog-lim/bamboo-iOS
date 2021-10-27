@@ -56,13 +56,10 @@ class LoginViewController : BaseVC {
     //MARK: - Selectors
     @objc func keyboardWillShow(_ sender: Notification) {
          self.view.frame.origin.y = -150 // Move view 150 points upward
-        
     }
-    
     @objc func keyboardWillHide(_ sender: Notification) {
         self.view.frame.origin.y = 0 // Move view to original position
     }
-    
     @objc func ClickManagerBtn(){
         UIView.animate(withDuration: 0.42) {
             self.popup.alpha = 1
@@ -86,8 +83,6 @@ class LoginViewController : BaseVC {
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
-    
-
     
     //MARK: - Helper
     override func configure() {

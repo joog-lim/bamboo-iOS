@@ -52,7 +52,7 @@ class MainTabbarController : UITabBarController{
         tabBar.barTintColor = .white
         tabBar.isTranslucent = false
     }
-    
+
     //MARK: - Network Connect
     private func NetworkStatus(){
         if NetWorkStatus.shared.isConnect{

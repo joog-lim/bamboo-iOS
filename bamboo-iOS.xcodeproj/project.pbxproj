@@ -31,6 +31,8 @@
 		EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */; };
 		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
+		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
+		EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80642A272704450040B295 /* RefusalModalProtocol.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -88,6 +90,8 @@
 		EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
+		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
+		EE80642A272704450040B295 /* RefusalModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalProtocol.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
 				EE3BA58127032A5500281096 /* BulletinBoardWriteModal */,
 			);
@@ -503,6 +508,31 @@
 				EE97B75E271B471F00479A06 /* TableView */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		EE806425272701170040B295 /* RefusalModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE8064272727013D0040B295 /* ViewController */,
+				EE806426272701310040B295 /* Protocol */,
+			);
+			path = RefusalModal;
+			sourceTree = "<group>";
+		};
+		EE806426272701310040B295 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EE80642A272704450040B295 /* RefusalModalProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE8064272727013D0040B295 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE8064282727034E0040B295 /* RefusalModal.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EE8141F5270189EB00ECFDCC /* ViewController */ = {
@@ -1014,7 +1044,9 @@
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
+				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
+				EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,

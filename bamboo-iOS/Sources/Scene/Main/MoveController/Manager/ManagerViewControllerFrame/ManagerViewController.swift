@@ -10,9 +10,9 @@ import UIKit
 
 class ManagerViewController: BaseVC{
         
-    let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
+    private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
     //MARK: Properties
-    let pageCollectionView: UICollectionView = {
+    private let pageCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)

@@ -26,7 +26,7 @@ class MainViewController : BaseVC{
     private let titleLabel = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.textColor = .rgb(red: 87, green: 204, blue: 77)
+        $0.textColor = .bamBoo_57CC4D
         $0.numberOfLines = 2
         string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
         $0.attributedText = string
@@ -54,10 +54,6 @@ class MainViewController : BaseVC{
         WritingBulletinBoardModalModalsVC.delegate = self
         addDim()
         present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
-    }
-    //MARK: - 모달 위치
-    static func instance() -> MainViewController{
-        MainViewController(nibName: nil, bundle: nil)
     }
     //MARK: - 모달 실행시 Action
     private func addDim() {

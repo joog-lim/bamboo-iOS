@@ -12,6 +12,12 @@ class AcceptViewController : BaseVC {
     //MARK: - Properties
     private var isLoaing : Bool = false
     
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
@@ -35,8 +41,6 @@ class AcceptViewController : BaseVC {
         $0.allowsSelection = false
     }
     
-    //MARK: - Selectors
-
 
     //MARK: - Helper
     override func configure() {
@@ -64,7 +68,32 @@ class AcceptViewController : BaseVC {
             $0.left.right.equalToSuperview()
         }
     }
-
+    //MARK: - Modal action
+    private func writeBtnClick(){
+        let EditContentModalModalsVC = EditContentModal.instance()
+        EditContentModalModalsVC.delegate = self
+        addDim()
+        present(EditContentModalModalsVC, animated: true, completion: nil)
+    }
+    
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+    
     //MARK: - Data load More
     private func loadMoreData(){
         if !self.isLoaing{
@@ -85,7 +114,8 @@ class AcceptViewController : BaseVC {
             }
         }
     }
-    //MARK: - TableViewHeaderSetting
+    
+    //MARK: - Header Setting
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
@@ -97,8 +127,8 @@ class AcceptViewController : BaseVC {
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-
     }
+    //MARK: - Footer Setting
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.startAnimating()
@@ -124,6 +154,7 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.identifier, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
+            cell.cellDelegate = self
             return cell
         }else if indexPath.item == 1{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
@@ -131,7 +162,6 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }
         return UITableViewCell()
-
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item == 0{
@@ -151,5 +181,17 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
         }
+    }
+}
+//MARK: - 모달 닫기
+extension AcceptViewController : EditContentModalProtocol{
+    func onTapClose() {
+        removeDim()
+    }
+}
+//MARK: - 수정 버튼 눌렀을때 동작
+extension AcceptViewController : AcceptManagerTableViewCellDelegate {
+    func cellSettingbtnClick() {
+        writeBtnClick()
     }
 }
