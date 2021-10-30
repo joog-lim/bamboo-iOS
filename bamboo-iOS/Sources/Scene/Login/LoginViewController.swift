@@ -88,6 +88,7 @@ class LoginViewController : BaseVC {
     override func configure() {
         super.configure()
         ManagerPopUp().WritePassWorld.delegate = self
+        MainTabbarController().delegateLoginVc = self
         keyboardSetting()
         stackViewSetting()
         addView()
@@ -144,4 +145,9 @@ class LoginViewController : BaseVC {
 }
 extension LoginViewController : UITextFieldDelegate{
     
+}
+extension LoginViewController : LoginStatue{
+    var MoveControllerStatue: UIViewController {
+        return vcChoose
+    }
 }

@@ -14,6 +14,9 @@ protocol LoginStatue : AnyObject{
 }
 
 class MainTabbarController : UITabBarController{
+    
+    weak var delegateLoginVc : LoginStatue?
+    
     private lazy var homeVc = ManagerViewController()
     let ruleVc = RuleViewController()
     let detailVc = DetailViewController()

@@ -68,6 +68,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         addSubviews()
         location()
     }
+    //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn,cellSettingbtn].forEach { view.addSubview($0)}

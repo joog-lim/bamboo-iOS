@@ -12,7 +12,7 @@ class DeleteViewController : BaseVC{
     private var isLoaing : Bool = false
     
     //MARK: - 모달 background 설정
-    let bgView = UIView().then {
+    private let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
@@ -206,7 +206,7 @@ extension DeleteViewController : RefusalModalProtocol{
 //MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
     func clickSeeMoreDetailBtnAction() {
-        SeeMoreDetailBtnAction()
+        self.SeeMoreDetailBtnAction()
     }
 }
 
