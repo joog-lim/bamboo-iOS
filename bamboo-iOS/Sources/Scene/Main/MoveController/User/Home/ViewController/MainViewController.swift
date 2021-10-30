@@ -57,7 +57,8 @@ class MainViewController : BaseVC{
         present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
     }
     //MARK: - ReportModal action
-    @objc private func reportBtnClick(){
+    @objc private func reportBtnClick(indexPath: Int){
+        print(indexPath)
         let ReportModalModalsVC = ReportModal.instance()
         ReportModalModalsVC.delegate = self
         addDim()
@@ -220,7 +221,8 @@ extension MainViewController : ReportModalDelegate{
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
-    func clickReportBtnAction() {
-        self.reportBtnClick()
+    func clickReportBtnAction(cell: BulletinBoardsTableViewCell) {
+        guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
+        self.reportBtnClick(indexPath: indexPath.section)
     }
 }

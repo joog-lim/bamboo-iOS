@@ -59,7 +59,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     
     //MARK: - Selector
     @objc private func reportBtnclickAction(){
-        delegate?.clickReportBtnAction()
+        delegate?.clickReportBtnAction(cell: self)
     }
     
     //MARK: - Configure
@@ -75,8 +75,9 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     
     //Cell 재사용
-    override func Reuse() {
-        super.Reuse()
+    override func reuse() {
+        super.reuse()
+        self.delegate = nil
         likeBtn.tintColor = .lightGray
         dislikeBtn.tintColor = .lightGray
     }
@@ -147,5 +148,5 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
 }
 //MARK: - 신고 버튼 눌렸을때 동작
 protocol ClickReportBtnActionDelegate : AnyObject{
-    func clickReportBtnAction()
+    func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
 }

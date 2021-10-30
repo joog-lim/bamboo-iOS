@@ -68,7 +68,8 @@ class AcceptViewController : BaseVC {
     
     //MARK: - Modal action
     //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
-    private func writeBtnClick(){
+    private func EditBtnClick(indexPath : Int){
+        print("수락 : \(indexPath)")
         let EditContentModalModalsVC = EditContentModal.instance()
         EditContentModalModalsVC.delegate = self
         addDim()
@@ -184,12 +185,13 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
 //MARK: - 모달 닫기
 extension AcceptViewController : EditContentModalProtocol{
     func onTapClose() {
-        removeDim()
+        self.removeDim()
     }
 }
 //MARK: - 수정 버튼 눌렀을때 동작
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
-    func cellSettingbtnClick() {
-        writeBtnClick()
+    func cellSettingbtnClick(cell: AcceptManagerTableViewCell) {
+        guard let indexPath = mainTableView.indexPath(for: cell) else {return}
+        self.EditBtnClick(indexPath: indexPath.section)
     }
 }

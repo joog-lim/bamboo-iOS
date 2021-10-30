@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol RefusalTableSettingDelegate : AnyObject{
-    func updateTableViewSetting()
-}
-
 class RefusalViewController : BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
@@ -162,10 +158,7 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
 }
 extension RefusalViewController : RefusalCancelBtnDelegate{
     func refusalCancelBtnAction(cell: RefusalTableViewCell) {
-        guard let indexPath = self.mainTableView.indexPath(for: cell) else{
-            return
-        }
+        guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         self.cellinsideRefusalCancelBtnClick(indexPath: indexPath.section)
     }
-
 }

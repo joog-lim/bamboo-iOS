@@ -17,11 +17,12 @@ class BaseTableViewCell<T> : UITableViewCell{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        Reuse()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        reuse()
     }
-    func Reuse(){ }
+    func reuse(){ }
+    
     func configure() {
         selectionStyle = .none
     }
