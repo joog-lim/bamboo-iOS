@@ -65,7 +65,7 @@ class ReportModal : BaseVC{
             $0.left.equalToSuperview()
             $0.right.equalToSuperview()
             $0.bottom.equalToSuperview().offset(30)
-            $0.height.equalToSuperview().dividedBy(2.5)
+            $0.height.equalTo(bounds.height/2.5)
         }
         editContentTitle.snp.makeConstraints{
             $0.top.equalToSuperview().offset(bounds.height/27.0666)

@@ -172,7 +172,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0{
+        if indexPath.item == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.section]
             cell.delegate = self
@@ -217,7 +217,6 @@ extension MainViewController : ReportModalDelegate{
         self.removeDim()
     }
 }
-
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{

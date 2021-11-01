@@ -11,7 +11,7 @@ import RxKeyboard
 
 class WritingBulletinBoardModal: BaseVC{
     //MARK - Tag Data
-    let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
+    private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties
     weak var delegate : WriteModalDelegate?
     
@@ -132,14 +132,15 @@ class WritingBulletinBoardModal: BaseVC{
     
     //MARK: - Location
     private func location(){
-        bgView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(30)
-            make.height.equalToSuperview().dividedBy(1.75)
+        bgView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(30)
+            $0.height.equalTo(bounds.height/1.75)
         }
         titleLabel.snp.makeConstraints {
-            $0.left.top.equalToSuperview().offset(bounds.width/15.625)
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
+            $0.top.equalToSuperview().offset(bounds.height/33.8333)
         }
         questionTitle.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
@@ -178,6 +179,7 @@ class WritingBulletinBoardModal: BaseVC{
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
         transparentView.addGestureRecognizer(tapgesture)
     }
+    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -199,8 +201,9 @@ class WritingBulletinBoardModal: BaseVC{
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut) { [self] in
             tagSelectView.alpha = 0.5
             dropDownStatus = true
-            tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + frames.height, width: frames.width, height: CGFloat(CGFloat(tagDataSection.count) * bounds.height/32.48))
+            tagChoose.frame = CGRect(x: bounds.width/1.31, y: tagChooseBtn.center.y, width: frames.width, height: CGFloat(CGFloat(tagDataSection.count) * bounds.height/32.48))//bounds.height/10.4 + frames.height
         }
+        print("\(tagChooseBtn.frame.maxY)")
     }
     //MARK: - DropDown remove
     private func removeDropDown(){

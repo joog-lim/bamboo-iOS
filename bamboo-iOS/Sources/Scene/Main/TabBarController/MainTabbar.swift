@@ -17,7 +17,7 @@ class MainTabbarController : UITabBarController{
     
     weak var delegateLoginVc : LoginStatue?
     
-    private lazy var homeVc = ManagerViewController()
+    private lazy var homeVc = MainViewController()
     let ruleVc = RuleViewController()
     let detailVc = DetailViewController()
         

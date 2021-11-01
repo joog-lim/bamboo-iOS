@@ -211,5 +211,4 @@ extension StandByViewController : StandBytableViewCellBtnClickDelegate{
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
         cellInsideBtnClickAction(indexPath: indexPath.section)
     }
-
 }
