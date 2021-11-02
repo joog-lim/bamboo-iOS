@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol ManagerModalDelegate : AnyObject {
+    func onTapManagerModalClose()
+}
