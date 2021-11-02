@@ -50,7 +50,6 @@
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* Extensions.swift */; };
 		EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */; };
-		EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */; };
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
@@ -119,7 +118,6 @@
 		EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EE9F0D5726E8B82C0015E81B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPopUp.swift; sourceTree = "<group>"; };
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 		EE680E50271EB911006D0F03 /* Custom Alert */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5D26E902E70015E81B /* ManagerPopUp.swift */,
 			);
 			path = "Custom Alert";
 			sourceTree = "<group>";
@@ -1098,7 +1095,6 @@
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
-				EE9F0D5E26E902E70015E81B /* ManagerPopUp.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
