@@ -99,7 +99,7 @@ class LoginViewController : BaseVC {
         navigationController?.isNavigationBarHidden = true
     }
     private func stackViewSetting(){
-        btnStackView.spacing = view.frame.height/54.13333
+        btnStackView.spacing = bounds.height/54.13333
     }
     
     private func addView(){

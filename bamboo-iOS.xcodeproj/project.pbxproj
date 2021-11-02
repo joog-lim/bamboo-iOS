@@ -326,6 +326,7 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EE80A7FE2730C83F00FF204C /* ManagerLoginModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
@@ -538,6 +539,13 @@
 				EE8064282727034E0040B295 /* RefusalModal.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EE80A7FE2730C83F00FF204C /* ManagerLoginModal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ManagerLoginModal;
 			sourceTree = "<group>";
 		};
 		EE8141F5270189EB00ECFDCC /* ViewController */ = {
