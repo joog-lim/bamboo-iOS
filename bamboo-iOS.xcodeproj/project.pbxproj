@@ -33,6 +33,7 @@
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
 		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
 		EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80642A272704450040B295 /* RefusalModalProtocol.swift */; };
+		EE80A8022730C8A700FF204C /* ManagerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8012730C8A700FF204C /* ManagerLoginViewController.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -94,6 +95,7 @@
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
 		EE80642A272704450040B295 /* RefusalModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalProtocol.swift; sourceTree = "<group>"; };
+		EE80A8012730C8A700FF204C /* ManagerLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginViewController.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -544,8 +546,25 @@
 		EE80A7FE2730C83F00FF204C /* ManagerLoginModal */ = {
 			isa = PBXGroup;
 			children = (
+				EE80A8002730C87B00FF204C /* Protocol */,
+				EE80A7FF2730C86F00FF204C /* ViewController */,
 			);
 			path = ManagerLoginModal;
+			sourceTree = "<group>";
+		};
+		EE80A7FF2730C86F00FF204C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE80A8012730C8A700FF204C /* ManagerLoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EE80A8002730C87B00FF204C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		EE8141F5270189EB00ECFDCC /* ViewController */ = {
@@ -1106,6 +1125,7 @@
 				EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
+				EE80A8022730C8A700FF204C /* ManagerLoginViewController.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
