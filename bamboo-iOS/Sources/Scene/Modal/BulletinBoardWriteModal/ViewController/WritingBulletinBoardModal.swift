@@ -201,7 +201,7 @@ extension WritingBulletinBoardModal{
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { [self] in
             tagSelectView.alpha = 0.2
             tagChoose.frame = CGRect(x: frames.origin.x,
-                                     y: frames.origin.y + frames.height,
+                                     y: frames.origin.y + frames.height + 5,
                                      width: frames.width,
                                      height: bounds.height/32.48 * CGFloat(tagDataSection.count))
         }, completion: nil)
