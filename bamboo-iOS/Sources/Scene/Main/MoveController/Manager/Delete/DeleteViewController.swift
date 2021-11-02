@@ -12,7 +12,7 @@ class DeleteViewController : BaseVC{
     private var isLoaing : Bool = false
     
     //MARK: - 모달 background 설정
-    let bgView = UIView().then {
+    private let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
@@ -40,10 +40,10 @@ class DeleteViewController : BaseVC{
     }
     
     //MARK: - Action
-    private func SeeMoreDetailBtnAction(){
+    private func SeeMoreDetailBtnAction(indexPath : Int){
         let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
-            self.writeBtnClick()
+            self.RefusalBtnClick(indexPath: indexPath)
         }
         let refusalAction : UIAlertAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
             print("삭제")
@@ -112,7 +112,6 @@ class DeleteViewController : BaseVC{
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-
     }
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
@@ -188,9 +187,10 @@ extension DeleteViewController{
             self?.navigationController?.navigationBar.backgroundColor = .clear
         }
     }
-    private func writeBtnClick(){
+    private func RefusalBtnClick(indexPath : Int){
         let RefusalModalModalsVC = RefusalModal.instance()
         RefusalModalModalsVC.delegate = self
+        print("\(indexPath) 번째 거절")
         addDim()
         present(RefusalModalModalsVC, animated: true, completion: nil)
     }
@@ -205,8 +205,8 @@ extension DeleteViewController : RefusalModalProtocol{
 
 //MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
-    func clickSeeMoreDetailBtnAction() {
-        SeeMoreDetailBtnAction()
+    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell) {
+        guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
+        self.SeeMoreDetailBtnAction(indexPath: indexPath.section)
     }
 }
-

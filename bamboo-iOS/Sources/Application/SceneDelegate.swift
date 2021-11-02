@@ -86,6 +86,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         callBackgroundImage(true)
     }
 
-
 }
 

@@ -113,13 +113,13 @@ class StandByViewController : BaseVC{
         }
     }
     //MARK: - Action
-    private func cellInsideBtnClickAction(){
+    private func cellInsideBtnClickAction(indexPath : Int){
         let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
         }
         let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
             print("거절")
-            self.writeBtnClick()
+            self.writeBtnClick(indexPath: indexPath)
         }
         let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
         [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
@@ -146,7 +146,8 @@ extension StandByViewController{
             self?.navigationController?.navigationBar.backgroundColor = .clear
         }
     }
-    private func writeBtnClick(){
+    private func writeBtnClick(indexPath : Int){
+        print("거절 : \(indexPath)")
         let RefusalModalModalsVC = RefusalModal.instance()
         RefusalModalModalsVC.delegate = self
         addDim()
@@ -206,7 +207,8 @@ extension StandByViewController : RefusalModalProtocol{
 
 //MARK: - Click Cell inside Btn Action
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
-    func clickSeeMoreDetailBtn() {
-        cellInsideBtnClickAction()
+    func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
+        guard let indexPath = mainTableView.indexPath(for: cell) else {return}
+        cellInsideBtnClickAction(indexPath: indexPath.section)
     }
 }

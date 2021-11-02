@@ -35,7 +35,6 @@ final class NetWorkStatus{
             self?.isConnect = path.status != .unsatisfied
             self?.getConnectionType(path)
         }
-
     }
     
     public func StopMonitoring(){

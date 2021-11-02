@@ -60,7 +60,7 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     }
     //MARK: - Action
     @objc private func clickSeeMoreDetailBtnAction(){
-        delegate?.clickSeeMoreDetailBtnAction()
+        delegate?.clickSeeMoreDetailBtnAction(cell: self)
     }
     
     //MARK: - Configure
@@ -114,6 +114,12 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
+    //MARK: - 재사용
+    override func reuse() {
+        super.reuse()
+        self.delegate = nil
+    }
+    
     //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: DeleteContent) {
         super.bind(model)
@@ -127,5 +133,5 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
 }
 //MARK: - 더보기 버튼 눌렀을때 Action Protocol
 protocol cellSeeMoreDetailActionDelegate : AnyObject{
-    func clickSeeMoreDetailBtnAction()
+    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell)
 }

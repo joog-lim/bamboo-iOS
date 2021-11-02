@@ -50,7 +50,7 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
     
     //MARK: - Selector
     @objc private func clickRefusalBtn(){
-        delegate?.refusalCancelBtnAction()
+        self.delegate?.refusalCancelBtnAction(cell: self)
     }
 
     //MARK: - Configure
@@ -97,6 +97,13 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
+    
+    //MARK: - 재사용
+    override func reuse() {
+        super.reuse()
+        self.delegate = nil
+    }
+    
     //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: ManagerTextData) {
         super.bind(model)
@@ -110,5 +117,5 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
 
 //MARK: - Refusal Button action Protocol
 protocol RefusalCancelBtnDelegate : AnyObject{
-    func refusalCancelBtnAction()
+    func refusalCancelBtnAction(cell : RefusalTableViewCell)
 }

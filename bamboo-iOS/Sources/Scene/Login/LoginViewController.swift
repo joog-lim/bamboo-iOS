@@ -15,6 +15,12 @@ class LoginViewController : BaseVC {
     
     private var vcChoose = UIViewController()
     
+    //MARK: - 모달 background 설정
+    let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFit
@@ -23,11 +29,6 @@ class LoginViewController : BaseVC {
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
         $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
-    }
-
-    private lazy var popup = ManagerPopUp().then{
-        $0.alpha = 0
-        $0.loginBtn.addTarget(self, action: #selector(clickLoginBtn), for: .touchUpInside)
     }
     
     private let ManagerBtn = LoginButton(placeholder: "관리자",cornerRadius: 15).then{
@@ -61,10 +62,10 @@ class LoginViewController : BaseVC {
         self.view.frame.origin.y = 0 // Move view to original position
     }
     @objc func ClickManagerBtn(){
-        UIView.animate(withDuration: 0.42) {
-            self.popup.alpha = 1
-        }
-        popup.WritePassWorld.text = ""
+        let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
+        ManagerLoginModalModalsVC.delegate = self
+        addDim()
+        present(ManagerLoginModalModalsVC, animated: true, completion: nil)
     }
     @objc func ClickUserBtn(){
         vcChoose = MainViewController()
@@ -72,11 +73,7 @@ class LoginViewController : BaseVC {
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
-    @objc func popupClose(){
-        UIView.animate(withDuration: 0.3) {
-            self.popup.alpha = 0
-        }
-    }
+
     @objc func clickLoginBtn(){
         vcChoose = ManagerViewController()
         print(vcChoose)
@@ -87,7 +84,7 @@ class LoginViewController : BaseVC {
     //MARK: - Helper
     override func configure() {
         super.configure()
-        ManagerPopUp().WritePassWorld.delegate = self
+        MainTabbarController().delegateLoginVc = self
         keyboardSetting()
         stackViewSetting()
         addView()
@@ -98,13 +95,11 @@ class LoginViewController : BaseVC {
         navigationController?.isNavigationBarHidden = true
     }
     private func stackViewSetting(){
-        btnStackView.spacing = view.frame.height/54.13333
+        btnStackView.spacing = bounds.height/54.13333
     }
-    
     private func addView(){
-        [logo,btnStackView,divider,guestBtn,popup].forEach { view.addSubview($0)}
+        [logo,btnStackView,divider,guestBtn].forEach { view.addSubview($0)}
     }
-    
     private func location(){
         logo.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -128,11 +123,9 @@ class LoginViewController : BaseVC {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(bounds.height/7.185)
         }
-        popup.snp.makeConstraints {
-            $0.height.equalTo(bounds.height)
-            $0.top.right.bottom.left.equalToSuperview()
-        }
     }
+
+
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -142,6 +135,45 @@ class LoginViewController : BaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
-extension LoginViewController : UITextFieldDelegate{
+//MARK: - Modal 관련
+extension LoginViewController{
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    //모달 취소시 Action
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+    //MARK: - ManagerModal
+    private func ManagerModalBtnClick(){
+        navigationController?.pushViewController(MainTabbarController(), animated: true)
+    }
+}
+
+extension LoginViewController : ManagerModalDelegate{
+    func updateManagerModal() {
+        self.removeDim()
+        self.ManagerModalBtnClick()
+    }
     
+    func onTapManagerModalClose() {
+        self.removeDim()
+    }
+}
+
+extension LoginViewController : LoginStatue{
+    var MoveControllerStatue: UIViewController {
+        return vcChoose
+    }
 }

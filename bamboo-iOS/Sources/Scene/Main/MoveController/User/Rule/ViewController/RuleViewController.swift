@@ -34,6 +34,7 @@ class RuleViewController : BaseVC {
     
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
+        
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -66,6 +67,11 @@ class RuleViewController : BaseVC {
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/5.4347)
         }
-        backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/2 + titleLabel.frame.height + ruleLabel.frame.height)
+        //MARK: - Ipad 와 Iphone 스크롤 조정
+        if UIDevice.current.isiPhone{
+            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: 1330)
+        }else if UIDevice.current.isiPad{
+            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/4.8 + titleLabel.frame.height + ruleLabel.frame.height)
+        }
     }
 }

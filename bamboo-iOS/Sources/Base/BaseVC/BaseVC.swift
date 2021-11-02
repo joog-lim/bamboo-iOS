@@ -28,6 +28,6 @@ class BaseVC: UIViewController{
     func configure(){
         view.backgroundColor = .white
     }
-    func configureAppear(){ }
+    func configureAppear(){}
 }
 

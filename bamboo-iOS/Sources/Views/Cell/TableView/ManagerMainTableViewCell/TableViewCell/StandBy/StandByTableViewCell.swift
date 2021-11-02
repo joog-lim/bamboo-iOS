@@ -51,7 +51,7 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
     
     //MARK: - Selector
     @objc private func SeeMoreDetailBtnClickAction(){
-        delegate?.clickSeeMoreDetailBtn()
+        delegate?.clickSeeMoreDetailBtn(cell: self)
     }
     
     
@@ -100,6 +100,11 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
+    //MARK: - 재사용
+    override func reuse() {
+        super.reuse()
+        self.delegate = nil
+    }
     //MARK: - bind로 데이터 넘겨줌
     override func bind(_ model: ManagerTextData) {
         super.bind(model)
@@ -111,5 +116,5 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
     }
 }
 protocol StandBytableViewCellBtnClickDelegate : AnyObject{
-    func clickSeeMoreDetailBtn()
+    func clickSeeMoreDetailBtn(cell : StandByTableViewCell)
 }

@@ -34,8 +34,11 @@ class RefusalViewController : BaseVC{
     }
     
     //MARK: - Action
-    private func cellinsideRefusalCancelBtnClick(){
+    private func cellinsideRefusalCancelBtnClick(indexPath : Int){
         print("거절취소")
+        print(indexPath)
+        data.remove(at: indexPath)
+        mainTableView.reloadData()
     }
 
     //MARK: - Helper
@@ -123,6 +126,7 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
         if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.identifier, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
             cell.model = data[indexPath.section]
+            cell.tag = indexPath.section
             cell.delegate = self
             return cell
         }else if indexPath.item == 1{
@@ -153,7 +157,8 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 extension RefusalViewController : RefusalCancelBtnDelegate{
-    func refusalCancelBtnAction() {
-        self.cellinsideRefusalCancelBtnClick()
+    func refusalCancelBtnAction(cell: RefusalTableViewCell) {
+        guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
+        self.cellinsideRefusalCancelBtnClick(indexPath: indexPath.section)
     }
 }
