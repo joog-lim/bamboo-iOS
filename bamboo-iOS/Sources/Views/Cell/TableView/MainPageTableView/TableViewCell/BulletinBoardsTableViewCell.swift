@@ -50,14 +50,16 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     private lazy var footerView = UIView()
     
-    private lazy var likeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Good")?.withRenderingMode(.alwaysTemplate) ).then{
-        $0.iv.tintColor = .lightGray
-    }
-    private lazy var dislikeBtn = LikeOrDisLikeView(imageLikeOrDisLike: UIImage(named: "BAMBOO_Hate")?.withRenderingMode(.alwaysTemplate)).then{
-        $0.iv.tintColor = .lightGray
+    private lazy var likeBtn = LikeOrDisLikeView().then{
+        $0.isSelected = false
+        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
     
     //MARK: - Selector
+    @objc private func likeBtnClick(){
+        likeBtn.isSelected = !likeBtn.isSelected
+    }
+    
     @objc private func reportBtnclickAction(){
         delegate?.clickReportBtnAction(cell: self)
     }
@@ -71,15 +73,14 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,dislikeBtn,cellSettingbtn].forEach { view.addSubview($0)}
+        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn].forEach { view.addSubview($0)}
     }
     
     //Cell 재사용
     override func reuse() {
         super.reuse()
         self.delegate = nil
-        likeBtn.tintColor = .lightGray
-        dislikeBtn.tintColor = .lightGray
+        
     }
     
     //MARK: - Location(나중 정리 예정)
@@ -122,14 +123,8 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         }
         likeBtn.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(11)
-            $0.right.equalTo(dislikeBtn.snp.left).offset(bounds.width/22.26 * -1)
-            $0.height.equalTo(16)
-            $0.width.equalTo(bounds.width/12.83)
-        }
-        dislikeBtn.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(11)
             $0.right.equalToSuperview().inset(bounds.width/29)
-            $0.height.equalTo(16)
+            $0.height.equalTo(18)
             $0.width.equalTo(bounds.width/12.83)
         }
     }
@@ -143,7 +138,6 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         titleLabel.text = model.title
         contentLabel.text = model.content
         likeBtn.label.text = String(model.like)
-        dislikeBtn.label.text = String(model.disLike)
     }
 }
 //MARK: - 신고 버튼 눌렸을때 동작

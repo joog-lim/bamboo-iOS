@@ -102,7 +102,7 @@ class ManagerPopUp : UIView {
             make.left.right.equalToSuperview().inset(frame.width/15.625)
         }
     }
-
+    //MARK: - required initalizer
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

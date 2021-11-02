@@ -34,6 +34,7 @@ class RuleViewController : BaseVC {
     
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
+        
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -70,8 +71,7 @@ class RuleViewController : BaseVC {
         if UIDevice.current.isiPhone{
             backGroundScrollView.contentSize = CGSize(width: bounds.width, height: 1330)
         }else if UIDevice.current.isiPad{
-            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/4.5 + titleLabel.frame.height + ruleLabel.frame.height)
+            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/4.8 + titleLabel.frame.height + ruleLabel.frame.height)
         }
-        
     }
 }

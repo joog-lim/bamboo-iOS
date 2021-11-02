@@ -9,18 +9,30 @@ import UIKit
 
 class LikeOrDisLikeView : UIButton{
     
+    //MARK: - Properties
     let iv = UIImageView().then{
         $0.contentMode = .scaleAspectFit
     }
     let label = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
         $0.textColor = .lightGray
-        $0.text = "1"
     }
-    init(imageLikeOrDisLike : UIImage?){
-        super.init(frame: .zero)
-        iv.image = imageLikeOrDisLike!
-        iv.tintColor = .blue
+    
+    //MARK: - Button is Select
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                iv.image = UIImage(named: "BAMBOO_Good_Leaf_Select")
+                label.textColor = .bamBoo_57CC4D
+            }else{
+                iv.image = UIImage(named: "BAMBOO_Good_Leaf")
+                label.textColor = .gray
+            }
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         addView()
     }
     

@@ -60,16 +60,6 @@ class WritingBulletinBoardModal: BaseVC{
     }
     
     //MARK: - StackView
-    private lazy var titleStackView = UIStackView(arrangedSubviews: [titleTf,tagChooseBtn]).then{
-        $0.axis = .horizontal
-        $0.distribution = .fill
-        $0.spacing = 5
-    }
-    private lazy var writeContentStackView = UIStackView(arrangedSubviews: [titleStackView,contentTv]).then{
-        $0.spacing = 5
-        $0.axis = .vertical
-        $0.distribution = .fill
-    }
     private lazy var passwordStackView = UIStackView(arrangedSubviews: [passwordTitle,passwordTf]).then{
         $0.axis = .vertical
         $0.spacing = 5
@@ -93,7 +83,7 @@ class WritingBulletinBoardModal: BaseVC{
         dismiss(animated: true, completion: nil)
     }
     @objc private func tagChooseBtnClick(){
-        dropDownStatus == false ? addTagTableViewSetting(frames: tagChooseBtn.frame) : nil
+        addTagTableViewSetting(frames: tagChooseBtn.frame)
     }
     
     //MARK: - Keyboard Setting
@@ -104,10 +94,7 @@ class WritingBulletinBoardModal: BaseVC{
         self.view.frame.origin.y = 0 // Move view to original position
     }
     
-    @objc func removeTagTableView(){
-        removeDropDown()
-    }
-    
+
     //MARK: - HELPERS
     override func configure() {
         addView()
@@ -115,7 +102,7 @@ class WritingBulletinBoardModal: BaseVC{
         keyboardSetting()
         StackViewSizing()
         DelegateAndDatasource()
-        addTransparentsview(frame: transparentView.frame)
+        addTransparentsview(frame: view.frame)
     }
     
     //MARK: - Delegate & DateSource
@@ -127,7 +114,7 @@ class WritingBulletinBoardModal: BaseVC{
     //MARK: - AddView
     private func addView(){
         [transparentView,bgView].forEach { view.addSubview($0)}
-        [tagSelectView,titleLabel,questionTitle,writeContentStackView,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
+        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
     }
     
     //MARK: - Location
@@ -142,32 +129,40 @@ class WritingBulletinBoardModal: BaseVC{
             $0.left.equalToSuperview().offset(bounds.width/15.625)
             $0.top.equalToSuperview().offset(bounds.height/33.8333)
         }
-        questionTitle.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
-            make.left.right.equalToSuperview().inset(bounds.width/15.625)
+        questionTitle.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
-        writeContentStackView.snp.makeConstraints { make in
-            make.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
-            make.left.right.equalToSuperview().inset(bounds.width/15.625)
-            make.height.equalTo(bounds.height/5)
+        titleTf.snp.makeConstraints{
+            $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
+            $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
+            $0.height.equalTo(bounds.height/27.0666)
         }
-        passwordStackView.snp.makeConstraints { make in
-            make.top.equalTo(writeContentStackView.snp.bottom).offset(bounds.height/50.75)
-            make.left.right.equalToSuperview().inset(bounds.width/15.625)
-            make.height.equalTo(bounds.height/16.9166)
+        tagChooseBtn.snp.makeConstraints {
+            $0.top.equalTo(titleTf)
+            $0.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.width.equalTo(bounds.width/5.77)
+            $0.height.equalTo(bounds.height/27.0666)
         }
-        sendBtn.snp.makeConstraints { make in
-            make.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
-            make.left.right.equalToSuperview().inset(bounds.width/15.625)
-            make.height.equalTo(bounds.height/20.3)
+        contentTv.snp.makeConstraints {
+            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/7.51851)
+        }
+        passwordStackView.snp.makeConstraints {
+            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/16.9166)
+        }
+        sendBtn.snp.makeConstraints {
+            $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/20.3)
         }
     }
     //MARK: - StackView 사이즈
     private func StackViewSizing(){
-        tagChooseBtn.snp.makeConstraints { make in
-            make.width.equalTo(bounds.width/5.77)
-            make.height.equalTo(bounds.height/27.0666)
-        }
         passwordTf.snp.makeConstraints { make in
             make.height.equalTo(bounds.height/27.0666)
         }
@@ -190,28 +185,34 @@ class WritingBulletinBoardModal: BaseVC{
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+
+}
+extension WritingBulletinBoardModal{
     //MARK: - DropDown Setting
     private func addTagTableViewSetting(frames: CGRect){
         tagSelectView.frame = view.frame
-        tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + frames.height, width: frames.width, height: 0)
+        self.bgView.addSubview(tagSelectView)
+        tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.bgView.addSubview(tagChoose)
         tagChoose.reloadData()
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTagTableView))
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeDropDown))
         tagSelectView.addGestureRecognizer(tapgesture)
         tagSelectView.alpha = 0
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut) { [self] in
-            tagSelectView.alpha = 0.5
-            dropDownStatus = true
-            tagChoose.frame = CGRect(x: bounds.width/1.31, y: tagChooseBtn.center.y, width: frames.width, height: CGFloat(CGFloat(tagDataSection.count) * bounds.height/32.48))//bounds.height/10.4 + frames.height
-        }
-        print("\(tagChooseBtn.frame.maxY)")
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { [self] in
+            tagSelectView.alpha = 0.2
+            tagChoose.frame = CGRect(x: frames.origin.x,
+                                     y: frames.origin.y + frames.height,
+                                     width: frames.width,
+                                     height: bounds.height/32.48 * CGFloat(tagDataSection.count))
+        }, completion: nil)
     }
     //MARK: - DropDown remove
-    private func removeDropDown(){
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut) { [self] in
-            tagSelectView.alpha = 0
-            dropDownStatus = false
-            tagChoose.frame = CGRect(x: bounds.width/1.31, y: bounds.height/10.4 + tagChooseBtn.frame.height, width: tagChooseBtn.frame.width, height: 0)
-        }
+    @objc private func removeDropDown(){
+        let frames = tagChooseBtn.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.tagSelectView.alpha = 0
+            self.tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
     }
 }
 
