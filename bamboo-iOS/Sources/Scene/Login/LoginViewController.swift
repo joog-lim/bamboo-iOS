@@ -125,6 +125,7 @@ class LoginViewController : BaseVC {
         }
     }
 
+
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -134,6 +135,7 @@ class LoginViewController : BaseVC {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
+//MARK: - Modal 관련
 extension LoginViewController{
     //MARK: - 모달 실행시 Action
     private func addDim() {
@@ -153,9 +155,18 @@ extension LoginViewController{
             self?.navigationController?.navigationBar.backgroundColor = .clear
         }
     }
+    //MARK: - ManagerModal
+    private func ManagerModalBtnClick(){
+        navigationController?.pushViewController(MainTabbarController(), animated: true)
+    }
 }
 
 extension LoginViewController : ManagerModalDelegate{
+    func updateManagerModal() {
+        self.removeDim()
+        self.ManagerModalBtnClick()
+    }
+    
     func onTapManagerModalClose() {
         self.removeDim()
     }

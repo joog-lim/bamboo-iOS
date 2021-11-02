@@ -1,5 +1,18 @@
 PODS:
   - Alamofire (5.4.4)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
+  - GoogleSignIn (6.0.2):
+    - AppAuth (~> 1.4)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.2.2):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher/Core (1.7.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
@@ -31,6 +44,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - GoogleSignIn
   - Moya/RxSwift
   - ReactorKit
   - RxAppState
@@ -45,6 +59,10 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppAuth
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - Moya
     - ReactorKit
     - RxAppState
@@ -60,6 +78,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
+  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
+  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
@@ -73,6 +95,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: ff0bd03076d869d5b16079be4e03109dc4be6460
+PODFILE CHECKSUM: 7523cd6702237d0bca18244b75cfb0ddc579db6f
 
 COCOAPODS: 1.11.2

@@ -37,9 +37,11 @@ class ManagerLoginModal: BaseVC{
     private let loginBtn = LoginButton(placeholder: "로그인", cornerRadius: 5).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
+        $0.addTarget(self, action: #selector(ManagerLoginBtn), for: .touchUpInside)
     }
     
     //MARK: - Selector
+    
     //모달 위치 조정
     static func instance() -> ManagerLoginModal{
         return ManagerLoginModal(nibName: nil, bundle: nil).then{
@@ -47,9 +49,13 @@ class ManagerLoginModal: BaseVC{
         }
     }
     //MARK: - Selectors
-    @objc func onTapClose() {
+    @objc private func onTapClose() {
         delegate?.onTapManagerModalClose()
         dismiss(animated: true, completion: nil)
+    }
+    @objc private func ManagerLoginBtn(){
+        dismiss(animated: true)
+        delegate?.updateManagerModal()
     }
     
     //MARK: - Helper

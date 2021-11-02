@@ -1,5 +1,9 @@
 ${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
+${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
+${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework
 ${BUILT_PRODUCTS_DIR}/RxAppState/RxAppState.framework
