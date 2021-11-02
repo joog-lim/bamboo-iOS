@@ -61,6 +61,7 @@ class LoginViewController : BaseVC {
     @objc func keyboardWillHide(_ sender: Notification) {
         self.view.frame.origin.y = 0 // Move view to original position
     }
+    //MARK: - Manager Modal 띄워주기
     @objc func ClickManagerBtn(){
         let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
         ManagerLoginModalModalsVC.delegate = self
@@ -69,13 +70,6 @@ class LoginViewController : BaseVC {
     }
     @objc func ClickUserBtn(){
         vcChoose = MainViewController()
-        print(vcChoose)
-        navigationController?.pushViewController(MainTabbarController(), animated: true)
-        navigationController?.isNavigationBarHidden = false
-    }
-
-    @objc func clickLoginBtn(){
-        vcChoose = ManagerViewController()
         print(vcChoose)
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
@@ -158,6 +152,7 @@ extension LoginViewController{
     //MARK: - ManagerModal
     private func ManagerModalBtnClick(){
         navigationController?.pushViewController(MainTabbarController(), animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
