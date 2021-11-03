@@ -34,20 +34,24 @@ class RuleViewController : BaseVC {
     
     private let backGroundScrollView = UIScrollView().then{
         $0.backgroundColor = .clear
-        
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
-    //MARK: - Selectors
+
     
     //MARK: - Helper
     override func configure() {
         super.configure()
         addView()
         location()
-        
+        navigationSetting()
     }
-
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.hidesBackButton = false
+        navigationItem.applyImageNavigation()
+    }
     
     private func addView(){
         view.addSubview(backGroundScrollView)

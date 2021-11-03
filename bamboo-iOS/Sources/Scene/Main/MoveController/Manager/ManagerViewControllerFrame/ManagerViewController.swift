@@ -28,12 +28,22 @@ class ManagerViewController: BaseVC{
     //MARK: Life cycle
     override func configure() {
         super.configure()
+        navigationSetting()
         setupCustomTabBar()
         addView()
         location()
         delegateAndDatasource()
     }
 
+    //MARK: - Selector
+    @objc private func navigationbarItemAction(){
+        navigationController?.pushViewController(RuleViewController(), animated: true)
+        navigationSetting()
+    }
+    @objc private func MainViewControllerNavigationAction(){
+        
+    }
+    
     //MARK: Setup view
     private func setupCustomTabBar(){
         customMenuBar.delegate = self
@@ -43,6 +53,7 @@ class ManagerViewController: BaseVC{
         self.view.addSubview(customMenuBar)
         self.view.addSubview(pageCollectionView)
     }
+    //MARK: - Location
     private func location(){
         customMenuBar.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -56,7 +67,16 @@ class ManagerViewController: BaseVC{
     private func delegateAndDatasource(){
         [pageCollectionView].forEach{ $0.delegate = self;$0.dataSource = self}
     }
-    
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(MainViewControllerNavigationAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"), style: .plain, target: self, action: #selector(navigationbarItemAction))
+        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
+        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
+        navigationItem.applyImageNavigation()
+    }
 }
 //MARK:- UICollectionViewDelegate, UICollectionViewDataSource
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
