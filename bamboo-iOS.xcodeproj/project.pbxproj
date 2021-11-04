@@ -328,6 +328,7 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EE963D2E2734002E005070B5 /* GoogleOauthModal */,
 				EE80A7FE2730C83F00FF204C /* ManagerLoginModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
@@ -664,6 +665,29 @@
 			isa = PBXGroup;
 			children = (
 				EE9582CF2729AD1600AAEC8A /* ReportModal.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EE963D2E2734002E005070B5 /* GoogleOauthModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE963D3027340072005070B5 /* ViewController */,
+				EE963D2F2734004E005070B5 /* Protocol */,
+			);
+			path = GoogleOauthModal;
+			sourceTree = "<group>";
+		};
+		EE963D2F2734004E005070B5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EE963D3027340072005070B5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewController;
 			sourceTree = "<group>";

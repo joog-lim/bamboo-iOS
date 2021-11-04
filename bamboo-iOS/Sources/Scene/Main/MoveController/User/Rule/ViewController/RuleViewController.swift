@@ -70,7 +70,7 @@ class RuleViewController : BaseVC {
             $0.top.equalTo(titleLabel.snp.bottom).offset(21)
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/26.786)
-            $0.bottom.equalToSuperview().inset(10)
+            $0.bottom.equalToSuperview().inset(40)
         }
     }
 }
