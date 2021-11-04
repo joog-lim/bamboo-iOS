@@ -119,48 +119,15 @@ class WritingBulletinBoardModal: BaseVC{
     
     //MARK: - Location
     private func location(){
-        bgView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(30)
-            $0.height.equalTo(bounds.height/1.75)
-        }
-        titleLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(bounds.width/15.625)
-            $0.top.equalToSuperview().offset(bounds.height/33.8333)
-        }
+        iphoneLocation()
+        iPadLocation()
         questionTitle.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
-        titleTf.snp.makeConstraints{
-            $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
-            $0.left.equalToSuperview().offset(bounds.width/15.625)
-            $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
-            $0.height.equalTo(bounds.height/27.0666)
-        }
-        tagChooseBtn.snp.makeConstraints {
-            $0.top.equalTo(titleTf)
-            $0.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.width.equalTo(bounds.width/5.77)
-            $0.height.equalTo(bounds.height/27.0666)
-        }
-        contentTv.snp.makeConstraints {
-            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
-            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/7.51851)
-        }
-        passwordStackView.snp.makeConstraints {
-            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
-            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/16.9166)
-        }
-        sendBtn.snp.makeConstraints {
-            $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
-            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/20.3)
-        }
+
     }
+
     //MARK: - StackView 사이즈
     private func StackViewSizing(){
         passwordTf.snp.makeConstraints { make in
@@ -187,6 +154,7 @@ class WritingBulletinBoardModal: BaseVC{
 
 
 }
+//MARK: - DropDown
 extension WritingBulletinBoardModal{
     //MARK: - DropDown Setting
     private func addTagTableViewSetting(frames: CGRect){
@@ -215,6 +183,7 @@ extension WritingBulletinBoardModal{
         }, completion: nil)
     }
 }
+
 
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
@@ -253,5 +222,92 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
         print(tagDataSection[indexPath.row].rawValue)
         tagChooseBtn.setTitle(tagDataSection[indexPath.row].rawValue, for: .normal)
         removeDropDown()
+    }
+}
+//MARK: - Location
+extension WritingBulletinBoardModal{
+    //MARK: - iPAD
+    private func iPadLocation(){
+        if UIDevice.current.isiPad{
+            bgView.snp.makeConstraints {
+                $0.left.equalToSuperview()
+                $0.right.equalToSuperview()
+                $0.bottom.equalToSuperview().offset(30)
+                $0.height.equalTo(464)
+            }
+            titleLabel.snp.makeConstraints {
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+                $0.top.equalToSuperview().offset(24)
+            }
+            titleTf.snp.makeConstraints{
+                $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+                $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
+                $0.height.equalTo(30)
+            }
+            tagChooseBtn.snp.makeConstraints {
+                $0.top.equalTo(titleTf)
+                $0.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.width.equalTo(60)
+                $0.height.equalTo(titleTf)
+            }
+            contentTv.snp.makeConstraints {
+                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(154)
+            }
+            passwordStackView.snp.makeConstraints {
+                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(60)
+            }
+            sendBtn.snp.makeConstraints {
+                $0.top.equalTo(passwordStackView.snp.bottom).offset(27)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(30)
+            }
+        }
+    }
+    //MARK: - iPhone
+    private func iphoneLocation(){
+        if UIDevice.current.isiPhone{
+            titleLabel.snp.makeConstraints {
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+                $0.top.equalToSuperview().offset(bounds.height/33.8333)
+            }
+            bgView.snp.makeConstraints {
+                $0.left.equalToSuperview()
+                $0.right.equalToSuperview()
+                $0.bottom.equalToSuperview().offset(30)
+                $0.height.equalTo(bounds.height/1.75)
+            }
+            titleTf.snp.makeConstraints{
+                $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+                $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
+                $0.height.equalTo(bounds.height/27.0666)
+            }
+            tagChooseBtn.snp.makeConstraints {
+                $0.top.equalTo(titleTf)
+                $0.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.width.equalTo(bounds.width/5.77)
+                $0.height.equalTo(titleTf)
+            }
+            sendBtn.snp.makeConstraints {
+                $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(bounds.height/20.3)
+            }
+            contentTv.snp.makeConstraints {
+                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(bounds.height/7.51851)
+            }
+            passwordStackView.snp.makeConstraints {
+                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(bounds.height/16.9166)
+            }
+        }
     }
 }

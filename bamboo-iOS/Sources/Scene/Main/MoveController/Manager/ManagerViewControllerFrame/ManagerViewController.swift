@@ -22,9 +22,7 @@ class ManagerViewController: BaseVC{
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-    private let customMenuBar = CustomMenuBar().then{
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private let customMenuBar = CustomMenuBar().then{ $0.translatesAutoresizingMaskIntoConstraints = false}
     //MARK: Life cycle
     override func configure() {
         super.configure()
@@ -41,7 +39,7 @@ class ManagerViewController: BaseVC{
         navigationSetting()
     }
     @objc private func MainViewControllerNavigationAction(){
-        
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: Setup view
@@ -57,7 +55,7 @@ class ManagerViewController: BaseVC{
     private func location(){
         customMenuBar.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(bounds.height/16.24)
+            $0.height.equalTo(55)
         }
         pageCollectionView.snp.makeConstraints {
             $0.top.equalTo(customMenuBar.snp.bottom)
@@ -78,7 +76,9 @@ class ManagerViewController: BaseVC{
         navigationItem.applyImageNavigation()
     }
 }
-//MARK:- UICollectionViewDelegate, UICollectionViewDataSource
+
+
+//MARK: - CollectionView Setting
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell

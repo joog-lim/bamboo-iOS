@@ -38,7 +38,7 @@ class MainViewController : BaseVC{
         $0.allowsSelection = false
         $0.estimatedRowHeight = 300
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
     private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     private lazy var writeBtn = UIButton(type: .system).then{
@@ -129,8 +129,8 @@ class MainViewController : BaseVC{
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/40.6)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(20)
         }
     }
     //MARK: - Footer
