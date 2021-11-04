@@ -10,17 +10,16 @@ import SnapKit
 import Then
 import RxSwift
 
+
+
 class LoginViewController : BaseVC {
     //MARK: - Properties
-    
-    private var vcChoose = UIViewController()
     
     //MARK: - 모달 background 설정
     let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
-    
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFit
@@ -30,7 +29,6 @@ class LoginViewController : BaseVC {
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
         $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
     }
-    
     private let ManagerBtn = LoginButton(placeholder: "관리자",cornerRadius: 15).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
         $0.addTarget(self, action: #selector(ClickManagerBtn), for: .touchDown)
@@ -45,7 +43,6 @@ class LoginViewController : BaseVC {
         $0.setTitle("게스트로 사용하기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
     }
-
     private lazy var btnStackView = UIStackView(arrangedSubviews: [userBtn,ManagerBtn]).then{
         $0.axis = .vertical
         $0.backgroundColor = .clear
@@ -69,8 +66,6 @@ class LoginViewController : BaseVC {
         present(ManagerLoginModalModalsVC, animated: true, completion: nil)
     }
     @objc func ClickUserBtn(){
-        vcChoose = MainViewController()
-        print(vcChoose)
         navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
@@ -78,7 +73,6 @@ class LoginViewController : BaseVC {
     //MARK: - Helper
     override func configure() {
         super.configure()
-        MainTabbarController().delegateLoginVc = self
         keyboardSetting()
         stackViewSetting()
         addView()
@@ -101,10 +95,18 @@ class LoginViewController : BaseVC {
             $0.width.equalTo(bounds.width/2.30)
             $0.top.equalToSuperview().offset(bounds.height/3.776744)
         }
-        btnStackView.snp.makeConstraints {
-            $0.height.equalTo(bounds.height/8.55)
-            $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
-            $0.left.right.equalToSuperview().inset(bounds.width/18.75)
+        if UIDevice.current.isiPad{
+            btnStackView.snp.makeConstraints {
+                $0.height.equalTo(95)
+                $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
+                $0.left.right.equalToSuperview().inset(bounds.width/18.75)
+            }
+        }else if UIDevice.current.isiPhone{
+            btnStackView.snp.makeConstraints {
+                $0.height.equalTo(bounds.height/8.55)
+                $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
+                $0.left.right.equalToSuperview().inset(bounds.width/18.75)
+            }
         }
         divider.snp.makeConstraints{
             $0.height.equalTo(0.5)
@@ -118,8 +120,7 @@ class LoginViewController : BaseVC {
             $0.bottom.equalToSuperview().inset(bounds.height/7.185)
         }
     }
-
-
+    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -151,7 +152,7 @@ extension LoginViewController{
     }
     //MARK: - ManagerModal
     private func ManagerModalBtnClick(){
-        navigationController?.pushViewController(MainTabbarController(), animated: true)
+        navigationController?.pushViewController(ManagerViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
 }
@@ -164,11 +165,5 @@ extension LoginViewController : ManagerModalDelegate{
     
     func onTapManagerModalClose() {
         self.removeDim()
-    }
-}
-
-extension LoginViewController : LoginStatue{
-    var MoveControllerStatue: UIViewController {
-        return vcChoose
     }
 }

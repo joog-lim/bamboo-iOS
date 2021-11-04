@@ -15,7 +15,6 @@ class MainViewController : BaseVC{
     lazy var data : [Data] = [.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3),.init(numberOfAlgorithm: 2, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3),.init(numberOfAlgorithm: 3, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3)]
     
 
-    
     //MARK: - 모달 background 설정
     let bgView = UIView().then {
         $0.backgroundColor = .black
@@ -39,7 +38,7 @@ class MainViewController : BaseVC{
         $0.allowsSelection = false
         $0.estimatedRowHeight = 300
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
     private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     private lazy var writeBtn = UIButton(type: .system).then{
@@ -66,24 +65,6 @@ class MainViewController : BaseVC{
         present(ReportModalModalsVC, animated: true, completion: nil)
     }
     
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //모달 취소시 Action
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
     //MARK: - Helper
     override func configure() {
         super.configure()
@@ -148,8 +129,8 @@ class MainViewController : BaseVC{
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/40.6)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(20)
         }
     }
     //MARK: - Footer
@@ -205,6 +186,28 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+extension MainViewController{
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    //모달 취소시 Action
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+}
+
+
 
 //MARK: - Write Modal Delegate
 extension MainViewController : WriteModalDelegate {

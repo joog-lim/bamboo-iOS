@@ -9,28 +9,24 @@ import UIKit
 import SnapKit
 import RxViewController
 
-protocol LoginStatue : AnyObject{
-    var MoveControllerStatue : UIViewController {get}
-}
+
 
 class MainTabbarController : UITabBarController{
+    //MARK: - Properties
     
-    weak var delegateLoginVc : LoginStatue?
-    
-    private lazy var homeVc = ManagerViewController()
-    let ruleVc = RuleViewController()
-    let detailVc = DetailViewController()
-        
+    private let homeVc = MainViewController()
+    private let ruleVc = RuleViewController()
+    private let detailVc = DetailViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        print("\(homeVc)")
+        vcSetting()
         navigationSetting()
         NetworkStatus()
-        vcSetting()
         setTabBarBackgroundColor()
     }
-
+    
     
     //MARK: - Moving ViewController Setting
     private func vcSetting(){
@@ -39,10 +35,6 @@ class MainTabbarController : UITabBarController{
         detailVc.tabBarItem.image = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
         //MARK: - 무슨 페이지를 보여줄지
         viewControllers = [homeVc,ruleVc,detailVc]
-        
-    }
-    static func instance() -> MainTabbarController {
-        return MainTabbarController(nibName: nil, bundle: nil)
     }
     
     //MARK: - Tabbar Setting
@@ -75,4 +67,3 @@ class MainTabbarController : UITabBarController{
         navigationItem.applyImageNavigation()
     }
 }
-

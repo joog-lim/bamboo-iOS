@@ -22,18 +22,26 @@ class ManagerViewController: BaseVC{
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-    private let customMenuBar = CustomMenuBar().then{
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    private let customMenuBar = CustomMenuBar().then{ $0.translatesAutoresizingMaskIntoConstraints = false}
     //MARK: Life cycle
     override func configure() {
         super.configure()
+        navigationSetting()
         setupCustomTabBar()
         addView()
         location()
         delegateAndDatasource()
     }
 
+    //MARK: - Selector
+    @objc private func navigationbarItemAction(){
+        navigationController?.pushViewController(RuleViewController(), animated: true)
+        navigationSetting()
+    }
+    @objc private func MainViewControllerNavigationAction(){
+        navigationController?.popViewController(animated: true)
+    }
+    
     //MARK: Setup view
     private func setupCustomTabBar(){
         customMenuBar.delegate = self
@@ -43,22 +51,34 @@ class ManagerViewController: BaseVC{
         self.view.addSubview(customMenuBar)
         self.view.addSubview(pageCollectionView)
     }
+    //MARK: - Location
     private func location(){
         customMenuBar.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(bounds.height/16.24)
+            $0.height.equalTo(55)
         }
         pageCollectionView.snp.makeConstraints {
             $0.top.equalTo(customMenuBar.snp.bottom)
-            $0.trailing.leading.bottom.equalToSuperview()
+            $0.trailing.leading.bottom.equalTo(view)
         }
     }
     private func delegateAndDatasource(){
         [pageCollectionView].forEach{ $0.delegate = self;$0.dataSource = self}
     }
-    
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(MainViewControllerNavigationAction))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"), style: .plain, target: self, action: #selector(navigationbarItemAction))
+        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
+        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
+        navigationItem.applyImageNavigation()
+    }
 }
-//MARK:- UICollectionViewDelegate, UICollectionViewDataSource
+
+
+//MARK: - CollectionView Setting
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
@@ -83,7 +103,7 @@ extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataS
 //MARK:- UICollectionViewDelegateFlowLayout
 extension ManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: pageCollectionView.frame.width, height: pageCollectionView.frame.height)
+        return CGSize(width: bounds.width, height: pageCollectionView.frame.height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0

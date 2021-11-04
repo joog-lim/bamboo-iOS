@@ -80,12 +80,22 @@ class ManagerLoginModal: BaseVC{
                 $0.height.equalTo(bounds.height/3.5771)
                 $0.width.equalTo(bounds.width/1.1718)
             }
+            loginBtn.snp.makeConstraints { (make) in
+                make.bottom.equalToSuperview().inset(bounds.height/47.7)
+                make.height.equalTo(bounds.height/27.1)
+                make.left.right.equalToSuperview().inset(30)
+            }
         }else if UIDevice.current.isiPad{
             bgView.layer.cornerRadius = 15
             bgView.snp.makeConstraints{
                 $0.center.equalToSuperview()
                 $0.height.equalTo(220)
                 $0.width.equalTo(292)
+            }
+            loginBtn.snp.makeConstraints { (make) in
+                make.bottom.equalToSuperview().inset(bounds.height/47.7)
+                make.height.equalTo(25)
+                make.left.right.equalToSuperview().inset(30)
             }
         }
         titleLabel.snp.makeConstraints{
@@ -101,11 +111,7 @@ class ManagerLoginModal: BaseVC{
             make.centerX.equalToSuperview()
             make.height.equalTo(bounds.height/29)
         }
-        loginBtn.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().inset(bounds.height/47.7)
-            make.height.equalTo(bounds.height/27.1)
-            make.left.right.equalToSuperview().inset(30)
-        }
+
     }
     //MARK: - Gesture
     private func addTransparentsview(frame : CGRect){

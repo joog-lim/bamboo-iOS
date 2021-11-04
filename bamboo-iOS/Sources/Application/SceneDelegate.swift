@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+    
     //MARK: - BackGround 진입시 정보 가리기
     func callBackgroundImage(_ bShow: Bool) {
            let TAG_BG_IMG = -101
@@ -40,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                    bgView.tag = TAG_BG_IMG
                    bgView.backgroundColor = .white
                     let imageView = UIImageView(image: UIImage(named: "BAMBOO_Logo"))
-                   imageView.frame.size = CGSize(width: bgView.frame.width/2.300, height: bgView.frame.height/11.768)
+                   imageView.frame.size = CGSize(width: 163, height: 69)
                    imageView.tag = TAG_BG_IMG
                    imageView.center = bgView.center
                    bgView.addSubview(imageView)
