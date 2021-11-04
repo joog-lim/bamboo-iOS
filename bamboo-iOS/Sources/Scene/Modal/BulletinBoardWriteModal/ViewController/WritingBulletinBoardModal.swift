@@ -184,7 +184,6 @@ extension WritingBulletinBoardModal{
     }
 }
 
-
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
     // TextView Place Holder

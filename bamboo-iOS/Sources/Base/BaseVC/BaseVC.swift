@@ -25,9 +25,14 @@ class BaseVC: UIViewController{
         super.viewDidAppear(animated)
         configureAppear()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureWillAppear()
+    }
     func configure(){
         view.backgroundColor = .white
     }
     func configureAppear(){}
+    func configureWillAppear(){}
 }
 

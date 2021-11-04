@@ -63,17 +63,18 @@ class RuleViewController : BaseVC {
             $0.top.left.right.bottom.equalToSuperview()
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(bounds.height/28)
+            $0.top.equalToSuperview().offset(29)
             $0.left.equalToSuperview().offset(bounds.width/26.8)
         }
         ruleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/38.67)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(21)
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/5.4347)
         }
         //MARK: - Ipad 와 Iphone 스크롤 조정
         if UIDevice.current.isiPhone{
             backGroundScrollView.contentSize = CGSize(width: bounds.width, height: 1330)
+
         }else if UIDevice.current.isiPad{
             backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/4.8 + titleLabel.frame.height + ruleLabel.frame.height)
         }
