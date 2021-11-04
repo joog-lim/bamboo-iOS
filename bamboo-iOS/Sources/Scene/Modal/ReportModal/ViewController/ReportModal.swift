@@ -77,6 +77,11 @@ class ReportModal : BaseVC{
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
                 $0.height.equalTo(bounds.height/27.0666)
             }
+            contentTv.snp.makeConstraints {
+                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(bounds.height/8.12)
+            }
             reportBtn.snp.makeConstraints {
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
                 $0.height.equalTo(bounds.height/23.2)
@@ -98,17 +103,16 @@ class ReportModal : BaseVC{
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
                 $0.height.equalTo(bounds.height/27.0666)
             }
+            contentTv.snp.makeConstraints {
+                $0.top.equalTo(titleTf.snp.bottom).offset(15)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(120)
+            }
             reportBtn.snp.makeConstraints {
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
                 $0.height.equalTo(40)
                 $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
             }
-        }
-
-        contentTv.snp.makeConstraints {
-            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
-            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/8.12)
         }
 
     }

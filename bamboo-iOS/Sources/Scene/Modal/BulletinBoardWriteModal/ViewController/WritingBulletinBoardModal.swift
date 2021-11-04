@@ -168,10 +168,17 @@ extension WritingBulletinBoardModal{
         tagSelectView.alpha = 0
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { [self] in
             tagSelectView.alpha = 0.2
-            tagChoose.frame = CGRect(x: frames.origin.x,
-                                     y: frames.origin.y + frames.height + 5,
-                                     width: frames.width,
-                                     height: bounds.height/32.48 * CGFloat(tagDataSection.count))
+            if UIDevice.current.isiPad{
+                tagChoose.frame = CGRect(x: frames.origin.x,
+                                         y: frames.origin.y + frames.height + 5,
+                                         width: frames.width,
+                                         height: 25 * CGFloat(tagDataSection.count))
+            }else if UIDevice.current.isiPhone{
+                tagChoose.frame = CGRect(x: frames.origin.x,
+                                         y: frames.origin.y + frames.height + 5,
+                                         width: frames.width,
+                                         height: bounds.height/27 * CGFloat(tagDataSection.count))
+            }
         }, completion: nil)
     }
     //MARK: - DropDown remove
@@ -214,7 +221,13 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return bounds.height/32.48
+        if UIDevice.current.isiPad{
+            return 25
+        }else if UIDevice.current.isiPhone{
+            return bounds.height/27
+        }
+        return 0
+        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -232,7 +245,7 @@ extension WritingBulletinBoardModal{
                 $0.left.equalToSuperview()
                 $0.right.equalToSuperview()
                 $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(464)
+                $0.height.equalTo(480)
             }
             titleLabel.snp.makeConstraints {
                 $0.left.equalToSuperview().offset(bounds.width/15.625)

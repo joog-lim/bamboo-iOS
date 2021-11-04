@@ -91,14 +91,11 @@ class DetailViewController : BaseVC{
             $0.top.equalTo(divider.snp.bottom).offset(bounds.height/23.88)
             $0.left.equalTo(titleLabel)
             $0.right.equalTo(view).inset(bounds.width/26.786)
+            $0.bottom.equalToSuperview()
         }
         //MARK: - ScrollView
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }
-        backGroundScrollView.contentSize = CGSize(width: view.frame.width,
-                                                  height:  titleLabel.frame.height + bounds.height/3.4
-                                                +  explanationLabel.frame.height  + greetingsLabel .frame.height)
     }
-
 }

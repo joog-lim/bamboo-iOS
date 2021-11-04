@@ -59,7 +59,7 @@ class ManagerViewController: BaseVC{
         }
         pageCollectionView.snp.makeConstraints {
             $0.top.equalTo(customMenuBar.snp.bottom)
-            $0.trailing.leading.bottom.equalToSuperview()
+            $0.trailing.leading.bottom.equalTo(view)
         }
     }
     private func delegateAndDatasource(){

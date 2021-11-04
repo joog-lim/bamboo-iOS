@@ -26,14 +26,13 @@ class RuleViewController : BaseVC {
     
     private lazy var  ruleLabel = ExplanationLabel(fontSize: 13, fontStyle: "NanumSquareRoundR", labelColor: .black).then{
         let string = NSMutableAttributedString(string: ruleString.rule.rawValue)
-        
         fifteenFont.forEach{string.setFontForText(textToFind: $0, withFont:  UIFont(name: "NanumSquareRoundR", size: 15) ?? UIFont())}
         thirdTeenFont.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundR", size: 13) ?? UIFont())}
+        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.attributedText = string
     }
     
     private let backGroundScrollView = UIScrollView().then{
-        $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -46,6 +45,7 @@ class RuleViewController : BaseVC {
         location()
         navigationSetting()
     }
+    
     //MARK: - Navigation Setting
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
@@ -56,8 +56,8 @@ class RuleViewController : BaseVC {
     private func addView(){
         view.addSubview(backGroundScrollView)
         [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
-        [titleLabel,ruleLabel].forEach{$0.sizeToFit()}
     }
+    
     private func location(){
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
@@ -69,14 +69,8 @@ class RuleViewController : BaseVC {
         ruleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(21)
             $0.left.equalTo(titleLabel)
-            $0.right.equalTo(view).inset(bounds.width/5.4347)
-        }
-        //MARK: - Ipad 와 Iphone 스크롤 조정
-        if UIDevice.current.isiPhone{
-            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: 1330)
-
-        }else if UIDevice.current.isiPad{
-            backGroundScrollView.contentSize = CGSize(width: bounds.width, height: bounds.height/4.8 + titleLabel.frame.height + ruleLabel.frame.height)
+            $0.right.equalTo(view).inset(bounds.width/26.786)
+            $0.bottom.equalToSuperview().inset(10)
         }
     }
 }
