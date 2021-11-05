@@ -149,7 +149,7 @@ extension StandByViewController{
     private func writeBtnClick(indexPath : Int){
         print("거절 : \(indexPath)")
         let RefusalModalModalsVC = RefusalModal.instance()
-        RefusalModalModalsVC.delegate = self
+        RefusalModalModalsVC.baseDelegate = self
         addDim()
         present(RefusalModalModalsVC, animated: true, completion: nil)
     }
@@ -199,9 +199,9 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 //MARK: - Refusal Modal Protocol
-extension StandByViewController : RefusalModalProtocol{
-    func onTapClose() {
-        removeDim()
+extension StandByViewController : BaseModalDelegate{
+    func onTapClick() {
+        self.removeDim()
     }
 }
 

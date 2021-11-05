@@ -8,12 +8,10 @@
 import UIKit
 import RxSwift
 
-class RefusalModal : BaseVC{
+class RefusalModal : BaseModal{
     //MARK: - Delegate
-    weak var delegate : RefusalModalProtocol?
     var i = 10
     
-    private let transparentView = UIView()
     private let bgView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -48,24 +46,20 @@ class RefusalModal : BaseVC{
             $0.modalPresentationStyle = .overFullScreen
         }
     }
-    //MARK: - Selectors
-    @objc func onTapClose() {
-        delegate?.onTapClose()
-        dismiss(animated: true, completion: nil)
-    }
     
     //MARK: - Helper
-    override func configure() {
-        super.configure()
+    
+    override func modalSetting() {
+        super.modalSetting()
         view.backgroundColor = .clear
         contentTv.delegate = self
         addView()
         location()
-        addTransparentsview(frame: transparentView.frame)
     }
+    
     //MARK: - AddSubView
     private func addView(){
-        [transparentView,bgView].forEach{view.addSubview($0)}
+        [bgView].forEach{view.addSubview($0)}
         [editContentTitle,refusaleditTitle,contentTv,refusalBtn].forEach{ bgView.addSubview($0)}
     }
     //MARK: - Location
@@ -95,12 +89,7 @@ class RefusalModal : BaseVC{
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
     }
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = bounds
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
-    }
+
     //MARK: - keyboard down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

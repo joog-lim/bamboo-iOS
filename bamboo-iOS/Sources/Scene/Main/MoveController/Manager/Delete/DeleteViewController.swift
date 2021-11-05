@@ -189,7 +189,7 @@ extension DeleteViewController{
     }
     private func RefusalBtnClick(indexPath : Int){
         let RefusalModalModalsVC = RefusalModal.instance()
-        RefusalModalModalsVC.delegate = self
+        RefusalModalModalsVC.baseDelegate = self
         print("\(indexPath) 번째 거절")
         addDim()
         present(RefusalModalModalsVC, animated: true, completion: nil)
@@ -197,8 +197,8 @@ extension DeleteViewController{
 }
 
 //MARK: - Delete Modal
-extension DeleteViewController : RefusalModalProtocol{
-    func onTapClose() {
+extension DeleteViewController : BaseModalDelegate{
+    func onTapClick() {
         self.removeDim()
     }
 }

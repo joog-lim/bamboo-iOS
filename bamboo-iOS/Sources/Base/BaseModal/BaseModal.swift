@@ -13,17 +13,18 @@ protocol BaseModalDelegate : AnyObject{
 class BaseModal : BaseVC{
     
     let transparentView = UIView()
-
     weak var baseDelegate : BaseModalDelegate?
-    
     @available(*,unavailable)
+    
     //MARK: - LifeCycle
     override func configure() {
         super.configure()
+        modalSetting()
+    }    
+    //MARK: - ModalSetting
+    func modalSetting(){
         view.addSubview(transparentView)
-        addTransparentsview()
-    }
-    
+        addTransparentsview()}
     //MARK: - Action
     @objc private func onTapClose(){
         dismiss(animated: true, completion: nil)
