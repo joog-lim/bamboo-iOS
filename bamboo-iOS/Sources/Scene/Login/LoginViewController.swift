@@ -59,15 +59,17 @@ class LoginViewController : BaseVC {
         self.view.frame.origin.y = 0 // Move view to original position
     }
     //MARK: - Manager Modal 띄워주기
-    @objc func ClickManagerBtn(){
+    @objc private func ClickManagerBtn(){
         let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
         ManagerLoginModalModalsVC.delegate = self
         addDim()
         present(ManagerLoginModalModalsVC, animated: true, completion: nil)
     }
-    @objc func ClickUserBtn(){
-        navigationController?.pushViewController(MainTabbarController(), animated: true)
-        navigationController?.isNavigationBarHidden = false
+    @objc private func ClickUserBtn(){
+        let googleOAuthModalVC = GoogleOauthModalVC.instance()
+        googleOAuthModalVC.delegate = self
+        addDim()
+        present(googleOAuthModalVC, animated: true, completion: nil)
     }
     
     //MARK: - Helper
@@ -150,9 +152,14 @@ extension LoginViewController{
             self?.navigationController?.navigationBar.backgroundColor = .clear
         }
     }
-    //MARK: - ManagerModal
+    //MARK: - ManagerModal Action
     private func ManagerModalBtnClick(){
         navigationController?.pushViewController(ManagerViewController(), animated: true)
+        navigationController?.isNavigationBarHidden = false
+    }
+    //MARK: - GoogleOAuthModal Action
+    private func GoogleOAuthModalBtnClickAction(){
+        navigationController?.pushViewController(MainTabbarController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
 }
@@ -164,6 +171,17 @@ extension LoginViewController : ManagerModalDelegate{
     }
     
     func onTapManagerModalClose() {
+        self.removeDim()
+    }
+}
+
+extension LoginViewController : GoogleOauthModalDelegate{
+    func GoogleOauthModalBtnClick() {
+        self.removeDim()
+        self.GoogleOAuthModalBtnClickAction()
+    }
+    
+    func onTapClose() {
         self.removeDim()
     }
 }

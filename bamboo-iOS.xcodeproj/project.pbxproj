@@ -18,6 +18,7 @@
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
+		EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4CCE3727350D5E00DBFBED /* BaseModal.swift */; };
 		EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */; };
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
@@ -45,6 +46,8 @@
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
 		EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */; };
 		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
+		EE963D3227340177005070B5 /* GoogleOauthModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE963D3127340177005070B5 /* GoogleOauthModalDelegate.swift */; };
+		EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
@@ -80,6 +83,7 @@
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		EE4CCE3727350D5E00DBFBED /* BaseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModal.swift; sourceTree = "<group>"; };
 		EE559237270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerStatusMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModalProtocol.swift; sourceTree = "<group>"; };
 		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
+		EE963D3127340177005070B5 /* GoogleOauthModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalDelegate.swift; sourceTree = "<group>"; };
+		EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalVC.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 		EE1D8AEA27180C06003614BE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EE4CCE3627350D4C00DBFBED /* BaseModal */,
 				EE680E55271EBA3F006D0F03 /* BaseView */,
 				EEF42F15270BDAB30088043F /* BaseVC */,
 				EE3BA5772702EFB000281096 /* BaseTableViewCell */,
@@ -354,6 +361,14 @@
 				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
+			sourceTree = "<group>";
+		};
+		EE4CCE3627350D4C00DBFBED /* BaseModal */ = {
+			isa = PBXGroup;
+			children = (
+				EE4CCE3727350D5E00DBFBED /* BaseModal.swift */,
+			);
+			path = BaseModal;
 			sourceTree = "<group>";
 		};
 		EE559239270DEC0600223D22 /* ManagerData */ = {
@@ -681,6 +696,7 @@
 		EE963D2F2734004E005070B5 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				EE963D3127340177005070B5 /* GoogleOauthModalDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -688,6 +704,7 @@
 		EE963D3027340072005070B5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1119,6 +1136,7 @@
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
+				EE963D3227340177005070B5 /* GoogleOauthModalDelegate.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
@@ -1133,6 +1151,7 @@
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
 				EE559238270DEB8D00223D22 /* ManagerStatusMenuCollectionViewCell.swift in Sources */,
+				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
@@ -1150,6 +1169,7 @@
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
+				EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
