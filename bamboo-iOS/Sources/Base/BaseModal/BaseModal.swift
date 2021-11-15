@@ -23,6 +23,7 @@ class BaseModal : BaseVC{
     }    
     //MARK: - ModalSetting
     func modalSetting(){
+        view.backgroundColor = .clear
         view.addSubview(transparentView)
         addTransparentsview()}
     //MARK: - Action

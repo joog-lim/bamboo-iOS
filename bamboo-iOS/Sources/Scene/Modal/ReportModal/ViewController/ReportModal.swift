@@ -7,12 +7,10 @@
 
 import UIKit
 
-class ReportModal : BaseVC{
+class ReportModal : BaseModal{
     
     weak var delegate : ReportModalDelegate?
-    
-    private let transparentView = UIView()
-    
+        
     private let bgView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -43,20 +41,14 @@ class ReportModal : BaseVC{
             $0.modalPresentationStyle = .overFullScreen
         }
     }
-    //MARK: - Selectors
-    @objc func onTapClose() {
-        delegate?.onTapReportModalClose()
-        dismiss(animated: true, completion: nil)
-    }
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
+    override func modalSetting() {
+        super.modalSetting()
         view.backgroundColor = .clear
         contentTv.delegate = self
         addView()
         location()
-        addTransparentsview(frame: transparentView.frame)
     }
     
     //MARK: - location
@@ -118,15 +110,10 @@ class ReportModal : BaseVC{
     }
     //MARK: - addsubView
     private func addView(){
-        [transparentView,bgView].forEach { view.addSubview($0)}
+        view.addSubview(bgView)
         [editContentTitle,titleTf,contentTv,reportBtn].forEach{bgView.addSubview($0)}
     }
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = view.frame
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
-    }
+
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)

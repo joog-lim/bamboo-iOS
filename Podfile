@@ -18,7 +18,6 @@ target 'bamboo-iOS' do
   #Rx
   pod 'RxSwift'
   pod 'RxCocoa'
-  
    
   #RxFramework
   pod "RxAppState"

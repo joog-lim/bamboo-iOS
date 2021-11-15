@@ -11,7 +11,15 @@ import UIKit
 class ManagerViewController: BaseVC{
         
     private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
+    
     //MARK: Properties
+    
+    //MARK: - 모달 background 설정
+    private let bgView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0
+    }
+    
     private let pageCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -22,6 +30,7 @@ class ManagerViewController: BaseVC{
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
+    
     private let customMenuBar = CustomMenuBar().then{ $0.translatesAutoresizingMaskIntoConstraints = false}
     //MARK: Life cycle
     override func configure() {
@@ -62,9 +71,12 @@ class ManagerViewController: BaseVC{
             $0.trailing.leading.bottom.equalTo(view)
         }
     }
+    
+    //MARK: - DataSource ANd Delegate
     private func delegateAndDatasource(){
         [pageCollectionView].forEach{ $0.delegate = self;$0.dataSource = self}
     }
+    
     //MARK: - Navigation Setting
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
@@ -76,7 +88,6 @@ class ManagerViewController: BaseVC{
         navigationItem.applyImageNavigation()
     }
 }
-
 
 //MARK: - CollectionView Setting
 extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -100,7 +111,8 @@ extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataS
         customMenuBar.customTabBarCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
     }
 }
-//MARK:- UICollectionViewDelegateFlowLayout
+
+//MARK: - UICollectionViewDelegateFlowLayout
 extension ManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: bounds.width, height: pageCollectionView.frame.height)
@@ -109,6 +121,30 @@ extension ManagerViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+
+//MARK: - Modal Action
+extension ManagerViewController {
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    //MARK: - 모달 닫기
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+}
+
+
 //MARK: - CustomMenuBar Delegate
 extension ManagerViewController : CustomMenuBarDelegate{
     func customMenuBar(scrollTo index: Int) {
@@ -116,3 +152,5 @@ extension ManagerViewController : CustomMenuBarDelegate{
         self.pageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
+
+

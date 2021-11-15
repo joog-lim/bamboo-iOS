@@ -27,7 +27,6 @@ class DeleteViewController : BaseVC{
 
     private let mainTableView = UITableView().then {
         $0.register(DeleteTableViewCell.self, forCellReuseIdentifier: DeleteTableViewCell.identifier)
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: "cellSpace")
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -139,22 +138,14 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
             cell.model = data[ indexPath.section]
             cell.delegate = self
             return cell
-        }else if indexPath.item == 1{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellSpace") else {return UITableViewCell()}
-            cell.backgroundColor = .clear
-            return cell
         }
         return UITableViewCell()
-
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.item == 0{
             return UITableView.automaticDimension
         }
-        else if indexPath.item == 1{
             return bounds.height/81.2
-        }
-        return 0
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300

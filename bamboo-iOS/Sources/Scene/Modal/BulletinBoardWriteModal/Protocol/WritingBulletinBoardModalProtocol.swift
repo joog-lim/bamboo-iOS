@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WriteModalDelegate : AnyObject{
-    func onTapClose()
+    func updateWrite()
 }

@@ -8,6 +8,5 @@
 import Foundation
 
 protocol GoogleOauthModalDelegate : AnyObject{
-    func onTapClose()
     func GoogleOauthModalBtnClick()
 }

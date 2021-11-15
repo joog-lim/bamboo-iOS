@@ -8,6 +8,6 @@
 import Foundation
 
 protocol ReportModalDelegate : AnyObject {
-    func onTapReportModalClose()
+    func updateReport()
 }
 

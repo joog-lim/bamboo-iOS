@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxKeyboard
 
-class WritingBulletinBoardModal: BaseVC{
+class WritingBulletinBoardModal: BaseModal{
     //MARK - Tag Data
     private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties
@@ -17,7 +17,6 @@ class WritingBulletinBoardModal: BaseVC{
     
     private lazy var dropDownStatus : Bool = false
     
-    private let transparentView = UIView()
     private let tagSelectView = UIView()
     private let tagChoose = UITableView().then{
         $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.identifier)
@@ -74,12 +73,8 @@ class WritingBulletinBoardModal: BaseVC{
     }
     
     //MARK: - Selectors
-    @objc private func onTapClose() {
-        delegate?.onTapClose()
-        dismiss(animated: true, completion: nil)
-    }
     @objc private func sendTapClose(){
-        delegate?.onTapClose()
+        baseDelegate?.onTapClick()
         dismiss(animated: true, completion: nil)
     }
     @objc private func tagChooseBtnClick(){
@@ -96,15 +91,14 @@ class WritingBulletinBoardModal: BaseVC{
     
 
     //MARK: - HELPERS
-    override func configure() {
+    override func modalSetting() {
+        super.modalSetting()
         addView()
         location()
         keyboardSetting()
         StackViewSizing()
         DelegateAndDatasource()
-        addTransparentsview(frame: view.frame)
     }
-    
     //MARK: - Delegate & DateSource
     private func DelegateAndDatasource(){
         contentTv.delegate = self
@@ -113,7 +107,7 @@ class WritingBulletinBoardModal: BaseVC{
     
     //MARK: - AddView
     private func addView(){
-        [transparentView,bgView].forEach { view.addSubview($0)}
+        [bgView].forEach { view.addSubview($0)}
         [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
     }
     
@@ -133,13 +127,6 @@ class WritingBulletinBoardModal: BaseVC{
         passwordTf.snp.makeConstraints { make in
             make.height.equalTo(bounds.height/27.0666)
         }
-    }
-    
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = bounds
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
     }
     
     //MARK: - KeyboardSetting

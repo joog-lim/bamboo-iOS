@@ -43,6 +43,7 @@
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
 		EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */; };
+		EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
 		EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */; };
 		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
@@ -50,6 +51,7 @@
 		EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
+		EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* Extensions.swift */; };
 		EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */; };
@@ -110,6 +112,7 @@
 		EE89811226E5FD410086D2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE89811526E5FD410086D2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
+		EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGoogleOauthBtn.swift; sourceTree = "<group>"; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModalProtocol.swift; sourceTree = "<group>"; };
 		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalVC.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		EE9F0D1A26E78F130015E81B /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 		EE7C6F7626EEEC4E0071031C /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
+				EE8BD66C274157FE003D419F /* CustomGoogleOauthBtn */,
 				EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */,
 				EE97B73A271B08B800479A06 /* LoginButton */,
 				EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */,
@@ -643,6 +648,14 @@
 			path = "bamboo-iOS";
 			sourceTree = "<group>";
 		};
+		EE8BD66C274157FE003D419F /* CustomGoogleOauthBtn */ = {
+			isa = PBXGroup;
+			children = (
+				EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */,
+			);
+			path = CustomGoogleOauthBtn;
+			sourceTree = "<group>";
+		};
 		EE953A37270678A600D4E133 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,6 +850,7 @@
 		EEA47AA4271725EF00867C2F /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */,
 				EE89811726E5FD410086D2D6 /* Info.plist */,
 			);
 			path = Supporting;
@@ -1017,7 +1031,7 @@
 				EE89810226E5FD400086D2D6 /* Sources */,
 				EE89810326E5FD400086D2D6 /* Frameworks */,
 				EE89810426E5FD400086D2D6 /* Resources */,
-				19D3299EA64FA9698AFDD314 /* [CP] Embed Pods Frameworks */,
+				C80F420871B7E223ED064274 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1070,6 +1084,7 @@
 				EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */,
 				EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */,
 				EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */,
+				EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */,
 				EEBA436426ED12580062642F /* NanumSquareRoundR.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1077,22 +1092,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19D3299EA64FA9698AFDD314 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks.sh\"\n";
-		};
 		C66135E8F3CB0BB5B417E75E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1113,6 +1112,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C80F420871B7E223ED064274 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1160,6 +1176,7 @@
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
+				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,

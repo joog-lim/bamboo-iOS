@@ -7,12 +7,10 @@
 
 import UIKit
 
-class EditContentModal : BaseVC{
+class EditContentModal : BaseModal{
     
     weak var delegate : EditContentModalProtocol?
-    
-    private let transparentView = UIView()
-    
+        
     private let bgView = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 20
@@ -50,20 +48,12 @@ class EditContentModal : BaseVC{
             $0.modalPresentationStyle = .overFullScreen
         }
     }
-    //MARK: - Selectors
-    @objc func onTapClose() {
-        delegate?.onTapClose()
-        dismiss(animated: true, completion: nil)
-    }
-
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        view.backgroundColor = .clear
+    override func modalSetting() {
+        super.modalSetting()
         contentTv.delegate = self
         addView()
         location()
-        addTransparentsview(frame: transparentView.frame)
     }
     
     //MARK: - location
@@ -96,14 +86,8 @@ class EditContentModal : BaseVC{
     }
     //MARK: - addsubView
     private func addView(){
-        [transparentView,bgView].forEach { view.addSubview($0)}
+        [bgView].forEach { view.addSubview($0)}
         [editContentTitle,titleTf,contentTv,btnStackView].forEach{bgView.addSubview($0)}
-    }
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = bounds
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
     }
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){

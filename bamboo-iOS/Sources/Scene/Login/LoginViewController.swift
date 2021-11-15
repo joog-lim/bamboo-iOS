@@ -10,13 +10,11 @@ import SnapKit
 import Then
 import RxSwift
 
-
-
 class LoginViewController : BaseVC {
     //MARK: - Properties
     
     //MARK: - 모달 background 설정
-    let bgView = UIView().then {
+   private  let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
@@ -62,12 +60,14 @@ class LoginViewController : BaseVC {
     @objc private func ClickManagerBtn(){
         let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
         ManagerLoginModalModalsVC.delegate = self
+        ManagerLoginModalModalsVC.baseDelegate = self
         addDim()
         present(ManagerLoginModalModalsVC, animated: true, completion: nil)
     }
     @objc private func ClickUserBtn(){
         let googleOAuthModalVC = GoogleOauthModalVC.instance()
         googleOAuthModalVC.delegate = self
+        googleOAuthModalVC.baseDelegate = self
         addDim()
         present(googleOAuthModalVC, animated: true, completion: nil)
     }
@@ -169,10 +169,6 @@ extension LoginViewController : ManagerModalDelegate{
         self.removeDim()
         self.ManagerModalBtnClick()
     }
-    
-    func onTapManagerModalClose() {
-        self.removeDim()
-    }
 }
 
 extension LoginViewController : GoogleOauthModalDelegate{
@@ -180,8 +176,9 @@ extension LoginViewController : GoogleOauthModalDelegate{
         self.removeDim()
         self.GoogleOAuthModalBtnClickAction()
     }
-    
-    func onTapClose() {
+}
+extension LoginViewController : BaseModalDelegate {
+    func onTapClick() {
         self.removeDim()
     }
 }

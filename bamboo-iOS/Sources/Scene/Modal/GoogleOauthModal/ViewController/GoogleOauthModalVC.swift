@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class GoogleOauthModalVC : BaseVC {
-
+class GoogleOauthModalVC : BaseModal {
+    let signInConfig = GIDConfiguration.init(clientID: "331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com")
+    
     //MARK: - Properties
     weak var delegate : GoogleOauthModalDelegate?
     
-    private let transparentView = UIView()
-
     private let bgView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -27,8 +27,10 @@ class GoogleOauthModalVC : BaseVC {
         $0.text = "관리자님 환영합니다!"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
-    
-    
+    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "GOOGLE LOGIN").then{
+        $0.addTarget(self, action: #selector(GoogleOAuthLogin), for: .touchUpInside)
+    }
+
     private let loginBtn = LoginButton(placeholder: "로그인", cornerRadius: 5).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
@@ -44,28 +46,31 @@ class GoogleOauthModalVC : BaseVC {
         }
     }
     //MARK: - Selectors
-    @objc private func onTapClose() {
-        delegate?.onTapClose()
-        dismiss(animated: true, completion: nil)
-    }
     @objc private func UserLoginBtn(){
         dismiss(animated: true) {
             self.delegate?.GoogleOauthModalBtnClick()
         }
     }
+    @objc private func GoogleOAuthLogin(){
+        print("GOOGLE LOGIN")
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+            guard error == nil else {return}
+            
+        }
+    }
     
     //MARK: - Helper
-    override func configure() {
-        super.configure()
+
+    override func modalSetting() {
+        super.modalSetting()
         view.backgroundColor = .clear
         addView()
         location()
-        addTransparentsview(frame: transparentView.frame)
     }
     //MARK: - AddView
     private func addView(){
         [transparentView,bgView].forEach{ view.addSubview($0)}
-        [titleLabel,humanAffairsLabel,loginBtn].forEach{ bgView.addSubview($0)}
+        [titleLabel,humanAffairsLabel,loginBtn,googleSignBtn].forEach{ bgView.addSubview($0)}
     }
     //MARK: - Location
     private func location(){
@@ -75,6 +80,10 @@ class GoogleOauthModalVC : BaseVC {
                 $0.center.equalToSuperview()
                 $0.height.equalTo(bounds.height/3.5771)
                 $0.width.equalTo(bounds.width/1.1718)
+            }
+            googleSignBtn.snp.makeConstraints{
+                $0.center.equalToSuperview()
+                $0.width.equalToSuperview().inset(30)
             }
             loginBtn.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview().inset(bounds.height/47.7)
@@ -88,6 +97,10 @@ class GoogleOauthModalVC : BaseVC {
                 $0.height.equalTo(220)
                 $0.width.equalTo(292)
             }
+            googleSignBtn.snp.makeConstraints{
+                $0.center.equalToSuperview()
+                $0.left.right.equalToSuperview().inset(30)
+            }
             loginBtn.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview().inset(bounds.height/47.7)
                 make.height.equalTo(25)
@@ -98,12 +111,9 @@ class GoogleOauthModalVC : BaseVC {
             $0.top.equalToSuperview().offset(bounds.height/40)
             $0.centerX.equalToSuperview()
         }
+        humanAffairsLabel.snp.makeConstraints {
+            $0.bottom.equalTo(googleSignBtn.snp.top).offset(-10)
+            $0.left.equalTo(googleSignBtn)
+        }
     }
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = bounds
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
-    }
-    
 }

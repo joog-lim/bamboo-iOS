@@ -7,12 +7,10 @@
 
 import UIKit
 
-class ManagerLoginModal: BaseVC{
+class ManagerLoginModal: BaseModal{
     //MARK: - Properties
     weak var delegate : ManagerModalDelegate?
     
-    private let transparentView = UIView()
-
     private let bgView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -49,27 +47,24 @@ class ManagerLoginModal: BaseVC{
         }
     }
     //MARK: - Selectors
-    @objc private func onTapClose() {
-        delegate?.onTapManagerModalClose()
-        dismiss(animated: true, completion: nil)
-    }
     @objc private func ManagerLoginBtn(){
         dismiss(animated: true) {
             self.delegate?.updateManagerModal()
         }
     }
     
+    
     //MARK: - Helper
-    override func configure() {
-        super.configure()
+    override func modalSetting() {
+        super.modalSetting()
         view.backgroundColor = .clear
         addView()
         location()
-        addTransparentsview(frame: transparentView.frame)
+
     }
     //MARK: - AddView
     private func addView(){
-        [transparentView,bgView].forEach{ view.addSubview($0)}
+        view.addSubview(bgView)
         [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
     }
     //MARK: - Location
@@ -114,12 +109,7 @@ class ManagerLoginModal: BaseVC{
         }
 
     }
-    //MARK: - Gesture
-    private func addTransparentsview(frame : CGRect){
-        transparentView.frame = bounds
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(onTapClose))
-        transparentView.addGestureRecognizer(tapgesture)
-    }
+
     //MARK: - keyboard down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

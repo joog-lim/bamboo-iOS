@@ -30,20 +30,20 @@ class LikeOrDisLikeView : UIButton{
             }
         }
     }
-    
+    //MARK: - Initalizer
     override init(frame: CGRect) {
         super.init(frame: frame)
         addView()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //MARK: - layoutSubView
     override func layoutSubviews() {
         super.layoutSubviews()
         location()
     }
-    
+//MARK: - Helper
     private func addView(){
         [iv,label].forEach{ addSubview($0)}
     }
@@ -57,5 +57,4 @@ class LikeOrDisLikeView : UIButton{
             $0.bottom.equalToSuperview()
         }
     }
-    
 }
