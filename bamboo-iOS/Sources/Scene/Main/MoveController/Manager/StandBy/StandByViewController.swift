@@ -10,12 +10,7 @@ import UIKit
 class StandByViewController : BaseVC{
     //MARK: - Properties
     private var isLoaing : Bool = false
-    
-    //MARK: - 모달 background 설정
-    let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
+    weak var delegate : managerModalDelegate?
     
     //MARK: - Dummy Data
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
@@ -111,47 +106,6 @@ class StandByViewController : BaseVC{
             make.center.equalTo(tableViewFooter)
         }
     }
-    //MARK: - Action
-    private func cellInsideBtnClickAction(indexPath : Int){
-        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
-        }
-        let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
-            print("거절")
-            self.writeBtnClick(indexPath: indexPath)
-        }
-        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
-        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
-        present(actionSheetController, animated: true)
-    }
-}
-
-//MARK: - Refusal Modal action
-extension StandByViewController{
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-    private func writeBtnClick(indexPath : Int){
-        print("거절 : \(indexPath)")
-        let RefusalModalModalsVC = RefusalModal.instance()
-        RefusalModalModalsVC.baseDelegate = self
-        addDim()
-        present(RefusalModalModalsVC, animated: true, completion: nil)
-    }
 }
 
 //MARK: - TableView
@@ -191,17 +145,11 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-//MARK: - Refusal Modal Protocol
-extension StandByViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
-    }
-}
-
 //MARK: - Click Cell inside Btn Action
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        cellInsideBtnClickAction(indexPath: indexPath.section)
+        print(indexPath.section)
+        delegate?.standBy(index: indexPath.section)
     }
 }

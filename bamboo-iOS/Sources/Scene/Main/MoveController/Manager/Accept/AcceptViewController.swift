@@ -11,7 +11,8 @@ class AcceptViewController : BaseVC {
     
     //MARK: - Properties
     private var isLoaing : Bool = false
-    
+    weak var delegate : managerModalDelegate?
+
     //MARK: - 모달 background 설정
     let bgView = UIView().then {
         $0.backgroundColor = .black
@@ -69,31 +70,9 @@ class AcceptViewController : BaseVC {
     //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
     private func EditBtnClick(indexPath : Int){
         print("수락 : \(indexPath)")
-        let EditContentModalModalsVC = EditContentModal.instance()
-        EditContentModalModalsVC.delegate = self
-        EditContentModalModalsVC.baseDelegate = self
-        addDim()
-        present(EditContentModalModalsVC, animated: true, completion: nil)
+        delegate?.accept(index: indexPath)
     }
     
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //MARK: - 모달 닫기
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
     
     //MARK: - Data load More
     private func loadMoreData(){
@@ -115,7 +94,7 @@ class AcceptViewController : BaseVC {
             }
         }
     }
-    
+
     //MARK: - Header Setting
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -178,17 +157,6 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-//MARK: - 모달 닫기
-extension AcceptViewController : EditContentModalProtocol{
-    func onTapClose() {
-        self.removeDim()
-    }
-}
-extension AcceptViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
-    }
-}
 
 //MARK: - 수정 버튼 눌렀을때 동작
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
@@ -197,3 +165,4 @@ extension AcceptViewController : AcceptManagerTableViewCellDelegate {
         self.EditBtnClick(indexPath: indexPath.section)
     }
 }
+

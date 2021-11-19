@@ -7,7 +7,11 @@
 
 import UIKit
 
-
+protocol managerModalDelegate: AnyObject{
+    func accept(index : Int)
+    func standBy(index: Int)
+    func Delete(index: Int)
+}
 class ManagerViewController: BaseVC{
         
     private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
@@ -75,6 +79,7 @@ class ManagerViewController: BaseVC{
     //MARK: - DataSource ANd Delegate
     private func delegateAndDatasource(){
         [pageCollectionView].forEach{ $0.delegate = self;$0.dataSource = self}
+        StandByViewController().delegate = self
     }
     
     //MARK: - Navigation Setting
@@ -143,6 +148,55 @@ extension ManagerViewController {
         }
     }
 }
+//MARK: - Alert Action
+extension ManagerViewController {
+    //MARK: - AlertAction
+    private func cellInsideBtnClickAction(index: Int){
+        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
+        }
+        let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
+            print("거절")
+            self.StandByModal()
+        }
+        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
+        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
+        present(actionSheetController, animated: true)
+    }
+    private func SeeMoreDetailBtnAction(index: Int){
+        let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
+            self.DeleteModal()
+        }
+        let refusalAction : UIAlertAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+            print("삭제")
+        }
+        let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
+        [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
+        present(actionSheetController, animated: true)
+    }
+    
+    //MARK: - Modal
+    private func AcceptModal(index: Int){
+        let EditContentModalModalsVC = EditContentModal.instance()
+        EditContentModalModalsVC.delegate = self
+        EditContentModalModalsVC.baseDelegate = self
+        addDim()
+        present(EditContentModalModalsVC, animated: true, completion: nil)
+    }
+    private func StandByModal(){
+        let RefusalModalModalsVC = RefusalModal.instance()
+        RefusalModalModalsVC.baseDelegate = self
+        addDim()
+        present(RefusalModalModalsVC, animated: true, completion: nil)
+    }
+    private func DeleteModal(){
+        let RefusalModalModalsVC = RefusalModal.instance()
+        RefusalModalModalsVC.baseDelegate = self
+        addDim()
+        present(RefusalModalModalsVC, animated: true, completion: nil)
+    }
+}
 
 
 //MARK: - CustomMenuBar Delegate
@@ -154,3 +208,26 @@ extension ManagerViewController : CustomMenuBarDelegate{
 }
 
 
+extension ManagerViewController : EditContentModalProtocol{
+    func onTapClose() {
+        removeDim()
+    }
+}
+
+extension ManagerViewController : BaseModalDelegate{
+    func onTapClick() {
+        self.removeDim()
+    }
+}
+
+extension ManagerViewController : managerModalDelegate{
+    func standBy(index: Int) {
+        cellInsideBtnClickAction(index: index)
+    }
+    func accept(index: Int) {
+        AcceptModal(index: index)
+    }
+    func Delete(index: Int) {
+        SeeMoreDetailBtnAction(index: index)
+    }
+}

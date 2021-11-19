@@ -9,15 +9,19 @@ import UIKit
 
 class CustomGoogleOauthBtn : UIButton{
     //MARK: - 커스텀 버튼 설정
+    private let iv = UIImageView().then{
+        $0.contentMode = .scaleAspectFit
+    }
+    
     init(image : UIImage ,btnText : String){
         super.init(frame: .zero)
         backgroundColor = .white
         
-        setImage(image, for: .normal)
+        iv.image = image
         setTitle(btnText, for: .normal)
         setTitleColor(.lightGray, for: .normal)
-        titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 10)
-        
+        titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 12)
+        addView()
         CornerAndBorderWidth()
     }
     required init?(coder: NSCoder) {
@@ -25,16 +29,17 @@ class CustomGoogleOauthBtn : UIButton{
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView?.snp.makeConstraints{
-            $0.height.width.equalTo(10)
+        iv.snp.makeConstraints{
             $0.centerY.equalToSuperview()
-        }
-        titleLabel?.snp.makeConstraints{
-            $0.centerY.equalToSuperview()
+            $0.left.equalToSuperview().offset(30)
+            $0.height.width.equalTo(15)
         }
     }
     
     //MARK: - Helper
+    private func addView(){
+        addSubview(iv)
+    }
     //MARK: - Corner And Border Setting
     private func CornerAndBorderWidth(){
         layer.cornerRadius = 10

@@ -9,7 +9,6 @@ import UIKit
 import GoogleSignIn
 
 class GoogleOauthModalVC : BaseModal {
-    let signInConfig = GIDConfiguration.init(clientID: "331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com")
     
     //MARK: - Properties
     weak var delegate : GoogleOauthModalDelegate?
@@ -27,14 +26,8 @@ class GoogleOauthModalVC : BaseModal {
         $0.text = "관리자님 환영합니다!"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
-    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "GOOGLE LOGIN").then{
+    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE").then{
         $0.addTarget(self, action: #selector(GoogleOAuthLogin), for: .touchUpInside)
-    }
-
-    private let loginBtn = LoginButton(placeholder: "로그인", cornerRadius: 5).then{
-        $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
-        $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
-        $0.addTarget(self, action: #selector(UserLoginBtn), for: .touchUpInside)
     }
     
     //MARK: - Selector
@@ -45,6 +38,7 @@ class GoogleOauthModalVC : BaseModal {
             $0.modalPresentationStyle = .overFullScreen
         }
     }
+    
     //MARK: - Selectors
     @objc private func UserLoginBtn(){
         dismiss(animated: true) {
@@ -52,10 +46,14 @@ class GoogleOauthModalVC : BaseModal {
         }
     }
     @objc private func GoogleOAuthLogin(){
-        print("GOOGLE LOGIN")
-        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-            guard error == nil else {return}
-            
+        print("GOOGLE Sign In Start")
+        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
+            baseDelegate?.onTapClick()
+            dismiss(animated: true) {
+                self.delegate?.GoogleOauthModalBtnClick()
+            }
+        }else{
+            GoogleLogin.shared.SignInOauth(vc: self)
         }
     }
     
@@ -70,8 +68,9 @@ class GoogleOauthModalVC : BaseModal {
     //MARK: - AddView
     private func addView(){
         [transparentView,bgView].forEach{ view.addSubview($0)}
-        [titleLabel,humanAffairsLabel,loginBtn,googleSignBtn].forEach{ bgView.addSubview($0)}
+        [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
     }
+
     //MARK: - Location
     private func location(){
         if UIDevice.current.isiPhone{
@@ -83,12 +82,8 @@ class GoogleOauthModalVC : BaseModal {
             }
             googleSignBtn.snp.makeConstraints{
                 $0.center.equalToSuperview()
+                $0.height.equalTo(bounds.height/23.2)
                 $0.width.equalToSuperview().inset(30)
-            }
-            loginBtn.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview().inset(bounds.height/47.7)
-                make.height.equalTo(bounds.height/27.1)
-                make.left.right.equalToSuperview().inset(30)
             }
         }else if UIDevice.current.isiPad{
             bgView.layer.cornerRadius = 15
@@ -99,12 +94,8 @@ class GoogleOauthModalVC : BaseModal {
             }
             googleSignBtn.snp.makeConstraints{
                 $0.center.equalToSuperview()
+                $0.height.equalTo(35)
                 $0.left.right.equalToSuperview().inset(30)
-            }
-            loginBtn.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview().inset(bounds.height/47.7)
-                make.height.equalTo(25)
-                make.left.right.equalToSuperview().inset(30)
             }
         }
         titleLabel.snp.makeConstraints{

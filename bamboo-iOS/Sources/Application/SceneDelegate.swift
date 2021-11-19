@@ -29,13 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-    //MARK: - GoogleOAuth
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let scheme = URLContexts.first?.url.scheme else { return }
-        if scheme.contains("com.googleusercontent.apps") {
-            GIDSignIn.sharedInstance.handle(URLContexts.first!.url)
-        }
-    }
     //MARK: - BackGround 진입시 정보 가리기
     func callBackgroundImage(_ bShow: Bool) {
            let TAG_BG_IMG = -101
