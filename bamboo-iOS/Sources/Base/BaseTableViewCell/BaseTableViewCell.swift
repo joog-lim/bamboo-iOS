@@ -13,6 +13,7 @@ class BaseTableViewCell<T> : UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
     }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -70,7 +70,7 @@ class AcceptViewController : BaseVC {
     //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
     private func EditBtnClick(indexPath : Int){
         print("수락 : \(indexPath)")
-        delegate?.accept(index: indexPath)
+        self.delegate?.accept(index: indexPath)
     }
     
     
@@ -83,9 +83,7 @@ class AcceptViewController : BaseVC {
             DispatchQueue.global().async {
                 sleep(2)
                 for i in start...end{
-
                     self.data.append(ManagerTextData.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
-                    
                 }
                 DispatchQueue.main.async {
                     self.mainTableView.reloadData()

@@ -11,7 +11,6 @@ import GoogleSignIn
 class GoogleOauthModalVC : BaseModal {
     
     //MARK: - Properties
-    weak var delegate : GoogleOauthModalDelegate?
     
     private let bgView = UIView().then{
         $0.backgroundColor = .white
@@ -40,28 +39,18 @@ class GoogleOauthModalVC : BaseModal {
     }
     
     //MARK: - Selectors
-    @objc private func UserLoginBtn(){
-        dismiss(animated: true) {
-            self.delegate?.GoogleOauthModalBtnClick()
-        }
-    }
+
     @objc private func GoogleOAuthLogin(){
         print("GOOGLE Sign In Start")
-        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
-            baseDelegate?.onTapClick()
-            dismiss(animated: true) {
-                self.delegate?.GoogleOauthModalBtnClick()
-            }
-        }else{
-            GoogleLogin.shared.SignInOauth(vc: self)
-        }
+        GoogleLogin.shared.SignInOauth(vc: self)
+        dismiss(animated: true)
+        baseDelegate?.onTapClick()
     }
     
     //MARK: - Helper
 
     override func modalSetting() {
         super.modalSetting()
-        view.backgroundColor = .clear
         addView()
         location()
     }

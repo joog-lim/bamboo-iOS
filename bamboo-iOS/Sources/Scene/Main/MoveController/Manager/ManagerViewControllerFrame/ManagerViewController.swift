@@ -13,10 +13,8 @@ protocol managerModalDelegate: AnyObject{
     func Delete(index: Int)
 }
 class ManagerViewController: BaseVC{
-        
-    private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
-    
     //MARK: Properties
+    private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
     
     //MARK: - 모달 background 설정
     private let bgView = UIView().then {
@@ -163,6 +161,7 @@ extension ManagerViewController {
         [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
         present(actionSheetController, animated: true)
     }
+    
     private func SeeMoreDetailBtnAction(index: Int){
         let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
@@ -231,3 +230,4 @@ extension ManagerViewController : managerModalDelegate{
         SeeMoreDetailBtnAction(index: index)
     }
 }
+ 

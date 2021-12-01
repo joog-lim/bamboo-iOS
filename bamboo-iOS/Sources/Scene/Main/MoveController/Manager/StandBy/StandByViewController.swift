@@ -131,7 +131,6 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableView.automaticDimension
         }
             return bounds.height/81.2
-
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300

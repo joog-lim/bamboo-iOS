@@ -26,22 +26,25 @@ final class GoogleLogin{
         }
     }
     public func SignInOauth(vc : UIViewController){
-        sign.signIn(with: signInConfig, presenting: vc) { user, error in
-            guard error  == nil else {return}
-            guard let user = user else {return }
+        DispatchQueue.main.async { [self] in
+            sign.signIn(with: signInConfig, presenting: vc) { user, error in
+                guard error  == nil else {return}
+                guard let user = user else {return }
 
-            user.authentication.do { authentication, error in
-                guard error == nil else {return }
-                guard let authentication = authentication else {return}
-                
-                let idToken = authentication.idToken
-                // send id Token to backend
+                user.authentication.do { authentication, error in
+                    guard error == nil else {return }
+                    guard let authentication = authentication else {return}
+                    
+                    let idToken = authentication.idToken
+                    // send id Token to backend
+                }
+                // 받을수 있는 값
+                let emailAddress = user.profile?.email
+                let fullName = user.profile?.name
+                let givenName = user.profile?.givenName
+                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
             }
-            // 받을수 있는 값
-            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-            let givenName = user.profile?.givenName
-            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
         }
-    }
+        }
+      
 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
-
+import GoogleSignIn
 class LoginViewController : BaseVC {
     //MARK: - Properties
     
@@ -40,6 +40,7 @@ class LoginViewController : BaseVC {
         $0.backgroundColor = .clear
         $0.setTitle("게스트로 사용하기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
+        $0.addTarget(self, action: #selector(GuestBtnAction), for: .touchUpInside)
     }
     private lazy var btnStackView = UIStackView(arrangedSubviews: [userBtn,ManagerBtn]).then{
         $0.axis = .vertical
@@ -64,12 +65,20 @@ class LoginViewController : BaseVC {
         addDim()
         present(ManagerLoginModalModalsVC, animated: true, completion: nil)
     }
+    //MARK: - Google Oauth 실행 여부
     @objc private func ClickUserBtn(){
-        let googleOAuthModalVC = GoogleOauthModalVC.instance()
-        googleOAuthModalVC.delegate = self
-        googleOAuthModalVC.baseDelegate = self
-        addDim()
-        present(googleOAuthModalVC, animated: true, completion: nil)
+        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
+            navigationController?.pushViewController(MainTabbarController(), animated: true)
+            navigationController?.isNavigationBarHidden = false
+        }else{
+            let googleOAuthModalVC = GoogleOauthModalVC.instance()
+            googleOAuthModalVC.baseDelegate = self
+            addDim()
+            present(googleOAuthModalVC, animated: true, completion: nil)
+        }
+    }
+    @objc private func GuestBtnAction(){
+        GoogleLogin.shared.SignOutOauth()
     }
     
     //MARK: - Helper
@@ -157,11 +166,7 @@ extension LoginViewController{
         navigationController?.pushViewController(ManagerViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
-    //MARK: - GoogleOAuthModal Action
-    private func GoogleOAuthModalBtnClickAction(){
-        navigationController?.pushViewController(MainTabbarController(), animated: true)
-        navigationController?.isNavigationBarHidden = false
-    }
+
 }
 
 extension LoginViewController : ManagerModalDelegate{
@@ -171,12 +176,7 @@ extension LoginViewController : ManagerModalDelegate{
     }
 }
 
-extension LoginViewController : GoogleOauthModalDelegate{
-    func GoogleOauthModalBtnClick() {
-        self.removeDim()
-        self.GoogleOAuthModalBtnClickAction()
-    }
-}
+
 extension LoginViewController : BaseModalDelegate {
     func onTapClick() {
         self.removeDim()

@@ -51,6 +51,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private lazy var footerView = UIView()
     
     private lazy var likeBtn = LikeOrDisLikeView().then{
+        $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
         $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
@@ -75,11 +76,15 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn].forEach { view.addSubview($0)}
     }
-    
+
     //Cell 재사용
     override func reuse() {
         super.reuse()
         self.delegate = nil
+        
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
     }
     
