@@ -23,4 +23,5 @@ struct Data {
     let title : String
     let content : String
     let like : Int
+    var isSelected : Bool? = false
 }

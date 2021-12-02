@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
-		EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -23,7 +22,6 @@
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E56271EBA47006D0F03 /* BaseView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
-		EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
 		EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */; };
 		EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */; };
@@ -32,9 +30,7 @@
 		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
 		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
-		EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80642A272704450040B295 /* RefusalModalProtocol.swift */; };
 		EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */; };
-		EE80A8042730CAC000FF204C /* ManagerModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8032730CAC000FF204C /* ManagerModalDelegate.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
@@ -45,7 +41,6 @@
 		EE89811626E5FD410086D2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */; };
 		EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
-		EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */; };
 		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
 		EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
@@ -58,7 +53,6 @@
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
 		EEAF5355274B30070063D99A /* TextFieldStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAF5354274B30070063D99A /* TextFieldStatusViewModel.swift */; };
-		EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */; };
 		EEB90EC82757BE8200A3BDCE /* MannagerTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
@@ -68,8 +62,6 @@
 		EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */; };
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
-		EEC43017275847C5008F802F /* ModalAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC43016275847C5008F802F /* ModalAction.swift */; };
-		EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F12270BD9BA0088043F /* ManagerViewController.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +70,6 @@
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
-		EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalProtocol.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,7 +83,6 @@
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE680E56271EBA47006D0F03 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalViewController.swift; sourceTree = "<group>"; };
@@ -101,9 +91,7 @@
 		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
-		EE80642A272704450040B295 /* RefusalModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalProtocol.swift; sourceTree = "<group>"; };
 		EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModal.swift; sourceTree = "<group>"; };
-		EE80A8032730CAC000FF204C /* ManagerModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerModalDelegate.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
@@ -116,7 +104,6 @@
 		EE89811726E5FD410086D2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
 		EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGoogleOauthBtn.swift; sourceTree = "<group>"; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModalProtocol.swift; sourceTree = "<group>"; };
 		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
 		EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalVC.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
@@ -133,14 +120,11 @@
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
 		EEAF5354274B30070063D99A /* TextFieldStatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStatusViewModel.swift; sourceTree = "<group>"; };
-		EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModalProtocol.swift; sourceTree = "<group>"; };
 		EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannagerTabbar.swift; sourceTree = "<group>"; };
 		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
-		EEC43016275847C5008F802F /* ModalAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAction.swift; sourceTree = "<group>"; };
-		EEF42F12270BD9BA0088043F /* ManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,20 +203,11 @@
 		EE1D8AEB27180D1F003614BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				EE1D8AEC27180D3C003614BE /* MoveController */,
-				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
-				EEC43016275847C5008F802F /* ModalAction.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		EE1D8AEC27180D3C003614BE /* MoveController */ = {
-			isa = PBXGroup;
-			children = (
 				EEF42F10270BD90F0088043F /* Manager */,
 				EE1D8AED27180D4E003614BE /* User */,
+				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
 			);
-			path = MoveController;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		EE1D8AED27180D4E003614BE /* User */ = {
@@ -262,26 +237,9 @@
 		EE210FEB2725A13800320FFD /* EditContentModal */ = {
 			isa = PBXGroup;
 			children = (
-				EE210FEF2725A20800320FFD /* ViewController */,
-				EE210FEE2725A20100320FFD /* Protocol */,
-			);
-			path = EditContentModal;
-			sourceTree = "<group>";
-		};
-		EE210FEE2725A20100320FFD /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				EE210FF02725A22900320FFD /* EditContentModalProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		EE210FEF2725A20800320FFD /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				EE210FEC2725A1DE00320FFD /* EditContentModal.swift */,
 			);
-			path = ViewController;
+			path = EditContentModal;
 			sourceTree = "<group>";
 		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
@@ -295,7 +253,7 @@
 		EE30E5782706E5E600B9AF8A /* MainPageTableView */ = {
 			isa = PBXGroup;
 			children = (
-				EE3BA57A2702F09600281096 /* TableViewCell */,
+				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
 			);
 			path = MainPageTableView;
 			sourceTree = "<group>";
@@ -314,14 +272,6 @@
 				EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */,
 			);
 			path = BaseTableViewCell;
-			sourceTree = "<group>";
-		};
-		EE3BA57A2702F09600281096 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		EE3BA57F270301F200281096 /* Models */ = {
@@ -349,8 +299,7 @@
 		EE3BA58127032A5500281096 /* BulletinBoardWriteModal */ = {
 			isa = PBXGroup;
 			children = (
-				EEB46BCA2708C90500ED679B /* Protocol */,
-				EEB46BC92708C79000ED679B /* ViewController */,
+				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
 			);
 			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
@@ -386,13 +335,6 @@
 				EE3BA57D2702F2A100281096 /* UserData.swift */,
 			);
 			path = UserData;
-			sourceTree = "<group>";
-		};
-		EE680E50271EB911006D0F03 /* Custom Alert */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Custom Alert";
 			sourceTree = "<group>";
 		};
 		EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */ = {
@@ -438,28 +380,12 @@
 			path = CustomTextfield;
 			sourceTree = "<group>";
 		};
-		EE7C6F7826EEEC720071031C /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				EE680E50271EB911006D0F03 /* Custom Alert */,
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
 		EE7C6F7926EEEC880071031C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EEB46BCD2708CA0F00ED679B /* ViewController */,
+				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		EE7CA2C7271CEFFC003140CD /* CustomMenubar */ = {
-			isa = PBXGroup;
-			children = (
-				EE7CA2C8271CF014003140CD /* CustomMenuBar.swift */,
-			);
-			path = CustomMenubar;
 			sourceTree = "<group>";
 		};
 		EE7CA2CE271D3A70003140CD /* Accept */ = {
@@ -526,70 +452,33 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		EE80467426F463E8007D3206 /* Cell */ = {
+		EE80467426F463E8007D3206 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EE97B75E271B471F00479A06 /* TableView */,
+				EE7CA2E4271D920A003140CD /* Delete */,
+				EE7CA2E3271D9201003140CD /* Refusal */,
+				EE7CA2E1271D91E2003140CD /* StandBy */,
+				EEAA0631270D8462000EA78D /* Accept */,
+				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
+				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
 			);
-			path = Cell;
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		EE806425272701170040B295 /* RefusalModal */ = {
 			isa = PBXGroup;
 			children = (
-				EE8064272727013D0040B295 /* ViewController */,
-				EE806426272701310040B295 /* Protocol */,
-			);
-			path = RefusalModal;
-			sourceTree = "<group>";
-		};
-		EE806426272701310040B295 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				EE80642A272704450040B295 /* RefusalModalProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		EE8064272727013D0040B295 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				EE8064282727034E0040B295 /* RefusalModal.swift */,
 			);
-			path = ViewController;
+			path = RefusalModal;
 			sourceTree = "<group>";
 		};
 		EE80A7FE2730C83F00FF204C /* ManagerLoginModal */ = {
 			isa = PBXGroup;
 			children = (
-				EE80A8002730C87B00FF204C /* Protocol */,
-				EE80A7FF2730C86F00FF204C /* ViewController */,
-			);
-			path = ManagerLoginModal;
-			sourceTree = "<group>";
-		};
-		EE80A7FF2730C86F00FF204C /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */,
 			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EE80A8002730C87B00FF204C /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				EE80A8032730CAC000FF204C /* ManagerModalDelegate.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		EE8141F5270189EB00ECFDCC /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */,
-			);
-			path = ViewController;
+			path = ManagerLoginModal;
 			sourceTree = "<group>";
 		};
 		EE8141F627018A1900ECFDCC /* RuleText */ = {
@@ -598,14 +487,6 @@
 				EE8141FD2701CEA000ECFDCC /* RuleText.swift */,
 			);
 			path = RuleText;
-			sourceTree = "<group>";
-		};
-		EE8141FB2701CE7A00ECFDCC /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
@@ -663,59 +544,26 @@
 		EE953A37270678A600D4E133 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				EE953A38270678B700D4E133 /* Network Loading */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		EE953A38270678B700D4E133 /* Network Loading */ = {
-			isa = PBXGroup;
-			children = (
 				EE953A39270678CC00D4E133 /* LoadingIndicator.swift */,
 			);
-			path = "Network Loading";
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		EE9582C92729AC2800AAEC8A /* ReportModal */ = {
 			isa = PBXGroup;
 			children = (
-				EE9582CB2729AC3E00AAEC8A /* ViewController */,
-				EE9582CA2729AC3800AAEC8A /* Protocol */,
-			);
-			path = ReportModal;
-			sourceTree = "<group>";
-		};
-		EE9582CA2729AC3800AAEC8A /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				EE9582CD2729AC6300AAEC8A /* ReportModalProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		EE9582CB2729AC3E00AAEC8A /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
 				EE9582CF2729AD1600AAEC8A /* ReportModal.swift */,
 			);
-			path = ViewController;
+			path = ReportModal;
 			sourceTree = "<group>";
 		};
 		EE963D2E2734002E005070B5 /* GoogleOauthModal */ = {
 			isa = PBXGroup;
 			children = (
+				EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */,
 				EE8343F62742A97100991D32 /* GoogleLoginSystem */,
-				EE963D3027340072005070B5 /* ViewController */,
 			);
 			path = GoogleOauthModal;
-			sourceTree = "<group>";
-		};
-		EE963D3027340072005070B5 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */ = {
@@ -742,19 +590,6 @@
 			path = BaseCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		EE97B75E271B471F00479A06 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				EE7CA2E4271D920A003140CD /* Delete */,
-				EE7CA2E3271D9201003140CD /* Refusal */,
-				EE7CA2E1271D91E2003140CD /* StandBy */,
-				EEAA0631270D8462000EA78D /* Accept */,
-				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
-				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
-			);
-			path = TableView;
-			sourceTree = "<group>";
-		};
 		EE9F0CDC26E747560015E81B /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,11 +602,9 @@
 		EE9F0CDE26E748650015E81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EE80467426F463E8007D3206 /* Cell */,
+				EE80467426F463E8007D3206 /* TableViewCell */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE7CA2C7271CEFFC003140CD /* CustomMenubar */,
-				EE7C6F7826EEEC720071031C /* CustomView */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
@@ -898,30 +731,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		EEB46BC92708C79000ED679B /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EEB46BCA2708C90500ED679B /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				EEB46BCB2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		EEB46BCD2708CA0F00ED679B /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,7 +743,7 @@
 		EEBDA33F26FB5BF200B966E3 /* Rule */ = {
 			isa = PBXGroup;
 			children = (
-				EE8141F5270189EB00ECFDCC /* ViewController */,
+				EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */,
 				EE8141F627018A1900ECFDCC /* RuleText */,
 			);
 			path = Rule;
@@ -943,7 +752,7 @@
 		EEBDA34226FB5C3F00B966E3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EE8141FB2701CE7A00ECFDCC /* ViewController */,
+				EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */,
 				EE8141FC2701CE8B00ECFDCC /* DetailText */,
 			);
 			path = Detail;
@@ -956,17 +765,8 @@
 				EE7CA2D2271D6CCB003140CD /* Refusal */,
 				EE7CA2D1271D6CAF003140CD /* StandBy */,
 				EE7CA2CE271D3A70003140CD /* Accept */,
-				EEF42F11270BD9A70088043F /* ManagerViewControllerFrame */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		EEF42F11270BD9A70088043F /* ManagerViewControllerFrame */ = {
-			isa = PBXGroup;
-			children = (
-				EEF42F12270BD9BA0088043F /* ManagerViewController.swift */,
-			);
-			path = ManagerViewControllerFrame;
 			sourceTree = "<group>";
 		};
 		EEF42F15270BDAB30088043F /* BaseVC */ = {
@@ -1100,12 +900,9 @@
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
-				EEB46BCC2708C92000ED679B /* WritingBulletinBoardModalProtocol.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
-				EE9582CE2729AC6300AAEC8A /* ReportModalProtocol.swift in Sources */,
-				EE80A8042730CAC000FF204C /* ManagerModalDelegate.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
@@ -1120,23 +917,18 @@
 				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
-				EE80642B272704450040B295 /* RefusalModalProtocol.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
-				EE7CA2C9271CF014003140CD /* CustomMenuBar.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
-				EE210FF12725A22900320FFD /* EditContentModalProtocol.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
-				EEF42F13270BD9BA0088043F /* ManagerViewController.swift in Sources */,
 				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
-				EEC43017275847C5008F802F /* ModalAction.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
