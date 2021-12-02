@@ -75,9 +75,9 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
     }
     private func location(){
         view.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
             make.left.right.equalToSuperview().inset(bounds.width/18.75)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(5)
         }
         algorithm.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)

@@ -16,7 +16,6 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - Properties
     private lazy var view = UIView().then{
         $0.backgroundColor = .white
-        $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
     private lazy var algorithm = UILabel().then{
@@ -69,7 +68,10 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         super.configure()
         addSubviews()
         location()
+        contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
+
     }
+
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
@@ -85,9 +87,9 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     //MARK: - Location(나중 정리 예정)
     private func location(){
         view.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
             make.left.right.equalToSuperview().inset(bounds.width/18.75)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(5)
         }
         algorithm.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxKeyboard
 
 protocol ManagerModalDelegate : AnyObject {
     func updateManagerModal()
@@ -14,7 +15,7 @@ protocol ManagerModalDelegate : AnyObject {
 class ManagerLoginModal: BaseModal{
     //MARK: - Properties
     weak var delegate : ManagerModalDelegate?
-    
+    private let backgroundScrollView = UIScrollView()
     private let bgView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -64,15 +65,19 @@ class ManagerLoginModal: BaseModal{
         view.backgroundColor = .clear
         addView()
         location()
-
+        keyboard()
     }
     //MARK: - AddView
     private func addView(){
-        view.addSubview(bgView)
+        view.addSubview(backgroundScrollView)
+        backgroundScrollView.addSubview(bgView)
         [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
     }
     //MARK: - Location
     private func location(){
+        backgroundScrollView.snp.makeConstraints{
+            $0.top.right.left.bottom.equalToSuperview()
+        }
         if UIDevice.current.isiPhone{
             bgView.layer.cornerRadius = 10
             bgView.snp.makeConstraints{
@@ -111,12 +116,79 @@ class ManagerLoginModal: BaseModal{
             make.centerX.equalToSuperview()
             make.height.equalTo(bounds.height/29)
         }
-
     }
-
-    //MARK: - keyboard down
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
+//    func keyboard(){
+//        RxKeyboard.instance.frame
+//            .drive(onNext:{[weak self] keyboardVisiableHeight in
+//                self?.backgroundScrollView.constant
+//                NSLog("\($0)")
+//
+//            })
+//            .disposed(by: disposeBag)
+//    }
 }
+
+
+
+
+//MARK: - KeyBoard Setting PART
+//extension ManagerLoginModal{
+//    //MARK: - KeyBoardSetting
+//    private func addNotificationCenter(){
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    //MARK: - keyboard down
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        view.endEditing(true)
+//    }
+//    //MARK: - KeyboardWillShow -> continueButton Up
+//    @objc
+//    private func keyboardWillShow(_ sender: Notification) {
+//        var keyboardHeight: CGFloat = CGFloat(0) //keyboardHeight
+//        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            keyboardHeight = keyboardRectangle.height
+//        }
+//        if UIDevice.current.isiPhone{
+//            bgView.snp.remakeConstraints{
+//                $0.height.equalTo(bounds.height/3.5771)
+//                $0.width.equalTo(bounds.width/1.1718)
+//                $0.centerX.equalToSuperview()
+//                $0.bottom.equalToSuperview().offset(-keyboardHeight - 10)
+//            }
+//        }else{
+//            keyboardHeightSetting(height: keyboardHeight)
+//        }
+//    }
+//    private func keyboardHeightSetting(height : CGFloat){
+//        if bgView.frame.origin.y < height{
+//            bgView.snp.remakeConstraints{
+//                $0.height.equalTo(220)
+//                $0.width.equalTo(292)
+//                $0.centerX.equalToSuperview()
+//                $0.bottom.equalToSuperview().offset(-height - 10)
+//            }
+//        }
+//    }
+//
+//    //MARK: - KeyboardWillHide -> continueButton Down
+//    @objc
+//    private func keyboardWillHide(_ sender: Notification) {
+//        if UIDevice.current.isiPhone{
+//            bgView.snp.remakeConstraints{
+//                $0.height.equalTo(bounds.height/3.5771)
+//                $0.width.equalTo(bounds.width/1.1718)
+//                $0.center.equalToSuperview()
+//            }
+//        }else{
+//            bgView.snp.remakeConstraints{
+//                $0.height.equalTo(220)
+//                $0.width.equalTo(292)
+//                $0.center.equalToSuperview()
+//            }
+//        }
+//    }
+//}

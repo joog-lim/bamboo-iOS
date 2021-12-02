@@ -152,27 +152,19 @@ class MainViewController : BaseVC{
 
 //MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
-            cell.model = data[indexPath.section]
+            cell.model = data[indexPath.item]
             cell.delegate = self
             return cell
-        }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.item == 0{
             return UITableView.automaticDimension
-        }
-        return bounds.height/81.2
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -234,11 +226,11 @@ extension MainViewController : BaseModalDelegate{
 extension MainViewController : ClickReportBtnActionDelegate{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
-        self.likeBtnClick(indexPath: indexPath.section, state: state)
+        self.likeBtnClick(indexPath: indexPath.item, state: state)
     }
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        self.reportBtnClick(indexPath: indexPath.section)
+        self.reportBtnClick(indexPath: indexPath.item)
     }
 }

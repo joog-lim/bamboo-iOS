@@ -126,26 +126,17 @@ class DeleteViewController : BaseVC{
 }
 //MARK: - TableView
 extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: DeleteTableViewCell.identifier, for: indexPath) as? DeleteTableViewCell else{return UITableViewCell()}
-            cell.model = data[ indexPath.section]
-            cell.delegate = self
-            return cell
-        }
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DeleteTableViewCell.identifier, for: indexPath) as? DeleteTableViewCell else{return UITableViewCell()}
+        cell.model = data[ indexPath.item]
+        cell.delegate = self
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.item == 0{
-            return UITableView.automaticDimension
-        }
-            return bounds.height/81.2
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
@@ -198,6 +189,6 @@ extension DeleteViewController : BaseModalDelegate{
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
     func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        self.SeeMoreDetailBtnAction(indexPath: indexPath.section)
+        self.SeeMoreDetailBtnAction(indexPath: indexPath.item)
     }
 }

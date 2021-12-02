@@ -112,27 +112,17 @@ class StandByViewController : BaseVC{
 
 //MARK: - TableView
 extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
-            cell.model = data[ indexPath.section]
+            cell.model = data[ indexPath.item]
             cell.delegate = self
             return cell
-        }
-        return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.item == 0{
             return UITableView.automaticDimension
-        }
-            return bounds.height/81.2
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
@@ -150,8 +140,8 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        print(indexPath.section)
-        cellInsideBtnClickAction(index: indexPath.section)
+        print(indexPath.item)
+        cellInsideBtnClickAction(index: indexPath.item)
     }
 }
 

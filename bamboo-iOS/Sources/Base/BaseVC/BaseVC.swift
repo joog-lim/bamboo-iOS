@@ -35,5 +35,8 @@ class BaseVC: UIViewController{
     }
     func configureAppear(){}
     func configureWillAppear(){}
+    
+    
+    
 }
 
