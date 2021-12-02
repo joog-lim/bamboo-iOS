@@ -7,15 +7,7 @@
 
 import UIKit
 
-struct ManagerData{
-    enum status : String{
-        case Accept = "수락"
-        case StandBy = "대기"
-        case Refusal = "거절"
-        case Delete = "삭제"
-    }
-    let menuStatus : status
-}
+
 struct ManagerTextData {
     enum tag : String{
         case Humor = "유머"
@@ -32,6 +24,7 @@ struct ManagerTextData {
     let title : String
     let content : String
 }
+
 struct DeleteContent {
     enum tag : String{
         case Humor = "유머"
@@ -49,6 +42,3 @@ struct DeleteContent {
     let content : String
     let deleteContente : String?
 }
-
-
-
