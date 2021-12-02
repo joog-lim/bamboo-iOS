@@ -4,24 +4,19 @@
 //
 //  Created by Ji-hoon Ahn on 2021/10/05.
 //
-
+//
 import UIKit
 
-protocol managerModalDelegate: AnyObject{
-    func accept(index : Int)
-    func standBy(index: Int)
-    func Delete(index: Int)
-}
 class ManagerViewController: BaseVC{
     //MARK: Properties
     private let vc = [AcceptViewController(),StandByViewController(),RefusalViewController(),DeleteViewController()]
-    
+
     //MARK: - 모달 background 설정
     private let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
-    
+
     private let pageCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -32,7 +27,7 @@ class ManagerViewController: BaseVC{
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-    
+
     private let customMenuBar = CustomMenuBar().then{ $0.translatesAutoresizingMaskIntoConstraints = false}
     //MARK: Life cycle
     override func configure() {
@@ -47,12 +42,11 @@ class ManagerViewController: BaseVC{
     //MARK: - Selector
     @objc private func navigationbarItemAction(){
         navigationController?.pushViewController(RuleViewController(), animated: true)
-        navigationSetting()
     }
     @objc private func MainViewControllerNavigationAction(){
         navigationController?.popViewController(animated: true)
     }
-    
+
     //MARK: Setup view
     private func setupCustomTabBar(){
         customMenuBar.delegate = self
@@ -73,13 +67,12 @@ class ManagerViewController: BaseVC{
             $0.trailing.leading.bottom.equalTo(view)
         }
     }
-    
+
     //MARK: - DataSource ANd Delegate
     private func delegateAndDatasource(){
         [pageCollectionView].forEach{ $0.delegate = self;$0.dataSource = self}
-        StandByViewController().delegate = self
     }
-    
+
     //MARK: - Navigation Setting
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
@@ -99,15 +92,15 @@ extension ManagerViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.addSubview(vc[indexPath.row].view)
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         customMenuBar.indicatorViewLeadingConstraint.constant = scrollView.contentOffset.x / 4
     }
-    
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let itemAt = Int(targetContentOffset.pointee.x / self.view.frame.width)
         let indexPath = IndexPath(item: itemAt, section: 0)
@@ -161,7 +154,7 @@ extension ManagerViewController {
         [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
         present(actionSheetController, animated: true)
     }
-    
+
     private func SeeMoreDetailBtnAction(index: Int){
         let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
@@ -174,7 +167,7 @@ extension ManagerViewController {
         [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
         present(actionSheetController, animated: true)
     }
-    
+
     //MARK: - Modal
     private func AcceptModal(index: Int){
         let EditContentModalModalsVC = EditContentModal.instance()
@@ -219,15 +212,3 @@ extension ManagerViewController : BaseModalDelegate{
     }
 }
 
-extension ManagerViewController : managerModalDelegate{
-    func standBy(index: Int) {
-        cellInsideBtnClickAction(index: index)
-    }
-    func accept(index: Int) {
-        AcceptModal(index: index)
-    }
-    func Delete(index: Int) {
-        SeeMoreDetailBtnAction(index: index)
-    }
-}
- 

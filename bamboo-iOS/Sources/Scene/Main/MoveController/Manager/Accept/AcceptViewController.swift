@@ -11,10 +11,9 @@ class AcceptViewController : BaseVC {
     
     //MARK: - Properties
     private var isLoaing : Bool = false
-    weak var delegate : managerModalDelegate?
-
+    
     //MARK: - 모달 background 설정
-    let bgView = UIView().then {
+    private let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
@@ -70,7 +69,7 @@ class AcceptViewController : BaseVC {
     //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
     private func EditBtnClick(indexPath : Int){
         print("수락 : \(indexPath)")
-        self.delegate?.accept(index: indexPath)
+        AcceptModal(index: indexPath)
     }
     
     
@@ -161,6 +160,49 @@ extension AcceptViewController : AcceptManagerTableViewCellDelegate {
     func cellSettingbtnClick(cell: AcceptManagerTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
         self.EditBtnClick(indexPath: indexPath.section)
+        
     }
 }
 
+extension AcceptViewController {
+    //MARK: - 모달 실행시 Action
+    private func addDim() {
+        view.addSubview(bgView)
+        bgView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.alpha = 0.1
+            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+        }
+    }
+    //MARK: - 모달 닫기
+    private func removeDim() {
+        DispatchQueue.main.async { [weak self] in
+            self?.bgView.removeFromSuperview()
+            self?.navigationController?.navigationBar.backgroundColor = .clear
+        }
+    }
+}
+
+extension AcceptViewController : BaseModalDelegate{
+    func onTapClick() {
+        self.removeDim()
+    }
+}
+
+extension AcceptViewController{
+        private func AcceptModal(index: Int){
+            let EditContentModalModalsVC = EditContentModal.instance()
+            EditContentModalModalsVC.delegate = self
+            EditContentModalModalsVC.baseDelegate = self
+            addDim()
+            present(EditContentModalModalsVC, animated: true, completion: nil)
+        }
+}
+
+extension AcceptViewController: EditContentModalProtocol{
+    func onTapClose() {
+        removeDim()
+    }
+}

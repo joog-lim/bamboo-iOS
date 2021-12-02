@@ -163,10 +163,9 @@ extension LoginViewController{
     }
     //MARK: - ManagerModal Action
     private func ManagerModalBtnClick(){
-        navigationController?.pushViewController(ManagerViewController(), animated: true)
+        navigationController?.pushViewController(MannagerTabbar(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
-
 }
 
 extension LoginViewController : ManagerModalDelegate{
