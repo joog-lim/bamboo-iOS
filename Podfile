@@ -11,6 +11,7 @@ target 'bamboo-iOS' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Then'
   pod 'GoogleSignIn'
+  pod 'KeychainSwift', '~> 19.0'
 
   # Networking
   pod 'Moya/RxSwift'

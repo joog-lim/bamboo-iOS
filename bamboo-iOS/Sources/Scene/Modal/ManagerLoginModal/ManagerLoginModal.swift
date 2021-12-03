@@ -65,7 +65,6 @@ class ManagerLoginModal: BaseModal{
         view.backgroundColor = .clear
         addView()
         location()
-        keyboard()
     }
     //MARK: - AddView
     private func addView(){
