@@ -8,7 +8,7 @@
 import UIKit
 import GoogleSignIn
 
-class GoogleOauthModalVC : BaseModal {
+class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     
     //MARK: - Properties
     
@@ -25,43 +25,51 @@ class GoogleOauthModalVC : BaseModal {
         $0.text = "관리자님 환영합니다!"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
-    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE").then{
-        $0.addTarget(self, action: #selector(GoogleOAuthLogin), for: .touchUpInside)
-    }
+    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE")
+//        $0.addTarget(self, action: #selector(GoogleOAuthLogin), for: .touchUpInside)
+    
     
     //MARK: - Selector
     
     //모달 위치 조정
-    static func instance() -> GoogleOauthModalVC{
-        return GoogleOauthModalVC(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
+//    static func instance() -> GoogleOauthModalVC{
+//        return GoogleOauthModalVC(nibName: nil, bundle: nil).then{
+//            $0.modalPresentationStyle = .overFullScreen
+//        }
+//    }
     
     //MARK: - Selectors
 
-    @objc private func GoogleOAuthLogin(){
-        print("GOOGLE Sign In Start")
-        GoogleLogin.shared.SignInOauth(vc: self)
-        dismiss(animated: true)
-        baseDelegate?.onTapClick()
-    }
-    
+//    @objc private func GoogleOAuthLogin(){
+//        print("GOOGLE Sign In Start")
+//        GoogleLogin.shared.SignInOauth(vc: self)
+//        dismiss(animated: true)
+//        baseDelegate?.onTapClick()
+//    }
+//    
     //MARK: - Helper
 
-    override func modalSetting() {
-        super.modalSetting()
-        addView()
-        location()
-    }
+//    override func modalSetting() {
+//        super.modalSetting()
+//        addView()
+//        location()
+//    }
     //MARK: - AddView
-    private func addView(){
-        [transparentView,bgView].forEach{ view.addSubview($0)}
+//    private func addView(){
+//        [transparentView,bgView].forEach{ view.addSubview($0)}
+//        [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
+//    }
+    override func configureUI() {
+        super.configureUI()
+        view.backgroundColor = .clear
+    }
+    override func addView() {
+        super.addView()
+        view.addSubview(bgView)
         [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
     }
-
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         if UIDevice.current.isiPhone{
             bgView.layer.cornerRadius = 10
             bgView.snp.makeConstraints{

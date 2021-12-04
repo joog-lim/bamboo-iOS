@@ -20,6 +20,7 @@ final class LoginReactor : Reactor, Stepper{
     enum Action{
         case userLoginButtonDidTap
         case managerLoginButtonDidTap
+        case guestLoginButtonDidTap
     }
     
     enum Mutation{
@@ -47,6 +48,9 @@ extension LoginReactor{
             return .empty()
         case .managerLoginButtonDidTap:
             steps.accept(BambooStep.managerLoginIsRequired)
+            return .empty()
+        case .guestLoginButtonDidTap:
+            steps.accept(BambooStep.guestLoginIsRequired)
             return .empty()
         }
     }

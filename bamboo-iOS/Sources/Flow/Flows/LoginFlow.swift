@@ -37,6 +37,10 @@ final class LoginFlow : Flow{
         switch step{
         case .LoginIsRequired:
             return coordinateToLoginVC()
+        case .userLoginIsRequired:
+            return coordinateToUserLoginModalVC()
+        case .dismiss:
+            return dismissVC()
         default :
             return .none
         }
@@ -45,8 +49,19 @@ final class LoginFlow : Flow{
         let reactor = LoginReactor()
         let vc = LoginViewController(reactor: reactor)
         self.rootVC.setViewControllers([vc], animated: true)
-        
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
+    private func coordinateToUserLoginModalVC() -> FlowContributors{
+        let reactor = GoogleOauthModalReactor()
+        let vc = GoogleOauthModalVC(reactor: reactor)
+//        vc.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: 500)
+        self.rootVC.visibleViewController?.present(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    
+    private func dismissVC() -> FlowContributors{
+        self.rootVC.visibleViewController?.dismiss(animated: true)
+        return .none
+    }
 }

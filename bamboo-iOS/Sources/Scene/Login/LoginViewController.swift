@@ -57,29 +57,29 @@ final class LoginViewController : baseVC<LoginReactor> {
 
     //MARK: - Selectors
 
-    //MARK: - Manager Modal 띄워주기
-    @objc private func ClickManagerBtn(){
-        let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
-        ManagerLoginModalModalsVC.delegate = self
-        ManagerLoginModalModalsVC.baseDelegate = self
-        addDim()
-        present(ManagerLoginModalModalsVC, animated: true, completion: nil)
-    }
-    //MARK: - Google Oauth 실행 여부
-    @objc private func ClickUserBtn(){
-        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
-            navigationController?.pushViewController(MainTabbarController(), animated: true)
-            navigationController?.isNavigationBarHidden = false
-        }else{
-            let googleOAuthModalVC = GoogleOauthModalVC.instance()
-            googleOAuthModalVC.baseDelegate = self
-            addDim()
-            present(googleOAuthModalVC, animated: true, completion: nil)
-        }
-    }
-    @objc private func GuestBtnAction(){
-        GoogleLogin.shared.SignOutOauth()
-    }
+//    //MARK: - Manager Modal 띄워주기
+//    @objc private func ClickManagerBtn(){
+//        let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
+//        ManagerLoginModalModalsVC.delegate = self
+//        ManagerLoginModalModalsVC.baseDelegate = self
+//        addDim()
+//        present(ManagerLoginModalModalsVC, animated: true, completion: nil)
+//    }
+//    //MARK: - Google Oauth 실행 여부
+//    @objc private func ClickUserBtn(){
+//        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
+//            navigationController?.pushViewController(MainTabbarController(), animated: true)
+//            navigationController?.isNavigationBarHidden = false
+//        }else{
+//            let googleOAuthModalVC = GoogleOauthModalVC.instance()
+//            googleOAuthModalVC.baseDelegate = self
+//            addDim()
+//            present(googleOAuthModalVC, animated: true, completion: nil)
+//        }
+//    }
+//    @objc private func GuestBtnAction(){
+//        GoogleLogin.shared.SignOutOauth()
+//    }
     
     //MARK: - Helper
     override func configureUI() {
@@ -130,8 +130,17 @@ final class LoginViewController : baseVC<LoginReactor> {
             .map{Reactor.Action.userLoginButtonDidTap}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        ManagerBtn.rx.tap
+            .map{Reactor.Action.managerLoginButtonDidTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        guestBtn.rx.tap
+            .map{Reactor.Action.guestLoginButtonDidTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
-    
     
     
     

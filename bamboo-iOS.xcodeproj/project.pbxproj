@@ -72,6 +72,7 @@
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302527591208008F802F /* UserLoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302427591208008F802F /* UserLoginFlow.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
+		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302427591208008F802F /* UserLoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginFlow.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
+		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,7 +229,6 @@
 			children = (
 				EEF42F10270BD90F0088043F /* Manager */,
 				EE1D8AED27180D4E003614BE /* User */,
-				EEBDA33C26FB5AB200B966E3 /* TabBarController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -235,6 +236,7 @@
 		EE1D8AED27180D4E003614BE /* User */ = {
 			isa = PBXGroup;
 			children = (
+				EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */,
 				EE7C6F7926EEEC880071031C /* Home */,
 				EEBDA33F26FB5BF200B966E3 /* Rule */,
 				EEBDA34226FB5C3F00B966E3 /* Detail */,
@@ -589,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */,
+				EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */,
 				EE8343F62742A97100991D32 /* GoogleLoginSystem */,
 			);
 			path = GoogleOauthModal;
@@ -741,15 +744,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		EEBDA33C26FB5AB200B966E3 /* TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */,
-				EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */,
-			);
-			path = TabBarController;
-			sourceTree = "<group>";
-		};
 		EEBDA33F26FB5BF200B966E3 /* Rule */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +800,7 @@
 		EEF42F10270BD90F0088043F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */,
 				EE7CA2D3271D6CEE003140CD /* Delete */,
 				EE7CA2D2271D6CCB003140CD /* Refusal */,
 				EE7CA2D1271D6CAF003140CD /* StandBy */,
@@ -965,6 +960,7 @@
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
+				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,

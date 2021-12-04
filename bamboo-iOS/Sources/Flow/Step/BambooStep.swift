@@ -15,12 +15,14 @@ enum BambooStep: Step{
     //Login
     case LoginIsRequired
     //Login 여부
+    //User일때
     case userLoginIsRequired
     case userIsLoggedIn
+    //Manager일때
     case managerLoginIsRequired
     case managerIsLoggedIn
-    
-    
+    //Guest일때
+    case guestLoginIsRequired
     
     
 }

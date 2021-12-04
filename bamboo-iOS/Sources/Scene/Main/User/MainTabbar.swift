@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 import RxViewController
 
-
-
 class MainTabbarController : UITabBarController{
     //MARK: - Properties
     
