@@ -12,10 +12,14 @@ protocol ManagerModalDelegate : AnyObject {
     func updateManagerModal()
 }
 
-class ManagerLoginModal: BaseModal{
+final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
     //MARK: - Properties
+    private let transparentView = UIView().then{
+        $0.backgroundColor = .black
+        $0.alpha = 0.1
+    }
+    
     weak var delegate : ManagerModalDelegate?
-    private let backgroundScrollView = UIScrollView()
     private let bgView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -40,41 +44,30 @@ class ManagerLoginModal: BaseModal{
     private let loginBtn = LoginButton(placeholder: "로그인", cornerRadius: 5).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
-        $0.addTarget(self, action: #selector(ManagerLoginBtn), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(ManagerLoginBtn), for: .touchUpInside)
     }
     
     //MARK: - Selector
-    
-    //모달 위치 조정
-    static func instance() -> ManagerLoginModal{
-        return ManagerLoginModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
-    //MARK: - Selectors
-    @objc private func ManagerLoginBtn(){
-        dismiss(animated: true) {
-            self.delegate?.updateManagerModal()
-        }
-    }
-    
-    
-    //MARK: - Helper
-    override func modalSetting() {
-        super.modalSetting()
+    override func configureUI() {
+        super.configureUI()
         view.backgroundColor = .clear
-        addView()
-        location()
     }
-    //MARK: - AddView
-    private func addView(){
-        view.addSubview(backgroundScrollView)
-        backgroundScrollView.addSubview(bgView)
+    override func addView() {
+        super.addView()
+        [transparentView,bgView].forEach{ view.addSubview($0)}
         [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
     }
-    //MARK: - Location
-    private func location(){
-        backgroundScrollView.snp.makeConstraints{
+    
+    //MARK: - Selectors
+//    @objc private func ManagerLoginBtn(){
+//        dismiss(animated: true) {
+//            self.delegate?.updateManagerModal()
+//        }
+//    }
+    
+    override func setLayout() {
+        super.setLayout()
+        transparentView.snp.makeConstraints{
             $0.top.right.left.bottom.equalToSuperview()
         }
         if UIDevice.current.isiPhone{
@@ -116,6 +109,21 @@ class ManagerLoginModal: BaseModal{
             make.height.equalTo(bounds.height/29)
         }
     }
+    
+    override func bindView(reactor: ManagerLoginModalReactor) {
+        super.bindView(reactor: reactor)
+        transparentView.rx.anyGesture(.tap(), .swipe(direction: .down))
+            .when(.recognized)
+            .subscribe(onNext:{ gesture in
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
+        
+        loginBtn.rx.tap
+            .map{Reactor.Action.managerBtnClick}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
 //    func keyboard(){
 //        RxKeyboard.instance.frame
 //            .drive(onNext:{[weak self] keyboardVisiableHeight in

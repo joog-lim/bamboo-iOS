@@ -30,7 +30,7 @@ final class AppFlow : Flow{
     }
     
     deinit{
-        NSLog("\(type(of: self)) : \(#function)")
+        print("\(type(of: self)) : \(#function)")
     }
     
     //1. 바로 메인으로 이동
@@ -40,18 +40,28 @@ final class AppFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         switch step{
         case .LoginIsRequired:
-            return coordinateToUserLoginVC()
+            return coordinateToLoginVC()
+        case .userMainTabBarIsRequired,.userIsLoggedIn:
+            return coordinateToUserMainVC()
         default:
             return .none
         }
     }
     
-    private func coordinateToUserLoginVC() ->FlowContributors{
+    private func coordinateToLoginVC() ->FlowContributors{
         let flow = LoginFlow(stepper: .init())
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         let nextStep = OneStepper(withSingleStep: BambooStep.LoginIsRequired)
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
+    }
+    private func coordinateToUserMainVC() -> FlowContributors{
+        let flow = MainFlow()
+        Flows.use(flow, when: .created) { [unowned self] root in
+            rootWindow.rootViewController = root
+        }
+        let nextStep = OneStepper(withSingleStep: BambooStep.userMainTabBarIsRequired)
+        return .one(flowContributor: .contribute(withNextPresentable: flow,withNextStepper: nextStep))
     }
 }

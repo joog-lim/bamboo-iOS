@@ -22,16 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        window = UIWindow(windowScene: windowScene)
-//        let mainViewController = LoginViewController()
-//        let navigationController = UINavigationController(rootViewController: mainViewController)
-//        NetWorkStatus.shared.StartMonitoring()
-//
-//        navigationController.navigationCustomBar()
-//        window?.backgroundColor = .white
-//        window?.rootViewController = navigationController
-//        window?.makeKeyAndVisible()
         guard let windowScene = (scene as? UIWindowScene) else {return}
         coordinatorLogger()
         coordinatorToAppFlow(with: windowScene)
@@ -40,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator.rx.willNavigate
             .subscribe(onNext: { flow, step in
                 let currentFlow = "\(flow)".split(separator: ".").last ?? "no flow"
-                NSLog("➡️ will navigation to flow = \(currentFlow)and step = \(step)")
+                print("➡️ will navigation to flow = \(currentFlow) and step = \(step)")
             }).disposed(by: disposeBag)
     }
     

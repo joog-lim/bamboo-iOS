@@ -1,5 +1,5 @@
 //
-//  GoogleOauthModalReactor.swift
+//  ManagerLoginModalReactor.swift
 //  bamboo-iOS
 //
 //  Created by Ji-hoon Ahn on 2021/12/04.
@@ -9,20 +9,24 @@ import ReactorKit
 import RxFlow
 import RxCocoa
 
-final class GoogleOauthModalReactor : Reactor , Stepper{
+
+final class ManagerLoginModalReactor: Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()
     
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case googleOauthLogin
-        case googleModalDismiss
+        case managerBtnClick
+        case managerDismiss
     }
-    
+    enum Mutation{
+        
+    }
     struct State{
         
     }
+    
     let initialState: State
     
     init(){
@@ -33,16 +37,15 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
     }
 }
 
-//MARK: - Mutation
-extension GoogleOauthModalReactor{
-    func mutate(action: Action) -> Observable<Action> {
+extension ManagerLoginModalReactor{
+    func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case.googleOauthLogin:
-            print("google Oauth Login")
-            return .empty()
-        case.googleModalDismiss:
+        case.managerDismiss:
             steps.accept(BambooStep.dismiss)
             return .empty()
+        case .managerBtnClick:
+            print("managerBtn")
+            return.empty()
         }
     }
 }

@@ -7,11 +7,18 @@
 
 import UIKit
 import GoogleSignIn
+import RxSwift
+import RxCocoa
+import RxGesture
+import ReactorKit
 
-class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
+final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     
     //MARK: - Properties
-    
+    private let transparentView = UIView().then{
+        $0.backgroundColor = .black
+        $0.alpha = 0.1
+    }
     private let bgView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -26,17 +33,6 @@ class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
     private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE")
-//        $0.addTarget(self, action: #selector(GoogleOAuthLogin), for: .touchUpInside)
-    
-    
-    //MARK: - Selector
-    
-    //모달 위치 조정
-//    static func instance() -> GoogleOauthModalVC{
-//        return GoogleOauthModalVC(nibName: nil, bundle: nil).then{
-//            $0.modalPresentationStyle = .overFullScreen
-//        }
-//    }
     
     //MARK: - Selectors
 
@@ -48,28 +44,21 @@ class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
 //    }
 //    
     //MARK: - Helper
-
-//    override func modalSetting() {
-//        super.modalSetting()
-//        addView()
-//        location()
-//    }
-    //MARK: - AddView
-//    private func addView(){
-//        [transparentView,bgView].forEach{ view.addSubview($0)}
-//        [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
-//    }
     override func configureUI() {
         super.configureUI()
         view.backgroundColor = .clear
     }
     override func addView() {
         super.addView()
-        view.addSubview(bgView)
+        [transparentView,bgView].forEach{ view.addSubview($0)}
         [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
     }
+    
     override func setLayout() {
         super.setLayout()
+        transparentView.snp.makeConstraints{
+            $0.top.right.left.bottom.equalToSuperview()
+        }
         if UIDevice.current.isiPhone{
             bgView.layer.cornerRadius = 10
             bgView.snp.makeConstraints{
@@ -104,4 +93,24 @@ class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
             $0.left.equalTo(googleSignBtn)
         }
     }
+    
+    private func googleOauth(){
+        GoogleLogin.shared.SignInOauth(vc: self)
+    }
+    
+    override func bindView(reactor: GoogleOauthModalReactor) {
+        super.bindView(reactor: reactor)
+        transparentView.rx.anyGesture(.tap(), .swipe(direction: .down))
+            .when(.recognized)
+            .map{_ in Reactor.Action.googleModalDismiss}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        googleSignBtn.rx.tap
+            .map{Reactor.Action.googleOauthLogin}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
 }
+
+

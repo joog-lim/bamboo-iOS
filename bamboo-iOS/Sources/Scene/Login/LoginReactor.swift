@@ -24,7 +24,7 @@ final class LoginReactor : Reactor, Stepper{
     }
     
     enum Mutation{
-        
+
     }
     
     struct State{
@@ -55,4 +55,3 @@ extension LoginReactor{
         }
     }
 }
-

@@ -39,12 +39,11 @@ final class GoogleLogin{
                     // send id Token to backend
                 }
                 // 받을수 있는 값
-                let emailAddress = user.profile?.email
-                let fullName = user.profile?.name
-                let givenName = user.profile?.givenName
-                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+//                let emailAddress = user.profile?.email
+//                let fullName = user.profile?.name
+//                let givenName = user.profile?.givenName
+//                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
             }
         }
-        }
-      
+    }
 }

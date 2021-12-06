@@ -24,5 +24,16 @@ enum BambooStep: Step{
     //Guest일때
     case guestLoginIsRequired
     
+    //MARK: - Main
+    case userMainTabBarIsRequired
+    
+    //Home
+    case homeIsRequired
+    
+    //Rule
+    case ruleIsRequired
+    
+    //Detail
+    case detailIsRequired
     
 }

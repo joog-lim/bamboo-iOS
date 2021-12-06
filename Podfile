@@ -12,6 +12,7 @@ target 'bamboo-iOS' do
   pod 'Then'
   pod 'GoogleSignIn'
   pod 'KeychainSwift', '~> 19.0'
+  pod 'MaterialComponents/BottomSheet'
   
   # Networking
   pod 'Moya/RxSwift'
@@ -28,6 +29,7 @@ target 'bamboo-iOS' do
   pod 'RxModal'
   pod 'RxKeyboard'
   pod 'RxAlertViewable'
+  pod 'RxGesture'
 
 #  pod 'ReusableKit/RxSwift'
 
