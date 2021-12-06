@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController : BaseVC{
+class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
     private var isLoaing : Bool = false
@@ -44,54 +44,45 @@ class MainViewController : BaseVC{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.imageView?.contentMode = .scaleAspectFit
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
+//        $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
         $0.tintColor = .white
         $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
     //MARK: - Selectors
-    @objc private func writeBtnClick(){
-        let WritingBulletinBoardModalModalsVC = WritingBulletinBoardModal.instance()
-        WritingBulletinBoardModalModalsVC.delegate = self
-        WritingBulletinBoardModalModalsVC.baseDelegate = self
-        addDim()
-        present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
-    }
-    //MARK: - ReportModal action
-    private func reportBtnClick(indexPath: Int){
-        print(indexPath)
-        let ReportModalModalsVC = ReportModal.instance()
-        ReportModalModalsVC.delegate = self
-        ReportModalModalsVC.baseDelegate = self
-        addDim()
-        present(ReportModalModalsVC, animated: true, completion: nil)
-    }
+//    @objc private func writeBtnClick(){
+//        let WritingBulletinBoardModalModalsVC = WritingBulletinBoardModal.instance()
+//        WritingBulletinBoardModalModalsVC.delegate = self
+//        WritingBulletinBoardModalModalsVC.baseDelegate = self
+//        addDim()
+//        present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
+//    }
+//    //MARK: - ReportModal action
+//    private func reportBtnClick(indexPath: Int){
+//        print(indexPath)
+//        let ReportModalModalsVC = ReportModal.instance()
+//        ReportModalModalsVC.delegate = self
+//        ReportModalModalsVC.baseDelegate = self
+//        present(ReportModalModalsVC, animated: true, completion: nil)
+//    }
     private func likeBtnClick(indexPath : Int, state : Bool){
         print("좋아요 :: \(indexPath)번째 \(state)")
         data[indexPath].isSelected = state
     }
     
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
-        cornerRadius()
         tableFooterViewSetting()
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
-    //MARK: - AddView
-    private func addView(){
+    override func addView() {
+        super.addView()
         [mainTableView,writeBtn].forEach{view.addSubview($0)}
     }
-    
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
         }
@@ -100,10 +91,33 @@ class MainViewController : BaseVC{
             $0.right.bottom.equalToSuperview().inset(bounds.height/40.6)
         }
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        writeBtn.layer.cornerRadius = writeBtn.frame.height/2
+    }
+    //MARK: - tableViewSetting
+    private func tableviewSetting(){
+        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
+    }
     
-    //MARK: - CornerRadius
-    private func cornerRadius(){
-        writeBtn.layer.cornerRadius = bounds.height/27
+    //MARK: - Header
+    private func tableViewHeaderSetting(){
+        mainTableView.tableHeaderView = tableViewHeader
+        mainTableView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.left.equalToSuperview().offset(20)
+        }
+    }
+    //MARK: - Footer
+    private func tableFooterViewSetting(){
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.startAnimating()
+        mainTableView.tableFooterView = tableViewFooter
+        mainTableView.addSubview(activityIndicatorView)
+        activityIndicatorView.snp.makeConstraints { make in
+            make.center.equalTo(tableViewFooter)
+        }
     }
     
     //MARK: - Data load More
@@ -122,30 +136,6 @@ class MainViewController : BaseVC{
                     self.isLoaing = false
                 }
             }
-        }
-    }
-
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-    }
-    //MARK: - Header
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
-            $0.left.equalToSuperview().offset(20)
-        }
-    }
-    //MARK: - Footer
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
         }
     }
 }
@@ -180,26 +170,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension MainViewController{
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //모달 취소시 Action
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-}
+//extension MainViewController{
+//    //MARK: - 모달 실행시 Action
+//    private func addDim() {
+//        view.addSubview(bgView)
+//        bgView.snp.makeConstraints { (make) in
+//            make.top.left.right.bottom.equalToSuperview()
+//        }
+//        DispatchQueue.main.async { [weak self] in
+//            self?.bgView.alpha = 0.1
+//            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
+//        }
+//    }
+//    //모달 취소시 Action
+//    private func removeDim() {
+//        DispatchQueue.main.async { [weak self] in
+//            self?.bgView.removeFromSuperview()
+//            self?.navigationController?.navigationBar.backgroundColor = .clear
+//        }
+//    }
+//}
 
 
 
@@ -218,7 +208,7 @@ extension MainViewController : ReportModalDelegate{
 }
 extension MainViewController : BaseModalDelegate{
     func onTapClick() {
-        self.removeDim()
+//        self.removeDim()
     }
 }
 
@@ -231,6 +221,6 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        self.reportBtnClick(indexPath: indexPath.item)
+//        self.reportBtnClick(indexPath: indexPath.item)
     }
 }

@@ -39,8 +39,10 @@ final class AppFlow : Flow{
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         switch step{
+            //앱 처음 시작하면 로그인이 되어 있지 않을 경우 로그인 화면으로 이동
         case .LoginIsRequired:
             return coordinateToLoginVC()
+            //mainTabbarRequired호출시 MainFlow와 nextStep을 넘겨줌
         case .userMainTabBarIsRequired,.userIsLoggedIn:
             return coordinateToUserMainVC()
         default:
@@ -62,6 +64,7 @@ final class AppFlow : Flow{
             rootWindow.rootViewController = root
         }
         let nextStep = OneStepper(withSingleStep: BambooStep.userMainTabBarIsRequired)
-        return .one(flowContributor: .contribute(withNextPresentable: flow,withNextStepper: nextStep))
+        return .one(flowContributor: .contribute(withNextPresentable: flow,
+                                                 withNextStepper: nextStep))
     }
 }

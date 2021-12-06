@@ -114,9 +114,9 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
         super.bindView(reactor: reactor)
         transparentView.rx.anyGesture(.tap(), .swipe(direction: .down))
             .when(.recognized)
-            .subscribe(onNext:{ gesture in
-                self.dismiss(animated: true, completion: nil)
-            }).disposed(by: disposeBag)
+            .map{_ in Reactor.Action.managerDismiss}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         loginBtn.rx.tap
             .map{Reactor.Action.managerBtnClick}

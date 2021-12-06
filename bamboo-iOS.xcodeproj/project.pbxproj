@@ -49,6 +49,7 @@
 		EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACEA275DB43400A05857 /* HomeFlow.swift */; };
 		EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACEC275DB5F100A05857 /* RuleFlow.swift */; };
 		EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACEE275DB68400A05857 /* DetailFlow.swift */; };
+		EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF0275DEAF500A05857 /* MainReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
 		EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */; };
@@ -131,6 +132,7 @@
 		EE97ACEA275DB43400A05857 /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		EE97ACEC275DB5F100A05857 /* RuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFlow.swift; sourceTree = "<group>"; };
 		EE97ACEE275DB68400A05857 /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
+		EE97ACF0275DEAF500A05857 /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
+				EE97ACF0275DEAF500A05857 /* MainReactor.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1012,6 +1015,7 @@
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */,
+				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,

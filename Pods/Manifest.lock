@@ -5,6 +5,7 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - Differentiator (5.0.0)
   - GoogleSignIn (6.0.2):
     - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
@@ -60,6 +61,10 @@ PODS:
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxFlow (2.12.4):
     - RxCocoa (>= 6.0.0)
     - RxSwift (>= 6.0.0)
@@ -91,6 +96,7 @@ DEPENDENCIES:
   - RxAlertViewable
   - RxAppState
   - RxCocoa
+  - RxDataSources
   - RxFlow
   - RxGesture
   - RxKeyboard
@@ -104,6 +110,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - Differentiator
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
@@ -114,6 +121,7 @@ SPEC REPOS:
     - RxAlertViewable
     - RxAppState
     - RxCocoa
+    - RxDataSources
     - RxFlow
     - RxGesture
     - RxKeyboard
@@ -128,6 +136,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
@@ -138,6 +147,7 @@ SPEC CHECKSUMS:
   RxAlertViewable: 8b8b82e6c22b974813e67a79b0c3d500bb08b676
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxFlow: 03a73c83fb8f183107074b40ab2544c668583f73
   RxGesture: f059f2aeef966fb17dad56ee440e76410f10e55f
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
@@ -149,6 +159,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 521dd2927c927f31056278698ec62f195d8f46ed
+PODFILE CHECKSUM: 35a614384f5161aaf5167d1041842297d1d9fd06
 
 COCOAPODS: 1.11.2

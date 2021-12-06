@@ -33,16 +33,7 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
     private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE")
-    
-    //MARK: - Selectors
 
-//    @objc private func GoogleOAuthLogin(){
-//        print("GOOGLE Sign In Start")
-//        GoogleLogin.shared.SignInOauth(vc: self)
-//        dismiss(animated: true)
-//        baseDelegate?.onTapClick()
-//    }
-//    
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
@@ -112,5 +103,3 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
             .disposed(by: disposeBag)
     }
 }
-
-

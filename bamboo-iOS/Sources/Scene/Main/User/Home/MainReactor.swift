@@ -1,24 +1,21 @@
 //
-//  ManagerLoginModalReactor.swift
+//  MainReactor.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/12/04.
+//  Created by Ji-hoon Ahn on 2021/12/06.
 //
+import UIKit
 
 import ReactorKit
 import RxFlow
 import RxCocoa
 
-
-final class ManagerLoginModalReactor: Reactor , Stepper{
-    
-    var disposeBag : DisposeBag = .init()
-    
+final class MainReactor : Reactor, Stepper{
+    //MARK: - Stepper
     var steps: PublishRelay<Step> = .init()
-    
+    //MARK: - Event
     enum Action{
-        case managerBtnClick
-        case managerDismiss
+        case loadData
     }
     enum Mutation{
         
@@ -27,7 +24,10 @@ final class ManagerLoginModalReactor: Reactor , Stepper{
         
     }
     
+    //MARK: - Properties
     let initialState: State
+    
+    let errorSubject: PublishSubject<Error> = .init()
     
     init(){
         self.initialState = State()
@@ -37,15 +37,12 @@ final class ManagerLoginModalReactor: Reactor , Stepper{
     }
 }
 
-extension ManagerLoginModalReactor{
+//MARK: - Mutation
+extension MainReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case.managerDismiss:
-            steps.accept(BambooStep.dismiss)
+        case.loadData:
             return .empty()
-        case .managerBtnClick:
-            steps.accept(BambooStep.userMainTabBarIsRequired)
-            return.empty()
         }
     }
 }

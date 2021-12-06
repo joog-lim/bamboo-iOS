@@ -36,8 +36,6 @@ class BaseVC: UIViewController{
     }
     func configureAppear(){}
     func configureWillAppear(){}
-    
-    
 }
 
 class baseVC<T: Reactor>: UIViewController{
@@ -63,7 +61,7 @@ class baseVC<T: Reactor>: UIViewController{
     }
     
     deinit{
-        NSLog("\(type(of: self)): \(#function)")
+        print("\(type(of: self)): \(#function)")
     }
     
     func addView(){}
