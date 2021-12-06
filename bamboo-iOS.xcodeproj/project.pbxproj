@@ -50,6 +50,10 @@
 		EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACEC275DB5F100A05857 /* RuleFlow.swift */; };
 		EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACEE275DB68400A05857 /* DetailFlow.swift */; };
 		EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF0275DEAF500A05857 /* MainReactor.swift */; };
+		EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF4275DFBF700A05857 /* ManagerMainFlow.swift */; };
+		EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */; };
+		EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF9275E095500A05857 /* RuleReactor.swift */; };
+		EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFB275E097900A05857 /* DetailReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
 		EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */; };
@@ -64,7 +68,6 @@
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
 		EEBA436426ED12580062642F /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1A26E78F130015E81B /* NanumSquareRoundR.ttf */; };
-		EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */; };
 		EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */; };
 		EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */; };
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
@@ -133,6 +136,10 @@
 		EE97ACEC275DB5F100A05857 /* RuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFlow.swift; sourceTree = "<group>"; };
 		EE97ACEE275DB68400A05857 /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
 		EE97ACF0275DEAF500A05857 /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
+		EE97ACF4275DFBF700A05857 /* ManagerMainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerMainFlow.swift; sourceTree = "<group>"; };
+		EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptFlow.swift; sourceTree = "<group>"; };
+		EE97ACF9275E095500A05857 /* RuleReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleReactor.swift; sourceTree = "<group>"; };
+		EE97ACFB275E097900A05857 /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -147,7 +154,6 @@
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
 		EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannagerTabbar.swift; sourceTree = "<group>"; };
-		EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
@@ -253,7 +259,6 @@
 		EE1D8AED27180D4E003614BE /* User */ = {
 			isa = PBXGroup;
 			children = (
-				EEBDA33D26FB5AC300B966E3 /* MainTabbar.swift */,
 				EE7C6F7926EEEC880071031C /* Home */,
 				EEBDA33F26FB5BF200B966E3 /* Rule */,
 				EEBDA34226FB5C3F00B966E3 /* Detail */,
@@ -618,6 +623,26 @@
 			path = GoogleOauthModal;
 			sourceTree = "<group>";
 		};
+		EE97ACF2275DFBDB00A05857 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				EE97ACE8275DB3A000A05857 /* MainFlow.swift */,
+				EE97ACEA275DB43400A05857 /* HomeFlow.swift */,
+				EE97ACEC275DB5F100A05857 /* RuleFlow.swift */,
+				EE97ACEE275DB68400A05857 /* DetailFlow.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		EE97ACF3275DFBE600A05857 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EE97ACF4275DFBF700A05857 /* ManagerMainFlow.swift */,
+				EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		EE97B7362719E70C00479A06 /* DropDownBtn + DropDownTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */,
+				EE97ACF9275E095500A05857 /* RuleReactor.swift */,
 				EE8141F627018A1900ECFDCC /* RuleText */,
 			);
 			path = Rule;
@@ -752,6 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */,
+				EE97ACFB275E097900A05857 /* DetailReactor.swift */,
 				EE8141FC2701CE8B00ECFDCC /* DetailText */,
 			);
 			path = Detail;
@@ -808,10 +835,8 @@
 		EECCC130275D0A3F0068A4BD /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
-				EE97ACE8275DB3A000A05857 /* MainFlow.swift */,
-				EE97ACEA275DB43400A05857 /* HomeFlow.swift */,
-				EE97ACEC275DB5F100A05857 /* RuleFlow.swift */,
-				EE97ACEE275DB68400A05857 /* DetailFlow.swift */,
+				EE97ACF3275DFBE600A05857 /* Manager */,
+				EE97ACF2275DFBDB00A05857 /* User */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -961,11 +986,14 @@
 				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
+				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EEC4302B27591488008F802F /* StepExt.swift in Sources */,
 				EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */,
 				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
+				EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */,
 				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
+				EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EEC4302327591141008F802F /* BambooStep.swift in Sources */,
 				EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */,
@@ -1000,7 +1028,6 @@
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */,
-				EEBDA33E26FB5AC300B966E3 /* MainTabbar.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
@@ -1016,6 +1043,7 @@
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
+				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,

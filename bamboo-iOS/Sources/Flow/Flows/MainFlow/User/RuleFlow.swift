@@ -23,11 +23,11 @@ final class RuleFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
-    let stepper: HomeStepper
+    let stepper: RuleStepper
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : HomeStepper){
+    init(stepper : RuleStepper){
         self.stepper = stepper
     }
     deinit{
@@ -39,17 +39,19 @@ final class RuleFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         
         switch step{
-        case.homeIsRequired:
+        case .ruleIsRequired:
             return coordinatorToRule()
         default:
             return.none
         }
     }
-    
 }
 
 private extension RuleFlow{
     func coordinatorToRule() -> FlowContributors{
-        return .none
+        let reactor = RuleReactor()
+        let vc = RuleViewController(reactor: reactor)
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
 }

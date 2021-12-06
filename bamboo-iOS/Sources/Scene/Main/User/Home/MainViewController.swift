@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxDataSources
 
 class MainViewController : baseVC<MainReactor>{
     
@@ -44,26 +45,10 @@ class MainViewController : baseVC<MainReactor>{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.imageView?.contentMode = .scaleAspectFit
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
-//        $0.addTarget( self, action: #selector(writeBtnClick), for: .touchUpInside)
         $0.tintColor = .white
         $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
-    //MARK: - Selectors
-//    @objc private func writeBtnClick(){
-//        let WritingBulletinBoardModalModalsVC = WritingBulletinBoardModal.instance()
-//        WritingBulletinBoardModalModalsVC.delegate = self
-//        WritingBulletinBoardModalModalsVC.baseDelegate = self
-//        addDim()
-//        present(WritingBulletinBoardModalModalsVC, animated: true, completion: nil)
-//    }
-//    //MARK: - ReportModal action
-//    private func reportBtnClick(indexPath: Int){
-//        print(indexPath)
-//        let ReportModalModalsVC = ReportModal.instance()
-//        ReportModalModalsVC.delegate = self
-//        ReportModalModalsVC.baseDelegate = self
-//        present(ReportModalModalsVC, animated: true, completion: nil)
-//    }
+
     private func likeBtnClick(indexPath : Int, state : Bool){
         print("좋아요 :: \(indexPath)번째 \(state)")
         data[indexPath].isSelected = state
@@ -88,7 +73,7 @@ class MainViewController : baseVC<MainReactor>{
         }
         writeBtn.snp.makeConstraints {
             $0.height.width.equalTo(bounds.height/13.53)
-            $0.right.bottom.equalToSuperview().inset(bounds.height/40.6)
+            $0.right.bottom.equalTo(view.safeAreaLayoutGuide).inset(bounds.height/40.6)
         }
     }
     override func viewDidLayoutSubviews() {
@@ -169,28 +154,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-
-//extension MainViewController{
-//    //MARK: - 모달 실행시 Action
-//    private func addDim() {
-//        view.addSubview(bgView)
-//        bgView.snp.makeConstraints { (make) in
-//            make.top.left.right.bottom.equalToSuperview()
-//        }
-//        DispatchQueue.main.async { [weak self] in
-//            self?.bgView.alpha = 0.1
-//            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-//        }
-//    }
-//    //모달 취소시 Action
-//    private func removeDim() {
-//        DispatchQueue.main.async { [weak self] in
-//            self?.bgView.removeFromSuperview()
-//            self?.navigationController?.navigationBar.backgroundColor = .clear
-//        }
-//    }
-//}
-
 
 
 //MARK: - Write Modal Delegate

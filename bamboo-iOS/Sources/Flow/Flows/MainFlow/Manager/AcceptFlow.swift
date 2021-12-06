@@ -1,5 +1,5 @@
 //
-//  DetailFlow.swift
+//  AcceptFlow.swift
 //  bamboo-iOS
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
@@ -10,15 +10,15 @@ import UIKit
 import RxFlow
 import RxRelay
 
-struct DetailStepper : Stepper{
+struct AcceptStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step{
-        return BambooStep.detailIsRequired
+        return BambooStep.homeIsRequired
     }
 }
 
-final class DetailFlow : Flow{
+final class AcceptFlow : Flow{
     //MARK: - Properties
     var root: Presentable{
         return self.rootViewController
@@ -40,7 +40,7 @@ final class DetailFlow : Flow{
         
         switch step{
         case.homeIsRequired:
-            return coordinatorToDetail()
+            return coordinatorToHome()
         default:
             return.none
         }
@@ -48,9 +48,8 @@ final class DetailFlow : Flow{
     
 }
 
-private extension DetailFlow{
-    func coordinatorToDetail() -> FlowContributors{
+private extension AcceptFlow{
+    func coordinatorToHome() -> FlowContributors{
         return .none
     }
 }
-

@@ -8,7 +8,7 @@
 import UIKit
 
 
-class DetailViewController : BaseVC{
+class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Properties
     
     let fifthFont : [String] = ["자주 묻는 말",
@@ -54,22 +54,12 @@ class DetailViewController : BaseVC{
 
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        addView()
-        location()
-    }
-
-    //MARK: - Gesture
-
-    //MARK: - addView
-    private func addView(){
+    override func addView() {
         view.addSubview(backGroundScrollView)
         [titleLabel,explanationLabel,divider,greetingsLabel].forEach{backGroundScrollView.addSubview($0); $0.sizeToFit()}
     }
-    
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/40.6)

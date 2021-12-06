@@ -1,5 +1,5 @@
 //
-//  MainFlow.swift
+//  ManagerMainFlow.swift
 //  bamboo-iOS
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
@@ -10,17 +10,18 @@ import UIKit
 import RxSwift
 import RxFlow
 
-final class MainFlow : Flow{
+final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
-        case home = 0
-        case rule = 1
-        case detail = 2
+        case accept = 0
+        case standBy = 1
+        case Refusal = 2
+        case Delete = 3
     }
     var root: Presentable{
         return self.rootViewController
     }
     let rootViewController: UITabBarController = .init()
-    private let homeFlow : HomeFlow
+    private let homeFlow : AcceptFlow
     private let ruleFlow : RuleFlow
     private let detailFlow : DetailFlow
     

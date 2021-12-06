@@ -14,7 +14,6 @@ enum BambooStep: Step{
     //MARK: - 어떤 행동을 했다로 정의
     //Login
     case LoginIsRequired
-    //Login 여부
     //User일때
     case userLoginIsRequired
     case userIsLoggedIn
@@ -25,15 +24,24 @@ enum BambooStep: Step{
     case guestLoginIsRequired
     
     //MARK: - Main
+    //User
     case userMainTabBarIsRequired
-    
     //Home
     case homeIsRequired
-    
     //Rule
     case ruleIsRequired
-    
     //Detail
     case detailIsRequired
+    
+    //Manager
+    case managerMainTabBarIsRequired
+    //Accept
+    case managerAcceptIsRequired
+    //StandBy
+    case managerStandByIsRequired
+    //Refusal
+    case managerRefusalIsRequired
+    //Delete
+    case managerDeleteIsRequired
     
 }

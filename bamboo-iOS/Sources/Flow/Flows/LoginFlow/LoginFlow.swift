@@ -41,6 +41,12 @@ final class LoginFlow : Flow{
             return coordinateToUserLoginModalVC()
         case .managerLoginIsRequired:
             return coordinateToManagerLoginModalVC()
+        case .userIsLoggedIn:
+            return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
+        case .managerIsLoggedIn:
+            return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
+        case .guestLoginIsRequired:
+            return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()
         default :
