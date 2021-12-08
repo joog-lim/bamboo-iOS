@@ -11,7 +11,11 @@ target 'bamboo-iOS' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Then'
   pod 'GoogleSignIn'
+  pod 'KeychainSwift', '~> 19.0'
+  pod 'JGProgressHUD'
+  pod 'PanModal'
 
+  
   # Networking
   pod 'Moya/RxSwift'
 
@@ -25,6 +29,9 @@ target 'bamboo-iOS' do
   pod 'RxFlow'
   pod 'ReactorKit'
   pod 'RxKeyboard'
+  pod 'RxGesture'
+  pod 'RxDataSources'
+  pod 'RxReachability'
 #  pod 'ReusableKit/RxSwift'
 
 end

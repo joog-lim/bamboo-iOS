@@ -7,7 +7,8 @@
 
 import UIKit
 import RxViewController
-class RuleViewController : BaseVC {
+
+class RuleViewController : baseVC<RuleReactor> {
     //MARK: - Properties
     
     let fifteenFont : [String] = ["제 1조 목적",
@@ -39,26 +40,24 @@ class RuleViewController : BaseVC {
 
     
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        addView()
-        location()
+
+    override func configureUI() {
+        super.configureUI()
         navigationSetting()
+    }
+    override func addView() {
+        super.addView()
+            view.addSubview(backGroundScrollView)
+            [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
     }
     
     //MARK: - Navigation Setting
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
-        navigationItem.hidesBackButton = false
         navigationItem.applyImageNavigation()
     }
-    
-    private func addView(){
-        view.addSubview(backGroundScrollView)
-        [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
-    }
-    
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }

@@ -8,12 +8,13 @@
 import UIKit
 import SnapKit
 import RxKeyboard
+import PanModal
 
 protocol WriteModalDelegate : AnyObject{
     func updateWrite()
 }
 
-class WritingBulletinBoardModal: BaseModal{
+class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK - Tag Data
     private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     //MARK: - Properties
@@ -31,10 +32,7 @@ class WritingBulletinBoardModal: BaseModal{
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.bamBoo_57CC4D.cgColor
     }
-    private let bgView = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 40
-    }
+
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
         $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
@@ -48,7 +46,6 @@ class WritingBulletinBoardModal: BaseModal{
     private let titleTf = AlertTextField(placeholder: "제목을 입력하세요.", fontSize: 10)
     private let tagChooseBtn = LoginButton(placeholder: "태그선택", cornerRadius: 5).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundB", size: 12)
-        $0.addTarget(self, action: #selector(tagChooseBtnClick), for: .touchUpInside)
     }
     private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.", fontSize: 10)
     private let passwordTitle = UILabel().then{
@@ -59,100 +56,63 @@ class WritingBulletinBoardModal: BaseModal{
     private let passwordTf = AlertTextField(placeholder: "답변을 입력하세요.", fontSize: 10)
     private let sendBtn = LoginButton(placeholder: "전송", cornerRadius: 10).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 13)
-        $0.addTarget(self, action: #selector(sendTapClose), for: .touchUpInside)
     }
     
     //MARK: - StackView
     private lazy var passwordStackView = UIStackView(arrangedSubviews: [passwordTitle,passwordTf]).then{
         $0.axis = .vertical
         $0.spacing = 5
-        $0.distribution = .fillProportionally
-    }
-
-    //모달 위치 조정
-    static func instance() -> WritingBulletinBoardModal{
-        return WritingBulletinBoardModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
+        $0.distribution = .fillEqually
     }
     
-    //MARK: - Selectors
-    @objc private func sendTapClose(){
-        baseDelegate?.onTapClick()
-        dismiss(animated: true, completion: nil)
-    }
-    @objc private func tagChooseBtnClick(){
-        addTagTableViewSetting(frames: tagChooseBtn.frame)
-    }
-    
-    //MARK: - Keyboard Setting
-    @objc private func keyboardWillShow(_ sender: Notification) {
-         self.view.frame.origin.y = -175 // Move view 150 points upward
-    }
-    @objc private func keyboardWillHide(_ sender: Notification) {
-        self.view.frame.origin.y = 0 // Move view to original position
-    }
-    
-
     //MARK: - HELPERS
-    override func modalSetting() {
-        super.modalSetting()
-        addView()
-        location()
-        keyboardSetting()
-        StackViewSizing()
+    override func configureUI() {
+        super.configureUI()
         DelegateAndDatasource()
     }
-    //MARK: - Delegate & DateSource
-    private func DelegateAndDatasource(){
-        contentTv.delegate = self
-        [tagChoose].forEach{ $0.delegate = self; $0.dataSource = self}
-    }
-    
     //MARK: - AddView
-    private func addView(){
-        [bgView].forEach { view.addSubview($0)}
-        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
+    override func addView() {
+        super.addView()
+        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {view.addSubview($0)}
     }
     
     //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         iphoneLocation()
         iPadLocation()
         questionTitle.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
-
     }
 
-    //MARK: - StackView 사이즈
-    private func StackViewSizing(){
-        passwordTf.snp.makeConstraints { make in
-            make.height.equalTo(bounds.height/27.0666)
-        }
+    //MARK: - Delegate & DateSource
+    private func DelegateAndDatasource(){
+        contentTv.delegate = self
+        [tagChoose].forEach{ $0.delegate = self; $0.dataSource = self}
     }
-    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    //MARK: - Keyboard down
-    private func keyboardSetting(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    override func bindView(reactor: WritingBulletinBoardReactor) {
+        super.bindView(reactor: reactor)
+
+        tagChooseBtn.rx.tap
+            .subscribe(onNext:{ [self] in
+                addTagTableViewSetting(frames: tagChooseBtn.frame)
+            }).disposed(by: disposeBag)
     }
-
-
 }
 //MARK: - DropDown
 extension WritingBulletinBoardModal{
     //MARK: - DropDown Setting
     private func addTagTableViewSetting(frames: CGRect){
         tagSelectView.frame = view.frame
-        self.bgView.addSubview(tagSelectView)
+        self.view.addSubview(tagSelectView)
         tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-        self.bgView.addSubview(tagChoose)
+        self.view.addSubview(tagChoose)
         tagChoose.reloadData()
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeDropDown))
         tagSelectView.addGestureRecognizer(tapgesture)
@@ -203,12 +163,12 @@ extension WritingBulletinBoardModal : UITextViewDelegate{
 //MARK: - TableView
 extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WritingBulletinBoardModal().tagDataSection.count
+        return WritingBulletinBoardModal(reactor: .init()).tagDataSection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.identifier, for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
-        cell.model = WritingBulletinBoardModal().tagDataSection[indexPath.row]
+        cell.model = WritingBulletinBoardModal(reactor: .init()).tagDataSection[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -232,12 +192,6 @@ extension WritingBulletinBoardModal{
     //MARK: - iPAD
     private func iPadLocation(){
         if UIDevice.current.isiPad{
-            bgView.snp.makeConstraints {
-                $0.left.equalToSuperview()
-                $0.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(480)
-            }
             titleLabel.snp.makeConstraints {
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(24)
@@ -278,12 +232,6 @@ extension WritingBulletinBoardModal{
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(bounds.height/33.8333)
             }
-            bgView.snp.makeConstraints {
-                $0.left.equalToSuperview()
-                $0.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(bounds.height/1.75)
-            }
             titleTf.snp.makeConstraints{
                 $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -296,11 +244,6 @@ extension WritingBulletinBoardModal{
                 $0.width.equalTo(bounds.width/5.77)
                 $0.height.equalTo(titleTf)
             }
-            sendBtn.snp.makeConstraints {
-                $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/20.3)
-            }
             contentTv.snp.makeConstraints {
                 $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
@@ -309,8 +252,45 @@ extension WritingBulletinBoardModal{
             passwordStackView.snp.makeConstraints {
                 $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/16.9166)
+                $0.height.equalTo(bounds.height/12)
+            }
+            sendBtn.snp.makeConstraints {
+                $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
+                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+                $0.height.equalTo(bounds.height/20.3)
             }
         }
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+}
+
+extension WritingBulletinBoardModal : PanModalPresentable{
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var longFormHeight: PanModalHeight {
+            return .contentHeight(bounds.height/2)
+    }
+    
+    var shortFormHeight: PanModalHeight{
+        return .contentHeight(bounds.height/2)
+    }
+    
+    var anchorModalToLongForm: Bool {
+        return false
+    }
+    
+
+    var shouldRoundTopCorners: Bool {
+        return false
+    }
+    
+    var panModalBackgroundColor: UIColor{
+        return .black.withAlphaComponent(0.1)
+    }
+    
 }

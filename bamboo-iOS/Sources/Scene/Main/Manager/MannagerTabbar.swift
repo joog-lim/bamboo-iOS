@@ -28,7 +28,7 @@ class MannagerTabbar : UITabBarController{
     
     //MARK: - Selector
     @objc private func navigationbarItemAction(){
-        navigationController?.pushViewController(RuleViewController(), animated: true)
+        navigationController?.pushViewController(RuleViewController(reactor: RuleReactor()), animated: true)
     }
     @objc private func MainViewControllerNavigationAction(){
         navigationController?.popViewController(animated: true)
