@@ -14,21 +14,23 @@ final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
         case accept = 0
         case standBy = 1
-        case Refusal = 2
-        case Delete = 3
+        case refusal = 2
+        case delete = 3
     }
     var root: Presentable{
         return self.rootViewController
     }
     let rootViewController: UITabBarController = .init()
-    private let homeFlow : AcceptFlow
-    private let ruleFlow : RuleFlow
-    private let detailFlow : DetailFlow
+    private let acceptFlow : AcceptFlow
+    private let standByFlow : RuleFlow
+    private let refusalFlow : DetailFlow
+    private let deleteFlow : AcceptFlow
     
     init(){
-        self.homeFlow = .init(stepper: .init())
-        self.ruleFlow = .init(stepper: .init())
-        self.detailFlow = .init(stepper: .init())
+        self.acceptFlow = .init(stepper: .init())
+        self.standByFlow = .init(stepper: .init())
+        self.refusalFlow = .init(stepper: .init())
+        self.deleteFlow = .init(stepper: .init())
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -47,31 +49,38 @@ final class ManagerMainFlow : Flow{
     }
     private func coordinateToMainTabBar() -> FlowContributors{
         Flows.use(
-            homeFlow,ruleFlow,detailFlow,
+            acceptFlow,standByFlow,refusalFlow,deleteFlow,
             when: .created)
         { [unowned self] (root1 : UINavigationController,
-                                                                                  root2 : UINavigationController,
-                                                                                  root3 : UINavigationController)  in
-            let homeImage : UIImage? = UIImage(named: "BAMBOO_Home")
-            let ruleImage : UIImage? = UIImage(named: "BAMBOO_Rule")
-            let detailImage : UIImage? = UIImage(named: "BAMBOO_Detail")
+                          root2 : UINavigationController,
+                          root3 : UINavigationController,
+                          root4 : UINavigationController)  in
             
-            let homeItem : UITabBarItem = .init(title: "홈", image: homeImage, selectedImage: nil)
-            let ruleItem : UITabBarItem = .init(title: "규칙", image: ruleImage, selectedImage: nil)
-            let detailItem : UITabBarItem = .init(title: "더보기", image: detailImage, selectedImage: nil)
+            let acceptImage : UIImage? = UIImage(named: "BAMBOO_Home")?.withRenderingMode(.alwaysTemplate)
+            let standByImage : UIImage? = UIImage(named: "BAMBOO_Rule")?.withRenderingMode(.alwaysTemplate)
+            let refusalImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
+            let deleteImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
+
             
-            root1.tabBarItem = homeItem
-            root2.tabBarItem = ruleItem
-            root3.tabBarItem = detailItem
+            let acceptItem : UITabBarItem = .init(title: "수락", image: acceptImage, selectedImage: nil)
+            let standByItem : UITabBarItem = .init(title: "대기", image: standByImage, selectedImage: nil)
+            let refusalItem : UITabBarItem = .init(title: "거절", image: refusalImage, selectedImage: nil)
+            let deleteItem : UITabBarItem = .init(title: "삭제", image: deleteImage, selectedImage: nil)
             
-            self.rootViewController.setViewControllers([root1,root2,root3], animated: true)
+            root1.tabBarItem = acceptItem
+            root2.tabBarItem = standByItem
+            root3.tabBarItem = refusalItem
+            root4.tabBarItem = deleteItem
+            
+            rootViewController.tabBar.tintColor = .bamBoo_57CC4D
+            self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
         return .multiple(flowContributors: [
-            .contribute(withNextPresentable: homeFlow,withNextStepper: homeFlow.stepper),
-            .contribute(withNextPresentable: ruleFlow,withNextStepper: ruleFlow.stepper),
-            .contribute(withNextPresentable: detailFlow,withNextStepper: detailFlow.stepper)
+            .contribute(withNextPresentable: acceptFlow,withNextStepper: acceptFlow.stepper),
+            .contribute(withNextPresentable: standByFlow,withNextStepper: standByFlow.stepper),
+            .contribute(withNextPresentable: refusalFlow,withNextStepper: refusalFlow.stepper),
+            .contribute(withNextPresentable: deleteFlow,withNextStepper: deleteFlow.stepper)
         ])
     }
-    
 }
 

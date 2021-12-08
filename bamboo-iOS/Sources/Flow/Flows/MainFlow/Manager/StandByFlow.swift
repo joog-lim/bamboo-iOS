@@ -1,8 +1,8 @@
 //
-//  AcceptFlow.swift
+//  StandByFlow.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/12/06.
+//  Created by Ji-hoon Ahn on 2021/12/07.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import RxFlow
 import RxRelay
 
-struct AcceptStepper : Stepper{
+struct StandByStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step{
@@ -18,16 +18,16 @@ struct AcceptStepper : Stepper{
     }
 }
 
-final class AcceptFlow : Flow{
+final class StandByFlow : Flow{
     //MARK: - Properties
     var root: Presentable{
         return self.rootViewController
     }
-    let stepper: AcceptStepper
+    let stepper: StandByStepper
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : AcceptStepper){
+    init(stepper : StandByStepper){
         self.stepper = stepper
     }
     deinit{
@@ -48,7 +48,7 @@ final class AcceptFlow : Flow{
     
 }
 
-private extension AcceptFlow{
+private extension StandByFlow{
     func coordinatorToHome() -> FlowContributors{
         return .none
     }

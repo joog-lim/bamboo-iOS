@@ -31,7 +31,6 @@ final class LoginFlow : Flow{
         self.stepper = stepper
     }
     
-    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         switch step{
@@ -63,7 +62,8 @@ final class LoginFlow : Flow{
     private func coordinateToUserLoginModalVC() -> FlowContributors{
         let reactor = GoogleOauthModalReactor()
         let vc = GoogleOauthModalVC(reactor: reactor)
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.rootVC.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
@@ -71,11 +71,12 @@ final class LoginFlow : Flow{
     private func coordinateToManagerLoginModalVC() -> FlowContributors{
         let reactor = ManagerLoginModalReactor()
         let vc = ManagerLoginModal(reactor: reactor)
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.rootVC.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
-        
     }
+
     
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)

@@ -44,4 +44,9 @@ enum BambooStep: Step{
     //Delete
     case managerDeleteIsRequired
     
+    //MARK: - Modal
+    //write
+    case writeModalIsRequired
+    
+    
 }

@@ -15,12 +15,6 @@ class MainViewController : baseVC<MainReactor>{
     
     lazy var data : [Data] = [.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false),.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false)]
     
-
-    //MARK: - 모달 background 설정
-    let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
     
     private let titleLabel = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
@@ -41,7 +35,7 @@ class MainViewController : baseVC<MainReactor>{
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
     private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
-    private lazy var writeBtn = UIButton(type: .system).then{
+    private let writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.imageView?.contentMode = .scaleAspectFit
         $0.setImage(UIImage(named: "BAMBOO_Pencil")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -59,6 +53,7 @@ class MainViewController : baseVC<MainReactor>{
         super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
+        navigationSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
@@ -84,7 +79,6 @@ class MainViewController : baseVC<MainReactor>{
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
     }
-    
     //MARK: - Header
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -104,6 +98,11 @@ class MainViewController : baseVC<MainReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.applyImageNavigation()
+    }
     
     //MARK: - Data load More
     private func loadMoreData(){
@@ -122,6 +121,13 @@ class MainViewController : baseVC<MainReactor>{
                 }
             }
         }
+    }
+    override func bindView(reactor: MainReactor) {
+        super.bindView(reactor: reactor)
+        writeBtn.rx.tap
+            .map{Reactor.Action.writeData}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -184,6 +190,7 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
+        print(indexPath.row)
 //        self.reportBtnClick(indexPath: indexPath.item)
     }
 }

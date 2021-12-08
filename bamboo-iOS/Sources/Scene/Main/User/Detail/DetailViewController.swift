@@ -10,7 +10,6 @@ import UIKit
 
 class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Properties
-    
     let fifthFont : [String] = ["자주 묻는 말",
                                 "문의"]
     
@@ -51,8 +50,11 @@ class DetailViewController : baseVC<DetailReactor>{
 
     
     //MARK: - Selectors
-
-
+    override func configureUI() {
+        super.configureUI()
+        navigationSetting()
+    }
+    
     //MARK: - Helper
     override func addView() {
         view.addSubview(backGroundScrollView)
@@ -60,7 +62,6 @@ class DetailViewController : baseVC<DetailReactor>{
     }
     override func setLayout() {
         super.setLayout()
-        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/40.6)
             $0.left.equalToSuperview().offset(bounds.width/26.786)
@@ -87,5 +88,10 @@ class DetailViewController : baseVC<DetailReactor>{
         backGroundScrollView.snp.makeConstraints {
             $0.top.left.right.bottom.equalToSuperview()
         }
+    }
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.applyImageNavigation()
     }
 }

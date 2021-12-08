@@ -1,22 +1,23 @@
 //
-//  MainReactor.swift
+//  WritingBulletinBoardReactor.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/12/06.
+//  Created by Ji-hoon Ahn on 2021/12/07.
 //
-import UIKit
 
 import ReactorKit
 import RxFlow
 import RxCocoa
 
-final class MainReactor : Reactor, Stepper{
-    //MARK: - Stepper
+
+final class WritingBulletinBoardReactor: Reactor , Stepper{
+    
+    var disposeBag : DisposeBag = .init()
+    
     var steps: PublishRelay<Step> = .init()
-    //MARK: - Event
+    
     enum Action{
-        case loadData
-        case writeData
+        case dismissModal
     }
     enum Mutation{
         
@@ -25,10 +26,7 @@ final class MainReactor : Reactor, Stepper{
         
     }
     
-    //MARK: - Properties
     let initialState: State
-    
-    let errorSubject: PublishSubject<Error> = .init()
     
     init(){
         self.initialState = State()
@@ -38,14 +36,11 @@ final class MainReactor : Reactor, Stepper{
     }
 }
 
-//MARK: - Mutation
-extension MainReactor{
+extension WritingBulletinBoardReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case.loadData:
-            return .empty()
-        case .writeData:
-            steps.accept(BambooStep.writeModalIsRequired)
+        case.dismissModal:
+            steps.accept(BambooStep.dismiss)
             return .empty()
         }
     }

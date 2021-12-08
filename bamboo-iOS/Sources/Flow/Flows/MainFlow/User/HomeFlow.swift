@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import RxFlow
 import RxRelay
 
@@ -41,6 +40,10 @@ final class HomeFlow : Flow{
         switch step{
         case.homeIsRequired:
             return coordinatorToHome()
+        case .writeModalIsRequired:
+            return coordinatorWriteModal()
+        case.dismiss:
+            return dismissVC()
         default:
             return.none
         }
@@ -54,5 +57,18 @@ private extension HomeFlow{
         let vc = MainViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
+    
+    func coordinatorWriteModal() -> FlowContributors{
+        let reactor = WritingBulletinBoardReactor()
+        let vc = WritingBulletinBoardModal(reactor: reactor)
+        vc.modalPresentationStyle = .overFullScreen
+        self.rootViewController.visibleViewController?.present(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
+    
+    private func dismissVC() -> FlowContributors{
+        self.rootViewController.visibleViewController?.dismiss(animated: true)
+        return .none
     }
 }

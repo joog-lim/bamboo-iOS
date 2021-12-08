@@ -21,8 +21,8 @@ extension UINavigationItem {
 extension UINavigationController{
     func navigationCustomBar(){
         navigationBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
-        navigationBar.isTranslucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
-        
+        navigationController?.navigationBar.isTranslucent = false
     }
 }

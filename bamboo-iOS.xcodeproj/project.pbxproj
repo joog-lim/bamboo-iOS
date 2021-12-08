@@ -54,6 +54,7 @@
 		EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */; };
 		EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACF9275E095500A05857 /* RuleReactor.swift */; };
 		EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFB275E097900A05857 /* DetailReactor.swift */; };
+		EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
 		EE97B75D271B3DDD00479A06 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */; };
 		EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */; };
@@ -63,6 +64,8 @@
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
+		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
+		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
 		EEB90EC82757BE8200A3BDCE /* MannagerTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
@@ -140,6 +143,7 @@
 		EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptFlow.swift; sourceTree = "<group>"; };
 		EE97ACF9275E095500A05857 /* RuleReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleReactor.swift; sourceTree = "<group>"; };
 		EE97ACFB275E097900A05857 /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
+		EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
 		EE97B75C271B3DDD00479A06 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE9D76AC2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
+		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
+		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
 		EEB90EC72757BE8200A3BDCE /* MannagerTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MannagerTabbar.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
+				EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */,
 			);
 			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
@@ -444,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */,
+				EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -639,6 +647,7 @@
 			children = (
 				EE97ACF4275DFBF700A05857 /* ManagerMainFlow.swift */,
 				EE97ACF6275DFCB600A05857 /* AcceptFlow.swift */,
+				EEB198F9275FA650000375AB /* StandByFlow.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -980,6 +989,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */,
+				EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
@@ -987,6 +997,7 @@
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
+				EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EEC4302B27591488008F802F /* StepExt.swift in Sources */,
 				EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */,
@@ -1029,6 +1040,7 @@
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
+				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
