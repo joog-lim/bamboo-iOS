@@ -8,6 +8,7 @@
 import UIKit
 import RxFlow
 import RxRelay
+import PanModal
 
 struct HomeStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
@@ -62,9 +63,7 @@ private extension HomeFlow{
     func coordinatorWriteModal() -> FlowContributors{
         let reactor = WritingBulletinBoardReactor()
         let vc = WritingBulletinBoardModal(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        vc.modalTransitionStyle = .coverVertical
-        self.rootViewController.visibleViewController?.present(vc, animated: true)
+        self.rootViewController.presentPanModal(vc)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     

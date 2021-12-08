@@ -11,8 +11,9 @@ enum BambooStep: Step{
     //Global
     case dismiss
     
-    //MARK: - 어떤 행동을 했다로 정의
-    //Login
+    //MARK: - 작성 방법 : 어떤 행동을 했다로 정의
+    
+    //MARK: - Login
     case LoginIsRequired
     //User일때
     case userLoginIsRequired
@@ -47,6 +48,7 @@ enum BambooStep: Step{
     //MARK: - Modal
     //write
     case writeModalIsRequired
-    
+    //report
+    case reportModalsRequired
     
 }

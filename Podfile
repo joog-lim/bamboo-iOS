@@ -13,7 +13,9 @@ target 'bamboo-iOS' do
   pod 'GoogleSignIn'
   pod 'KeychainSwift', '~> 19.0'
   pod 'JGProgressHUD'
+  pod 'PanModal'
 
+  
   # Networking
   pod 'Moya/RxSwift'
 

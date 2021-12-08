@@ -86,10 +86,21 @@
 		EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC129275D045B0068A4BD /* NavigationExt.swift */; };
 		EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12B275D04790068A4BD /* LabelExt.swift */; };
 		EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */; };
+		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EED265532761733E00A1994A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE8980FE26E5FD400086D2D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE89810526E5FD400086D2D6;
+			remoteInfo = "bamboo-iOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +186,8 @@
 		EECCC129275D045B0068A4BD /* NavigationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExt.swift; sourceTree = "<group>"; };
 		EECCC12B275D04790068A4BD /* LabelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExt.swift; sourceTree = "<group>"; };
 		EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExt.swift; sourceTree = "<group>"; };
+		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModalReactor.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -188,6 +201,13 @@
 				0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */,
 				EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */,
 				EE3BA5882703EDED00281096 /* Network.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED2654C2761733E00A1994A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				EE89810826E5FD400086D2D6 /* bamboo-iOS */,
+				EED265502761733E00A1994A /* bamboo-iOSTests */,
 				EE89810726E5FD400086D2D6 /* Products */,
 				603A43172F64662304C1A921 /* Pods */,
 				BBDDB91F2933C652DB1543A4 /* Frameworks */,
@@ -581,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				EE89810626E5FD400086D2D6 /* bamboo-iOS.app */,
+				EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -850,6 +872,14 @@
 			path = MainFlow;
 			sourceTree = "<group>";
 		};
+		EED265502761733E00A1994A /* bamboo-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				EED265512761733E00A1994A /* bamboo_iOSTests.swift */,
+			);
+			path = "bamboo-iOSTests";
+			sourceTree = "<group>";
+		};
 		EEF42F10270BD90F0088043F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,17 +922,39 @@
 			productReference = EE89810626E5FD400086D2D6 /* bamboo-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EED2654E2761733E00A1994A /* bamboo-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EED265572761733E00A1994A /* Build configuration list for PBXNativeTarget "bamboo-iOSTests" */;
+			buildPhases = (
+				EED2654B2761733E00A1994A /* Sources */,
+				EED2654C2761733E00A1994A /* Frameworks */,
+				EED2654D2761733E00A1994A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EED265542761733E00A1994A /* PBXTargetDependency */,
+			);
+			name = "bamboo-iOSTests";
+			productName = "bamboo-iOSTests";
+			productReference = EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		EE8980FE26E5FD400086D2D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					EE89810526E5FD400086D2D6 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					EED2654E2761733E00A1994A = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = EE89810526E5FD400086D2D6;
 					};
 				};
 			};
@@ -920,6 +972,7 @@
 			projectRoot = "";
 			targets = (
 				EE89810526E5FD400086D2D6 /* bamboo-iOS */,
+				EED2654E2761733E00A1994A /* bamboo-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -936,6 +989,13 @@
 				EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */,
 				EE9D76AD2737BF4C001FC1AE /* client_331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com.plist in Resources */,
 				EEBA436426ED12580062642F /* NanumSquareRoundR.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EED2654D2761733E00A1994A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,7 +1123,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EED2654B2761733E00A1994A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EED265542761733E00A1994A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE89810526E5FD400086D2D6 /* bamboo-iOS */;
+			targetProxy = EED265532761733E00A1994A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EE89811426E5FD410086D2D6 /* LaunchScreen.storyboard */ = {
@@ -1235,6 +1311,56 @@
 			};
 			name = Release;
 		};
+		EED265552761733E00A1994A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7JA353ZJMP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "JiHoonAHN.bamboo-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bamboo-iOS.app/bamboo-iOS";
+			};
+			name = Debug;
+		};
+		EED265562761733E00A1994A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7JA353ZJMP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "JiHoonAHN.bamboo-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bamboo-iOS.app/bamboo-iOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1252,6 +1378,15 @@
 			buildConfigurations = (
 				EE89811B26E5FD410086D2D6 /* Debug */,
 				EE89811C26E5FD410086D2D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EED265572761733E00A1994A /* Build configuration list for PBXNativeTarget "bamboo-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EED265552761733E00A1994A /* Debug */,
+				EED265562761733E00A1994A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

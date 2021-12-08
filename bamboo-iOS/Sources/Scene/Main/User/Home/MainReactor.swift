@@ -17,6 +17,7 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case loadData
         case writeData
+        case reportBtnClickAction
     }
     enum Mutation{
         
@@ -46,6 +47,9 @@ extension MainReactor{
             return .empty()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
+            return .empty()
+        case .reportBtnClickAction:
+            steps.accept(BambooStep.reportModalsRequired)
             return .empty()
         }
     }

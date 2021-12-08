@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxKeyboard
+import PanModal
 
 protocol WriteModalDelegate : AnyObject{
     func updateWrite()
@@ -21,7 +22,6 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     
     private lazy var dropDownStatus : Bool = false
     
-    
     private let tagSelectView = UIView()
     private let tagChoose = UITableView().then{
         $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.identifier)
@@ -32,10 +32,7 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         $0.layer.borderWidth = 0.5
         $0.layer.borderColor = UIColor.bamBoo_57CC4D.cgColor
     }
-    private let bgView = UIView().then{
-        $0.backgroundColor = .red
-        $0.layer.cornerRadius = 40
-    }
+
     private let titleLabel = UILabel().then{
         $0.text = "글 입력하기"
         $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
@@ -67,34 +64,16 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         $0.spacing = 5
         $0.distribution = .fillEqually
     }
-
-    //모달 위치 조정
-//    static func instance() -> WritingBulletinBoardModal{
-//        return WritingBulletinBoardModal(nibName: nil, bundle: nil).then{
-//            $0.modalPresentationStyle = .overFullScreen
-//        }
-//    }
     
-    //MARK: - Selectors
-//    @objc private func sendTapClose(){
-//        dismiss(animated: true, completion: nil)
-//    }
-//    @objc private func tagChooseBtnClick(){
-//        addTagTableViewSetting(frames: tagChooseBtn.frame)
-//    }
-    
-
     //MARK: - HELPERS
     override func configureUI() {
         super.configureUI()
-        StackViewSizing()
         DelegateAndDatasource()
     }
     //MARK: - AddView
     override func addView() {
         super.addView()
-        [bgView].forEach { view.addSubview($0)}
-        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {bgView.addSubview($0)}
+        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn,tagChoose].forEach {view.addSubview($0)}
     }
     
     //MARK: - Location
@@ -113,55 +92,55 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         contentTv.delegate = self
         [tagChoose].forEach{ $0.delegate = self; $0.dataSource = self}
     }
-    //MARK: - StackView 사이즈
-    private func StackViewSizing(){
-        passwordTf.snp.makeConstraints { make in
-            make.height.equalTo(bounds.height/27.0666)
-        }
-    }
-    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    override func bindView(reactor: WritingBulletinBoardReactor) {
+        super.bindView(reactor: reactor)
 
+        tagChooseBtn.rx.tap
+            .subscribe(onNext:{ [self] in
+                addTagTableViewSetting(frames: tagChooseBtn.frame)
+            }).disposed(by: disposeBag)
+    }
 }
 //MARK: - DropDown
-//extension WritingBulletinBoardModal{
-//    //MARK: - DropDown Setting
-//    private func addTagTableViewSetting(frames: CGRect){
-//        tagSelectView.frame = view.frame
-//        self.bgView.addSubview(tagSelectView)
-//        tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-//        self.bgView.addSubview(tagChoose)
-//        tagChoose.reloadData()
-//        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeDropDown))
-//        tagSelectView.addGestureRecognizer(tapgesture)
-//        tagSelectView.alpha = 0
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { [self] in
-//            tagSelectView.alpha = 0.2
-//            if UIDevice.current.isiPad{
-//                tagChoose.frame = CGRect(x: frames.origin.x,
-//                                         y: frames.origin.y + frames.height + 5,
-//                                         width: frames.width,
-//                                         height: 25 * CGFloat(tagDataSection.count))
-//            }else if UIDevice.current.isiPhone{
-//                tagChoose.frame = CGRect(x: frames.origin.x,
-//                                         y: frames.origin.y + frames.height + 5,
-//                                         width: frames.width,
-//                                         height: bounds.height/27 * CGFloat(tagDataSection.count))
-//            }
-//        }, completion: nil)
-//    }
-//    //MARK: - DropDown remove
-//    @objc private func removeDropDown(){
-//        let frames = tagChooseBtn.frame
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
-//            self.tagSelectView.alpha = 0
-//            self.tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-//        }, completion: nil)
-//    }
-//}
+extension WritingBulletinBoardModal{
+    //MARK: - DropDown Setting
+    private func addTagTableViewSetting(frames: CGRect){
+        tagSelectView.frame = view.frame
+        self.view.addSubview(tagSelectView)
+        tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.view.addSubview(tagChoose)
+        tagChoose.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeDropDown))
+        tagSelectView.addGestureRecognizer(tapgesture)
+        tagSelectView.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: { [self] in
+            tagSelectView.alpha = 0.2
+            if UIDevice.current.isiPad{
+                tagChoose.frame = CGRect(x: frames.origin.x,
+                                         y: frames.origin.y + frames.height + 5,
+                                         width: frames.width,
+                                         height: 25 * CGFloat(tagDataSection.count))
+            }else if UIDevice.current.isiPhone{
+                tagChoose.frame = CGRect(x: frames.origin.x,
+                                         y: frames.origin.y + frames.height + 5,
+                                         width: frames.width,
+                                         height: bounds.height/27 * CGFloat(tagDataSection.count))
+            }
+        }, completion: nil)
+    }
+    //MARK: - DropDown remove
+    @objc private func removeDropDown(){
+        let frames = tagChooseBtn.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.tagSelectView.alpha = 0
+            self.tagChoose.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+}
 
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
@@ -205,7 +184,7 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(tagDataSection[indexPath.row].rawValue)
         tagChooseBtn.setTitle(tagDataSection[indexPath.row].rawValue, for: .normal)
-//        removeDropDown()
+        removeDropDown()
     }
 }
 //MARK: - Location
@@ -213,12 +192,6 @@ extension WritingBulletinBoardModal{
     //MARK: - iPAD
     private func iPadLocation(){
         if UIDevice.current.isiPad{
-            bgView.snp.makeConstraints {
-                $0.left.equalToSuperview()
-                $0.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(480)
-            }
             titleLabel.snp.makeConstraints {
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(24)
@@ -259,11 +232,6 @@ extension WritingBulletinBoardModal{
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(bounds.height/33.8333)
             }
-            bgView.snp.makeConstraints {
-                $0.left.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(bounds.height/1.75)
-            }
             titleTf.snp.makeConstraints{
                 $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -284,7 +252,7 @@ extension WritingBulletinBoardModal{
             passwordStackView.snp.makeConstraints {
                 $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/16.9166)
+                $0.height.equalTo(bounds.height/12)
             }
             sendBtn.snp.makeConstraints {
                 $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
@@ -293,4 +261,36 @@ extension WritingBulletinBoardModal{
             }
         }
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+}
+
+extension WritingBulletinBoardModal : PanModalPresentable{
+
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+
+    var longFormHeight: PanModalHeight {
+            return .contentHeight(bounds.height/2)
+    }
+    
+    var shortFormHeight: PanModalHeight{
+        return .contentHeight(bounds.height/2)
+    }
+    
+    var anchorModalToLongForm: Bool {
+        return false
+    }
+    
+
+    var shouldRoundTopCorners: Bool {
+        return false
+    }
+    
+    var panModalBackgroundColor: UIColor{
+        return .black.withAlphaComponent(0.1)
+    }
+    
 }
