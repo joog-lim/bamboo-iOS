@@ -31,7 +31,6 @@ class noWifiViewController : BaseVC{
     //MARK: - Selectors
     @objc private func wifiTryAgain(){
         NetworkStatus()
-
         LodingAction()
     }
     

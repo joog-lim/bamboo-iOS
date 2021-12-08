@@ -9,14 +9,16 @@ import UIKit
 import SnapKit
 import Then
 import RxSwift
+import GoogleSignIn
+import ReactorKit
+import RxFlow
+import RxViewController
 
-
-
-class LoginViewController : BaseVC {
+final class LoginViewController : baseVC<LoginReactor> {
     //MARK: - Properties
     
     //MARK: - 모달 background 설정
-    let bgView = UIView().then {
+   private  let bgView = UIView().then {
         $0.backgroundColor = .black
         $0.alpha = 0
     }
@@ -27,11 +29,9 @@ class LoginViewController : BaseVC {
     private let userBtn = LoginButton(placeholder: "사용자",cornerRadius: 15).then{
         $0.layer.applySketchShadow(color: .rgb(red: 87, green: 204, blue: 77), alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
-        $0.addTarget(self, action: #selector(ClickUserBtn), for: .touchUpInside)
     }
     private let ManagerBtn = LoginButton(placeholder: "관리자",cornerRadius: 15).then{
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
-        $0.addTarget(self, action: #selector(ClickManagerBtn), for: .touchDown)
     }
     private let divider = UIView().then{
         $0.backgroundColor = .lightGray
@@ -47,48 +47,23 @@ class LoginViewController : BaseVC {
         $0.axis = .vertical
         $0.backgroundColor = .clear
         $0.distribution = .fillEqually
+        $0.spacing = bounds.height/54.13333
         $0.alignment = .fill
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    //MARK: - Selectors
-    @objc func keyboardWillShow(_ sender: Notification) {
-         self.view.frame.origin.y = -150 // Move view 150 points upward
-    }
-    @objc func keyboardWillHide(_ sender: Notification) {
-        self.view.frame.origin.y = 0 // Move view to original position
-    }
-    //MARK: - Manager Modal 띄워주기
-    @objc func ClickManagerBtn(){
-        let ManagerLoginModalModalsVC = ManagerLoginModal.instance()
-        ManagerLoginModalModalsVC.delegate = self
-        addDim()
-        present(ManagerLoginModalModalsVC, animated: true, completion: nil)
-    }
-    @objc func ClickUserBtn(){
-        navigationController?.pushViewController(MainTabbarController(), animated: true)
-        navigationController?.isNavigationBarHidden = false
+    //MARK: - Helper
+    override func configureUI() {
+        super.configureUI()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
-    //MARK: - Helper
-    override func configure() {
-        super.configure()
-        keyboardSetting()
-        stackViewSetting()
-        addView()
-        location()
-        navigationControllerSetting()
-    }
-    private func navigationControllerSetting(){
-        navigationController?.isNavigationBarHidden = true
-    }
-    private func stackViewSetting(){
-        btnStackView.spacing = bounds.height/54.13333
-    }
-    private func addView(){
+    override func addView() {
+        super.addView()
         [logo,btnStackView,divider,guestBtn].forEach { view.addSubview($0)}
     }
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         logo.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(69)
@@ -121,49 +96,20 @@ class LoginViewController : BaseVC {
         }
     }
     
-    //MARK: - KeyboardSetting
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
-    }
-    private func keyboardSetting(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-}
-//MARK: - Modal 관련
-extension LoginViewController{
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //모달 취소시 Action
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-    //MARK: - ManagerModal
-    private func ManagerModalBtnClick(){
-        navigationController?.pushViewController(ManagerViewController(), animated: true)
-        navigationController?.isNavigationBarHidden = false
-    }
-}
-
-extension LoginViewController : ManagerModalDelegate{
-    func updateManagerModal() {
-        self.removeDim()
-        self.ManagerModalBtnClick()
-    }
-    
-    func onTapManagerModalClose() {
-        self.removeDim()
+    override func bindView(reactor: LoginReactor) {
+        userBtn.rx.tap
+            .map{Reactor.Action.userLoginButtonDidTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        ManagerBtn.rx.tap
+            .map{Reactor.Action.managerLoginButtonDidTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        guestBtn.rx.tap
+            .map{Reactor.Action.guestLoginButtonDidTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
