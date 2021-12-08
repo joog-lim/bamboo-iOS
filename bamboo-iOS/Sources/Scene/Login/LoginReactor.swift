@@ -50,7 +50,7 @@ extension LoginReactor{
             steps.accept(BambooStep.managerLoginIsRequired)
             return .empty()
         case .guestLoginButtonDidTap:
-            steps.accept(BambooStep.guestLoginIsRequired)
+            steps.accept(BambooStep.userMainTabBarIsRequired)
             return .empty()
         }
     }

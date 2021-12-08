@@ -9,30 +9,24 @@ import UIKit
 import RxFlow
 import RxRelay
 
-struct LoginStepper : Stepper{
-    let steps: PublishRelay<Step> = .init()
-    
-    var initialStep: Step{
-        return BambooStep.LoginIsRequired
-    }
-}
-
 final class LoginFlow : Flow{
     //MARK: - Properties
     var root: Presentable{
         return self.rootVC
     }
     
-    let stepper : LoginStepper
     private let rootVC : UINavigationController = .init()
     
     //MARK: - Init
-    init(stepper : LoginStepper){
-        self.stepper = stepper
+    init() { }
+    
+    deinit{
+        print("\(type(of: self)): \(#function)")
     }
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
+        
         switch step{
         case .LoginIsRequired:
             return coordinateToLoginVC()
@@ -44,7 +38,7 @@ final class LoginFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
-        case .guestLoginIsRequired:
+        case .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()

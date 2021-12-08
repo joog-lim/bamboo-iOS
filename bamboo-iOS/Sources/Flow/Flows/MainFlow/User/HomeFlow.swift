@@ -62,7 +62,8 @@ private extension HomeFlow{
     func coordinatorWriteModal() -> FlowContributors{
         let reactor = WritingBulletinBoardReactor()
         let vc = WritingBulletinBoardModal(reactor: reactor)
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        vc.modalTransitionStyle = .coverVertical
         self.rootViewController.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }

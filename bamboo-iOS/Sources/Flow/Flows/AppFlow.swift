@@ -13,6 +13,7 @@ import RxSwift
 
 struct AppStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
+    private let disposeBag: DisposeBag = .init()
     
     func readyToEmitSteps() {
         steps.accept(BambooStep.LoginIsRequired)
@@ -45,13 +46,14 @@ final class AppFlow : Flow{
             //mainTabbarRequired호출시 MainFlow와 nextStep을 넘겨줌
         case .userMainTabBarIsRequired,.userIsLoggedIn:
             return coordinateToUserMainVC()
+        
         default:
             return .none
         }
     }
     
     private func coordinateToLoginVC() ->FlowContributors{
-        let flow = LoginFlow(stepper: .init())
+        let flow = LoginFlow()
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
@@ -64,6 +66,7 @@ final class AppFlow : Flow{
             rootWindow.rootViewController = root
         }
         let nextStep = OneStepper(withSingleStep: BambooStep.userMainTabBarIsRequired)
+        
         return .one(flowContributor: .contribute(withNextPresentable: flow,
                                                  withNextStepper: nextStep))
     }

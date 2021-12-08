@@ -14,18 +14,17 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
+  - JGProgressHUD (2.2)
   - KeychainSwift (19.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
     - Moya/Core
     - RxSwift (~> 6.0)
+  - ReachabilitySwift (5.0.0)
   - ReactorKit (3.1.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
-  - RxAlertViewable (1.2):
-    - RxCocoa (~> 6)
-    - RxSwift (~> 6)
   - RxAppState (1.7.1):
     - RxCocoa (~> 6.2)
     - RxSwift (~> 6.2)
@@ -45,9 +44,10 @@ PODS:
   - RxKeyboard (2.0.0):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
-  - RxModal (1.0.2):
-    - RxCocoa (~> 6.0)
-    - RxSwift (~> 6.0)
+  - RxReachability (1.2.1):
+    - ReachabilitySwift (< 6.0, >= 5.0)
+    - RxCocoa (~> 6)
+    - RxSwift (~> 6)
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
@@ -60,17 +60,17 @@ PODS:
 
 DEPENDENCIES:
   - GoogleSignIn
+  - JGProgressHUD
   - KeychainSwift (~> 19.0)
   - Moya/RxSwift
   - ReactorKit
-  - RxAlertViewable
   - RxAppState
   - RxCocoa
   - RxDataSources
   - RxFlow
   - RxGesture
   - RxKeyboard
-  - RxModal
+  - RxReachability
   - RxSwift
   - RxViewController
   - SnapKit (~> 5.0.0)
@@ -84,17 +84,18 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - JGProgressHUD
     - KeychainSwift
     - Moya
+    - ReachabilitySwift
     - ReactorKit
-    - RxAlertViewable
     - RxAppState
     - RxCocoa
     - RxDataSources
     - RxFlow
     - RxGesture
     - RxKeyboard
-    - RxModal
+    - RxReachability
     - RxRelay
     - RxSwift
     - RxViewController
@@ -109,17 +110,18 @@ SPEC CHECKSUMS:
   GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
-  RxAlertViewable: 8b8b82e6c22b974813e67a79b0c3d500bb08b676
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxFlow: 03a73c83fb8f183107074b40ab2544c668583f73
   RxGesture: f059f2aeef966fb17dad56ee440e76410f10e55f
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
-  RxModal: 9372b1b25b1b88e5f4ca419a07512c3a0ca7e621
+  RxReachability: bfd13548bf1dac7a877082d13918a9f39bdb5c18
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
@@ -127,6 +129,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 4a393e0fca9b31d80d72efd862bd8082ac369ca5
+PODFILE CHECKSUM: 482697a13ce047be5232d9528f6fd2bdb526a791
 
 COCOAPODS: 1.11.2

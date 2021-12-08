@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JGProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,12 +59,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactorKit.xcscheme</key>
+		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxAlertViewable.xcscheme</key>
+		<key>ReactorKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -94,7 +99,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RxModal.xcscheme</key>
+		<key>RxReachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
