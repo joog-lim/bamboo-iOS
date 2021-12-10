@@ -7,13 +7,10 @@
 
 import UIKit
 
-class StandByViewController : BaseVC{
+class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
-    private let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
+
     //MARK: - Dummy Data
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
 
@@ -38,31 +35,27 @@ class StandByViewController : BaseVC{
     }
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-    }
-    //MARK: - AddView
-    private func addView(){
-        view.addSubview(mainTableView)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
-    //MARK: - Location
-    private func location(){
+    override func addView() {
+        super.addView()
+        view.addSubview(mainTableView)
+    }
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()
         }
     }
+
 
     //MARK: - Data load More
     private func loadMoreData(){
@@ -153,43 +146,13 @@ extension StandByViewController {
             }
             let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
                 print("거절")
-                self.StandByModal()
             }
             let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
             [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
             present(actionSheetController, animated: true)
         }
-        private func StandByModal(){
-            let RefusalModalModalsVC = RefusalModal.instance()
-            RefusalModalModalsVC.baseDelegate = self
-            addDim()
-            present(RefusalModalModalsVC, animated: true, completion: nil)
-        }
+
 }
 
-extension StandByViewController {
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //MARK: - 모달 닫기
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-}
 
-extension StandByViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
-    }
-}
+

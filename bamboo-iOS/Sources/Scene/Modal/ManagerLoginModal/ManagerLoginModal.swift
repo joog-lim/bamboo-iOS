@@ -57,14 +57,7 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
         [transparentView,bgView].forEach{ view.addSubview($0)}
         [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
     }
-    
-    //MARK: - Selectors
-//    @objc private func ManagerLoginBtn(){
-//        dismiss(animated: true) {
-//            self.delegate?.updateManagerModal()
-//        }
-//    }
-    
+        
     override func setLayout() {
         super.setLayout()
         transparentView.snp.makeConstraints{
@@ -123,16 +116,6 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
-    
-//    func keyboard(){
-//        RxKeyboard.instance.frame
-//            .drive(onNext:{[weak self] keyboardVisiableHeight in
-//                self?.backgroundScrollView.constant
-//                NSLog("\($0)")
-//
-//            })
-//            .disposed(by: disposeBag)
-//    }
 }
 
 

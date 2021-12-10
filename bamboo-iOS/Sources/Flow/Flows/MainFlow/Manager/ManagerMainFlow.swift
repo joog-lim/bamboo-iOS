@@ -22,9 +22,9 @@ final class ManagerMainFlow : Flow{
     }
     let rootViewController: UITabBarController = .init()
     private let acceptFlow : AcceptFlow
-    private let standByFlow : RuleFlow
-    private let refusalFlow : DetailFlow
-    private let deleteFlow : AcceptFlow
+    private let standByFlow : StandByFlow
+    private let refusalFlow : RefusalFlow
+    private let deleteFlow : DeleteFlow
     
     init(){
         self.acceptFlow = .init(stepper: .init())
@@ -41,7 +41,7 @@ final class ManagerMainFlow : Flow{
         switch step{
         case .LoginIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
-        case .userMainTabBarIsRequired:
+        case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
         default:
             return .none

@@ -1,33 +1,32 @@
 //
-//  AcceptFlow.swift
+//  DeleteFlow.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/12/06.
+//  Created by Ji-hoon Ahn on 2021/12/11.
 //
-
 import UIKit
 
 import RxFlow
 import RxRelay
 
-struct AcceptStepper : Stepper{
+struct DeleteStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step{
-        return BambooStep.managerAcceptIsRequired
+        return BambooStep.managerDeleteIsRequired
     }
 }
 
-final class AcceptFlow : Flow{
+final class DeleteFlow : Flow{
     //MARK: - Properties
     var root: Presentable{
         return self.rootViewController
     }
-    let stepper: AcceptStepper
+    let stepper: DeleteStepper
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : AcceptStepper){
+    init(stepper : DeleteStepper){
         self.stepper = stepper
     }
     deinit{
@@ -39,8 +38,8 @@ final class AcceptFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         
         switch step{
-        case.managerAcceptIsRequired:
-            return coordinatorToAccess()
+        case.managerDeleteIsRequired:
+            return coordinatorToDelete()
         default:
             return.none
         }
@@ -48,11 +47,12 @@ final class AcceptFlow : Flow{
     
 }
 
-private extension AcceptFlow{
-    func coordinatorToAccess() -> FlowContributors{
-        let reactor = AcceptReactor()
-        let vc = AcceptViewController(reactor: reactor)
+private extension DeleteFlow{
+    func coordinatorToDelete() -> FlowContributors{
+        let reactor = DeleteReactor()
+        let vc = DeleteViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
 }
+

@@ -40,6 +40,8 @@ final class LoginFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
         case .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
+        case.managerMainTabBarIsRequired:
+            return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()
         default :
@@ -70,7 +72,6 @@ final class LoginFlow : Flow{
         self.rootVC.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-
     
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)

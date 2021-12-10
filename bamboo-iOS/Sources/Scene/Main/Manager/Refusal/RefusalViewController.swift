@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefusalViewController : BaseVC{
+class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
@@ -41,26 +41,22 @@ class RefusalViewController : BaseVC{
     }
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
-    //MARK: - AddView
-    private func addView(){
+    
+    override func addView() {
+        super.addView()
         view.addSubview(mainTableView)
     }
     
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()

@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleSignIn
+import KeychainSwift
 
 final class GoogleLogin{
     static let shared = GoogleLogin()
@@ -36,6 +37,7 @@ final class GoogleLogin{
                     guard let authentication = authentication else {return}
                     
                     let idToken = authentication.idToken
+                    KeychainSwift().set(idToken ?? "", forKey: "idToken")
                     // send id Token to backend
                 }
                 // 받을수 있는 값

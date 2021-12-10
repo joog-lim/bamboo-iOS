@@ -16,7 +16,6 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case googleOauthLogin
         case googleModalDismiss
     }
     
@@ -37,9 +36,6 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
 extension GoogleOauthModalReactor{
     func mutate(action: Action) -> Observable<Action> {
         switch action{
-        case.googleOauthLogin:
-            print("google Oauth Login")
-            return .empty()
         case.googleModalDismiss:
             steps.accept(BambooStep.dismiss)
             return .empty()

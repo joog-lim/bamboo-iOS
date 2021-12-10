@@ -7,15 +7,10 @@
 
 import UIKit
 
-class DeleteViewController : BaseVC{
+class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    //MARK: - 모달 background 설정
-    private let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
     
     var data : [DeleteContent] = [.init(numberOfAlgorithm: 2, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요"),.init(numberOfAlgorithm: 1, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요")]
     
@@ -42,7 +37,7 @@ class DeleteViewController : BaseVC{
     private func SeeMoreDetailBtnAction(indexPath : Int){
         let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let accessAction : UIAlertAction = UIAlertAction(title: "거절", style: .default) { _ in print("거절")
-            self.RefusalBtnClick(indexPath: indexPath)
+//            self.RefusalBtnClick(indexPath: indexPath)
         }
         let refusalAction : UIAlertAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
             print("삭제")
@@ -51,28 +46,21 @@ class DeleteViewController : BaseVC{
         [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
         present(actionSheetController, animated: true)
     }
-
-    //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
-    //MARK: - AddView
-    private func addView(){
+    override func addView() {
+        super.addView()
         view.addSubview(mainTableView)
     }
-    
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()
@@ -147,41 +135,6 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
         if (offsetY > contentHeight - scrollView.frame.height * 3) && !isLoaing{
             loadMoreData()
         }
-    }
-}
-
-//MARK: - Modal 관련 Setting
-extension DeleteViewController{
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-    private func RefusalBtnClick(indexPath : Int){
-        let RefusalModalModalsVC = RefusalModal.instance()
-        RefusalModalModalsVC.baseDelegate = self
-        print("\(indexPath) 번째 거절")
-        addDim()
-        present(RefusalModalModalsVC, animated: true, completion: nil)
-    }
-}
-
-//MARK: - Delete Modal
-extension DeleteViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
     }
 }
 

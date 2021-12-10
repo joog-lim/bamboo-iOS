@@ -8,6 +8,7 @@
 import ReactorKit
 import RxCocoa
 import RxFlow
+import GoogleSignIn
 
 final class LoginReactor : Reactor, Stepper{
     
@@ -24,15 +25,15 @@ final class LoginReactor : Reactor, Stepper{
     }
     
     enum Mutation{
-
-    }
-    
-    struct State{
         
     }
     
-    let initialState: State
+    struct State{
+
+    }
     
+    let initialState: State
+
     init(){
         self.initialState = State()
     }

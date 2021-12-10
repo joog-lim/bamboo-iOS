@@ -128,6 +128,7 @@ class MainViewController : baseVC<MainReactor>{
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
     }
 }
 
@@ -158,14 +159,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
             loadMoreData()
         }
-    }
-}
-
-
-//MARK: - Write Modal Delegate
-extension MainViewController : WriteModalDelegate {
-    func updateWrite() {
-    
     }
 }
 

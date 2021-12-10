@@ -1,8 +1,8 @@
 //
-//  AcceptReactor.swift
+//  StandByReactor.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/12/06.
+//  Created by Ji-hoon Ahn on 2021/12/11.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import ReactorKit
 import RxFlow
 import RxRelay
 
-final class AcceptReactor : Reactor, Stepper{
+final class StandByReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{

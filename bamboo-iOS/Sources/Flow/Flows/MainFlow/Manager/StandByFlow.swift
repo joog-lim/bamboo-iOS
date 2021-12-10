@@ -14,7 +14,7 @@ struct StandByStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step{
-        return BambooStep.managerAcceptIsRequired
+        return BambooStep.managerStandByIsRequired
     }
 }
 
@@ -39,8 +39,8 @@ final class StandByFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         
         switch step{
-        case.managerAcceptIsRequired:
-            return coordinatorToHome()
+        case.managerStandByIsRequired:
+            return coordinatorToStandBy()
         default:
             return.none
         }
@@ -49,7 +49,10 @@ final class StandByFlow : Flow{
 }
 
 private extension StandByFlow{
-    func coordinatorToHome() -> FlowContributors{
-        return .none
+    func coordinatorToStandBy() -> FlowContributors{
+        let reactor = StandByReactor()
+        let vc = StandByViewController(reactor: reactor)
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
 }

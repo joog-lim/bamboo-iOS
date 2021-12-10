@@ -98,8 +98,8 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
             .disposed(by: disposeBag)
         
         googleSignBtn.rx.tap
-            .map{Reactor.Action.googleOauthLogin}
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+            .subscribe(onNext:{
+                GoogleLogin.shared.SignInOauth(vc: self)
+            }).disposed(by: disposeBag)
     }
 }

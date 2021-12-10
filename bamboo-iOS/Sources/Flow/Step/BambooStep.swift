@@ -50,5 +50,6 @@ enum BambooStep: Step{
     case writeModalIsRequired
     //report
     case reportModalsRequired
-    
+    //googleLogin
+    case googleLoginIsRequired
 }

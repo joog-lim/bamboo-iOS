@@ -44,7 +44,7 @@ extension ManagerLoginModalReactor{
             steps.accept(BambooStep.dismiss)
             return .empty()
         case .managerBtnClick:
-            steps.accept(BambooStep.userMainTabBarIsRequired)
+            steps.accept(BambooStep.managerMainTabBarIsRequired)
             return.empty()
         }
     }
