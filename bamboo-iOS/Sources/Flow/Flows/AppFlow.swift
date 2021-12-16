@@ -14,9 +14,18 @@ import RxSwift
 struct AppStepper : Stepper{
     let steps: PublishRelay<Step> = .init()
     private let disposeBag: DisposeBag = .init()
+    private let provider: ServiceProviderType
+    
+    init(provider : ServiceProviderType){
+        self.provider = provider
+    }
     
     func readyToEmitSteps() {
         steps.accept(BambooStep.LoginIsRequired)
+//        provider.loginService.didLoginObservable
+//            .map{ $0 ? BambooStep.userIsLoggedIn : BambooStep.userLoginIsRequired}
+//            .bind(to: steps)
+//            .disposed(by: disposeBag)
     }
 }
 
@@ -25,9 +34,13 @@ final class AppFlow : Flow{
         return self.rootWindow
     }
     private let rootWindow : UIWindow
+    private let provider : ServiceProviderType
     
-    init(with window : UIWindow){
-        self.rootWindow = window
+    init(
+        with window : UIWindow,
+        and services : ServiceProviderType){
+            self.rootWindow = window
+            self.provider = services
     }
     
     deinit{
@@ -54,7 +67,7 @@ final class AppFlow : Flow{
     }
     
     private func coordinateToLoginVC() ->FlowContributors{
-        let flow = LoginFlow()
+        let flow = LoginFlow(with: provider)
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }

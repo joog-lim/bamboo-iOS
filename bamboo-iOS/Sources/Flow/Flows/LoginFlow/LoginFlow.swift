@@ -16,9 +16,12 @@ final class LoginFlow : Flow{
     }
     
     private let rootVC : UINavigationController = .init()
-
+    private let provider : ServiceProviderType
+    
     //MARK: - Init
-    init() {    }
+    init(with services : ServiceProviderType) {
+        self.provider = services
+    }
     
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -45,7 +48,7 @@ final class LoginFlow : Flow{
         }
     }
     private func coordinateToLoginVC() -> FlowContributors{
-        let reactor = LoginReactor()
+        let reactor = LoginReactor(provider: provider)
         let vc = LoginViewController(reactor: reactor)
         self.rootVC.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))

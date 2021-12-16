@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 
+
 protocol UserLoginServiceType : class{
     var didLoginObservable : Observable<Bool> {get}
     var didLogin: Bool {get}
@@ -28,7 +29,7 @@ extension UserLoginService : ReactiveCompatible{}
 extension Reactive where Base : UserLoginService{
     var didLogin : Observable<Bool>{
         return UserDefaults.standard.rx
-            .observe(Bool.self,UserLogin.didGoogleLogin)
+            .observe(Bool.self, "UserLogin" )
             .map{ $0 ?? false}
     }
 }

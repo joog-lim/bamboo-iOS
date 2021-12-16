@@ -33,8 +33,10 @@ final class LoginReactor : Reactor, Stepper{
     }
     
     let initialState: State
-
-    init(){
+    let provider : ServiceProviderType
+    
+    init(provider : ServiceProviderType){
+        self.provider = provider
         self.initialState = State()
     }
     
@@ -45,7 +47,10 @@ extension LoginReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .userLoginButtonDidTap:
-            steps.accept(BambooStep.userIsLoggedIn)
+            provider.loginService.didLoginObservable
+                .map{ $0 ? BambooStep.userIsLoggedIn : BambooStep.userLoginIsRequired}
+                .bind(to: steps)
+                .disposed(by: disposeBag)
             return .empty()
         case .managerLoginButtonDidTap:
             steps.accept(BambooStep.managerLoginIsRequired)
