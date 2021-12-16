@@ -8,6 +8,9 @@
 import UIKit
 import GoogleSignIn
 import KeychainSwift
+import RxSwift
+import RxCocoa
+import ReactorKit
 
 final class GoogleLogin{
     static let shared = GoogleLogin()
@@ -38,6 +41,10 @@ final class GoogleLogin{
                     
                     let idToken = authentication.idToken
                     KeychainSwift().set(idToken ?? "", forKey: "idToken")
+                    UserDefaults.standard.set(true, forKey: "UserLogin")
+//                    vc.rx.dismissed.map(Reactor.Action.googleModalDismiss)
+//                        .source.bind(to: Reactor.Action)
+//                        .disposed(by: DisposeBag)
                     // send id Token to backend
                 }
                 // 받을수 있는 값

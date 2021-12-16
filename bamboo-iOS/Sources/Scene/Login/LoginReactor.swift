@@ -56,6 +56,7 @@ extension LoginReactor{
             steps.accept(BambooStep.managerLoginIsRequired)
             return .empty()
         case .guestLoginButtonDidTap:
+            GoogleLogin.shared.SignOutOauth()
             steps.accept(BambooStep.userMainTabBarIsRequired)
             return .empty()
         }
