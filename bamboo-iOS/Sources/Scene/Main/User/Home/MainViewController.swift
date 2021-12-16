@@ -7,6 +7,8 @@
 
 import UIKit
 import RxDataSources
+import RxSwift
+import RxCocoa
 
 class MainViewController : baseVC<MainReactor>{
     
@@ -128,7 +130,6 @@ class MainViewController : baseVC<MainReactor>{
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-
     }
 }
 
@@ -161,19 +162,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-
-//MARK: - Report Modal Update Function
-extension MainViewController : ReportModalDelegate{
-    func updateReport() {
-        
-    }
-}
-extension MainViewController : BaseModalDelegate{
-    func onTapClick() {
-//        self.removeDim()
-    }
-}
-
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state: Bool) {

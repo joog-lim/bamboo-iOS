@@ -14,5 +14,5 @@ protocol NetworkManagerType : class{
 final class NetworkManager: NetworkManagerType{
     static let shared = NetworkManager()
     
-
+    
 }

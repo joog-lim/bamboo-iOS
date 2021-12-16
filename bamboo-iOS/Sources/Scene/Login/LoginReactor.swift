@@ -45,7 +45,7 @@ extension LoginReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .userLoginButtonDidTap:
-            steps.accept(BambooStep.userLoginIsRequired)
+            steps.accept(BambooStep.userIsLoggedIn)
             return .empty()
         case .managerLoginButtonDidTap:
             steps.accept(BambooStep.managerLoginIsRequired)

@@ -16,7 +16,6 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     
     //MARK: - Properties
-    private lazy var dropDownStatus : Bool = false
     private let tagSelectView = UIView()
     private let tagChoose = UITableView().then{
         $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.identifier)
@@ -174,7 +173,6 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
             return bounds.height/27
         }
         return 0
-        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

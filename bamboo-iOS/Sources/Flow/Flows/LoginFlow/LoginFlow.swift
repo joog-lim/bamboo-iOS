@@ -16,9 +16,9 @@ final class LoginFlow : Flow{
     }
     
     private let rootVC : UINavigationController = .init()
-    
+
     //MARK: - Init
-    init() { }
+    init() {    }
     
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -34,13 +34,9 @@ final class LoginFlow : Flow{
             return coordinateToUserLoginModalVC()
         case .managerLoginIsRequired:
             return coordinateToManagerLoginModalVC()
-        case .userIsLoggedIn:
+        case .userIsLoggedIn, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
-        case .managerIsLoggedIn:
-            return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
-        case .userMainTabBarIsRequired:
-            return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
-        case.managerMainTabBarIsRequired:
+        case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()

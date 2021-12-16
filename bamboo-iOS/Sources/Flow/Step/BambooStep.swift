@@ -34,7 +34,7 @@ enum BambooStep: Step{
     //Detail
     case detailIsRequired
     
-    //Manager
+    //MARK: - Manager
     case managerMainTabBarIsRequired
     //Accept
     case managerAcceptIsRequired

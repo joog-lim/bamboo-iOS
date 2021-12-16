@@ -12,13 +12,15 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let defaults = UserDefaults.standard
         GIDSignIn.sharedInstance.restorePreviousSignIn { user , error in
             if error != nil || user == nil{
                 print("No user")
-
+                defaults.removeObject(forKey: "UserLogin")
                 //Show the app's signed out state
             }else{
                 print("Login")
+                defaults.set(true, forKey: "UserLogin")
                 //show the app's Signed- in state
             }
         }

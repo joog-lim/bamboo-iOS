@@ -5,10 +5,10 @@
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
 
-import UIKit
-
+import UIKit.UINavigationController
 import RxSwift
 import RxFlow
+import UIKit
 
 final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
@@ -56,10 +56,10 @@ final class ManagerMainFlow : Flow{
                           root3 : UINavigationController,
                           root4 : UINavigationController)  in
             
-            let acceptImage : UIImage? = UIImage(named: "BAMBOO_Home")?.withRenderingMode(.alwaysTemplate)
-            let standByImage : UIImage? = UIImage(named: "BAMBOO_Rule")?.withRenderingMode(.alwaysTemplate)
-            let refusalImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
-            let deleteImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
+            let acceptImage : UIImage? = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
+            let standByImage : UIImage? = UIImage(systemName: "stop.circle")?.withRenderingMode(.alwaysTemplate)
+            let refusalImage : UIImage? = UIImage(systemName: "exclamationmark.circle")?.withRenderingMode(.alwaysTemplate)
+            let deleteImage : UIImage? = UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate)
 
             
             let acceptItem : UITabBarItem = .init(title: "수락", image: acceptImage, selectedImage: nil)
@@ -72,7 +72,10 @@ final class ManagerMainFlow : Flow{
             root3.tabBarItem = refusalItem
             root4.tabBarItem = deleteItem
             
+            rootViewController.tabBar.barTintColor = .white
             rootViewController.tabBar.tintColor = .bamBoo_57CC4D
+            rootViewController.tabBar.barStyle = .black
+            rootViewController.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
             self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
         return .multiple(flowContributors: [

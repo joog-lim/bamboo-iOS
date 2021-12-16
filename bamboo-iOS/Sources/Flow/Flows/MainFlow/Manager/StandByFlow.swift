@@ -37,7 +37,6 @@ final class StandByFlow : Flow{
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
-        
         switch step{
         case.managerStandByIsRequired:
             return coordinatorToStandBy()
@@ -45,7 +44,6 @@ final class StandByFlow : Flow{
             return.none
         }
     }
-    
 }
 
 private extension StandByFlow{

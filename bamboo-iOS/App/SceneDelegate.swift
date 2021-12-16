@@ -46,10 +46,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
-    
-    
-    
-    
     //MARK: - BackGround 진입시 정보 가리기
     func callBackgroundImage(_ bShow: Bool) {
            let TAG_BG_IMG = -101

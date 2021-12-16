@@ -40,6 +40,7 @@ class StandByViewController : baseVC<StandByReactor>{
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
+        navigationSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
@@ -101,6 +102,16 @@ class StandByViewController : baseVC<StandByReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"))
+        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
+        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
+        navigationItem.applyImageNavigation()
+    }
 }
 
 //MARK: - TableView
@@ -151,8 +162,4 @@ extension StandByViewController {
             [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
             present(actionSheetController, animated: true)
         }
-
 }
-
-
-

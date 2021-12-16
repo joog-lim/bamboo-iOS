@@ -17,6 +17,7 @@ class BaseVC: UIViewController{
     @available(*,unavailable)
     
     //MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
