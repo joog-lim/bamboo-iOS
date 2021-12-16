@@ -20,7 +20,6 @@
 		EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4CCE3727350D5E00DBFBED /* BaseModal.swift */; };
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
-		EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E56271EBA47006D0F03 /* BaseView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
 		EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */; };
@@ -96,6 +95,7 @@
 		EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC82763BD6300898537 /* RefusalReactor.swift */; };
 		EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DCA2763BD8500898537 /* DeleteReactor.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
+		EEDEF94E276B28D700585C26 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94D276B28D700585C26 /* OSLogExt.swift */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
@@ -127,7 +127,6 @@
 		EE4CCE3727350D5E00DBFBED /* BaseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModal.swift; sourceTree = "<group>"; };
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
-		EE680E56271EBA47006D0F03 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +205,7 @@
 		EED42DC82763BD6300898537 /* RefusalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalReactor.swift; sourceTree = "<group>"; };
 		EED42DCA2763BD8500898537 /* DeleteReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReactor.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
+		EEDEF94D276B28D700585C26 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OSLogExt.swift; path = "../../../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/bamboo-iOS/bamboo-iOS/Sources/Common/Extensions/UIKit/OSLogExt.swift"; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModalReactor.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -286,7 +286,6 @@
 			children = (
 				EEF42F15270BDAB30088043F /* BaseVC */,
 				EE4CCE3627350D4C00DBFBED /* BaseModal */,
-				EE680E55271EBA3F006D0F03 /* BaseView */,
 				EE3BA5772702EFB000281096 /* BaseTableViewCell */,
 				EE97B75B271B3DBE00479A06 /* BaseCollectionViewCell */,
 			);
@@ -440,14 +439,6 @@
 				EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */,
 			);
 			path = "Custom PostLikeOrDisLike";
-			sourceTree = "<group>";
-		};
-		EE680E55271EBA3F006D0F03 /* BaseView */ = {
-			isa = PBXGroup;
-			children = (
-				EE680E56271EBA47006D0F03 /* BaseView.swift */,
-			);
-			path = BaseView;
 			sourceTree = "<group>";
 		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
@@ -871,6 +862,7 @@
 				EECCC12B275D04790068A4BD /* LabelExt.swift */,
 				EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */,
 				EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */,
+				EEDEF94D276B28D700585C26 /* OSLogExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1120,7 +1112,6 @@
 				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
-				EE680E57271EBA47006D0F03 /* BaseView.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
@@ -1129,6 +1120,7 @@
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
+				EEDEF94E276B28D700585C26 /* OSLogExt.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */,
