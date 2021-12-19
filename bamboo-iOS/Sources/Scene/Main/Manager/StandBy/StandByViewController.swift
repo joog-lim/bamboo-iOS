@@ -37,10 +37,10 @@ class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
+        view.backgroundColor = .red
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
-        navigationSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
@@ -52,8 +52,7 @@ class StandByViewController : baseVC<StandByReactor>{
     override func setLayout() {
         super.setLayout()
         mainTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
 
@@ -101,16 +100,6 @@ class StandByViewController : baseVC<StandByReactor>{
         activityIndicatorView.snp.makeConstraints { make in
             make.center.equalTo(tableViewFooter)
         }
-    }
-    //MARK: - Navigation Setting
-    private func navigationSetting(){
-        navigationController?.navigationCustomBar()
-        navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"))
-        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
-        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
-        navigationItem.applyImageNavigation()
     }
 }
 

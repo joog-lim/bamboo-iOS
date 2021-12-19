@@ -49,12 +49,12 @@ class DeleteViewController : baseVC<DeleteReactor>{
     
     override func configureUI() {
         super.configureUI()
+        view.backgroundColor = .red
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
-        navigationSetting()
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     override func addView() {
         super.addView()
@@ -63,8 +63,7 @@ class DeleteViewController : baseVC<DeleteReactor>{
     override func setLayout() {
         super.setLayout()
         mainTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
 

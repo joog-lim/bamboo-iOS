@@ -34,9 +34,6 @@ final class MainReactor : Reactor, Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 //MARK: - Mutation
@@ -49,7 +46,7 @@ extension MainReactor{
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
         case .reportBtnClickAction:
-            steps.accept(BambooStep.reportModalsRequired)
+            steps.accept(BambooStep.reportModalsRequired(idx: "1"))
             return .empty()
         }
     }

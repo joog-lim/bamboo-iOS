@@ -8,7 +8,7 @@
 import RxSwift
 import Moya
 
-protocol NetworkManagerType : class{
+protocol NetworkManagerType : AnyObject{
 
 }
 final class NetworkManager: NetworkManagerType{

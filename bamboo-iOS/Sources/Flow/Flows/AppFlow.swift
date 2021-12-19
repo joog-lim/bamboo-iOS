@@ -21,11 +21,8 @@ struct AppStepper : Stepper{
     }
     
     func readyToEmitSteps() {
+        
         steps.accept(BambooStep.LoginIsRequired)
-//        provider.loginService.didLoginObservable
-//            .map{ $0 ? BambooStep.userIsLoggedIn : BambooStep.userLoginIsRequired}
-//            .bind(to: steps)
-//            .disposed(by: disposeBag)
     }
 }
 
@@ -74,6 +71,7 @@ final class AppFlow : Flow{
         let nextStep = OneStepper(withSingleStep: BambooStep.LoginIsRequired)
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
     }
+    
     private func coordinateToUserMainVC() -> FlowContributors{
         let flow = MainFlow()
         Flows.use(flow, when: .created) { [unowned self] root in
@@ -83,6 +81,7 @@ final class AppFlow : Flow{
         
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
     }
+    
     private func coordinateToManagerVC() -> FlowContributors{
         let flow = ManagerMainFlow()
         Flows.use(flow, when: .created) { [unowned self] root in

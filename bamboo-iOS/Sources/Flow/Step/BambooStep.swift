@@ -49,7 +49,7 @@ enum BambooStep: Step{
     //write
     case writeModalIsRequired
     //report
-    case reportModalsRequired
+    case reportModalsRequired(idx : String)
     //googleLogin
     case googleLoginIsRequired
 }

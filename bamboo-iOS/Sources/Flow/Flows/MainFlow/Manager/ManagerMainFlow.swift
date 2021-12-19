@@ -33,7 +33,7 @@ final class ManagerMainFlow : Flow{
         self.deleteFlow = .init(stepper: .init())
     }
     deinit{
-        print("\(type(of: self)): \(#function)")
+        print("\(type(of: self)): \(#function)") 
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -43,6 +43,8 @@ final class ManagerMainFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
         case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
+        case .ruleIsRequired:
+            return coordinateToRule()
         default:
             return .none
         }
@@ -71,7 +73,8 @@ final class ManagerMainFlow : Flow{
             root2.tabBarItem = standByItem
             root3.tabBarItem = refusalItem
             root4.tabBarItem = deleteItem
-            
+
+            rootViewController.tabBar.backgroundColor = .white
             rootViewController.tabBar.barTintColor = .white
             rootViewController.tabBar.tintColor = .bamBoo_57CC4D
             rootViewController.tabBar.barStyle = .black
@@ -87,3 +90,12 @@ final class ManagerMainFlow : Flow{
     }
 }
 
+private extension ManagerMainFlow{
+    func coordinateToRule() -> FlowContributors{
+        let reactor = RuleReactor()
+        let vc = RuleViewController(reactor: reactor)
+        self.rootViewController.navigationController?.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                withNextStepper: reactor))
+    }
+}

@@ -10,6 +10,8 @@ import SnapKit
 import RxKeyboard
 import PanModal
 import RxSwift
+import RxCocoa
+import RxFlow
 
 class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK - Tag Data
@@ -269,8 +271,4 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var anchorModalToLongForm: Bool {return false}
     var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
-    
-    func panModalDidDismiss() {
-        print("\(type(of: self)):\(#function)")
-    }
 }

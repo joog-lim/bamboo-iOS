@@ -31,7 +31,5 @@ final class AcceptReactor : Reactor, Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
+
 }

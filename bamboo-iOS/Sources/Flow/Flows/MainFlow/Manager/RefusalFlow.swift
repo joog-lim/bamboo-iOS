@@ -45,7 +45,6 @@ final class RefusalFlow : Flow{
             return.none
         }
     }
-    
 }
 
 private extension RefusalFlow{

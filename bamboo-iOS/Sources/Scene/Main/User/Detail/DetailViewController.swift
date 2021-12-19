@@ -86,7 +86,7 @@ class DetailViewController : baseVC<DetailReactor>{
         }
         //MARK: - ScrollView
         backGroundScrollView.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
     //MARK: - Navigation Setting

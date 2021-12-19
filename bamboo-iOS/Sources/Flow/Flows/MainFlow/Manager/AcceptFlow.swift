@@ -34,7 +34,6 @@ final class AcceptFlow : Flow{
         print("\(type(of: self)): \(#function)")
     }
     //MARK: - Navigation
-    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         
@@ -45,7 +44,6 @@ final class AcceptFlow : Flow{
             return.none
         }
     }
-    
 }
 
 private extension AcceptFlow{

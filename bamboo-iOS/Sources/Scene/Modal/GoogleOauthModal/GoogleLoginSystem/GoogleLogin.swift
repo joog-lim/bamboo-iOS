@@ -11,11 +11,14 @@ import KeychainSwift
 import RxSwift
 import RxCocoa
 import ReactorKit
+import OSLog
+import RxFlow
 
 final class GoogleLogin{
     static let shared = GoogleLogin()
+    
     private let sign : GIDSignIn
-    private let signInConfig = GIDConfiguration.init(clientID: "331482986393-l5d41ibbdkeafaaa5h12fs278rrjbp7t.apps.googleusercontent.com")
+    private let signInConfig = GIDConfiguration.init(clientID: "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
     
     private init(){
         sign = GIDSignIn.sharedInstance
@@ -42,9 +45,7 @@ final class GoogleLogin{
                     let idToken = authentication.idToken
                     KeychainSwift().set(idToken ?? "", forKey: "idToken")
                     UserDefaults.standard.set(true, forKey: "UserLogin")
-//                    vc.rx.dismissed.map(Reactor.Action.googleModalDismiss)
-//                        .source.bind(to: Reactor.Action)
-//                        .disposed(by: DisposeBag)
+                    vc.dismiss(animated: true, completion: nil)
                     // send id Token to backend
                 }
                 // 받을수 있는 값

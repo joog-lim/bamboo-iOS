@@ -32,9 +32,6 @@ final class ManagerLoginModalReactor: Reactor , Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 extension ManagerLoginModalReactor{

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 
-protocol UserLoginServiceType : class{
+protocol UserLoginServiceType : AnyObject{
     var didLoginObservable : Observable<Bool> {get}
     var didLogin: Bool {get}
 }

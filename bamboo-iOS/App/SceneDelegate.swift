@@ -46,6 +46,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let scheme = URLContexts.first?.url.scheme else {return }
+        if scheme.contains("com.googleusercontent.apps") {
+            GIDSignIn.sharedInstance.handle((URLContexts.first?.url)!)
+        }
+    }
+    
     func sceneDidBecomeActive(_ scene: UIScene) {
         // App Switcher 모드였다가 돌아올때
         callBackgroundImage(false)

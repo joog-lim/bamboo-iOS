@@ -59,7 +59,7 @@ class RuleViewController : baseVC<RuleReactor> {
     override func setLayout() {
         super.setLayout()
         backGroundScrollView.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(29)

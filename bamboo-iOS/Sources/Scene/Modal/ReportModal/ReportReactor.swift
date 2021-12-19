@@ -31,9 +31,6 @@ final class ReportReactor: Reactor , Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 extension ReportReactor{

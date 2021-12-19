@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import PanModal
+import RxSwift
+import RxCocoa
+import RxFlow
 
 class ReportModal : baseVC<ReportReactor>{
             
@@ -33,11 +37,14 @@ class ReportModal : baseVC<ReportReactor>{
     override func configureUI() {
         super.configureUI()
         contentTv.delegate = self
-
     }
     override func setLayout() {
         super.setLayout()
         if UIDevice.current.isiPhone{
+            editContentTitle.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(30)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+            }
             titleTf.snp.makeConstraints {
                 $0.top.equalTo(editContentTitle.snp.bottom).offset(bounds.height/81.2)
                 $0.left.right.equalToSuperview().inset(bounds.width/15.625)
@@ -85,7 +92,6 @@ class ReportModal : baseVC<ReportReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
 }
 
 extension ReportModal : UITextViewDelegate{
@@ -103,4 +109,15 @@ extension ReportModal : UITextViewDelegate{
             textView.textColor = UIColor.black
         }
     }
+}
+
+extension ReportModal : PanModalPresentable{
+    var panScrollable: UIScrollView? {return nil}
+    var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+    var cornerRadius: CGFloat{return 20}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var anchorModalToLongForm: Bool {return false}
+    var shouldRoundTopCorners: Bool {return true}
+    var showDragIndicator: Bool { return false}
 }

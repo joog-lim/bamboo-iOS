@@ -20,7 +20,7 @@ class BaseModal : BaseVC{
     override func configure() {
         super.configure()
         modalSetting()
-    }    
+    }
     //MARK: - ModalSetting
     func modalSetting(){
         view.backgroundColor = .clear

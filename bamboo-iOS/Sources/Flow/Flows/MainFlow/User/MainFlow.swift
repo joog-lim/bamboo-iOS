@@ -64,6 +64,7 @@ final class MainFlow : Flow{
             root2.tabBarItem = ruleItem
             root3.tabBarItem = detailItem
             self.rootViewController.setViewControllers([root1,root2,root3], animated: true)
+            rootViewController.tabBar.backgroundColor = .white
             rootViewController.tabBar.barTintColor = .white
             rootViewController.tabBar.tintColor = .bamBoo_57CC4D
             rootViewController.tabBar.barStyle = .black
@@ -76,5 +77,6 @@ final class MainFlow : Flow{
             .contribute(withNextPresentable: detailFlow,withNextStepper: detailFlow.stepper)
         ])
     }
+
 }
 

@@ -5,7 +5,7 @@
 //  Created by Ji-hoon Ahn on 2021/12/15.
 //
 
-protocol ServiceProviderType : class{
+protocol ServiceProviderType : AnyObject{
     var loginService : UserLoginServiceType {get}
 }
 
