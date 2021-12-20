@@ -45,6 +45,7 @@ final class GoogleLogin{
                     let idToken = authentication.idToken
                     KeychainSwift().set(idToken ?? "", forKey: "idToken")
                     UserDefaults.standard.set(true, forKey: "UserLogin")
+                    
                     vc.dismiss(animated: true, completion: nil)
                     // send id Token to backend
                 }

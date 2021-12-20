@@ -7,18 +7,12 @@
 
 import UIKit
 import RxSwift
+import PanModal
 
-protocol RefusalModalProtocol : AnyObject{
-    func onTapClose()
-}
-class RefusalModal : BaseModal{
+class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
     var i = 10
     
-    private let bgView = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
-    }
     private let editContentTitle = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "알고리즘 거절")
         $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
@@ -43,36 +37,20 @@ class RefusalModal : BaseModal{
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundB", size: 15)
     }
-    //모달 위치 조정
-    static func instance() -> RefusalModal{
-        return RefusalModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
     
     //MARK: - Helper
-    
-    override func modalSetting() {
-        super.modalSetting()
-        view.backgroundColor = .clear
+    override func configureUI() {
+        super.configureUI()
         contentTv.delegate = self
-        addView()
-        location()
     }
     
-    //MARK: - AddSubView
-    private func addView(){
-        [bgView].forEach{view.addSubview($0)}
-        [editContentTitle,refusaleditTitle,contentTv,refusalBtn].forEach{ bgView.addSubview($0)}
+    override func addView() {
+        super.addView()
+        [editContentTitle,refusaleditTitle,contentTv,refusalBtn].forEach{ view.addSubview($0)}
     }
-    //MARK: - Location
-    private func location(){
-        bgView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(30)
-            $0.height.equalToSuperview().dividedBy(2.5)
-        }
+    
+    override func setLayout() {
+        super.setLayout()
         editContentTitle.snp.makeConstraints{
             $0.top.equalToSuperview().offset(bounds.height/28)
             $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -92,6 +70,7 @@ class RefusalModal : BaseModal{
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
     }
+
 
     //MARK: - keyboard down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,4 +95,15 @@ extension RefusalModal : UITextViewDelegate{
             textView.textColor = UIColor.black
         }
     }
+}
+
+extension RefusalModal : PanModalPresentable{
+    var panScrollable: UIScrollView? {return nil}
+    var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+    var cornerRadius: CGFloat{return 20}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var anchorModalToLongForm: Bool {return false}
+    var shouldRoundTopCorners: Bool {return true}
+    var showDragIndicator: Bool { return false}
 }

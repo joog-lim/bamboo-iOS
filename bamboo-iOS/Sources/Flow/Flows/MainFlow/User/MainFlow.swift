@@ -19,7 +19,13 @@ final class MainFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
-    let rootViewController: UITabBarController = .init()
+    let rootViewController = UITabBarController().then{
+        $0.tabBar.backgroundColor = .white
+        $0.tabBar.barTintColor = .white
+        $0.tabBar.barStyle = .black
+        $0.tabBar.tintColor = .bamBoo_57CC4D
+        $0.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
+    }
     private let homeFlow : HomeFlow
     private let ruleFlow : RuleFlow
     private let detailFlow : DetailFlow
@@ -64,11 +70,8 @@ final class MainFlow : Flow{
             root2.tabBarItem = ruleItem
             root3.tabBarItem = detailItem
             self.rootViewController.setViewControllers([root1,root2,root3], animated: true)
-            rootViewController.tabBar.backgroundColor = .white
-            rootViewController.tabBar.barTintColor = .white
-            rootViewController.tabBar.tintColor = .bamBoo_57CC4D
-            rootViewController.tabBar.barStyle = .black
-            rootViewController.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
+            
+
         }
         
         return .multiple(flowContributors: [
@@ -77,6 +80,4 @@ final class MainFlow : Flow{
             .contribute(withNextPresentable: detailFlow,withNextStepper: detailFlow.stepper)
         ])
     }
-
 }
-

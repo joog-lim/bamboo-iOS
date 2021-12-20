@@ -26,6 +26,9 @@ PODS:
   - ReactorKit (3.1.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
+  - RxAlertViewable (1.2):
+    - RxCocoa (~> 6)
+    - RxSwift (~> 6)
   - RxAppState (1.7.1):
     - RxCocoa (~> 6.2)
     - RxSwift (~> 6.2)
@@ -66,6 +69,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - PanModal
   - ReactorKit
+  - RxAlertViewable
   - RxAppState
   - RxCocoa
   - RxDataSources
@@ -92,6 +96,7 @@ SPEC REPOS:
     - PanModal
     - ReachabilitySwift
     - ReactorKit
+    - RxAlertViewable
     - RxAppState
     - RxCocoa
     - RxDataSources
@@ -119,6 +124,7 @@ SPEC CHECKSUMS:
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
+  RxAlertViewable: 8b8b82e6c22b974813e67a79b0c3d500bb08b676
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
@@ -133,6 +139,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 468019075bde77851f4379ac5e2a8ec228ebf4ea
+PODFILE CHECKSUM: d98bc0a14afa80e89898cdb3c349ff4236063827
 
 COCOAPODS: 1.11.2

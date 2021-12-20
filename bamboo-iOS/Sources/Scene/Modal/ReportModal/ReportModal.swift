@@ -4,7 +4,6 @@
 //
 //  Created by Ji-hoon Ahn on 2021/10/28.
 //
-
 import UIKit
 import PanModal
 import RxSwift
@@ -12,7 +11,7 @@ import RxCocoa
 import RxFlow
 
 class ReportModal : baseVC<ReportReactor>{
-            
+    
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "신고하기"

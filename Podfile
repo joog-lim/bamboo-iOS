@@ -30,6 +30,7 @@ target 'bamboo-iOS' do
   pod 'ReactorKit'
   pod 'RxKeyboard'
   pod 'RxGesture'
+  pod 'RxAlertViewable'
   pod 'RxDataSources'
   pod 'RxReachability'
 #  pod 'ReusableKit/RxSwift'

@@ -9,7 +9,6 @@ import ReactorKit
 import RxFlow
 import RxCocoa
 
-
 final class ReportReactor: Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()

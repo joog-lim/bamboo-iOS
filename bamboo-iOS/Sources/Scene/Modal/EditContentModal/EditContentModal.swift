@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol EditContentModalProtocol : AnyObject{
-    func onTapClose()
-}
-
-class EditContentModal : BaseModal{
+class EditContentModal : baseVC<EditContentModalReactor>{
     
     weak var delegate : EditContentModalProtocol?
         
@@ -46,28 +42,18 @@ class EditContentModal : BaseModal{
         $0.spacing = bounds.width/75
     }
     
-    //모달 위치 조정
-    static func instance() -> EditContentModal{
-        return EditContentModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
     //MARK: - Helper
-    override func modalSetting() {
-        super.modalSetting()
+    override func configureUI() {
+        super.configureUI()
         contentTv.delegate = self
-        addView()
-        location()
     }
     
-    //MARK: - location
-    private func location(){
-        bgView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(30)
-            $0.height.equalToSuperview().dividedBy(2.5)
-        }
+    override func addView() {
+        super.addView()
+        [editContentTitle,titleTf,contentTv,btnStackView].forEach{view.addSubview($0)}
+    }
+    override func setLayout() {
+        super.setLayout()
         editContentTitle.snp.makeConstraints{
             $0.top.equalToSuperview().offset(bounds.height/27.0666)
             $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -88,16 +74,11 @@ class EditContentModal : BaseModal{
             $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
         }
     }
-    //MARK: - addsubView
-    private func addView(){
-        [bgView].forEach { view.addSubview($0)}
-        [editContentTitle,titleTf,contentTv,btnStackView].forEach{bgView.addSubview($0)}
-    }
+
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
 }
 
 extension EditContentModal : UITextViewDelegate{

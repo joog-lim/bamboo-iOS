@@ -67,7 +67,6 @@ class AcceptViewController : baseVC<AcceptReactor> {
         print("수락 : \(indexPath)")
     }
     
-    
     //MARK: - Data load More
     private func loadMoreData(){
         if !self.isLoaing{
@@ -96,10 +95,12 @@ class AcceptViewController : baseVC<AcceptReactor> {
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
+    
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
     }
+    
     //MARK: - Footer Setting
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()

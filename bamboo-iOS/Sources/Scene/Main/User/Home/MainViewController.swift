@@ -49,11 +49,7 @@ class MainViewController : baseVC<MainReactor>{
         print("좋아요 :: \(indexPath)번째 \(state)")
         data[indexPath].isSelected = state
     }
-    private func reportBtnClick(indexPath: Int){
-        print("신고 :: \(indexPath)번째 ")
-        
-    }
-    
+
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
@@ -104,10 +100,12 @@ class MainViewController : baseVC<MainReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
+    
     private func navigationSetting(){
         navigationController?.navigationCustomBar()
         navigationItem.applyImageNavigation()
     }
+    
     //MARK: - Data load More
     private func loadMoreData(){
         if !self.isLoaing{
@@ -175,8 +173,6 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell)  {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        reportBtnClick(indexPath: indexPath.row)
-        
         reactor?.steps.accept(BambooStep.reportModalsRequired(idx: "\(indexPath.row)"))
     }
 }
