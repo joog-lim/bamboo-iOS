@@ -15,8 +15,8 @@ final class DeleteReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case leftNavigationBtnTap
-        case rightNavigationBtnTap
+        case deleteBtnTap(titleText : String, message : String, idx : String, index : Int)
+        case alertRefusalTap(String,Int)
     }
     enum Mutation{
         
@@ -37,11 +37,11 @@ final class DeleteReactor : Reactor, Stepper{
 extension DeleteReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .leftNavigationBtnTap:
-            steps.accept(BambooStep.LoginIsRequired)
+        case let .deleteBtnTap(titleText, message,idx,index):
+            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
             return .empty()
-        case .rightNavigationBtnTap:
-//            steps.accept(<#T##event: Step##Step#>)
+        case let .alertRefusalTap(idx, index):
+            steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
             return .empty()
         }
     }

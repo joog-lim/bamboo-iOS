@@ -11,7 +11,6 @@ class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    
     var data : [DeleteContent] = [.init(numberOfAlgorithm: 2, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요"),.init(numberOfAlgorithm: 1, data: "2020년 9월 10일", tag: .Employment, title: "This is GSM?", content: "가슴이 웅장해진다.", deleteContente: "가슴이 답답해지는데요")]
     
     private let titleLabel = UILabel().then{
@@ -150,6 +149,6 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
     func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        self.SeeMoreDetailBtnAction(indexPath: indexPath.item)
+        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
     }
 }

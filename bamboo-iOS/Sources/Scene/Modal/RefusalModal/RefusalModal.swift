@@ -11,7 +11,7 @@ import PanModal
 
 class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
-    var i = 10
+    private var i = 10
     
     private let editContentTitle = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "알고리즘 거절")
@@ -71,13 +71,11 @@ class RefusalModal : baseVC<RefusalModalReactor>{
         }
     }
 
-
     //MARK: - keyboard down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-
 }
 
 extension RefusalModal : UITextViewDelegate{
