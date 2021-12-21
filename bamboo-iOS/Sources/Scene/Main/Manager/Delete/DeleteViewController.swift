@@ -49,7 +49,6 @@ class DeleteViewController : baseVC<DeleteReactor>{
     
     override func configureUI() {
         super.configureUI()
-        view.backgroundColor = .red
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()

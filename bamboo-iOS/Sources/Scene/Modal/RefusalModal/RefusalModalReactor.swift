@@ -16,7 +16,7 @@ final class RefusalModalReactor : Reactor,Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case alertRefusalTap(idx : String, index : Int)
+
     }
     enum Mutation{
         
@@ -31,13 +31,5 @@ final class RefusalModalReactor : Reactor,Stepper{
     }
 }
 extension RefusalModalReactor{
-    func mutate(action: Action) -> Observable<Mutation> {
-        switch action{
-        case let .alertRefusalTap(idx,index):
-            print("실행")
-            print(idx)
-            steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
-            return .empty()
-        }
-    }
+
 }

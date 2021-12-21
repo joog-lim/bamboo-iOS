@@ -37,7 +37,6 @@ class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        view.backgroundColor = .red
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -133,6 +132,6 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        reactor?.steps.accept(BambooStep.standByAndAlertIsRequired(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
+        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
     }
 }

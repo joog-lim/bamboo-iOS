@@ -28,7 +28,7 @@ final class StandByFlow : Flow{
         return self.rootViewController
     }
     let stepper: StandByStepper
-    let reactor : RefusalModalReactor = .init()
+    let reactor : StandByReactor = .init()
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
@@ -46,7 +46,7 @@ final class StandByFlow : Flow{
         switch step{
         case.managerStandByIsRequired:
             return coordinatorToStandBy()
-        case let .standByAndAlertIsRequired(titleText, message, idx,index):
+        case let .alert(titleText, message, idx,index):
             return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index)
         case let .refusalRequired(idx, index):
             return coordinatorToRefusalModalRequired(idx: idx, index: index)
@@ -58,7 +58,6 @@ final class StandByFlow : Flow{
 
 private extension StandByFlow{
     func coordinatorToStandBy() -> FlowContributors{
-        let reactor = StandByReactor()
         let vc = StandByViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
@@ -69,14 +68,16 @@ private extension StandByFlow{
         alert.addAction(.init(title: "수락", style: .default,handler: { _ in
         }))
         alert.addAction(.init(title: "거절", style: .destructive, handler: {_ in
-            _ = self.reactor.mutate(action: .alertRefusalTap(idx: idx, index: index))
+            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index))
         }))
         rootViewController.present(alert, animated: true)
         return .none
     }
     
     func coordinatorToRefusalModalRequired(idx : String, index :Int) -> FlowContributors{
-        print("what the fucking doing")
-        return .none
+        let reactor = RefusalModalReactor()
+        let vc = RefusalModal(reactor: reactor)
+        self.rootViewController.presentPanModal(vc)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

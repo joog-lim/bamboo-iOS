@@ -9,7 +9,7 @@ import RxFlow
 
 enum BambooStep: Step{
     //Global
-    case alert(titleText : String ,message : String)
+//    case alert(titleText : String ,message : String)
     case dismiss
     
     //MARK: - 작성 방법 : 어떤 행동을 했다로 정의
@@ -56,7 +56,7 @@ enum BambooStep: Step{
     //EditContent
     case editContentModalsRequired(idx : String, index : Int)
     //StandbyModal Choose Alert
-    case standByAndAlertIsRequired(titleText : String, message : String, idx : String, index: Int)
+    case alert(titleText : String, message : String, idx : String, index: Int)
     // Refusal
     case refusalRequired(idx: String, index : Int)
 }

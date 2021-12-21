@@ -39,7 +39,6 @@ class AcceptViewController : baseVC<AcceptReactor> {
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        view.backgroundColor = .red
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()

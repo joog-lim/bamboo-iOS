@@ -42,7 +42,6 @@ class RefusalViewController : baseVC<RefusalReactor>{
 
     //MARK: - Helper
     override func configureUI() {
-        view.backgroundColor = .red
         super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()

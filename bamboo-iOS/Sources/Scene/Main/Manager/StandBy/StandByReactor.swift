@@ -16,6 +16,7 @@ final class StandByReactor : Reactor, Stepper{
     
     enum Action{
         case standbyBtnTap(titleText : String, message : String, idx : String, index : Int)
+        case alertRefusalTap(String,Int)
     }
     enum Mutation{
         
@@ -37,7 +38,10 @@ extension StandByReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case let .standbyBtnTap(titleText, message,idx,index):
-            steps.accept(BambooStep.standByAndAlertIsRequired(titleText: titleText, message: message, idx: idx, index: index))
+            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
+            return .empty()
+        case let .alertRefusalTap(idx, index):
+            steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
             return .empty()
         }
     }
