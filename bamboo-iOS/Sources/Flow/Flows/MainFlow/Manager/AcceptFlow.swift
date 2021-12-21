@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import PanModal
 import RxFlow
 import RxRelay
 
@@ -40,6 +40,10 @@ final class AcceptFlow : Flow{
         switch step{
         case.managerAcceptIsRequired:
             return coordinatorToAccess()
+        case let .editContentModalsRequired(idx,index):
+            return coordinatorToEditContent(idx: idx,index : index)
+        case .dismiss:
+            return dismissVC()
         default:
             return.none
         }
@@ -52,5 +56,15 @@ private extension AcceptFlow{
         let vc = AcceptViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
+    func coordinatorToEditContent(idx : String, index : Int) -> FlowContributors{
+        let reactor = EditContentModalReactor()
+        let vc = EditContentModal(reactor: reactor)
+        self.rootViewController.presentPanModal(vc)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    private func dismissVC() -> FlowContributors{
+        self.rootViewController.visibleViewController?.dismiss(animated: true)
+        return .none
     }
 }

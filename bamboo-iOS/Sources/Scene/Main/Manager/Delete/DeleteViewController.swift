@@ -21,7 +21,7 @@ class DeleteViewController : baseVC<DeleteReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(DeleteTableViewCell.self, forCellReuseIdentifier: DeleteTableViewCell.identifier)
+        $0.register(DeleteTableViewCell.self, forCellReuseIdentifier: DeleteTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -127,7 +127,7 @@ extension DeleteViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DeleteTableViewCell.identifier, for: indexPath) as? DeleteTableViewCell else{return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DeleteTableViewCell.reusableID, for: indexPath) as? DeleteTableViewCell else{return UITableViewCell()}
         cell.model = data[ indexPath.item]
         cell.delegate = self
         return cell

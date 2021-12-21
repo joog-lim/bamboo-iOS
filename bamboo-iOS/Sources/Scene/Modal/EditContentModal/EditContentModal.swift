@@ -6,15 +6,10 @@
 //
 
 import UIKit
+import PanModal
 
 class EditContentModal : baseVC<EditContentModalReactor>{
     
-    weak var delegate : EditContentModalProtocol?
-        
-    private let bgView = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
-    }
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "수정하기"
@@ -79,6 +74,10 @@ class EditContentModal : baseVC<EditContentModalReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    override func bindView(reactor: EditContentModalReactor) {
+        super.bindView(reactor: reactor)
+        
+    }
 }
 
 extension EditContentModal : UITextViewDelegate{
@@ -96,4 +95,15 @@ extension EditContentModal : UITextViewDelegate{
             textView.textColor = UIColor.black
         }
     }
+}
+
+extension EditContentModal : PanModalPresentable{
+    var panScrollable: UIScrollView? {return nil}
+    var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+    var cornerRadius: CGFloat{return 20}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var anchorModalToLongForm: Bool {return false}
+    var shouldRoundTopCorners: Bool {return true}
+    var showDragIndicator: Bool { return false}
 }

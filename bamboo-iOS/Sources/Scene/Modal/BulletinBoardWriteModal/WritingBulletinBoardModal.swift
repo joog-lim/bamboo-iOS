@@ -20,7 +20,7 @@ class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - Properties
     private let tagSelectView = UIView()
     private let tagChoose = UITableView().then{
-        $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.identifier)
+        $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.reusableID)
         $0.backgroundColor = .white
         $0.separatorColor = .clear
         $0.isScrollEnabled = false
@@ -164,7 +164,7 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.identifier, for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.reusableID, for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
         cell.model = WritingBulletinBoardModal(reactor: .init()).tagDataSection[indexPath.row]
         return cell
     }

@@ -17,7 +17,6 @@
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
-		EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4CCE3727350D5E00DBFBED /* BaseModal.swift */; };
 		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
@@ -127,7 +126,6 @@
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
-		EE4CCE3727350D5E00DBFBED /* BaseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModal.swift; sourceTree = "<group>"; };
 		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				EEF42F15270BDAB30088043F /* BaseVC */,
-				EE4CCE3627350D4C00DBFBED /* BaseModal */,
 				EE3BA5772702EFB000281096 /* BaseTableViewCell */,
 				EE97B75B271B3DBE00479A06 /* BaseCollectionViewCell */,
 			);
@@ -414,14 +411,6 @@
 				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
-			sourceTree = "<group>";
-		};
-		EE4CCE3627350D4C00DBFBED /* BaseModal */ = {
-			isa = PBXGroup;
-			children = (
-				EE4CCE3727350D5E00DBFBED /* BaseModal.swift */,
-			);
-			path = BaseModal;
 			sourceTree = "<group>";
 		};
 		EE559239270DEC0600223D22 /* ManagerData */ = {
@@ -1149,7 +1138,6 @@
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
-				EE4CCE3827350D5E00DBFBED /* BaseModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,

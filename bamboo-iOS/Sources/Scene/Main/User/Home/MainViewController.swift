@@ -28,7 +28,7 @@ class MainViewController : baseVC<MainReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -141,7 +141,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.reusableID, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
             cell.model = data[indexPath.item]
             cell.delegate = self
             return cell
@@ -173,6 +173,6 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell)  {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        reactor?.steps.accept(BambooStep.reportModalsRequired(idx: "\(indexPath.row)"))
+        reactor?.steps.accept(BambooStep.reportModalsRequired(idx: "\(indexPath.row)", index: indexPath.row))
     }
 }

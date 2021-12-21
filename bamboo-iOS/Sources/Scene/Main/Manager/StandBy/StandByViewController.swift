@@ -22,7 +22,7 @@ class StandByViewController : baseVC<StandByReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.identifier)
+        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -109,7 +109,7 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.reusableID, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.item]
             cell.delegate = self
             return cell
@@ -133,22 +133,6 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        print(indexPath.item)
-        cellInsideBtnClickAction(index: indexPath.item)
+        reactor?.steps.accept(BambooStep.standByAndAlertIsRequired(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
     }
-}
-
- //MARK: - Alert setting
-extension StandByViewController {
-        private func cellInsideBtnClickAction(index: Int){
-            let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
-            }
-            let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
-                print("거절")
-            }
-            let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
-            [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
-            present(actionSheetController, animated: true)
-        }
 }

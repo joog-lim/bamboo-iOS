@@ -15,7 +15,7 @@ final class AcceptReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        
+        case editContentPresent(idx : String, index : Int)
     }
     enum Mutation{
         
@@ -32,4 +32,13 @@ final class AcceptReactor : Reactor, Stepper{
         self.initialState = State()
     }
 
+}
+extension AcceptReactor {
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .editContentPresent(idx,index):
+            steps.accept(BambooStep.editContentModalsRequired(idx: idx, index: index))
+            return .empty()
+        }
+    }
 }

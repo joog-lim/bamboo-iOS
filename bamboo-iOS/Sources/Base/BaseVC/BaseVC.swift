@@ -61,10 +61,6 @@ class baseVC<T: Reactor>: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
-    
     func addView(){}
     func setLayout(){}
     func configureUI(){}

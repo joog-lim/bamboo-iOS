@@ -23,7 +23,7 @@ class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - TableView
     private let mainTableView = UITableView().then {
-        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.identifier)
+        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -120,7 +120,7 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.identifier, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.reusableID, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.item]
             cell.delegate = self
             return cell
@@ -144,6 +144,6 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
     func cellSettingbtnClick(cell: AcceptManagerTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        self.EditBtnClick(indexPath: indexPath.item)
+        reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: "\(indexPath.row)", index: indexPath.row))
     }
 }

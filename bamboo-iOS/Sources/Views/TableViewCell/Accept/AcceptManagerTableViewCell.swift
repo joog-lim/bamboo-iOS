@@ -7,10 +7,7 @@
 
 import UIKit
 
-class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
-    //MARK: - Identifier
-    static let identifier = "AcceptManagerTableViewCell"
-    
+class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{    
     weak var delegate : AcceptManagerTableViewCellDelegate?
     
     //MARK: - Properties

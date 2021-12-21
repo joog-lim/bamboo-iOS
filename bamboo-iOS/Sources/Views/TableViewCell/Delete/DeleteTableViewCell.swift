@@ -8,9 +8,6 @@
 import UIKit
 
 class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
-    //MARK: - Identifier
-    static let identifier = "DeleteTableViewCell"
-    
     //MARK: - Delegate
     weak var delegate : cellSeeMoreDetailActionDelegate?
     

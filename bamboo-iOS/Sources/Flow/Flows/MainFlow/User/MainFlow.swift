@@ -66,12 +66,14 @@ final class MainFlow : Flow{
             let ruleItem : UITabBarItem = .init(title: "규칙", image: ruleImage, selectedImage: nil)
             let detailItem : UITabBarItem = .init(title: "더보기", image: detailImage, selectedImage: nil)
             
+            [root1,root2,root3].forEach{
+                $0.navigationCustomBar()
+                $0.navigationItem.applyImageNavigation()
+            }
             root1.tabBarItem = homeItem
             root2.tabBarItem = ruleItem
             root3.tabBarItem = detailItem
             self.rootViewController.setViewControllers([root1,root2,root3], animated: true)
-            
-
         }
         
         return .multiple(flowContributors: [

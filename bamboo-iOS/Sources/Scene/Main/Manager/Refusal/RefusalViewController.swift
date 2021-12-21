@@ -20,7 +20,7 @@ class RefusalViewController : baseVC<RefusalReactor>{
     }
     //MARK: - TableView
     private let mainTableView = UITableView().then {
-        $0.register(RefusalTableViewCell.self, forCellReuseIdentifier: RefusalTableViewCell.identifier)
+        $0.register(RefusalTableViewCell.self, forCellReuseIdentifier: RefusalTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -124,7 +124,7 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.identifier, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.reusableID, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
         cell.model = data[indexPath.item]
         cell.tag = indexPath.item
         cell.delegate = self

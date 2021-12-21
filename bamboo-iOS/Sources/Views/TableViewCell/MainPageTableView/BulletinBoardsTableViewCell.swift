@@ -8,9 +8,6 @@
 import UIKit
 import RxSwift
 class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
-    //MARK: - Identifier
-    static let identifier = "BulletinBoardsTableVIewCell"
-    
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
