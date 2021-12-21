@@ -52,7 +52,6 @@ class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Selectors
     override func configureUI() {
         super.configureUI()
-        navigationSetting()
     }
     
     //MARK: - Helper
@@ -88,10 +87,5 @@ class DetailViewController : baseVC<DetailReactor>{
         backGroundScrollView.snp.makeConstraints {
             $0.edges.equalTo(view.safeArea.edges)
         }
-    }
-    //MARK: - Navigation Setting
-    private func navigationSetting(){
-        navigationController?.navigationCustomBar()
-        navigationItem.applyImageNavigation()
     }
 }

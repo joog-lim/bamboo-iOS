@@ -16,7 +16,8 @@ import RxFlow
 
 final class GoogleLogin{
     static let shared = GoogleLogin()
-    
+    let reactor = GoogleOauthModalReactor()
+    private let disposeBag : DisposeBag = .init()
     private let sign : GIDSignIn
     private let signInConfig = GIDConfiguration.init(clientID: "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
     
@@ -45,7 +46,6 @@ final class GoogleLogin{
                     let idToken = authentication.idToken
                     KeychainSwift().set(idToken ?? "", forKey: "idToken")
                     UserDefaults.standard.set(true, forKey: "UserLogin")
-                    
                     vc.dismiss(animated: true, completion: nil)
                     // send id Token to backend
                 }
