@@ -12,38 +12,38 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     weak var delegate : ClickReportBtnActionDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let  view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
     }
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var dataLabel = UILabel().then{
+    private let  dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
-    private lazy var cellSettingbtn = UIButton().then{
+    private let cellSettingbtn = UIButton().then{
         $0.setTitle("신고", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
         $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
-    private lazy var footerView = UIView()
+    private let footerView = UIView()
     
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
