@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
+final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK - Tag Data
     private let tagDataSection : [Data.tag] =  [.Humor,.Study,.DailyRoutine,.School,.Employment,.Relationship,.etc]
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StandByViewController : baseVC<StandByReactor>{
+final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
 

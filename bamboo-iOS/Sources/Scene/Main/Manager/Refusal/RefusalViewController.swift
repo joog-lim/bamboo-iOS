@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefusalViewController : baseVC<RefusalReactor>{
+final class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     

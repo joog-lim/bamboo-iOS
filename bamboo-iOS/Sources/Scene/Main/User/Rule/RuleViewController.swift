@@ -8,7 +8,7 @@
 import UIKit
 import RxViewController
 
-class RuleViewController : baseVC<RuleReactor> {
+final class RuleViewController : baseVC<RuleReactor> {
     //MARK: - Properties
     
     let fifteenFont : [String] = ["제 1조 목적",

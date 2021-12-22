@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AcceptViewController : baseVC<AcceptReactor> {
+final class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - Properties
     private var isLoaing : Bool = false

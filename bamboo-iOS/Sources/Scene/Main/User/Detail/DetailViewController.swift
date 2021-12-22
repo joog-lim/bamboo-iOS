@@ -4,11 +4,9 @@
 //
 //  Created by Ji-hoon Ahn on 2021/09/22.
 //
-
 import UIKit
 
-
-class DetailViewController : baseVC<DetailReactor>{
+final class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Properties
     let fifthFont : [String] = ["자주 묻는 말",
                                 "문의"]

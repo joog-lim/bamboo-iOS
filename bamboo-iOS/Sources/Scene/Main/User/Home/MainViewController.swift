@@ -10,7 +10,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
-class MainViewController : baseVC<MainReactor>{
+final class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
     private var isLoaing : Bool = false
@@ -102,7 +102,6 @@ class MainViewController : baseVC<MainReactor>{
     }
     
     private func navigationSetting(){
-        navigationController?.navigationCustomBar()
         navigationItem.applyImageNavigation()
     }
     

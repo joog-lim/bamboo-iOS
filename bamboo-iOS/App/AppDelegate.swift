@@ -12,6 +12,9 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate{
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //와이파이 연결 여부 파악
+        NetWorkStatus.shared.StartMonitoring()
+        
         let defaults = UserDefaults.standard
         GIDSignIn.sharedInstance.restorePreviousSignIn { user , error in
             if error != nil || user == nil{

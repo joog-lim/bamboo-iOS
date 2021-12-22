@@ -16,13 +16,10 @@ final class RefusalModalReactor : Reactor,Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-
     }
     enum Mutation{
-        
     }
     struct State{
-        
     }
     let initialState: State
     

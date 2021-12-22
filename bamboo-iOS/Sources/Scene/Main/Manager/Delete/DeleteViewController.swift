@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DeleteViewController : baseVC<DeleteReactor>{
+final class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     

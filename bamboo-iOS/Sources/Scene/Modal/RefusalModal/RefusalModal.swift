@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import PanModal
 
-class RefusalModal : baseVC<RefusalModalReactor>{
+final class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
     private var i = 10
     
@@ -77,7 +77,6 @@ class RefusalModal : baseVC<RefusalModalReactor>{
         view.endEditing(true)
     }
 }
-
 extension RefusalModal : UITextViewDelegate{
     // TextView Place Holder
     func textViewDidEndEditing(_ textView: UITextView) {

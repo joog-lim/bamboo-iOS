@@ -8,7 +8,7 @@
 import UIKit
 import PanModal
 
-class EditContentModal : baseVC<EditContentModalReactor>{
+final class EditContentModal : baseVC<EditContentModalReactor>{
     
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
