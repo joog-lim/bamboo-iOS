@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefusalViewController : BaseVC{
+final class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
     
@@ -20,7 +20,7 @@ class RefusalViewController : BaseVC{
     }
     //MARK: - TableView
     private let mainTableView = UITableView().then {
-        $0.register(RefusalTableViewCell.self, forCellReuseIdentifier: RefusalTableViewCell.identifier)
+        $0.register(RefusalTableViewCell.self, forCellReuseIdentifier: RefusalTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -41,29 +41,24 @@ class RefusalViewController : BaseVC{
     }
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
-    //MARK: - AddView
-    private func addView(){
+    
+    override func addView() {
+        super.addView()
         view.addSubview(mainTableView)
     }
     
-    //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
 
@@ -110,6 +105,16 @@ class RefusalViewController : BaseVC{
             make.center.equalTo(tableViewFooter)
         }
     }
+    //MARK: - Navigation Setting
+    private func navigationSetting(){
+        navigationController?.navigationCustomBar()
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"))
+        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
+        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
+        navigationItem.applyImageNavigation()
+    }
 }
 
 //MARK: - TableView
@@ -118,7 +123,7 @@ extension RefusalViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.identifier, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RefusalTableViewCell.reusableID, for: indexPath) as? RefusalTableViewCell else{return UITableViewCell()}
         cell.model = data[indexPath.item]
         cell.tag = indexPath.item
         cell.delegate = self

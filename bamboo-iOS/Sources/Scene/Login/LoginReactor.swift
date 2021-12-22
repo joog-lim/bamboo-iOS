@@ -8,6 +8,7 @@
 import ReactorKit
 import RxCocoa
 import RxFlow
+import GoogleSignIn
 
 final class LoginReactor : Reactor, Stepper{
     
@@ -24,16 +25,18 @@ final class LoginReactor : Reactor, Stepper{
     }
     
     enum Mutation{
-
-    }
-    
-    struct State{
         
     }
     
-    let initialState: State
+    struct State{
+
+    }
     
-    init(){
+    let initialState: State
+    let provider : ServiceProviderType
+    
+    init(provider : ServiceProviderType){
+        self.provider = provider
         self.initialState = State()
     }
     
@@ -44,12 +47,16 @@ extension LoginReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .userLoginButtonDidTap:
-            steps.accept(BambooStep.userLoginIsRequired)
+            provider.loginService.didLoginObservable
+                .map{ $0 ? BambooStep.userIsLoggedIn : BambooStep.userLoginIsRequired}
+                .bind(to: steps)
+                .disposed(by: disposeBag)
             return .empty()
         case .managerLoginButtonDidTap:
             steps.accept(BambooStep.managerLoginIsRequired)
             return .empty()
         case .guestLoginButtonDidTap:
+            GoogleLogin.shared.SignOutOauth()
             steps.accept(BambooStep.userMainTabBarIsRequired)
             return .empty()
         }

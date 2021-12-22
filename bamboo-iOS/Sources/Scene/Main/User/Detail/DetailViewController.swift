@@ -4,11 +4,9 @@
 //
 //  Created by Ji-hoon Ahn on 2021/09/22.
 //
-
 import UIKit
 
-
-class DetailViewController : baseVC<DetailReactor>{
+final class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Properties
     let fifthFont : [String] = ["자주 묻는 말",
                                 "문의"]
@@ -52,7 +50,6 @@ class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Selectors
     override func configureUI() {
         super.configureUI()
-        navigationSetting()
     }
     
     //MARK: - Helper
@@ -86,12 +83,7 @@ class DetailViewController : baseVC<DetailReactor>{
         }
         //MARK: - ScrollView
         backGroundScrollView.snp.makeConstraints {
-            $0.top.left.right.bottom.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
-    }
-    //MARK: - Navigation Setting
-    private func navigationSetting(){
-        navigationController?.navigationCustomBar()
-        navigationItem.applyImageNavigation()
     }
 }

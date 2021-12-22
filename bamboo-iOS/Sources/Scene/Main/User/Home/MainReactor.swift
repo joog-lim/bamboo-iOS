@@ -17,7 +17,7 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case loadData
         case writeData
-        case reportBtnClickAction
+        case reportBtnClickAction(idx : String, index : Int)
     }
     enum Mutation{
         
@@ -34,9 +34,6 @@ final class MainReactor : Reactor, Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 //MARK: - Mutation
@@ -48,8 +45,8 @@ extension MainReactor{
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
-        case .reportBtnClickAction:
-            steps.accept(BambooStep.reportModalsRequired)
+        case let .reportBtnClickAction( idx,index):
+            steps.accept(BambooStep.reportModalsRequired(idx: idx, index: index))
             return .empty()
         }
     }

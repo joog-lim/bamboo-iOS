@@ -34,21 +34,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }).disposed(by: disposeBag)
     }
     
-    
     private func coordinatorToAppFlow(with windowScene: UIWindowScene){
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let appFlow = AppFlow(with: window)
-        let appStepper = AppStepper()
+        let provider : ServiceProviderType = ServiceProvider()
+        let appFlow = AppFlow(with: window, and: provider)
+        let appStepper = AppStepper(provider: provider)
         
         coordinator.coordinate(flow: appFlow,with: appStepper)
         window.makeKeyAndVisible()
     }
     
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let scheme = URLContexts.first?.url.scheme else {return }
+        if scheme.contains("com.googleusercontent.apps") {
+            GIDSignIn.sharedInstance.handle((URLContexts.first?.url)!)
+        }
+    }
     
-    
-    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        // App Switcher 모드였다가 돌아올때
+        callBackgroundImage(false)
+    }
+    func sceneWillResignActive(_ scene: UIScene) {
+        //쓸어 올렸을때, App Switcher 모드
+        callBackgroundImage(true)
+    }
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        //완전 백그라운드로 갔다 다시 돌아올때
+        callBackgroundImage(false)
+    }
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        //백그라운드로 갔을 때, 홈 눌렀을때
+        callBackgroundImage(true)
+    }
     
     //MARK: - BackGround 진입시 정보 가리기
     func callBackgroundImage(_ bShow: Bool) {
@@ -75,6 +95,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                }
            }
        }
-    
 }
 

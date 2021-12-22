@@ -9,26 +9,32 @@ import UIKit
 
 import RxFlow
 import RxRelay
+import ReactorKit
 
 struct StandByStepper : Stepper{
+
     let steps: PublishRelay<Step> = .init()
     
     var initialStep: Step{
-        return BambooStep.managerAcceptIsRequired
+        return BambooStep.managerStandByIsRequired
     }
 }
 
 final class StandByFlow : Flow{
+    private let disposeBag: DisposeBag = .init()
+
     //MARK: - Properties
     var root: Presentable{
         return self.rootViewController
     }
     let stepper: StandByStepper
+    let reactor : StandByReactor = .init()
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
     init(stepper : StandByStepper){
         self.stepper = stepper
+        
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -37,19 +43,41 @@ final class StandByFlow : Flow{
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
-        
         switch step{
-        case.managerAcceptIsRequired:
-            return coordinatorToHome()
+        case.managerStandByIsRequired:
+            return coordinatorToStandBy()
+        case let .alert(titleText, message, idx,index):
+            return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index)
+        case let .refusalRequired(idx, index):
+            return coordinatorToRefusalModalRequired(idx: idx, index: index)
         default:
             return.none
         }
     }
-    
 }
 
 private extension StandByFlow{
-    func coordinatorToHome() -> FlowContributors{
+    func coordinatorToStandBy() -> FlowContributors{
+        let vc = StandByViewController(reactor: reactor)
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
+    
+    func navigateToAlertScreen(titleText : String, message : String, idx : String, index : Int) -> FlowContributors{
+        let alert = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
+        alert.addAction(.init(title: "수락", style: .default,handler: { _ in
+        }))
+        alert.addAction(.init(title: "거절", style: .destructive, handler: {_ in
+            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index))
+        }))
+        rootViewController.present(alert, animated: true)
         return .none
+    }
+    
+    func coordinatorToRefusalModalRequired(idx : String, index :Int) -> FlowContributors{
+        let reactor = RefusalModalReactor()
+        let vc = RefusalModal(reactor: reactor)
+        self.rootViewController.presentPanModal(vc)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

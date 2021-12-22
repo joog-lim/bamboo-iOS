@@ -8,9 +8,6 @@
 import UIKit
 
 class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
-    //MARK: - Identifier
-    static let identifier = "StandByTableViewCell"
-    
     //MARK: - connect Protocol
     weak var delegate : StandBytableViewCellBtnClickDelegate?
     

@@ -9,7 +9,6 @@ import ReactorKit
 import RxFlow
 import RxCocoa
 
-
 final class ManagerLoginModalReactor: Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()
@@ -32,9 +31,6 @@ final class ManagerLoginModalReactor: Reactor , Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 extension ManagerLoginModalReactor{
@@ -44,7 +40,7 @@ extension ManagerLoginModalReactor{
             steps.accept(BambooStep.dismiss)
             return .empty()
         case .managerBtnClick:
-            steps.accept(BambooStep.userMainTabBarIsRequired)
+            steps.accept(BambooStep.managerMainTabBarIsRequired)
             return.empty()
         }
     }

@@ -7,8 +7,10 @@
 
 import UIKit
 import RxDataSources
+import RxSwift
+import RxCocoa
 
-class MainViewController : baseVC<MainReactor>{
+final class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
     private var isLoaing : Bool = false
@@ -26,7 +28,7 @@ class MainViewController : baseVC<MainReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.identifier)
+        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -47,13 +49,13 @@ class MainViewController : baseVC<MainReactor>{
         print("좋아요 :: \(indexPath)번째 \(state)")
         data[indexPath].isSelected = state
     }
-    
+
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
         tableviewSetting()
-        tableViewHeaderSetting()
         navigationSetting()
+        tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
@@ -64,7 +66,7 @@ class MainViewController : baseVC<MainReactor>{
     override func setLayout() {
         super.setLayout()
         mainTableView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
+            make.edges.equalTo(view.safeArea.edges)
         }
         writeBtn.snp.makeConstraints {
             $0.height.width.equalTo(bounds.height/13.53)
@@ -98,9 +100,8 @@ class MainViewController : baseVC<MainReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
-    //MARK: - Navigation Setting
+    
     private func navigationSetting(){
-        navigationController?.navigationCustomBar()
         navigationItem.applyImageNavigation()
     }
     
@@ -124,6 +125,7 @@ class MainViewController : baseVC<MainReactor>{
     }
     override func bindView(reactor: MainReactor) {
         super.bindView(reactor: reactor)
+        
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
@@ -138,7 +140,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.identifier, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.reusableID, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
             cell.model = data[indexPath.item]
             cell.delegate = self
             return cell
@@ -161,26 +163,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-
-//MARK: - Write Modal Delegate
-extension MainViewController : WriteModalDelegate {
-    func updateWrite() {
-    
-    }
-}
-
-//MARK: - Report Modal Update Function
-extension MainViewController : ReportModalDelegate{
-    func updateReport() {
-        
-    }
-}
-extension MainViewController : BaseModalDelegate{
-    func onTapClick() {
-//        self.removeDim()
-    }
-}
-
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state: Bool) {
@@ -188,9 +170,8 @@ extension MainViewController : ClickReportBtnActionDelegate{
         self.likeBtnClick(indexPath: indexPath.item, state: state)
     }
     
-    func clickReportBtnAction(cell: BulletinBoardsTableViewCell) {
+    func clickReportBtnAction(cell: BulletinBoardsTableViewCell)  {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        print(indexPath.row)
-//        self.reportBtnClick(indexPath: indexPath.item)
+        reactor?.steps.accept(BambooStep.reportModalsRequired(idx: "\(indexPath.row)", index: indexPath.row))
     }
 }

@@ -14,7 +14,7 @@ target 'bamboo-iOS' do
   pod 'KeychainSwift', '~> 19.0'
   pod 'JGProgressHUD'
   pod 'PanModal'
-
+  
   
   # Networking
   pod 'Moya/RxSwift'
@@ -30,6 +30,7 @@ target 'bamboo-iOS' do
   pod 'ReactorKit'
   pod 'RxKeyboard'
   pod 'RxGesture'
+  pod 'RxAlertViewable'
   pod 'RxDataSources'
   pod 'RxReachability'
 #  pod 'ReusableKit/RxSwift'
