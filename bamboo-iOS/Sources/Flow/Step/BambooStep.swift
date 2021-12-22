@@ -9,6 +9,7 @@ import RxFlow
 
 enum BambooStep: Step{
     //Global
+//    case alert(titleText : String ,message : String)
     case dismiss
     
     //MARK: - 작성 방법 : 어떤 행동을 했다로 정의
@@ -34,7 +35,7 @@ enum BambooStep: Step{
     //Detail
     case detailIsRequired
     
-    //Manager
+    //MARK: - Manager
     case managerMainTabBarIsRequired
     //Accept
     case managerAcceptIsRequired
@@ -49,6 +50,13 @@ enum BambooStep: Step{
     //write
     case writeModalIsRequired
     //report
-    case reportModalsRequired
-    
+    case reportModalsRequired(idx : String, index : Int)
+    //googleLogin
+    case googleLoginIsRequired
+    //EditContent
+    case editContentModalsRequired(idx : String, index : Int)
+    //StandbyModal Choose Alert
+    case alert(titleText : String, message : String, idx : String, index: Int)
+    // Refusal
+    case refusalRequired(idx: String, index : Int)
 }

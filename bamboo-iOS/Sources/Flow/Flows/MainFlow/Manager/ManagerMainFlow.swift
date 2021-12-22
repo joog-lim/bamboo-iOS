@@ -5,10 +5,10 @@
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
 
-import UIKit
-
+import UIKit.UINavigationController
 import RxSwift
 import RxFlow
+import UIKit
 
 final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
@@ -20,11 +20,17 @@ final class ManagerMainFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
-    let rootViewController: UITabBarController = .init()
+    let rootViewController = UITabBarController().then{
+        $0.tabBar.backgroundColor = .white
+        $0.tabBar.barTintColor = .white
+        $0.tabBar.barStyle = .black
+        $0.tabBar.tintColor = .bamBoo_57CC4D
+        $0.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
+    }
     private let acceptFlow : AcceptFlow
-    private let standByFlow : RuleFlow
-    private let refusalFlow : DetailFlow
-    private let deleteFlow : AcceptFlow
+    private let standByFlow : StandByFlow
+    private let refusalFlow : RefusalFlow
+    private let deleteFlow : DeleteFlow
     
     init(){
         self.acceptFlow = .init(stepper: .init())
@@ -33,7 +39,7 @@ final class ManagerMainFlow : Flow{
         self.deleteFlow = .init(stepper: .init())
     }
     deinit{
-        print("\(type(of: self)): \(#function)")
+        print("\(type(of: self)): \(#function)") 
     }
     
     func navigate(to step: Step) -> FlowContributors {
@@ -41,8 +47,10 @@ final class ManagerMainFlow : Flow{
         switch step{
         case .LoginIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
-        case .userMainTabBarIsRequired:
+        case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
+        case .ruleIsRequired:
+            return coordinateToRule()
         default:
             return .none
         }
@@ -56,10 +64,10 @@ final class ManagerMainFlow : Flow{
                           root3 : UINavigationController,
                           root4 : UINavigationController)  in
             
-            let acceptImage : UIImage? = UIImage(named: "BAMBOO_Home")?.withRenderingMode(.alwaysTemplate)
-            let standByImage : UIImage? = UIImage(named: "BAMBOO_Rule")?.withRenderingMode(.alwaysTemplate)
-            let refusalImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
-            let deleteImage : UIImage? = UIImage(named: "BAMBOO_Detail")?.withRenderingMode(.alwaysTemplate)
+            let acceptImage : UIImage? = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
+            let standByImage : UIImage? = UIImage(systemName: "stop.circle")?.withRenderingMode(.alwaysTemplate)
+            let refusalImage : UIImage? = UIImage(systemName: "exclamationmark.circle")?.withRenderingMode(.alwaysTemplate)
+            let deleteImage : UIImage? = UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate)
 
             
             let acceptItem : UITabBarItem = .init(title: "수락", image: acceptImage, selectedImage: nil)
@@ -71,8 +79,10 @@ final class ManagerMainFlow : Flow{
             root2.tabBarItem = standByItem
             root3.tabBarItem = refusalItem
             root4.tabBarItem = deleteItem
-            
-            rootViewController.tabBar.tintColor = .bamBoo_57CC4D
+            [root1,root2,root3,root4].forEach{
+                $0.navigationCustomBar()
+                $0.navigationItem.applyImageNavigation()
+            }
             self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
         return .multiple(flowContributors: [
@@ -84,3 +94,12 @@ final class ManagerMainFlow : Flow{
     }
 }
 
+private extension ManagerMainFlow{
+    func coordinateToRule() -> FlowContributors{
+        let reactor = RuleReactor()
+        let vc = RuleViewController(reactor: reactor)
+        self.rootViewController.navigationController?.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,
+                                                withNextStepper: reactor))
+    }
+}

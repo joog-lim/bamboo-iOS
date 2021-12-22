@@ -6,19 +6,10 @@
 //
 
 import UIKit
+import PanModal
 
-protocol EditContentModalProtocol : AnyObject{
-    func onTapClose()
-}
-
-class EditContentModal : BaseModal{
+final class EditContentModal : baseVC<EditContentModalReactor>{
     
-    weak var delegate : EditContentModalProtocol?
-        
-    private let bgView = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
-    }
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "수정하기"
@@ -46,28 +37,18 @@ class EditContentModal : BaseModal{
         $0.spacing = bounds.width/75
     }
     
-    //모달 위치 조정
-    static func instance() -> EditContentModal{
-        return EditContentModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
     //MARK: - Helper
-    override func modalSetting() {
-        super.modalSetting()
+    override func configureUI() {
+        super.configureUI()
         contentTv.delegate = self
-        addView()
-        location()
     }
     
-    //MARK: - location
-    private func location(){
-        bgView.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(30)
-            $0.height.equalToSuperview().dividedBy(2.5)
-        }
+    override func addView() {
+        super.addView()
+        [editContentTitle,titleTf,contentTv,btnStackView].forEach{view.addSubview($0)}
+    }
+    override func setLayout() {
+        super.setLayout()
         editContentTitle.snp.makeConstraints{
             $0.top.equalToSuperview().offset(bounds.height/27.0666)
             $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -88,16 +69,15 @@ class EditContentModal : BaseModal{
             $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
         }
     }
-    //MARK: - addsubView
-    private func addView(){
-        [bgView].forEach { view.addSubview($0)}
-        [editContentTitle,titleTf,contentTv,btnStackView].forEach{bgView.addSubview($0)}
-    }
+
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
+    override func bindView(reactor: EditContentModalReactor) {
+        super.bindView(reactor: reactor)
+        
+    }
 }
 
 extension EditContentModal : UITextViewDelegate{
@@ -115,4 +95,15 @@ extension EditContentModal : UITextViewDelegate{
             textView.textColor = UIColor.black
         }
     }
+}
+
+extension EditContentModal : PanModalPresentable{
+    var panScrollable: UIScrollView? {return nil}
+    var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+    var cornerRadius: CGFloat{return 20}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var anchorModalToLongForm: Bool {return false}
+    var shouldRoundTopCorners: Bool {return true}
+    var showDragIndicator: Bool { return false}
 }

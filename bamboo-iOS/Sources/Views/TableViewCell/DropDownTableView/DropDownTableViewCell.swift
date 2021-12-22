@@ -7,9 +7,7 @@
 
 import UIKit
 
-class DropDownTableViewCell : BaseTableViewCell<Data.tag>{
-    static let identifier = "DropDownTableViewCell"
-    
+class DropDownTableViewCell : BaseTableViewCell<Data.tag>{    
     private  let cellListTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .black

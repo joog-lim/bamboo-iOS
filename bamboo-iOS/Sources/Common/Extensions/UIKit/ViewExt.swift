@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 //MARK: - UIView roundCornerRadius extension
 extension UIView {
@@ -30,5 +31,11 @@ extension UIView {
         gradient.locations = locations
         self.layer.insertSublayer(gradient, at: 0)
         return gradient
+    }
+}
+
+extension UIView{
+    var safeArea : ConstraintLayoutGuideDSL{
+        return safeAreaLayoutGuide.snp
     }
 }

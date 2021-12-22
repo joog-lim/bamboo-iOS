@@ -16,9 +16,12 @@ final class LoginFlow : Flow{
     }
     
     private let rootVC : UINavigationController = .init()
+    private let provider : ServiceProviderType
     
     //MARK: - Init
-    init() { }
+    init(with services : ServiceProviderType) {
+        self.provider = services
+    }
     
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -34,12 +37,10 @@ final class LoginFlow : Flow{
             return coordinateToUserLoginModalVC()
         case .managerLoginIsRequired:
             return coordinateToManagerLoginModalVC()
-        case .userIsLoggedIn:
+        case .userIsLoggedIn, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
-        case .managerIsLoggedIn:
+        case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
-        case .userMainTabBarIsRequired:
-            return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()
         default :
@@ -47,7 +48,7 @@ final class LoginFlow : Flow{
         }
     }
     private func coordinateToLoginVC() -> FlowContributors{
-        let reactor = LoginReactor()
+        let reactor = LoginReactor(provider: provider)
         let vc = LoginViewController(reactor: reactor)
         self.rootVC.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
@@ -70,10 +71,10 @@ final class LoginFlow : Flow{
         self.rootVC.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-
     
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)
         return .none
     }
 }
+

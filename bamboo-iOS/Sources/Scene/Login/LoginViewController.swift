@@ -16,12 +16,6 @@ import RxViewController
 
 final class LoginViewController : baseVC<LoginReactor> {
     //MARK: - Properties
-    
-    //MARK: - 모달 background 설정
-   private  let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
     private let logo = UIImageView().then{
         $0.image = UIImage(named: "BAMBOO_Logo")
         $0.contentMode = .scaleAspectFit
