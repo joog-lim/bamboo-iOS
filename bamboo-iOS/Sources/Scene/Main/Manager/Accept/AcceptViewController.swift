@@ -7,16 +7,11 @@
 
 import UIKit
 
-class AcceptViewController : BaseVC {
+final class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - Properties
     private var isLoaing : Bool = false
     
-    //MARK: - 모달 background 설정
-    private let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
     //MARK: - dummyData
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
@@ -28,7 +23,7 @@ class AcceptViewController : BaseVC {
     
     //MARK: - TableView
     private let mainTableView = UITableView().then {
-        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.identifier)
+        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -42,10 +37,8 @@ class AcceptViewController : BaseVC {
     
 
     //MARK: - Helper
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -53,25 +46,25 @@ class AcceptViewController : BaseVC {
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     //MARK: - AddView
-    private func addView(){
+
+    override func addView() {
+        super.addView()
         view.addSubview(mainTableView)
     }
-    
     //MARK: - Location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
+
     
     //MARK: - Modal action
     //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
     private func EditBtnClick(indexPath : Int){
         print("수락 : \(indexPath)")
-        AcceptModal(index: indexPath)
     }
-    
     
     //MARK: - Data load More
     private func loadMoreData(){
@@ -101,10 +94,12 @@ class AcceptViewController : BaseVC {
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
+    
     //MARK: - tableViewSetting
     private func tableviewSetting(){
         [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
     }
+    
     //MARK: - Footer Setting
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
@@ -124,7 +119,7 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.identifier, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.reusableID, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.item]
             cell.delegate = self
             return cell
@@ -148,49 +143,6 @@ extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
     func cellSettingbtnClick(cell: AcceptManagerTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        self.EditBtnClick(indexPath: indexPath.item)
-    }
-}
-
-extension AcceptViewController {
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //MARK: - 모달 닫기
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-}
-
-extension AcceptViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
-    }
-}
-
-extension AcceptViewController{
-        private func AcceptModal(index: Int){
-            let EditContentModalModalsVC = EditContentModal.instance()
-            EditContentModalModalsVC.delegate = self
-            EditContentModalModalsVC.baseDelegate = self
-            addDim()
-            present(EditContentModalModalsVC, animated: true, completion: nil)
-        }
-}
-
-extension AcceptViewController: EditContentModalProtocol{
-    func onTapClose() {
-        removeDim()
+        reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: "\(indexPath.row)", index: indexPath.row))
     }
 }

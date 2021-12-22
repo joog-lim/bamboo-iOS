@@ -8,8 +8,6 @@
 import UIKit
 
 class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
-    //MARK: - Identifier
-    static let identifier = "RefusalTableViewCell"
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?

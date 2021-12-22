@@ -7,13 +7,10 @@
 
 import UIKit
 
-class StandByViewController : BaseVC{
+final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
-    private let bgView = UIView().then {
-        $0.backgroundColor = .black
-        $0.alpha = 0
-    }
+
     //MARK: - Dummy Data
     var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
 
@@ -25,7 +22,7 @@ class StandByViewController : BaseVC{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.identifier)
+        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.reusableID)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -38,31 +35,26 @@ class StandByViewController : BaseVC{
     }
 
     //MARK: - Helper
-    override func configure() {
-        super.configure()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-    }
-    override func configureAppear() {
-        super.configureAppear()
-        addView()
-        location()
+    override func configureUI() {
+        super.configureUI()
         tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-    }
-    //MARK: - AddView
-    private func addView(){
-        view.addSubview(mainTableView)
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
-    //MARK: - Location
-    private func location(){
+    override func addView() {
+        super.addView()
+        view.addSubview(mainTableView)
+    }
+    override func setLayout() {
+        super.setLayout()
         mainTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.edges.equalTo(view.safeArea.edges)
         }
     }
+
 
     //MARK: - Data load More
     private func loadMoreData(){
@@ -116,7 +108,7 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.identifier, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.reusableID, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
             cell.model = data[ indexPath.item]
             cell.delegate = self
             return cell
@@ -140,56 +132,6 @@ extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        print(indexPath.item)
-        cellInsideBtnClickAction(index: indexPath.item)
-    }
-}
-
- //MARK: - Alert setting
-extension StandByViewController {
-        private func cellInsideBtnClickAction(index: Int){
-            let actionSheetController  : UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let accessAction : UIAlertAction = UIAlertAction(title: "수락", style: .default) { _ in print("수락")
-            }
-            let refusalAction : UIAlertAction = UIAlertAction(title: "거절", style: .destructive) { _ in
-                print("거절")
-                self.StandByModal()
-            }
-            let closeAction : UIAlertAction = UIAlertAction(title: "Close", style: .cancel)
-            [accessAction,refusalAction,closeAction].forEach{ actionSheetController.addAction($0)}
-            present(actionSheetController, animated: true)
-        }
-        private func StandByModal(){
-            let RefusalModalModalsVC = RefusalModal.instance()
-            RefusalModalModalsVC.baseDelegate = self
-            addDim()
-            present(RefusalModalModalsVC, animated: true, completion: nil)
-        }
-}
-
-extension StandByViewController {
-    //MARK: - 모달 실행시 Action
-    private func addDim() {
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { (make) in
-            make.top.left.right.bottom.equalToSuperview()
-        }
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.alpha = 0.1
-            self?.navigationController?.navigationBar.backgroundColor = self?.bgView.backgroundColor?.withAlphaComponent(0.1)
-        }
-    }
-    //MARK: - 모달 닫기
-    private func removeDim() {
-        DispatchQueue.main.async { [weak self] in
-            self?.bgView.removeFromSuperview()
-            self?.navigationController?.navigationBar.backgroundColor = .clear
-        }
-    }
-}
-
-extension StandByViewController : BaseModalDelegate{
-    func onTapClick() {
-        self.removeDim()
+        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
     }
 }

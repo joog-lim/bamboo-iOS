@@ -8,6 +8,7 @@
 import ReactorKit
 import RxFlow
 import RxCocoa
+import OSLog
 
 final class GoogleOauthModalReactor : Reactor , Stepper{
     
@@ -16,7 +17,6 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case googleOauthLogin
         case googleModalDismiss
     }
     
@@ -28,18 +28,12 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
     init(){
         self.initialState = State()
     }
-    deinit{
-        print("\(type(of: self)): \(#function)")
-    }
 }
 
 //MARK: - Mutation
 extension GoogleOauthModalReactor{
     func mutate(action: Action) -> Observable<Action> {
         switch action{
-        case.googleOauthLogin:
-            print("google Oauth Login")
-            return .empty()
         case.googleModalDismiss:
             steps.accept(BambooStep.dismiss)
             return .empty()

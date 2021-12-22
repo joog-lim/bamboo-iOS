@@ -10,20 +10,20 @@ import SnapKit
 import RxSwift
 import ReactorKit
 
-class noWifiViewController : BaseVC{
+final class noWifiViewController : baseVC<noWifiReactor>{
     //MARK: - Properties
-    private lazy var icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
-    private lazy var NoWifiLabel = UILabel().then{
+    private let icon = UIImageView.init(image: UIImage(named: "BAMBOO_NoWifi")).then{ $0.contentMode = .scaleAspectFit}
+    private let NoWifiLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "인터넷 연결"
         $0.textColor = .black
     }
-    private lazy var subNoWifiLabel = UILabel().then{
+    private let subNoWifiLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.text = "오프라인 상태입니다. 인터넷 연결을 확인해주세요."
         $0.textColor = .black
     }
-    private lazy var tryAgainBtn = LoginButton(placeholder: "다시 시도",cornerRadius: 10).then{
+    private let tryAgainBtn = LoginButton(placeholder: "다시 시도",cornerRadius: 10).then{
         $0.layer.cornerRadius = 10
         $0.addTarget(self, action: #selector(wifiTryAgain), for: .touchUpInside)
     }
@@ -34,19 +34,17 @@ class noWifiViewController : BaseVC{
         LodingAction()
     }
     
-    //MARK: - Helper
-    override func configure() {
-        super.configure()
-        addView()
-        location()
+    
+    override func configureUI() {
+        super.configureUI()
         navigationSetting()
     }
-    
-    private func addView(){
+    override func addView() {
+        super.addView()
         [icon,NoWifiLabel,subNoWifiLabel,tryAgainBtn].forEach{view.addSubview($0)}
     }
-    
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         icon.snp.makeConstraints {
             $0.top.equalToSuperview().offset(bounds.height/4.7485)
             $0.centerX.equalToSuperview()
@@ -67,11 +65,13 @@ class noWifiViewController : BaseVC{
             $0.height.equalTo(bounds.height/17.65)
         }
     }
+
     //MARK: - Navigation Setting
     func navigationSetting(){
         navigationItem.hidesBackButton = true
         navigationItem.applyImageNavigation()
     }
+    
     //MARK: - NetWork Status
     private func NetworkStatus(){
         if NetWorkStatus.shared.isConnect{
@@ -80,7 +80,6 @@ class noWifiViewController : BaseVC{
             }
             print("wifi connect")
         }else{
- 
             print("wifi not connect")
         }
     }

@@ -4,21 +4,14 @@
 //
 //  Created by Ji-hoon Ahn on 2021/10/28.
 //
-
 import UIKit
+import PanModal
+import RxSwift
+import RxCocoa
+import RxFlow
 
-protocol ReportModalDelegate : AnyObject {
-    func updateReport()
-}
-
-class ReportModal : BaseModal{
+final class ReportModal : baseVC<ReportReactor>{
     
-    weak var delegate : ReportModalDelegate?
-        
-    private let bgView = UIView().then{
-        $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
-    }
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "신고하기"
@@ -38,34 +31,17 @@ class ReportModal : BaseModal{
         $0.layer.cornerRadius = 5
         $0.layer.applySketchShadow(color: .systemRed, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
-    
-    //모달 위치 조정
-    static func instance() -> ReportModal{
-        return ReportModal(nibName: nil, bundle: nil).then{
-            $0.modalPresentationStyle = .overFullScreen
-        }
-    }
 
     //MARK: - Helper
-    override func modalSetting() {
-        super.modalSetting()
-        view.backgroundColor = .clear
+    override func configureUI() {
+        super.configureUI()
         contentTv.delegate = self
-        addView()
-        location()
     }
-    
-    //MARK: - location
-    private func location(){
+    override func setLayout() {
+        super.setLayout()
         if UIDevice.current.isiPhone{
-            bgView.snp.makeConstraints {
-                $0.left.equalToSuperview()
-                $0.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(bounds.height/2.5)
-            }
             editContentTitle.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(bounds.height/27.0666)
+                $0.top.equalToSuperview().offset(30)
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
             }
             titleTf.snp.makeConstraints {
@@ -84,12 +60,6 @@ class ReportModal : BaseModal{
                 $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
             }
         }else if UIDevice.current.isiPad{
-            bgView.snp.makeConstraints {
-                $0.left.equalToSuperview()
-                $0.right.equalToSuperview()
-                $0.bottom.equalToSuperview().offset(30)
-                $0.height.equalTo(380)
-            }
             editContentTitle.snp.makeConstraints{
                 $0.top.equalToSuperview().offset(30)
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
@@ -110,19 +80,17 @@ class ReportModal : BaseModal{
                 $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
             }
         }
-
     }
-    //MARK: - addsubView
-    private func addView(){
-        view.addSubview(bgView)
-        [editContentTitle,titleTf,contentTv,reportBtn].forEach{bgView.addSubview($0)}
+    
+    override func addView() {
+        super.addView()
+        [editContentTitle,titleTf,contentTv,reportBtn].forEach{view.addSubview($0)}
     }
 
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
 }
 
 extension ReportModal : UITextViewDelegate{
@@ -140,4 +108,15 @@ extension ReportModal : UITextViewDelegate{
             textView.textColor = UIColor.black
         }
     }
+}
+
+extension ReportModal : PanModalPresentable{
+    var panScrollable: UIScrollView? {return nil}
+    var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+    var cornerRadius: CGFloat{return 20}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var anchorModalToLongForm: Bool {return false}
+    var shouldRoundTopCorners: Bool {return true}
+    var showDragIndicator: Bool { return false}
 }

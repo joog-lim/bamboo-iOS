@@ -6,10 +6,8 @@
 //
 
 import UIKit
+import RxSwift
 class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
-    //MARK: - Identifier
-    static let identifier = "BulletinBoardsTableVIewCell"
-    
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -57,7 +55,6 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     @objc private func likeBtnClick(){
         likeBtn.isSelected = !likeBtn.isSelected
         delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
-
     }
     @objc private func reportBtnclickAction(){
         delegate?.clickReportBtnAction(cell: self)
@@ -147,4 +144,3 @@ protocol ClickReportBtnActionDelegate : AnyObject{
     func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
 }
-
