@@ -33,8 +33,13 @@ target 'bamboo-iOS' do
   pod 'RxAlertViewable'
   pod 'RxDataSources'
   pod 'RxReachability'
-#  pod 'ReusableKit/RxSwift'
-
+  
+  #RxTest
+  target 'bamboo-iOSTests' do
+    pod 'RxTest'
+    pod 'RxNimble'
+    end
+  
 end
 
 post_install do |installer|
