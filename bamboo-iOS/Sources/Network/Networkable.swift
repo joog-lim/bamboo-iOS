@@ -16,6 +16,6 @@ protocol Networkable{
 }
 extension Networkable{
     static func makeProvider() -> MoyaProvider<Target>{
-        return MoyaProvider<Target>()
+        return MoyaProvider<Target>(plugins: [])
     }
 }

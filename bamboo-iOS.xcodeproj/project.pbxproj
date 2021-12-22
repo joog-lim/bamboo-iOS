@@ -10,6 +10,7 @@
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9362772CDF50032F1AA /* noWifiReactor.swift */; };
 		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
+		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
@@ -77,7 +78,6 @@
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
 		EEC430192758A57B008F802F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC430182758A57B008F802F /* LoginReactor.swift */; };
 		EEC4301B2758A812008F802F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301A2758A812008F802F /* AppFlow.swift */; };
-		EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301C2758A8A4008F802F /* NetworkManager.swift */; };
 		EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */; };
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
@@ -124,6 +124,7 @@
 		EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE09E9362772CDF50032F1AA /* noWifiReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiReactor.swift; sourceTree = "<group>"; };
 		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,7 +194,6 @@
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
 		EEC430182758A57B008F802F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		EEC4301A2758A812008F802F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
-		EEC4301C2758A8A4008F802F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "bamboo-iOS/Sources/Network/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerLoginAPI.swift; path = "bamboo-iOS/Sources/Network/ManagerLoginAPI.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
@@ -307,8 +307,8 @@
 		EE1D8AEB27180D1F003614BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				EEF42F10270BD90F0088043F /* Manager */,
 				EE1D8AED27180D4E003614BE /* User */,
+				EEF42F10270BD90F0088043F /* Manager */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -385,6 +385,7 @@
 		EE3BA57F270301F200281096 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE09E940277349710032F1AA /* ModelType.swift */,
 				EE55923A270DEC1200223D22 /* UserData */,
 				EE559239270DEC0600223D22 /* ManagerData */,
 			);
@@ -846,7 +847,6 @@
 			children = (
 				EED1FD332761D35A004AD43E /* APIEnvironment.swift */,
 				EED1FD352761D6D5004AD43E /* Networkable.swift */,
-				EEC4301C2758A8A4008F802F /* NetworkManager.swift */,
 				EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */,
 			);
 			path = Network;
@@ -1134,6 +1134,7 @@
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EEC4302327591141008F802F /* BambooStep.swift in Sources */,
 				EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */,
+				EE09E941277349710032F1AA /* ModelType.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
 				EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */,
@@ -1169,7 +1170,6 @@
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
-				EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,

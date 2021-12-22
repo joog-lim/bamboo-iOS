@@ -14,7 +14,8 @@ target 'bamboo-iOS' do
   pod 'KeychainSwift', '~> 19.0'
   pod 'JGProgressHUD'
   pod 'PanModal'
-  
+  pod 'Reusable'
+
   
   # Networking
   pod 'Moya/RxSwift'
