@@ -37,6 +37,7 @@ class BaseTableViewCell<T> : UITableViewCell,Reusable{
     }
     func bind(_ model: T){}
 }
+
 //new Reactor
 class baseTableViewCell<T : Reactor> : UITableViewCell,Reusable{
     
@@ -51,17 +52,20 @@ class baseTableViewCell<T : Reactor> : UITableViewCell,Reusable{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        reuse()
-    }
-    func reuse(){ }
     
     func configure() {
         selectionStyle = .none
     }
-    var model: T? {
-        didSet { if let model = model { bind(model) } }
+    
+    func bindView(reactor: T){}
+    func bindAction(reactor: T){}
+    func bindState(reactor: T){}
+}
+
+extension baseTableViewCell : View{
+    func bind(reactor: T) {
+        bindView(reactor: reactor)
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
     }
-    func bind(_ model: T){}
 }

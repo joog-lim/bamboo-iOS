@@ -7,7 +7,8 @@
 
 import UIKit
 import RxSwift
-class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
+import RxCocoa
+class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCellReactor>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -40,7 +41,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private let cellSettingbtn = UIButton().then{
         $0.setTitle("신고", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
-        $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private let footerView = UIView()
@@ -48,7 +49,7 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
-        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
+//        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
     
     //MARK: - Selector
@@ -56,9 +57,9 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         likeBtn.isSelected = !likeBtn.isSelected
         delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
     }
-    @objc private func reportBtnclickAction(){
-        delegate?.clickReportBtnAction(cell: self)
-    }
+//    @objc private func reportBtnclickAction(){
+//        delegate?.clickReportBtnAction(cell: self)
+//    }
 
     //MARK: - Configure
     override func configure() {
@@ -73,12 +74,6 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     private func addSubviews(){
         contentView.addSubview(view)
         [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn].forEach { view.addSubview($0)}
-    }
-
-    //Cell 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
     }
     
     //MARK: - Location(나중 정리 예정)
@@ -128,16 +123,26 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
     }
     
     //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: Data) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
-        titleLabel.text = model.title
-        contentLabel.text = model.content
-        likeBtn.label.text = String(model.like)
-        likeBtn.isSelected = model.isSelected ?? false
+//    override func bind(_ model: Data) {
+//        super.bind(model)
+//        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
+//        dataLabel.text = model.data
+//        tagLabel.text = "#" +  model.tag.rawValue
+//        titleLabel.text = model.title
+//        contentLabel.text = model.content
+//        likeBtn.label.text = String(model.like)
+//        likeBtn.isSelected = model.isSelected ?? false
+//    }
+    
+    override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
+        super.bindView(reactor: reactor)
+        
+        cellSettingbtn.rx.tap
+            .subscribe(onDisposed: {
+                print("클릭")
+            }).disposed(by: disposeBag)
     }
+    
 }
 //MARK: - 신고 버튼 눌렸을때 동작
 protocol ClickReportBtnActionDelegate : AnyObject{

@@ -15,15 +15,16 @@ final class MainReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     //MARK: - Event
     enum Action{
+        case viewDidLoad
         case loadData
         case writeData
         case reportBtnClickAction(idx : String, index : Int)
     }
     enum Mutation{
-        
+        case updateDataSource
     }
     struct State{
-        
+            
     }
     
     //MARK: - Properties
@@ -40,6 +41,8 @@ final class MainReactor : Reactor, Stepper{
 extension MainReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
+        case .viewDidLoad:
+            return Observable<Mutation>.just(.updateDataSource)
         case.loadData:
             return .empty()
         case .writeData:
@@ -49,5 +52,16 @@ extension MainReactor{
             steps.accept(BambooStep.reportModalsRequired(idx: idx, index: index))
             return .empty()
         }
+    }
+}
+//MARK: - reduce
+extension MainReactor{
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation{
+        case .updateDataSource:
+            <#code#>
+        }
+        return state
     }
 }

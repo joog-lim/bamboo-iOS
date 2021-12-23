@@ -9,11 +9,13 @@ import UIKit
 import RxDataSources
 import RxSwift
 import RxCocoa
+import Reusable
 
 final class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
     private var isLoaing : Bool = false
+    
     
     lazy var data : [Data] = [.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false),.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false)]
     
@@ -28,7 +30,7 @@ final class MainViewController : baseVC<MainReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(BulletinBoardsTableViewCell.self, forCellReuseIdentifier: BulletinBoardsTableViewCell.reusableID)
+        $0.register(cellType: BulletinBoardsTableViewCell.self)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -125,7 +127,6 @@ final class MainViewController : baseVC<MainReactor>{
     }
     override func bindView(reactor: MainReactor) {
         super.bindView(reactor: reactor)
-        
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
@@ -140,10 +141,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BulletinBoardsTableViewCell.reusableID, for: indexPath) as? BulletinBoardsTableViewCell else{return UITableViewCell()}
-            cell.model = data[indexPath.item]
-            cell.delegate = self
-            return cell
+        let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
+        cell.delegate = self
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

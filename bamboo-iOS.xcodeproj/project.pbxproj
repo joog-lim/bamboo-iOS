@@ -13,6 +13,7 @@
 		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
 		EE23E197277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */; };
+		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -70,6 +71,7 @@
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
+		EEB505C127746F9E00AA62AE /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB505C027746F9E00AA62AE /* MainSection.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -128,6 +130,7 @@
 		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
 		EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCellReactor.swift; sourceTree = "<group>"; };
+		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
+		EEB505C027746F9E00AA62AE /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
@@ -352,6 +356,14 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
+		EE23E19827736ADA001171EB /* Algorithem */ = {
+			isa = PBXGroup;
+			children = (
+				EE23E19927736AE3001171EB /* Algorithem.swift */,
+			);
+			path = Algorithem;
+			sourceTree = "<group>";
+		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				EE09E940277349710032F1AA /* ModelType.swift */,
+				EE23E19827736ADA001171EB /* Algorithem */,
 				EE55923A270DEC1200223D22 /* UserData */,
 				EE559239270DEC0600223D22 /* ManagerData */,
 			);
@@ -483,6 +496,7 @@
 			children = (
 				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
 				EE97ACF0275DEAF500A05857 /* MainReactor.swift */,
+				EEB505C027746F9E00AA62AE /* MainSection.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1119,6 +1133,7 @@
 				EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
+				EEB505C127746F9E00AA62AE /* MainSection.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
@@ -1154,6 +1169,7 @@
 				EE97ACE9275DB3A000A05857 /* MainFlow.swift in Sources */,
 				EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */,
 				EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */,
+				EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,

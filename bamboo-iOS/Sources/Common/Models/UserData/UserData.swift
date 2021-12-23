@@ -25,3 +25,5 @@ struct Data {
     let like : Int
     var isSelected : Bool? = false
 }
+
+
