@@ -49,6 +49,7 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
+        $0.backgroundColor = .red
 //        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
     
@@ -118,7 +119,6 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
             $0.bottom.equalToSuperview().inset(11)
             $0.right.equalToSuperview().inset(bounds.width/29)
             $0.height.equalTo(18)
-            $0.width.equalTo(bounds.width/12.83)
         }
     }
     
