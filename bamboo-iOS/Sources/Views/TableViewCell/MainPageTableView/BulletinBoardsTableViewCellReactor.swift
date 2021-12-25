@@ -18,4 +18,3 @@ class BulletinBoardsTableViewCellReactor: Reactor{
         self.initialState = bulletinBoards
     }
 }
-

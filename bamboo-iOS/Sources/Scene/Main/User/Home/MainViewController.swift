@@ -4,21 +4,16 @@
 //
 //  Created by Ji-hoon Ahn on 2021/09/13.
 //
-
 import UIKit
-import RxDataSources
+import Reusable
 import RxSwift
 import RxCocoa
-import Reusable
+import RxDataSources
 
 final class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
     private var isLoaing : Bool = false
-    
-    
-    lazy var data : [Data] = [.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false),.init(numberOfAlgorithm: 1, data: "2021년 11월 20일", tag: .DailyRoutine, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집", like: 3, isSelected: false)]
-    
     
     private let titleLabel = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
@@ -34,8 +29,9 @@ final class MainViewController : baseVC<MainReactor>{
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
-        $0.estimatedRowHeight = 300
+        $0.rowHeight = UITableView.automaticDimension
     }
+    
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
     private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
@@ -49,13 +45,13 @@ final class MainViewController : baseVC<MainReactor>{
 
     private func likeBtnClick(indexPath : Int, state : Bool){
         print("좋아요 :: \(indexPath)번째 \(state)")
-        data[indexPath].isSelected = state
+        //        data[indexPath].isSelected = state
     }
 
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        tableviewSetting()
+        setupView()
         navigationSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -79,17 +75,19 @@ final class MainViewController : baseVC<MainReactor>{
         super.viewDidLayoutSubviews()
         writeBtn.layer.cornerRadius = writeBtn.frame.height/2
     }
+    
     //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
+    private func setupView(){
+        self.mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
+    
     //MARK: - Header
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
         mainTableView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
-            $0.left.equalToSuperview().offset(20)
+            $0.top.left.equalToSuperview().offset(20)
         }
     }
     //MARK: - Footer
@@ -102,65 +100,44 @@ final class MainViewController : baseVC<MainReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
-    
     private func navigationSetting(){
         navigationItem.applyImageNavigation()
     }
     
-    //MARK: - Data load More
-    private func loadMoreData(){
-        if !self.isLoaing{
-            self.isLoaing = true
-            let start = data.count
-            let end = data.count + 3
-            DispatchQueue.global().async {
-                sleep(2)
-                for i in start...end{
-                    self.data.append(Data.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집",like: 3))
-                }
-                DispatchQueue.main.async {
-                    self.mainTableView.reloadData()
-                    self.isLoaing = false
-                }
-            }
-        }
-    }
     override func bindView(reactor: MainReactor) {
-        super.bindView(reactor: reactor)
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
+    override func bindAction(reactor: MainReactor) {
+        self.rx.viewDidLoad
+            .map{_ in Reactor.Action.viewDidLoad}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    override func bindState(reactor: MainReactor) {
+        let dataSource = RxTableViewSectionedReloadDataSource<MainViewSection>{ dataSource, tableView, indexPath, sectionItem in
+            switch sectionItem{
+            case.main(let reactor):
+                let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
+                cell.reactor = reactor
+                return cell
+            }
+        }
+        
+        reactor.state
+            .map{ $0.mainSection}
+            .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+    }
 }
 
 //MARK: - TableView
-extension MainViewController: UITableViewDelegate, UITableViewDataSource{
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
-        cell.delegate = self
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
-            loadMoreData()
+extension MainViewController : UITableViewDelegate{
+        func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 300
         }
-    }
 }
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol

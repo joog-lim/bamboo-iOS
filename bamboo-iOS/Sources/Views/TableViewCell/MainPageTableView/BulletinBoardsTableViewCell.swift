@@ -123,26 +123,15 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
     }
     
     //MARK: - bind로 데이터 넘겨줌
-//    override func bind(_ model: Data) {
-//        super.bind(model)
-//        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
-//        dataLabel.text = model.data
-//        tagLabel.text = "#" +  model.tag.rawValue
-//        titleLabel.text = model.title
-//        contentLabel.text = model.content
-//        likeBtn.label.text = String(model.like)
-//        likeBtn.isSelected = model.isSelected ?? false
-//    }
-    
     override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
-        super.bindView(reactor: reactor)
-        
-        cellSettingbtn.rx.tap
-            .subscribe(onDisposed: {
-                print("클릭")
-            }).disposed(by: disposeBag)
+        algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
+        dataLabel.text = "2021년 12월 25일"
+        tagLabel.text = reactor.currentState.tag
+        titleLabel.text = reactor.currentState.title
+        contentLabel.text = reactor.currentState.content
+        likeBtn.label.text = "11"
+        likeBtn.isSelected = false
     }
-    
 }
 //MARK: - 신고 버튼 눌렸을때 동작
 protocol ClickReportBtnActionDelegate : AnyObject{

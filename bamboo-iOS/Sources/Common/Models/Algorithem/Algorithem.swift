@@ -13,6 +13,7 @@ struct Algorithem : ModelType{
     var title : String
     var content : String
     var tag : String
+    var isDone = false
 }
 
 extension Algorithem : Equatable{
