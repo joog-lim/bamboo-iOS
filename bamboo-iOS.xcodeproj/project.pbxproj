@@ -71,7 +71,6 @@
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
-		EEB505C127746F9E00AA62AE /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB505C027746F9E00AA62AE /* MainSection.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -84,6 +83,9 @@
 		EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */; };
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
+		EEC9F38A2779382C006F7339 /* WritingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F3892779382C006F7339 /* WritingSection.swift */; };
+		EEC9F38D27793A21006F7339 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38C27793A21006F7339 /* DropDown.swift */; };
+		EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38E277970CF006F7339 /* MainSection.swift */; };
 		EECCC126275D04000068A4BD /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC125275D04000068A4BD /* ViewExt.swift */; };
 		EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC127275D041C0068A4BD /* ColorExt.swift */; };
 		EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC129275D045B0068A4BD /* NavigationExt.swift */; };
@@ -100,6 +102,7 @@
 		EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC62763BD4900898537 /* StandByReactor.swift */; };
 		EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC82763BD6300898537 /* RefusalReactor.swift */; };
 		EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DCA2763BD8500898537 /* DeleteReactor.swift */; };
+		EEDBFA492778B1F700444591 /* DropdownTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFA482778B1F700444591 /* DropdownTableViewReactor.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
@@ -194,7 +197,6 @@
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
-		EEB505C027746F9E00AA62AE /* MainSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
@@ -203,6 +205,9 @@
 		EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerLoginAPI.swift; path = "bamboo-iOS/Sources/Network/ManagerLoginAPI.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
+		EEC9F3892779382C006F7339 /* WritingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSection.swift; sourceTree = "<group>"; };
+		EEC9F38C27793A21006F7339 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		EEC9F38E277970CF006F7339 /* MainSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		EECCC125275D04000068A4BD /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		EECCC127275D041C0068A4BD /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		EECCC129275D045B0068A4BD /* NavigationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExt.swift; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 		EED42DC62763BD4900898537 /* StandByReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByReactor.swift; sourceTree = "<group>"; };
 		EED42DC82763BD6300898537 /* RefusalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalReactor.swift; sourceTree = "<group>"; };
 		EED42DCA2763BD8500898537 /* DeleteReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReactor.swift; sourceTree = "<group>"; };
+		EEDBFA482778B1F700444591 /* DropdownTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownTableViewReactor.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
@@ -385,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */,
+				EEDBFA482778B1F700444591 /* DropdownTableViewReactor.swift */,
 			);
 			path = DropDownTableView;
 			sourceTree = "<group>";
@@ -402,6 +409,7 @@
 			children = (
 				EE09E940277349710032F1AA /* ModelType.swift */,
 				EE23E19827736ADA001171EB /* Algorithem */,
+				EEC9F38B27793A0E006F7339 /* DropDown */,
 				EE55923A270DEC1200223D22 /* UserData */,
 				EE559239270DEC0600223D22 /* ManagerData */,
 			);
@@ -426,6 +434,7 @@
 			children = (
 				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
 				EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */,
+				EEC9F3892779382C006F7339 /* WritingSection.swift */,
 			);
 			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
@@ -496,7 +505,7 @@
 			children = (
 				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
 				EE97ACF0275DEAF500A05857 /* MainReactor.swift */,
-				EEB505C027746F9E00AA62AE /* MainSection.swift */,
+				EEC9F38E277970CF006F7339 /* MainSection.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -893,6 +902,14 @@
 			path = Rx;
 			sourceTree = "<group>";
 		};
+		EEC9F38B27793A0E006F7339 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9F38C27793A21006F7339 /* DropDown.swift */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
 		EECCC12F275D07C30068A4BD /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,7 +1150,6 @@
 				EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
-				EEB505C127746F9E00AA62AE /* MainSection.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
@@ -1185,9 +1201,11 @@
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
+				EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
+				EEC9F38A2779382C006F7339 /* WritingSection.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
@@ -1205,8 +1223,10 @@
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
+				EEC9F38D27793A21006F7339 /* DropDown.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
+				EEDBFA492778B1F700444591 /* DropdownTableViewReactor.swift in Sources */,
 				EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,

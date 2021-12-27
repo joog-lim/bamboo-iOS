@@ -7,11 +7,14 @@
 
 import UIKit
 import SnapKit
-import RxKeyboard
+import Reusable
 import PanModal
+
 import RxSwift
 import RxCocoa
 import RxFlow
+import RxKeyboard
+import RxDataSources
 
 final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK - Tag Data
@@ -19,9 +22,9 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     
     //MARK: - Properties
     private let tagSelectView = UIView()
-    private let tagChoose = UITableView().then{
-        $0.register(DropDownTableViewCell.self, forCellReuseIdentifier: DropDownTableViewCell.reusableID)
-        $0.backgroundColor = .white
+    
+    private let tagChoose = UITableView(frame: .zero, style: .plain).then{
+        $0.register(cellType: DropDownTableViewCell.self)
         $0.separatorColor = .clear
         $0.isScrollEnabled = false
         $0.layer.cornerRadius = 5
@@ -107,6 +110,14 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
                 self.tagSelectView.alpha = 0
             }).disposed(by: disposeBag)
     }
+    override func bindState(reactor: WritingBulletinBoardReactor) {
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<Void, DropdownTableViewReactor>>(configureCell: { dataSource, tableView, indexPath, reactor in
+            let cell = tableView.dequeueReusableCell(for: indexPath) as DropDownTableViewCell
+            cell.reactor = reactor
+            return cell
+        })
+        
+    }
 }
 
 //MARK: - DropDown
@@ -165,7 +176,7 @@ extension WritingBulletinBoardModal : UITableViewDelegate , UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DropDownTableViewCell.reusableID, for: indexPath) as? DropDownTableViewCell else {return UITableViewCell()}
-        cell.model = WritingBulletinBoardModal(reactor: .init()).tagDataSection[indexPath.row]
+//        cell.model = WritingBulletinBoardModal(reactor: .init()).tagDataSection[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -262,7 +273,6 @@ extension WritingBulletinBoardModal{
 
 //MARK: - PanModal Setting
 extension WritingBulletinBoardModal : PanModalPresentable{
-    
     var panScrollable: UIScrollView? {return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
     var cornerRadius: CGFloat{return 40}

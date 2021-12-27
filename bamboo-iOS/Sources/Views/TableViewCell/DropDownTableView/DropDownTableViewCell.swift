@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class DropDownTableViewCell : BaseTableViewCell<Data.tag>{    
+class DropDownTableViewCell : baseTableViewCell<DropdownTableViewReactor>{    
     private  let cellListTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .black
@@ -28,9 +29,13 @@ class DropDownTableViewCell : BaseTableViewCell<Data.tag>{
             make.center.equalToSuperview()
         }
     }
-    
-    override func bind(_ model: Data.tag) {
-        super.bind(model)
-        cellListTitle.text = "#" + model.rawValue
+  
+    override func bindView(reactor: DropdownTableViewReactor) {
+        cellListTitle.text = "#\(reactor.currentState.rawValue)"
     }
+    
+//    override func bind(_ model: Data.tag) {
+//        super.bind(model)
+//        cellListTitle.text = "#" + model.rawValue
+//    }
 }

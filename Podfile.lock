@@ -6,6 +6,7 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Differentiator (5.0.0)
+  - DropDown (2.3.13)
   - GoogleSignIn (6.0.2):
     - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
@@ -81,6 +82,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - DropDown
   - GoogleSignIn
   - JGProgressHUD
   - KeychainSwift (~> 19.0)
@@ -108,6 +110,7 @@ SPEC REPOS:
     - Alamofire
     - AppAuth
     - Differentiator
+    - DropDown
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
@@ -141,6 +144,7 @@ SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
@@ -170,6 +174,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 3d553738c64a3ac6d69539cfd1eaf89b9fb4e69b
+PODFILE CHECKSUM: 216068a4a8ff6a406b878ed5e06ab401a52d8b45
 
 COCOAPODS: 1.11.2

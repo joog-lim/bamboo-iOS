@@ -49,7 +49,6 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
-        $0.backgroundColor = .red
 //        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
     
@@ -68,7 +67,6 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
         addSubviews()
         location()
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
-
     }
 
     //MARK: - AddSubView
@@ -122,7 +120,7 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
         }
     }
     
-    //MARK: - bind로 데이터 넘겨줌
+    //MARK: - bind
     override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
         algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
         dataLabel.text = "2021년 12월 25일"

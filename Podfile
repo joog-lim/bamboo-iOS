@@ -15,6 +15,8 @@ target 'bamboo-iOS' do
   pod 'JGProgressHUD'
   pod 'PanModal'
   pod 'Reusable'
+  pod 'DropDown'
+
   
   # Networking
   pod 'Moya/RxSwift'
