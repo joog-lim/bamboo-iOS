@@ -7,7 +7,7 @@
 
 import RxDataSources
 
-enum DropDown : String{
+enum DropDownModel : String{
     case Humor = "유머"
     case Study = "공부"
     case DailyRoutine = "일상"
