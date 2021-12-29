@@ -11,7 +11,6 @@ import RxFlow
 
 class BulletinBoardsTableViewCellReactor: Reactor{
     typealias Action = NoAction
-
     let initialState: Algorithem
     
     init( bulletinBoards : Algorithem){

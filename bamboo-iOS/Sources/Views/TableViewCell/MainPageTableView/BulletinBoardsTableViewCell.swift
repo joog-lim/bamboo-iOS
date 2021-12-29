@@ -8,7 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
-class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCellReactor>{
+
+protocol ClickReportBtnActionDelegate : AnyObject{
+    func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
+    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
+}
+
+final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCellReactor>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -41,7 +47,6 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
     private let cellSettingbtn = UIButton().then{
         $0.setTitle("신고", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
-//        $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
     private let footerView = UIView()
@@ -49,17 +54,7 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
-//        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
     }
-    
-    //MARK: - Selector
-    @objc private func likeBtnClick(){
-        likeBtn.isSelected = !likeBtn.isSelected
-        delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
-    }
-//    @objc private func reportBtnclickAction(){
-//        delegate?.clickReportBtnAction(cell: self)
-//    }
 
     //MARK: - Configure
     override func configure() {
@@ -68,7 +63,7 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
         location()
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
     }
-
+    
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
@@ -119,20 +114,26 @@ class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCel
             $0.height.equalTo(18)
         }
     }
-    
     //MARK: - bind
     override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
         algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
-        dataLabel.text = "2021년 12월 25일"
+        dataLabel.text = "\(reactor.currentState.createdAt)"
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content
         likeBtn.label.text = "11"
         likeBtn.isSelected = false
     }
-}
-//MARK: - 신고 버튼 눌렸을때 동작
-protocol ClickReportBtnActionDelegate : AnyObject{
-    func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
+    override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
+        cellSettingbtn.rx.tap
+            .subscribe({[self] _ in
+                delegate?.clickReportBtnAction(cell: self)
+            }).disposed(by: disposeBag)
+        
+        likeBtn.rx.tap
+            .subscribe({[self] _ in
+                likeBtn.isSelected = !likeBtn.isSelected
+                delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
+            }).disposed(by: disposeBag)
+    }
 }

@@ -6,6 +6,7 @@
 //
 import UIKit
 import Reusable
+
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -30,6 +31,7 @@ final class MainViewController : baseVC<MainReactor>{
         $0.separatorColor = .clear
         $0.allowsSelection = false
         $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 300
     }
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
@@ -51,7 +53,6 @@ final class MainViewController : baseVC<MainReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        setupView()
         navigationSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -74,12 +75,6 @@ final class MainViewController : baseVC<MainReactor>{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         writeBtn.layer.cornerRadius = writeBtn.frame.height/2
-    }
-    
-    //MARK: - tableViewSetting
-    private func setupView(){
-        self.mainTableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
     }
     
     //MARK: - Header
@@ -121,6 +116,7 @@ final class MainViewController : baseVC<MainReactor>{
             switch sectionItem{
             case.main(let reactor):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
+                cell.delegate = self
                 cell.reactor = reactor
                 return cell
             }
@@ -133,12 +129,6 @@ final class MainViewController : baseVC<MainReactor>{
     }
 }
 
-//MARK: - TableView
-extension MainViewController : UITableViewDelegate{
-        func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 300
-        }
-}
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{

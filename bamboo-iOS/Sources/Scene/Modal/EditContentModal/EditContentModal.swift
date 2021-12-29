@@ -101,7 +101,7 @@ extension EditContentModal : PanModalPresentable{
     var panScrollable: UIScrollView? {return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
     var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/2.8)}
     var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
     var anchorModalToLongForm: Bool {return false}
     var shouldRoundTopCorners: Bool {return true}

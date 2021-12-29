@@ -13,6 +13,8 @@ struct Algorithem : ModelType{
     var title : String
     var content : String
     var tag : String
+    var createdAt : Int64
+    var reason : String?
     var isDone = false
 }
 

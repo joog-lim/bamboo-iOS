@@ -24,7 +24,6 @@ PODS:
     - RxSwift (~> 6.0)
   - Nimble (9.2.1)
   - PanModal (1.2.7)
-  - ReachabilitySwift (5.0.0)
   - ReactorKit (3.1.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
@@ -33,9 +32,6 @@ PODS:
     - Reusable/View (= 4.1.2)
   - Reusable/Storyboard (4.1.2)
   - Reusable/View (4.1.2)
-  - RxAlertViewable (1.2):
-    - RxCocoa (~> 6)
-    - RxSwift (~> 6)
   - RxAppState (1.7.1):
     - RxCocoa (~> 6.2)
     - RxSwift (~> 6.2)
@@ -65,10 +61,6 @@ PODS:
   - RxNimble/RxBlocking (5.1.2):
     - RxBlocking
     - RxNimble/Core
-  - RxReachability (1.2.1):
-    - ReachabilitySwift (< 6.0, >= 5.0)
-    - RxCocoa (~> 6)
-    - RxSwift (~> 6)
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
@@ -90,7 +82,6 @@ DEPENDENCIES:
   - PanModal
   - ReactorKit
   - Reusable
-  - RxAlertViewable
   - RxAppState
   - RxCocoa
   - RxDataSources
@@ -98,7 +89,6 @@ DEPENDENCIES:
   - RxGesture
   - RxKeyboard
   - RxNimble
-  - RxReachability
   - RxSwift
   - RxTest
   - RxViewController
@@ -119,10 +109,8 @@ SPEC REPOS:
     - Moya
     - Nimble
     - PanModal
-    - ReachabilitySwift
     - ReactorKit
     - Reusable
-    - RxAlertViewable
     - RxAppState
     - RxBlocking
     - RxCocoa
@@ -131,7 +119,6 @@ SPEC REPOS:
     - RxGesture
     - RxKeyboard
     - RxNimble
-    - RxReachability
     - RxRelay
     - RxSwift
     - RxTest
@@ -153,10 +140,8 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
-  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
-  RxAlertViewable: 8b8b82e6c22b974813e67a79b0c3d500bb08b676
   RxAppState: 9c34f951d4ff8b9034f84016fe766202365bceb2
   RxBlocking: 0b29f7d2079109a8de49c411381bed7c33ef1eeb
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -165,7 +150,6 @@ SPEC CHECKSUMS:
   RxGesture: f059f2aeef966fb17dad56ee440e76410f10e55f
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
   RxNimble: 60c8162b1518306a11d0c272a65ade133b209670
-  RxReachability: bfd13548bf1dac7a877082d13918a9f39bdb5c18
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   RxTest: 0c692fa672b694373ba86d2b00033595297a2831
@@ -174,6 +158,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 216068a4a8ff6a406b878ed5e06ab401a52d8b45
+PODFILE CHECKSUM: 0468eae1001d7cae7d04aaf40ef0d13a8108cb3b
 
 COCOAPODS: 1.11.2

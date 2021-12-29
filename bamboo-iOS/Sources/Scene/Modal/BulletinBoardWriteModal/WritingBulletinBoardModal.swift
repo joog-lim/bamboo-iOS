@@ -24,7 +24,8 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         $0.selectionBackgroundColor = .clear
         $0.layer.borderColor = UIColor.clear.cgColor
         $0.textFont = UIFont(name: "NanumSquareRoundB", size: 12) ?? UIFont()
-        $0.cellHeight = 30
+        $0.cellHeight = 29
+        
         $0.cornerRadius = 10
     }
     private let titleLabel = UILabel().then{
@@ -61,7 +62,8 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - HELPERS
     override func configureUI() {
         super.configureUI()
-        DelegateAndDatasource()
+        //MARK: - TextView Delegate
+        contentTv.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
     
@@ -77,18 +79,11 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         iphoneLocation()
         iPadLocation()
         dropDown.anchorView = tagChooseBtn
-        dropDown.bottomOffset = CGPoint(x: 0, y:30)
 
         questionTitle.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
-        
-    }
-
-    //MARK: - Delegate & DateSource
-    private func DelegateAndDatasource(){
-        contentTv.delegate = self
     }
     
     //MARK: - KeyboardSetting
@@ -98,14 +93,12 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     
     override func bindView(reactor: WritingBulletinBoardReactor) {
         super.bindView(reactor: reactor)
-
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
             }).disposed(by: disposeBag)
     }
 }
-
 //MARK: - TextView extension
 extension WritingBulletinBoardModal : UITextViewDelegate{
     // TextView Place Holder
@@ -129,6 +122,7 @@ extension WritingBulletinBoardModal{
     //MARK: - iPAD
     private func iPadLocation(){
         if UIDevice.current.isiPad{
+            dropDown.bottomOffset = CGPoint(x: 0, y: 40)
             titleLabel.snp.makeConstraints {
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(24)
@@ -165,6 +159,7 @@ extension WritingBulletinBoardModal{
     //MARK: - iPhone
     private func iphoneLocation(){
         if UIDevice.current.isiPhone{
+            dropDown.bottomOffset = CGPoint(x: 0, y:bounds.height/27.0666 + 5)
             titleLabel.snp.makeConstraints {
                 $0.left.equalToSuperview().offset(bounds.width/15.625)
                 $0.top.equalToSuperview().offset(bounds.height/33.8333)

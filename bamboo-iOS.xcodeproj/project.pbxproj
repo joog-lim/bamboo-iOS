@@ -67,6 +67,7 @@
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
+		EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */; };
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
@@ -82,14 +83,19 @@
 		EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */; };
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
-		EEC9F38A2779382C006F7339 /* WritingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F3892779382C006F7339 /* WritingSection.swift */; };
-		EEC9F38D27793A21006F7339 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38C27793A21006F7339 /* DropDown.swift */; };
 		EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38E277970CF006F7339 /* MainSection.swift */; };
 		EECCC126275D04000068A4BD /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC125275D04000068A4BD /* ViewExt.swift */; };
 		EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC127275D041C0068A4BD /* ColorExt.swift */; };
 		EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC129275D045B0068A4BD /* NavigationExt.swift */; };
 		EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12B275D04790068A4BD /* LabelExt.swift */; };
 		EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */; };
+		EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B28277AB12600B00807 /* AcceptSection.swift */; };
+		EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */; };
+		EECD8B30277B109000B00807 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B2F277B109000B00807 /* DateExt.swift */; };
+		EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B31277B610800B00807 /* StandByTableViewReactor.swift */; };
+		EECD8B34277B614100B00807 /* RefusalTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B33277B614100B00807 /* RefusalTableViewReactor.swift */; };
+		EECD8B36277B617000B00807 /* DeleteTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B35277B617000B00807 /* DeleteTableViewReactor.swift */; };
+		EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B37277B638E00B00807 /* StandBySection.swift */; };
 		EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE317276A0D4C0075711C /* ServiceProvider.swift */; };
 		EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* UserLoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
@@ -191,6 +197,7 @@
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
+		EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalSection.swift; sourceTree = "<group>"; };
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
@@ -202,14 +209,19 @@
 		EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerLoginAPI.swift; path = "bamboo-iOS/Sources/Network/ManagerLoginAPI.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
-		EEC9F3892779382C006F7339 /* WritingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSection.swift; sourceTree = "<group>"; };
-		EEC9F38C27793A21006F7339 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		EEC9F38E277970CF006F7339 /* MainSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		EECCC125275D04000068A4BD /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		EECCC127275D041C0068A4BD /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		EECCC129275D045B0068A4BD /* NavigationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExt.swift; sourceTree = "<group>"; };
 		EECCC12B275D04790068A4BD /* LabelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExt.swift; sourceTree = "<group>"; };
 		EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExt.swift; sourceTree = "<group>"; };
+		EECD8B28277AB12600B00807 /* AcceptSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptSection.swift; sourceTree = "<group>"; };
+		EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTableViewReactor.swift; sourceTree = "<group>"; };
+		EECD8B2F277B109000B00807 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		EECD8B31277B610800B00807 /* StandByTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewReactor.swift; sourceTree = "<group>"; };
+		EECD8B33277B614100B00807 /* RefusalTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewReactor.swift; sourceTree = "<group>"; };
+		EECD8B35277B617000B00807 /* DeleteTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewReactor.swift; sourceTree = "<group>"; };
+		EECD8B37277B638E00B00807 /* StandBySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandBySection.swift; sourceTree = "<group>"; };
 		EECDE317276A0D4C0075711C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		EECDE319276A0D830075711C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -395,8 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				EE09E940277349710032F1AA /* ModelType.swift */,
+				EECD8B2C277AB5C700B00807 /* Accept */,
 				EE23E19827736ADA001171EB /* Algorithem */,
-				EEC9F38B27793A0E006F7339 /* DropDown */,
 				EE55923A270DEC1200223D22 /* UserData */,
 				EE559239270DEC0600223D22 /* ManagerData */,
 			);
@@ -421,7 +433,6 @@
 			children = (
 				EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */,
 				EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */,
-				EEC9F3892779382C006F7339 /* WritingSection.swift */,
 			);
 			path = BulletinBoardWriteModal;
 			sourceTree = "<group>";
@@ -502,6 +513,7 @@
 			children = (
 				EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */,
 				EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */,
+				EECD8B28277AB12600B00807 /* AcceptSection.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -511,6 +523,7 @@
 			children = (
 				EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */,
 				EED42DC62763BD4900898537 /* StandByReactor.swift */,
+				EECD8B37277B638E00B00807 /* StandBySection.swift */,
 			);
 			path = StandBy;
 			sourceTree = "<group>";
@@ -520,6 +533,7 @@
 			children = (
 				EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */,
 				EED42DC82763BD6300898537 /* RefusalReactor.swift */,
+				EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */,
 			);
 			path = Refusal;
 			sourceTree = "<group>";
@@ -537,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */,
+				EECD8B31277B610800B00807 /* StandByTableViewReactor.swift */,
 			);
 			path = StandBy;
 			sourceTree = "<group>";
@@ -545,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */,
+				EECD8B33277B614100B00807 /* RefusalTableViewReactor.swift */,
 			);
 			path = Refusal;
 			sourceTree = "<group>";
@@ -553,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */,
+				EECD8B35277B617000B00807 /* DeleteTableViewReactor.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -820,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
+				EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -876,6 +894,7 @@
 				EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */,
 				EE98CE49277055F100AE407B /* Cell+ReusableID.swift */,
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
+				EECD8B2F277B109000B00807 /* DateExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -886,14 +905,6 @@
 				EEC4302A27591488008F802F /* StepExt.swift */,
 			);
 			path = Rx;
-			sourceTree = "<group>";
-		};
-		EEC9F38B27793A0E006F7339 /* DropDown */ = {
-			isa = PBXGroup;
-			children = (
-				EEC9F38C27793A21006F7339 /* DropDown.swift */,
-			);
-			path = DropDown;
 			sourceTree = "<group>";
 		};
 		EECCC12F275D07C30068A4BD /* LoginFlow */ = {
@@ -911,6 +922,13 @@
 				EE97ACF2275DFBDB00A05857 /* User */,
 			);
 			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		EECD8B2C277AB5C700B00807 /* Accept */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accept;
 			sourceTree = "<group>";
 		};
 		EED265502761733E00A1994A /* bamboo-iOSTests */ = {
@@ -1137,6 +1155,7 @@
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */,
 				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
 				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
@@ -1145,6 +1164,7 @@
 				EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */,
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EEC4302B27591488008F802F /* StepExt.swift in Sources */,
+				EECD8B34277B614100B00807 /* RefusalTableViewReactor.swift in Sources */,
 				EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */,
 				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
 				EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */,
@@ -1165,12 +1185,15 @@
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */,
 				EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */,
+				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
 				EE23E197277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift in Sources */,
 				EE97ACE9275DB3A000A05857 /* MainFlow.swift in Sources */,
 				EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */,
+				EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */,
 				EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */,
 				EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */,
+				EECD8B36277B617000B00807 /* DeleteTableViewReactor.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,
@@ -1180,6 +1203,7 @@
 				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
+				EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE489A992771B60200513E94 /* OSLogExt.swift in Sources */,
@@ -1190,7 +1214,6 @@
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
-				EEC9F38A2779382C006F7339 /* WritingSection.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
@@ -1202,13 +1225,14 @@
 				EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
+				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
+				EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
-				EEC9F38D27793A21006F7339 /* DropDown.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */,

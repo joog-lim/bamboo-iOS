@@ -67,13 +67,10 @@ extension MainReactor{
 }
 
 func getMainData() -> [MainViewSection]{
-    let mainItem1 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트1", tag: "유머", isDone: true)))
-    let mainItem2 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트2", tag: "유머", isDone: true)))
-    let mainItem3 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트3", tag: "유머", isDone: true)))
-    let mainItem4 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 4, title: "저녁", content: "테스트4", tag: "유머", isDone: true)))
-    let mainItem5 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 4, title: "저녁", content: "테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5테스트5", tag: "유머", isDone: true)))
+    let mainItem1 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 1, title: "집", content: "집가고 싶다", tag: "유머", createdAt: 1640316269465)))
 
-    let itemInFirstSection = [mainItem1,mainItem2,mainItem3,mainItem4,mainItem5]
+    
+    let itemInFirstSection = [mainItem1]
     let firstSection = MainViewSection(original: MainViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
     
     return [firstSection]

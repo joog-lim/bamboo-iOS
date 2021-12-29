@@ -7,13 +7,11 @@
 
 import UIKit
 
+import RxDataSources
+
 final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Properties
     private var isLoaing : Bool = false
-
-    //MARK: - Dummy Data
-    var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
-
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
@@ -26,6 +24,8 @@ final class StandByViewController : baseVC<StandByReactor>{
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 300
     }
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -37,7 +37,6 @@ final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
@@ -54,27 +53,6 @@ final class StandByViewController : baseVC<StandByReactor>{
             $0.edges.equalTo(view.safeArea.edges)
         }
     }
-
-
-    //MARK: - Data load More
-    private func loadMoreData(){
-        if !self.isLoaing{
-            self.isLoaing = true
-            let start = data.count
-            let end = data.count + 3
-            DispatchQueue.global().async {
-                sleep(2)
-                for i in start...end{
-
-                    self.data.append(ManagerTextData.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
-                }
-                DispatchQueue.main.async {
-                    self.mainTableView.reloadData()
-                    self.isLoaing = false
-                }
-            }
-        }
-    }
     
     //MARK: - TableViewHeaderSetting
     private func tableViewHeaderSetting(){
@@ -84,10 +62,6 @@ final class StandByViewController : baseVC<StandByReactor>{
             $0.centerY.equalTo(tableViewHeader)
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
-    }
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
     }
     //MARK: - tableViewFooter
     private func tableFooterViewSetting(){
@@ -100,38 +74,34 @@ final class StandByViewController : baseVC<StandByReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
-}
-
-//MARK: - TableView
-extension StandByViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    override func bindAction(reactor: StandByReactor) {
+        self.rx.viewDidLoad
+            .map{_ in Reactor.Action.viewDidLoad}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: StandByTableViewCell.reusableID, for: indexPath) as? StandByTableViewCell else{return UITableViewCell()}
-            cell.model = data[ indexPath.item]
-            cell.delegate = self
-            return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
-            loadMoreData()
+    override func bindState(reactor: StandByReactor) {
+        let dataSource = RxTableViewSectionedReloadDataSource<StandByViewSection>{ dataSource, tableView, indexPath, sectionItem in
+            switch sectionItem{
+            case.main(let reactor):
+                let cell = tableView.dequeueReusableCell(for: indexPath) as StandByTableViewCell
+                cell.delegate = self
+                cell.reactor = reactor
+                return cell
+            }
         }
+        
+        reactor.state
+            .map{ $0.mainSection}
+            .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 }
 
 //MARK: - Click Cell inside Btn Action
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
-    func clickSeeMoreDetailBtn(cell: StandByTableViewCell) {
+    func clickSeeMoreDetailBtn(cell: StandByTableViewCell, id: String) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: "\(indexPath.row)",index: indexPath.row))
+        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id,index: indexPath.row))
     }
 }

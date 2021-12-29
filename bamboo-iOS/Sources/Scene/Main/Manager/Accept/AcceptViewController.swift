@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import Reusable
+
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 final class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - Properties
     private var isLoaing : Bool = false
-    
-    //MARK: - dummyData
-    var data : [ManagerTextData] = [.init(numberOfAlgorithm: 193, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"),.init(numberOfAlgorithm: 192, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집"),.init(numberOfAlgorithm: 191, data: "2021년 11월 20일", tag: .School, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집")]
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
@@ -23,10 +25,12 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - TableView
     private let mainTableView = UITableView().then {
-        $0.register(AcceptManagerTableViewCell.self, forCellReuseIdentifier: AcceptManagerTableViewCell.reusableID)
+        $0.register(cellType: AcceptManagerTableViewCell.self)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 300
     }
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
         $0.backgroundColor = .clear
@@ -39,7 +43,6 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        tableviewSetting()
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
@@ -58,33 +61,7 @@ final class AcceptViewController : baseVC<AcceptReactor> {
             $0.edges.equalTo(view.safeArea.edges)
         }
     }
-
     
-    //MARK: - Modal action
-    //MARK: - tableView Cell 안에 있는 버튼 눌렸을때 동작
-    private func EditBtnClick(indexPath : Int){
-        print("수락 : \(indexPath)")
-    }
-    
-    //MARK: - Data load More
-    private func loadMoreData(){
-        if !self.isLoaing{
-            self.isLoaing = true
-            let start = data.count
-            let end = data.count + 3
-            DispatchQueue.global().async {
-                sleep(2)
-                for i in start...end{
-                    self.data.append(ManagerTextData.init(numberOfAlgorithm: i, data: "2021년 11월 20일", tag: .Humor, title: "집에 가자", content: "집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집집"))
-                }
-                DispatchQueue.main.async {
-                    self.mainTableView.reloadData()
-                    self.isLoaing = false
-                }
-            }
-        }
-    }
-
     //MARK: - Header Setting
     private func tableViewHeaderSetting(){
         mainTableView.tableHeaderView = tableViewHeader
@@ -94,12 +71,6 @@ final class AcceptViewController : baseVC<AcceptReactor> {
             $0.left.equalToSuperview().offset(bounds.width/18.75)
         }
     }
-    
-    //MARK: - tableViewSetting
-    private func tableviewSetting(){
-        [mainTableView].forEach { $0.delegate = self ;$0.dataSource = self}
-    }
-    
     //MARK: - Footer Setting
     private func tableFooterViewSetting(){
         let activityIndicatorView = UIActivityIndicatorView()
@@ -111,38 +82,35 @@ final class AcceptViewController : baseVC<AcceptReactor> {
             make.center.equalTo(tableViewFooter)
         }
     }
-}
-
-//MARK: - TableView
-extension AcceptViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    
+    override func bindAction(reactor: AcceptReactor) {
+        self.rx.viewDidLoad
+            .map{_ in Reactor.Action.viewDidLoad}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AcceptManagerTableViewCell.reusableID, for: indexPath) as? AcceptManagerTableViewCell else{return UITableViewCell()}
-            cell.model = data[ indexPath.item]
-            cell.delegate = self
-            return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-    }
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        if (offsetY > contentHeight - scrollView.frame.height * 4) && !isLoaing{
-            loadMoreData()
+    override func bindState(reactor: AcceptReactor) {
+        let dataSource = RxTableViewSectionedReloadDataSource<AcceptViewSection>{ dataSource, tableView, indexPath, sectionItem in
+            switch sectionItem{
+            case.main(let reactor):
+                let cell = tableView.dequeueReusableCell(for: indexPath) as AcceptManagerTableViewCell
+                cell.delegate = self
+                cell.reactor = reactor
+                return cell
+            }
         }
+        
+        reactor.state
+            .map{ $0.mainSection}
+            .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 }
 
 //MARK: - 수정 버튼 눌렀을때 동작
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
-    func cellSettingbtnClick(cell: AcceptManagerTableViewCell) {
+    func cellSettingbtnClick(cell: AcceptManagerTableViewCell, id: String) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: "\(indexPath.row)", index: indexPath.row))
+        reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: id, index: indexPath.row))
     }
 }

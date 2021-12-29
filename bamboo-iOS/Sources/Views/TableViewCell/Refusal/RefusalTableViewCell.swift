@@ -4,10 +4,13 @@
 //
 //  Created by Ji-hoon Ahn on 2021/10/18.
 //
-
 import UIKit
+import RxDataSources
+protocol RefusalCancelBtnDelegate : AnyObject{
+    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : String)
+}
 
-class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
+final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?
@@ -34,7 +37,6 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.setTitle("거절취소", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
-        $0.addTarget(self, action: #selector(clickRefusalBtn), for: .touchUpInside)
     }
     private lazy var titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
@@ -44,11 +46,6 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
-    }
-    
-    //MARK: - Selector
-    @objc private func clickRefusalBtn(){
-        self.delegate?.refusalCancelBtnAction(cell: self)
     }
 
     //MARK: - Configure
@@ -95,25 +92,18 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    
-    //MARK: - 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
+    override func bindView(reactor: RefusalTableViewReactor) {
+        algorithm.text = "#\(reactor.currentState.number)번째 거절됨"
+        dataLabel.text = "\(reactor.currentState.createdAt)"
+        tagLabel.text = reactor.currentState.tag
+        titleLabel.text = reactor.currentState.title
+        contentLabel.text = reactor.currentState.content
     }
-    
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: ManagerTextData) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 거절됨"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
-        titleLabel.text = model.title
-        contentLabel.text = model.content
+    override func bindAction(reactor: RefusalTableViewReactor) {
+        refusalCancelBtn.rx.tap
+            .subscribe({ [self] _ in
+                self.delegate?.refusalCancelBtnAction(cell: self, id: reactor.currentState.id)
+            }).disposed(by: disposeBag)
     }
 }
 
-//MARK: - Refusal Button action Protocol
-protocol RefusalCancelBtnDelegate : AnyObject{
-    func refusalCancelBtnAction(cell : RefusalTableViewCell)
-}

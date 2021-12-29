@@ -7,50 +7,47 @@
 
 import UIKit
 
-class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
+protocol StandBytableViewCellBtnClickDelegate : AnyObject{
+    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : String)
+}
+
+final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
     //MARK: - connect Protocol
     weak var delegate : StandBytableViewCellBtnClickDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let  view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
     
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemYellow
     }
-    private lazy var dataLabel = UILabel().then{
+    private let dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var titleLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 11)
+    private let titleLabel = UILabel().then{
+        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var cellSeeMoreDetailBtn = UIButton().then{
+    private let cellSeeMoreDetailBtn = UIButton().then{
         $0.setTitle("더보기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
-        $0.addTarget(self, action: #selector(SeeMoreDetailBtnClickAction), for: .touchUpInside)
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
-    
-    //MARK: - Selector
-    @objc private func SeeMoreDetailBtnClickAction(){
-        delegate?.clickSeeMoreDetailBtn(cell: self)
-    }
-    
     
     //MARK: - Configure
     override func configure() {
@@ -97,21 +94,18 @@ class StandByTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    //MARK: - 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
+    override func bindView(reactor: StandByTableViewReactor) {
+        algorithm.text = "#\(reactor.currentState.number)번째 대기중"
+        dataLabel.text = "\(reactor.currentState.createdAt)"
+        tagLabel.text = reactor.currentState.tag
+        titleLabel.text = reactor.currentState.title
+        contentLabel.text = reactor.currentState.content
     }
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: ManagerTextData) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 대기중"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
-        titleLabel.text = model.title
-        contentLabel.text = model.content
+    override func bindAction(reactor: StandByTableViewReactor) {
+        cellSeeMoreDetailBtn.rx.tap
+            .subscribe({[self] _ in
+                delegate?.clickSeeMoreDetailBtn(cell: self, id: reactor.currentState.id)
+            }).disposed(by: disposeBag)
     }
 }
-protocol StandBytableViewCellBtnClickDelegate : AnyObject{
-    func clickSeeMoreDetailBtn(cell : StandByTableViewCell)
-}
+
