@@ -7,59 +7,57 @@
 
 import UIKit
 
-class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
+protocol cellSeeMoreDetailActionDelegate : AnyObject{
+    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : String)
+}
+
+final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
     //MARK: - Delegate
     weak var delegate : cellSeeMoreDetailActionDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
     
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemRed
     }
-    private lazy var dataLabel = UILabel().then{
+    private let dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var cellSeeMoreDetail = UIButton().then{
+    private let cellSeeMoreDetail = UIButton().then{
         $0.setTitle("더보기", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
-        $0.addTarget(self, action: #selector(clickSeeMoreDetailBtnAction), for: .touchUpInside)
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
-    private lazy var deleteReasonTitle = UILabel().then{
+    private let deleteReasonTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 15)
         $0.text = "삭제요청사유"
         $0.textColor = .black
     }
-    private lazy var deleteReasonContent = UILabel().then{
+    private let deleteReasonContent = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.numberOfLines = 0
         $0.textColor = .black
     }
-    //MARK: - Action
-    @objc private func clickSeeMoreDetailBtnAction(){
-        delegate?.clickSeeMoreDetailBtnAction(cell: self)
-    }
-    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -111,24 +109,19 @@ class DeleteTableViewCell : BaseTableViewCell<DeleteContent>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    //MARK: - 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
+
+    override func bindView(reactor: DeleteTableViewReactor) {
+        algorithm.text = "#\(reactor.currentState.number)번째 삭제요청"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+        tagLabel.text = reactor.currentState.tag
+        titleLabel.text = reactor.currentState.title
+        contentLabel.text = reactor.currentState.content
+        deleteReasonContent.text = reactor.currentState.reason
     }
-    
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: DeleteContent) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 삭제요청"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
-        titleLabel.text = model.title
-        contentLabel.text = model.content
-        deleteReasonContent.text = model.deleteContente
+    override func bindAction(reactor: DeleteTableViewReactor) {
+        cellSeeMoreDetail.rx.tap
+            .subscribe({[self] _ in
+                delegate?.clickSeeMoreDetailBtnAction(cell: self, id: reactor.currentState.id)
+            }).disposed(by: disposeBag)
     }
-}
-//MARK: - 더보기 버튼 눌렀을때 Action Protocol
-protocol cellSeeMoreDetailActionDelegate : AnyObject{
-    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell)
 }

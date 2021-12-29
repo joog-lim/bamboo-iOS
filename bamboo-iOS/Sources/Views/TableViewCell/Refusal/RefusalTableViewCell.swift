@@ -16,35 +16,35 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     weak var delegate : RefusalCancelBtnDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemRed
     }
-    private lazy var dataLabel = UILabel().then{
+    private let dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var refusalCancelBtn = UIButton().then{
+    private let refusalCancelBtn = UIButton().then{
         $0.setTitle("거절취소", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
 
@@ -94,7 +94,7 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     }
     override func bindView(reactor: RefusalTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.number)번째 거절됨"
-        dataLabel.text = "\(reactor.currentState.createdAt)"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

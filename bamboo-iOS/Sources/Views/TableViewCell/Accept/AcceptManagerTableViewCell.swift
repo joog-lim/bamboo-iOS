@@ -26,7 +26,7 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
         $0.textColor = .bamBoo_57CC4D
     }
     private let dataLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 12)
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
     private let tagLabel = UILabel().then{
@@ -95,7 +95,7 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
     //MARK: - Bind
     override func bindView(reactor: AcceptTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.number)번째 알고리즘"
-        dataLabel.text = "\(reactor.currentState.createdAt)"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content
@@ -103,7 +103,6 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
     override func bindAction(reactor: AcceptTableViewReactor) {
         cellSettingbtn.rx.tap
             .subscribe({ [self] _ in
-
                 delegate?.cellSettingbtnClick(cell: self, id: reactor.currentState.id)
             }).disposed(by: disposeBag)
     }

@@ -96,7 +96,7 @@ final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
     }
     override func bindView(reactor: StandByTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.number)번째 대기중"
-        dataLabel.text = "\(reactor.currentState.createdAt)"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

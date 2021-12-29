@@ -14,7 +14,7 @@ class DeleteTableViewReactor: Reactor{
 
     let initialState: Algorithem
     
-    init( AcceptBoard : Algorithem){
-        self.initialState = AcceptBoard
+    init( DeleteBoard : Algorithem){
+        self.initialState = DeleteBoard
     }
 }

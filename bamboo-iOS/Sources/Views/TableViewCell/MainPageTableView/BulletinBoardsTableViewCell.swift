@@ -117,7 +117,7 @@ final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableV
     //MARK: - bind
     override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
         algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
-        dataLabel.text = "\(reactor.currentState.createdAt)"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

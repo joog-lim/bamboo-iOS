@@ -76,7 +76,10 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     override func bindView(reactor: EditContentModalReactor) {
         super.bindView(reactor: reactor)
-        
+        cancelBtn.rx.tap
+            .map{ Reactor.Action.cancelBtnTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
 

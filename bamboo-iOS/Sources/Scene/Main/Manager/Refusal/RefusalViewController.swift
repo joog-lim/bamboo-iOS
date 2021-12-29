@@ -28,12 +28,8 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         $0.rowHeight = UITableView.automaticDimension
         $0.estimatedRowHeight = 300
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15)).then{
-        $0.backgroundColor = .clear
-    }
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20)).then{
-        $0.backgroundColor = .clear
-    }
+    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
+    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     //MARK: - Action
     private func cellinsideRefusalCancelBtnClick(indexPath : Int){
@@ -94,6 +90,7 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
         navigationItem.applyImageNavigation()
     }
+    //MARK: - bind
     override func bindAction(reactor: RefusalReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}

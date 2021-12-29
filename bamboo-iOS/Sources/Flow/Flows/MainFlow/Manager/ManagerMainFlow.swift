@@ -68,7 +68,6 @@ final class ManagerMainFlow : Flow{
             let standByImage : UIImage? = UIImage(systemName: "stop.circle")?.withRenderingMode(.alwaysTemplate)
             let refusalImage : UIImage? = UIImage(systemName: "exclamationmark.circle")?.withRenderingMode(.alwaysTemplate)
             let deleteImage : UIImage? = UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate)
-
             
             let acceptItem : UITabBarItem = .init(title: "수락", image: acceptImage, selectedImage: nil)
             let standByItem : UITabBarItem = .init(title: "대기", image: standByImage, selectedImage: nil)
@@ -81,7 +80,6 @@ final class ManagerMainFlow : Flow{
             root4.tabBarItem = deleteItem
             [root1,root2,root3,root4].forEach{
                 $0.navigationCustomBar()
-                $0.navigationItem.applyImageNavigation()
             }
             self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
