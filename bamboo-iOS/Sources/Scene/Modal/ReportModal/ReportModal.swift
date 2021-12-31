@@ -33,10 +33,6 @@ final class ReportModal : baseVC<ReportReactor>{
     }
 
     //MARK: - Helper
-    override func configureUI() {
-        super.configureUI()
-        contentTv.delegate = self
-    }
     override func setLayout() {
         super.setLayout()
         if UIDevice.current.isiPhone{
@@ -91,34 +87,18 @@ final class ReportModal : baseVC<ReportReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
-    
-}
-
-extension ReportModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "사유를 입력해주세요.\nex) 욕설이 들어가있어요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
-    }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
 }
 
 extension ReportModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+
     var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    
+    var longFormHeight: PanModalHeight{
+        return .maxHeightWithTopInset(bounds.height/1.8)
+    }
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

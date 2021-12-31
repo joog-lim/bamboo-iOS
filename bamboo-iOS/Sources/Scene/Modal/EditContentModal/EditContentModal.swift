@@ -10,7 +10,7 @@ import PanModal
 import RxKeyboard
 
 final class EditContentModal : baseVC<EditContentModalReactor>{
-    
+    //MARK: - Properties
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "수정하기"
@@ -39,11 +39,6 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     
     //MARK: - Helper
-    override func configureUI() {
-        super.configureUI()
-        contentTv.delegate = self
-    }
-    
     override func addView() {
         super.addView()
         [editContentTitle,titleTf,contentTv,btnStackView].forEach{view.addSubview($0)}
@@ -91,30 +86,16 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
 }
 
-extension EditContentModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "내용을 입력하세요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
-    }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
-}
-
 extension EditContentModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
-    var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/2.8)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2.8)}
+
+    var cornerRadius: CGFloat{return 40}
+    
+    var longFormHeight: PanModalHeight{
+        return .maxHeightWithTopInset(250)
+    }
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol ClickReportBtnActionDelegate : AnyObject{
-    func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
+    func clickReportBtnAction(cell : BulletinBoardsTableViewCell, id : String)
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
 }
 
@@ -127,7 +127,7 @@ final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableV
     override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
         cellSettingbtn.rx.tap
             .subscribe({[self] _ in
-                delegate?.clickReportBtnAction(cell: self)
+                delegate?.clickReportBtnAction(cell: self, id: reactor.currentState.id)
             }).disposed(by: disposeBag)
         
         likeBtn.rx.tap

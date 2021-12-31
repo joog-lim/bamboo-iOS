@@ -63,7 +63,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     override func configureUI() {
         super.configureUI()
         //MARK: - TextView Delegate
-        contentTv.rx.setDelegate(self).disposed(by: disposeBag)
         dropDown.selectionAction = { [unowned self] (index : Int, item : String) in
             tagChooseBtn.setTitle(item, for: .normal)
         }
@@ -100,23 +99,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
             }).disposed(by: disposeBag)
-    }
-}
-//MARK: - TextView extension
-extension WritingBulletinBoardModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "내용을 입력하세요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
-    }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
     }
 }
 
@@ -200,7 +182,6 @@ extension WritingBulletinBoardModal{
 
 //MARK: - PanModal Setting
 extension WritingBulletinBoardModal : PanModalPresentable{
-
     override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
     var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
@@ -208,7 +189,7 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset( 200)
+        return .maxHeightWithTopInset(250)
     }
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
