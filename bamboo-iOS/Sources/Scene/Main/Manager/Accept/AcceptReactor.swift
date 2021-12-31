@@ -15,6 +15,7 @@ final class AcceptReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
+        case backBtnTap
         case viewDidLoad
         case editContentPresent(idx : String, index : Int)
     }
@@ -37,11 +38,15 @@ final class AcceptReactor : Reactor, Stepper{
 extension AcceptReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .backBtnTap:
+            steps.accept(BambooStep.backBtnRequired)
+            return .empty()
         case .viewDidLoad:
             return Observable<Mutation>.just(.updateDataSource)
         case let .editContentPresent(idx,index):
             steps.accept(BambooStep.editContentModalsRequired(idx: idx, index: index))
             return .empty()
+
         }
     }
 }

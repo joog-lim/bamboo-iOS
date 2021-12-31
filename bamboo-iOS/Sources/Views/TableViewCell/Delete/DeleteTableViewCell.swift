@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxSwift
+import RxRelay
+
 protocol cellSeeMoreDetailActionDelegate : AnyObject{
     func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : String)
 }

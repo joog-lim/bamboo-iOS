@@ -19,13 +19,13 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     
     //MARK: - Properties
     private let dropDown = DropDown().then{
-        $0.dataSource = ["#유머","#공부","#일상","#학교","#취업","#관계","#기타"]
+        $0.dataSource = ["유머","공부","일상","학교","취업","관계","기타"]
         $0.backgroundColor = .white
         $0.selectionBackgroundColor = .clear
         $0.layer.borderColor = UIColor.clear.cgColor
         $0.textFont = UIFont(name: "NanumSquareRoundB", size: 12) ?? UIFont()
         $0.cellHeight = 29
-        
+        $0.shadowOpacity = 0.25
         $0.cornerRadius = 10
     }
     private let titleLabel = UILabel().then{
@@ -64,6 +64,9 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         super.configureUI()
         //MARK: - TextView Delegate
         contentTv.rx.setDelegate(self).disposed(by: disposeBag)
+        dropDown.selectionAction = { [unowned self] (index : Int, item : String) in
+            tagChooseBtn.setTitle(item, for: .normal)
+        }
     }
 
     
@@ -197,12 +200,16 @@ extension WritingBulletinBoardModal{
 
 //MARK: - PanModal Setting
 extension WritingBulletinBoardModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+
     var cornerRadius: CGFloat{return 40}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/2)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    
+    var longFormHeight: PanModalHeight{
+        return .maxHeightWithTopInset( 200)
+    }
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

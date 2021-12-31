@@ -45,11 +45,11 @@ final class DetailViewController : baseVC<DetailReactor>{
         string.setColorForText(textToFind: "규칙", withColor: .bamBoo_57CC4D)
         $0.attributedText = string
     }
-
     
     //MARK: - Selectors
     override func configureUI() {
         super.configureUI()
+        navigationItem.applyImageNavigation()
     }
     
     //MARK: - Helper

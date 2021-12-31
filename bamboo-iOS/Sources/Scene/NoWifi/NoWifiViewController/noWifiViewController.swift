@@ -37,7 +37,7 @@ final class noWifiViewController : baseVC<noWifiReactor>{
     
     override func configureUI() {
         super.configureUI()
-        navigationSetting()
+//        navigationSetting()
     }
     override func addView() {
         super.addView()
@@ -66,11 +66,11 @@ final class noWifiViewController : baseVC<noWifiReactor>{
         }
     }
 
-    //MARK: - Navigation Setting
-    func navigationSetting(){
-        navigationItem.hidesBackButton = true
-        navigationItem.applyImageNavigation()
-    }
+//    //MARK: - Navigation Setting
+//    func navigationSetting(){
+//        navigationItem.hidesBackButton = true
+//        navigationItem.applyImageNavigation()
+//    }
     
     //MARK: - NetWork Status
     private func NetworkStatus(){

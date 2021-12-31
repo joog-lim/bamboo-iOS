@@ -43,6 +43,7 @@ final class RuleViewController : baseVC<RuleReactor> {
 
     override func configureUI() {
         super.configureUI()
+        navigationItem.applyImageNavigation()
     }
     override func addView() {
         super.addView()
@@ -50,11 +51,6 @@ final class RuleViewController : baseVC<RuleReactor> {
             [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
     }
     
-    //MARK: - Navigation Setting
-//    private func navigationSetting(){
-//        navigationController?.navigationCustomBar()
-//        navigationItem.applyImageNavigation()
-//    }
     override func setLayout() {
         super.setLayout()
         backGroundScrollView.snp.makeConstraints {

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Reusable
 import RxDataSources
 
 final class StandByViewController : baseVC<StandByReactor>{
@@ -20,7 +20,7 @@ final class StandByViewController : baseVC<StandByReactor>{
     }
 
     private let mainTableView = UITableView().then {
-        $0.register(StandByTableViewCell.self, forCellReuseIdentifier: StandByTableViewCell.reusableID)
+        $0.register(cellType: StandByTableViewCell.self)
         $0.showsVerticalScrollIndicator = false
         $0.separatorColor = .clear
         $0.allowsSelection = false
@@ -33,6 +33,9 @@ final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
+        //navigationItem
+        navigationItem.applyManagerNavigationBarSetting()
+        //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
@@ -70,6 +73,7 @@ final class StandByViewController : baseVC<StandByReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
+    //MARK: - Bind
     override func bindAction(reactor: StandByReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}

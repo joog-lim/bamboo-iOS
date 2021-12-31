@@ -17,12 +17,10 @@
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
-		EE3BA57E2702F2A100281096 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* UserData.swift */; };
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
 		EE489A992771B60200513E94 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE489A982771B60200513E94 /* OSLogExt.swift */; };
-		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -59,7 +57,6 @@
 		EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFB275E097900A05857 /* DetailReactor.swift */; };
 		EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
-		EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98CE49277055F100AE407B /* Cell+ReusableID.swift */; };
 		EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */; };
@@ -142,12 +139,10 @@
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
-		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/Sources/Common/Models/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		EE489A982771B60200513E94 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExt.swift; sourceTree = "<group>"; };
-		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +181,6 @@
 		EE97ACFB275E097900A05857 /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
 		EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
-		EE98CE49277055F100AE407B /* Cell+ReusableID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+ReusableID.swift"; sourceTree = "<group>"; };
 		EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalReactor.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -388,13 +382,13 @@
 			path = CustomTextView;
 			sourceTree = "<group>";
 		};
-		EE30E5782706E5E600B9AF8A /* MainPageTableView */ = {
+		EE30E5782706E5E600B9AF8A /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
 				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
 				EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */,
 			);
-			path = MainPageTableView;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		EE3BA5772702EFB000281096 /* BaseTableViewCell */ = {
@@ -409,10 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				EE09E940277349710032F1AA /* ModelType.swift */,
-				EECD8B2C277AB5C700B00807 /* Accept */,
 				EE23E19827736ADA001171EB /* Algorithem */,
-				EE55923A270DEC1200223D22 /* UserData */,
-				EE559239270DEC0600223D22 /* ManagerData */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,22 +437,6 @@
 				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
-			sourceTree = "<group>";
-		};
-		EE559239270DEC0600223D22 /* ManagerData */ = {
-			isa = PBXGroup;
-			children = (
-				EE55923B270DEC4E00223D22 /* ManagerData.swift */,
-			);
-			path = ManagerData;
-			sourceTree = "<group>";
-		};
-		EE55923A270DEC1200223D22 /* UserData */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA57D2702F2A100281096 /* UserData.swift */,
-			);
-			path = UserData;
 			sourceTree = "<group>";
 		};
 		EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */ = {
@@ -593,7 +568,7 @@
 				EE7CA2E3271D9201003140CD /* Refusal */,
 				EE7CA2E1271D91E2003140CD /* StandBy */,
 				EEAA0631270D8462000EA78D /* Accept */,
-				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
+				EE30E5782706E5E600B9AF8A /* MainPage */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -895,7 +870,6 @@
 				EECCC12B275D04790068A4BD /* LabelExt.swift */,
 				EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */,
 				EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */,
-				EE98CE49277055F100AE407B /* Cell+ReusableID.swift */,
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
 				EECD8B2F277B109000B00807 /* DateExt.swift */,
 			);
@@ -925,13 +899,6 @@
 				EE97ACF2275DFBDB00A05857 /* User */,
 			);
 			path = MainFlow;
-			sourceTree = "<group>";
-		};
-		EECD8B2C277AB5C700B00807 /* Accept */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Accept;
 			sourceTree = "<group>";
 		};
 		EED265502761733E00A1994A /* bamboo-iOSTests */ = {
@@ -1161,7 +1128,6 @@
 				EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */,
 				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
-				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
 				EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */,
@@ -1216,7 +1182,6 @@
 				EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
-				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
@@ -1239,7 +1204,6 @@
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
-				EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
 				EED1FD362761D6D5004AD43E /* Networkable.swift in Sources */,

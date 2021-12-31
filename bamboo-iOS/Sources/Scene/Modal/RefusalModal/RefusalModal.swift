@@ -23,8 +23,8 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
     private lazy var refusaleditTitle = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "#\(i)번째 알고리즘을 거절합니다.")
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
-        $0.textColor = .black
-        string.setColorForText(textToFind: "#\(i)번째 알고리즘", withColor: .systemRed)
+        $0.textColor = .red
+        string.setColorForText(textToFind: "을 거절합니다", withColor: .black)
         $0.attributedText = string
     }
     private let contentTv = AlertTextView(placeholder: "사유를 입력해주세요",fontSize: 11)
@@ -98,7 +98,7 @@ extension RefusalModal : PanModalPresentable{
     var panScrollable: UIScrollView? {return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
     var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
+    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/2.8)}
     var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
     var anchorModalToLongForm: Bool {return false}
     var shouldRoundTopCorners: Bool {return true}

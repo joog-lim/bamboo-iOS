@@ -41,6 +41,9 @@ final class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
+        //navigationBar
+        navigationItem.applyManagerNavigationBarSetting()
+        //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
@@ -80,16 +83,7 @@ final class RefusalViewController : baseVC<RefusalReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
-    //MARK: - Navigation Setting
-    private func navigationSetting(){
-        navigationController?.navigationCustomBar()
-        navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"))
-        navigationItem.leftBarButtonItem?.tintColor = .bamBoo_57CC4D
-        navigationItem.rightBarButtonItem?.tintColor = .rgb(red: 118, green: 177, blue: 87)
-        navigationItem.applyImageNavigation()
-    }
+
     //MARK: - bind
     override func bindAction(reactor: RefusalReactor) {
         self.rx.viewDidLoad

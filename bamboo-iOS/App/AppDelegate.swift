@@ -8,13 +8,17 @@
 import UIKit
 import GoogleSignIn
 
+import RxAppState
+import IQKeyboardManagerSwift
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //와이파이 연결 여부 파악
         NetWorkStatus.shared.StartMonitoring()
-        
+        //키보드 세팅
+        keyboardSetting()
+        //자동 로그인
         let defaults = UserDefaults.standard
         GIDSignIn.sharedInstance.restorePreviousSignIn { user , error in
             if error != nil || user == nil{
@@ -36,6 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             return true
         }
         return false
+    }
+    func keyboardSetting(){
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
 

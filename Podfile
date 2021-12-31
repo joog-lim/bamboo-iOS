@@ -16,7 +16,7 @@ target 'bamboo-iOS' do
   pod 'PanModal'
   pod 'Reusable'
   pod 'DropDown'
-
+  pod 'IQKeyboardManagerSwift'
   
   # Networking
   pod 'Moya/RxSwift'

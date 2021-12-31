@@ -43,8 +43,7 @@ final class GoogleLogin{
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
                     
-                    let idToken = authentication.idToken
-                    KeychainSwift().set(idToken ?? "", forKey: "idToken")
+                    KeychainSwift().set(authentication.idToken ?? "", forKey: "idToken")
                     UserDefaults.standard.set(true, forKey: "UserLogin")
                     vc.dismiss(animated: true, completion: nil)
                     // send id Token to backend

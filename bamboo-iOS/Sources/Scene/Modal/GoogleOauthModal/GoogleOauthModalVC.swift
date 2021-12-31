@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import ReactorKit
+import RxKeyboard
 
 final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     
@@ -84,7 +85,7 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
             $0.left.equalTo(googleSignBtn)
         }
     }
-    
+
     private func googleOauth(){
         GoogleLogin.shared.SignInOauth(vc: self)
     }

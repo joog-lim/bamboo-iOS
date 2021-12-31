@@ -91,6 +91,8 @@ final class ReportModal : baseVC<ReportReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    
+    
 }
 
 extension ReportModal : UITextViewDelegate{

@@ -96,7 +96,12 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
             make.height.equalTo(bounds.height/29)
         }
     }
-    
+    //MARK: - KeyboardDown
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+
+    //MARK: - Bind
     override func bindView(reactor: ManagerLoginModalReactor) {
         super.bindView(reactor: reactor)
         transparentView.rx.tapGesture()

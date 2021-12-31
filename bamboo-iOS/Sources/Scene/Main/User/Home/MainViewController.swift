@@ -53,7 +53,8 @@ final class MainViewController : baseVC<MainReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        navigationSetting()
+        navigationItem.applyImageNavigation()
+
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
@@ -95,10 +96,8 @@ final class MainViewController : baseVC<MainReactor>{
             make.center.equalTo(tableViewFooter)
         }
     }
-    private func navigationSetting(){
-        navigationItem.applyImageNavigation()
-    }
     
+    //MARK: -  Bind
     override func bindView(reactor: MainReactor) {
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}

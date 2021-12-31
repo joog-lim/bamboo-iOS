@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import RxKeyboard
 
 final class EditContentModal : baseVC<EditContentModalReactor>{
     
@@ -69,11 +70,18 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
             $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
         }
     }
-
+    override func keyBoardLayout() {
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
+                panScrollable?.contentOffset.y += KeyboardVisibleHeight
+            }).disposed(by: disposeBag)
+    }
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+
+    //MARK: - Bind
     override func bindView(reactor: EditContentModalReactor) {
         super.bindView(reactor: reactor)
         cancelBtn.rx.tap
@@ -105,7 +113,7 @@ extension EditContentModal : PanModalPresentable{
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
     var cornerRadius: CGFloat{return 20}
     var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/2.8)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2.8)}
     var anchorModalToLongForm: Bool {return false}
     var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}

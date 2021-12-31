@@ -38,17 +38,20 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
+        //navigationItem
+        navigationItem.applyManagerNavigationBarSetting()
+        //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     //MARK: - AddView
-
     override func addView() {
         super.addView()
         view.addSubview(mainTableView)
     }
+    
     //MARK: - Location
     override func setLayout() {
         super.setLayout()
@@ -76,6 +79,12 @@ final class AcceptViewController : baseVC<AcceptReactor> {
         activityIndicatorView.snp.makeConstraints { make in
             make.center.equalTo(tableViewFooter)
         }
+    }
+    
+    //MARK: - Bind
+    override func bindView(reactor: AcceptReactor) {
+        navigationItem.rightBarButtonItem?.rx.tap
+            .subscribe({_ in print("DEBUG : NavigationBar Click")}).disposed(by: disposeBag)
     }
     
     override func bindAction(reactor: AcceptReactor) {

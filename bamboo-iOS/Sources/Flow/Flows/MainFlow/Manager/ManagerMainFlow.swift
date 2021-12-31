@@ -78,9 +78,8 @@ final class ManagerMainFlow : Flow{
             root2.tabBarItem = standByItem
             root3.tabBarItem = refusalItem
             root4.tabBarItem = deleteItem
-            [root1,root2,root3,root4].forEach{
-                $0.navigationCustomBar()
-            }
+            [root1,root2,root3,root4].forEach{$0.navigationCustomBar()}
+            
             self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
         return .multiple(flowContributors: [

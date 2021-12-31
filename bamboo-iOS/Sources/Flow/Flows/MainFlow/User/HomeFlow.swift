@@ -37,7 +37,6 @@ final class HomeFlow : Flow{
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
-        
         switch step{
         case.homeIsRequired:
             return coordinatorToHome()
