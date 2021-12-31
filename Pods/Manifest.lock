@@ -16,7 +16,6 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
   - IQKeyboardManagerSwift (6.5.9)
-  - JGProgressHUD (2.2)
   - KeychainSwift (19.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - DropDown
   - GoogleSignIn
   - IQKeyboardManagerSwift
-  - JGProgressHUD
   - KeychainSwift (~> 19.0)
   - Moya/RxSwift
   - PanModal
@@ -107,7 +105,6 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
-    - JGProgressHUD
     - KeychainSwift
     - Moya
     - Nimble
@@ -139,7 +136,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
-  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
@@ -162,6 +158,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 6316bc22624f57abf695fc05875905ccabb63659
+PODFILE CHECKSUM: 4d5e2f0e4e94e1f572ef6e7d4371956cf4aa4376
 
 COCOAPODS: 1.11.2

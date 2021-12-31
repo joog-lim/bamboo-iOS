@@ -42,9 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         return false
     }
     func keyboardSetting(){
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enableAutoToolbar = false
+//        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
 
