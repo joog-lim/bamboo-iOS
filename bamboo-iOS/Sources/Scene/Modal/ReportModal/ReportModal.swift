@@ -97,7 +97,7 @@ extension ReportModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 20}
     
     var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(bounds.height/1.8)
+        return .maxHeightWithTopInset(bounds.height/2.8)
     }
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}

@@ -189,7 +189,7 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(250)
+        return .maxHeightWithTopInset(280)
     }
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}

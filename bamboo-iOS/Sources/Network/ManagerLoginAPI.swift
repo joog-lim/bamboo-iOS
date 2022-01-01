@@ -12,7 +12,7 @@ enum ManagerLoginAPI{
 }
 //extension ManagerLoginModal: TargetType{
 //    var baseURL: URL {
-//        URL(string: "https://server.joog-lim.info/apiV2")!
+//        URL(string: "https://server.joog-lim.info/apiV3/test/")!
 //    }
 //    
 //    var path: String {
