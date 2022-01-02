@@ -23,6 +23,8 @@
 		EE489A992771B60200513E94 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE489A982771B60200513E94 /* OSLogExt.swift */; };
 		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
 		EE55C23D2780BA65001596C1 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23C2780BA65001596C1 /* UIViewExt.swift */; };
+		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
+		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -71,6 +73,10 @@
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
+		EEB498FD2781F0750082709A /* RxOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FC2781F0750082709A /* RxOperation.swift */; };
+		EEB498FF2781F2770082709A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FE2781F2770082709A /* StringExt.swift */; };
+		EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB499082781F89C0082709A /* BamBooAPI.swift */; };
+		EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -80,7 +86,6 @@
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
 		EEC430192758A57B008F802F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC430182758A57B008F802F /* LoginReactor.swift */; };
 		EEC4301B2758A812008F802F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301A2758A812008F802F /* AppFlow.swift */; };
-		EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */; };
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
 		EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38E277970CF006F7339 /* MainSection.swift */; };
@@ -100,7 +105,6 @@
 		EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* UserLoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
 		EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD332761D35A004AD43E /* APIEnvironment.swift */; };
-		EED1FD362761D6D5004AD43E /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD352761D6D5004AD43E /* Networkable.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
 		EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC42763BAA100898537 /* DeleteFlow.swift */; };
@@ -147,6 +151,8 @@
 		EE489A982771B60200513E94 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExt.swift; sourceTree = "<group>"; };
 		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
 		EE55C23C2780BA65001596C1 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -201,12 +207,15 @@
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
+		EEB498FC2781F0750082709A /* RxOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperation.swift; sourceTree = "<group>"; };
+		EEB498FE2781F2770082709A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		EEB499082781F89C0082709A /* BamBooAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BamBooAPI.swift; sourceTree = "<group>"; };
+		EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+BaseURL.swift"; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
 		EEC430182758A57B008F802F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		EEC4301A2758A812008F802F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
-		EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerLoginAPI.swift; path = "bamboo-iOS/Sources/Network/ManagerLoginAPI.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
 		EEC9F38E277970CF006F7339 /* MainSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
@@ -226,7 +235,6 @@
 		EECDE319276A0D830075711C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		EED1FD332761D35A004AD43E /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
-		EED1FD352761D6D5004AD43E /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
@@ -370,14 +378,6 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
-		EE23E19827736ADA001171EB /* Algorithem */ = {
-			isa = PBXGroup;
-			children = (
-				EE23E19927736AE3001171EB /* Algorithem.swift */,
-			);
-			path = Algorithem;
-			sourceTree = "<group>";
-		};
 		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,7 +407,9 @@
 			isa = PBXGroup;
 			children = (
 				EE09E940277349710032F1AA /* ModelType.swift */,
-				EE55C23827809DE5001596C1 /* Request */,
+				EE23E19927736AE3001171EB /* Algorithem.swift */,
+				EE55C23F27819B50001596C1 /* Rule.swift */,
+				EEB499002781F5BB0082709A /* Request */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -443,20 +445,13 @@
 			path = NoWifi;
 			sourceTree = "<group>";
 		};
-		EE55C23827809DE5001596C1 /* Request */ = {
+		EE55C23E2780BF43001596C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EE23E19827736ADA001171EB /* Algorithem */,
-				EE55C2392780B1B6001596C1 /* Rule */,
+				EE55C2432781ECC8001596C1 /* Encodable.swift */,
+				EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */,
 			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		EE55C2392780B1B6001596C1 /* Rule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Rule;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */ = {
@@ -840,6 +835,13 @@
 			path = Accept;
 			sourceTree = "<group>";
 		};
+		EEB499002781F5BB0082709A /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		EEBDA33F26FB5BF200B966E3 /* Rule */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,10 +875,10 @@
 		EEC430272759142B008F802F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */,
+				EE55C23E2780BF43001596C1 /* Common */,
 				EED1FD332761D35A004AD43E /* APIEnvironment.swift */,
-				EED1FD352761D6D5004AD43E /* Networkable.swift */,
-				EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */,
+				EEB499082781F89C0082709A /* BamBooAPI.swift */,
+				EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -894,6 +896,7 @@
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
 				EECD8B2F277B109000B00807 /* DateExt.swift */,
 				EE55C23C2780BA65001596C1 /* UIViewExt.swift */,
+				EEB498FE2781F2770082709A /* StringExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 			isa = PBXGroup;
 			children = (
 				EEC4302A27591488008F802F /* StepExt.swift */,
+				EEB498FC2781F0750082709A /* RxOperation.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1148,7 +1152,7 @@
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */,
-				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
+				EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
@@ -1175,6 +1179,7 @@
 				EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */,
+				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
 				EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */,
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
@@ -1185,12 +1190,14 @@
 				EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */,
 				EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */,
 				EECD8B36277B617000B00807 /* DeleteTableViewReactor.swift in Sources */,
+				EE55C24027819B50001596C1 /* Rule.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
+				EEB498FD2781F0750082709A /* RxOperation.swift in Sources */,
 				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
@@ -1204,6 +1211,7 @@
 				EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */,
 				EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
+				EEB498FF2781F2770082709A /* StringExt.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
 				EE55C23D2780BA65001596C1 /* UIViewExt.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
@@ -1220,6 +1228,7 @@
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
 				EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */,
+				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
@@ -1230,7 +1239,6 @@
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
-				EED1FD362761D6D5004AD43E /* Networkable.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
 			);

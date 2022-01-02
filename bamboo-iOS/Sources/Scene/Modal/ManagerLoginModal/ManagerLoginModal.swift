@@ -48,8 +48,8 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
     }
     override func addView() {
         super.addView()
-        [transparentView,bgView].forEach{ view.addSubview($0)}
-        [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
+        view.addSubviews(transparentView,bgView)
+        bgView.addSubviews(titleLabel,titleStackView,loginBtn)
     }
         
     override func setLayout() {

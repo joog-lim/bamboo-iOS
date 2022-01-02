@@ -69,7 +69,7 @@ final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSeeMoreDetail,titleLabel,contentLabel,deleteReasonTitle,deleteReasonContent].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,cellSeeMoreDetail,titleLabel,contentLabel,deleteReasonTitle,deleteReasonContent)
     }
     private func location(){
         view.snp.makeConstraints { make in

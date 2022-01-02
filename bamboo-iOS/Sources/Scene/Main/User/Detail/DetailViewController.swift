@@ -55,7 +55,7 @@ final class DetailViewController : baseVC<DetailReactor>{
     //MARK: - Helper
     override func addView() {
         view.addSubview(backGroundScrollView)
-        [titleLabel,explanationLabel,divider,greetingsLabel].forEach{backGroundScrollView.addSubview($0); $0.sizeToFit()}
+        backGroundScrollView.addSubviews(titleLabel,explanationLabel,divider,greetingsLabel)
     }
     override func setLayout() {
         super.setLayout()

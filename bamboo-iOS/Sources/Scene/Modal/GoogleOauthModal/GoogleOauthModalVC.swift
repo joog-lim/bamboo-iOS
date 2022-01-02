@@ -42,8 +42,8 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     }
     override func addView() {
         super.addView()
-        [transparentView,bgView].forEach{ view.addSubview($0)}
-        [titleLabel,humanAffairsLabel,googleSignBtn].forEach{ bgView.addSubview($0)}
+        view.addSubviews(transparentView,bgView)
+        bgView.addSubviews(titleLabel,humanAffairsLabel,googleSignBtn)
     }
     
     override func setLayout() {

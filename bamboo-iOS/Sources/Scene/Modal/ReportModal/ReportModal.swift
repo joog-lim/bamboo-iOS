@@ -80,7 +80,7 @@ final class ReportModal : baseVC<ReportReactor>{
     
     override func addView() {
         super.addView()
-        [editContentTitle,titleTf,contentTv,reportBtn].forEach{view.addSubview($0)}
+        view.addSubviews(editContentTitle,titleTf,contentTv,reportBtn)
     }
 
     //MARK: - KeyboardDown

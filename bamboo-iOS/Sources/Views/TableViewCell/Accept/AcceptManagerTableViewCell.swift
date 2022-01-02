@@ -56,7 +56,7 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel)
     }
 
     private func location(){

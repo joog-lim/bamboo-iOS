@@ -57,7 +57,7 @@ final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
     }
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSeeMoreDetailBtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,cellSeeMoreDetailBtn,titleLabel,contentLabel)
     }
 
     //MARK: - Location

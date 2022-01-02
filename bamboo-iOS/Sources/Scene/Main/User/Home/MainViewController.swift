@@ -61,7 +61,7 @@ final class MainViewController : baseVC<MainReactor>{
     }
     override func addView() {
         super.addView()
-        [mainTableView,writeBtn].forEach{view.addSubview($0)}
+        view.addSubviews(mainTableView,writeBtn)
     }
     override func setLayout() {
         super.setLayout()

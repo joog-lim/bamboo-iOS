@@ -54,7 +54,7 @@ final class LoginViewController : baseVC<LoginReactor> {
     
     override func addView() {
         super.addView()
-        [logo,btnStackView,divider,guestBtn].forEach { view.addSubview($0)}
+        view.addSubviews(logo,btnStackView,divider,guestBtn)
     }
     override func setLayout() {
         super.setLayout()

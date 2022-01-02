@@ -72,7 +72,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - AddView
     override func addView() {
         super.addView()
-        [titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn].forEach {view.addSubview($0)}
+        view.addSubviews(titleLabel,questionTitle,titleTf,tagChooseBtn,contentTv,passwordStackView,sendBtn)
     }
     
     //MARK: - Location

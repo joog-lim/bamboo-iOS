@@ -67,7 +67,7 @@ final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableV
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn)
     }
     
     //MARK: - Location(나중 정리 예정)

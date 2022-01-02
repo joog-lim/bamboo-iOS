@@ -47,8 +47,8 @@ final class RuleViewController : baseVC<RuleReactor> {
     }
     override func addView() {
         super.addView()
-            view.addSubview(backGroundScrollView)
-            [titleLabel,ruleLabel].forEach{backGroundScrollView.addSubview($0)}
+        view.addSubview(backGroundScrollView)
+        backGroundScrollView.addSubviews(titleLabel,ruleLabel)
     }
     
     override func setLayout() {

@@ -41,7 +41,7 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Helper
     override func addView() {
         super.addView()
-        [editContentTitle,refusaleditTitle,contentTv,refusalBtn].forEach{ view.addSubview($0)}
+        view.addSubviews(editContentTitle,refusaleditTitle,contentTv,refusalBtn)
     }
     
     override func setLayout() {

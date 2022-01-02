@@ -41,7 +41,9 @@ final class noWifiViewController : baseVC<noWifiReactor>{
     }
     override func addView() {
         super.addView()
-        [icon,NoWifiLabel,subNoWifiLabel,tryAgainBtn].forEach{view.addSubview($0)}
+        view.addSubviews(
+            icon,NoWifiLabel,subNoWifiLabel,tryAgainBtn
+        )
     }
     override func setLayout() {
         super.setLayout()

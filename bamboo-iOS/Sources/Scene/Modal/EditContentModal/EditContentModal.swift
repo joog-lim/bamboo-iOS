@@ -41,7 +41,7 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     //MARK: - Helper
     override func addView() {
         super.addView()
-        [editContentTitle,titleTf,contentTv,btnStackView].forEach{view.addSubview($0)}
+        view.addSubviews(editContentTitle,titleTf,contentTv,btnStackView)
     }
     override func setLayout() {
         super.setLayout()

@@ -57,7 +57,7 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel)
     }
     private func location(){
         view.snp.makeConstraints { make in
