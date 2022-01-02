@@ -77,6 +77,8 @@
 		EEB498FF2781F2770082709A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FE2781F2770082709A /* StringExt.swift */; };
 		EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB499082781F89C0082709A /* BamBooAPI.swift */; };
 		EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */; };
+		EEB4990D2781F9E60082709A /* BamBooAPI+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */; };
+		EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -211,6 +213,8 @@
 		EEB498FE2781F2770082709A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		EEB499082781F89C0082709A /* BamBooAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BamBooAPI.swift; sourceTree = "<group>"; };
 		EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+BaseURL.swift"; sourceTree = "<group>"; };
+		EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Method.swift"; sourceTree = "<group>"; };
+		EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Path.swift"; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
@@ -879,6 +883,8 @@
 				EED1FD332761D35A004AD43E /* APIEnvironment.swift */,
 				EEB499082781F89C0082709A /* BamBooAPI.swift */,
 				EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */,
+				EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */,
+				EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1165,6 +1171,7 @@
 				EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */,
 				EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */,
 				EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */,
+				EEB4990D2781F9E60082709A /* BamBooAPI+Method.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EEC4302327591141008F802F /* BambooStep.swift in Sources */,
 				EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */,
@@ -1227,6 +1234,7 @@
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
+				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
 				EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */,
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,

@@ -9,6 +9,6 @@ import Foundation
 
 extension BamBooAPI{
     func getBaseURL() -> URL{
-        return URL(string: "")!
+        return URL(string: NetworkManager.environment.rawValue)!
     }
 }
