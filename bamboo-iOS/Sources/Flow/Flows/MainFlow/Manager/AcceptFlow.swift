@@ -38,6 +38,8 @@ final class AcceptFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         
         switch step{
+        case .backBtnRequired:
+            return coordinateToBack()
         case.managerAcceptIsRequired:
             return coordinatorToAccess()
         case let .editContentModalsRequired(idx,index):
@@ -62,6 +64,10 @@ private extension AcceptFlow{
         let vc = EditContentModal(reactor: reactor)
         self.rootViewController.presentPanModal(vc)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    func coordinateToBack() -> FlowContributors{
+        self.rootViewController.navigationController?.popViewController(animated: true)
+        return .none
     }
     private func dismissVC() -> FlowContributors{
         self.rootViewController.visibleViewController?.dismiss(animated: true)

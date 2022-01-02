@@ -7,57 +7,53 @@
 
 import UIKit
 import RxSwift
-class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
+import RxCocoa
+
+protocol ClickReportBtnActionDelegate : AnyObject{
+    func clickReportBtnAction(cell : BulletinBoardsTableViewCell, id : String)
+    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
+}
+
+final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCellReactor>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let  view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 5
     }
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var dataLabel = UILabel().then{
+    private let  dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
     }
-    private lazy var cellSettingbtn = UIButton().then{
+    private let cellSettingbtn = UIButton().then{
         $0.setTitle("신고", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
-        $0.addTarget(self, action: #selector(reportBtnclickAction), for: .touchUpInside)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
     }
-    private lazy var footerView = UIView()
+    private let footerView = UIView()
     
     private let likeBtn = LikeOrDisLikeView().then{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
-        $0.addTarget(self, action: #selector(likeBtnClick), for: .touchUpInside)
-    }
-    
-    //MARK: - Selector
-    @objc private func likeBtnClick(){
-        likeBtn.isSelected = !likeBtn.isSelected
-        delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
-    }
-    @objc private func reportBtnclickAction(){
-        delegate?.clickReportBtnAction(cell: self)
     }
 
     //MARK: - Configure
@@ -66,19 +62,12 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
         addSubviews()
         location()
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
-
     }
-
+    
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn].forEach { view.addSubview($0)}
-    }
-
-    //Cell 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
+        view.addSubviews(algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn)
     }
     
     //MARK: - Location(나중 정리 예정)
@@ -123,24 +112,28 @@ class BulletinBoardsTableViewCell : BaseTableViewCell<Data>{
             $0.bottom.equalToSuperview().inset(11)
             $0.right.equalToSuperview().inset(bounds.width/29)
             $0.height.equalTo(18)
-            $0.width.equalTo(bounds.width/12.83)
         }
     }
-    
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: Data) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
-        titleLabel.text = model.title
-        contentLabel.text = model.content
-        likeBtn.label.text = String(model.like)
-        likeBtn.isSelected = model.isSelected ?? false
+    //MARK: - bind
+    override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
+        algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
+        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+        tagLabel.text = reactor.currentState.tag
+        titleLabel.text = reactor.currentState.title
+        contentLabel.text = reactor.currentState.content
+        likeBtn.label.text = "11"
+        likeBtn.isSelected = false
     }
-}
-//MARK: - 신고 버튼 눌렸을때 동작
-protocol ClickReportBtnActionDelegate : AnyObject{
-    func clickReportBtnAction(cell : BulletinBoardsTableViewCell)
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
+    override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
+        cellSettingbtn.rx.tap
+            .subscribe({[self] _ in
+                delegate?.clickReportBtnAction(cell: self, id: reactor.currentState.id)
+            }).disposed(by: disposeBag)
+        
+        likeBtn.rx.tap
+            .subscribe({[self] _ in
+                likeBtn.isSelected = !likeBtn.isSelected
+                delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
+            }).disposed(by: disposeBag)
+    }
 }

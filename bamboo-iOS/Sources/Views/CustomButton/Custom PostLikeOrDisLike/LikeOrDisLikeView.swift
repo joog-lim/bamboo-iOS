@@ -54,6 +54,7 @@ class LikeOrDisLikeView : UIButton{
         }
         label.snp.makeConstraints{
             $0.left.equalTo(iv.snp.right).offset(5)
+            $0.right.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }
