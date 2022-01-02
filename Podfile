@@ -12,9 +12,10 @@ target 'bamboo-iOS' do
   pod 'Then'
   pod 'GoogleSignIn'
   pod 'KeychainSwift', '~> 19.0'
-  pod 'JGProgressHUD'
   pod 'PanModal'
-  
+  pod 'Reusable'
+  pod 'DropDown'
+  pod 'IQKeyboardManagerSwift'
   
   # Networking
   pod 'Moya/RxSwift'
@@ -30,11 +31,14 @@ target 'bamboo-iOS' do
   pod 'ReactorKit'
   pod 'RxKeyboard'
   pod 'RxGesture'
-  pod 'RxAlertViewable'
   pod 'RxDataSources'
-  pod 'RxReachability'
-#  pod 'ReusableKit/RxSwift'
-
+  
+  #RxTest
+  target 'bamboo-iOSTests' do
+    pod 'RxTest'
+    pod 'RxNimble'
+    end
+  
 end
 
 post_install do |installer|

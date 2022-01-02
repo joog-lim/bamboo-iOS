@@ -45,17 +45,17 @@ final class DetailViewController : baseVC<DetailReactor>{
         string.setColorForText(textToFind: "규칙", withColor: .bamBoo_57CC4D)
         $0.attributedText = string
     }
-
     
     //MARK: - Selectors
     override func configureUI() {
         super.configureUI()
+        navigationItem.applyImageNavigation()
     }
     
     //MARK: - Helper
     override func addView() {
         view.addSubview(backGroundScrollView)
-        [titleLabel,explanationLabel,divider,greetingsLabel].forEach{backGroundScrollView.addSubview($0); $0.sizeToFit()}
+        backGroundScrollView.addSubviews(titleLabel,explanationLabel,divider,greetingsLabel)
     }
     override func setLayout() {
         super.setLayout()

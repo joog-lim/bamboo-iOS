@@ -48,8 +48,8 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
     }
     override func addView() {
         super.addView()
-        [transparentView,bgView].forEach{ view.addSubview($0)}
-        [titleLabel,titleStackView,loginBtn].forEach{ bgView.addSubview($0)}
+        view.addSubviews(transparentView,bgView)
+        bgView.addSubviews(titleLabel,titleStackView,loginBtn)
     }
         
     override func setLayout() {
@@ -96,7 +96,12 @@ final class ManagerLoginModal: baseVC<ManagerLoginModalReactor>{
             make.height.equalTo(bounds.height/29)
         }
     }
-    
+    //MARK: - KeyboardDown
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+
+    //MARK: - Bind
     override func bindView(reactor: ManagerLoginModalReactor) {
         super.bindView(reactor: reactor)
         transparentView.rx.tapGesture()

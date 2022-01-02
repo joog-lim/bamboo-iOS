@@ -15,14 +15,15 @@ final class DeleteReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
+        case viewDidLoad
         case deleteBtnTap(titleText : String, message : String, idx : String, index : Int)
         case alertRefusalTap(String,Int)
     }
     enum Mutation{
-        
+        case updateDataSource
     }
     struct State{
-        
+        var mainSection = [DeleteViewSection]()
     }
     
     let initialState: State
@@ -33,10 +34,12 @@ final class DeleteReactor : Reactor, Stepper{
         self.initialState = State()
     }
 }
-
+//MARK: - Mutation
 extension DeleteReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
+        case .viewDidLoad:
+            return Observable<Mutation>.just(.updateDataSource)
         case let .deleteBtnTap(titleText, message,idx,index):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
             return .empty()
@@ -45,4 +48,24 @@ extension DeleteReactor{
             return .empty()
         }
     }
+}
+//MARK: - Reduce
+extension DeleteReactor{
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation{
+        case .updateDataSource:
+            state.mainSection = getMainData()
+        }
+        return state
+    }
+}
+func getMainData() -> [DeleteViewSection]{
+
+    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트", tag: "유머", createdAt: 1640316269465,reason: "재미없다")))
+    
+    let itemInFirstSection = [mainItem1]
+    let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
+    
+    return [firstSection]
 }

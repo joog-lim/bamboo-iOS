@@ -16,7 +16,7 @@ final class EditContentModalReactor : Reactor,Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        
+        case cancelBtnTap
     }
     enum Mutation{
         
@@ -30,4 +30,13 @@ final class EditContentModalReactor : Reactor,Stepper{
         self.initialState = State()
     }
 }
-
+//MARK: - Mutation
+extension EditContentModalReactor{
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action{
+        case.cancelBtnTap:
+            steps.accept(BambooStep.dismiss)
+            return .empty()
+        }
+    }
+}
