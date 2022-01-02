@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+extension BamBooAPI {
+  func getPath() -> String {
+    switch self {
+    case .getAlgorithem:
+        return ""
+    case .getRule:
+        return ""
+    }
+  }
+}
