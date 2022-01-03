@@ -10,10 +10,13 @@ import Foundation
 extension BamBooAPI {
   func getPath() -> String {
     switch self {
+    case .postLogin:
+        return "login"
     case .getAlgorithem:
         return ""
     case .getRule:
         return "algorithm/rule"
+
     }
   }
 }

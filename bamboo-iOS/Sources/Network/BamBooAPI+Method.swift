@@ -11,10 +11,13 @@ import Moya
 extension BamBooAPI{
     func getMethod() -> Moya.Method{
         switch self{
+        case .postLogin:
+            return .post
         case .getAlgorithem:
             return  .get
         case .getRule:
             return .get
+
         }
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 extension BamBooAPI{
     func getHeader() -> [String:String]?{
         switch self{
+//        case.postLogin:
+//            return [:]
         default:
             return nil
         }

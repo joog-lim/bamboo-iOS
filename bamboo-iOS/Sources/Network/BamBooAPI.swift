@@ -9,6 +9,8 @@ import Moya
 import Alamofire
 
 enum BamBooAPI {
+    case postLogin
+    
     case getAlgorithem
     
     case getRule

@@ -33,10 +33,8 @@ final class LoginFlow : Flow{
         switch step{
         case .LoginIsRequired:
             return coordinateToLoginVC()
-        case .userLoginIsRequired:
-            return coordinateToUserLoginModalVC()
-        case .managerLoginIsRequired:
-            return coordinateToManagerLoginModalVC()
+        case .userLoginIsRequired,.managerLoginIsRequired:
+            return coordinateToLoginModalVC()
         case .userIsLoggedIn, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
@@ -54,7 +52,7 @@ final class LoginFlow : Flow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
-    private func coordinateToUserLoginModalVC() -> FlowContributors{
+    private func coordinateToLoginModalVC() -> FlowContributors{
         let reactor = GoogleOauthModalReactor()
         let vc = GoogleOauthModalVC(reactor: reactor)
         vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext

@@ -120,7 +120,6 @@ final class MainViewController : baseVC<MainReactor>{
                 return cell
             }
         }
-        
         reactor.state
             .map{ $0.mainSection}
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))

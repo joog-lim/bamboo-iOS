@@ -29,9 +29,7 @@ final class RuleViewController : baseVC<RuleReactor> {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    
     //MARK: - Helper
-
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
@@ -68,10 +66,8 @@ final class RuleViewController : baseVC<RuleReactor> {
         reactor.state.observe(on: MainScheduler.instance)
             .subscribe(onNext:{
                 let string = NSMutableAttributedString(string: $0.rule ?? "")
-                $0.fifteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 15) ?? UIFont()
-                )}
-                $0.thirteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 13) ?? UIFont())
-                }
+                $0.fifteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 15) ?? UIFont())}
+                $0.thirteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 13) ?? UIFont())}
                 self.ruleLabel.attributedText = string
             }).disposed(by: disposeBag)
     }
