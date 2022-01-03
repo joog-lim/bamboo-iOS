@@ -61,6 +61,8 @@
 		EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFB275E097900A05857 /* DetailReactor.swift */; };
 		EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
+		EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */; };
+		EE9823B027827AC400C1A915 /* BamBooAPI+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */; };
 		EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */; };
@@ -194,6 +196,8 @@
 		EE97ACFB275E097900A05857 /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
 		EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
+		EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Task.swift"; sourceTree = "<group>"; };
+		EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Header.swift"; sourceTree = "<group>"; };
 		EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalReactor.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -888,6 +892,8 @@
 				EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */,
 				EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */,
 				EEB499102781FAD80082709A /* BamBooAPI+Request.swift */,
+				EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */,
+				EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1193,6 +1199,7 @@
 				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
 				EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */,
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
+				EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
 				EE23E197277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift in Sources */,
 				EE97ACE9275DB3A000A05857 /* MainFlow.swift in Sources */,
@@ -1203,6 +1210,7 @@
 				EECD8B36277B617000B00807 /* DeleteTableViewReactor.swift in Sources */,
 				EE55C24027819B50001596C1 /* Rule.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
+				EE9823B027827AC400C1A915 /* BamBooAPI+Header.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
