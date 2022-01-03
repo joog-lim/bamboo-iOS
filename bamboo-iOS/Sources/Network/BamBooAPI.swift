@@ -12,3 +12,12 @@ enum BamBooAPI {
     case getAlgorithem
     case getRule
 }
+
+extension BamBooAPI : Moya.TargetType{
+    var baseURL: URL { self.getBaseURL()}
+    var path: String { self.getPath()}
+    var method: Moya.Method { self.getMethod() }
+    var sampleData: Data {Data()}
+    var task: Task { self.getTask()}
+    var headers: [String : String]? {self.getHeader()}
+}

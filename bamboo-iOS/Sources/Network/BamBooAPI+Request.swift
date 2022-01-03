@@ -33,4 +33,16 @@ enum BamBooAPIError : Error{
             return []
         }
     }
+    var isNoNetwork : Bool{
+        switch self{
+        case let .requestTimeout(error):
+            fallthrough
+        case let .restError(error, _, _):
+            return BamBooAPI.isNotConnection(error: error) || BamBooAPI.isLostConnection(error: error)
+        case .internetConnection:
+            return true
+        default:
+            return false
+        }
+    }
 }
