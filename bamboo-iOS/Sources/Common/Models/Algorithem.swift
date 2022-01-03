@@ -15,7 +15,6 @@ struct Algorithem : ModelType{
     var tag : String
     var createdAt : Int
     var reason : String?
-    var isDone = false
 }
 
 extension Algorithem : Equatable{

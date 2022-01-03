@@ -109,7 +109,6 @@
 		EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE317276A0D4C0075711C /* ServiceProvider.swift */; };
 		EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* UserLoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
-		EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD332761D35A004AD43E /* APIEnvironment.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
 		EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC42763BAA100898537 /* DeleteFlow.swift */; };
@@ -244,7 +243,6 @@
 		EECDE317276A0D4C0075711C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		EECDE319276A0D830075711C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		EED1FD332761D35A004AD43E /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
@@ -885,7 +883,6 @@
 		EEC430272759142B008F802F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EED1FD332761D35A004AD43E /* APIEnvironment.swift */,
 				EE55C23E2780BF43001596C1 /* Common */,
 				EEB499082781F89C0082709A /* BamBooAPI.swift */,
 				EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */,
@@ -1187,7 +1184,6 @@
 				EE09E941277349710032F1AA /* ModelType.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
-				EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */,
 				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
 				EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */,

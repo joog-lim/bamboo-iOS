@@ -4,7 +4,6 @@
 //
 //  Created by Ji-hoon Ahn on 2022/01/02.
 //
-
 import Foundation
 
 extension Encodable {
@@ -18,4 +17,3 @@ extension Encodable {
         }
     }
 }
-

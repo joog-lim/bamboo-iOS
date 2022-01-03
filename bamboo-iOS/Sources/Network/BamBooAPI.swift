@@ -10,6 +10,7 @@ import Alamofire
 
 enum BamBooAPI {
     case getAlgorithem
+    
     case getRule
 }
 
