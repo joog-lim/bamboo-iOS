@@ -13,7 +13,7 @@ extension BamBooAPI {
     case .getAlgorithem:
         return ""
     case .getRule:
-        return ""
+        return "algorithm/rule"
     }
   }
 }

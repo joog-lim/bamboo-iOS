@@ -38,7 +38,6 @@
 		EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
-		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
 		EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8343F72742A98000991D32 /* GoogleLogin.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
@@ -170,7 +169,6 @@
 		EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModal.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
-		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
 		EE8343F72742A98000991D32 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -614,14 +612,6 @@
 			path = ManagerLoginModal;
 			sourceTree = "<group>";
 		};
-		EE8141F627018A1900ECFDCC /* RuleText */ = {
-			isa = PBXGroup;
-			children = (
-				EE8141FD2701CEA000ECFDCC /* RuleText.swift */,
-			);
-			path = RuleText;
-			sourceTree = "<group>";
-		};
 		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,7 +845,6 @@
 			children = (
 				EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */,
 				EE97ACF9275E095500A05857 /* RuleReactor.swift */,
-				EE8141F627018A1900ECFDCC /* RuleText */,
 			);
 			path = Rule;
 			sourceTree = "<group>";
@@ -1184,7 +1173,6 @@
 				EE09E941277349710032F1AA /* ModelType.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
-				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
 				EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
