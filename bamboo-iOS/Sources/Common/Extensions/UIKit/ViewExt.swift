@@ -16,26 +16,16 @@ extension UIView {
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
 }
-// MARK: - view gradient color extension
-extension UIView {
-    @discardableResult
-    func applyGradient(colors: [UIColor]) -> CAGradientLayer {
-        return self.applyGradient(colors: colors, locations: nil)
-    }
-    
-    @discardableResult
-    func applyGradient(colors: [UIColor], locations: [NSNumber]?) -> CAGradientLayer {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colors.map { $0.cgColor }
-        gradient.locations = locations
-        self.layer.insertSublayer(gradient, at: 0)
-        return gradient
-    }
-}
-
+//MARK: - SafeArea
 extension UIView{
     var safeArea : ConstraintLayoutGuideDSL{
         return safeAreaLayoutGuide.snp
     }
 }
+//MARK: - AddSubView
+extension UIView{
+    func addSubviews(_ subviews: UIView...){
+        subviews.forEach(self.addSubview)
+    }
+}
+

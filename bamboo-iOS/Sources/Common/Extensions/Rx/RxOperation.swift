@@ -1,10 +1,3 @@
-//
-//  RxOperation.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2022/01/02.
-//
-
 import RxSwift
 import RxCocoa
 

@@ -8,18 +8,14 @@
 import UIKit
 import GoogleSignIn
 import KeychainSwift
-import RxSwift
-import RxCocoa
 import ReactorKit
-import OSLog
-import RxFlow
 
 final class GoogleLogin{
     static let shared = GoogleLogin()
     let reactor = GoogleOauthModalReactor()
-    private let disposeBag : DisposeBag = .init()
     private let sign : GIDSignIn
-    private let signInConfig = GIDConfiguration.init(clientID: "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
+    private let signInConfig = GIDConfiguration.init(clientID:   "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
+    private let disposeBag : DisposeBag = .init()
     
     private init(){
         sign = GIDSignIn.sharedInstance
@@ -43,17 +39,17 @@ final class GoogleLogin{
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
                     
-                    KeychainSwift().set(authentication.idToken ?? "", forKey: "idToken")
-                    UserDefaults.standard.set(true, forKey: "UserLogin")
-                    vc.dismiss(animated: true, completion: nil)
+                    UserDefaults.standard.set(true, forKey: "LoginStatus")
+                    tokenBE(authentication.idToken ?? "")
+                    
+                    reactor.steps.accept(BambooStep.dismiss)
                     // send id Token to backend
                 }
-                // 받을수 있는 값
-//                let emailAddress = user.profile?.email
-//                let fullName = user.profile?.name
-//                let givenName = user.profile?.givenName
-//                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
             }
         }
     }
+    private func tokenBE(_ idToken : String){
+        _ = reactor.mutate(action: .googleLoginBERequied(idToken: idToken))
+    }
 }
+

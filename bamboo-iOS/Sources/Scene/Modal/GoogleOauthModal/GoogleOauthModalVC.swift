@@ -91,7 +91,6 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     }
     
     override func bindView(reactor: GoogleOauthModalReactor) {
-        super.bindView(reactor: reactor)
         transparentView.rx.tapGesture()
             .when(.recognized)
             .map{_ in Reactor.Action.googleModalDismiss}
@@ -101,6 +100,13 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
         googleSignBtn.rx.tap
             .subscribe(onNext:{
                 GoogleLogin.shared.SignInOauth(vc: self)
+            }).disposed(by: disposeBag)
+    }
+    override func bindState(reactor: GoogleOauthModalReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{
+                print($0.access)
+                print("refresh: \($0.refresh)")
             }).disposed(by: disposeBag)
     }
 }

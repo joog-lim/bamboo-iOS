@@ -1,12 +1,3 @@
-//
-//  User.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2021/12/22.
-//
-
-import RxDataSources
-
 struct Algorithem : ModelType{
     var id  : String
     var number : Int
@@ -15,7 +6,6 @@ struct Algorithem : ModelType{
     var tag : String
     var createdAt : Int
     var reason : String?
-    var isDone = false
 }
 
 extension Algorithem : Equatable{

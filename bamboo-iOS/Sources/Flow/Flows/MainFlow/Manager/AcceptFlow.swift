@@ -62,7 +62,10 @@ private extension AcceptFlow{
     func coordinatorToEditContent(idx : String, index : Int) -> FlowContributors{
         let reactor = EditContentModalReactor()
         let vc = EditContentModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     func coordinateToBack() -> FlowContributors{
