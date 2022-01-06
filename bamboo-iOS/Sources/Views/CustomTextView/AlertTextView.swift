@@ -15,12 +15,13 @@ class AlertTextView : UITextView{
         backgroundColor = .white
         textAlignment = .left
         textColor = .rgb(red: 196, green: 196, blue: 196)
-        layer.cornerRadius = 5
-        layer.applySketchShadow(color: .black, alpha: 0.25, x: 1, y: 1, blur: 4, spread: 0)
         self.placeholder = placeholder
         text = placeholder
         isEditable = true
         delegate = self
+        clipsToBounds = true
+        layer.cornerRadius = 5
+        layer.applySketchShadow(color: .black, alpha: 0.25, x: 1, y: 1, blur: 4, spread: 0)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

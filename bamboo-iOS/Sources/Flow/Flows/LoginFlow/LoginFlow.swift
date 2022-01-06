@@ -26,7 +26,7 @@ final class LoginFlow : Flow{
     deinit{
         print("\(type(of: self)): \(#function)")
     }
-    
+    //MARK: - Navigation
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         
@@ -45,6 +45,8 @@ final class LoginFlow : Flow{
             return .none
         }
     }
+    
+    //MARK: - Coordinator
     private func coordinateToLoginVC() -> FlowContributors{
         let reactor = LoginReactor(provider: provider)
         let vc = LoginViewController(reactor: reactor)
@@ -61,18 +63,8 @@ final class LoginFlow : Flow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
-    private func coordinateToManagerLoginModalVC() -> FlowContributors{
-        let reactor = ManagerLoginModalReactor()
-        let vc = ManagerLoginModal(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
-    }
-    
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)
         return .none
     }
 }
-

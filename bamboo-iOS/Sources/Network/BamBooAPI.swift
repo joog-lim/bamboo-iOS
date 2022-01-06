@@ -9,7 +9,7 @@ import Moya
 import Alamofire
 
 enum BamBooAPI {
-    case postLogin
+    case postLogin(idToken : String)
     
     case getAlgorithem
     
@@ -23,4 +23,5 @@ extension BamBooAPI : Moya.TargetType{
     var sampleData: Data {Data()}
     var task: Task { self.getTask()}
     var headers: [String : String]? {self.getHeader()}
+    var validationType: ValidationType{ return .successCodes}
 }

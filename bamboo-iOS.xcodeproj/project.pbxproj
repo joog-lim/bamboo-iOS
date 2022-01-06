@@ -34,7 +34,6 @@
 		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
 		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
-		EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
 		EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8343F72742A98000991D32 /* GoogleLogin.swift */; };
@@ -73,6 +72,7 @@
 		EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB0A010277C1850004D7D7F /* DeleteSection.swift */; };
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
+		EEB32E592786E6B000D639F6 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB32E582786E6B000D639F6 /* Token.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
 		EEB498FD2781F0750082709A /* RxOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FC2781F0750082709A /* RxOperation.swift */; };
 		EEB498FF2781F2770082709A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FE2781F2770082709A /* StringExt.swift */; };
@@ -106,10 +106,13 @@
 		EECD8B36277B617000B00807 /* DeleteTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B35277B617000B00807 /* DeleteTableViewReactor.swift */; };
 		EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B37277B638E00B00807 /* StandBySection.swift */; };
 		EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE317276A0D4C0075711C /* ServiceProvider.swift */; };
-		EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* UserLoginService.swift */; };
+		EECDE31A276A0D830075711C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* LoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
+		EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */; };
+		EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */; };
+		EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352372785B482001ADE19 /* NoWifiAlertView.swift */; };
 		EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC42763BAA100898537 /* DeleteFlow.swift */; };
 		EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC62763BD4900898537 /* StandByReactor.swift */; };
 		EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC82763BD6300898537 /* RefusalReactor.swift */; };
@@ -117,7 +120,6 @@
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
-		EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
 		FECA09B151A83DCCFC5F6C47 /* Pods_bamboo_iOS_bamboo_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A3B7F80B59DB3A3E25D62A /* Pods_bamboo_iOS_bamboo_iOSTests.framework */; };
 /* End PBXBuildFile section */
@@ -165,7 +167,6 @@
 		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
-		EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModal.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
 		EE8343F72742A98000991D32 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		EEB0A010277C1850004D7D7F /* DeleteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSection.swift; sourceTree = "<group>"; };
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
+		EEB32E582786E6B000D639F6 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
 		EEB498FC2781F0750082709A /* RxOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperation.swift; sourceTree = "<group>"; };
 		EEB498FE2781F2770082709A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
@@ -239,11 +241,14 @@
 		EECD8B35277B617000B00807 /* DeleteTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewReactor.swift; sourceTree = "<group>"; };
 		EECD8B37277B638E00B00807 /* StandBySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandBySection.swift; sourceTree = "<group>"; };
 		EECDE317276A0D4C0075711C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
-		EECDE319276A0D830075711C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
+		EECDE319276A0D830075711C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
+		EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalVC.swift; sourceTree = "<group>"; };
+		EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalReactor.swift; sourceTree = "<group>"; };
+		EED352372785B482001ADE19 /* NoWifiAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiAlertView.swift; sourceTree = "<group>"; };
 		EED42DC42763BAA100898537 /* DeleteFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFlow.swift; sourceTree = "<group>"; };
 		EED42DC62763BD4900898537 /* StandByReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByReactor.swift; sourceTree = "<group>"; };
 		EED42DC82763BD6300898537 /* RefusalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalReactor.swift; sourceTree = "<group>"; };
@@ -251,7 +256,6 @@
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
-		EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModalReactor.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -313,7 +317,7 @@
 			children = (
 				EECDE31B276A0E140075711C /* BaseService.swift */,
 				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
-				EECDE319276A0D830075711C /* UserLoginService.swift */,
+				EECDE319276A0D830075711C /* LoginService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -416,6 +420,7 @@
 				EE9823B32782EDAE00C1A915 /* Login.swift */,
 				EE23E19927736AE3001171EB /* Algorithem.swift */,
 				EE55C23F27819B50001596C1 /* Rule.swift */,
+				EEB32E582786E6B000D639F6 /* Token.swift */,
 				EEB499002781F5BB0082709A /* Request */,
 			);
 			path = Models;
@@ -424,8 +429,8 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EED3523127859CB7001ADE19 /* NoWifiModal */,
 				EE963D2E2734002E005070B5 /* GoogleOauthModal */,
-				EE80A7FE2730C83F00FF204C /* ManagerLoginModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
@@ -604,15 +609,6 @@
 			path = RefusalModal;
 			sourceTree = "<group>";
 		};
-		EE80A7FE2730C83F00FF204C /* ManagerLoginModal */ = {
-			isa = PBXGroup;
-			children = (
-				EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */,
-				EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */,
-			);
-			path = ManagerLoginModal;
-			sourceTree = "<group>";
-		};
 		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +743,7 @@
 		EE9F0CDE26E748650015E81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EED352362785B472001ADE19 /* CustomAlert */,
 				EE80467426F463E8007D3206 /* TableViewCell */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
@@ -934,6 +931,23 @@
 				EED265512761733E00A1994A /* bamboo_iOSTests.swift */,
 			);
 			path = "bamboo-iOSTests";
+			sourceTree = "<group>";
+		};
+		EED3523127859CB7001ADE19 /* NoWifiModal */ = {
+			isa = PBXGroup;
+			children = (
+				EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */,
+				EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */,
+			);
+			path = NoWifiModal;
+			sourceTree = "<group>";
+		};
+		EED352362785B472001ADE19 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				EED352372785B482001ADE19 /* NoWifiAlertView.swift */,
+			);
+			path = CustomAlert;
 			sourceTree = "<group>";
 		};
 		EEF42F10270BD90F0088043F /* Manager */ = {
@@ -1152,8 +1166,10 @@
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
+				EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */,
 				EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */,
 				EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */,
+				EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
@@ -1169,7 +1185,6 @@
 				EEB4990D2781F9E60082709A /* BamBooAPI+Method.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EEC4302327591141008F802F /* BambooStep.swift in Sources */,
-				EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */,
 				EE09E941277349710032F1AA /* ModelType.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
@@ -1181,7 +1196,7 @@
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */,
 				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
-				EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */,
+				EECDE31A276A0D830075711C /* LoginService.swift in Sources */,
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
 				EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
@@ -1203,6 +1218,7 @@
 				EEB498FD2781F0750082709A /* RxOperation.swift in Sources */,
 				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
+				EEB32E592786E6B000D639F6 /* Token.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
 				EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
@@ -1235,9 +1251,9 @@
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
-				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */,
+				EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,

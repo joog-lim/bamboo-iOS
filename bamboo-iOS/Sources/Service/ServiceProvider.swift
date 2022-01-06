@@ -6,9 +6,9 @@
 //
 
 protocol ServiceProviderType : AnyObject{
-    var loginService : UserLoginServiceType {get}
+    var loginService : LoginServiceType {get}
 }
 
 final class ServiceProvider : ServiceProviderType{
-    lazy var loginService: UserLoginServiceType = UserLoginService(provider: self)
+    lazy var loginService: LoginServiceType = LoginService(provider: self)
 }

@@ -5,6 +5,7 @@
 //  Created by Ji-hoon Ahn on 2021/12/11.
 //
 import UIKit
+import PanModal
 
 import RxFlow
 import RxRelay
@@ -71,7 +72,10 @@ private extension DeleteFlow{
     func coordinatorToRefusalModalRequired(idx : String, index :Int) -> FlowContributors{
         let reactor = RefusalModalReactor()
         let vc = RefusalModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

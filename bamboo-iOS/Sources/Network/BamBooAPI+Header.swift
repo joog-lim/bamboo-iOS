@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import KeychainSwift
 
 extension BamBooAPI{
     func getHeader() -> [String:String]?{
         switch self{
-//        case.postLogin:
-//            return [:]
+        case let .postLogin(idToken):
+            return ["Authorization": idToken]
         default:
-            return nil
+            return ["Content-Type": "application/json"]
         }
     }
 }

@@ -46,15 +46,21 @@ final class LoginReactor : Reactor, Stepper{
 extension LoginReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+            //userLogin
         case .userLoginButtonDidTap:
             provider.loginService.didLoginObservable
                 .map{ $0 ? BambooStep.userIsLoggedIn : BambooStep.userLoginIsRequired}
                 .bind(to: steps)
                 .disposed(by: disposeBag)
             return .empty()
+            //managerLogin
         case .managerLoginButtonDidTap:
-            steps.accept(BambooStep.managerLoginIsRequired)
+            provider.loginService.didLoginObservable
+                .map{ $0 ? BambooStep.managerIsLoggedIn : BambooStep.managerLoginIsRequired}
+                .bind(to: steps)
+                .disposed(by: disposeBag)
             return .empty()
+            //guestLogin
         case .guestLoginButtonDidTap:
             GoogleLogin.shared.SignOutOauth()
             steps.accept(BambooStep.userMainTabBarIsRequired)
