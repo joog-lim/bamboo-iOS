@@ -40,16 +40,13 @@ final class GoogleLogin{
                     guard let authentication = authentication else {return}
                     
                     UserDefaults.standard.set(true, forKey: "LoginStatus")
-                    tokenBE(authentication.idToken ?? "")
-                    
+                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken ?? ""))
+
                     reactor.steps.accept(BambooStep.dismiss)
                     // send id Token to backend
                 }
             }
         }
-    }
-    private func tokenBE(_ idToken : String){
-        _ = reactor.mutate(action: .googleLoginBERequied(idToken: idToken))
     }
 }
 

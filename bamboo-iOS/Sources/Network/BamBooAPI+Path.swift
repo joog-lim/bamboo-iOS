@@ -16,6 +16,8 @@ extension BamBooAPI {
         return ""
     case .getRule:
         return "algorithm/rule"
+    case .renewalToken(_):
+        return  "token" 
     }
   }
 }

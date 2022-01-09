@@ -43,7 +43,7 @@ extension GoogleOauthModalReactor{
         case.googleModalDismiss:
             steps.accept(BambooStep.dismiss)
             return .empty()
-        case .googleLoginBERequied(idToken: let idToken):
+        case let .googleLoginBERequied(idToken):
             return fetchLogin(idToken)
         }
     }
@@ -54,6 +54,7 @@ extension GoogleOauthModalReactor{
         var newState = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken):
+            print("access : \(accessToken) , refresh : \(refreshToken)")
             newState.access = accessToken
             newState.refresh = refreshToken
         }
@@ -64,7 +65,6 @@ extension GoogleOauthModalReactor{
 //MARK: - Method
 private extension GoogleOauthModalReactor{
     func fetchLogin(_ idToken : String) -> Observable<Mutation>{
-        print("idToken: \(idToken)")
         return BamBooAPI.postLogin(idToken: idToken)
             .request()
             .map{
@@ -74,8 +74,6 @@ private extension GoogleOauthModalReactor{
             }
             .map(Login.self,using: BamBooAPI.jsonDecoder)
             .asObservable()
-            .map{
-                print("access ;\($0.access)")
-                return Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
+            .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
     }
 }

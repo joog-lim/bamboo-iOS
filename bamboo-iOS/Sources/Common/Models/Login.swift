@@ -9,4 +9,3 @@ struct Login : ModelType{
         lhs.refresh == rhs.refresh
     }
 }
-

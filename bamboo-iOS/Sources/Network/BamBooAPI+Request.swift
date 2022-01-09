@@ -13,6 +13,7 @@ import KeychainSwift
 //MARK: - Error Type
 enum BamBooAPIError : Error{
     case empty
+    case tokenExpired
     case requestTimeout(Error)
     case internetConnection(Error)
     case restError(Error, statusCode : Int? = nil, errorCode: String? = nil)
@@ -130,7 +131,20 @@ extension BamBooAPI{
         let requestString = "\(endpoint.method) \(endpoint.baseURL) \(endpoint.path)"
         
         return Self.moya.rx.request(endpoint)
+            .flatMap{ // 401(Token Error)일때 다시 발급
+                if $0.statusCode == 401{
+                    throw BamBooAPIError.tokenExpired
+                }else{
+                    return Single.just($0)
+                }
+            }
+//            .retry(when: {  (error: Observable<BamBooAPIError>)  in
+//                error.flatMap { error -> Single<Response> in
+////                          AuthService.shared.renewalToken() // 토큰 재발급 받기
+//                }
+//            })
             .filterSuccessfulStatusCodes()
+            .retry(2)
             .catch(self.handleInternetConnection)
             .catch(self.handleTimeOut)
             .catch(self.handleREST)
@@ -171,7 +185,4 @@ extension BamBooAPI{
             }
         )
     }
-} 
-
-
-
+}

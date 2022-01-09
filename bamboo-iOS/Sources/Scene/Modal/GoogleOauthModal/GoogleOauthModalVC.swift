@@ -102,11 +102,4 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
                 GoogleLogin.shared.SignInOauth(vc: self)
             }).disposed(by: disposeBag)
     }
-    override func bindState(reactor: GoogleOauthModalReactor) {
-        reactor.state.observe(on: MainScheduler.instance)
-            .subscribe(onNext:{
-                print($0.access)
-                print("refresh: \($0.refresh)")
-            }).disposed(by: disposeBag)
-    }
 }

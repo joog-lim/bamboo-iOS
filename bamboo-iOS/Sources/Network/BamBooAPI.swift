@@ -9,6 +9,8 @@ import Moya
 import Alamofire
 
 enum BamBooAPI {
+    case renewalToken(refreshToken : String)
+
     case postLogin(idToken : String)
     
     case getAlgorithem
