@@ -16,9 +16,13 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Event
     enum Action{
         case viewDidLoad
-        case loadData
         case writeData
         case reportBtnClickAction(idx : String, index : Int)
+        case pagination(
+            contentHeight: CGFloat,
+            contentOffsetY: CGFloat,
+            scrollViewHeight: CGFloat
+        )
     }
     enum Mutation{
         case updateDataSource
@@ -28,6 +32,8 @@ final class MainReactor : Reactor, Stepper{
     }
     
     //MARK: - Properties
+//    let provider : ServiceProviderType
+    var currentPage = 0
     let initialState: State
     
     let errorSubject: PublishSubject<Error> = .init()
@@ -43,14 +49,19 @@ extension MainReactor{
         switch action{
         case .viewDidLoad:
             return Observable<Mutation>.just(.updateDataSource)
-        case.loadData:
-            return .empty()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
         case let .reportBtnClickAction( idx,index):
             steps.accept(BambooStep.reportModalsRequired(idx: idx, index: index))
             return .empty()
+        case let .pagination(contentHeight , contentOffsetY, scrollViewHeight):
+            let paddingSpace = contentHeight - contentOffsetY
+            if paddingSpace < scrollViewHeight{
+                return .empty()
+            }else{
+                return .empty()
+            }
         }
     }
 }

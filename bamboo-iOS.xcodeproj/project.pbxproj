@@ -121,6 +121,7 @@
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
+		EEEE9022278C13C60023AFE5 /* AlgorithmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEE9021278C13C60023AFE5 /* AlgorithmService.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
 		EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */; };
 		EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */; };
@@ -260,6 +261,7 @@
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
+		EEEE9021278C13C60023AFE5 /* AlgorithmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmService.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -982,6 +984,7 @@
 			children = (
 				EECDE31B276A0E140075711C /* BaseService.swift */,
 				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
+				EEEE9021278C13C60023AFE5 /* AlgorithmService.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1241,6 +1244,7 @@
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EE489A992771B60200513E94 /* OSLogExt.swift in Sources */,
+				EEEE9022278C13C60023AFE5 /* AlgorithmService.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,

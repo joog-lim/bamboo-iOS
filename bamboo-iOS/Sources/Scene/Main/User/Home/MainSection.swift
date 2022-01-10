@@ -11,6 +11,7 @@ enum MainViewSection{
     case first([MainViewSectionItem])
 }
 enum MainViewSectionItem {
+    
     case main(BulletinBoardsTableViewCellReactor)
 }
 extension MainViewSection : SectionModelType{
