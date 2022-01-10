@@ -1,9 +1,3 @@
-//
-//  MainViewController.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2021/09/13.
-//
 import UIKit
 import Reusable
 
@@ -25,12 +19,14 @@ final class MainViewController : baseVC<MainReactor>{
         $0.attributedText = string
     }
 
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: .zero).then {
         $0.register(cellType: BulletinBoardsTableViewCell.self)
-        $0.showsVerticalScrollIndicator = false
+        $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
         $0.separatorColor = .clear
+        $0.showsVerticalScrollIndicator = false
         $0.allowsSelection = false
         $0.rowHeight = UITableView.automaticDimension
+        $0.sectionHeaderHeight = 152
         $0.estimatedRowHeight = 300
     }
     
@@ -59,6 +55,7 @@ final class MainViewController : baseVC<MainReactor>{
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
+    //MARK: - addView
     override func addView() {
         super.addView()
         view.addSubviews(mainTableView,writeBtn)

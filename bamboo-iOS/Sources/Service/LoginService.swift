@@ -8,8 +8,7 @@
 import Foundation
 import RxSwift
 
-
-protocol LoginServiceType : AnyObject{
+protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
 }
 final class LoginService : BaseService, LoginServiceType{

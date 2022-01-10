@@ -67,11 +67,6 @@ private extension GoogleOauthModalReactor{
     func fetchLogin(_ idToken : String) -> Observable<Mutation>{
         return BamBooAPI.postLogin(idToken: idToken)
             .request()
-            .map{
-                guard let value = try $0.mapString().data(using: .utf8) else {return $0}
-                let newResponse = Response(statusCode: $0.statusCode,data: value,request: $0.request,response: $0.response)
-                return newResponse
-            }
             .map(Login.self,using: BamBooAPI.jsonDecoder)
             .asObservable()
             .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}

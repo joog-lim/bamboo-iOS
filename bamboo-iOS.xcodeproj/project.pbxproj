@@ -122,6 +122,8 @@
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
+		EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */; };
+		EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */; };
 		FECA09B151A83DCCFC5F6C47 /* Pods_bamboo_iOS_bamboo_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A3B7F80B59DB3A3E25D62A /* Pods_bamboo_iOS_bamboo_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -259,6 +261,8 @@
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,8 +321,7 @@
 		EE1D8AE827180A21003614BE /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EECDE31B276A0E140075711C /* BaseService.swift */,
-				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
+				EEF451BF278B362100ADA8BD /* Common */,
 				EECDE319276A0D830075711C /* LoginService.swift */,
 			);
 			path = Service;
@@ -403,6 +406,7 @@
 			children = (
 				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
 				EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */,
+				EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -411,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */,
+				EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */,
 			);
 			path = BaseTableViewCell;
 			sourceTree = "<group>";
@@ -972,6 +977,15 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		EEF451BF278B362100ADA8BD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EECDE31B276A0E140075711C /* BaseService.swift */,
+				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1243,6 +1257,7 @@
 				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
+				EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */,
@@ -1256,6 +1271,7 @@
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
+				EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */,
 				EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */,
 				EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
