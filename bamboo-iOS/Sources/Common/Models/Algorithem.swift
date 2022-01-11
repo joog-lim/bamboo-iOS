@@ -1,15 +1,28 @@
-struct Algorithem : ModelType{
-    var id  : String
-    var number : Int
+
+struct Algorithm : ModelType{
+    var idx  : Int
+    var algorithmNumber : Int
     var title : String
     var content : String
     var tag : String
     var createdAt : Int
-    var reason : String?
+    var isClicked : Bool
+    var emojiCount : Int
+    
+    enum CodingKeys : String,CodingKey{
+        case idx
+        case algorithmNumber
+        case title
+        case content
+        case tag
+        case createdAt
+        case isClicked
+        case emojiCount
+    }
 }
 
-extension Algorithem : Equatable{
-    static func == (lhs : Algorithem, rhs : Algorithem) -> Bool{
-        lhs.id == rhs.id
+extension Algorithm : Equatable{
+    static func == (lhs : Algorithm, rhs : Algorithm) -> Bool{
+        lhs.idx == rhs.idx
     }
 }

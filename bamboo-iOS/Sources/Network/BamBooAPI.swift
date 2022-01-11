@@ -13,7 +13,7 @@ enum BamBooAPI {
 
     case postLogin(idToken : String)
     
-    case getAlgorithem
+    case getAlgorithem(algorithmRequest : AlgorithmRequest)
     
     case getRule
 }

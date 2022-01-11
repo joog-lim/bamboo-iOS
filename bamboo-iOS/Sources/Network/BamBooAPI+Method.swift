@@ -11,9 +11,9 @@ import Moya
 extension BamBooAPI{
     func getMethod() -> Moya.Method{
         switch self{
-        case .renewalToken(_):
+        case .renewalToken:
             return .post
-        case .postLogin(_):
+        case .postLogin:
             return .post
         case .getAlgorithem:
             return  .get

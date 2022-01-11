@@ -12,9 +12,9 @@ import RxFlow
 class DeleteTableViewReactor: Reactor{
     typealias Action = NoAction
 
-    let initialState: Algorithem
+    let initialState: Algorithm
     
-    init( DeleteBoard : Algorithem){
+    init( DeleteBoard : Algorithm){
         self.initialState = DeleteBoard
     }
 }

@@ -13,7 +13,7 @@ extension BamBooAPI {
     case .postLogin:
         return "login"
     case .getAlgorithem:
-        return ""
+        return "algorithm/page"
     case .getRule:
         return "algorithm/rule"
     case .renewalToken(_):

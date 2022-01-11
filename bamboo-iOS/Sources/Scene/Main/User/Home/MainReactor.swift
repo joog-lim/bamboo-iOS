@@ -4,20 +4,21 @@
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
-import UIKit
-
 import ReactorKit
 import RxFlow
 import RxCocoa
+import Differentiator
 
 final class MainReactor : Reactor, Stepper{
     //MARK: - Stepper
     var steps: PublishRelay<Step> = .init()
+
     //MARK: - Event
     enum Action{
-        case viewDidLoad
+        case viewWillAppear
+        case prefetchItems([MainSection.Item])
         case writeData
-        case reportBtnClickAction(idx : String, index : Int)
+        case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
             contentOffsetY: CGFloat,
@@ -25,21 +26,22 @@ final class MainReactor : Reactor, Stepper{
         )
     }
     enum Mutation{
-        case updateDataSource
+        case updateDataSource([MainSection.Item])
     }
     struct State{
-        var mainSection = [MainViewSection]()
+        var mainSection = MainSection.Model(
+            model: 0,
+            items: []
+         )
     }
     
     //MARK: - Properties
-//    let provider : ServiceProviderType
+    let provider : ServiceProviderType
     var currentPage = 0
-    let initialState: State
-    
-    let errorSubject: PublishSubject<Error> = .init()
-    
-    init(){
-        self.initialState = State()
+    let initialState = State()
+        
+    init(provider : ServiceProviderType){
+        self.provider = provider
     }
 }
 
@@ -47,8 +49,17 @@ final class MainReactor : Reactor, Stepper{
 extension MainReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .viewDidLoad:
-            return Observable<Mutation>.just(.updateDataSource)
+        case .viewWillAppear:
+            currentPage += 1
+            let algorithmRequest = AlgorithmRequest(page: currentPage)
+            return self.provider.algorithmService.getAlgorithm(algorithmRequest: algorithmRequest)
+                .map{ (algorithm : [Algorithm]) -> [MainSection.Item] in
+                    let mainSectionItem = algorithm.map(MainSection.Item.main)
+                    return mainSectionItem
+                }
+                .map(Mutation.updateDataSource)
+        case .prefetchItems(_):
+            return .empty()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
@@ -70,19 +81,21 @@ extension MainReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource:
-            state.mainSection = getMainData()
+        case .updateDataSource(let sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
         }
         return state
     }
 }
-
-func getMainData() -> [MainViewSection]{
-    let mainItem1 = MainViewSectionItem.main(BulletinBoardsTableViewCellReactor(bulletinBoards: Algorithem(id: "1", number: 1, title: "집", content: "집가고 싶다", tag: "유머", createdAt: 1640316269465)))
-
-    
-    let itemInFirstSection = [mainItem1]
-    let firstSection = MainViewSection(original: MainViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
-    
-    return [firstSection]
+extension MainReactor{
+    private func getAlgorithm() -> Observable<Mutation>{
+        self.currentPage += 1
+        let algorithmRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.algorithmService.getAlgorithm(algorithmRequest: algorithmRequest)
+            .map{(algorithm: [Algorithm]) -> [MainSection.Item] in
+                let mainSectionItem = algorithm.map(MainSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateDataSource)
+    }
 }

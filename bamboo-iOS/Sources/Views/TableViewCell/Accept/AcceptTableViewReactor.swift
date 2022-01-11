@@ -12,9 +12,9 @@ import RxFlow
 class AcceptTableViewReactor: Reactor{
     typealias Action = NoAction
 
-    let initialState: Algorithem
+    let initialState: Algorithm
     
-    init( AcceptBoard : Algorithem){
+    init( AcceptBoard : Algorithm){
         self.initialState = AcceptBoard
     }
 }

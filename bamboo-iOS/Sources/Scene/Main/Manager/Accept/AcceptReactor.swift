@@ -17,7 +17,7 @@ final class AcceptReactor : Reactor, Stepper{
     enum Action{
         case backBtnTap
         case viewDidLoad
-        case editContentPresent(idx : String, index : Int)
+        case editContentPresent(idx : Int, index : Int)
     }
     enum Mutation{
         case updateDataSource
@@ -64,7 +64,7 @@ extension AcceptReactor{
 
 func getMainData() -> [AcceptViewSection]{
 
-    let mainItem1 = AcceptViewSectionItem.main(AcceptTableViewReactor(AcceptBoard: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트", tag: "유머", createdAt: 1640316269465)))
+    let mainItem1 = AcceptViewSectionItem.main(AcceptTableViewReactor(AcceptBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1, isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = AcceptViewSection(original: AcceptViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

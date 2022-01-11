@@ -99,7 +99,7 @@ final class DeleteViewController : baseVC<DeleteReactor>{
 
 //MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
-    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: String) {
+    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id ,index: indexPath.row))
     }

@@ -16,8 +16,8 @@ final class StandByReactor : Reactor, Stepper{
     
     enum Action{
         case viewDidLoad
-        case standbyBtnTap(titleText : String, message : String, idx : String, index : Int)
-        case alertRefusalTap(String,Int)
+        case standbyBtnTap(titleText : String, message : String, idx : Int, index : Int)
+        case alertRefusalTap(Int,Int)
     }
     enum Mutation{
         case updateDataSource
@@ -64,7 +64,7 @@ extension StandByReactor{
 
 func getMainData() -> [StandByViewSection]{
 
-    let mainItem1 = StandByViewSectionItem.main(StandByTableViewReactor(StandByBoard: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트", tag: "유머", createdAt: 1640316269465)))
+    let mainItem1 = StandByViewSectionItem.main(StandByTableViewReactor(StandByBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1, isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = StandByViewSection(original: StandByViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

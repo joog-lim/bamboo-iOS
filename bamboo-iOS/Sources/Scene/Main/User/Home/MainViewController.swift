@@ -1,6 +1,5 @@
 import UIKit
 import Reusable
-
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -102,32 +101,49 @@ final class MainViewController : baseVC<MainReactor>{
             .disposed(by: disposeBag)
     }
     override func bindAction(reactor: MainReactor) {
-        self.rx.viewDidLoad
-            .map{_ in Reactor.Action.viewDidLoad}
+        self.rx.viewWillAppear
+            .map{_ in Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     override func bindState(reactor: MainReactor) {
-        let dataSource = RxTableViewSectionedReloadDataSource<MainViewSection>{ dataSource, tableView, indexPath, sectionItem in
+        let dataSource = RxTableViewSectionedReloadDataSource<MainSection.Model>{ dataSource, tableView, indexPath, sectionItem in
             switch sectionItem{
-            case.main(let reactor):
+            case.main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
                 cell.delegate = self
-                cell.reactor = reactor
+                cell.model = algorithm
                 return cell
             }
         }
-        reactor.state
-            .map{ $0.mainSection}
-            .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
+        self.mainTableView.rx.prefetchRows
+            .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .observe(on: MainScheduler.asyncInstance)
+            .asObservable()
+            .map(dataSource.items(at:))
+            .map(Reactor.Action.prefetchItems)
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        self.mainTableView.rx.didScroll
+            .withLatestFrom(self.mainTableView.rx.contentOffset)
+            .map{ [weak self] in
+                Reactor.Action.pagination(
+                    contentHeight: self?.mainTableView.contentSize.height ?? 0,
+                    contentOffsetY: $0.y,
+                    scrollViewHeight: UIScreen.main.bounds.height
+                )
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+            
     }
 }
 
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
-    func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: String) {
+    func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         reactor?.steps.accept(BambooStep.reportModalsRequired(idx: id, index: indexPath.row))
     }

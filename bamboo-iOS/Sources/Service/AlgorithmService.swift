@@ -9,8 +9,14 @@ import Foundation
 import RxSwift
 
 protocol AlgorithmServiceeType {
-    func getAlgorithm(algorithmRequest : )
+    func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
 }
 final class AlgorithmService : BaseService,AlgorithmServiceeType{
-    
+    func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<[Algorithm]>{
+        BamBooAPI.getAlgorithem(algorithmRequest: algorithmRequest)
+            .request()
+            .map([Algorithm].self, using : BamBooAPI.jsonDecoder)
+            .do(onError:{print($0)})
+            .asObservable()
+    }
 }

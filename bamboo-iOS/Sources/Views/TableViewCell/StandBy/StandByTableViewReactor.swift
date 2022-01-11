@@ -12,9 +12,9 @@ import RxFlow
 class StandByTableViewReactor: Reactor{
     typealias Action = NoAction
 
-    let initialState: Algorithem
+    let initialState: Algorithm
     
-    init( StandByBoard : Algorithem){
+    init( StandByBoard : Algorithm){
         self.initialState = StandByBoard
     }
 }

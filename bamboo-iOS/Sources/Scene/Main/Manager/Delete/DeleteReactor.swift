@@ -16,8 +16,8 @@ final class DeleteReactor : Reactor, Stepper{
     
     enum Action{
         case viewDidLoad
-        case deleteBtnTap(titleText : String, message : String, idx : String, index : Int)
-        case alertRefusalTap(String,Int)
+        case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int)
+        case alertRefusalTap(Int,Int)
     }
     enum Mutation{
         case updateDataSource
@@ -62,7 +62,7 @@ extension DeleteReactor{
 }
 func getMainData() -> [DeleteViewSection]{
 
-    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트", tag: "유머", createdAt: 1640316269465,reason: "재미없다")))
+    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1,  isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

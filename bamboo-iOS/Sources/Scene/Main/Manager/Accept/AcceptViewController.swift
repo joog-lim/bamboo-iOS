@@ -113,7 +113,7 @@ final class AcceptViewController : baseVC<AcceptReactor> {
 
 //MARK: - 수정 버튼 눌렀을때 동작
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
-    func cellSettingbtnClick(cell: AcceptManagerTableViewCell, id: String) {
+    func cellSettingbtnClick(cell: AcceptManagerTableViewCell, id: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
         reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: id, index: indexPath.row))
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StandBytableViewCellBtnClickDelegate : AnyObject{
-    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : String)
+    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int)
 }
 
 final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
@@ -95,7 +95,7 @@ final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
         }
     }
     override func bindView(reactor: StandByTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.number)번째 대기중"
+        algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 대기중"
         dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
@@ -104,7 +104,7 @@ final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
     override func bindAction(reactor: StandByTableViewReactor) {
         cellSeeMoreDetailBtn.rx.tap
             .subscribe({[self] _ in
-                delegate?.clickSeeMoreDetailBtn(cell: self, id: reactor.currentState.id)
+                delegate?.clickSeeMoreDetailBtn(cell: self, id: reactor.currentState.idx)
             }).disposed(by: disposeBag)
     }
 }

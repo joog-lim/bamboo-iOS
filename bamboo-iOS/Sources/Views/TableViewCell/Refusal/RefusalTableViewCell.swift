@@ -7,7 +7,7 @@
 import UIKit
 import RxDataSources
 protocol RefusalCancelBtnDelegate : AnyObject{
-    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : String)
+    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : Int)
 }
 
 final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
@@ -93,7 +93,7 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
         }
     }
     override func bindView(reactor: RefusalTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.number)번째 거절됨"
+        algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 거절됨"
         dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
@@ -102,7 +102,7 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     override func bindAction(reactor: RefusalTableViewReactor) {
         refusalCancelBtn.rx.tap
             .subscribe({ [self] _ in
-                self.delegate?.refusalCancelBtnAction(cell: self, id: reactor.currentState.id)
+                self.delegate?.refusalCancelBtnAction(cell: self, id: reactor.currentState.idx)
             }).disposed(by: disposeBag)
     }
 }

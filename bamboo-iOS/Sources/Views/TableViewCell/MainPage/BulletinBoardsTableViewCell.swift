@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 protocol ClickReportBtnActionDelegate : AnyObject{
-    func clickReportBtnAction(cell : BulletinBoardsTableViewCell, id : String)
+    func clickReportBtnAction(cell : BulletinBoardsTableViewCell, id : Int)
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
 }
 
-final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableViewCellReactor>{
+final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -115,25 +115,47 @@ final class BulletinBoardsTableViewCell : baseTableViewCell<BulletinBoardsTableV
         }
     }
     //MARK: - bind
-    override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
-        algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
-        tagLabel.text = reactor.currentState.tag
-        titleLabel.text = reactor.currentState.title
-        contentLabel.text = reactor.currentState.content
-        likeBtn.label.text = "11"
-        likeBtn.isSelected = false
-    }
-    override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
+    override func bind(_ model: Algorithm) {
+        algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
+        dataLabel.text = Date().usingDate(timeStamp: model.createdAt)
+        tagLabel.text = model.tag
+        titleLabel.text = model.title
+        contentLabel.text = model.content
+        likeBtn.label.text = "\(model.emojiCount)"
+        likeBtn.isSelected = model.isClicked
+        
         cellSettingbtn.rx.tap
-            .subscribe({[self] _ in
-                delegate?.clickReportBtnAction(cell: self, id: reactor.currentState.id)
+            .subscribe({[weak self] _ in
+                self?.delegate?.clickReportBtnAction(cell: self!, id: model.idx)
             }).disposed(by: disposeBag)
         
         likeBtn.rx.tap
-            .subscribe({[self] _ in
-                likeBtn.isSelected = !likeBtn.isSelected
-                delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
+            .subscribe({[weak self] _ in
+                self?.likeBtn.isSelected = !self!.likeBtn.isSelected
+                self?.delegate?.clickLikeBtnAction(cell: self!, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
+
     }
+    
+//    override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
+//        algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
+//        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+//        tagLabel.text = reactor.currentState.tag
+//        titleLabel.text = reactor.currentState.title
+//        contentLabel.text = reactor.currentState.content
+//        likeBtn.label.text = "11"
+//        likeBtn.isSelected = false
+//    }
+//    override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
+//        cellSettingbtn.rx.tap
+//            .subscribe({[self] _ in
+//                delegate?.clickReportBtnAction(cell: self, id: reactor.currentState.id)
+//            }).disposed(by: disposeBag)
+//
+//        likeBtn.rx.tap
+//            .subscribe({[self] _ in
+//                likeBtn.isSelected = !likeBtn.isSelected
+//                delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
+//            }).disposed(by: disposeBag)
+//    }
 }

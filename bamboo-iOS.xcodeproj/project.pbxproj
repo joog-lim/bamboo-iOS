@@ -13,7 +13,6 @@
 		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
 		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
-		EE23E197277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */; };
 		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -25,6 +24,7 @@
 		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
 		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
 		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
+		EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -151,7 +151,6 @@
 		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
-		EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCellReactor.swift; sourceTree = "<group>"; };
 		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +162,7 @@
 		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
 		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIndexable.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -410,7 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
-				EE23E196277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift */,
 				EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */,
 			);
 			path = MainPage;
@@ -755,8 +754,8 @@
 		EE9F0CDE26E748650015E81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EED352362785B472001ADE19 /* CustomAlert */,
 				EE80467426F463E8007D3206 /* TableViewCell */,
+				EED352362785B472001ADE19 /* CustomAlert */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
 				EE30E5722706B02600B9AF8A /* CustomTextView */,
@@ -918,6 +917,7 @@
 			children = (
 				EEC4302A27591488008F802F /* StepExt.swift */,
 				EEB498FC2781F0750082709A /* RxOperation.swift */,
+				EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1223,7 +1223,6 @@
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
 				EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
-				EE23E197277364C2001171EB /* BulletinBoardsTableViewCellReactor.swift in Sources */,
 				EE97ACE9275DB3A000A05857 /* MainFlow.swift in Sources */,
 				EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */,
 				EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */,
@@ -1288,6 +1287,7 @@
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
+				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

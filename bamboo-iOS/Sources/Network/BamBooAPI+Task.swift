@@ -10,6 +10,8 @@ import Moya
 extension BamBooAPI{
     func getTask() -> Task{
         switch self{
+        case .getAlgorithem(let request):
+            return .requestParameters(parameters: request.toDictionary(), encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
