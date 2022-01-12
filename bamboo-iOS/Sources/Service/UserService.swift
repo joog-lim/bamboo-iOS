@@ -14,7 +14,7 @@ protocol UserServiceType {
     //get
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
     func getRule() -> Observable<Rule>
-//    func verify() -> Observable<>
+    func getVerify() -> Observable<Verify>
 }
 final class UserService : BaseService,UserServiceType{}
 
@@ -25,8 +25,8 @@ extension UserService{
 
 
 //MARK: - Get
-/// - Algorithm
 extension UserService {
+    // - Algorithm
     func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<[Algorithm]>{
         BamBooAPI.getAlgorithem(algorithmRequest: algorithmRequest)
             .request()
@@ -34,11 +34,19 @@ extension UserService {
             .do(onError:{print($0)})
             .asObservable()
     }
-/// - Rule
+    // - Rule
     func getRule() -> Observable<Rule> {
         BamBooAPI.getRule
             .request()
             .map(Rule.self, using : BamBooAPI.jsonDecoder)
+            .do(onError: {print($0)})
+            .asObservable()
+    }
+    // - Verify
+    func getVerify() -> Observable<Verify>{
+        BamBooAPI.getVerify
+            .request()
+            .map(Verify.self, using: BamBooAPI.jsonDecoder)
             .do(onError: {print($0)})
             .asObservable()
     }

@@ -19,6 +19,8 @@ extension BamBooAPI{
             return  .get
         case .getRule:
             return .get
+        case .getVerify:
+            return .get
         }
     }
 }

@@ -64,11 +64,11 @@ final class RuleViewController : baseVC<RuleReactor> {
     }
     override func bindState(reactor: RuleReactor) {
         reactor.state.observe(on: MainScheduler.instance)
-            .subscribe(onNext:{
+            .subscribe(onNext:{ [weak self] in
                 let string = NSMutableAttributedString(string: $0.rule ?? "")
                 $0.fifteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 15) ?? UIFont())}
                 $0.thirteen?.forEach{string.setFontForText(textToFind: $0, withFont: UIFont(name: "NanumSquareRoundB", size: 13) ?? UIFont())}
-                self.ruleLabel.attributedText = string
+                self?.ruleLabel.attributedText = string
             }).disposed(by: disposeBag)
     }
 }

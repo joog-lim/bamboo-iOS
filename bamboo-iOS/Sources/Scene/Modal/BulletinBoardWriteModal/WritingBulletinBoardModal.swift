@@ -94,10 +94,23 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     
     override func bindView(reactor: WritingBulletinBoardReactor) {
-        super.bindView(reactor: reactor)
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
+            }).disposed(by: disposeBag)
+    }
+    
+    override func bindAction(reactor: WritingBulletinBoardReactor) {
+        self.rx.viewWillAppear
+            .map{ Reactor.Action.viewWillAppear}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    override func bindState(reactor: WritingBulletinBoardReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ [weak self] in
+                self?.passwordTitle.text = $0.question ?? ""
             }).disposed(by: disposeBag)
     }
 }

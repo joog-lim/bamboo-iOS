@@ -66,7 +66,7 @@ private extension HomeFlow{
     }
     
     func coordinatorWriteModal() -> FlowContributors{
-        let reactor = WritingBulletinBoardReactor()
+        let reactor = WritingBulletinBoardReactor(with: provider)
         let vc = WritingBulletinBoardModal(reactor: reactor)
         self.rootViewController.presentPanModal(vc)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
