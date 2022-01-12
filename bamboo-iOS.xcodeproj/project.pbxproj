@@ -25,6 +25,9 @@
 		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
 		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
 		EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */; };
+		EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */; };
+		EE5DBF14278EFAF300CCF1D2 /* RuleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF13278EFAF300CCF1D2 /* RuleService.swift */; };
+		EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -163,6 +166,9 @@
 		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIndexable.swift; sourceTree = "<group>"; };
+		EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		EE5DBF13278EFAF300CCF1D2 /* RuleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleService.swift; sourceTree = "<group>"; };
+		EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -327,7 +333,9 @@
 			children = (
 				EEF451BF278B362100ADA8BD /* Common */,
 				EECDE319276A0D830075711C /* LoginService.swift */,
+				EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */,
 				EEEE9021278C13C60023AFE5 /* AlgorithmService.swift */,
+				EE5DBF13278EFAF300CCF1D2 /* RuleService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -908,6 +916,7 @@
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
 				EECD8B2F277B109000B00807 /* DateExt.swift */,
 				EEB498FE2781F2770082709A /* StringExt.swift */,
+				EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1192,8 +1201,10 @@
 				EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */,
 				EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */,
 				EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */,
+				EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */,
 				EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
+				EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
 				EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */,
@@ -1285,6 +1296,7 @@
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
+				EE5DBF14278EFAF300CCF1D2 /* RuleService.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
 				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,

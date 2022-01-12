@@ -95,7 +95,7 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
     //MARK: - Bind
     override func bindView(reactor: AcceptTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 알고리즘"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+        dataLabel.text = reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

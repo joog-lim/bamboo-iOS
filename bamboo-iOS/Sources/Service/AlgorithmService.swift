@@ -8,10 +8,10 @@
 import Foundation
 import RxSwift
 
-protocol AlgorithmServiceeType {
+protocol AlgorithmServiceType {
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
 }
-final class AlgorithmService : BaseService,AlgorithmServiceeType{
+final class AlgorithmService : BaseService,AlgorithmServiceType{
     func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<[Algorithm]>{
         BamBooAPI.getAlgorithem(algorithmRequest: algorithmRequest)
             .request()

@@ -54,7 +54,7 @@ final class RuleFlow : Flow{
 
 private extension RuleFlow{
     func coordinatorToRule() -> FlowContributors{
-        let reactor = RuleReactor()
+        let reactor = RuleReactor(with: provider)
         let vc = RuleViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))

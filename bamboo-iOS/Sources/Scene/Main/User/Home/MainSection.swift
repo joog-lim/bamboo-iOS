@@ -10,6 +10,7 @@ import RxDataSources
 //MARK: - Remake
 enum MainSection{
     typealias Model = SectionModel<Int,Item>
+    
     enum Item{
         case main(Algorithm)
     }

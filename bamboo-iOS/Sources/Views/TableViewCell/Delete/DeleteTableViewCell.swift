@@ -115,7 +115,7 @@ final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
 
     override func bindView(reactor: DeleteTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 삭제요청"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+        dataLabel.text =  reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

@@ -52,7 +52,7 @@ extension MainReactor{
         case .viewWillAppear:
             currentPage += 1
             let algorithmRequest = AlgorithmRequest(page: currentPage)
-            return self.provider.algorithmService.getAlgorithm(algorithmRequest: algorithmRequest)
+            return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
                 .map{ (algorithm : [Algorithm]) -> [MainSection.Item] in
                     let mainSectionItem = algorithm.map(MainSection.Item.main)
                     return mainSectionItem
@@ -69,7 +69,7 @@ extension MainReactor{
         case let .pagination(contentHeight , contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
-                return .empty()
+                return getAlgorithm()
             }else{
                 return .empty()
             }
@@ -87,11 +87,12 @@ extension MainReactor{
         return state
     }
 }
+//MARK: - GetAlgorithm
 extension MainReactor{
     private func getAlgorithm() -> Observable<Mutation>{
         self.currentPage += 1
         let algorithmRequest = AlgorithmRequest(page: currentPage)
-        return self.provider.algorithmService.getAlgorithm(algorithmRequest: algorithmRequest)
+        return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
             .map{(algorithm: [Algorithm]) -> [MainSection.Item] in
                 let mainSectionItem = algorithm.map(MainSection.Item.main)
                 return mainSectionItem

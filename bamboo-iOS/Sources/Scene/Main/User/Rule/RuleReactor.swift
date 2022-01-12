@@ -31,12 +31,12 @@ final class RuleReactor : Reactor, Stepper{
     }
     
     //MARK: - Properties
+    let provider : ServiceProviderType
     let initialState: State
-    
-    let errorSubject: PublishSubject<Error> = .init()
-    
-    init(){
+
+    init(with provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 

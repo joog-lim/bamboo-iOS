@@ -64,7 +64,7 @@ extension StandByReactor{
 
 func getMainData() -> [StandByViewSection]{
 
-    let mainItem1 = StandByViewSectionItem.main(StandByTableViewReactor(StandByBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1, isClicked: false, emojiCount: 1)))
+    let mainItem1 = StandByViewSectionItem.main(StandByTableViewReactor(StandByBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z", isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = StandByViewSection(original: StandByViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

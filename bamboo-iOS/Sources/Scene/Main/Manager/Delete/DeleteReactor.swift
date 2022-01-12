@@ -62,7 +62,7 @@ extension DeleteReactor{
 }
 func getMainData() -> [DeleteViewSection]{
 
-    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1,  isClicked: false, emojiCount: 1)))
+    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z",  isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

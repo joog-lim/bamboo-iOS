@@ -55,7 +55,7 @@ extension RefusalReactor{
 
 func getMainData() -> [RefusalViewSection]{
 
-    let mainItem1 = RefusalViewSectionItem.main(RefusalTableViewReactor(RefusalBoard:  Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1, isClicked: false, emojiCount: 1)))
+    let mainItem1 = RefusalViewSectionItem.main(RefusalTableViewReactor(RefusalBoard:  Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z", isClicked: false, emojiCount: 1)))
     
     
     let itemInFirstSection = [mainItem1]

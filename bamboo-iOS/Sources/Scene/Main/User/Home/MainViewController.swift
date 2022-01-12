@@ -101,7 +101,7 @@ final class MainViewController : baseVC<MainReactor>{
             .disposed(by: disposeBag)
     }
     override func bindAction(reactor: MainReactor) {
-        self.rx.viewWillAppear
+        self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -137,6 +137,11 @@ final class MainViewController : baseVC<MainReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
             
+        reactor.state.map(\.mainSection)
+            .distinctUntilChanged()
+            .map(Array.init(with:))
+            .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 }
 

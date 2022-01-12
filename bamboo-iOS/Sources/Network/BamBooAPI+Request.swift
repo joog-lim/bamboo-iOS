@@ -144,7 +144,6 @@ extension BamBooAPI{
 //                }
 //            })
             .filterSuccessfulStatusCodes()
-            .retry(2)
             .catch(self.handleInternetConnection)
             .catch(self.handleTimeOut)
             .catch(self.handleREST)

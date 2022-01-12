@@ -64,7 +64,7 @@ extension AcceptReactor{
 
 func getMainData() -> [AcceptViewSection]{
 
-    let mainItem1 = AcceptViewSectionItem.main(AcceptTableViewReactor(AcceptBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: 1, isClicked: false, emojiCount: 1)))
+    let mainItem1 = AcceptViewSectionItem.main(AcceptTableViewReactor(AcceptBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z", isClicked: false, emojiCount: 1)))
     
     let itemInFirstSection = [mainItem1]
     let firstSection = AcceptViewSection(original: AcceptViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)

@@ -41,7 +41,7 @@ final class GoogleLogin{
                     
                     UserDefaults.standard.set(true, forKey: "LoginStatus")
                     _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken ?? ""))
-                    print(authentication.idToken)
+                    print(authentication.idToken ?? "")
                     reactor.steps.accept(BambooStep.dismiss)
                     // send id Token to backend
                 }

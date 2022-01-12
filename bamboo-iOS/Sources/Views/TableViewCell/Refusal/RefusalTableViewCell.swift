@@ -94,7 +94,7 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
     }
     override func bindView(reactor: RefusalTableViewReactor) {
         algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 거절됨"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
+        dataLabel.text = reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
         tagLabel.text = reactor.currentState.tag
         titleLabel.text = reactor.currentState.title
         contentLabel.text = reactor.currentState.content

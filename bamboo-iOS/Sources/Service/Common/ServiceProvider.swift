@@ -7,10 +7,11 @@
 
 protocol ServiceProviderType : AnyObject{
     var loginService : LoginServiceType {get}
-    var algorithmService : AlgorithmServiceeType {get}
+    var userService : UserServiceType {get}
 }
 
 final class ServiceProvider : ServiceProviderType{
     lazy var loginService: LoginServiceType = LoginService(provider: self)
-    lazy var algorithmService: AlgorithmServiceeType = AlgorithmService(provider: self)
+    lazy var userService: UserServiceType = UserService(provider: self)
+
 }

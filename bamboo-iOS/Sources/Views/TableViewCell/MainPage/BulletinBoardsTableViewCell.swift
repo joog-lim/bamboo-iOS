@@ -117,7 +117,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
     //MARK: - bind
     override func bind(_ model: Algorithm) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
-        dataLabel.text = Date().usingDate(timeStamp: model.createdAt)
+        dataLabel.text = model.createdAt
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
@@ -136,26 +136,4 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
             }).disposed(by: disposeBag)
 
     }
-    
-//    override func bindView(reactor: BulletinBoardsTableViewCellReactor) {
-//        algorithm.text = "#\(reactor.currentState.number)번 알고리즘"
-//        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
-//        tagLabel.text = reactor.currentState.tag
-//        titleLabel.text = reactor.currentState.title
-//        contentLabel.text = reactor.currentState.content
-//        likeBtn.label.text = "11"
-//        likeBtn.isSelected = false
-//    }
-//    override func bindAction(reactor: BulletinBoardsTableViewCellReactor) {
-//        cellSettingbtn.rx.tap
-//            .subscribe({[self] _ in
-//                delegate?.clickReportBtnAction(cell: self, id: reactor.currentState.id)
-//            }).disposed(by: disposeBag)
-//
-//        likeBtn.rx.tap
-//            .subscribe({[self] _ in
-//                likeBtn.isSelected = !likeBtn.isSelected
-//                delegate?.clickLikeBtnAction(cell: self, state: likeBtn.isSelected)
-//            }).disposed(by: disposeBag)
-//    }
 }
