@@ -38,6 +38,7 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     var currentPage = 0
+    var ispaginating = false
     let initialState = State()
         
     init(provider : ServiceProviderType){
@@ -69,7 +70,7 @@ extension MainReactor{
         case let .pagination(contentHeight , contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
-                return getAlgorithm()
+                return .empty()
             }else{
                 return .empty()
             }
@@ -88,7 +89,7 @@ extension MainReactor{
     }
 }
 //MARK: - GetAlgorithm
-extension MainReactor{
+private extension MainReactor{
     private func getAlgorithm() -> Observable<Mutation>{
         self.currentPage += 1
         let algorithmRequest = AlgorithmRequest(page: currentPage)

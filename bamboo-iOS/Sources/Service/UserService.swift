@@ -10,7 +10,7 @@ import RxSwift
 
 protocol UserServiceType {
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
-    func getRule() -> Observable<[Rule]>
+    func getRule() -> Observable<Rule>
 }
 final class UserService : BaseService,UserServiceType{}
 
@@ -25,10 +25,10 @@ extension UserService {
 }
 
 extension UserService {
-    func getRule() -> Observable<[Rule]> {
+    func getRule() -> Observable<Rule> {
         BamBooAPI.getRule
             .request()
-            .map([Rule].self, using : BamBooAPI.jsonDecoder)
+            .map(Rule.self, using : BamBooAPI.jsonDecoder)
             .do(onError: {print($0)})
             .asObservable()
     }

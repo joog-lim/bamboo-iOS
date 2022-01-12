@@ -18,11 +18,6 @@ extension UINavigationItem {
         }
         titleView = iv
     }
-    func applyManagerNavigationBarSetting(){
-        rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.stack.3d.forward.dottedline.fill"))
-        rightBarButtonItem?.tintColor = .bamBoo_57CC4D
-        applyImageNavigation()
-    }
 }
 extension UINavigationController{
     func navigationCustomBar(){

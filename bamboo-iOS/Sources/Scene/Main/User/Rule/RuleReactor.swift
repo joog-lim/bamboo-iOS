@@ -45,7 +45,7 @@ extension RuleReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case.loadData:
-            return fetchRule()
+            return getRule()
         }
     }
 }
@@ -66,15 +66,9 @@ extension RuleReactor{
 
 //MARK: - Method
 private extension RuleReactor{
-    func fetchRule() -> Observable<Mutation>{
-        return BamBooAPI.getRule
-            .request()
-            .map{
-                guard let value = try $0.mapString().data(using: .utf8) else {return $0}
-                let newResponse = Response(statusCode: $0.statusCode,data: value,request: $0.request,response: $0.response)
-                return newResponse}
-        .map(Rule.self,using: BamBooAPI.jsonDecoder)
-        .asObservable()
-        .map{ Mutation.setRule($0.content, thirteen: $0.thirteen, fifteen: $0.fifteen)}
+    private func getRule() -> Observable<Mutation>{
+        return provider.userService.getRule()
+            .map{ Mutation.setRule($0.content, thirteen: $0.thirteen, fifteen: $0.fifteen)}
     }
+
 }

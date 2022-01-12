@@ -39,7 +39,7 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     override func configureUI() {
         super.configureUI()
         //navigationItem
-        navigationItem.applyManagerNavigationBarSetting()
+        navigationItem.applyImageNavigation()
         //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()

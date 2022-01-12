@@ -34,7 +34,7 @@ final class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        navigationItem.applyManagerNavigationBarSetting()
+        navigationItem.applyImageNavigation()
 
         tableViewHeaderSetting()
         tableFooterViewSetting()

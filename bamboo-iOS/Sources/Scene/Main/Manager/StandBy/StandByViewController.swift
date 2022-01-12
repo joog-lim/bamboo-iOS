@@ -34,7 +34,8 @@ final class StandByViewController : baseVC<StandByReactor>{
     override func configureUI() {
         super.configureUI()
         //navigationItem
-        navigationItem.applyManagerNavigationBarSetting()
+        navigationItem.applyImageNavigation()
+        
         //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()

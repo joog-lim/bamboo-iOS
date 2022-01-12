@@ -42,7 +42,7 @@ final class RefusalViewController : baseVC<RefusalReactor>{
     override func configureUI() {
         super.configureUI()
         //navigationBar
-        navigationItem.applyManagerNavigationBarSetting()
+        navigationItem.applyImageNavigation()
         //tableView
         tableViewHeaderSetting()
         tableFooterViewSetting()
