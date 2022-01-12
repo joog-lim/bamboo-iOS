@@ -1,4 +1,3 @@
-
 struct Algorithm : ModelType{
     var idx  : Int
     var algorithmNumber : Int

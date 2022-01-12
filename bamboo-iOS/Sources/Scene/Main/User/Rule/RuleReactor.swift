@@ -70,5 +70,4 @@ private extension RuleReactor{
         return provider.userService.getRule()
             .map{ Mutation.setRule($0.content, thirteen: $0.thirteen, fifteen: $0.fifteen)}
     }
-
 }

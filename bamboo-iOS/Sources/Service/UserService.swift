@@ -9,11 +9,23 @@ import Foundation
 import RxSwift
 
 protocol UserServiceType {
+    //post
+    
+    //get
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
     func getRule() -> Observable<Rule>
+//    func verify() -> Observable<>
 }
 final class UserService : BaseService,UserServiceType{}
 
+//MARK: - Post
+extension UserService{
+    func postAlgorithm(BulletinRequest : AlgorithmRequest){}
+}
+
+
+//MARK: - Get
+/// - Algorithm
 extension UserService {
     func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<[Algorithm]>{
         BamBooAPI.getAlgorithem(algorithmRequest: algorithmRequest)
@@ -22,9 +34,7 @@ extension UserService {
             .do(onError:{print($0)})
             .asObservable()
     }
-}
-
-extension UserService {
+/// - Rule
     func getRule() -> Observable<Rule> {
         BamBooAPI.getRule
             .request()
