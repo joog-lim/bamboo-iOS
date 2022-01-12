@@ -16,7 +16,6 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Event
     enum Action{
         case viewWillAppear
-        case prefetchItems([MainSection.Item])
         case writeData
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
@@ -51,16 +50,7 @@ extension MainReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .viewWillAppear:
-            currentPage += 1
-            let algorithmRequest = AlgorithmRequest(page: currentPage)
-            return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
-                .map{ (algorithm : [Algorithm]) -> [MainSection.Item] in
-                    let mainSectionItem = algorithm.map(MainSection.Item.main)
-                    return mainSectionItem
-                }
-                .map(Mutation.updateDataSource)
-        case .prefetchItems(_):
-            return .empty()
+            return getAlgorithm()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()

@@ -13,10 +13,13 @@ enum BamBooAPI {
     case renewalToken(refreshToken : String)
     //Login
     case postLogin(idToken : String)
+    
     //User
     case getAlgorithem(algorithmRequest : AlgorithmRequest)
     case getRule
     case getVerify
+    
+    case postBulletin(bulletinRequest : BulletinRequest)
 }
 
 extension BamBooAPI : Moya.TargetType{

@@ -116,14 +116,6 @@ final class MainViewController : baseVC<MainReactor>{
                 return cell
             }
         }
-        self.mainTableView.rx.prefetchRows
-            .throttle(.seconds(1), scheduler: MainScheduler.asyncInstance)
-            .observe(on: MainScheduler.asyncInstance)
-            .asObservable()
-            .map(dataSource.items(at:))
-            .map(Reactor.Action.prefetchItems)
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
         
         self.mainTableView.rx.didScroll
             .withLatestFrom(self.mainTableView.rx.contentOffset)

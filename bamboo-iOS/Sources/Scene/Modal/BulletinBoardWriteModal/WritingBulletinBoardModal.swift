@@ -93,11 +93,17 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         self.view.endEditing(true)
     }
     
+    //MARK: - Bind
     override func bindView(reactor: WritingBulletinBoardReactor) {
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
             }).disposed(by: disposeBag)
+        
+        sendBtn.rx.tap
+            .map{ Reactor.Action.sendBtnTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     
     override func bindAction(reactor: WritingBulletinBoardReactor) {

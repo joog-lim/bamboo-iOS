@@ -17,6 +17,7 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     
     enum Action{
         case viewWillAppear
+        case sendBtnTap
         case dismissModal
     }
     enum Mutation{
@@ -45,6 +46,8 @@ extension WritingBulletinBoardReactor{
         case.dismissModal:
             steps.accept(BambooStep.dismiss)
             return .empty()
+        case .sendBtnTap:
+            return .empty()
         }
     }
 }
@@ -67,5 +70,12 @@ extension WritingBulletinBoardReactor{
     private func getVerify() -> Observable<Mutation>{
         return self.provider.userService.getVerify()
             .map{Mutation.setQuestion($0.id, $0.question)}
+    }
+}
+
+//MARK: - Post Bulletin
+extension WritingBulletinBoardReactor{
+    private func postBulletin() -> Observable<Mutation>{
+        return .empty()
     }
 }

@@ -12,14 +12,18 @@ extension BamBooAPI {
     switch self {
     case .postLogin:
         return "login"
+    case .postBulletin:
+        return "algorithm/"
+        
     case .getAlgorithem:
         return "algorithm/page"
     case .getRule:
         return "algorithm/rule"
-    case .renewalToken(_):
+    case .renewalToken:
         return  "token" 
     case .getVerify:
         return "verify"
+
     }
   }
 }
