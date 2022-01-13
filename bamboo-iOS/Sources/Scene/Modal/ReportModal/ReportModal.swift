@@ -87,8 +87,16 @@ final class ReportModal : baseVC<ReportReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    
+    override func bindView(reactor: ReportReactor) {
+        reportBtn.rx.tap
+            .map{ Reactor.Action.reportBtnTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
 }
-
+//MARK: - panModal Setting
 extension ReportModal : PanModalPresentable{
     override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
     var panScrollable: UIScrollView?{return nil}

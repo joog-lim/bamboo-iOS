@@ -406,12 +406,12 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
-		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
+		EE30E5722706B02600B9AF8A /* CustomView + TextView */ = {
 			isa = PBXGroup;
 			children = (
 				EE30E5732706B04A00B9AF8A /* AlertTextView.swift */,
 			);
-			path = CustomTextView;
+			path = "CustomView + TextView";
 			sourceTree = "<group>";
 		};
 		EE30E5782706E5E600B9AF8A /* MainPage */ = {
@@ -768,7 +768,7 @@
 				EED352362785B472001ADE19 /* CustomAlert */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE30E5722706B02600B9AF8A /* CustomTextView */,
+				EE30E5722706B02600B9AF8A /* CustomView + TextView */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
 			);

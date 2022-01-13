@@ -17,8 +17,7 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     
     enum Action{
         case viewWillAppear
-        case sendBtnTap
-        case dismissModal
+        case sendBtnTap(_ title : String? , _ content : String? ,_ tag : String? ,_ answer : String?)
     }
     enum Mutation{
         case setQuestion(_ id : String , _ question : String)
@@ -43,10 +42,9 @@ extension WritingBulletinBoardReactor{
         switch action{
         case .viewWillAppear:
             return getVerify()
-        case.dismissModal:
+        case let .sendBtnTap(_,content,_,_):
+            print(content ?? "")
             steps.accept(BambooStep.dismiss)
-            return .empty()
-        case .sendBtnTap:
             return .empty()
         }
     }

@@ -44,7 +44,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.", fontSize: 10)
     private let passwordTitle = UILabel().then{
-        $0.text = "Q. 학교 와이파이 비번은 무엇일까요?"
         $0.textColor = .black
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
@@ -101,7 +100,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             }).disposed(by: disposeBag)
         
         sendBtn.rx.tap
-            .map{ Reactor.Action.sendBtnTap}
+            .map{ Reactor.Action.sendBtnTap(self.titleTf.text, self.contentTv.tf.text, self.tagChooseBtn.titleLabel?.text, self.passwordTf.text)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
