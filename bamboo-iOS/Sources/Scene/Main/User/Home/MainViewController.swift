@@ -20,7 +20,7 @@ final class MainViewController : baseVC<MainReactor>{
 
     private let mainTableView = UITableView(frame: .zero).then {
         $0.register(cellType: BulletinBoardsTableViewCell.self)
-        $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
+        $0.register(headerFooterViewType: CustomFooterView.self)
         $0.separatorColor = .clear
         $0.showsVerticalScrollIndicator = false
         $0.allowsSelection = false
@@ -117,7 +117,7 @@ final class MainViewController : baseVC<MainReactor>{
             }
         }
         
-        self.mainTableView.rx.didScroll
+        self.mainTableView.rx.didEndDragging
             .withLatestFrom(self.mainTableView.rx.contentOffset)
             .map{ [weak self] in
                 Reactor.Action.pagination(

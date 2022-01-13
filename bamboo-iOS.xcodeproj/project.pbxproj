@@ -124,6 +124,7 @@
 		EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DCA2763BD8500898537 /* DeleteReactor.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
+		EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
@@ -268,6 +269,7 @@
 		EED42DCA2763BD8500898537 /* DeleteReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReactor.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewActivityIndicatiorFooter.swift; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmRequest.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				EE7CA2E1271D91E2003140CD /* StandBy */,
 				EEAA0631270D8462000EA78D /* Accept */,
 				EE30E5782706E5E600B9AF8A /* MainPage */,
+				EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */,
 				EE489A992771B60200513E94 /* OSLogExt.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
+				EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
 				EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */,

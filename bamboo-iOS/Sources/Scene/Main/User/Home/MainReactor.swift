@@ -60,7 +60,7 @@ extension MainReactor{
         case let .pagination(contentHeight , contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
-                return .empty()
+                return getAlgorithm()
             }else{
                 return .empty()
             }
