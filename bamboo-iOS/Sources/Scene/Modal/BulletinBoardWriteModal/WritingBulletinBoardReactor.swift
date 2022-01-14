@@ -17,10 +17,11 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     
     enum Action{
         case viewWillAppear
-        case sendBtnTap(_ title : String? , _ content : String? ,_ tag : String? ,_ answer : String?)
+        case sendBtnTap(_ title : String? , _ content : String? ,_ tag : String? ,_ id : String?,_ answer : String?)
     }
     enum Mutation{
         case setQuestion(_ id : String , _ question : String)
+        case postSuccess
     }
     struct State{
         var id , question : String?
@@ -29,7 +30,7 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     let initialState: State
-
+    
     init(with provider : ServiceProviderType){
         self.initialState = State()
         self.provider = provider
@@ -42,10 +43,8 @@ extension WritingBulletinBoardReactor{
         switch action{
         case .viewWillAppear:
             return getVerify()
-        case let .sendBtnTap(_,content,_,_):
-            print(content ?? "")
-            steps.accept(BambooStep.dismiss)
-            return .empty()
+        case let .sendBtnTap(title,content,tag,id,answer):
+            return postBulletin(title: title ?? "", content: content ?? "", tag: tag ?? "", answer: answer ?? "")
         }
     }
 }
@@ -58,6 +57,8 @@ extension WritingBulletinBoardReactor{
         case let .setQuestion(id, question):
             new.id = id
             new.question = question
+        case .postSuccess:
+            steps.accept(BambooStep.dismiss)
         }
         return new
     }
@@ -73,7 +74,10 @@ extension WritingBulletinBoardReactor{
 
 //MARK: - Post Bulletin
 extension WritingBulletinBoardReactor{
-    private func postBulletin() -> Observable<Mutation>{
+    private func postBulletin(title : String, content : String, tag: String, answer : String) -> Observable<Mutation>{
+        let bulletRequest = BulletinRequest(title: title, content: content, tag: tag, verify: .init(id: "", answer: answer))
+//        return  self.provider.userService.postBulletin(bulletinRequest: bulletRequest)
+//            .map{Mutation.postSuccess}
         return .empty()
     }
 }

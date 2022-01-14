@@ -10,9 +10,10 @@ import RxSwift
 
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
+    func postLogin(idToken : LoginRequest) -> Observable<Login>
 }
 final class LoginService : BaseService, LoginServiceType{
-    
+    //MARK: - Login 됬는지 안됬는지 여부 판단
     let defaults = UserDefaults.standard
 
     var didLoginObservable: Observable<Bool>{
@@ -20,4 +21,13 @@ final class LoginService : BaseService, LoginServiceType{
             .observe(Bool.self,"LoginStatus")
             .map{ $0 ?? false}
     }
+}
+
+//MARK: - Post
+extension LoginService {
+    //Login
+    func postLogin(idToken : LoginRequest) -> Observable<Login>{
+        BamBooAPI.postLogin(idToken: <#T##String#>)
+    }
+    //RefreshToken
 }

@@ -10,7 +10,7 @@ import RxSwift
 
 protocol UserServiceType {
     //post
-    
+    func postBulletin(bulletinRequest: BulletinRequest)
     //get
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
     func getRule() -> Observable<Rule>
@@ -20,7 +20,9 @@ final class UserService : BaseService,UserServiceType{}
 
 //MARK: - Post
 extension UserService{
-    func postAlgorithm(BulletinRequest : AlgorithmRequest){}
+    func postBulletin(bulletinRequest : BulletinRequest){
+
+    }
 }
 
 

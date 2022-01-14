@@ -93,19 +93,22 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     
     //MARK: - Bind
-    override func bindView(reactor: WritingBulletinBoardReactor) {
+    override func bindAction(reactor: WritingBulletinBoardReactor) {
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
             }).disposed(by: disposeBag)
         
         sendBtn.rx.tap
-            .map{ Reactor.Action.sendBtnTap(self.titleTf.text, self.contentTv.tf.text, self.tagChooseBtn.titleLabel?.text, self.passwordTf.text)}
+            .map{ Reactor.Action.sendBtnTap(
+                self.titleTf.text,
+                self.contentTv.tvContent,
+                self.tagChooseBtn.titleLabel?.text,
+                "",
+                self.passwordTf.text)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-    }
-    
-    override func bindAction(reactor: WritingBulletinBoardReactor) {
+        
         self.rx.viewWillAppear
             .map{ Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
@@ -116,6 +119,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         reactor.state.observe(on: MainScheduler.instance)
             .subscribe(onNext:{ [weak self] in
                 self?.passwordTitle.text = $0.question ?? ""
+                
             }).disposed(by: disposeBag)
     }
 }

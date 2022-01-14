@@ -11,12 +11,13 @@ class AlertTextView : UIView{
 
     private var  placeholder : String = .init()
     
-    let tf = UITextView().then{
+    var tvContent : String?
+    
+    private let tf = UITextView().then{
         $0.clipsToBounds = true
         $0.textAlignment = .left
         $0.textColor = .rgb(red: 196, green: 196, blue: 196)
     }
-
     
     init(placeholder : String, fontSize : Int){
         super.init(frame: .zero)
@@ -27,6 +28,7 @@ class AlertTextView : UIView{
         tf.delegate = self
         layer.applySketchShadow(color: .black, alpha: 0.25, x: 1, y: 1, blur: 4, spread: 0)
     }
+    
     @available(* , unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,6 +57,7 @@ extension AlertTextView : UITextViewDelegate{
     // TextView Place Holder
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
+            tvContent = ""
             textView.text = ""
             textView.textColor = UIColor.black
         }
@@ -66,5 +69,9 @@ extension AlertTextView : UITextViewDelegate{
         let characterCount = newString.count
         guard characterCount <= 300 else  {return false}
         return true
+    }
+    //MARK: - textDidchange
+    func textViewDidChange(_ textView: UITextView) {
+        tvContent = textView.text
     }
 }

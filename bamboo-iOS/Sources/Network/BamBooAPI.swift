@@ -12,7 +12,7 @@ enum BamBooAPI {
     //System
     case renewalToken(refreshToken : String)
     //Login
-    case postLogin(idToken : String)
+    case postLogin(idToken  : String)
     
     //User
     case getAlgorithem(algorithmRequest : AlgorithmRequest)
