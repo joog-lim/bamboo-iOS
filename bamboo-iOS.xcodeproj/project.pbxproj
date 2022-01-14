@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
-		EE03884A27896D9E000B2546 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE03884927896D9E000B2546 /* AuthService.swift */; };
 		EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9362772CDF50032F1AA /* noWifiReactor.swift */; };
 		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
 		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
@@ -150,7 +149,6 @@
 		7D6F150B42FC5487FAC2680F /* Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EE03884927896D9E000B2546 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EE09E9362772CDF50032F1AA /* noWifiReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiReactor.swift; sourceTree = "<group>"; };
 		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
@@ -901,7 +899,6 @@
 				EEB499102781FAD80082709A /* BamBooAPI+Request.swift */,
 				EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */,
 				EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */,
-				EE03884927896D9E000B2546 /* AuthService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1269,7 +1266,6 @@
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
 				EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */,
 				EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */,
-				EE03884A27896D9E000B2546 /* AuthService.swift in Sources */,
 				EE9823B42782EDAE00C1A915 /* Login.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
 				EEB498FF2781F2770082709A /* StringExt.swift in Sources */,

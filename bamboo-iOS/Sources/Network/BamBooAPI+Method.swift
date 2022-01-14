@@ -12,7 +12,7 @@ extension BamBooAPI{
     func getMethod() -> Moya.Method{
         switch self{
         //Post
-        case .renewalToken:
+        case .postRenewalToken:
             return .post
         case .postLogin:
             return .post

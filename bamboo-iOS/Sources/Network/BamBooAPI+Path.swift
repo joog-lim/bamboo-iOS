@@ -14,13 +14,13 @@ extension BamBooAPI {
         return "login"
     case .postBulletin:
         return "algorithm/"
+    case .postRenewalToken:
+        return  "token"
         
     case .getAlgorithem:
         return "algorithm/page"
     case .getRule:
         return "algorithm/rule"
-    case .renewalToken:
-        return  "token" 
     case .getVerify:
         return "verify"
 
