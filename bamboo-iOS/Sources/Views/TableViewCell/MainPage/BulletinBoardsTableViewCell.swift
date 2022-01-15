@@ -134,6 +134,5 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
                 self?.likeBtn.isSelected = !self!.likeBtn.isSelected
                 self?.delegate?.clickLikeBtnAction(cell: self!, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
-
     }
 }

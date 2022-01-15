@@ -103,7 +103,6 @@
 		EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12B275D04790068A4BD /* LabelExt.swift */; };
 		EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */; };
 		EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B28277AB12600B00807 /* AcceptSection.swift */; };
-		EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */; };
 		EECD8B30277B109000B00807 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B2F277B109000B00807 /* DateExt.swift */; };
 		EECD8B32277B610800B00807 /* StandByTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B31277B610800B00807 /* StandByTableViewReactor.swift */; };
 		EECD8B34277B614100B00807 /* RefusalTableViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B33277B614100B00807 /* RefusalTableViewReactor.swift */; };
@@ -246,7 +245,6 @@
 		EECCC12B275D04790068A4BD /* LabelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExt.swift; sourceTree = "<group>"; };
 		EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExt.swift; sourceTree = "<group>"; };
 		EECD8B28277AB12600B00807 /* AcceptSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptSection.swift; sourceTree = "<group>"; };
-		EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTableViewReactor.swift; sourceTree = "<group>"; };
 		EECD8B2F277B109000B00807 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		EECD8B31277B610800B00807 /* StandByTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewReactor.swift; sourceTree = "<group>"; };
 		EECD8B33277B614100B00807 /* RefusalTableViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewReactor.swift; sourceTree = "<group>"; };
@@ -845,7 +843,6 @@
 			isa = PBXGroup;
 			children = (
 				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
-				EECD8B2A277AB59000B00807 /* AcceptTableViewReactor.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -1285,7 +1282,6 @@
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
 				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
-				EECD8B2B277AB59100B00807 /* AcceptTableViewReactor.swift in Sources */,
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,

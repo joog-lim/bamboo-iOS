@@ -82,7 +82,7 @@ extension MainReactor{
 private extension MainReactor{
     private func getAlgorithm() -> Observable<Mutation>{
         self.currentPage += 1
-        let algorithmRequest = AlgorithmRequest(page: currentPage)
+        let algorithmRequest = AlgorithmRequest(page: currentPage, status: "ACCEPTED")
         return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
             .map{(algorithm: [Algorithm]) -> [MainSection.Item] in
                 let mainSectionItem = algorithm.map(MainSection.Item.main)

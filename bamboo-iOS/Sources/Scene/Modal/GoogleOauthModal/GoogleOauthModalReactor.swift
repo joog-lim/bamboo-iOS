@@ -30,9 +30,11 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
         var refresh : String = .init()
     }
     let initialState: State
+    let provider : ServiceProviderType
     
-    init(){
+    init(with provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 
@@ -44,31 +46,27 @@ extension GoogleOauthModalReactor{
             steps.accept(BambooStep.dismiss)
             return .empty()
         case let .googleLoginBERequied(idToken):
-            return fetchLogin(idToken)
+            return postLogin(idToken)
         }
     }
 }
 //MARK: - Reduce
 extension GoogleOauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
+        var new = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken):
-            print("access : \(accessToken) , refresh : \(refreshToken)")
-            newState.access = accessToken
-            newState.refresh = refreshToken
+            new.access = accessToken
+            new.refresh = refreshToken
         }
-        return newState
+        return new
     }
 }
 
 //MARK: - Method
 private extension GoogleOauthModalReactor{
-    func fetchLogin(_ idToken : String) -> Observable<Mutation>{
-        return BamBooAPI.postLogin(idToken: idToken)
-            .request()
-            .map(Login.self,using: BamBooAPI.jsonDecoder)
-            .asObservable()
+    func postLogin(_ idToken : String) -> Observable<Mutation>{
+        return self.provider.loginService.postLogin(idToken: idToken)
             .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
     }
 }

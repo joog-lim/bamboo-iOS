@@ -55,7 +55,7 @@ final class LoginFlow : Flow{
     }
     
     private func coordinateToLoginModalVC() -> FlowContributors{
-        let reactor = GoogleOauthModalReactor()
+        let reactor = GoogleOauthModalReactor(with: provider)
         let vc = GoogleOauthModalVC(reactor: reactor)
         vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
