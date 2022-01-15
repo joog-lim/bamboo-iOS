@@ -25,13 +25,14 @@ final class StandByReactor : Reactor, Stepper{
     struct State{
         var mainSection = [StandByViewSection]()
     }
-    
+    //MARK: - Properties
+    let provider : ServiceProviderType
+    var currentPage = 0
     let initialState: State
     
-    let errorSubject: PublishSubject<Error> = .init()
-
-    init(){
+    init(provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 //MARK: - Mutatain
@@ -70,4 +71,17 @@ func getMainData() -> [StandByViewSection]{
     let firstSection = StandByViewSection(original: StandByViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
     
     return [firstSection]
+}
+//MARK: - GetAcceptAlgorithm
+private extension StandByReactor{
+    private func getStandBy() -> Observable<Mutation>{
+        self.currentPage += 1
+        let standByRequest = AlgorithmRequest(page: currentPage, status: "PENDING")
+        return self.provider.userService.getAlgorithm(algorithmRequest: standByRequest)
+            .map{(algorithm: [Algorithm]) -> [AcceptSection.Item] in
+                let mainSectionItem = algorithm.map(AcceptSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateDataSource)
+    }
 }

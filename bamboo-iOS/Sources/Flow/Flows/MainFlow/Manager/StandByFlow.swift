@@ -29,13 +29,16 @@ final class StandByFlow : Flow{
         return self.rootViewController
     }
     let stepper: StandByStepper
-    let reactor : StandByReactor = .init()
+    let provider : ServiceProviderType
+    let reactor : StandByReactor 
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : StandByStepper){
+    init(stepper : StandByStepper,
+         provider : ServiceProviderType){
         self.stepper = stepper
-        
+        self.provider = provider
+        self.reactor = .init(provider: provider)
     }
     deinit{
         print("\(type(of: self)): \(#function)")
