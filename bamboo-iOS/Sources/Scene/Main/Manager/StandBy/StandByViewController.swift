@@ -7,6 +7,9 @@
 
 import UIKit
 import Reusable
+
+import RxSwift
+import RxCocoa
 import RxDataSources
 
 final class StandByViewController : baseVC<StandByReactor>{
@@ -82,21 +85,34 @@ final class StandByViewController : baseVC<StandByReactor>{
             .disposed(by: disposeBag)
     }
     override func bindState(reactor: StandByReactor) {
-        let dataSource = RxTableViewSectionedReloadDataSource<StandByViewSection>{ dataSource, tableView, indexPath, sectionItem in
+        let dataSource = RxTableViewSectionedReloadDataSource<StandBySection.Model>{ dataSource, tableView, indexPath, sectionItem in
             switch sectionItem{
-            case.main(let reactor):
+            case .main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as StandByTableViewCell
                 cell.delegate = self
-                cell.reactor = reactor
+                cell.model = algorithm
                 return cell
             }
         }
+        self.mainTableView.rx.didEndDragging
+            .withLatestFrom(self.mainTableView.rx.contentOffset)
+            .map{ [weak self] in
+                Reactor.Action.pagination(
+                    contentHeight: self?.mainTableView.contentSize.height ?? 0,
+                    contentOffsetY: $0.y,
+                    scrollViewHeight: UIScreen.main.bounds.height
+                )
+            }
+            .bind(to:  reactor.action)
+            .disposed(by: disposeBag)
         
-        reactor.state
-            .map{ $0.mainSection}
+        reactor.state.map(\.mainSection)
+            .distinctUntilChanged()
+            .map(Array.init(with: ))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
+    
 }
 
 //MARK: - Click Cell inside Btn Action

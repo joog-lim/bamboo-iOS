@@ -11,7 +11,7 @@ protocol StandBytableViewCellBtnClickDelegate : AnyObject{
     func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int)
 }
 
-final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
+final class StandByTableViewCell : BaseTableViewCell<Algorithm>{
     //MARK: - connect Protocol
     weak var delegate : StandBytableViewCellBtnClickDelegate?
     
@@ -94,17 +94,17 @@ final class StandByTableViewCell : baseTableViewCell<StandByTableViewReactor>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    override func bindView(reactor: StandByTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 대기중"
-        dataLabel.text = reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
-        tagLabel.text = reactor.currentState.tag
-        titleLabel.text = reactor.currentState.title
-        contentLabel.text = reactor.currentState.content
-    }
-    override func bindAction(reactor: StandByTableViewReactor) {
+    
+    override func bind(_ model: Algorithm) {
+        algorithm.text = "#\(model.algorithmNumber)번째 대기중"
+        dataLabel.text = model.createdAt
+        tagLabel.text = model.tag
+        titleLabel.text = model.title
+        contentLabel.text = model.content
+        
         cellSeeMoreDetailBtn.rx.tap
             .subscribe({[self] _ in
-                delegate?.clickSeeMoreDetailBtn(cell: self, id: reactor.currentState.idx)
+                delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx)
             }).disposed(by: disposeBag)
     }
 }
