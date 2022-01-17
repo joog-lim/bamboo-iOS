@@ -7,6 +7,7 @@ struct Algorithm : ModelType{
         var title : String
         var content : String
         var tag : String
+        var reason : String
         var createdAt : String
         var isClicked : Bool
         var emojiCount : Int
@@ -17,6 +18,7 @@ struct Algorithm : ModelType{
             case title
             case content
             case tag
+            case reason
             case createdAt
             case isClicked
             case emojiCount

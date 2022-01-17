@@ -7,22 +7,13 @@
 
 import RxDataSources
 
-enum DeleteViewSection{
-    case first([DeleteViewSectionItem])
-}
-enum DeleteViewSectionItem{
-    case main(DeleteTableViewReactor)
-}
-extension DeleteViewSection : SectionModelType{
-    var items: [DeleteViewSectionItem]{
-        switch self{
-        case .first(let items): return items
-        }
-    }
-    init(original: DeleteViewSection, items: [DeleteViewSectionItem]) {
-        switch original{
-        case .first: self = .first(items)
-        }
+//MARK: - Remake
+enum DeleteSection{
+    typealias Model = SectionModel<Int,Item>
+    
+    enum Item{
+        case main(Algorithm.Results)
     }
 }
+extension DeleteSection.Item : Equatable{}
 

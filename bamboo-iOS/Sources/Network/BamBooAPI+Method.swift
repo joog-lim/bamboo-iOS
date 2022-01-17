@@ -25,6 +25,8 @@ extension BamBooAPI{
             return .get
         case .getVerify:
             return .get
+        case .getAdminAlgorithm:
+            return .get
         }
     }
 }

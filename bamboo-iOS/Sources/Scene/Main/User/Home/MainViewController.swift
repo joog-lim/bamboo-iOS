@@ -102,7 +102,7 @@ final class MainViewController : baseVC<MainReactor>{
     }
     override func bindAction(reactor: MainReactor) {
         self.rx.viewDidLoad
-            .map{_ in Reactor.Action.viewWillAppear}
+            .map{_ in Reactor.Action.viewDidLoad}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }

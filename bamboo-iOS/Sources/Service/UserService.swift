@@ -1,10 +1,3 @@
-//
-//  UserService.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2022/01/12.
-//
-
 import Foundation
 import RxSwift
 

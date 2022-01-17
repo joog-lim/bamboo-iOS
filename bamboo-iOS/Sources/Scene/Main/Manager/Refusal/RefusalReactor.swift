@@ -71,8 +71,8 @@ extension RefusalReactor{
 private extension RefusalReactor{
     private func getRefusal() -> Observable<Mutation>{
         self.currentPage += 1
-        let standByRequest = AlgorithmRequest(page: currentPage)
-        return self.provider.userService.getAlgorithm(algorithmRequest: standByRequest)
+        let acceptRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.userService.getAlgorithm(algorithmRequest: acceptRequest)
             .map{(algorithm: Algorithm) -> [RefusalSection.Item] in
                 let mainSectionItem = algorithm.result.map(RefusalSection.Item.main)
                 return mainSectionItem

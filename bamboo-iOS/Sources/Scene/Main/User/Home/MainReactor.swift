@@ -15,7 +15,7 @@ final class MainReactor : Reactor, Stepper{
 
     //MARK: - Event
     enum Action{
-        case viewWillAppear
+        case viewDidLoad
         case writeData
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
@@ -49,7 +49,7 @@ final class MainReactor : Reactor, Stepper{
 extension MainReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .viewWillAppear:
+        case .viewDidLoad:
             return getAlgorithm()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)

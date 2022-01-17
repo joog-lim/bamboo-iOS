@@ -22,7 +22,7 @@ enum BamBooAPI {
     case postBulletin(bulletinRequest : BulletinRequest)
     
     //Manager
-//    case getAdminAlgorithm(algorithmRequest : )
+    case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
 
 }
 

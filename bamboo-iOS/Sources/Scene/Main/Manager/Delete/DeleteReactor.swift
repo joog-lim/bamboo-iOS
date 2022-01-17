@@ -18,20 +18,29 @@ final class DeleteReactor : Reactor, Stepper{
         case viewDidLoad
         case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int)
         case alertRefusalTap(Int,Int)
+        case pagination(
+            contentHeight: CGFloat,
+            contentOffsetY: CGFloat,
+            scrollViewHeight: CGFloat
+        )
     }
     enum Mutation{
-        case updateDataSource
+        case updateDataSource([DeleteSection.Item])
     }
     struct State{
-        var mainSection = [DeleteViewSection]()
+        var mainSection = DeleteSection.Model(
+            model: 0,
+            items: []
+        )
     }
     
+    let provider : ServiceProviderType
+    var currentPage = 0
     let initialState: State
     
-    let errorSubject: PublishSubject<Error> = .init()
-
-    init(){
+    init(provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 //MARK: - Mutation
@@ -39,13 +48,20 @@ extension DeleteReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .viewDidLoad:
-            return Observable<Mutation>.just(.updateDataSource)
+            return getDelete()
         case let .deleteBtnTap(titleText, message,idx,index):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
             return .empty()
         case let .alertRefusalTap(idx, index):
             steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
             return .empty()
+        case let .pagination( contentHeight,  contentOffsetY, scrollViewHeight):
+            let paddingSpace = contentHeight - contentOffsetY
+            if paddingSpace < scrollViewHeight{
+                return getDelete()
+            }else{
+                return .empty()
+            }
         }
     }
 }
@@ -54,18 +70,23 @@ extension DeleteReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource: break
-//            state.mainSection = getMainData()
+        case .updateDataSource(let sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
         }
         return state
     }
 }
-//func getMainData() -> [DeleteViewSection]{
-//
-//    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z",  isClicked: false, emojiCount: 1)))
-//
-//    let itemInFirstSection = [mainItem1]
-//    let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
-//
-//    return [firstSection]
-//}
+
+//MARK: - GetDeleteAlgorithm
+private extension DeleteReactor{
+    private func getDelete() -> Observable<Mutation>{
+        self.currentPage += 1
+        let deleteRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.userService.getAlgorithm(algorithmRequest: deleteRequest)
+            .map{(algorithm : Algorithm) -> [DeleteSection.Item] in
+                let mainSectionItem = algorithm.result.map(DeleteSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateDataSource)
+    }
+}

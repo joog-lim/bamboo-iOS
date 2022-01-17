@@ -23,13 +23,20 @@ final class DeleteFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
+    
+    let provider : ServiceProviderType
     let stepper: DeleteStepper
-    let reactor : DeleteReactor = .init()
+    let reactor : DeleteReactor 
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : DeleteStepper){
+    init(
+        stepper : DeleteStepper,
+        provider : ServiceProviderType
+    ){
         self.stepper = stepper
+        self.provider = provider
+        self.reactor = .init(provider: provider)
     }
     deinit{
         print("\(type(of: self)): \(#function)")

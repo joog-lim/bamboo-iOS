@@ -16,14 +16,16 @@ extension BamBooAPI {
         return "algorithm/"
     case .postRenewalToken:
         return  "token"
-        
+//User
     case .getAlgorithm:
         return "algorithm/list/page"
     case .getRule:
         return "algorithm/rule"
     case .getVerify:
         return "verify"
-
+//manager
+    case .getAdminAlgorithm:
+        return "algorithm/list/page/admin"
     }
   }
 }

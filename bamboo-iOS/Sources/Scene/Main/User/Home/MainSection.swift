@@ -17,33 +17,3 @@ enum MainSection{
 }
 extension MainSection.Item : Equatable{}
 
-
-////MARK: - RemakeDataSource
-//enum MainViewSection {
-//  case result([MainViewSectionItem])
-//}
-//
-//enum MainViewSectionItem: Equatable {
-//  case result(Algorithm.Results)
-//}
-//
-//extension MainViewSection: SectionModelType {
-//  var items: [MainViewSectionItem] {
-//    switch self {
-//    case .result(let photos): return photos
-//    }
-//  }
-//
-//  init(original: MainViewSection, items: [MainViewSectionItem]) {
-//    switch original {
-//    case .result: self = .result(items)
-//    }
-//  }
-//}
-//
-//extension MainViewSection: Equatable {
-//  static func == (lhs: MainViewSection, rhs: MainViewSection) -> Bool {
-//    lhs.items == rhs.items
-//  }
-//}
-//

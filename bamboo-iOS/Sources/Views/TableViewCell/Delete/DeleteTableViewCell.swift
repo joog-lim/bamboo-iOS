@@ -14,7 +14,7 @@ protocol cellSeeMoreDetailActionDelegate : AnyObject{
     func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int)
 }
 
-final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
+final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
     //MARK: - Delegate
     weak var delegate : cellSeeMoreDetailActionDelegate?
     
@@ -113,18 +113,17 @@ final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
         }
     }
 
-//    override func bindView(reactor: DeleteTableViewReactor) {
-//        algorithm.text = "#\(reactor.currentState.result.)번째 삭제요청"
-//        dataLabel.text =  reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
-//        tagLabel.text = reactor.currentState.tag
-//        titleLabel.text = reactor.currentState.title
-//        contentLabel.text = reactor.currentState.content
-//        deleteReasonContent.text = "야옹"
-//    }
-//    override func bindAction(reactor: DeleteTableViewReactor) {
-//        cellSeeMoreDetail.rx.tap
-//            .subscribe({[self] _ in
-//                delegate?.clickSeeMoreDetailBtnAction(cell: self, id: reactor.currentState.idx)
-//            }).disposed(by: disposeBag)
-//    }
+    override func bind(_ model: Algorithm.Results) {
+        algorithm.text = "#\(model.algorithmNumber)번째 삭제요청"
+        dataLabel.text = model.createdAt
+        tagLabel.text = model.tag
+        titleLabel.text = model.title
+        contentLabel.text = model.content
+        deleteReasonContent.text = "야옹"
+
+        cellSeeMoreDetail.rx.tap
+            .subscribe({ [weak self] _ in
+                self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx)
+            }).disposed(by: disposeBag)
+    }
 }
