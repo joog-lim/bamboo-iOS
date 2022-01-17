@@ -37,7 +37,7 @@ final class ManagerMainFlow : Flow{
         self.provider = provider
         self.acceptFlow = .init(stepper: .init(), provider: provider)
         self.standByFlow = .init(stepper: .init(), provider: provider)
-        self.refusalFlow = .init(stepper: .init())
+        self.refusalFlow = .init(stepper: .init(), provider: provider)
         self.deleteFlow = .init(stepper: .init())
     }
     deinit{

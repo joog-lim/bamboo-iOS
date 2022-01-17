@@ -11,7 +11,7 @@ protocol AcceptManagerTableViewCellDelegate : AnyObject{
     func cellSettingbtnClick(cell : AcceptManagerTableViewCell, id : Int)
 }
 
-final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm>{
+final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Results>{
     
     weak var delegate : AcceptManagerTableViewCellDelegate?
 
@@ -93,7 +93,7 @@ final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm>{
         }
     }
     //MARK: - Bind
-    override func bind(_ model: Algorithm) {
+    override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
         dataLabel.text = model.createdAt
         tagLabel.text = model.tag

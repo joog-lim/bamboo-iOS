@@ -74,10 +74,10 @@ extension AcceptReactor{
 private extension AcceptReactor{
     private func getAccept() -> Observable<Mutation>{
         self.currentPage += 1
-        let acceptRequest = AlgorithmRequest(page: currentPage, status: "ACCEPTED")
+        let acceptRequest = AlgorithmRequest(page: currentPage)
         return self.provider.userService.getAlgorithm(algorithmRequest: acceptRequest)
-            .map{(algorithm: [Algorithm]) -> [AcceptSection.Item] in
-                let mainSectionItem = algorithm.map(AcceptSection.Item.main)
+            .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
+                let mainSectionItem = algorithm.result.map(AcceptSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

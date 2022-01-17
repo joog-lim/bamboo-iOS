@@ -15,11 +15,15 @@ enum BamBooAPI {
     case postLogin(idToken  : String)
     
     //User
-    case getAlgorithem(algorithmRequest : AlgorithmRequest)
+    case getAlgorithm(algorithmRequest : AlgorithmRequest)
     case getRule
     case getVerify
-    
+
     case postBulletin(bulletinRequest : BulletinRequest)
+    
+    //Manager
+//    case getAdminAlgorithm(algorithmRequest : )
+
 }
 
 extension BamBooAPI : Moya.TargetType{

@@ -113,18 +113,18 @@ final class DeleteTableViewCell : baseTableViewCell<DeleteTableViewReactor>{
         }
     }
 
-    override func bindView(reactor: DeleteTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.algorithmNumber)번째 삭제요청"
-        dataLabel.text =  reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
-        tagLabel.text = reactor.currentState.tag
-        titleLabel.text = reactor.currentState.title
-        contentLabel.text = reactor.currentState.content
-        deleteReasonContent.text = "야옹"
-    }
-    override func bindAction(reactor: DeleteTableViewReactor) {
-        cellSeeMoreDetail.rx.tap
-            .subscribe({[self] _ in
-                delegate?.clickSeeMoreDetailBtnAction(cell: self, id: reactor.currentState.idx)
-            }).disposed(by: disposeBag)
-    }
+//    override func bindView(reactor: DeleteTableViewReactor) {
+//        algorithm.text = "#\(reactor.currentState.result.)번째 삭제요청"
+//        dataLabel.text =  reactor.currentState.createdAt//Date().usingDate(timeStamp: reactor.currentState.createdAt)
+//        tagLabel.text = reactor.currentState.tag
+//        titleLabel.text = reactor.currentState.title
+//        contentLabel.text = reactor.currentState.content
+//        deleteReasonContent.text = "야옹"
+//    }
+//    override func bindAction(reactor: DeleteTableViewReactor) {
+//        cellSeeMoreDetail.rx.tap
+//            .subscribe({[self] _ in
+//                delegate?.clickSeeMoreDetailBtnAction(cell: self, id: reactor.currentState.idx)
+//            }).disposed(by: disposeBag)
+//    }
 }

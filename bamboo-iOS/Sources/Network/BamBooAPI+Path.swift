@@ -17,8 +17,8 @@ extension BamBooAPI {
     case .postRenewalToken:
         return  "token"
         
-    case .getAlgorithem:
-        return "algorithm/page"
+    case .getAlgorithm:
+        return "algorithm/list/page"
     case .getRule:
         return "algorithm/rule"
     case .getVerify:

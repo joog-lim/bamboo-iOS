@@ -11,7 +11,7 @@ protocol StandBytableViewCellBtnClickDelegate : AnyObject{
     func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int)
 }
 
-final class StandByTableViewCell : BaseTableViewCell<Algorithm>{
+final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
     //MARK: - connect Protocol
     weak var delegate : StandBytableViewCellBtnClickDelegate?
     
@@ -95,7 +95,7 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm>{
         }
     }
     
-    override func bind(_ model: Algorithm) {
+    override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 대기중"
         dataLabel.text = model.createdAt
         tagLabel.text = model.tag

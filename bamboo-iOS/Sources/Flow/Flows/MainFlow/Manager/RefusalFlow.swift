@@ -23,12 +23,14 @@ final class RefusalFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
+    let provider : ServiceProviderType
     let stepper: RefusalStepper
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : RefusalStepper){
+    init(stepper : RefusalStepper, provider : ServiceProviderType){
         self.stepper = stepper
+        self.provider = provider
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -49,7 +51,7 @@ final class RefusalFlow : Flow{
 
 private extension RefusalFlow{
     func coordinatorToRefusal() -> FlowContributors{
-        let reactor = RefusalReactor()
+        let reactor = RefusalReactor(provider: provider)
         let vc = RefusalViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))

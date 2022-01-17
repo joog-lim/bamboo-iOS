@@ -54,18 +54,18 @@ extension DeleteReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource:
-            state.mainSection = getMainData()
+        case .updateDataSource: break
+//            state.mainSection = getMainData()
         }
         return state
     }
 }
-func getMainData() -> [DeleteViewSection]{
-
-    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z",  isClicked: false, emojiCount: 1)))
-    
-    let itemInFirstSection = [mainItem1]
-    let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
-    
-    return [firstSection]
-}
+//func getMainData() -> [DeleteViewSection]{
+//
+//    let mainItem1 = DeleteViewSectionItem.main(DeleteTableViewReactor(DeleteBoard: Algorithm(idx: 27, algorithmNumber: 1, title: "Joog-Lim", content: "집", tag: "유머", createdAt: "2021-09-23T02:41:00.457Z",  isClicked: false, emojiCount: 1)))
+//
+//    let itemInFirstSection = [mainItem1]
+//    let firstSection = DeleteViewSection(original: DeleteViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
+//
+//    return [firstSection]
+//}

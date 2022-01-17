@@ -19,7 +19,7 @@ extension BamBooAPI{
         case .postBulletin:
             return .post
         // Get
-        case .getAlgorithem:
+        case .getAlgorithm:
             return  .get
         case .getRule:
             return .get

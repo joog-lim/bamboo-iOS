@@ -15,7 +15,7 @@ extension BamBooAPI{
             return ["Authorization": refreshToken]
         case let .postLogin(idToken):
             return ["Authorization": idToken]
-        case .getAlgorithem:
+        case .getAlgorithm:
             return ["Authorization": KeychainSwift().get("accessToken") ?? ""]
         default:
             return ["Content-Type": "application/json"]

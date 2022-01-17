@@ -14,7 +14,7 @@ protocol ClickReportBtnActionDelegate : AnyObject{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
 }
 
-final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
+final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -115,7 +115,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm>{
         }
     }
     //MARK: - bind
-    override func bind(_ model: Algorithm) {
+    override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
         dataLabel.text = model.createdAt
         tagLabel.text = model.tag

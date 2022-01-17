@@ -52,7 +52,7 @@ extension StandByReactor{
         case let .alertRefusalTap(idx, index):
             steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
             return .empty()
-        case .pagination(contentHeight: let contentHeight, contentOffsetY: let contentOffsetY, scrollViewHeight: let scrollViewHeight):
+        case let .pagination(contentHeight, contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
                 return getStandBy()
@@ -79,10 +79,10 @@ extension StandByReactor{
 private extension StandByReactor{
     private func getStandBy() -> Observable<Mutation>{
         self.currentPage += 1
-        let standByRequest = AlgorithmRequest(page: currentPage, status: "PENDING")
+        let standByRequest = AlgorithmRequest(page: currentPage)
         return self.provider.userService.getAlgorithm(algorithmRequest: standByRequest)
-            .map{(algorithm: [Algorithm]) -> [StandBySection.Item] in
-                let mainSectionItem = algorithm.map(StandBySection.Item.main)
+            .map{(algorithm: Algorithm) -> [StandBySection.Item] in
+                let mainSectionItem = algorithm.result.map(StandBySection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

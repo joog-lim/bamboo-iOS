@@ -12,7 +12,7 @@ protocol UserServiceType {
     //post
     func postBulletin(bulletinRequest: BulletinRequest)
     //get
-    func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<[Algorithm]>
+    func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<Algorithm>
     func getRule() -> Observable<Rule>
     func getVerify() -> Observable<Verify>
 }
@@ -29,10 +29,10 @@ extension UserService{
 //MARK: - Get
 extension UserService {
     // - Algorithm
-    func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<[Algorithm]>{
-        BamBooAPI.getAlgorithem(algorithmRequest: algorithmRequest)
+    func getAlgorithm(algorithmRequest: AlgorithmRequest) -> Observable<Algorithm>{
+        BamBooAPI.getAlgorithm(algorithmRequest: algorithmRequest)
             .request()
-            .map([Algorithm].self, using : BamBooAPI.jsonDecoder)
+            .map(Algorithm.self, using : BamBooAPI.jsonDecoder)
             .do(onError:{print($0)})
             .asObservable()
     }
