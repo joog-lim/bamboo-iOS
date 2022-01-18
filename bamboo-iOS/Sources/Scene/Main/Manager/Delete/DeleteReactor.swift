@@ -81,8 +81,8 @@ extension DeleteReactor{
 private extension DeleteReactor{
     private func getDelete() -> Observable<Mutation>{
         self.currentPage += 1
-        let deleteRequest = AlgorithmRequest(page: currentPage)
-        return self.provider.userService.getAlgorithm(algorithmRequest: deleteRequest)
+        let deleteRequest = AdminAlgorithmRequest(page: currentPage, status: "DELETED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: deleteRequest)
             .map{(algorithm : Algorithm) -> [DeleteSection.Item] in
                 let mainSectionItem = algorithm.result.map(DeleteSection.Item.main)
                 return mainSectionItem

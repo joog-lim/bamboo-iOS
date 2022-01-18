@@ -18,11 +18,13 @@ enum BamBooAPI {
     case getAlgorithm(algorithmRequest : AlgorithmRequest)
     case getRule
     case getVerify
-
+    case emoji(emojiRequest : )
+    
     case postBulletin(bulletinRequest : BulletinRequest)
     
     //Manager
     case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
+//    case patchEditAlgorithm()
 
 }
 

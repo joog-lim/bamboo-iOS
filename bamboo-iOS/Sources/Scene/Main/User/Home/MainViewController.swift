@@ -140,13 +140,15 @@ final class MainViewController : baseVC<MainReactor>{
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
+    
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         reactor?.steps.accept(BambooStep.reportModalsRequired(idx: id, index: indexPath.row))
     }
     
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state: Bool) {
+    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
         self.likeBtnClick(indexPath: indexPath.item, state: state)
+        _ = reactor?.mutate(action: Reactor.Action.emojiBtnClick(idx: id))
     }
 }

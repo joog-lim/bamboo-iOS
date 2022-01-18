@@ -79,8 +79,8 @@ extension StandByReactor{
 private extension StandByReactor{
     private func getStandBy() -> Observable<Mutation>{
         self.currentPage += 1
-        let standByRequest = AlgorithmRequest(page: currentPage)
-        return self.provider.userService.getAlgorithm(algorithmRequest: standByRequest)
+        let standByRequest = AdminAlgorithmRequest(page: currentPage, status: "PENDING")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: standByRequest)
             .map{(algorithm: Algorithm) -> [StandBySection.Item] in
                 let mainSectionItem = algorithm.result.map(StandBySection.Item.main)
                 return mainSectionItem

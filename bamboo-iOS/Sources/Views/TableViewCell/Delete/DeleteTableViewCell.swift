@@ -119,7 +119,7 @@ final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        deleteReasonContent.text = "야옹"
+        deleteReasonContent.text = model.reason
 
         cellSeeMoreDetail.rx.tap
             .subscribe({ [weak self] _ in

@@ -17,6 +17,7 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case viewDidLoad
         case writeData
+        case emojiBtnClick(idx : Int)
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
@@ -64,6 +65,9 @@ extension MainReactor{
             }else{
                 return .empty()
             }
+        case let .emojiBtnClick(idx):
+            print(idx)
+            return .empty()
         }
     }
 }

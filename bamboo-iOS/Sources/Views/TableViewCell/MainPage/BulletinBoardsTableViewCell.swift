@@ -11,7 +11,7 @@ import RxCocoa
 
 protocol ClickReportBtnActionDelegate : AnyObject{
     func clickReportBtnAction(cell : BulletinBoardsTableViewCell, id : Int)
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state : Bool)
+    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,id : Int, state : Bool)
 }
 
 final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
@@ -132,7 +132,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         likeBtn.rx.tap
             .subscribe({[weak self] _ in
                 self?.likeBtn.isSelected = !self!.likeBtn.isSelected
-                self?.delegate?.clickLikeBtnAction(cell: self!, state: self!.likeBtn.isSelected)
+                self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
     }
 }

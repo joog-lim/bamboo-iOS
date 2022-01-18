@@ -82,11 +82,6 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     }
     
     //MARK: - Bind
-    override func bindView(reactor: AcceptReactor) {
-        navigationItem.rightBarButtonItem?.rx.tap
-            .subscribe({_ in print("DEBUG : NavigationBar Click")}).disposed(by: disposeBag)
-    }
-    
     override func bindAction(reactor: AcceptReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}

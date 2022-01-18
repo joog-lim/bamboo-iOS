@@ -7,7 +7,7 @@ struct Algorithm : ModelType{
         var title : String
         var content : String
         var tag : String
-        var reason : String
+        var reason : String?
         var createdAt : String
         var isClicked : Bool
         var emojiCount : Int

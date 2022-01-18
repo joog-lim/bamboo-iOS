@@ -121,6 +121,7 @@
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A7822795DD720051FA7F /* ManagerService.swift */; };
+		EEE2A78527971A110051FA7F /* EmojiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A78427971A110051FA7F /* EmojiRequest.swift */; };
 		EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
 		EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */; };
@@ -263,6 +264,7 @@
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE2A7822795DD720051FA7F /* ManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerService.swift; sourceTree = "<group>"; };
+		EEE2A78427971A110051FA7F /* EmojiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRequest.swift; sourceTree = "<group>"; };
 		EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewActivityIndicatiorFooter.swift; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
 		EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmRequest.swift; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 				EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */,
 				EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */,
 				EEA804C2279491DE00D55C54 /* AdminAlgorithmRequest.swift */,
+				EEE2A78427971A110051FA7F /* EmojiRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
 				EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */,
+				EEE2A78527971A110051FA7F /* EmojiRequest.swift in Sources */,
 				EE489A992771B60200513E94 /* OSLogExt.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
 				EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */,

@@ -74,8 +74,8 @@ extension AcceptReactor{
 private extension AcceptReactor{
     private func getAccept() -> Observable<Mutation>{
         self.currentPage += 1
-        let acceptRequest = AlgorithmRequest(page: currentPage)
-        return self.provider.userService.getAlgorithm(algorithmRequest: acceptRequest)
+        let acceptRequest = AdminAlgorithmRequest(page: currentPage, status: "ACCEPTED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: acceptRequest)
             .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
                 let mainSectionItem = algorithm.result.map(AcceptSection.Item.main)
                 return mainSectionItem
