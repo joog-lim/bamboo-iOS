@@ -66,8 +66,7 @@ extension MainReactor{
                 return .empty()
             }
         case let .emojiBtnClick(idx):
-            print(idx)
-            return .empty()
+            return postEmoji(idx: idx)
         }
     }
 }
@@ -82,7 +81,7 @@ extension MainReactor{
         return state
     }
 }
-//MARK: - GetAlgorithm
+//MARK: - Get
 private extension MainReactor{
     private func getAlgorithm() -> Observable<Mutation>{
         self.currentPage += 1
@@ -93,5 +92,15 @@ private extension MainReactor{
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+}
+
+//MARK: - PostEmoji
+private extension MainReactor{
+    private func postEmoji(idx : Int) -> Observable<Mutation>{
+        print("id : \(idx)")
+        let emojiRequest = EmojiRequest(number: idx)
+//        return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
+        return .empty()
     }
 }

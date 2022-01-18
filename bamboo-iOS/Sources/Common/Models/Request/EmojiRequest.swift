@@ -1,9 +1,7 @@
-struct AlgorithmRequest : ModelType{
-    let count : Int? = 5
-    let page: Int
+struct EmojiRequest : ModelType{
+    let number: Int
     
-    enum CodingKeys : String , CodingKey{
-        case count
-        case page = "criteria"
+    static func == (lhs: EmojiRequest, rhs: EmojiRequest) -> Bool {
+        lhs.number == rhs.number
     }
 }

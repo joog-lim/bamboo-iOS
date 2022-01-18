@@ -140,6 +140,7 @@ extension BamBooAPI{
 //            }
 //            .retry(when: {  (error: Observable<BamBooAPIError>)  in
 //                error.flatMap { error -> Single<Response> in
+//                    print("401 토큰 에러 !!!!!!!")
 ////                          AuthService.shared.renewalToken() // 토큰 재발급 받기
 //                }
 //            })

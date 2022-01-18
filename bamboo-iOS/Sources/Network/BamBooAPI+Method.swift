@@ -18,6 +18,8 @@ extension BamBooAPI{
             return .post
         case .postBulletin:
             return .post
+        case .postEmoji:
+            return .post
         // Get
         case .getAlgorithm:
             return  .get
@@ -27,6 +29,7 @@ extension BamBooAPI{
             return .get
         case .getAdminAlgorithm:
             return .get
+
         }
     }
 }

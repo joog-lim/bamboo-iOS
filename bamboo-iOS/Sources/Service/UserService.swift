@@ -4,6 +4,7 @@ import RxSwift
 protocol UserServiceType {
     //post
     func postBulletin(bulletinRequest: BulletinRequest)
+//    func postEmoji(emojiRequest : EmojiRequest) -> Observable<Response.Status>
     //get
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<Algorithm>
     func getRule() -> Observable<Rule>
@@ -13,9 +14,15 @@ final class UserService : BaseService,UserServiceType{}
 
 //MARK: - Post
 extension UserService{
-    func postBulletin(bulletinRequest : BulletinRequest){
+    func postBulletin(bulletinRequest : BulletinRequest) {
 
     }
+//    func postEmoji(emojiRequest: EmojiRequest) -> Observable<Response.Status> {
+//        BamBooAPI.postEmoji(emojiRequest: emojiRequest)
+//            .request()
+//            .do(onError:{print($0)})
+//            .asObservable()
+//    }
 }
 
 
