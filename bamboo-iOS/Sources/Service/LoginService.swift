@@ -20,7 +20,7 @@ final class LoginService : BaseService, LoginServiceType{
 extension LoginService {
     //Login
     func postLogin(idToken : String) -> Observable<Login>{
-        BamBooAPI.postLogin(idToken: idToken)
+        return BamBooAPI.postLogin(idToken: idToken)
             .request()
             .map(Login.self,using: BamBooAPI.jsonDecoder)
             .do(onError: {print($0)})

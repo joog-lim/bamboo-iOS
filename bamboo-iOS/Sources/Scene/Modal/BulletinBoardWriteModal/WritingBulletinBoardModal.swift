@@ -119,7 +119,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         reactor.state.observe(on: MainScheduler.instance)
             .subscribe(onNext:{ [weak self] in
                 self?.passwordTitle.text = $0.question ?? ""
-                
             }).disposed(by: disposeBag)
     }
 }

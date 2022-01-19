@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetWorkStatus.shared.StartMonitoring()
         automaticLogin()
+        keyboardSetting()
         return true
     }
     
@@ -29,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     
     //Keyboard 자동 UI 조정
-//    private func keyboardSetting(){
+    private func keyboardSetting(){
 //        IQKeyboardManager.shared.enable = true
 //        IQKeyboardManager.shared.enableAutoToolbar = false
 //        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-//    }
+    }
 
     //자동 로그인
     private func automaticLogin(){
@@ -51,3 +52,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         }
     }
 }
+

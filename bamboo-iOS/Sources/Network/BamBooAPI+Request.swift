@@ -131,19 +131,13 @@ extension BamBooAPI{
         let requestString = "\(endpoint.method) \(endpoint.baseURL) \(endpoint.path)"
         
         return Self.moya.rx.request(endpoint)
-//            .flatMap{ // 401(Token Error)일때 다시 발급
-//                if $0.statusCode == 401{
-//                    throw BamBooAPIError.tokenExpired
-//                }else{
-//                    return Single.just($0)
-//                }
-//            }
-//            .retry(when: {  (error: Observable<BamBooAPIError>)  in
-//                error.flatMap { error -> Single<Response> in
-//                    print("401 토큰 에러 !!!!!!!")
-////                          AuthService.shared.renewalToken() // 토큰 재발급 받기
-//                }
-//            })
+            .flatMap{ // 401(Token Error)일때 다시 발급
+                if $0.statusCode == 401{
+                    throw BamBooAPIError.tokenExpired
+                }else{
+                    return Single.just($0)
+                }
+            }
             .filterSuccessfulStatusCodes()
             .catch(self.handleInternetConnection)
             .catch(self.handleTimeOut)
@@ -176,6 +170,8 @@ extension BamBooAPI{
                         }
                         print(message)
                     }
+                case BamBooAPIError.tokenExpired:
+                    print("😇토큰 없어요!!")
                 default:
                     break
                 }

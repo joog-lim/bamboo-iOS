@@ -94,7 +94,6 @@ final class ReportModal : baseVC<ReportReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
-    
 }
 //MARK: - panModal Setting
 extension ReportModal : PanModalPresentable{
