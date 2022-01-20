@@ -9,11 +9,23 @@ import Moya
 import Alamofire
 
 enum BamBooAPI {
+    //System
+    case postRenewalToken(refreshToken : String)
+    //Login
     case postLogin(idToken : String)
     
-    case getAlgorithem
-    
+    //User
+    case getAlgorithm(algorithmRequest : AlgorithmRequest)
     case getRule
+    case getVerify
+    case postEmoji(emojiRequest : EmojiRequest)
+    
+    case postBulletin(bulletinRequest : BulletinRequest)
+    
+    //Manager
+    case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
+//    case patchEditAlgorithm()
+
 }
 
 extension BamBooAPI : Moya.TargetType{

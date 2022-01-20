@@ -30,9 +30,11 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
         var refresh : String = .init()
     }
     let initialState: State
+    let provider : ServiceProviderType
     
-    init(){
+    init(with provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 
@@ -43,39 +45,28 @@ extension GoogleOauthModalReactor{
         case.googleModalDismiss:
             steps.accept(BambooStep.dismiss)
             return .empty()
-        case .googleLoginBERequied(idToken: let idToken):
-            return fetchLogin(idToken)
+        case let .googleLoginBERequied(idToken):
+            return postLogin(idToken)
         }
     }
 }
 //MARK: - Reduce
 extension GoogleOauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var newState = state
+        var new = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken):
-            newState.access = accessToken
-            newState.refresh = refreshToken
+            new.access = accessToken
+            new.refresh = refreshToken
         }
-        return newState
+        return new
     }
 }
 
 //MARK: - Method
 private extension GoogleOauthModalReactor{
-    func fetchLogin(_ idToken : String) -> Observable<Mutation>{
-        print("idToken: \(idToken)")
-        return BamBooAPI.postLogin(idToken: idToken)
-            .request()
-            .map{
-                guard let value = try $0.mapString().data(using: .utf8) else {return $0}
-                let newResponse = Response(statusCode: $0.statusCode,data: value,request: $0.request,response: $0.response)
-                return newResponse
-            }
-            .map(Login.self,using: BamBooAPI.jsonDecoder)
-            .asObservable()
-            .map{
-                print("access ;\($0.access)")
-                return Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
+    func postLogin(_ idToken : String) -> Observable<Mutation>{
+        return self.provider.loginService.postLogin(idToken: idToken)
+            .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
     }
 }

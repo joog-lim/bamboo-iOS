@@ -10,12 +10,27 @@ import Foundation
 extension BamBooAPI {
   func getPath() -> String {
     switch self {
+// System
     case .postLogin:
         return "login"
-    case .getAlgorithem:
-        return ""
+    case .postRenewalToken:
+        return  "token"
+//User
+        //get
+    case .getAlgorithm:
+        return "algorithm/list/page"
     case .getRule:
         return "algorithm/rule"
+    case .getVerify:
+        return "verify"
+        //post
+    case .postBulletin:
+        return "algorithm/"
+    case .postEmoji:
+        return "leaf/"
+//Manager
+    case .getAdminAlgorithm:
+        return "algorithm/list/page/admin"
     }
   }
 }

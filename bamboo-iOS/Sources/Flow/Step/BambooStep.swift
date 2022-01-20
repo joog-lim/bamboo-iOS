@@ -9,7 +9,7 @@ import RxFlow
 
 enum BambooStep: Step{
     //Global
-    case alert(titleText : String, message : String, idx : String, index: Int)
+    case alert(titleText : String, message : String, idx : Int, index: Int)
 
     case dismiss
     //navigation Action
@@ -53,11 +53,11 @@ enum BambooStep: Step{
     //write
     case writeModalIsRequired
     //report
-    case reportModalsRequired(idx : String, index : Int)
+    case reportModalsRequired(idx : Int, index : Int)
     //googleLogin
     case googleLoginIsRequired
     //EditContent
-    case editContentModalsRequired(idx : String, index : Int)
+    case editContentModalsRequired(idx : Int, index : Int)
     // Refusal
-    case refusalRequired(idx: String, index : Int)
+    case refusalRequired(idx: Int, index : Int)
 }

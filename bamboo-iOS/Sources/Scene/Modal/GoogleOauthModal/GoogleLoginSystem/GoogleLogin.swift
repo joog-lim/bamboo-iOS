@@ -11,14 +11,17 @@ import KeychainSwift
 import ReactorKit
 
 final class GoogleLogin{
-    static let shared = GoogleLogin()
-    let reactor = GoogleOauthModalReactor()
+    static let shared = GoogleLogin(with: ServiceProvider())
+    let reactor : GoogleOauthModalReactor
+    
     private let sign : GIDSignIn
     private let signInConfig = GIDConfiguration.init(clientID:   "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
     private let disposeBag : DisposeBag = .init()
-    
-    private init(){
+    private let provider : ServiceProviderType
+    private init(with provider : ServiceProviderType){
         sign = GIDSignIn.sharedInstance
+        self.provider = provider
+        self.reactor = .init(with: self.provider)
     }
     public func SignOutOauth(){
         sign.signOut()
@@ -38,18 +41,16 @@ final class GoogleLogin{
                 user.authentication.do { authentication, error in
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
-                    
+                    print(authentication.idToken)
+                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken ?? ""))
+
                     UserDefaults.standard.set(true, forKey: "LoginStatus")
-                    tokenBE(authentication.idToken ?? "")
-                    
+                        
                     reactor.steps.accept(BambooStep.dismiss)
                     // send id Token to backend
                 }
             }
         }
-    }
-    private func tokenBE(_ idToken : String){
-        _ = reactor.mutate(action: .googleLoginBERequied(idToken: idToken))
     }
 }
 

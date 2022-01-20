@@ -11,12 +11,25 @@ import Moya
 extension BamBooAPI{
     func getMethod() -> Moya.Method{
         switch self{
-        case .postLogin(_):
+        //Post
+        case .postRenewalToken:
             return .post
-        case .getAlgorithem:
+        case .postLogin:
+            return .post
+        case .postBulletin:
+            return .post
+        case .postEmoji:
+            return .post
+        // Get
+        case .getAlgorithm:
             return  .get
         case .getRule:
             return .get
+        case .getVerify:
+            return .get
+        case .getAdminAlgorithm:
+            return .get
+
         }
     }
 }

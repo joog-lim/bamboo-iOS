@@ -1,6 +1,3 @@
-
-import RxDataSources
-
 struct Rule : ModelType{
     var content : String
     var thirteen ,fifteen: [String]
