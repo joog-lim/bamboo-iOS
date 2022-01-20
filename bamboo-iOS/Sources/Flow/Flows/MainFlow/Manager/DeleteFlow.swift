@@ -5,6 +5,7 @@
 //  Created by Ji-hoon Ahn on 2021/12/11.
 //
 import UIKit
+import PanModal
 
 import RxFlow
 import RxRelay
@@ -22,13 +23,20 @@ final class DeleteFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
+    
+    let provider : ServiceProviderType
     let stepper: DeleteStepper
-    let reactor : DeleteReactor = .init()
+    let reactor : DeleteReactor 
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : DeleteStepper){
+    init(
+        stepper : DeleteStepper,
+        provider : ServiceProviderType
+    ){
         self.stepper = stepper
+        self.provider = provider
+        self.reactor = .init(provider: provider)
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -58,7 +66,7 @@ private extension DeleteFlow{
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
-    func navigateToAlertScreen(titleText : String, message : String, idx : String, index : Int) -> FlowContributors{
+    func navigateToAlertScreen(titleText : String, message : String, idx : Int, index : Int) -> FlowContributors{
         let alert = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "거절", style: .default,handler: { _ in
             _ = self.reactor.mutate(action: .alertRefusalTap(idx, index))
@@ -68,10 +76,13 @@ private extension DeleteFlow{
         rootViewController.present(alert, animated: true)
         return .none
     }
-    func coordinatorToRefusalModalRequired(idx : String, index :Int) -> FlowContributors{
+    func coordinatorToRefusalModalRequired(idx : Int, index :Int) -> FlowContributors{
         let reactor = RefusalModalReactor()
         let vc = RefusalModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

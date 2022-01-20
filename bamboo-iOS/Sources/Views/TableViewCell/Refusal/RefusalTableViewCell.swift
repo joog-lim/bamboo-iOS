@@ -7,10 +7,10 @@
 import UIKit
 import RxDataSources
 protocol RefusalCancelBtnDelegate : AnyObject{
-    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : String)
+    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : Int)
 }
 
-final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
+final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?
@@ -92,17 +92,17 @@ final class RefusalTableViewCell : baseTableViewCell<RefusalTableViewReactor>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    override func bindView(reactor: RefusalTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.number)번째 거절됨"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
-        tagLabel.text = reactor.currentState.tag
-        titleLabel.text = reactor.currentState.title
-        contentLabel.text = reactor.currentState.content
-    }
-    override func bindAction(reactor: RefusalTableViewReactor) {
+    
+    override func bind(_ model: Algorithm.Results) {
+        algorithm.text = "#\(model.algorithmNumber)번째 거절됨"
+        dataLabel.text = model.createdAt
+        tagLabel.text = model.tag
+        titleLabel.text = model.title
+        contentLabel.text = model.content
+        
         refusalCancelBtn.rx.tap
             .subscribe({ [self] _ in
-                self.delegate?.refusalCancelBtnAction(cell: self, id: reactor.currentState.id)
+                self.delegate?.refusalCancelBtnAction(cell: self, id: model.idx)
             }).disposed(by: disposeBag)
     }
 }

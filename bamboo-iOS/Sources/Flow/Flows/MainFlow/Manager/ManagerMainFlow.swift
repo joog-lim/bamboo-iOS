@@ -27,16 +27,18 @@ final class ManagerMainFlow : Flow{
         $0.tabBar.tintColor = .bamBoo_57CC4D
         $0.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
     }
+    private let provider : ServiceProviderType
     private let acceptFlow : AcceptFlow
     private let standByFlow : StandByFlow
     private let refusalFlow : RefusalFlow
     private let deleteFlow : DeleteFlow
     
-    init(){
-        self.acceptFlow = .init(stepper: .init())
-        self.standByFlow = .init(stepper: .init())
-        self.refusalFlow = .init(stepper: .init())
-        self.deleteFlow = .init(stepper: .init())
+    init(with provider : ServiceProviderType){
+        self.provider = provider
+        self.acceptFlow = .init(stepper: .init(), provider: provider)
+        self.standByFlow = .init(stepper: .init(), provider: provider)
+        self.refusalFlow = .init(stepper: .init(), provider: provider)
+        self.deleteFlow = .init(stepper: .init(), provider: provider)
     }
     deinit{
         print("\(type(of: self)): \(#function)") 
@@ -49,8 +51,6 @@ final class ManagerMainFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
         case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
-        case .ruleIsRequired:
-            return coordinateToRule()
         default:
             return .none
         }
@@ -91,12 +91,3 @@ final class ManagerMainFlow : Flow{
     }
 }
 
-private extension ManagerMainFlow{
-    func coordinateToRule() -> FlowContributors{
-        let reactor = RuleReactor()
-        let vc = RuleViewController(reactor: reactor)
-        self.rootViewController.navigationController?.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                withNextStepper: reactor))
-    }
-}

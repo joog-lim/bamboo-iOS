@@ -8,10 +8,10 @@
 import UIKit
 
 protocol AcceptManagerTableViewCellDelegate : AnyObject{
-    func cellSettingbtnClick(cell : AcceptManagerTableViewCell, id : String)
+    func cellSettingbtnClick(cell : AcceptManagerTableViewCell, id : Int)
 }
 
-final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReactor>{
+final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Results>{
     
     weak var delegate : AcceptManagerTableViewCellDelegate?
 
@@ -93,17 +93,17 @@ final class AcceptManagerTableViewCell : baseTableViewCell<AcceptTableViewReacto
         }
     }
     //MARK: - Bind
-    override func bindView(reactor: AcceptTableViewReactor) {
-        algorithm.text = "#\(reactor.currentState.number)번째 알고리즘"
-        dataLabel.text = Date().usingDate(timeStamp: reactor.currentState.createdAt)
-        tagLabel.text = reactor.currentState.tag
-        titleLabel.text = reactor.currentState.title
-        contentLabel.text = reactor.currentState.content
-    }
-    override func bindAction(reactor: AcceptTableViewReactor) {
+    override func bind(_ model: Algorithm.Results) {
+        algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
+        dataLabel.text = model.createdAt
+        tagLabel.text = model.tag
+        titleLabel.text = model.title
+        contentLabel.text = model.content
+        
         cellSettingbtn.rx.tap
-            .subscribe({ [self] _ in
-                delegate?.cellSettingbtnClick(cell: self, id: reactor.currentState.id)
+            .subscribe({  [weak self] _ in
+                self?.delegate?.cellSettingbtnClick(cell: self!, id: model.idx)
             }).disposed(by: disposeBag)
     }
+
 }

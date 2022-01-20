@@ -34,7 +34,7 @@ final class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        navigationItem.applyManagerNavigationBarSetting()
+        navigationItem.applyImageNavigation()
 
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -81,17 +81,31 @@ final class DeleteViewController : baseVC<DeleteReactor>{
             .disposed(by: disposeBag)
     }
     override func bindState(reactor: DeleteReactor) {
-        let dataSource = RxTableViewSectionedReloadDataSource<DeleteViewSection>{ dataSource,tableView,indexPath,sectionItem in
+        let dataSource = RxTableViewSectionedReloadDataSource<DeleteSection.Model>{ dataSource,tableView,indexPath,sectionItem in
             switch sectionItem{
-            case .main(let reactor):
+            case .main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as DeleteTableViewCell
-                cell.reactor = reactor
+                cell.model = algorithm
                 cell.delegate = self
                 return cell
             }
         }
-        reactor.state
-            .map{ $0.mainSection}
+    
+        self.mainTableView.rx.didEndDragging
+            .withLatestFrom(self.mainTableView.rx.contentOffset)
+            .map{ [weak self] in
+                Reactor.Action.pagination(
+                    contentHeight: self?.mainTableView.contentSize.height ?? 0,
+                    contentOffsetY: $0.y,
+                    scrollViewHeight: UIScreen.main.bounds.height
+                )
+            }
+            .bind(to:  reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map(\.mainSection)
+            .distinctUntilChanged()
+            .map(Array.init(with: ))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
@@ -99,7 +113,7 @@ final class DeleteViewController : baseVC<DeleteReactor>{
 
 //MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
-    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: String) {
+    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id ,index: indexPath.row))
     }

@@ -45,29 +45,37 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     override func setLayout() {
         super.setLayout()
-        editContentTitle.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(bounds.height/27.0666)
-            $0.left.equalToSuperview().offset(bounds.width/15.625)
+        if UIDevice.current.isiPhone{
+            editContentTitle.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(bounds.height/27.0666)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+            }
+        }else{
+            editContentTitle.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(40)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+            }
         }
         titleTf.snp.makeConstraints {
-            $0.top.equalTo(editContentTitle.snp.bottom).offset(bounds.height/81.2)
+            $0.top.equalTo(editContentTitle.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/27.0666)
+            $0.height.equalTo(35)
         }
         contentTv.snp.makeConstraints {
-            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
+            $0.top.equalTo(titleTf.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/8.12)
+            $0.height.equalTo(130)
         }
         btnStackView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/23.2)
-            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
+            $0.height.equalTo(35)
+            $0.top.equalTo(contentTv.snp.bottom).offset(30)
         }
     }
     override func keyBoardLayout() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
+                print(KeyboardVisibleHeight)                
                 panScrollable?.contentOffset.y += KeyboardVisibleHeight
             }).disposed(by: disposeBag)
     }
@@ -94,7 +102,11 @@ extension EditContentModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(250)
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(400)
+        }
     }
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}

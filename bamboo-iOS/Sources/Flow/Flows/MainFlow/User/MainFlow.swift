@@ -19,6 +19,7 @@ final class MainFlow : Flow{
     var root: Presentable{
         return self.rootViewController
     }
+
     let rootViewController = UITabBarController().then{
         $0.tabBar.backgroundColor = .white
         $0.tabBar.barTintColor = .white
@@ -26,13 +27,16 @@ final class MainFlow : Flow{
         $0.tabBar.tintColor = .bamBoo_57CC4D
         $0.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
     }
+    
+    private let provider: ServiceProviderType
     private let homeFlow : HomeFlow
     private let ruleFlow : RuleFlow
     private let detailFlow : DetailFlow
     
-    init(){
-        self.homeFlow = .init(stepper: .init())
-        self.ruleFlow = .init(stepper: .init())
+    init(with provider: ServiceProviderType){
+        self.provider = provider
+        self.homeFlow = .init(stepper: .init(), with: provider)
+        self.ruleFlow = .init(stepper: .init(), with: provider)
         self.detailFlow = .init(stepper: .init())
     }
     deinit{

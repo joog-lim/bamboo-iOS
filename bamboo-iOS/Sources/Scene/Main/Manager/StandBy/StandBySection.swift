@@ -7,21 +7,12 @@
 
 import RxDataSources
 
-enum StandByViewSection {
-    case first([StandByViewSectionItem])
-}
-enum StandByViewSectionItem {
-    case main(StandByTableViewReactor)
-}
-extension StandByViewSection : SectionModelType{
-    var items : [StandByViewSectionItem]{
-        switch self{
-        case .first(let items) : return items
-        }
-    }
-    init(original: StandByViewSection, items: [StandByViewSectionItem]) {
-        switch original {
-        case .first: self = .first(items)
-        }
+//MARK: - Remake
+enum StandBySection{
+    typealias Model = SectionModel<Int,Item>
+    
+    enum Item{
+        case main(Algorithm.Results)
     }
 }
+extension StandBySection.Item : Equatable{}

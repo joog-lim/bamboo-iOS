@@ -1,12 +1,5 @@
-//
-//  MainViewController.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2021/09/13.
-//
 import UIKit
 import Reusable
-
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -25,12 +18,14 @@ final class MainViewController : baseVC<MainReactor>{
         $0.attributedText = string
     }
 
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: .zero).then {
         $0.register(cellType: BulletinBoardsTableViewCell.self)
-        $0.showsVerticalScrollIndicator = false
+        $0.register(headerFooterViewType: CustomFooterView.self)
         $0.separatorColor = .clear
+        $0.showsVerticalScrollIndicator = false
         $0.allowsSelection = false
         $0.rowHeight = UITableView.automaticDimension
+        $0.sectionHeaderHeight = 152
         $0.estimatedRowHeight = 300
     }
     
@@ -59,6 +54,7 @@ final class MainViewController : baseVC<MainReactor>{
         tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
+    //MARK: - addView
     override func addView() {
         super.addView()
         view.addSubviews(mainTableView,writeBtn)
@@ -111,18 +107,31 @@ final class MainViewController : baseVC<MainReactor>{
             .disposed(by: disposeBag)
     }
     override func bindState(reactor: MainReactor) {
-        let dataSource = RxTableViewSectionedReloadDataSource<MainViewSection>{ dataSource, tableView, indexPath, sectionItem in
+        let dataSource = RxTableViewSectionedReloadDataSource<MainSection.Model>{ dataSource, tableView, indexPath, sectionItem in
             switch sectionItem{
-            case.main(let reactor):
+            case.main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as BulletinBoardsTableViewCell
                 cell.delegate = self
-                cell.reactor = reactor
+                cell.model = algorithm
                 return cell
             }
         }
         
-        reactor.state
-            .map{ $0.mainSection}
+        self.mainTableView.rx.didEndDragging
+            .withLatestFrom(self.mainTableView.rx.contentOffset)
+            .map{ [weak self] in
+                Reactor.Action.pagination(
+                    contentHeight: self?.mainTableView.contentSize.height ?? 0,
+                    contentOffsetY: $0.y,
+                    scrollViewHeight: UIScreen.main.bounds.height
+                )
+            }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+            
+        reactor.state.map(\.mainSection)
+            .distinctUntilChanged()
+            .map(Array.init(with:))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
@@ -131,13 +140,15 @@ final class MainViewController : baseVC<MainReactor>{
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
-    func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: String) {
+    
+    func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         reactor?.steps.accept(BambooStep.reportModalsRequired(idx: id, index: indexPath.row))
     }
     
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell, state: Bool) {
+    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
         self.likeBtnClick(indexPath: indexPath.item, state: state)
+        _ = reactor?.mutate(action: Reactor.Action.emojiBtnClick(idx: id))
     }
 }

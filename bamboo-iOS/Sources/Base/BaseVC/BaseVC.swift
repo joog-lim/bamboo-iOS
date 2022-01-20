@@ -18,7 +18,9 @@ class baseVC<T: Reactor>: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+        setupBackgroundIfNotSet()
+        
         addView()
         setLayout()
         configureUI()
@@ -35,11 +37,19 @@ class baseVC<T: Reactor>: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setupBackgroundIfNotSet(){
+        if self.view.backgroundColor == nil{
+            self.view.backgroundColor = .white
+        }
+    }
+    
+    //MARK: - Override Point
     func addView(){}
     func setLayout(){}
     func configureUI(){}
     func keyBoardLayout(){}
     
+    //MARK: - Bind
     func bindView(reactor: T){}
     func bindAction(reactor: T){}
     func bindState(reactor: T){}

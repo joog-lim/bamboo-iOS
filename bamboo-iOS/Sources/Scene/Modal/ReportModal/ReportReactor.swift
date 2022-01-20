@@ -17,6 +17,7 @@ final class ReportReactor: Reactor , Stepper{
     
     enum Action{
         case dismissModal
+        case reportBtnTap
     }
     enum Mutation{
         
@@ -37,6 +38,8 @@ extension ReportReactor{
         switch action{
         case.dismissModal:
             steps.accept(BambooStep.dismiss)
+            return .empty()
+        case .reportBtnTap:
             return .empty()
         }
     }

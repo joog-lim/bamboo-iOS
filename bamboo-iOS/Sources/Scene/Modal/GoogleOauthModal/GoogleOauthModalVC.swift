@@ -91,7 +91,6 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     }
     
     override func bindView(reactor: GoogleOauthModalReactor) {
-        super.bindView(reactor: reactor)
         transparentView.rx.tapGesture()
             .when(.recognized)
             .map{_ in Reactor.Action.googleModalDismiss}

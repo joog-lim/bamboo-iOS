@@ -26,17 +26,15 @@ final class LoginFlow : Flow{
     deinit{
         print("\(type(of: self)): \(#function)")
     }
-    
+    //MARK: - Navigation
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         
         switch step{
         case .LoginIsRequired:
             return coordinateToLoginVC()
-        case .userLoginIsRequired:
-            return coordinateToUserLoginModalVC()
-        case .managerLoginIsRequired:
-            return coordinateToManagerLoginModalVC()
+        case .userLoginIsRequired,.managerLoginIsRequired:
+            return coordinateToLoginModalVC()
         case .userIsLoggedIn, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
@@ -47,6 +45,8 @@ final class LoginFlow : Flow{
             return .none
         }
     }
+    
+    //MARK: - Coordinator
     private func coordinateToLoginVC() -> FlowContributors{
         let reactor = LoginReactor(provider: provider)
         let vc = LoginViewController(reactor: reactor)
@@ -54,18 +54,9 @@ final class LoginFlow : Flow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
-    private func coordinateToUserLoginModalVC() -> FlowContributors{
-        let reactor = GoogleOauthModalReactor()
+    private func coordinateToLoginModalVC() -> FlowContributors{
+        let reactor = GoogleOauthModalReactor(with: provider)
         let vc = GoogleOauthModalVC(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
-    }
-    
-    private func coordinateToManagerLoginModalVC() -> FlowContributors{
-        let reactor = ManagerLoginModalReactor()
-        let vc = ManagerLoginModal(reactor: reactor)
         vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.rootVC.visibleViewController?.present(vc, animated: true)
@@ -77,4 +68,3 @@ final class LoginFlow : Flow{
         return .none
     }
 }
-

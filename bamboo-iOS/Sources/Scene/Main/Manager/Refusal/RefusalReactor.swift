@@ -16,20 +16,27 @@ final class RefusalReactor : Reactor, Stepper{
     
     enum Action{
         case viewDidLoad
+        case pagination(
+            contentHeight: CGFloat,
+            contentOffsetY: CGFloat,
+            scrollViewHeight: CGFloat
+        )
     }
     enum Mutation{
-        case updateDataSource
+        case updateDataSource([RefusalSection.Item])
     }
     struct State{
-        var mainSection = [RefusalViewSection]()
+        var mainSection = RefusalSection.Model(model: 0, items: [])
     }
     
+    //MARK: - Properties
+    let provider : ServiceProviderType
+    var currentPage = 0
     let initialState: State
     
-    let errorSubject: PublishSubject<Error> = .init()
-
-    init(){
+    init(provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 //MARK: - Mutation
@@ -37,7 +44,14 @@ extension RefusalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .viewDidLoad:
-            return Observable<Mutation>.just(.updateDataSource)
+            return getRefusal()
+        case let .pagination(contentHeight, contentOffsetY, scrollViewHeight):
+            let paddingSpace = contentHeight - contentOffsetY
+            if paddingSpace < scrollViewHeight{
+                return getRefusal()
+            }else{
+                return .empty()
+            }
         }
     }
 }
@@ -46,19 +60,23 @@ extension RefusalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource:
-            state.mainSection = getMainData()
+        case .updateDataSource(let sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
         }
         return state
     }
 }
 
-func getMainData() -> [RefusalViewSection]{
-
-    let mainItem1 = RefusalViewSectionItem.main(RefusalTableViewReactor(RefusalBoard: Algorithem(id: "1", number: 1, title: "저녁", content: "테스트", tag: "유머", createdAt: 1640316269465)))
-    
-    let itemInFirstSection = [mainItem1]
-    let firstSection = RefusalViewSection(original: RefusalViewSection(original: .first(itemInFirstSection), items: itemInFirstSection), items: itemInFirstSection)
-    
-    return [firstSection]
+//MARK: - GetAcceptAlgorithm
+private extension RefusalReactor{
+    private func getRefusal() -> Observable<Mutation>{
+        self.currentPage += 1
+        let refusalRequest = AdminAlgorithmRequest(page: currentPage, status: "REJECTED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: refusalRequest)
+            .map{(algorithm: Algorithm) -> [RefusalSection.Item] in
+                let mainSectionItem = algorithm.result.map(RefusalSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateDataSource)
+    }
 }

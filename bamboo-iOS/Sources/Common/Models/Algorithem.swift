@@ -1,25 +1,36 @@
-//
-//  User.swift
-//  bamboo-iOS
-//
-//  Created by Ji-hoon Ahn on 2021/12/22.
-//
-
-import RxDataSources
-
-struct Algorithem : ModelType{
-    var id  : String
-    var number : Int
-    var title : String
-    var content : String
-    var tag : String
-    var createdAt : Int
-    var reason : String?
-    var isDone = false
-}
-
-extension Algorithem : Equatable{
-    static func == (lhs : Algorithem, rhs : Algorithem) -> Bool{
-        lhs.id == rhs.id
+struct Algorithm : ModelType{
+    var result : [Results]
+    
+    struct Results: ModelType{
+        var idx  : Int
+        var algorithmNumber : Int
+        var title : String
+        var content : String
+        var tag : String
+        var reason : String?
+        var createdAt : String
+        var isClicked : Bool
+        var emojiCount : Int
+        
+        enum CodingKeys : String,CodingKey{
+            case idx
+            case algorithmNumber
+            case title
+            case content
+            case tag
+            case reason
+            case createdAt
+            case isClicked
+            case emojiCount
+        }
+        
+        static func == (lhs : Results, rhs : Results) -> Bool{
+            lhs.idx == rhs.idx
+        }
+    }
+    
+    static func == (lhs : Algorithm, rhs : Algorithm) -> Bool{
+        lhs.result == rhs.result
     }
 }
+

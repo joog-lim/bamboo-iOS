@@ -44,7 +44,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     private let contentTv = AlertTextView(placeholder: "내용을 입력하세요.", fontSize: 10)
     private let passwordTitle = UILabel().then{
-        $0.text = "Q. 학교 와이파이 비번은 무엇일까요?"
         $0.textColor = .black
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
     }
@@ -93,11 +92,33 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
         self.view.endEditing(true)
     }
     
-    override func bindView(reactor: WritingBulletinBoardReactor) {
-        super.bindView(reactor: reactor)
+    //MARK: - Bind
+    override func bindAction(reactor: WritingBulletinBoardReactor) {
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
+            }).disposed(by: disposeBag)
+        
+        sendBtn.rx.tap
+            .map{ Reactor.Action.sendBtnTap(
+                self.titleTf.text,
+                self.contentTv.tvContent,
+                self.tagChooseBtn.titleLabel?.text,
+                "",
+                self.passwordTf.text)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        self.rx.viewWillAppear
+            .map{ Reactor.Action.viewWillAppear}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    override func bindState(reactor: WritingBulletinBoardReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ [weak self] in
+                self?.passwordTitle.text = $0.question ?? ""
             }).disposed(by: disposeBag)
     }
 }

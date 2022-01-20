@@ -8,21 +8,20 @@
 import UIKit
 import GoogleSignIn
 import KeychainSwift
-import RxSwift
-import RxCocoa
 import ReactorKit
-import OSLog
-import RxFlow
 
 final class GoogleLogin{
-    static let shared = GoogleLogin()
-    let reactor = GoogleOauthModalReactor()
-    private let disposeBag : DisposeBag = .init()
-    private let sign : GIDSignIn
-    private let signInConfig = GIDConfiguration.init(clientID: "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
+    static let shared = GoogleLogin(with: ServiceProvider())
+    let reactor : GoogleOauthModalReactor
     
-    private init(){
+    private let sign : GIDSignIn
+    private let signInConfig = GIDConfiguration.init(clientID:   "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")
+    private let disposeBag : DisposeBag = .init()
+    private let provider : ServiceProviderType
+    private init(with provider : ServiceProviderType){
         sign = GIDSignIn.sharedInstance
+        self.provider = provider
+        self.reactor = .init(with: self.provider)
     }
     public func SignOutOauth(){
         sign.signOut()
@@ -42,18 +41,16 @@ final class GoogleLogin{
                 user.authentication.do { authentication, error in
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
-                    
-                    KeychainSwift().set(authentication.idToken ?? "", forKey: "idToken")
-                    UserDefaults.standard.set(true, forKey: "UserLogin")
-                    vc.dismiss(animated: true, completion: nil)
+                    print(authentication.idToken)
+                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken ?? ""))
+
+                    UserDefaults.standard.set(true, forKey: "LoginStatus")
+                        
+                    reactor.steps.accept(BambooStep.dismiss)
                     // send id Token to backend
                 }
-                // 받을수 있는 값
-//                let emailAddress = user.profile?.email
-//                let fullName = user.profile?.name
-//                let givenName = user.profile?.givenName
-//                let profilePicUrl = user.profile?.imageURL(withDimension: 320)
             }
         }
     }
 }
+

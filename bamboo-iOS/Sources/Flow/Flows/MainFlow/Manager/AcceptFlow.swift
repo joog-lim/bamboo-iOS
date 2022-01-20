@@ -24,11 +24,14 @@ final class AcceptFlow : Flow{
         return self.rootViewController
     }
     let stepper: AcceptStepper
+    let provider : ServiceProviderType
     private let rootViewController = UINavigationController()
     
     //MARK: - Initalizer
-    init(stepper : AcceptStepper){
+    init(stepper : AcceptStepper,
+        provider : ServiceProviderType){
         self.stepper = stepper
+        self.provider = provider
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -54,15 +57,18 @@ final class AcceptFlow : Flow{
 
 private extension AcceptFlow{
     func coordinatorToAccess() -> FlowContributors{
-        let reactor = AcceptReactor()
+        let reactor = AcceptReactor(provider: provider)
         let vc = AcceptViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
-    func coordinatorToEditContent(idx : String, index : Int) -> FlowContributors{
+    func coordinatorToEditContent(idx : Int, index : Int) -> FlowContributors{
         let reactor = EditContentModalReactor()
         let vc = EditContentModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     func coordinateToBack() -> FlowContributors{

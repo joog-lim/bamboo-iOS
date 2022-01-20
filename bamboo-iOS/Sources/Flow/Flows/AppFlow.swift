@@ -21,7 +21,6 @@ struct AppStepper : Stepper{
     }
     
     func readyToEmitSteps() {
-        
         steps.accept(BambooStep.LoginIsRequired)
     }
 }
@@ -73,7 +72,7 @@ final class AppFlow : Flow{
     }
     
     private func coordinateToUserMainVC() -> FlowContributors{
-        let flow = MainFlow()
+        let flow = MainFlow(with: provider)
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
@@ -83,7 +82,7 @@ final class AppFlow : Flow{
     }
     
     private func coordinateToManagerVC() -> FlowContributors{
-        let flow = ManagerMainFlow()
+        let flow = ManagerMainFlow(with: provider)
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
