@@ -102,6 +102,7 @@ private extension MainReactor{
 private extension MainReactor{
     private func postEmoji(idx : Int) -> Observable<Mutation>{
         let emojiRequest = EmojiRequest(number: idx)
+        
         return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
             .map(Mutation.postAlgorithm)
     }

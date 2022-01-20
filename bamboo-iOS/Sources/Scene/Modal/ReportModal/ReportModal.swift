@@ -90,7 +90,7 @@ final class ReportModal : baseVC<ReportReactor>{
     
     override func bindView(reactor: ReportReactor) {
         reportBtn.rx.tap
-            .map{ Reactor.Action.reportBtnTap}
+            .map{ Reactor.Action.reportBtnTap(reason: self.contentTv.tvContent ?? "")}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }

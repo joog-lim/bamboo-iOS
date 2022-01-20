@@ -9,6 +9,8 @@ protocol UserServiceType {
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<Algorithm>
     func getRule() -> Observable<Rule>
     func getVerify() -> Observable<Verify>
+    //patch
+    func patchReported(reportedRequest: ReportRequest, idx : Int) -> Observable<Base>
 }
 final class UserService : BaseService,UserServiceType{}
 
@@ -56,6 +58,17 @@ extension UserService {
         BamBooAPI.getVerify
             .request()
             .map(Verify.self, using: BamBooAPI.jsonDecoder)
+            .do(onError: {print($0)})
+            .asObservable()
+    }
+}
+
+//MARK: - Patch
+extension UserService{
+    func patchReported(reportedRequest: ReportRequest,idx : Int) -> Observable<Base> {
+        BamBooAPI.patchReport(reportRequest: reportedRequest, idx: idx)
+            .request()
+            .map(Base.self)
             .do(onError: {print($0)})
             .asObservable()
     }

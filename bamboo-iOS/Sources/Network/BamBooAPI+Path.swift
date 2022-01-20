@@ -28,9 +28,13 @@ extension BamBooAPI {
         return "algorithm/"
     case .postEmoji:
         return "leaf/"
+       //patch
+    case let .patchReport(_, idx):
+        return "algorithm/\(idx)/status"
 //Manager
     case .getAdminAlgorithm:
         return "algorithm/list/page/admin"
+
     }
   }
 }

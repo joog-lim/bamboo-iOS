@@ -29,7 +29,9 @@ extension BamBooAPI{
             return .get
         case .getAdminAlgorithm:
             return .get
-
+        // Patch
+        case .patchReport:
+            return .patch
         }
     }
 }

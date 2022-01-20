@@ -10,13 +10,18 @@ import Moya
 extension BamBooAPI{
     func getTask() -> Task{
         switch self{
+            //get
         case .getAlgorithm(let algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)
         case let .getAdminAlgorithm(algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)
+            //post
         case let .postBulletin(bulletinRequest):
-            print(bulletinRequest)
-            return .requestParameters(parameters: bulletinRequest.toDictionary(), encoding:URLEncoding.httpBody )
+            return .requestJSONEncodable(bulletinRequest)
+            //patch
+        case let .patchReport(reportRequest,_):
+            return .requestJSONEncodable(reportRequest)
+
         default:
             return .requestPlain
         }

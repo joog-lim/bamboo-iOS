@@ -17,20 +17,22 @@ final class ReportReactor: Reactor , Stepper{
     
     enum Action{
         case dismissModal
-        case reportBtnTap
+        case reportBtnTap(reason : String)
     }
     enum Mutation{
-        
+        case reportPatchSuccess
     }
     struct State{
         
     }
     
     let initialState: State
+    let provider : ServiceProviderType
     let idx : Int
     
     init(provider : ServiceProviderType, idx: Int){
         self.initialState = State()
+        self.provider = provider
         self.idx = idx
     }
 }
@@ -41,8 +43,17 @@ extension ReportReactor{
         case.dismissModal:
             steps.accept(BambooStep.dismiss)
             return .empty()
-        case .reportBtnTap:
-            return .empty()
+        case let .reportBtnTap(reason):
+            return patchReport(reason: reason)
         }
+    }
+}
+
+//MARK: - Method
+extension ReportReactor{
+    private func patchReport(reason : String) -> Observable<Mutation>{
+        let reportRequest = ReportRequest(reason: reason)
+        return provider.userService.patchReported(reportedRequest: reportRequest, idx: idx)
+            .map(Mutation.reportPatchSuccess)
     }
 }
