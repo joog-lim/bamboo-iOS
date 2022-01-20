@@ -79,7 +79,7 @@ private extension StandByFlow{
     }
     
     func coordinatorToRefusalModalRequired(idx : Int, index :Int) -> FlowContributors{
-        let reactor = RefusalModalReactor()
+        let reactor = RefusalModalReactor(provider: provider)
         let vc = RefusalModal(reactor: reactor)
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true

@@ -27,6 +27,7 @@ final class MainReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
+        case postAlgorithm
     }
     struct State{
         var mainSection = MainSection.Model(
@@ -77,6 +78,8 @@ extension MainReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case .postAlgorithm:
+            print("post Algorithm")
         }
         return state
     }
@@ -98,9 +101,8 @@ private extension MainReactor{
 //MARK: - PostEmoji
 private extension MainReactor{
     private func postEmoji(idx : Int) -> Observable<Mutation>{
-        print("id : \(idx)")
         let emojiRequest = EmojiRequest(number: idx)
-//        return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-        return .empty()
+        return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
+            .map(Mutation.postAlgorithm)
     }
 }

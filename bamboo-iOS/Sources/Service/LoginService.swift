@@ -22,7 +22,7 @@ extension LoginService {
     func postLogin(idToken : String) -> Observable<Login>{
         return BamBooAPI.postLogin(idToken: idToken)
             .request()
-            .map(Login.self,using: BamBooAPI.jsonDecoder)
+            .map(Login.self, using: BamBooAPI.jsonDecoder)
             .do(onError: {print($0)})
             .asObservable()
     }

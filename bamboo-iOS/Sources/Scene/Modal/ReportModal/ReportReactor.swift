@@ -27,9 +27,11 @@ final class ReportReactor: Reactor , Stepper{
     }
     
     let initialState: State
+    let idx : Int
     
-    init(){
+    init(provider : ServiceProviderType, idx: Int){
         self.initialState = State()
+        self.idx = idx
     }
 }
 

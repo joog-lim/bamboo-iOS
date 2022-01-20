@@ -3,8 +3,8 @@ import RxSwift
 
 protocol UserServiceType {
     //post
-    func postBulletin(bulletinRequest: BulletinRequest)
-//    func postEmoji(emojiRequest : EmojiRequest) -> Observable<Response.Status>
+    func postBulletin(bulletinRequest: BulletinRequest) -> Observable<Base>
+    func postEmoji(emojiRequest : EmojiRequest) -> Observable<Base>
     //get
     func getAlgorithm(algorithmRequest : AlgorithmRequest) -> Observable<Algorithm>
     func getRule() -> Observable<Rule>
@@ -14,15 +14,22 @@ final class UserService : BaseService,UserServiceType{}
 
 //MARK: - Post
 extension UserService{
-    func postBulletin(bulletinRequest : BulletinRequest) {
-
+    //Bulletin
+    func postBulletin(bulletinRequest: BulletinRequest) -> Observable<Base> {
+        BamBooAPI.postBulletin(bulletinRequest: bulletinRequest)
+            .request()
+            .map(Base.self)
+            .do(onError:{print($0)})
+            .asObservable()
     }
-//    func postEmoji(emojiRequest: EmojiRequest) -> Observable<Response.Status> {
-//        BamBooAPI.postEmoji(emojiRequest: emojiRequest)
-//            .request()
-//            .do(onError:{print($0)})
-//            .asObservable()
-//    }
+    //Emoji
+    func postEmoji(emojiRequest: EmojiRequest) -> Observable<Base>{
+        BamBooAPI.postEmoji(emojiRequest: emojiRequest)
+            .request()
+            .map(Base.self)
+            .do(onError:{print($0)})
+            .asObservable()
+    }
 }
 
 

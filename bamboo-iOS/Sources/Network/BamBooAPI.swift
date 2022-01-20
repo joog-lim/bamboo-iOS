@@ -18,7 +18,7 @@ enum BamBooAPI {
     case getAlgorithm(algorithmRequest : AlgorithmRequest)
     case getRule
     case getVerify
-    case postEmoji(emojiRequest : EmojiRequest)
+    case postEmoji(emojiRequest : EmojiRequest) 
     
     case postBulletin(bulletinRequest : BulletinRequest)
     

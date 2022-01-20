@@ -73,7 +73,7 @@ private extension HomeFlow{
     }
     
     func coordinatorReportModal(idx : Int,index : Int) -> FlowContributors{
-        let reactor = ReportReactor()
+        let reactor = ReportReactor(provider: provider, idx: idx)
         let vc =  ReportModal(reactor: reactor)
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true

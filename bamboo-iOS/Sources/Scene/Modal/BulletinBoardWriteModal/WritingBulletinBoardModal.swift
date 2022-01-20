@@ -104,7 +104,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
                 self.titleTf.text,
                 self.contentTv.tvContent,
                 self.tagChooseBtn.titleLabel?.text,
-                "",
                 self.passwordTf.text)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

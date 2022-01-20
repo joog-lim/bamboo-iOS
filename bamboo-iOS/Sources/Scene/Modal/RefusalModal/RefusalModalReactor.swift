@@ -22,9 +22,11 @@ final class RefusalModalReactor : Reactor,Stepper{
     struct State{
     }
     let initialState: State
+    let provider : ServiceProviderType
     
-    init(){
+    init(provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 extension RefusalModalReactor{
