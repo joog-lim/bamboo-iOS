@@ -119,6 +119,6 @@ final class StandByViewController : baseVC<StandByReactor>{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell, id: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id,index: indexPath.row))
+        _ = reactor?.mutate(action: Reactor.Action.standbyBtnTap(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id, index: indexPath.row))
     }
 }

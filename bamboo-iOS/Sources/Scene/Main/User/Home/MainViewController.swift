@@ -49,6 +49,8 @@ final class MainViewController : baseVC<MainReactor>{
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
+        
+        mainTableView.refreshControl = UIRefreshControl()
 
         tableViewHeaderSetting()
         tableFooterViewSetting()
@@ -99,6 +101,7 @@ final class MainViewController : baseVC<MainReactor>{
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+            
     }
     override func bindAction(reactor: MainReactor) {
         self.rx.viewDidLoad
@@ -143,7 +146,8 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        reactor?.steps.accept(BambooStep.reportModalsRequired(idx: id, index: indexPath.row))
+        mainTableView.reloadData()
+        _ = reactor?.mutate(action: Reactor.Action.reportBtnClickAction(idx: id, index: indexPath.row))
     }
     
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {

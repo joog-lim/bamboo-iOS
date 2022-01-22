@@ -103,7 +103,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             .map{ Reactor.Action.sendBtnTap(
                 self.titleTf.text,
                 self.contentTv.tvContent,
-                self.tagChooseBtn.titleLabel?.text,
+                self.tagChooseBtn.titleLabel?.text == "태그선택" ? ""  : self.tagChooseBtn.titleLabel?.text,
                 self.passwordTf.text)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

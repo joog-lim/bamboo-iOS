@@ -25,7 +25,7 @@ final class ReportReactor: Reactor , Stepper{
     struct State{
         
     }
-    
+    //MARK: - Properties
     let initialState: State
     let provider : ServiceProviderType
     let idx : Int
@@ -36,7 +36,7 @@ final class ReportReactor: Reactor , Stepper{
         self.idx = idx
     }
 }
-
+//MARK: - Mutation
 extension ReportReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
@@ -46,6 +46,17 @@ extension ReportReactor{
         case let .reportBtnTap(reason):
             return patchReport(reason: reason)
         }
+    }
+}
+//MARK: - Reduce
+extension ReportReactor{
+    func reduce(state: State, mutation: Mutation) -> State {
+        var new = state
+        switch mutation{
+        case .reportPatchSuccess:
+            steps.accept(BambooStep.dismiss)
+        }
+        return new
     }
 }
 
