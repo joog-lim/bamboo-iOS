@@ -22,11 +22,7 @@ final class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - TableView
     private let mainTableView = UITableView().then {
         $0.register(cellType: RefusalTableViewCell.self)
-        $0.showsVerticalScrollIndicator = false
-        $0.separatorColor = .clear
-        $0.allowsSelection = false
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 300
+        $0.sameSetting()
     }
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
     private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
