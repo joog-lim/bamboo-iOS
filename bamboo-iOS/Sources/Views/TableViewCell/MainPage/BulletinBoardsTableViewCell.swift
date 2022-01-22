@@ -134,8 +134,8 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
             }).disposed(by: disposeBag)
         
         likeBtn.rx.tap
+            .map{self.likeBtn.isSelected = !self.likeBtn.isSelected}
             .subscribe({[weak self] _ in
-                self?.likeBtn.isSelected = !self!.likeBtn.isSelected
                 self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
     }

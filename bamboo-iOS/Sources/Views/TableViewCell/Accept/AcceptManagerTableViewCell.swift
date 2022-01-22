@@ -95,7 +95,7 @@ final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Results>{
     //MARK: - Bind
     override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content

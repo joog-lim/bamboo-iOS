@@ -27,10 +27,10 @@ final class MainViewController : baseVC<MainReactor>{
         $0.rowHeight = UITableView.automaticDimension
         $0.sectionHeaderHeight = 152
         $0.estimatedRowHeight = 300
+        $0.sectionFooterHeight = 50
     }
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     private let writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
@@ -51,16 +51,17 @@ final class MainViewController : baseVC<MainReactor>{
         navigationItem.applyImageNavigation()
         
         mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
 
         tableViewHeaderSetting()
-        tableFooterViewSetting()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
     //MARK: - addView
     override func addView() {
         super.addView()
         view.addSubviews(mainTableView,writeBtn)
     }
+    
+    //MARK: - layout
     override func setLayout() {
         super.setLayout()
         mainTableView.snp.makeConstraints { (make) in
@@ -84,31 +85,23 @@ final class MainViewController : baseVC<MainReactor>{
             $0.top.left.equalToSuperview().offset(20)
         }
     }
-    //MARK: - Footer
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
-    }
     
     //MARK: -  Bind
+    // - UI
     override func bindView(reactor: MainReactor) {
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-            
     }
+    // - Action
     override func bindAction(reactor: MainReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
+    // - State
     override func bindState(reactor: MainReactor) {
         let dataSource = RxTableViewSectionedReloadDataSource<MainSection.Model>{ dataSource, tableView, indexPath, sectionItem in
             switch sectionItem{
@@ -139,6 +132,10 @@ final class MainViewController : baseVC<MainReactor>{
             .disposed(by: disposeBag)
     }
 }
+//MARK: - TableViewHeader & Footer Setting
+extension MainViewController : UITableViewDelegate{
+    
+}
 
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
@@ -157,3 +154,4 @@ extension MainViewController : ClickReportBtnActionDelegate{
         _ = reactor?.mutate(action: Reactor.Action.emojiBtnClick(idx: id, state: state))
     }
 }
+

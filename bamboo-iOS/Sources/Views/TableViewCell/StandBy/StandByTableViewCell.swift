@@ -97,7 +97,7 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
     
     override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 대기중"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
