@@ -55,7 +55,8 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
     }
-
+    
+    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -63,7 +64,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         location()
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
     }
-    
+
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
@@ -114,16 +115,19 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
             $0.height.equalTo(18)
         }
     }
+
     //MARK: - bind
     override func bind(_ model: Algorithm.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
         likeBtn.label.text = "\(model.emojiCount + 1)"
         likeBtn.isSelected = model.isClicked
-        
+    }
+    
+    override func bindAction(_ model: Algorithm.Results) {
         cellSettingbtn.rx.tap
             .subscribe({[weak self] _ in
                 self?.delegate?.clickReportBtnAction(cell: self!, id: model.idx)
@@ -131,8 +135,8 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         
         likeBtn.rx.tap
             .subscribe({[weak self] _ in
-                self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
                 self?.likeBtn.isSelected = !self!.likeBtn.isSelected
+                self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
     }
 }

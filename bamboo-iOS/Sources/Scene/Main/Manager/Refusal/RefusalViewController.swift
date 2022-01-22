@@ -125,6 +125,8 @@ final class RefusalViewController : baseVC<RefusalReactor>{
 extension RefusalViewController : RefusalCancelBtnDelegate{
     func refusalCancelBtnAction(cell: RefusalTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
+        mainTableView.reloadData()
+       print( MainSection.Item.main)
         self.cellinsideRefusalCancelBtnClick(indexPath: indexPath.item)
     }
 }

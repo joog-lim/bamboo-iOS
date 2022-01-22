@@ -17,7 +17,7 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case viewDidLoad
         case writeData
-        case emojiBtnClick(idx : Int)
+        case emojiBtnClick(idx : Int,state : Bool)
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
@@ -66,8 +66,8 @@ extension MainReactor{
             }else{
                 return .empty()
             }
-        case let .emojiBtnClick(idx):
-            return postEmoji(idx: idx)
+        case let .emojiBtnClick(idx,status):
+            return postEmoji(idx: idx, status: status)
         }
     }
 }
@@ -100,10 +100,14 @@ private extension MainReactor{
 
 //MARK: - PostEmoji
 private extension MainReactor{
-    private func postEmoji(idx : Int) -> Observable<Mutation>{
+    private func postEmoji(idx : Int,status : Bool) -> Observable<Mutation>{
         let emojiRequest = EmojiRequest(number: idx)
-        
-        return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-            .map(Mutation.postAlgorithm)
+        if status{
+            return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
+                .map(Mutation.postAlgorithm)
+        }else{
+            return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
+                .map(Mutation.postAlgorithm)
+        }
     }
 }

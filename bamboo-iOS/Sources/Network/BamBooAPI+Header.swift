@@ -16,7 +16,7 @@ extension BamBooAPI{
         case let .postLogin(idToken):
             return ["Authorization": idToken]
         case .getAlgorithm, .getAdminAlgorithm, .postEmoji:
-            return ["Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMyMDA0NEBnc20uaHMua3IiLCJpc0FkbWluIjp0cnVlLCJuaWNrbmFtZSI6IjIxMDjslYjsp4Dtm4giLCJpZGVudGl0eSI6InN0dWRlbnQiLCJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImlhdCI6MTY0Mjg2NDQyNSwiZXhwIjoxNjQyODY4MDI1LCJpc3MiOiJqb29nLWxpbS5pbmZvIn0.CBTLjx0BPZTgsnv6I5Ynvnf3MUdMnEL_eVllhScRhSk"]
+            return ["Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMyMDA0NEBnc20uaHMua3IiLCJpc0FkbWluIjp0cnVlLCJuaWNrbmFtZSI6IjIxMDjslYjsp4Dtm4giLCJpZGVudGl0eSI6InN0dWRlbnQiLCJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImlhdCI6MTY0Mjg3OTc2MiwiZXhwIjoxNjQyODgzMzYyLCJpc3MiOiJqb29nLWxpbS5pbmZvIn0.TkrxTBUR_c4yxKi8UCg5yjzNWVkPoBzAcCAn9n-xurA"]
         default:
             return ["Content-Type": "application/json"]
         }
