@@ -21,13 +21,7 @@ final class MainViewController : baseVC<MainReactor>{
     private let mainTableView = UITableView(frame: .zero).then {
         $0.register(cellType: BulletinBoardsTableViewCell.self)
         $0.register(headerFooterViewType: CustomFooterView.self)
-        $0.separatorColor = .clear
-        $0.showsVerticalScrollIndicator = false
-        $0.allowsSelection = false
-        $0.rowHeight = UITableView.automaticDimension
-        $0.sectionHeaderHeight = 152
-        $0.estimatedRowHeight = 300
-        $0.sectionFooterHeight = 50
+        $0.sameSetting()
     }
     
     private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
