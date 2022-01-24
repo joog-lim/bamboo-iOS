@@ -74,7 +74,7 @@ private extension RefusalReactor{
         let refusalRequest = AdminAlgorithmRequest(page: currentPage, status: "REJECTED")
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: refusalRequest)
             .map{(algorithm: Algorithm) -> [RefusalSection.Item] in
-                let mainSectionItem = algorithm.result.map(RefusalSection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(RefusalSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

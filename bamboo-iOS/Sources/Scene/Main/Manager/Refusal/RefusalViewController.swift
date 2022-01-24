@@ -12,20 +12,12 @@ import RxDataSources
 
 final class RefusalViewController : baseVC<RefusalReactor>{
     //MARK: - Properties
-    private var isLoaing : Bool = false
-    
-    private let titleLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.text = "거절"
-        $0.textColor = .systemRed
-    }
-    //MARK: - TableView
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
+        $0.register(headerFooterViewType: RefusalTableViewHeaderView.self)
         $0.register(cellType: RefusalTableViewCell.self)
+        $0.register(headerFooterViewType: CustomFooterView.self)
         $0.sameSetting()
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     //MARK: - Action
     private func cellinsideRefusalCancelBtnClick(indexPath : Int){
@@ -39,11 +31,9 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         super.configureUI()
         //navigationBar
         navigationItem.applyImageNavigation()
+        setDelegate()
         //tableView
-        tableViewHeaderSetting()
-        tableFooterViewSetting()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     
     override func addView() {
@@ -58,28 +48,11 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         }
     }
 
-
-    //MARK: - Header
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.centerY.equalTo(tableViewHeader)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
-    //MARK: - Footer
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.tintColor = .lightGray
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
-    }
-
     //MARK: - bind
     override func bindAction(reactor: RefusalReactor) {
         self.rx.viewDidLoad
@@ -117,12 +90,22 @@ final class RefusalViewController : baseVC<RefusalReactor>{
             .disposed(by: disposeBag)
     }
 }
-
+//MARK: - Refusal Action
 extension RefusalViewController : RefusalCancelBtnDelegate{
     func refusalCancelBtnAction(cell: RefusalTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         mainTableView.reloadData()
        print( MainSection.Item.main)
         self.cellinsideRefusalCancelBtnClick(indexPath: indexPath.item)
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension RefusalViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(RefusalTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }

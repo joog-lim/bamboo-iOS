@@ -10,7 +10,7 @@ protocol RefusalCancelBtnDelegate : AnyObject{
     func refusalCancelBtnAction(cell : RefusalTableViewCell, id : Int)
 }
 
-final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?
@@ -93,7 +93,7 @@ final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
         }
     }
     
-    override func bind(_ model: Algorithm.Results) {
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 거절됨"
         dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag

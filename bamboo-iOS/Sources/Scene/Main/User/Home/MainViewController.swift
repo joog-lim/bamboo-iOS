@@ -7,25 +7,13 @@ import RxDataSources
 final class MainViewController : baseVC<MainReactor>{
     
     //MARK: - Properties
-    private var isLoaing : Bool = false
-    
-    private let titleLabel = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.textColor = .bamBoo_57CC4D
-        $0.numberOfLines = 2
-        string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
-        $0.attributedText = string
-    }
-
-    private let mainTableView = UITableView(frame: .zero).then {
+    private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
+        $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
         $0.register(cellType: BulletinBoardsTableViewCell.self)
         $0.register(headerFooterViewType: CustomFooterView.self)
         $0.sameSetting()
     }
-    
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
-    
+        
     private let writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.imageView?.contentMode = .scaleAspectFit
@@ -43,11 +31,9 @@ final class MainViewController : baseVC<MainReactor>{
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
-        
+        setDelegate()
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
-
-        tableViewHeaderSetting()
     }
     //MARK: - addView
     override func addView() {
@@ -70,14 +56,10 @@ final class MainViewController : baseVC<MainReactor>{
         super.viewDidLayoutSubviews()
         writeBtn.layer.cornerRadius = writeBtn.frame.height/2
     }
-    
-    //MARK: - Header
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.left.equalToSuperview().offset(20)
-        }
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     //MARK: -  Bind
@@ -129,6 +111,13 @@ final class MainViewController : baseVC<MainReactor>{
 //MARK: - TableViewHeader & Footer Setting
 extension MainViewController : UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
+    }
 }
 
 

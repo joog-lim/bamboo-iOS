@@ -69,7 +69,7 @@ extension WritingBulletinBoardReactor{
 extension WritingBulletinBoardReactor{
     private func getVerify() -> Observable<Mutation>{
         return self.provider.userService.getVerify()
-            .map{Mutation.setQuestion($0.id, $0.question)}
+            .map{Mutation.setQuestion($0.data.id, $0.data.question)}
     }
 }
 

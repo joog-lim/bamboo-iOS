@@ -1,10 +1,15 @@
 struct Verify : ModelType{
-    var id , question : String
-    enum CodingKeys : String,CodingKey{
-        case id
-        case question
+    var data : Datas
+    
+    struct Datas : ModelType{
+        var id , question : String
+        enum CodingKeys : String,CodingKey{
+            case id
+            case question
+        }
+        static func  == (lhs : Datas, rhs : Datas) -> Bool{
+            lhs.id == rhs.id
+        }
     }
-    static func  == (lhs : Verify, rhs : Verify) -> Bool{
-        lhs.id == rhs.id
-    }
+
 }

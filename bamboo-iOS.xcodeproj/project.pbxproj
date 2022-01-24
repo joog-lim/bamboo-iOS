@@ -11,6 +11,9 @@
 		EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9362772CDF50032F1AA /* noWifiReactor.swift */; };
 		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
 		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
+		EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */; };
+		EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */; };
+		EE1B8866279E4E3C00B92181 /* DeleteTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
 		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
@@ -121,6 +124,7 @@
 		EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC82763BD6300898537 /* RefusalReactor.swift */; };
 		EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DCA2763BD8500898537 /* DeleteReactor.swift */; };
 		EED4C3ED2798975D00A4E671 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4C3EC2798975D00A4E671 /* Base.swift */; };
+		EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */; };
 		EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
@@ -155,6 +159,9 @@
 		EE09E9362772CDF50032F1AA /* noWifiReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiReactor.swift; sourceTree = "<group>"; };
 		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
 		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
@@ -268,6 +275,7 @@
 		EED42DC82763BD6300898537 /* RefusalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalReactor.swift; sourceTree = "<group>"; };
 		EED42DCA2763BD8500898537 /* DeleteReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReactor.swift; sourceTree = "<group>"; };
 		EED4C3EC2798975D00A4E671 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
@@ -583,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */,
+				EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */,
 			);
 			path = StandBy;
 			sourceTree = "<group>";
@@ -591,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */,
+				EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */,
 			);
 			path = Refusal;
 			sourceTree = "<group>";
@@ -599,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */,
+				EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -851,6 +862,7 @@
 			isa = PBXGroup;
 			children = (
 				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
+				EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -1217,6 +1229,7 @@
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */,
+				EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */,
 				EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */,
 				EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */,
 				EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */,
@@ -1248,6 +1261,7 @@
 				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
 				EECDE31A276A0D830075711C /* LoginService.swift in Sources */,
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
+				EE1B8866279E4E3C00B92181 /* DeleteTableViewHeaderView.swift in Sources */,
 				EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
 				EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */,
@@ -1294,6 +1308,7 @@
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
+				EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
@@ -1301,6 +1316,7 @@
 				EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
+				EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */,
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
 				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,

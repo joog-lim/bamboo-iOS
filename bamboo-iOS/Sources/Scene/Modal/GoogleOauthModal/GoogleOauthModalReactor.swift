@@ -66,6 +66,7 @@ extension GoogleOauthModalReactor{
 //MARK: - Method
 private extension GoogleOauthModalReactor{
     func postLogin(_ idToken : String) -> Observable<Mutation>{
+        print("Connection")
         return self.provider.loginService.postLogin(idToken: idToken)
             .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
     }

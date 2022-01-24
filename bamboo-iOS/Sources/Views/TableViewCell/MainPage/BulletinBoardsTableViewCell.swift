@@ -14,7 +14,7 @@ protocol ClickReportBtnActionDelegate : AnyObject{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,id : Int, state : Bool)
 }
 
-final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -117,7 +117,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
     }
 
     //MARK: - bind
-    override func bind(_ model: Algorithm.Results) {
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
         dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
@@ -127,7 +127,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         likeBtn.isSelected = model.isClicked
     }
     
-    override func bindAction(_ model: Algorithm.Results) {
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSettingbtn.rx.tap
             .subscribe({[weak self] _ in
                 self?.delegate?.clickReportBtnAction(cell: self!, id: model.idx)

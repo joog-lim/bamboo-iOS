@@ -1,22 +1,16 @@
 //
-//  BulletinBoardsTableViewHeaderView.swift
+//  AcceptTableViewHeaderView.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2022/01/10.
+//  Created by Ji-hoon Ahn on 2022/01/24.
 //
-
 import UIKit
-import RxSwift
-import Reusable
 
-final class BulletinBoardsTableViewHeaderView : BaseTableViewHeaderFooterView<Void>{
+final class AcceptTableViewHeaderView : BaseTableViewHeaderFooterView<Void>{
     private let titleLabel = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
+        $0.text = "수락"
         $0.textColor = .bamBoo_57CC4D
-        $0.numberOfLines = 2
-        string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
-        $0.attributedText = string
     }
     override func configure() {
         super.configure()

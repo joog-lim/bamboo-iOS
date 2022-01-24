@@ -12,30 +12,19 @@ import RxDataSources
 
 final class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Properties
-    private var isLoaing : Bool = false
-    
-    private let titleLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.text = "삭제"
-        $0.textColor = .red
-    }
-
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
+        $0.register(headerFooterViewType: DeleteTableViewHeaderView.self)
         $0.register(cellType: DeleteTableViewCell.self)
+        $0.register(headerFooterViewType: CustomFooterView.self)
         $0.sameSetting()
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
     
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
-
-        tableViewHeaderSetting()
-        tableFooterViewSetting()
+        setDelegate()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
     }
     override func addView() {
         super.addView()
@@ -47,26 +36,10 @@ final class DeleteViewController : baseVC<DeleteReactor>{
             $0.edges.equalTo(view.safeArea.edges)
         }
     }
-
-    //MARK: - TableViewHeaderSetting
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.centerY.equalTo(tableViewHeader)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
-    }
-
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.tintColor = .lightGray
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Bind
@@ -113,5 +86,15 @@ extension DeleteViewController : cellSeeMoreDetailActionDelegate{
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         mainTableView.reloadData()
         _ = reactor?.mutate(action: DeleteReactor.Action.deleteBtnTap(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id, index: indexPath.row))
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension DeleteViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(DeleteTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }

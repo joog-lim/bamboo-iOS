@@ -9,56 +9,23 @@ import Foundation
 import UIKit
 import Reusable
 
-class CustomFooterView : UITableViewHeaderFooterView,Reusable{
-    private let refreshControlIndicator = UIActivityIndicatorView()
-    var isAnimatingFinal : Bool = false
-    var currentTransform : CGAffineTransform?
+class CustomFooterView : BaseTableViewHeaderFooterView<Void>{
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addSubviews(refreshControlIndicator)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        refreshControlIndicator.snp.makeConstraints{
+    private lazy var activityIndicator = UIActivityIndicatorView()
+    
+    override func configure() {
+        super.configure()
+        contentView.addSubviews(activityIndicator)
+        activityIndicator.snp.makeConstraints{
             $0.center.equalToSuperview()
-            $0.height.width.equalTo(20)
         }
+        start()
     }
     
-    func setTransform(inTransform : CGAffineTransform, scaleFactor : CGFloat){
-        if isAnimatingFinal{
-            return
-        }
-        self.currentTransform = inTransform
-        self.refreshControlIndicator.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
+    func start(){
+        activityIndicator.startAnimating()
     }
-    
-    //reset the animation
-    func prepareInitialAnimation(){
-        self.isAnimatingFinal = false
-        self.refreshControlIndicator.stopAnimating()
-        self.refreshControlIndicator.transform = CGAffineTransform.init(scaleX: 0, y: 0)
-    }
-    
-    func startAnimate() {
-        self.isAnimatingFinal = true
-        self.refreshControlIndicator.startAnimating()
-    }
-    
-    func stopAnimate() {
-        self.isAnimatingFinal = false
-        self.refreshControlIndicator.stopAnimating()
-    }
-    
-    //final animation to display loading
-    func animateFinal() {
-        if isAnimatingFinal {
-            return
-        }
-        self.isAnimatingFinal = true
-        UIView.animate(withDuration: 0.2) {
-            self.refreshControlIndicator.transform = CGAffineTransform.identity
-        }
+    func stop(){
+        activityIndicator.stopAnimating()
     }
 }

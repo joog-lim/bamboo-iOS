@@ -91,7 +91,7 @@ private extension MainReactor{
         let algorithmRequest = AlgorithmRequest(page: currentPage)
         return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
             .map{(algorithm: Algorithm) -> [MainSection.Item] in
-                let mainSectionItem = algorithm.result.map(MainSection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(MainSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

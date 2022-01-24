@@ -14,7 +14,7 @@ protocol cellSeeMoreDetailActionDelegate : AnyObject{
     func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int)
 }
 
-final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     //MARK: - Delegate
     weak var delegate : cellSeeMoreDetailActionDelegate?
     
@@ -113,7 +113,7 @@ final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
         }
     }
 
-    override func bind(_ model: Algorithm.Results) {
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 삭제요청"
         dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag

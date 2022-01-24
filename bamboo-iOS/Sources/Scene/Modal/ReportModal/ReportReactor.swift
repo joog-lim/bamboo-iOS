@@ -51,7 +51,7 @@ extension ReportReactor{
 //MARK: - Reduce
 extension ReportReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var new = state
+        let new = state
         switch mutation{
         case .reportPatchSuccess:
             steps.accept(BambooStep.dismiss)

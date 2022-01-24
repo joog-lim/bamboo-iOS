@@ -18,6 +18,8 @@ extension BamBooAPI{
             //post
         case let .postBulletin(bulletinRequest):
             return .requestJSONEncodable(bulletinRequest)
+        case let .postLogin(idToken) :
+            return .requestParameters(parameters: ["Authorization": idToken], encoding: URLEncoding.default)
             //patch
         case let .patchReport(reportRequest,_):
             return .requestJSONEncodable(reportRequest)

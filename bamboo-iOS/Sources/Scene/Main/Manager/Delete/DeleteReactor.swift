@@ -84,7 +84,7 @@ private extension DeleteReactor{
         let deleteRequest = AdminAlgorithmRequest(page: currentPage, status: "DELETED")
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: deleteRequest)
             .map{(algorithm : Algorithm) -> [DeleteSection.Item] in
-                let mainSectionItem = algorithm.result.map(DeleteSection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(DeleteSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

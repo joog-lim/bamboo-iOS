@@ -68,6 +68,6 @@ extension RuleReactor{
 private extension RuleReactor{
     private func getRule() -> Observable<Mutation>{
         return provider.userService.getRule()
-            .map{ Mutation.setRule($0.content, thirteen: $0.thirteen, fifteen: $0.fifteen)}
+            .map{ Mutation.setRule($0.data.content, thirteen: $0.data.thirteen, fifteen: $0.data.fifteen)}
     }
 }
