@@ -75,7 +75,7 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     override func keyBoardLayout() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
-                print(KeyboardVisibleHeight)                
+                print(KeyboardVisibleHeight)
                 panScrollable?.contentOffset.y += KeyboardVisibleHeight
             }).disposed(by: disposeBag)
     }
@@ -87,6 +87,12 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     //MARK: - Bind
     override func bindView(reactor: EditContentModalReactor) {
         super.bindView(reactor: reactor)
+        
+        editBtn.rx.tap
+            .map{Reactor.Action.editBtnTap(title: self.titleTf.text ?? "" , content: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         cancelBtn.rx.tap
             .map{ Reactor.Action.cancelBtnTap}
             .bind(to: reactor.action)

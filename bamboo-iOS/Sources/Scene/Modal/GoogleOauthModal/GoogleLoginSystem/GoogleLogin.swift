@@ -41,8 +41,8 @@ final class GoogleLogin{
                 user.authentication.do { authentication, error in
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
-                    print(authentication.idToken ?? "")
-                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken ?? ""))
+                    print(authentication.idToken!)
+                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken!))
                     
                     UserDefaults.standard.set(true, forKey: "LoginStatus")
                         

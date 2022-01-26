@@ -12,7 +12,7 @@ enum BamBooAPI {
     //System
     case postRenewalToken(refreshToken : String)
     //Login
-    case postLogin(idToken : String)
+    case postLogin(loginRequest : LoginRequest)
     
     //User
     case getAlgorithm(algorithmRequest : AlgorithmRequest)
@@ -24,8 +24,8 @@ enum BamBooAPI {
     case patchReport(reportRequest : ReportRequest, idx : Int)
     //Manager
     case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
-//    case patchEditAlgorithm()
-
+    case patchEditAlgorithm(editRequest : EditAlgorithmRequest, idx : Int)
+    
 }
 
 extension BamBooAPI : Moya.TargetType{

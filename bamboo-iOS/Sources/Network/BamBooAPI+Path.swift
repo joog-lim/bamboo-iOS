@@ -34,7 +34,9 @@ extension BamBooAPI {
 //Manager
     case .getAdminAlgorithm:
         return "algorithm/list/page/admin"
-
+    //patch
+    case let .patchEditAlgorithm(_, idx):
+        return "algorithm/\(idx)"
     }
   }
 }

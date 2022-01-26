@@ -32,6 +32,8 @@ extension BamBooAPI{
         // Patch
         case .patchReport:
             return .patch
+        case .patchEditAlgorithm:
+            return .patch
         }
     }
 }

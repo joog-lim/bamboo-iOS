@@ -23,11 +23,12 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
         case googleModalDismiss
     }
     enum Mutation{
-        case setLogin(accessToken : String , refreshToken : String)
+        case setLogin(accessToken : String , refreshToken : String, isAdmin : Bool)
     }
     struct State{
         var access :String = .init()
         var refresh : String = .init()
+        var isAdmin : Bool = .init()
     }
     let initialState: State
     let provider : ServiceProviderType
@@ -55,9 +56,10 @@ extension GoogleOauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var new = state
         switch mutation{
-        case let .setLogin(accessToken, refreshToken):
+        case let .setLogin(accessToken, refreshToken,isAdmin):
             new.access = accessToken
             new.refresh = refreshToken
+            new.isAdmin = isAdmin
         }
         return new
     }
@@ -66,8 +68,8 @@ extension GoogleOauthModalReactor{
 //MARK: - Method
 private extension GoogleOauthModalReactor{
     func postLogin(_ idToken : String) -> Observable<Mutation>{
-        print("Connection")
-        return self.provider.loginService.postLogin(idToken: idToken)
-            .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
+        let loginRequest = LoginRequest(authorization: idToken)
+        return self.provider.loginService.postLogin(loginRequest: loginRequest)
+            .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}
     }
 }

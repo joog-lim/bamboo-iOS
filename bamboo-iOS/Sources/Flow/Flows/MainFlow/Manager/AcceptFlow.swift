@@ -63,7 +63,7 @@ private extension AcceptFlow{
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     func coordinatorToEditContent(idx : Int, index : Int) -> FlowContributors{
-        let reactor = EditContentModalReactor()
+        let reactor = EditContentModalReactor(provider: provider, idx: idx)
         let vc = EditContentModal(reactor: reactor)
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true

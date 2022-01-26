@@ -103,7 +103,7 @@ final class MainViewController : baseVC<MainReactor>{
             
         reactor.state.map(\.mainSection)
             .distinctUntilChanged()
-            .map(Array.init(with:)).debug()
+            .map(Array.init(with:))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }

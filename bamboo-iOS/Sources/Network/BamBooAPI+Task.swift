@@ -16,14 +16,15 @@ extension BamBooAPI{
         case let .getAdminAlgorithm(algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)
             //post
+        case let .postLogin(loginRequest):
+            return .requestJSONEncodable(loginRequest)
         case let .postBulletin(bulletinRequest):
             return .requestJSONEncodable(bulletinRequest)
-        case let .postLogin(idToken) :
-            return .requestParameters(parameters: ["Authorization": idToken], encoding: URLEncoding.default)
             //patch
         case let .patchReport(reportRequest,_):
             return .requestJSONEncodable(reportRequest)
-
+        case let .patchEditAlgorithm(editRequest,_):
+            return .requestJSONEncodable(editRequest)
         default:
             return .requestPlain
         }

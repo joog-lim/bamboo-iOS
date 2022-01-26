@@ -14,6 +14,7 @@
 		EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */; };
 		EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */; };
 		EE1B8866279E4E3C00B92181 /* DeleteTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */; };
+		EE1B8868279F096B00B92181 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8867279F096B00B92181 /* LoginRequest.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
 		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
@@ -28,6 +29,7 @@
 		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
 		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
 		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
+		EE5D4C9E279FE59200FFAB7E /* EditAlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */; };
 		EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */; };
 		EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */; };
 		EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */; };
@@ -162,6 +164,7 @@
 		EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8867279F096B00B92181 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
 		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
 		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlgorithmRequest.swift; sourceTree = "<group>"; };
 		EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIndexable.swift; sourceTree = "<group>"; };
 		EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -875,6 +879,8 @@
 				EEA804C2279491DE00D55C54 /* AdminAlgorithmRequest.swift */,
 				EEE2A78427971A110051FA7F /* EmojiRequest.swift */,
 				EE4837502799B49100EC4681 /* ReportRequest.swift */,
+				EE1B8867279F096B00B92181 /* LoginRequest.swift */,
+				EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1278,6 +1284,7 @@
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */,
+				EE5D4C9E279FE59200FFAB7E /* EditAlgorithmRequest.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
 				EEB498FD2781F0750082709A /* RxOperation.swift in Sources */,
 				EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */,
@@ -1322,6 +1329,7 @@
 				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
 				EEA804C3279491DE00D55C54 /* AdminAlgorithmRequest.swift in Sources */,
+				EE1B8868279F096B00B92181 /* LoginRequest.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
