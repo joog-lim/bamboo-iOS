@@ -16,8 +16,8 @@ final class DeleteReactor : Reactor, Stepper{
     
     enum Action{
         case viewDidLoad
-        case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int)
-        case alertRefusalTap(Int,Int)
+        case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int, algorithmNumber : Int)
+        case alertRefusalTap(Int,Int,Int)
         case pagination(
             contentHeight: CGFloat,
             contentOffsetY: CGFloat,
@@ -49,11 +49,11 @@ extension DeleteReactor{
         switch action{
         case .viewDidLoad:
             return getDelete()
-        case let .deleteBtnTap(titleText, message,idx,index):
-            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
+        case let .deleteBtnTap(titleText, message,idx,index,algorithmNumber):
+            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
-        case let .alertRefusalTap(idx, index):
-            steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
+        case let .alertRefusalTap(idx,algorithmNumber,index):
+            steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
         case let .pagination( contentHeight,  contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
@@ -81,7 +81,7 @@ extension DeleteReactor{
 private extension DeleteReactor{
     private func getDelete() -> Observable<Mutation>{
         self.currentPage += 1
-        let deleteRequest = AdminAlgorithmRequest(page: currentPage, status: "DELETED")
+        let deleteRequest = AdminAlgorithmRequest(page: currentPage, status: "REPORTED")
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: deleteRequest)
             .map{(algorithm : Algorithm) -> [DeleteSection.Item] in
                 let mainSectionItem = algorithm.data.data.map(DeleteSection.Item.main)

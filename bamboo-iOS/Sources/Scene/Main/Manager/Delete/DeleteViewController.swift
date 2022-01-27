@@ -82,10 +82,10 @@ final class DeleteViewController : baseVC<DeleteReactor>{
 
 //MARK: - Cell 안에 있는 더보기 버튼 눌렀을때 Action
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
-    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: Int) {
+    func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: Int, algorithmNumber: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         mainTableView.reloadData()
-        _ = reactor?.mutate(action: DeleteReactor.Action.deleteBtnTap(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id, index: indexPath.row))
+        _ = reactor?.mutate(action: DeleteReactor.Action.deleteBtnTap(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id, index: indexPath.row,algorithmNumber:algorithmNumber ))
     }
 }
 

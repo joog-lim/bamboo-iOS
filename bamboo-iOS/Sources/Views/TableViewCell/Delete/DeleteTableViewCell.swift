@@ -11,7 +11,7 @@ import RxSwift
 import RxRelay
 
 protocol cellSeeMoreDetailActionDelegate : AnyObject{
-    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int)
+    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int,algorithmNumber: Int)
 }
 
 final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
@@ -123,7 +123,7 @@ final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
 
         cellSeeMoreDetail.rx.tap
             .subscribe({ [weak self] _ in
-                self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx)
+                self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx, algorithmNumber: model.algorithmNumber)
             }).disposed(by: disposeBag)
     }
 }

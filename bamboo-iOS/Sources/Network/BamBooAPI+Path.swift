@@ -15,7 +15,6 @@ extension BamBooAPI {
         return "login"
     case .postRenewalToken:
         return  "token"
-//User
         //get
     case .getAlgorithm:
         return "algorithm/list/page"
@@ -23,18 +22,16 @@ extension BamBooAPI {
         return "algorithm/rule"
     case .getVerify:
         return "verify"
+    case .getAdminAlgorithm:
+        return "algorithm/list/page/admin"
         //post
     case .postBulletin:
         return "algorithm/"
     case .postEmoji:
         return "leaf/"
        //patch
-    case let .patchReport(_, idx):
+    case let .patchStatus(_, idx):
         return "algorithm/\(idx)/status"
-//Manager
-    case .getAdminAlgorithm:
-        return "algorithm/list/page/admin"
-    //patch
     case let .patchEditAlgorithm(_, idx):
         return "algorithm/\(idx)"
     }

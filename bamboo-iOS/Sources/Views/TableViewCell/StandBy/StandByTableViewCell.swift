@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StandBytableViewCellBtnClickDelegate : AnyObject{
-    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int)
+    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int, algorithmNumber : Int)
 }
 
 final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
@@ -104,7 +104,7 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
         
         cellSeeMoreDetailBtn.rx.tap
             .subscribe({[self] _ in
-                delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx)
+                delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx, algorithmNumber: model.algorithmNumber)
             }).disposed(by: disposeBag)
     }
 }

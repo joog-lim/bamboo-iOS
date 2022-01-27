@@ -63,7 +63,7 @@ extension ReportReactor{
 //MARK: - Method
 extension ReportReactor{
     private func patchReport(reason : String) -> Observable<Mutation>{
-        let reportRequest = ReportRequest(reason: reason)
+        let reportRequest = EditStatusRequest(status: "REPORTED", reason: reason)
         return provider.userService.patchReported(reportedRequest: reportRequest, idx: idx)
             .map(Mutation.reportPatchSuccess)
     }

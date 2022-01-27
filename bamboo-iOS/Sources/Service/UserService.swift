@@ -10,9 +10,11 @@ protocol UserServiceType {
     func getRule() -> Observable<Rule>
     func getVerify() -> Observable<Verify>
     //patch
-    func patchReported(reportedRequest: ReportRequest, idx : Int) -> Observable<Base>
+    func patchReported(reportedRequest: EditStatusRequest, idx : Int) -> Observable<Base>
 }
-final class UserService : BaseService,UserServiceType{}
+final class UserService : BaseService,UserServiceType{
+
+}
 
 //MARK: - Post
 extension UserService{
@@ -65,8 +67,8 @@ extension UserService {
 
 //MARK: - Patch
 extension UserService{
-    func patchReported(reportedRequest: ReportRequest,idx : Int) -> Observable<Base> {
-        BamBooAPI.patchReport(reportRequest: reportedRequest, idx: idx)
+    func patchReported(reportedRequest: EditStatusRequest,idx : Int) -> Observable<Base> {
+        BamBooAPI.patchStatus(statusRequest: reportedRequest, idx: idx)
             .request()
             .map(Base.self)
             .do(onError: {print($0)})

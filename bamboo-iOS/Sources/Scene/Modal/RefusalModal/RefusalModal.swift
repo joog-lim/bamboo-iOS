@@ -71,6 +71,12 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
+    override func bindView(reactor: RefusalModalReactor) {
+        refusalBtn.rx.tap
+            .map{ Reactor.Action.refusalBtnTap(reason: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension RefusalModal : PanModalPresentable{

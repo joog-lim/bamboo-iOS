@@ -52,7 +52,7 @@ extension EditContentModalReactor{
 //MARK: - Reduce
 extension EditContentModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var new = state
+        let new = state
         switch mutation{
         case .editSuccess:
             steps.accept(BambooStep.dismiss)

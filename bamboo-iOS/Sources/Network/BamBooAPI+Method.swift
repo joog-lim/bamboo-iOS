@@ -30,7 +30,7 @@ extension BamBooAPI{
         case .getAdminAlgorithm:
             return .get
         // Patch
-        case .patchReport:
+        case .patchStatus:
             return .patch
         case .patchEditAlgorithm:
             return .patch

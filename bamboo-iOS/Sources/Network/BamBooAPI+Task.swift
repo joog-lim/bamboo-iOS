@@ -21,8 +21,8 @@ extension BamBooAPI{
         case let .postBulletin(bulletinRequest):
             return .requestJSONEncodable(bulletinRequest)
             //patch
-        case let .patchReport(reportRequest,_):
-            return .requestJSONEncodable(reportRequest)
+        case let .patchStatus(statusRequest,_):
+            return .requestJSONEncodable(statusRequest)
         case let .patchEditAlgorithm(editRequest,_):
             return .requestJSONEncodable(editRequest)
         default:

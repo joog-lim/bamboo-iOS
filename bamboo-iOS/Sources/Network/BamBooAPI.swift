@@ -21,7 +21,7 @@ enum BamBooAPI {
     case postEmoji(emojiRequest : EmojiRequest) 
     
     case postBulletin(bulletinRequest : BulletinRequest)
-    case patchReport(reportRequest : ReportRequest, idx : Int)
+    case patchStatus(statusRequest : EditStatusRequest, idx : Int)
     //Manager
     case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
     case patchEditAlgorithm(editRequest : EditAlgorithmRequest, idx : Int)
