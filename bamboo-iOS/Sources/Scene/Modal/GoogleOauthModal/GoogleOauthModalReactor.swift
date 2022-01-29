@@ -60,6 +60,7 @@ extension GoogleOauthModalReactor{
             new.access = accessToken
             new.refresh = refreshToken
             new.isAdmin = isAdmin
+            UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             steps.accept(BambooStep.dismiss)
         }

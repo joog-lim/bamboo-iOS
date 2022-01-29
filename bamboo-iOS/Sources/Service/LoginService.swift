@@ -3,6 +3,7 @@ import RxSwift
 
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
+    var isAdminObservable : Observable<Bool> {get}
     func postLogin(idToken : String) -> Observable<Login>
 }
 final class LoginService : BaseService, LoginServiceType{
@@ -12,6 +13,11 @@ final class LoginService : BaseService, LoginServiceType{
     var didLoginObservable: Observable<Bool>{
         return defaults.rx
             .observe(Bool.self,"LoginStatus")
+            .map{ $0 ?? false}
+    }
+    var isAdminObservable: Observable<Bool>{
+        return defaults.rx
+            .observe(Bool.self,"isAdmin")
             .map{ $0 ?? false}
     }
 }

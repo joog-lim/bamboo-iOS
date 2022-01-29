@@ -55,7 +55,7 @@ extension LoginReactor{
             return .empty()
             //managerLogin
         case .managerLoginButtonDidTap:
-            provider.loginService.didLoginObservable
+            provider.loginService.isAdminObservable
                 .map{ $0 ? BambooStep.managerIsLoggedIn : BambooStep.managerLoginIsRequired}
                 .bind(to: steps)
                 .disposed(by: disposeBag)
