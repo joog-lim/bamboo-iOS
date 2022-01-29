@@ -3,7 +3,7 @@ import RxSwift
 
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
-    func postLogin(loginRequest : LoginRequest) -> Observable<Login>
+    func postLogin(idToken : String) -> Observable<Login>
 }
 final class LoginService : BaseService, LoginServiceType{
     //MARK: - Login 됬는지 안됬는지 여부 판단
@@ -19,8 +19,8 @@ final class LoginService : BaseService, LoginServiceType{
 //MARK: - Post
 extension LoginService {
     //Login
-    func postLogin(loginRequest : LoginRequest) -> Observable<Login> {
-        BamBooAPI.postLogin(loginRequest: loginRequest)
+    func postLogin(idToken : String) -> Observable<Login> {
+        BamBooAPI.postLogin(idToken: idToken)
             .request()
             .map(Login.self, using : BamBooAPI.jsonDecoder)
             .do(onError:{print($0)})

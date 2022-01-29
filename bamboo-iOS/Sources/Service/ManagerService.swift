@@ -7,6 +7,8 @@ protocol ManagerServiceType{
     //patch
     func patchEditAlgorithm(editRequest : EditAlgorithmRequest,idx : Int) -> Observable<Base>
     func patchRefusalAlgorithm(refusalRequest : EditStatusRequest, idx : Int) -> Observable<Base>
+    //Delete
+    func deleteAlgorithm(idx : Int) -> Observable<Base>
 }
 
 final class ManagerService : BaseService,ManagerServiceType{}
@@ -33,6 +35,17 @@ extension ManagerService{
     }
     func patchRefusalAlgorithm(refusalRequest: EditStatusRequest, idx: Int) -> Observable<Base> {
         BamBooAPI.patchStatus(statusRequest: refusalRequest, idx: idx)
+            .request()
+            .map(Base.self)
+            .do(onError : {print($0)})
+            .asObservable()
+    }
+}
+
+//MARK: - Delete
+extension ManagerService{
+    func deleteAlgorithm(idx: Int) -> Observable<Base> {
+        BamBooAPI.deleteAlgorithm(idx: idx)
             .request()
             .map(Base.self)
             .do(onError : {print($0)})

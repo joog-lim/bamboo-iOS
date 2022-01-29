@@ -16,8 +16,8 @@ extension BamBooAPI{
         case let .getAdminAlgorithm(algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)
             //post
-        case let .postLogin(loginRequest):
-            return .requestJSONEncodable(loginRequest)
+//        case let .postLogin(loginRequest):
+//            return .requestJSONEncodable(loginRequest)
         case let .postBulletin(bulletinRequest):
             return .requestJSONEncodable(bulletinRequest)
             //patch

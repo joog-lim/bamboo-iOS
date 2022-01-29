@@ -34,6 +34,8 @@ extension BamBooAPI {
         return "algorithm/\(idx)/status"
     case let .patchEditAlgorithm(_, idx):
         return "algorithm/\(idx)"
+    case let .deleteAlgorithm(idx):
+        return "algorithm/\(idx)"
     }
   }
 }

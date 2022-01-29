@@ -42,10 +42,8 @@ final class GoogleLogin{
                     guard error == nil else {return }
                     guard let authentication = authentication else {return}
                     print(authentication.idToken!)
-                    _ = reactor.mutate(action: .googleLoginBERequied(idToken: authentication.idToken!))
-                    UserDefaults.standard.set(true, forKey: "LoginStatus")
-                        
-                    reactor.steps.accept(BambooStep.dismiss)
+                    reactor.action.onNext(.googleLoginBERequied(idToken: authentication.idToken!))
+
                     // send id Token to backend
                 }
             }

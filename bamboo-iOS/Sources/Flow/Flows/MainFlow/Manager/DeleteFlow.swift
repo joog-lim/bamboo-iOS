@@ -74,6 +74,7 @@ private extension DeleteFlow{
             _ = self.reactor.mutate(action: .alertRefusalTap(idx, algorithmNumber, index))
         }))
         alert.addAction(.init(title: "삭제", style: .destructive, handler: {_ in
+            self.reactor.action.onNext(.alertDeleteTap(idx, index))
         }))
         rootViewController.present(alert, animated: true)
         return .none

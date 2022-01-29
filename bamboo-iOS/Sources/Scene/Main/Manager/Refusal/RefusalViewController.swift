@@ -19,12 +19,6 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         $0.sameSetting()
     }
     
-    //MARK: - Action
-    private func cellinsideRefusalCancelBtnClick(indexPath : Int){
-        print("거절취소")
-        mainTableView.reloadData()
-    }
-
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
@@ -93,9 +87,8 @@ final class RefusalViewController : baseVC<RefusalReactor>{
 extension RefusalViewController : RefusalCancelBtnDelegate{
     func refusalCancelBtnAction(cell: RefusalTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        _ = reactor?.mutate(action: .clickRefusalCancelBtn(id))
         mainTableView.reloadData()
-        self.cellinsideRefusalCancelBtnClick(indexPath: indexPath.item)
+        self.reactor?.action.onNext(.clickRefusalCancelBtn(id))
     }
 }
 

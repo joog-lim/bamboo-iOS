@@ -34,6 +34,10 @@ extension BamBooAPI{
             return .patch
         case .patchEditAlgorithm:
             return .patch
+            
+        //Delete
+        case .deleteAlgorithm(idx: let idx):
+            return .delete
         }
     }
 }

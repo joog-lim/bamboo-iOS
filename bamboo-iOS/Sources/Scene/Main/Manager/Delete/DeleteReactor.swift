@@ -18,6 +18,7 @@ final class DeleteReactor : Reactor, Stepper{
         case viewDidLoad
         case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int, algorithmNumber : Int)
         case alertRefusalTap(Int,Int,Int)
+        case alertDeleteTap(Int,Int)
         case pagination(
             contentHeight: CGFloat,
             contentOffsetY: CGFloat,
@@ -26,6 +27,7 @@ final class DeleteReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([DeleteSection.Item])
+        case deleteSuccess
     }
     struct State{
         var mainSection = DeleteSection.Model(
@@ -55,6 +57,8 @@ extension DeleteReactor{
         case let .alertRefusalTap(idx,algorithmNumber,index):
             steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
+        case let .alertDeleteTap(idx,_):
+            return patchDelete(idx: idx)
         case let .pagination( contentHeight,  contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
@@ -62,6 +66,7 @@ extension DeleteReactor{
             }else{
                 return .empty()
             }
+
         }
     }
 }
@@ -72,12 +77,14 @@ extension DeleteReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case .deleteSuccess:
+            print("Delete Success")
         }
         return state
     }
 }
 
-//MARK: - GetDeleteAlgorithm
+//MARK: - Method
 private extension DeleteReactor{
     private func getDelete() -> Observable<Mutation>{
         self.currentPage += 1
@@ -88,5 +95,10 @@ private extension DeleteReactor{
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    
+    private func patchDelete(idx : Int) -> Observable<Mutation>{
+        return self.provider.managerService.deleteAlgorithm(idx: idx)
+            .map{Mutation.deleteSuccess}
     }
 }

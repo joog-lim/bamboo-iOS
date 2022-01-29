@@ -72,8 +72,7 @@ private extension StandByFlow{
     func navigateToAlertScreen(titleText : String, message : String, idx : Int, index : Int,algorithmNumber:Int) -> FlowContributors{
         let alert = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "수락", style: .default,handler: { _  in
-            print("수락")
-            _ = self.reactor.mutate(action: .alertAcceptTap(idx, index))
+            self.reactor.action.onNext(.alertAcceptTap(idx, index))
         }))
         alert.addAction(.init(title: "거절", style: .destructive, handler: {_ in
             _ = self.reactor.mutate(action: .alertRefusalTap(idx, algorithmNumber,index ))

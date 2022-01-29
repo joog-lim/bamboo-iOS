@@ -60,6 +60,8 @@ extension GoogleOauthModalReactor{
             new.access = accessToken
             new.refresh = refreshToken
             new.isAdmin = isAdmin
+            UserDefaults.standard.set(true, forKey: "LoginStatus")
+            steps.accept(BambooStep.dismiss)
         }
         return new
     }
@@ -68,8 +70,7 @@ extension GoogleOauthModalReactor{
 //MARK: - Method
 private extension GoogleOauthModalReactor{
     func postLogin(_ idToken : String) -> Observable<Mutation>{
-        let loginRequest = LoginRequest(authorization: idToken)
-        return self.provider.loginService.postLogin(loginRequest: loginRequest)
+        return self.provider.loginService.postLogin(idToken: idToken)
             .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}
     }
 }
