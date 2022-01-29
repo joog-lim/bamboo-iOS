@@ -21,9 +21,11 @@ final class RefusalReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case clickRefusalCancelBtn(Int)
     }
     enum Mutation{
         case updateDataSource([RefusalSection.Item])
+        case refusalStatusSuccess
     }
     struct State{
         var mainSection = RefusalSection.Model(model: 0, items: [])
@@ -52,6 +54,8 @@ extension RefusalReactor{
             }else{
                 return .empty()
             }
+        case let .clickRefusalCancelBtn(idx):
+            return patchRefusalStatus(idx: idx)
         }
     }
 }
@@ -62,6 +66,10 @@ extension RefusalReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+            print( state.mainSection.items[0])
+
+        case .refusalStatusSuccess:
+            print("Success")
         }
         return state
     }
@@ -78,5 +86,9 @@ private extension RefusalReactor{
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    private func patchRefusalStatus(idx : Int) -> Observable<Mutation>{
+        let editRequest = EditStatusRequest(status: "ACCEPTED", reason: "")
+        return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: editRequest, idx: idx).map{ Mutation.refusalStatusSuccess}
     }
 }

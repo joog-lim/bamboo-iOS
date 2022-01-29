@@ -16,7 +16,7 @@ extension BamBooAPI{
 //        case let.postLogin(loginRequest):
 //            return loginRequest.toDictionary()
         case .getAlgorithm, .getAdminAlgorithm, .postEmoji, .patchEditAlgorithm, .patchStatus:
-            return ["Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMyMDA0NEBnc20uaHMua3IiLCJpc0FkbWluIjp0cnVlLCJuaWNrbmFtZSI6IjIxMDjslYjsp4Dtm4giLCJpZGVudGl0eSI6InN0dWRlbnQiLCJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImlhdCI6MTY0MzI2OTAxNiwiZXhwIjoxNjQzMjcyNjE2LCJpc3MiOiJqb29nLWxpbS5pbmZvIn0.pdEU0Lng7b5QsE49LNDCYF_JN_iH5rIa8rKsSZVnpXA"]
+            return ["Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMyMDA0NEBnc20uaHMua3IiLCJpc0FkbWluIjp0cnVlLCJuaWNrbmFtZSI6IjIxMDjslYjsp4Dtm4giLCJpZGVudGl0eSI6InN0dWRlbnQiLCJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImlhdCI6MTY0MzQ0MjQ3MiwiZXhwIjoxNjQzNDQ2MDcyLCJpc3MiOiJqb29nLWxpbS5pbmZvIn0.bRYwZWVRFI0LtakOSrlQ19a-qZ9GDr9P-JJq8pFZddE"]
         default:
             return ["Content-Type": "application/json"]
         }

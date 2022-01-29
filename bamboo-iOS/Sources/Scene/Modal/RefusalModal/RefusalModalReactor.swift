@@ -16,40 +16,50 @@ final class RefusalModalReactor : Reactor,Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
+        case viewDidLoad
         case refusalBtnTap(reason: String)
     }
     enum Mutation{
+        case viewDidLoadAction
         case refusalSuccess
     }
     struct State{
-        
+        var algorithmNumber : Int
     }
     let initialState: State
     let provider : ServiceProviderType
     let idx : Int
+    let algorithmNumber : Int
     
     init(provider : ServiceProviderType, idx : Int,algorithmNumber : Int, index : Int){
-        self.initialState = State()
         self.provider = provider
         self.idx = idx
+        self.algorithmNumber = algorithmNumber
+        self.initialState = State(algorithmNumber: algorithmNumber)
     }
 }
 //MARK: - Mutation
 extension RefusalModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
+        case .viewDidLoad:
+            return Observable.just(Mutation.viewDidLoadAction)
         case let .refusalBtnTap(reason):
             return patchRefusal(reason: reason)
+
         }
     }
 }
 //MARK: - Reduce
 extension RefusalModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        let new = state
+        var new = state
         switch mutation{
+        
         case .refusalSuccess:
             steps.accept(BambooStep.dismiss)
+        case .viewDidLoadAction:
+            new.algorithmNumber = algorithmNumber
         }
         return new
     }
@@ -63,3 +73,4 @@ extension RefusalModalReactor{
             .map(Mutation.refusalSuccess)
     }
 }
+

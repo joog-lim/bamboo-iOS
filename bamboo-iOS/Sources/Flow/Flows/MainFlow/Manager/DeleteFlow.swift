@@ -71,7 +71,7 @@ private extension DeleteFlow{
     func navigateToAlertScreen(titleText : String, message : String, idx : Int, index : Int,algorithmNumber : Int) -> FlowContributors{
         let alert = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
         alert.addAction(.init(title: "거절", style: .default,handler: { _ in
-            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index, algorithmNumber))
+            _ = self.reactor.mutate(action: .alertRefusalTap(idx, algorithmNumber, index))
         }))
         alert.addAction(.init(title: "삭제", style: .destructive, handler: {_ in
         }))

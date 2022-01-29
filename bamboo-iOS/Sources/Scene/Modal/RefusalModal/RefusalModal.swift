@@ -21,11 +21,8 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
         $0.attributedText = string
     }
     private lazy var refusaleditTitle = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "#\(i)번째 알고리즘을 거절합니다.")
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .red
-        string.setColorForText(textToFind: "을 거절합니다", withColor: .black)
-        $0.attributedText = string
     }
     private let contentTv = AlertTextView(placeholder: "사유를 입력해주세요",fontSize: 11)
     
@@ -76,6 +73,14 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
             .map{ Reactor.Action.refusalBtnTap(reason: self.contentTv.tvContent ?? "")}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+    }
+    
+    override func bindState(reactor: RefusalModalReactor) {
+        reactor.state.map{ $0.algorithmNumber}
+        .distinctUntilChanged()
+        .map{ "# \($0) 번째 알고리즘 거절"}
+        .bind(to: refusaleditTitle.rx.text)
+        .disposed(by: disposeBag)
     }
 }
 
