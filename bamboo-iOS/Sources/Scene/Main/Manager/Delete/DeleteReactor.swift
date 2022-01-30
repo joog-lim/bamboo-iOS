@@ -27,7 +27,7 @@ final class DeleteReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([DeleteSection.Item])
-        case deleteSuccess
+        case deleteSuccess(indexPath : Int)
     }
     struct State{
         var mainSection = DeleteSection.Model(
@@ -57,8 +57,8 @@ extension DeleteReactor{
         case let .alertRefusalTap(idx,algorithmNumber,index):
             steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
-        case let .alertDeleteTap(idx,_):
-            return patchDelete(idx: idx)
+        case let .alertDeleteTap(idx,indexPath):
+            return patchDelete(idx: idx, indexPath: indexPath)
         case let .pagination( contentHeight,  contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
@@ -77,8 +77,9 @@ extension DeleteReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
-        case .deleteSuccess:
-            print("Delete Success")
+            
+        case let .deleteSuccess(indexPath):
+            state.mainSection.items.remove(at: indexPath)
         }
         return state
     }
@@ -97,8 +98,8 @@ private extension DeleteReactor{
             .map(Mutation.updateDataSource)
     }
     
-    private func patchDelete(idx : Int) -> Observable<Mutation>{
+    private func patchDelete(idx : Int, indexPath : Int) -> Observable<Mutation>{
         return self.provider.managerService.deleteAlgorithm(idx: idx)
-            .map{Mutation.deleteSuccess}
+            .map{Mutation.deleteSuccess(indexPath: indexPath)}
     }
 }

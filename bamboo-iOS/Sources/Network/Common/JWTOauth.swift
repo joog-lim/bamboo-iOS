@@ -9,6 +9,7 @@
 //import Moya
 //import RxSwift
 //import KeychainSwift
+//
 //// MARK: - JWTTokenAuthorizable
 //public protocol JWTTokenAuthorizable {
 //var jwtTokenType: JWTTokenType? { get }

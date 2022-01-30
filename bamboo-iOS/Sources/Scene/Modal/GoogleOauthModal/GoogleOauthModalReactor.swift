@@ -57,9 +57,8 @@ extension GoogleOauthModalReactor{
         var new = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken,isAdmin):
-            new.access = accessToken
-            new.refresh = refreshToken
-            new.isAdmin = isAdmin
+            KeychainSwift().set(accessToken, forKey: "accessToken")
+            KeychainSwift().set(refreshToken, forKey: "refresgToken")
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             steps.accept(BambooStep.dismiss)

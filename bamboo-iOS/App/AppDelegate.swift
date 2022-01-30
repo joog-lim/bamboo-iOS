@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             if error != nil || user == nil{
                 print("No user")
                 defaults.removeObject(forKey: "LoginStatus")
+                defaults.removeObject(forKey: "isAdmin")
                 //Show the app's signed out state
             }else{
                 print("Login")
