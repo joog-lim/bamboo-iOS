@@ -66,8 +66,6 @@ extension RefusalReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
-            print( state.mainSection.items[0])
-
         case let .refusalStatusSuccess(indexPath):
             state.mainSection.items.remove(at: indexPath)
             print("Success")

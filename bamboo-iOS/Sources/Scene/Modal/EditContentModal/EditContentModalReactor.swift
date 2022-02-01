@@ -29,10 +29,13 @@ final class EditContentModalReactor : Reactor,Stepper{
     let initialState: State
     let provider : ServiceProviderType
     var idx : Int
-    init(provider : ServiceProviderType, idx : Int){
+    let indexPath : Int
+    
+    init(provider : ServiceProviderType, idx : Int, indexPath : Int){
         self.initialState = State()
         self.provider = provider
         self.idx = idx
+        self.indexPath = indexPath
     }
 }
 //MARK: - Mutation

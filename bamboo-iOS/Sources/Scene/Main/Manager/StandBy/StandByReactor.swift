@@ -51,7 +51,7 @@ extension StandByReactor{
         case let .standbyBtnTap(titleText, message,idx,index,algorithmNumber):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
-        case let .alertRefusalTap(idx, algorithmNumber,index):
+        case let .alertRefusalTap(idx, index,algorithmNumber):
             steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
         case let .alertAcceptTap(idx, _):
@@ -94,7 +94,6 @@ private extension StandByReactor{
             .map(Mutation.updateDataSource)
     }
     private func patchAcceptStatus(idx : Int) -> Observable<Mutation>{
-        print("Accept : \(idx)")
         let acceptstatusRequest  = EditStatusRequest(status: "ACCEPTED", reason: "")
         return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: acceptstatusRequest, idx: idx)
             .map(Mutation.acceptedSuccess)

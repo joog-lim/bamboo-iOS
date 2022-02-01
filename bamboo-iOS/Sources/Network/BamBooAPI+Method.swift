@@ -38,6 +38,8 @@ extension BamBooAPI{
         //Delete
         case .deleteAlgorithm:
             return .delete
+        case .deleteEmoji:
+            return .delete
         }
     }
 }

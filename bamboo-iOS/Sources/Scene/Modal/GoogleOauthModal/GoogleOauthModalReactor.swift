@@ -54,7 +54,7 @@ extension GoogleOauthModalReactor{
 //MARK: - Reduce
 extension GoogleOauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var new = state
+        let new = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken,isAdmin):
             KeychainSwift().set(accessToken, forKey: "accessToken")

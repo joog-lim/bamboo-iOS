@@ -17,7 +17,7 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case viewDidLoad
         case writeData
-        case emojiBtnClick(idx : Int,state : Bool)
+        case emojiBtnClick(idx : Int,indexPath : Int,state : Bool)
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
@@ -27,7 +27,8 @@ final class MainReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
-        case postAlgorithm
+        case postEmoji(indexPath : Int)
+        case deleteEmoji(indexPath : Int)
     }
     struct State{
         var mainSection = MainSection.Model(
@@ -39,7 +40,6 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     var currentPage = 0
-    var ispaginating = false
     let initialState = State()
         
     init(provider : ServiceProviderType){
@@ -66,8 +66,8 @@ extension MainReactor{
             }else{
                 return .empty()
             }
-        case let .emojiBtnClick(idx,status):
-            return postEmoji(idx: idx, status: status)
+        case let .emojiBtnClick(idx,indexPath,status):
+            return postEmoji(idx: idx,indexPath: indexPath, status: status)
         }
     }
 }
@@ -78,8 +78,10 @@ extension MainReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
-        case .postAlgorithm:
-            print("post Algorithm")
+        case let .postEmoji(indexPath):
+            print("\(state.mainSection.items[indexPath])")
+        case let .deleteEmoji(indexPath):
+            print("\(state.mainSection.items[indexPath])")
         }
         return state
     }
@@ -98,16 +100,16 @@ private extension MainReactor{
     }
 }
 
-//MARK: - PostEmoji
+//MARK: - Emoji
 private extension MainReactor{
-    private func postEmoji(idx : Int,status : Bool) -> Observable<Mutation>{
+    private func postEmoji(idx : Int,indexPath : Int,status : Bool) -> Observable<Mutation>{
         let emojiRequest = EmojiRequest(number: idx)
         if status{
             return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-                .map(Mutation.postAlgorithm)
+                .map(Mutation.postEmoji(indexPath: indexPath))
         }else{
-            return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-                .map(Mutation.postAlgorithm)
+            return self.provider.userService.deleteEmoji(emojiRequest: emojiRequest)
+                .map(Mutation.deleteEmoji(indexPath: indexPath))
         }
     }
 }

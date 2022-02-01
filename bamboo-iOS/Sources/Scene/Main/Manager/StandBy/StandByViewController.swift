@@ -45,8 +45,8 @@ final class StandByViewController : baseVC<StandByReactor>{
 
     //MARK: - Delegate
     private func setDelegate(){
-        mainTableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
+//        mainTableView.rx.setDelegate(self)
+//            .disposed(by: disposeBag)
     }
     //MARK: - Bind
     override func bindAction(reactor: StandByReactor) {
@@ -65,6 +65,7 @@ final class StandByViewController : baseVC<StandByReactor>{
                 return cell
             }
         }
+        
         self.mainTableView.rx.didEndDragging
             .withLatestFrom(self.mainTableView.rx.contentOffset)
             .map{ [weak self] in
@@ -90,7 +91,7 @@ final class StandByViewController : baseVC<StandByReactor>{
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
     func clickSeeMoreDetailBtn(cell: StandByTableViewCell, id: Int, algorithmNumber: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        mainTableView.reloadData()
+        print("id : \(id) , algorithm Number : \(algorithmNumber)")
         _ = reactor?.mutate(action: Reactor.Action.standbyBtnTap(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id, index: indexPath.row,algorithmNumber: algorithmNumber))
     }
 }

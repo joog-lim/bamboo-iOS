@@ -11,10 +11,10 @@ protocol UserServiceType {
     func getVerify() -> Observable<Verify>
     //patch
     func patchReported(reportedRequest: EditStatusRequest, idx : Int) -> Observable<Base>
+    //delete
+    func deleteEmoji(emojiRequest : EmojiRequest) -> Observable<Base>
 }
-final class UserService : BaseService,UserServiceType{
-
-}
+final class UserService : BaseService,UserServiceType{}
 
 //MARK: - Post
 extension UserService{
@@ -72,6 +72,17 @@ extension UserService{
             .request()
             .map(Base.self)
             .do(onError: {print($0)})
+            .asObservable()
+    }
+}
+
+//MARK: - Delete
+extension UserService{
+    func deleteEmoji(emojiRequest: EmojiRequest) -> Observable<Base> {
+        BamBooAPI.deleteEmoji(emojiRequest: emojiRequest)
+            .request()
+            .map(Base.self)
+            .do(onError : {print($0)})
             .asObservable()
     }
 }

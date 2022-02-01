@@ -24,7 +24,6 @@ final class MainViewController : baseVC<MainReactor>{
 
     private func likeBtnClick(indexPath : Int, state : Bool){
         print("좋아요 :: \(indexPath)번째 \(state)")
-        //        data[indexPath].isSelected = state
     }
 
     //MARK: - Helper
@@ -126,15 +125,13 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        mainTableView.reloadData()
-        
         _ = reactor?.mutate(action: Reactor.Action.reportBtnClickAction(idx: id, index: indexPath.row))
     }
     
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
         self.likeBtnClick(indexPath: indexPath.row, state: state)
-        _ = reactor?.mutate(action: Reactor.Action.emojiBtnClick(idx: id, state: state))
+         reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
     }
 }
 
