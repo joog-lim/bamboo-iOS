@@ -71,11 +71,6 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Resu
         view.addSubviews(algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn)
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        delegate = nil
-        model = nil
-    }
     
     //MARK: - Location(나중 정리 예정)
     private func location(){

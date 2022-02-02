@@ -98,8 +98,6 @@ final class AcceptViewController : baseVC<AcceptReactor> {
 extension AcceptViewController : AcceptManagerTableViewCellDelegate {
     func cellSettingbtnClick(cell: AcceptManagerTableViewCell, id: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-    
-        mainTableView.reloadData()
         reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: id, index: indexPath.row))
     }
 }

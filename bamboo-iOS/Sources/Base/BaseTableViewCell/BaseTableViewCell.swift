@@ -28,6 +28,12 @@ class BaseTableViewCell<T> : UITableViewCell,Reusable{
         selectionStyle = .none
     }
     
+    //MARK: - Reusable
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     var model: T? {
         didSet {
             if let model = model {

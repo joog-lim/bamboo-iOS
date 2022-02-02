@@ -84,7 +84,6 @@ final class DeleteViewController : baseVC<DeleteReactor>{
 extension DeleteViewController : cellSeeMoreDetailActionDelegate{
     func clickSeeMoreDetailBtnAction(cell: DeleteTableViewCell, id: Int, algorithmNumber: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        mainTableView.reloadData()
         _ = reactor?.mutate(action: DeleteReactor.Action.deleteBtnTap(titleText: "선택", message: "게시물을 삭제 하시겠습니까?", idx: id, index: indexPath.row,algorithmNumber:algorithmNumber ))
     }
 }

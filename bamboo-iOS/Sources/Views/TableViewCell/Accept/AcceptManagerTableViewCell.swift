@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol AcceptManagerTableViewCellDelegate : AnyObject{
     func cellSettingbtnClick(cell : AcceptManagerTableViewCell, id : Int)
@@ -54,6 +55,7 @@ final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Datas.Resul
         addSubviews()
         location()
     }
+
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubviews(algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel)
@@ -99,7 +101,8 @@ final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Datas.Resul
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        
+    }
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSettingbtn.rx.tap
             .subscribe({  [weak self] _ in
                 self?.delegate?.cellSettingbtnClick(cell: self!, id: model.idx)

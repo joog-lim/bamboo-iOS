@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import RxSwift
 protocol StandBytableViewCellBtnClickDelegate : AnyObject{
     func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int, algorithmNumber : Int)
 }
@@ -54,6 +54,8 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
         addSubviews()
         location()
     }
+
+    //MARK: - AddView
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubviews(algorithm,dataLabel,tagLabel,cellSeeMoreDetailBtn,titleLabel,contentLabel)
@@ -93,12 +95,7 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    //MARK: - Reusable
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        model = nil
-        delegate = nil
-    }
+
     
     //MARK: - Bind
     override func bind(_ model: Algorithm.Datas.Results) {

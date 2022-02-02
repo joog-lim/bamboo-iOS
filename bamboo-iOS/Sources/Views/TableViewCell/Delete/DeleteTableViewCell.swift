@@ -120,7 +120,8 @@ final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
         titleLabel.text = model.title
         contentLabel.text = model.content
         deleteReasonContent.text = model.reason
-
+    }
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSeeMoreDetail.rx.tap
             .subscribe({ [weak self] _ in
                 self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx, algorithmNumber: model.algorithmNumber)
