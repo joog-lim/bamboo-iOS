@@ -181,4 +181,11 @@ extension BamBooAPI{
             }
         )
     }
+    //MARK: - JWT Oauth
+//    func jwtOauth(file : StaticString = #file,
+//                  function: StaticString = #function,
+//                  line: UInt = #line) -> Single<Response>{
+//        let endpoint = BamBooAPI.Wrapper(base: self)
+//        return moya.request(<#T##target: Wrapper##Wrapper#>, completion: <#T##Completion##Completion##(_ result: Result<Response, MoyaError>) -> Void#>)
+//    }
 }

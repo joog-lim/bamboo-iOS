@@ -68,7 +68,10 @@ private extension HomeFlow{
     func coordinatorWriteModal() -> FlowContributors{
         let reactor = WritingBulletinBoardReactor(with: provider)
         let vc = WritingBulletinBoardModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     

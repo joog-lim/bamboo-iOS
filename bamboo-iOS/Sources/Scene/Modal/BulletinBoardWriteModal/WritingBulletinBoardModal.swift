@@ -209,7 +209,11 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(280)
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(500)
+        }
     }
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}

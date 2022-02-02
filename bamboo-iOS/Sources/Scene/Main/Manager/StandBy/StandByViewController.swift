@@ -45,8 +45,8 @@ final class StandByViewController : baseVC<StandByReactor>{
 
     //MARK: - Delegate
     private func setDelegate(){
-//        mainTableView.rx.setDelegate(self)
-//            .disposed(by: disposeBag)
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     //MARK: - Bind
     override func bindAction(reactor: StandByReactor) {
@@ -61,6 +61,7 @@ final class StandByViewController : baseVC<StandByReactor>{
             case .main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as StandByTableViewCell
                 cell.delegate = self
+                print(algorithm)
                 cell.model = algorithm
                 return cell
             }
@@ -84,7 +85,6 @@ final class StandByViewController : baseVC<StandByReactor>{
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
-    
 }
 
 //MARK: - Click Cell inside Btn Action

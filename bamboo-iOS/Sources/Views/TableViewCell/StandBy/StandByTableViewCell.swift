@@ -21,7 +21,6 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
-    
     private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemYellow
@@ -94,14 +93,22 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
+    //MARK: - Reusable
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        model = nil
+        delegate = nil
+    }
     
+    //MARK: - Bind
     override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 대기중"
         dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        
+    }
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSeeMoreDetailBtn.rx.tap
             .subscribe({[self] _ in
                 delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx, algorithmNumber: model.algorithmNumber)

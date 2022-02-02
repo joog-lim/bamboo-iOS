@@ -14,8 +14,6 @@ class baseVC<T: Reactor>: UIViewController{
     let bounds = UIScreen.main.bounds
     var disposeBag: DisposeBag = .init()
     
-    var didSetupViewConstraints = false
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

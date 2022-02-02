@@ -74,6 +74,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Resu
     override func prepareForReuse() {
         super.prepareForReuse()
         delegate = nil
+        model = nil
     }
     
     //MARK: - Location(나중 정리 예정)
@@ -120,7 +121,8 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Resu
             $0.height.equalTo(18)
         }
     }
-
+    
+    
     //MARK: - bind
     override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"

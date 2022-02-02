@@ -51,7 +51,7 @@ extension StandByReactor{
         case let .standbyBtnTap(titleText, message,idx,index,algorithmNumber):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
-        case let .alertRefusalTap(idx, index,algorithmNumber):
+        case let .alertRefusalTap(idx, algorithmNumber,index):
             steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
         case let .alertAcceptTap(idx, _):

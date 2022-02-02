@@ -34,6 +34,7 @@ final class MainViewController : baseVC<MainReactor>{
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
+    
     //MARK: - addView
     override func addView() {
         super.addView()
@@ -99,7 +100,7 @@ final class MainViewController : baseVC<MainReactor>{
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-            
+        
         reactor.state.map(\.mainSection)
             .distinctUntilChanged()
             .map(Array.init(with:))
