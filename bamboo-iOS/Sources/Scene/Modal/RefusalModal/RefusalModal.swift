@@ -12,8 +12,6 @@ import RxKeyboard
 
 final class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
-    private var i = 10
-    
     private let editContentTitle = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "알고리즘 거절")
         $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
@@ -106,14 +104,14 @@ extension RefusalModal : PanModalPresentable{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/2.3)
         }else{
-            return .contentHeight(500)
+            return .contentHeight(400)
         }
     }
     var longFormHeight: PanModalHeight{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/7)
         }else{
-            return .contentHeight(500)
+            return .contentHeight(700)
         }
     }
     

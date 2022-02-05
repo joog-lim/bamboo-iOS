@@ -60,4 +60,7 @@ enum BambooStep: Step{
     case editContentModalsRequired(idx : Int, index : Int)
     // Refusal
     case refusalRequired(idx: Int, algorithmNumber : Int,index : Int)
+    
+    //NoWifi
+    case noWifiRequiered
 }

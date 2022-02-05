@@ -46,7 +46,6 @@ extension RefusalModalReactor{
             return Observable.just(Mutation.viewDidLoadAction)
         case let .refusalBtnTap(reason):
             return patchRefusal(reason: reason)
-
         }
     }
 }

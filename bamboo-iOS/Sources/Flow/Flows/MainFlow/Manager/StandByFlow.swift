@@ -53,7 +53,8 @@ final class StandByFlow : Flow{
         case let .alert(titleText, message, idx,index, algorithmNumber):
             return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber)
         case let .refusalRequired(idx,index, algorithmNumber):
-            return coordinatorToRefusalModalRequired(idx: idx, algorithmNumber: algorithmNumber,index: index)
+            return coor()
+//            return coordinatorToRefusalModalRequired(idx: idx, algorithmNumber: algorithmNumber,index: index)
         case .dismiss:
             return dismissVC()
         default:
@@ -88,6 +89,15 @@ private extension StandByFlow{
         vc.modalPresentationCapturesStatusBarAppearance = true
         vc.transitioningDelegate = PanModalPresentationDelegate.default
         rootViewController.present(vc, animated: true, completion: nil)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    func coor() -> FlowContributors{
+        let reactor = NoWifiModalReactor()
+        let vc = NoWifiModalVC(reactor: reactor)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc,animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     

@@ -61,6 +61,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - HELPERS
     override func configureUI() {
         super.configureUI()
+        panModalSetNeedsLayoutUpdate()
         //MARK: - TextView Delegate
         dropDown.selectionAction = { [unowned self] (index : Int, item : String) in
             tagChooseBtn.setTitle(item, for: .normal)
@@ -86,7 +87,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
     }
-    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -228,9 +228,10 @@ extension WritingBulletinBoardModal : PanModalPresentable{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/17)
         }else{
-            return .contentHeight(800)
+            return .contentHeight(850)
         }
     }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }

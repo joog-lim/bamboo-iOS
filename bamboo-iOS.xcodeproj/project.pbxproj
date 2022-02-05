@@ -490,7 +490,6 @@
 			isa = PBXGroup;
 			children = (
 				EEA5AF302705BA8E000FF48A /* NoWifiViewController */,
-				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
 			sourceTree = "<group>";
@@ -988,6 +987,7 @@
 			children = (
 				EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */,
 				EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */,
+				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifiModal;
 			sourceTree = "<group>";

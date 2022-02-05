@@ -6,7 +6,6 @@
 //
 
 import Network
-import WeakMapTable
 import UIKit
 
 final class NetWorkStatus{
@@ -14,7 +13,6 @@ final class NetWorkStatus{
     static let shared = NetWorkStatus()
     private let queue = DispatchQueue.global()
     private let monitor : NWPathMonitor
-    
     public private(set) var isConnect : Bool = false
     public private(set) var connectionType : ConnectionType = .unknown
     

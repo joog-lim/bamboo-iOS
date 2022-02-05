@@ -10,6 +10,7 @@ import PanModal
 import RxKeyboard
 
 final class EditContentModal : baseVC<EditContentModalReactor>{
+    
     //MARK: - Properties
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
@@ -112,14 +113,14 @@ extension EditContentModal : PanModalPresentable{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/2.3)
         }else{
-            return .contentHeight(500)
+            return .contentHeight(350)
         }
     }
     var longFormHeight: PanModalHeight{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/7.4)
         }else{
-            return .contentHeight(500)
+            return .contentHeight(650)
         }
     }
     
