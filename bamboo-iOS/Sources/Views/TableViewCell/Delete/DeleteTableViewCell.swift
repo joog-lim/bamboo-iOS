@@ -11,10 +11,10 @@ import RxSwift
 import RxRelay
 
 protocol cellSeeMoreDetailActionDelegate : AnyObject{
-    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int)
+    func clickSeeMoreDetailBtnAction(cell : DeleteTableViewCell, id : Int,algorithmNumber: Int)
 }
 
-final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     //MARK: - Delegate
     weak var delegate : cellSeeMoreDetailActionDelegate?
     
@@ -113,17 +113,18 @@ final class DeleteTableViewCell : BaseTableViewCell<Algorithm.Results>{
         }
     }
 
-    override func bind(_ model: Algorithm.Results) {
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 삭제요청"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
         deleteReasonContent.text = model.reason
-
+    }
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSeeMoreDetail.rx.tap
             .subscribe({ [weak self] _ in
-                self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx)
+                self?.delegate?.clickSeeMoreDetailBtnAction(cell: self!, id: model.idx, algorithmNumber: model.algorithmNumber)
             }).disposed(by: disposeBag)
     }
 }

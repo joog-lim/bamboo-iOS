@@ -18,7 +18,7 @@ final class NoWifiModalReactor : Reactor , Stepper{
         case timerStart
     }
     enum Mutation{
-        case setTimer
+
     }
     struct State{
         
@@ -32,30 +32,27 @@ final class NoWifiModalReactor : Reactor , Stepper{
 
 //MARK: - Mutation
 extension NoWifiModalReactor{
-    func mutate(action: Action) -> Observable<Action> {
+    func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .timerStart:
-            
+            fetchTime()
             return .empty()
         }
     }
 }
 
-//MARK: - Reduce
-extension NoWifiModalReactor{
-    func reduce(state: State, mutation: Action) -> State {
-        let newState = state
-        switch mutation{
-        case .timerStart:
-            _ = fetchTime()
-        }
-        return newState
-    }
-}
-
 //MARK: - Method
 private extension NoWifiModalReactor{
-    func fetchTime() -> Observable<Mutation>{
-        return .never()
+    func fetchTime(){
+        let countdown = 2
+        Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
+            .map { countdown - $0 }
+            .take(countdown + 1)
+            .subscribe(onNext: { value in
+                print(value)
+            }, onCompleted: {
+                print("completed")
+                self.steps.accept(BambooStep.dismiss)
+            }).disposed(by: disposeBag)
     }
 }

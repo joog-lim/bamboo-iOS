@@ -29,7 +29,17 @@ extension BamBooAPI{
             return .get
         case .getAdminAlgorithm:
             return .get
-
+        // Patch
+        case .patchStatus:
+            return .patch
+        case .patchEditAlgorithm:
+            return .patch
+            
+        //Delete
+        case .deleteAlgorithm:
+            return .delete
+        case .deleteEmoji:
+            return .delete
         }
     }
 }

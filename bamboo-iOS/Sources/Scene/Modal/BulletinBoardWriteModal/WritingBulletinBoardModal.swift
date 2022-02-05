@@ -61,6 +61,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - HELPERS
     override func configureUI() {
         super.configureUI()
+        panModalSetNeedsLayoutUpdate()
         //MARK: - TextView Delegate
         dropDown.selectionAction = { [unowned self] (index : Int, item : String) in
             tagChooseBtn.setTitle(item, for: .normal)
@@ -86,10 +87,19 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
         }
     }
-    
     //MARK: - KeyboardSetting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
+    }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
     }
     
     //MARK: - Bind
@@ -103,8 +113,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             .map{ Reactor.Action.sendBtnTap(
                 self.titleTf.text,
                 self.contentTv.tvContent,
-                self.tagChooseBtn.titleLabel?.text,
-                "",
+                self.tagChooseBtn.titleLabel?.text == "태그선택" ? ""  : self.tagChooseBtn.titleLabel?.text,
                 self.passwordTf.text)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -208,10 +217,21 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
 
     var cornerRadius: CGFloat{return 40}
-    
-    var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(280)
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.6)
+        }else{
+            return .contentHeight(500)
+        }
     }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/17)
+        }else{
+            return .contentHeight(850)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }

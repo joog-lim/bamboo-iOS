@@ -14,35 +14,21 @@ import RxDataSources
 
 final class StandByViewController : baseVC<StandByReactor>{
     //MARK: - Properties
-    private var isLoaing : Bool = false
-    
-    private let titleLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.text = "대기"
-        $0.textColor = .systemYellow
-    }
 
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
+        $0.register(headerFooterViewType: StandByTableViewHeaderView.self)
         $0.register(cellType: StandByTableViewCell.self)
-        $0.showsVerticalScrollIndicator = false
-        $0.separatorColor = .clear
-        $0.allowsSelection = false
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 300
+        $0.register(headerFooterViewType: CustomFooterView.self)
+        $0.sameSetting()
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
 
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
         //navigationItem
         navigationItem.applyImageNavigation()
-        
+        setDelegate()
         //tableView
-        tableViewHeaderSetting()
-        tableFooterViewSetting()
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
@@ -56,26 +42,11 @@ final class StandByViewController : baseVC<StandByReactor>{
             $0.edges.equalTo(view.safeArea.edges)
         }
     }
-    
-    //MARK: - TableViewHeaderSetting
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.centerY.equalTo(tableViewHeader)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
-    }
-    //MARK: - tableViewFooter
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.tintColor = .lightGray
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
+
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     //MARK: - Bind
     override func bindAction(reactor: StandByReactor) {
@@ -94,6 +65,7 @@ final class StandByViewController : baseVC<StandByReactor>{
                 return cell
             }
         }
+        
         self.mainTableView.rx.didEndDragging
             .withLatestFrom(self.mainTableView.rx.contentOffset)
             .map{ [weak self] in
@@ -112,13 +84,22 @@ final class StandByViewController : baseVC<StandByReactor>{
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     }
-    
 }
 
 //MARK: - Click Cell inside Btn Action
 extension StandByViewController : StandBytableViewCellBtnClickDelegate{
-    func clickSeeMoreDetailBtn(cell: StandByTableViewCell, id: Int) {
+    func clickSeeMoreDetailBtn(cell: StandByTableViewCell, id: Int, algorithmNumber: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
-        reactor?.steps.accept(BambooStep.alert(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id,index: indexPath.row))
+        _ = reactor?.mutate(action: Reactor.Action.standbyBtnTap(titleText: "선택", message: "게시물을 대기 하시겠습니까?", idx: id, index: indexPath.row,algorithmNumber: algorithmNumber))
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension StandByViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(StandByTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }

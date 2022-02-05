@@ -26,14 +26,9 @@ final class NoWifiModalVC : baseVC<NoWifiModalReactor>{
     override func setLayout() {
         super.setLayout()
         alertView.snp.makeConstraints{
-            $0.top.bottom.equalToSuperview()
+            $0.height.equalTo(60)
             $0.left.right.equalToSuperview().inset(20)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     override func bindAction(reactor: NoWifiModalReactor) {
@@ -42,7 +37,6 @@ final class NoWifiModalVC : baseVC<NoWifiModalReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
-    
 }
 extension NoWifiModalVC : PanModalPresentable{
     var panScrollable: UIScrollView? {return nil}

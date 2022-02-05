@@ -16,8 +16,9 @@ final class StandByReactor : Reactor, Stepper{
     
     enum Action{
         case viewDidLoad
-        case standbyBtnTap(titleText : String, message : String, idx : Int, index : Int)
-        case alertRefusalTap(Int,Int)
+        case standbyBtnTap(titleText : String, message : String, idx : Int, index : Int,algorithmNumber: Int)
+        case alertRefusalTap(Int,Int,Int)
+        case alertAcceptTap(Int,Int)
         case pagination(
             contentHeight: CGFloat,
             contentOffsetY: CGFloat,
@@ -26,6 +27,7 @@ final class StandByReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([StandBySection.Item])
+        case acceptedSuccess(Int)
     }
     struct State{
         var mainSection = StandBySection.Model(model: 0, items: [])
@@ -46,12 +48,14 @@ extension StandByReactor{
         switch action{
         case .viewDidLoad:
             return getStandBy()
-        case let .standbyBtnTap(titleText, message,idx,index):
-            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index))
+        case let .standbyBtnTap(titleText, message,idx,index,algorithmNumber):
+            steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
-        case let .alertRefusalTap(idx, index):
-            steps.accept(BambooStep.refusalRequired(idx: idx, index: index))
+        case let .alertRefusalTap(idx, algorithmNumber,index):
+            steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
+        case let .alertAcceptTap(idx, indexPath):
+            return patchAcceptStatus(idx: idx, index: indexPath)
         case let .pagination(contentHeight, contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
@@ -70,21 +74,28 @@ extension StandByReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case let .acceptedSuccess(indexPath):
+            state.mainSection.items.remove(at: indexPath)
         }
         return state
     }
 }
 
-//MARK: - GetAcceptAlgorithm
+//MARK: - Method
 private extension StandByReactor{
     private func getStandBy() -> Observable<Mutation>{
         self.currentPage += 1
         let standByRequest = AdminAlgorithmRequest(page: currentPage, status: "PENDING")
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: standByRequest)
             .map{(algorithm: Algorithm) -> [StandBySection.Item] in
-                let mainSectionItem = algorithm.result.map(StandBySection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(StandBySection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    private func patchAcceptStatus(idx : Int,index : Int) -> Observable<Mutation>{
+        let acceptstatusRequest  = EditStatusRequest(status: "ACCEPTED", reason: "")
+        return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: acceptstatusRequest, idx: idx)
+            .map(Mutation.acceptedSuccess(index))
     }
 }

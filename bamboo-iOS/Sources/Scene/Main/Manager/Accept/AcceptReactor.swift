@@ -77,7 +77,7 @@ private extension AcceptReactor{
         let acceptRequest = AdminAlgorithmRequest(page: currentPage, status: "ACCEPTED")
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: acceptRequest)
             .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
-                let mainSectionItem = algorithm.result.map(AcceptSection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(AcceptSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

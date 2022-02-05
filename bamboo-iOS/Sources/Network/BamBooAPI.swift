@@ -10,7 +10,7 @@ import Alamofire
 
 enum BamBooAPI {
     //System
-    case postRenewalToken(refreshToken : String)
+    case postRenewalToken
     //Login
     case postLogin(idToken : String)
     
@@ -19,13 +19,15 @@ enum BamBooAPI {
     case getRule
     case getVerify
     case postEmoji(emojiRequest : EmojiRequest)
+    case deleteEmoji(emojiRequest : EmojiRequest)
     
     case postBulletin(bulletinRequest : BulletinRequest)
-    
+    case patchStatus(statusRequest : EditStatusRequest, idx : Int)
     //Manager
     case getAdminAlgorithm(algorithmRequest : AdminAlgorithmRequest)
-//    case patchEditAlgorithm()
-
+    case patchEditAlgorithm(editRequest : EditAlgorithmRequest, idx : Int)
+    case deleteAlgorithm(idx : Int)
+    
 }
 
 extension BamBooAPI : Moya.TargetType{

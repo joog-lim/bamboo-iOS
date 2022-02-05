@@ -9,6 +9,7 @@ import UIKit.UINavigationController
 import RxSwift
 import RxFlow
 import UIKit
+import PanModal
 
 final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
@@ -51,6 +52,8 @@ final class ManagerMainFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
         case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
+        case .noWifiRequiered:
+            return coordinatorToNoWifiModal()
         default:
             return .none
         }
@@ -91,3 +94,15 @@ final class ManagerMainFlow : Flow{
     }
 }
 
+//MARK: - Method
+extension ManagerMainFlow{
+    private func coordinatorToNoWifiModal() -> FlowContributors{
+        let reactor = NoWifiModalReactor()
+        let vc = NoWifiModalVC(reactor: reactor)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc,animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+}

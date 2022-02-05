@@ -5,12 +5,13 @@
 //  Created by Ji-hoon Ahn on 2021/10/18.
 //
 import UIKit
-import RxDataSources
+import RxSwift
+
 protocol RefusalCancelBtnDelegate : AnyObject{
     func refusalCancelBtnAction(cell : RefusalTableViewCell, id : Int)
 }
 
-final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?
@@ -54,7 +55,7 @@ final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
         addSubviews()
         location()
     }
-    
+
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubviews(algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel)
@@ -92,14 +93,16 @@ final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Results>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    
-    override func bind(_ model: Algorithm.Results) {
+    //MARK: - Bind
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 거절됨"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        
+    }
+    
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         refusalCancelBtn.rx.tap
             .subscribe({ [self] _ in
                 self.delegate?.refusalCancelBtnAction(cell: self, id: model.idx)
