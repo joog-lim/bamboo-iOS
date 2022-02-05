@@ -53,7 +53,7 @@ final class ManagerMainFlow : Flow{
         case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
         case .noWifiRequiered:
-            return.none
+            return coordinatorToNoWifiModal()
         default:
             return .none
         }
@@ -99,7 +99,10 @@ extension ManagerMainFlow{
     private func coordinatorToNoWifiModal() -> FlowContributors{
         let reactor = NoWifiModalReactor()
         let vc = NoWifiModalVC(reactor: reactor)
-        rootViewController.present(vc, animated: true, completion: nil)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc,animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

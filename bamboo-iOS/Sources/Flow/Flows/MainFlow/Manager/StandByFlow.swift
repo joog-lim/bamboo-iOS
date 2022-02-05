@@ -53,8 +53,7 @@ final class StandByFlow : Flow{
         case let .alert(titleText, message, idx,index, algorithmNumber):
             return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber)
         case let .refusalRequired(idx,index, algorithmNumber):
-            return coor()
-//            return coordinatorToRefusalModalRequired(idx: idx, algorithmNumber: algorithmNumber,index: index)
+            return coordinatorToRefusalModalRequired(idx: idx, algorithmNumber: algorithmNumber,index: index)
         case .dismiss:
             return dismissVC()
         default:

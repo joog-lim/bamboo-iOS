@@ -8,6 +8,9 @@
 import Network
 import UIKit
 
+import RxFlow
+import RxCocoa
+
 final class NetWorkStatus{
     //MARK: - 싱글턴 패턴
     static let shared = NetWorkStatus()
@@ -15,6 +18,9 @@ final class NetWorkStatus{
     private let monitor : NWPathMonitor
     public private(set) var isConnect : Bool = false
     public private(set) var connectionType : ConnectionType = .unknown
+    
+    //MARK: - Stepper
+    var steps: PublishRelay<Step> = .init()
     
     private init(){
         monitor = NWPathMonitor()
