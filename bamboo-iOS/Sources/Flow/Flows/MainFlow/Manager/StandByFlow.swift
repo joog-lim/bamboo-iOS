@@ -75,7 +75,7 @@ private extension StandByFlow{
             self.reactor.action.onNext(.alertAcceptTap(idx, index))
         }))
         alert.addAction(.init(title: "거절", style: .destructive, handler: {_ in
-            _ = self.reactor.mutate(action: .alertRefusalTap(idx, algorithmNumber,index ))
+            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index,algorithmNumber ))
         }))
         rootViewController.present(alert, animated: true)
         return .none

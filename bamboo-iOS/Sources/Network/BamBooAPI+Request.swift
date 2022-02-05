@@ -131,13 +131,13 @@ extension BamBooAPI{
         let requestString = "\(endpoint.method) \(endpoint.baseURL) \(endpoint.path)"
         
         return Self.moya.rx.request(endpoint)
-            .flatMap{ // 401(Token Error)일때 다시 발급
-                if $0.statusCode == 401{
-                    throw BamBooAPIError.tokenExpired
-                }else{
-                    return Single.just($0)
-                }
-            }
+//            .flatMap{ // 401(Token Error)일때 다시 발급
+//                if $0.statusCode == 401{
+//                    throw BamBooAPIError.tokenExpired
+//                }else{
+//                    return Single.just($0)
+//                }
+//            }
             .filterSuccessfulStatusCodes()
             .catch(self.handleInternetConnection)
             .catch(self.handleTimeOut)
@@ -181,11 +181,4 @@ extension BamBooAPI{
             }
         )
     }
-    //MARK: - JWT Oauth
-//    func jwtOauth(file : StaticString = #file,
-//                  function: StaticString = #function,
-//                  line: UInt = #line) -> Single<Response>{
-//        let endpoint = BamBooAPI.Wrapper(base: self)
-//        return moya.request(<#T##target: Wrapper##Wrapper#>, completion: <#T##Completion##Completion##(_ result: Result<Response, MoyaError>) -> Void#>)
-//    }
 }

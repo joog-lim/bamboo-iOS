@@ -5,7 +5,6 @@ import RxCocoa
 import RxDataSources
 
 final class MainViewController : baseVC<MainReactor>{
-    
     //MARK: - Properties
     private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
         $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
@@ -110,11 +109,9 @@ final class MainViewController : baseVC<MainReactor>{
 }
 //MARK: - TableViewHeader & Footer Setting
 extension MainViewController : UITableViewDelegate{
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
     }
-    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
@@ -123,7 +120,6 @@ extension MainViewController : UITableViewDelegate{
 
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
-    
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
         _ = reactor?.mutate(action: Reactor.Action.reportBtnClickAction(idx: id, index: indexPath.row))
@@ -135,4 +131,3 @@ extension MainViewController : ClickReportBtnActionDelegate{
          reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
     }
 }
-

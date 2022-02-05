@@ -10,7 +10,7 @@ import Alamofire
 
 enum BamBooAPI {
     //System
-    case postRenewalToken(refreshToken : String)
+    case postRenewalToken
     //Login
     case postLogin(idToken : String)
     

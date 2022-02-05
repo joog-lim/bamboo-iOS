@@ -9,14 +9,12 @@ import UIKit
 import GoogleSignIn
 
 import RxAppState
-import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetWorkStatus.shared.StartMonitoring()
         automaticLogin()
-        keyboardSetting()
         return true
     }
     
@@ -29,13 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         return false
     }
     
-    //Keyboard 자동 UI 조정
-    private func keyboardSetting(){
-//        IQKeyboardManager.shared.enable = true
-//        IQKeyboardManager.shared.enableAutoToolbar = false
-//        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-    }
-
     //자동 로그인
     private func automaticLogin(){
         let defaults = UserDefaults.standard

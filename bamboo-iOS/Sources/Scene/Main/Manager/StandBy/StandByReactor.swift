@@ -27,7 +27,7 @@ final class StandByReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([StandBySection.Item])
-        case acceptedSuccess
+        case acceptedSuccess(Int)
     }
     struct State{
         var mainSection = StandBySection.Model(model: 0, items: [])
@@ -54,8 +54,8 @@ extension StandByReactor{
         case let .alertRefusalTap(idx, algorithmNumber,index):
             steps.accept(BambooStep.refusalRequired(idx: idx, algorithmNumber: algorithmNumber, index: index))
             return .empty()
-        case let .alertAcceptTap(idx, _):
-            return patchAcceptStatus(idx: idx)
+        case let .alertAcceptTap(idx, indexPath):
+            return patchAcceptStatus(idx: idx, index: indexPath)
         case let .pagination(contentHeight, contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
@@ -74,8 +74,8 @@ extension StandByReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
-        case .acceptedSuccess:
-            print("Success")
+        case let .acceptedSuccess(indexPath):
+            state.mainSection.items.remove(at: indexPath)
         }
         return state
     }
@@ -93,9 +93,9 @@ private extension StandByReactor{
             }
             .map(Mutation.updateDataSource)
     }
-    private func patchAcceptStatus(idx : Int) -> Observable<Mutation>{
+    private func patchAcceptStatus(idx : Int,index : Int) -> Observable<Mutation>{
         let acceptstatusRequest  = EditStatusRequest(status: "ACCEPTED", reason: "")
         return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: acceptstatusRequest, idx: idx)
-            .map(Mutation.acceptedSuccess)
+            .map(Mutation.acceptedSuccess(index))
     }
 }

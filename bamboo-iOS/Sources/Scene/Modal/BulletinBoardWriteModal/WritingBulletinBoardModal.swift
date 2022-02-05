@@ -91,6 +91,16 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
+    }
     
     //MARK: - Bind
     override func bindAction(reactor: WritingBulletinBoardReactor) {
@@ -207,10 +217,16 @@ extension WritingBulletinBoardModal : PanModalPresentable{
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
 
     var cornerRadius: CGFloat{return 40}
-    
-    var longFormHeight: PanModalHeight{
+    var shortFormHeight: PanModalHeight{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(500)
+        }
+    }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7.4)
         }else{
             return .contentHeight(500)
         }

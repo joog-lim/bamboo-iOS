@@ -74,6 +74,7 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     override func keyBoardLayout() {
         RxKeyboard.instance.visibleHeight
+            .skip(1)
             .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
                 print(KeyboardVisibleHeight)
                 panScrollable?.contentOffset.y += KeyboardVisibleHeight

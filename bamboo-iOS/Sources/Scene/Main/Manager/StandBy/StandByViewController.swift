@@ -61,7 +61,6 @@ final class StandByViewController : baseVC<StandByReactor>{
             case .main(let algorithm):
                 let cell = tableView.dequeueReusableCell(for: indexPath) as StandByTableViewCell
                 cell.delegate = self
-                print(algorithm)
                 cell.model = algorithm
                 return cell
             }

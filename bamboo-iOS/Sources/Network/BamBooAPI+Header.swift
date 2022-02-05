@@ -11,8 +11,8 @@ import KeychainSwift
 extension BamBooAPI{
     func getHeader() -> [String:String]?{
         switch self{
-        case let .postRenewalToken(refreshToken):
-            return ["Authorization": refreshToken]
+        case .postRenewalToken:
+            return ["Authorization": KeychainSwift().get("refreshToken") ?? ""]
         case let.postLogin(idToken):
             return ["Authorization" : idToken]
         case .getAlgorithm, .getAdminAlgorithm, .postEmoji, .patchEditAlgorithm, .patchStatus,.deleteAlgorithm,.deleteEmoji:
@@ -22,4 +22,3 @@ extension BamBooAPI{
         }
     }
 }
-///list/page/admin?count=10&criteria=1&status=PENDING

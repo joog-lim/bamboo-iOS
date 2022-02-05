@@ -79,6 +79,7 @@ extension MainReactor{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .postEmoji(indexPath):
+//            state.mainSection.items.map{$0.main(isClicked) = false}(indexPath)
             print("\(state.mainSection.items[indexPath])")
         case let .deleteEmoji(indexPath):
             print("\(state.mainSection.items[indexPath])")
