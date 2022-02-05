@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import PanModal
+import RxKeyboard
 
 final class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
@@ -68,6 +69,16 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
+    }
+    
     override func bindView(reactor: RefusalModalReactor) {
         refusalBtn.rx.tap
             .map{ Reactor.Action.refusalBtnTap(reason: self.contentTv.tvContent ?? "")}
@@ -91,9 +102,21 @@ extension RefusalModal : PanModalPresentable{
 
     var cornerRadius: CGFloat{return 40}
     
-    var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(250)
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(500)
+        }
     }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7)
+        }else{
+            return .contentHeight(500)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }

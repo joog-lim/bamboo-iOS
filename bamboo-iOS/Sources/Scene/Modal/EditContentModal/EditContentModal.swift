@@ -73,11 +73,11 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
         }
     }
     override func keyBoardLayout() {
-        RxKeyboard.instance.visibleHeight
+        RxKeyboard.instance.isHidden
             .skip(1)
-            .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
-                print(KeyboardVisibleHeight)
-                panScrollable?.contentOffset.y += KeyboardVisibleHeight
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
             }).disposed(by: disposeBag)
     }
     //MARK: - KeyboardDown
@@ -108,13 +108,21 @@ extension EditContentModal : PanModalPresentable{
 
     var cornerRadius: CGFloat{return 40}
     
-    var longFormHeight: PanModalHeight{
+    var shortFormHeight: PanModalHeight{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/2.3)
         }else{
-            return .contentHeight(400)
+            return .contentHeight(500)
         }
     }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7.4)
+        }else{
+            return .contentHeight(500)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }
