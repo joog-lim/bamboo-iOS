@@ -107,17 +107,6 @@ final class MainViewController : baseVC<MainReactor>{
             .disposed(by: disposeBag)
     }
 }
-//MARK: - TableViewHeader & Footer Setting
-extension MainViewController : UITableViewDelegate{
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
-    }
-}
-
-
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
@@ -131,3 +120,16 @@ extension MainViewController : ClickReportBtnActionDelegate{
          reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
     }
 }
+
+//MARK: - TableViewHeader & Footer Setting
+extension MainViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
+    }
+}
+
+
+

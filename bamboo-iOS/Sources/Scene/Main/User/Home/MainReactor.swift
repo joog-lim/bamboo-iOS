@@ -4,10 +4,11 @@
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
+import UIKit
+
 import ReactorKit
 import RxFlow
-import RxCocoa
-import Differentiator
+import RxRelay
 
 final class MainReactor : Reactor, Stepper{
     //MARK: - Stepper
@@ -24,6 +25,7 @@ final class MainReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
@@ -40,9 +42,10 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     var currentPage = 0
-    let initialState = State()
+    let initialState : State
         
     init(provider : ServiceProviderType){
+        self.initialState = State()
         self.provider = provider
     }
 }
@@ -68,6 +71,10 @@ extension MainReactor{
             }
         case let .emojiBtnClick(idx,indexPath,status):
             return postEmoji(idx: idx,indexPath: indexPath, status: status)
+            
+        case .refreshDataLoad:
+            print("refresh")
+            return .empty()
         }
     }
 }
@@ -79,7 +86,7 @@ extension MainReactor{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .postEmoji(indexPath):
-//            state.mainSection.items.map{$0.main(isClicked) = false}(indexPath)
+            print(            state.mainSection.items.count)
             print("\(state.mainSection.items[indexPath])")
         case let .deleteEmoji(indexPath):
             print("\(state.mainSection.items[indexPath])")
