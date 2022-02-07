@@ -57,6 +57,7 @@ extension RefusalModalReactor{
         
         case .refusalSuccess:
             steps.accept(BambooStep.dismiss)
+            
         case .viewDidLoadAction:
             new.algorithmNumber = algorithmNumber
         }

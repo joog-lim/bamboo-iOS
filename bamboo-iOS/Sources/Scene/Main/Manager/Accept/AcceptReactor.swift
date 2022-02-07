@@ -22,9 +22,11 @@ final class AcceptReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case editSuccess(index: Int, title : String, content: String)
     }
     enum Mutation{
         case updateDataSource([AcceptSection.Item])
+        case editSuccess(Int,String,String)
     }
     struct State{
         var mainSection = AcceptSection.Model(model: 0, items: [])
@@ -56,6 +58,8 @@ extension AcceptReactor {
             }else{
                 return .empty()
             }
+        case let .editSuccess(index, title, content):
+            return Observable.just(Mutation.editSuccess(index, title, content))
         }
     }
 }
@@ -66,6 +70,8 @@ extension AcceptReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case let .editSuccess(indexPath, title, content):
+            print("edit index: \(indexPath), title : \(title), content : \(content)")
         }
         return state
     }
@@ -78,6 +84,7 @@ private extension AcceptReactor{
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: acceptRequest)
             .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
                 let mainSectionItem = algorithm.data.data.map(AcceptSection.Item.main)
+//                mainSectionItem(algorithm.data.data[0].isClicked = false)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)

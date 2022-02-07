@@ -86,7 +86,7 @@ extension MainReactor{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .postEmoji(indexPath):
-            print(            state.mainSection.items.count)
+            state.mainSection.items[indexPath]
             print("\(state.mainSection.items[indexPath])")
         case let .deleteEmoji(indexPath):
             print("\(state.mainSection.items[indexPath])")
