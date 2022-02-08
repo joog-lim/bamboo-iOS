@@ -36,6 +36,7 @@ final class RefusalModalReactor : Reactor,Stepper{
         self.idx = idx
         self.algorithmNumber = algorithmNumber
         self.initialState = State(algorithmNumber: algorithmNumber)
+        
     }
 }
 //MARK: - Mutation
@@ -57,7 +58,6 @@ extension RefusalModalReactor{
         
         case .refusalSuccess:
             steps.accept(BambooStep.dismiss)
-            
         case .viewDidLoadAction:
             new.algorithmNumber = algorithmNumber
         }

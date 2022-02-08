@@ -23,7 +23,6 @@
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
-		EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48374E2799957900EC4681 /* JWTOauth.swift */; };
 		EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4837502799B49100EC4681 /* ReportRequest.swift */; };
 		EE489A992771B60200513E94 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE489A982771B60200513E94 /* OSLogExt.swift */; };
 		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
@@ -55,6 +54,7 @@
 		EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */; };
 		EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E5CA12759D74C0042CB70 /* DeviceExt.swift */; };
 		EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E5CA32759EB250042CB70 /* LoginFlow.swift */; };
+		EE8EFD8427B309040008EAB3 /* handleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EFD8327B309040008EAB3 /* handleResponse.swift */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
 		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
 		EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */; };
@@ -173,7 +173,6 @@
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
-		EE48374E2799957900EC4681 /* JWTOauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTOauth.swift; sourceTree = "<group>"; };
 		EE4837502799B49100EC4681 /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
 		EE489A982771B60200513E94 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExt.swift; sourceTree = "<group>"; };
 		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
@@ -207,6 +206,7 @@
 		EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGoogleOauthBtn.swift; sourceTree = "<group>"; };
 		EE8E5CA12759D74C0042CB70 /* DeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExt.swift; sourceTree = "<group>"; };
 		EE8E5CA32759EB250042CB70 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
+		EE8EFD8327B309040008EAB3 /* handleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = handleResponse.swift; sourceTree = "<group>"; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
 		EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalVC.swift; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 			children = (
 				EE55C2432781ECC8001596C1 /* Encodable.swift */,
 				EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */,
-				EE48374E2799957900EC4681 /* JWTOauth.swift */,
+				EE8EFD8327B309040008EAB3 /* handleResponse.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1293,7 +1293,6 @@
 				EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */,
 				EEB32E592786E6B000D639F6 /* Token.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
-				EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */,
 				EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
@@ -1341,6 +1340,7 @@
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
+				EE8EFD8427B309040008EAB3 /* handleResponse.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
 				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,
