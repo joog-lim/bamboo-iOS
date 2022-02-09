@@ -11,9 +11,12 @@ import Then
 import KeychainSwift
 
 //MARK: - Error Type
+/// 토큰 만료 에러
+enum TokenError: Swift.Error {
+  case tokenExpired
+}
 enum BamBooAPIError : Error{
     case empty
-    case tokenExpired
     case requestTimeout(Error)
     case internetConnection(Error)
     case restError(Error, statusCode : Int? = nil, errorCode: String? = nil)
@@ -133,12 +136,12 @@ extension BamBooAPI{
         return Self.moya.rx.request(endpoint)
             .flatMap{ // 401(Token Error)일때 다시 발급
                 if $0.statusCode == 401{
-                    throw BamBooAPIError.tokenExpired
+                    throw TokenError.tokenExpired
                 }else{
                     return Single.just($0)
                 }
             }
-            .retry(when: {(error : Observable<BamBooAPIError>) in
+            .retry(when: { (error : Observable<TokenError>) in
                 error.flatMap{ error -> Single<Response> in
                     let provider : ServiceProviderType = ServiceProvider()
                     return provider.loginService.postRefresh()
@@ -178,8 +181,6 @@ extension BamBooAPI{
                         }
                         print(message)
                     }
-                case BamBooAPIError.tokenExpired:
-                    print("😇토큰 없어요!!")
                 default:
                     break
                 }
