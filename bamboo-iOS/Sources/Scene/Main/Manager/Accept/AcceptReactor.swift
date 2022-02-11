@@ -22,10 +22,12 @@ final class AcceptReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
         case editSuccess(index: Int, title : String, content: String)
     }
     enum Mutation{
         case updateDataSource([AcceptSection.Item])
+        case updateRefreshDataSource([AcceptSection.Item])
         case editSuccess(Int,String,String)
     }
     struct State{
@@ -48,6 +50,8 @@ extension AcceptReactor {
         switch action {
         case .viewDidLoad:
             return getAccept()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case let .editContentPresent(idx,index):
             steps.accept(BambooStep.editContentModalsRequired(idx: idx, index: index))
             return .empty()
@@ -63,6 +67,7 @@ extension AcceptReactor {
         }
     }
 }
+
 //MARK: - reduce
 extension AcceptReactor{
     func reduce(state: State, mutation: Mutation) -> State {
@@ -70,12 +75,16 @@ extension AcceptReactor{
         switch mutation{
         case .updateDataSource(let sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case .updateRefreshDataSource(let sectionItem):
+            state.mainSection.items.removeAll()
+            state.mainSection.items.append(contentsOf: sectionItem)
         case let .editSuccess(indexPath, title, content):
             print("edit index: \(indexPath), title : \(title), content : \(content)")
         }
         return state
     }
 }
+
 //MARK: - GetAcceptAlgorithm
 private extension AcceptReactor{
     private func getAccept() -> Observable<Mutation>{
@@ -84,9 +93,19 @@ private extension AcceptReactor{
         return self.provider.managerService.getAdminAlgorithm(algorithmRequest: acceptRequest)
             .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
                 let mainSectionItem = algorithm.data.data.map(AcceptSection.Item.main)
-//                mainSectionItem(algorithm.data.data[0].isClicked = false)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let acceptRequest = AdminAlgorithmRequest(page: currentPage, status: "ACCEPTED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: acceptRequest)
+            .map{(algorithm: Algorithm) -> [AcceptSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(AcceptSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
     }
 }

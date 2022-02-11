@@ -38,7 +38,6 @@ final class MainReactor : Reactor, Stepper{
             model: 0,
             items: []
          )
-        var isLoading : Bool = false
     }
     
     //MARK: - Properties
@@ -89,7 +88,6 @@ extension MainReactor{
         case let .updateRefreshDataSource(sectionItem):
             state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
-            state.isLoading = true
         case let .postEmoji(indexPath):
 //            state.mainSection.items[indexPath] = .main(.init(idx: 3, algorithmNumber: 3, title: "2", content: "1", tag: "3", reason: "12", createdAt: "2021-11-10T03:32:07.942Z", isClicked: false, emojiCount: 3))
             print("index ---> [\(indexPath)] \(state.mainSection.items[indexPath])")
