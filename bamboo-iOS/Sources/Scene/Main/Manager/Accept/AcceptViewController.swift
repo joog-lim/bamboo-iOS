@@ -36,12 +36,9 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        //navigationItem
         navigationItem.applyImageNavigation()
         setDelegate()
-        //tableView
         mainTableView.refreshControl = refreshControl
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     //MARK: - AddView
     override func addView() {

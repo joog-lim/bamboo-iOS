@@ -25,9 +25,6 @@ final class MainViewController : baseVC<MainReactor>{
         $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
 
-    private func likeBtnClick(indexPath : Int, state : Bool){
-        print("좋아요 :: \(indexPath)번째 \(state)")
-    }
 
     //MARK: - Helper
     override func configureUI() {
@@ -35,7 +32,6 @@ final class MainViewController : baseVC<MainReactor>{
         navigationItem.applyImageNavigation()
         setDelegate()
         mainTableView.refreshControl = refreshControl
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
     
     //MARK: - addView
@@ -129,7 +125,6 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
-        self.likeBtnClick(indexPath: indexPath.row, state: state)
          reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
     }
 }

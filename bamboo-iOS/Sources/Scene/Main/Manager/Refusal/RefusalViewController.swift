@@ -32,7 +32,6 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         setDelegate()
         //tableView
         mainTableView.refreshControl = refreshControl
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
     override func addView() {
