@@ -6,6 +6,10 @@ import RxDataSources
 
 final class MainViewController : baseVC<MainReactor>{
     //MARK: - Properties
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
+    }
+
     private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
         $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
         $0.register(cellType: BulletinBoardsTableViewCell.self)
@@ -30,7 +34,7 @@ final class MainViewController : baseVC<MainReactor>{
         super.configureUI()
         navigationItem.applyImageNavigation()
         setDelegate()
-        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl = refreshControl
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
     }
     
@@ -68,6 +72,13 @@ final class MainViewController : baseVC<MainReactor>{
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     // - Action
     override func bindAction(reactor: MainReactor) {
@@ -75,6 +86,7 @@ final class MainViewController : baseVC<MainReactor>{
             .map{_ in Reactor.Action.viewDidLoad}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
     }
     // - State
     override func bindState(reactor: MainReactor) {
@@ -105,6 +117,7 @@ final class MainViewController : baseVC<MainReactor>{
             .map(Array.init(with:))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
     }
 }
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
@@ -130,6 +143,3 @@ extension MainViewController : UITableViewDelegate{
         return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }
-
-
-

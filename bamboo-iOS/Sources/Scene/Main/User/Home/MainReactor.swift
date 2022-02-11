@@ -29,6 +29,7 @@ final class MainReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
+        case updateRefreshDataSource([MainSection.Item])
         case postEmoji(indexPath : Int)
         case deleteEmoji(indexPath : Int)
     }
@@ -37,6 +38,7 @@ final class MainReactor : Reactor, Stepper{
             model: 0,
             items: []
          )
+        var isLoading : Bool = false
     }
     
     //MARK: - Properties
@@ -56,6 +58,8 @@ extension MainReactor{
         switch action{
         case .viewDidLoad:
             return getAlgorithm()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
@@ -71,24 +75,24 @@ extension MainReactor{
             }
         case let .emojiBtnClick(idx,indexPath,status):
             return postEmoji(idx: idx,indexPath: indexPath, status: status)
-            
-        case .refreshDataLoad:
-            print("refresh")
-            return .empty()
         }
     }
 }
+
 //MARK: - reduce
 extension MainReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let .updateDataSource(sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
+            state.mainSection.items.append(contentsOf: sectionItem)
+            state.isLoading = true
         case let .postEmoji(indexPath):
-            state.mainSection.items[indexPath] = .main(.init(idx: 3, algorithmNumber: 3, title: "2", content: "1", tag: "3", reason: "12", createdAt: "2021-11-10T03:32:07.942Z", isClicked: false, emojiCount: 3))
-//            state.mainSection.items[indexPath].main.isClicked = false
-            print("\(state.mainSection.items)")
+//            state.mainSection.items[indexPath] = .main(.init(idx: 3, algorithmNumber: 3, title: "2", content: "1", tag: "3", reason: "12", createdAt: "2021-11-10T03:32:07.942Z", isClicked: false, emojiCount: 3))
+            print("index ---> [\(indexPath)] \(state.mainSection.items[indexPath])")
         case let .deleteEmoji(indexPath):
             print("\(state.mainSection.items[indexPath])")
         }
@@ -106,6 +110,17 @@ private extension MainReactor{
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let algorithmRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
+            .map{(algorithm: Algorithm) -> [MainSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(MainSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
     }
 }
 
