@@ -7,11 +7,16 @@
 
 import UIKit
 import Reusable
-
+import RxSwift
 import RxDataSources
 
 final class RefusalViewController : baseVC<RefusalReactor>{
+    
     //MARK: - Properties
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
+    }
+    
     private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.register(headerFooterViewType: RefusalTableViewHeaderView.self)
         $0.register(cellType: RefusalTableViewCell.self)
@@ -26,6 +31,7 @@ final class RefusalViewController : baseVC<RefusalReactor>{
         navigationItem.applyImageNavigation()
         setDelegate()
         //tableView
+        mainTableView.refreshControl = refreshControl
         mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
@@ -47,6 +53,15 @@ final class RefusalViewController : baseVC<RefusalReactor>{
             .disposed(by: disposeBag)
     }
     //MARK: - bind
+    override func bindView(reactor: RefusalReactor) {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
     override func bindAction(reactor: RefusalReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}

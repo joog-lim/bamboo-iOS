@@ -24,9 +24,11 @@ final class StandByReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
     }
     enum Mutation{
         case updateDataSource([StandBySection.Item])
+        case updateRefreshDataSource([StandBySection.Item])
         case acceptedSuccess(Int)
     }
     struct State{
@@ -48,6 +50,8 @@ extension StandByReactor{
         switch action{
         case .viewDidLoad:
             return getStandBy()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case let .standbyBtnTap(titleText, message,idx,index,algorithmNumber):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
@@ -72,7 +76,10 @@ extension StandByReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let .updateDataSource(sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .acceptedSuccess(indexPath):
             state.mainSection.items.remove(at: indexPath)
@@ -93,6 +100,21 @@ private extension StandByReactor{
             }
             .map(Mutation.updateDataSource)
     }
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let standByRequest = AdminAlgorithmRequest(page: currentPage, status: "PENDING")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: standByRequest)
+            .map{(algorithm: Algorithm) -> [StandBySection.Item] in
+                let mainSectionItem = algorithm.data.data.map(StandBySection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
+    }
+
+}
+
+//MARK: - Patch
+private extension StandByReactor{
     private func patchAcceptStatus(idx : Int,index : Int) -> Observable<Mutation>{
         let acceptstatusRequest  = EditStatusRequest(status: "ACCEPTED", reason: "")
         return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: acceptstatusRequest, idx: idx)

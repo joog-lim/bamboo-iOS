@@ -21,10 +21,12 @@ final class RefusalReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
         case clickRefusalCancelBtn(Int,Int)
     }
     enum Mutation{
         case updateDataSource([RefusalSection.Item])
+        case updateRefreshDataSource([RefusalSection.Item])
         case refusalStatusSuccess(indexPath : Int)
     }
     struct State{
@@ -47,6 +49,8 @@ extension RefusalReactor{
         switch action{
         case .viewDidLoad:
             return getRefusal()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case let .pagination(contentHeight, contentOffsetY, scrollViewHeight):
             let paddingSpace = contentHeight - contentOffsetY
             if paddingSpace < scrollViewHeight{
@@ -56,6 +60,7 @@ extension RefusalReactor{
             }
         case let .clickRefusalCancelBtn(idx,indexPath):
             return patchRefusalStatus(idx: idx,indexPath: indexPath)
+
         }
     }
 }
@@ -64,17 +69,21 @@ extension RefusalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let .updateDataSource(sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .refusalStatusSuccess(indexPath):
             state.mainSection.items.remove(at: indexPath)
             print("Success")
         }
+
         return state
     }
 }
 
-//MARK: - GetAcceptAlgorithm
+//MARK: - Get
 private extension RefusalReactor{
     private func getRefusal() -> Observable<Mutation>{
         self.currentPage += 1
@@ -86,6 +95,20 @@ private extension RefusalReactor{
             }
             .map(Mutation.updateDataSource)
     }
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let refusalRequest = AdminAlgorithmRequest(page: currentPage, status: "REJECTED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: refusalRequest)
+            .map{(algorithm: Algorithm) -> [RefusalSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(RefusalSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
+    }
+}
+
+//MARK: - Patch
+private extension RefusalReactor{
     private func patchRefusalStatus(idx : Int,indexPath : Int) -> Observable<Mutation>{
         let editRequest = EditStatusRequest(status: "ACCEPTED", reason: "")
         return self.provider.managerService.patchRefusalAlgorithm(refusalRequest: editRequest, idx: idx).map{ Mutation.refusalStatusSuccess(indexPath: indexPath)}
