@@ -30,6 +30,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>DropDown.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMAppAuth.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -58,24 +63,28 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>JGProgressHUD.xcscheme</key>
+		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+<<<<<<< HEAD
 		<key>JGProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>34</integer>
 		</dict>
 		<key>KeychainSwift.xcscheme</key>
+=======
+		<key>Moya.xcscheme</key>
+>>>>>>> 7303c1d8fc7da2f3718e696632c0a364a1b7bbe3
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>Moya.xcscheme</key>
+		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -99,14 +108,14 @@
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
-		<key>Pods-bamboo-iOS.xcscheme</key>
+		<key>Pods-bamboo-iOS-bamboo-iOSTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
-		<key>ReachabilitySwift.xcscheme</key>
+		<key>Pods-bamboo-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -128,7 +137,7 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>RxAlertViewable.xcscheme</key>
+		<key>Reusable.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -149,6 +158,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>18</integer>
+		</dict>
+		<key>RxBlocking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>RxCocoa.xcscheme</key>
 		<dict>
@@ -190,7 +204,7 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
-		<key>RxReachability.xcscheme</key>
+		<key>RxNimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -218,6 +232,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>27</integer>
+		</dict>
+		<key>RxTest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>RxViewController.xcscheme</key>
 		<dict>

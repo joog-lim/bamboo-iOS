@@ -9,17 +9,32 @@
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9362772CDF50032F1AA /* noWifiReactor.swift */; };
+		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
+		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
+		EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */; };
+		EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */; };
+		EE1B8866279E4E3C00B92181 /* DeleteTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */; };
+		EE1B8868279F096B00B92181 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8867279F096B00B92181 /* LoginRequest.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
+		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
-		EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
-		EE3BA57E2702F2A100281096 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57D2702F2A100281096 /* UserData.swift */; };
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
+		EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48374E2799957900EC4681 /* JWTOauth.swift */; };
+		EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4837502799B49100EC4681 /* ReportRequest.swift */; };
 		EE489A992771B60200513E94 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE489A982771B60200513E94 /* OSLogExt.swift */; };
-		EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55923B270DEC4E00223D22 /* ManagerData.swift */; };
+		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
+		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
+		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
+		EE5D4C9E279FE59200FFAB7E /* EditAlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */; };
+		EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */; };
+		EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */; };
+		EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */; };
+		EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF17278F273400CCF1D2 /* Verify.swift */; };
+		EE5DBF1A278F38D100CCF1D2 /* BulletinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -30,10 +45,8 @@
 		EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */; };
 		EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */; };
 		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
-		EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
-		EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141FD2701CEA000ECFDCC /* RuleText.swift */; };
 		EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8343F72742A98000991D32 /* GoogleLogin.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
@@ -56,17 +69,30 @@
 		EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFB275E097900A05857 /* DetailReactor.swift */; };
 		EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */; };
 		EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */; };
-		EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98CE49277055F100AE407B /* Cell+ReusableID.swift */; };
+		EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */; };
+		EE9823B027827AC400C1A915 /* BamBooAPI+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */; };
+		EE9823B42782EDAE00C1A915 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9823B32782EDAE00C1A915 /* Login.swift */; };
 		EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */; };
 		EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */; };
 		EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */; };
 		EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */; };
 		EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */; };
 		EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5FDD226ECF202004856F3 /* AlertTextField.swift */; };
+		EEA804C3279491DE00D55C54 /* AdminAlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA804C2279491DE00D55C54 /* AdminAlgorithmRequest.swift */; };
 		EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */; };
+		EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */; };
+		EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB0A010277C1850004D7D7F /* DeleteSection.swift */; };
 		EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */; };
 		EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB198F9275FA650000375AB /* StandByFlow.swift */; };
+		EEB32E592786E6B000D639F6 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB32E582786E6B000D639F6 /* Token.swift */; };
 		EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */; };
+		EEB498FD2781F0750082709A /* RxOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FC2781F0750082709A /* RxOperation.swift */; };
+		EEB498FF2781F2770082709A /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB498FE2781F2770082709A /* StringExt.swift */; };
+		EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB499082781F89C0082709A /* BamBooAPI.swift */; };
+		EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */; };
+		EEB4990D2781F9E60082709A /* BamBooAPI+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */; };
+		EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */; };
+		EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB499102781FAD80082709A /* BamBooAPI+Request.swift */; };
 		EEBA436126ED12500062642F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */; };
 		EEBA436226ED12540062642F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1B26E78F130015E81B /* NanumSquareRoundEB.ttf */; };
 		EEBA436326ED12560062642F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */; };
@@ -76,31 +102,43 @@
 		EEBDA34626FC0FBE00B966E3 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBDA34526FC0FBE00B966E3 /* OSLog.framework */; };
 		EEC430192758A57B008F802F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC430182758A57B008F802F /* LoginReactor.swift */; };
 		EEC4301B2758A812008F802F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301A2758A812008F802F /* AppFlow.swift */; };
-		EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301C2758A8A4008F802F /* NetworkManager.swift */; };
-		EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */; };
 		EEC4302327591141008F802F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302227591141008F802F /* BambooStep.swift */; };
 		EEC4302B27591488008F802F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC4302A27591488008F802F /* StepExt.swift */; };
+		EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9F38E277970CF006F7339 /* MainSection.swift */; };
 		EECCC126275D04000068A4BD /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC125275D04000068A4BD /* ViewExt.swift */; };
 		EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC127275D041C0068A4BD /* ColorExt.swift */; };
 		EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC129275D045B0068A4BD /* NavigationExt.swift */; };
 		EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12B275D04790068A4BD /* LabelExt.swift */; };
 		EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */; };
+		EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B28277AB12600B00807 /* AcceptSection.swift */; };
+		EECD8B30277B109000B00807 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B2F277B109000B00807 /* DateExt.swift */; };
+		EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECD8B37277B638E00B00807 /* StandBySection.swift */; };
 		EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE317276A0D4C0075711C /* ServiceProvider.swift */; };
-		EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* UserLoginService.swift */; };
+		EECDE31A276A0D830075711C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* LoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
-		EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD332761D35A004AD43E /* APIEnvironment.swift */; };
-		EED1FD362761D6D5004AD43E /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD352761D6D5004AD43E /* Networkable.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
+		EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */; };
+		EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */; };
+		EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352372785B482001ADE19 /* NoWifiAlertView.swift */; };
 		EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC42763BAA100898537 /* DeleteFlow.swift */; };
 		EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC62763BD4900898537 /* StandByReactor.swift */; };
 		EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DC82763BD6300898537 /* RefusalReactor.swift */; };
 		EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED42DCA2763BD8500898537 /* DeleteReactor.swift */; };
+		EED4C3ED2798975D00A4E671 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4C3EC2798975D00A4E671 /* Base.swift */; };
+		EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */; };
+		EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
+		EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A7822795DD720051FA7F /* ManagerService.swift */; };
+		EEE2A78527971A110051FA7F /* EmojiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A78427971A110051FA7F /* EmojiRequest.swift */; };
+		EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */; };
 		EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */; };
-		EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */; };
+		EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */; };
 		EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF42F16270BDAD00088043F /* BaseVC.swift */; };
+		EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */; };
+		EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */; };
+		FECA09B151A83DCCFC5F6C47 /* Pods_bamboo_iOS_bamboo_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A3B7F80B59DB3A3E25D62A /* Pods_bamboo_iOS_bamboo_iOSTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,19 +154,37 @@
 /* Begin PBXFileReference section */
 		1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		69A3B7F80B59DB3A3E25D62A /* Pods_bamboo_iOS_bamboo_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS_bamboo_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6F150B42FC5487FAC2680F /* Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE09E9362772CDF50032F1AA /* noWifiReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiReactor.swift; sourceTree = "<group>"; };
+		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EE1B8867279F096B00B92181 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
+		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
-		EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
-		EE3BA57D2702F2A100281096 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = "bamboo-iOS/Sources/Common/Models/UserData/UserData.swift"; sourceTree = SOURCE_ROOT; };
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		EE48374E2799957900EC4681 /* JWTOauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTOauth.swift; sourceTree = "<group>"; };
+		EE4837502799B49100EC4681 /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
 		EE489A982771B60200513E94 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExt.swift; sourceTree = "<group>"; };
-		EE55923B270DEC4E00223D22 /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
+		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
+		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlgorithmRequest.swift; sourceTree = "<group>"; };
+		EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIndexable.swift; sourceTree = "<group>"; };
+		EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		EE5DBF17278F273400CCF1D2 /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
+		EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinRequest.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -139,10 +195,8 @@
 		EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewCell.swift; sourceTree = "<group>"; };
 		EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTableViewCell.swift; sourceTree = "<group>"; };
 		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
-		EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModal.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
-		EE8141FD2701CEA000ECFDCC /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
 		EE8343F72742A98000991D32 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,7 +221,9 @@
 		EE97ACFB275E097900A05857 /* DetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactor.swift; sourceTree = "<group>"; };
 		EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptReactor.swift; sourceTree = "<group>"; };
 		EE97B7382719E75500479A06 /* CustomDropDownBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownBtn.swift; sourceTree = "<group>"; };
-		EE98CE49277055F100AE407B /* Cell+ReusableID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+ReusableID.swift"; sourceTree = "<group>"; };
+		EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Task.swift"; sourceTree = "<group>"; };
+		EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Header.swift"; sourceTree = "<group>"; };
+		EE9823B32782EDAE00C1A915 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		EE98CE4B277056DA00AE407B /* EditContentModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModalReactor.swift; sourceTree = "<group>"; };
 		EE9F0D1826E78F130015E81B /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		EE9F0D1926E78F130015E81B /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
@@ -178,41 +234,63 @@
 		EE9F0D5B26E8CFD40015E81B /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		EEA5AF322705BABE000FF48A /* NetWorkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkStatus.swift; sourceTree = "<group>"; };
 		EEA5FDD226ECF202004856F3 /* AlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		EEA804C2279491DE00D55C54 /* AdminAlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAlgorithmRequest.swift; sourceTree = "<group>"; };
 		EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptManagerTableViewCell.swift; sourceTree = "<group>"; };
+		EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalSection.swift; sourceTree = "<group>"; };
+		EEB0A010277C1850004D7D7F /* DeleteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSection.swift; sourceTree = "<group>"; };
 		EEB198F7275F7D0A000375AB /* WritingBulletinBoardReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardReactor.swift; sourceTree = "<group>"; };
 		EEB198F9275FA650000375AB /* StandByFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByFlow.swift; sourceTree = "<group>"; };
+		EEB32E582786E6B000D639F6 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModalReactor.swift; sourceTree = "<group>"; };
+		EEB498FC2781F0750082709A /* RxOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperation.swift; sourceTree = "<group>"; };
+		EEB498FE2781F2770082709A /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		EEB499082781F89C0082709A /* BamBooAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BamBooAPI.swift; sourceTree = "<group>"; };
+		EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+BaseURL.swift"; sourceTree = "<group>"; };
+		EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Method.swift"; sourceTree = "<group>"; };
+		EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Path.swift"; sourceTree = "<group>"; };
+		EEB499102781FAD80082709A /* BamBooAPI+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BamBooAPI+Request.swift"; sourceTree = "<group>"; };
 		EEBDA34026FB5C0300B966E3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		EEBDA34526FC0FBE00B966E3 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
 		EEC430182758A57B008F802F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		EEC4301A2758A812008F802F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
-		EEC4301C2758A8A4008F802F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = "bamboo-iOS/Sources/Network/NetworkManager.swift"; sourceTree = SOURCE_ROOT; };
-		EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerLoginAPI.swift; path = "bamboo-iOS/Sources/Network/ManagerLoginAPI.swift"; sourceTree = SOURCE_ROOT; };
 		EEC4302227591141008F802F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEC4302A27591488008F802F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
+		EEC9F38E277970CF006F7339 /* MainSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSection.swift; sourceTree = "<group>"; };
 		EECCC125275D04000068A4BD /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		EECCC127275D041C0068A4BD /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		EECCC129275D045B0068A4BD /* NavigationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExt.swift; sourceTree = "<group>"; };
 		EECCC12B275D04790068A4BD /* LabelExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExt.swift; sourceTree = "<group>"; };
 		EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExt.swift; sourceTree = "<group>"; };
+		EECD8B28277AB12600B00807 /* AcceptSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptSection.swift; sourceTree = "<group>"; };
+		EECD8B2F277B109000B00807 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		EECD8B37277B638E00B00807 /* StandBySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandBySection.swift; sourceTree = "<group>"; };
 		EECDE317276A0D4C0075711C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
-		EECDE319276A0D830075711C /* UserLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginService.swift; sourceTree = "<group>"; };
+		EECDE319276A0D830075711C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		EED1FD332761D35A004AD43E /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
-		EED1FD352761D6D5004AD43E /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
+		EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalVC.swift; sourceTree = "<group>"; };
+		EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalReactor.swift; sourceTree = "<group>"; };
+		EED352372785B482001ADE19 /* NoWifiAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiAlertView.swift; sourceTree = "<group>"; };
 		EED42DC42763BAA100898537 /* DeleteFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFlow.swift; sourceTree = "<group>"; };
 		EED42DC62763BD4900898537 /* StandByReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByReactor.swift; sourceTree = "<group>"; };
 		EED42DC82763BD6300898537 /* RefusalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalReactor.swift; sourceTree = "<group>"; };
 		EED42DCA2763BD8500898537 /* DeleteReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReactor.swift; sourceTree = "<group>"; };
+		EED4C3EC2798975D00A4E671 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTableViewHeaderView.swift; sourceTree = "<group>"; };
+		EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		EEE2A7822795DD720051FA7F /* ManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerService.swift; sourceTree = "<group>"; };
+		EEE2A78427971A110051FA7F /* EmojiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRequest.swift; sourceTree = "<group>"; };
+		EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewActivityIndicatiorFooter.swift; sourceTree = "<group>"; };
 		EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOauthModalReactor.swift; sourceTree = "<group>"; };
-		EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerLoginModalReactor.swift; sourceTree = "<group>"; };
+		EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmRequest.swift; sourceTree = "<group>"; };
 		EEF42F16270BDAD00088043F /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FECA09B151A83DCCFC5F6C47 /* Pods_bamboo_iOS_bamboo_iOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +320,8 @@
 			children = (
 				450B525D3040C9D8D909B9E5 /* Pods-bamboo-iOS.debug.xcconfig */,
 				1EF78B3550F3909AFDB7E7A0 /* Pods-bamboo-iOS.release.xcconfig */,
+				EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */,
+				7D6F150B42FC5487FAC2680F /* Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -251,6 +332,7 @@
 				EE3BA5872703EDED00281096 /* Network.framework */,
 				EEBDA34526FC0FBE00B966E3 /* OSLog.framework */,
 				C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */,
+				69A3B7F80B59DB3A3E25D62A /* Pods_bamboo_iOS_bamboo_iOSTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,9 +349,10 @@
 		EE1D8AE827180A21003614BE /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EECDE31B276A0E140075711C /* BaseService.swift */,
-				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
-				EECDE319276A0D830075711C /* UserLoginService.swift */,
+				EEF451BF278B362100ADA8BD /* Common */,
+				EECDE319276A0D830075711C /* LoginService.swift */,
+				EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */,
+				EEE2A7822795DD720051FA7F /* ManagerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -297,8 +380,8 @@
 		EE1D8AEB27180D1F003614BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				EEF42F10270BD90F0088043F /* Manager */,
 				EE1D8AED27180D4E003614BE /* User */,
+				EEF42F10270BD90F0088043F /* Manager */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -340,34 +423,28 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
-		EE30E5722706B02600B9AF8A /* CustomTextView */ = {
+		EE30E5722706B02600B9AF8A /* CustomView + TextView */ = {
 			isa = PBXGroup;
 			children = (
 				EE30E5732706B04A00B9AF8A /* AlertTextView.swift */,
 			);
-			path = CustomTextView;
+			path = "CustomView + TextView";
 			sourceTree = "<group>";
 		};
-		EE30E5782706E5E600B9AF8A /* MainPageTableView */ = {
+		EE30E5782706E5E600B9AF8A /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
 				EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */,
+				EEF451C4278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift */,
 			);
-			path = MainPageTableView;
-			sourceTree = "<group>";
-		};
-		EE30E5792706E7D000B9AF8A /* DropDownTableView */ = {
-			isa = PBXGroup;
-			children = (
-				EE30E57C2706E8A900B9AF8A /* DropDownTableViewCell.swift */,
-			);
-			path = DropDownTableView;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		EE3BA5772702EFB000281096 /* BaseTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */,
+				EEF451C0278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift */,
 			);
 			path = BaseTableViewCell;
 			sourceTree = "<group>";
@@ -375,8 +452,14 @@
 		EE3BA57F270301F200281096 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EE55923A270DEC1200223D22 /* UserData */,
-				EE559239270DEC0600223D22 /* ManagerData */,
+				EED4C3EE2798976200A4E671 /* Base */,
+				EE09E940277349710032F1AA /* ModelType.swift */,
+				EE9823B32782EDAE00C1A915 /* Login.swift */,
+				EE23E19927736AE3001171EB /* Algorithem.swift */,
+				EE55C23F27819B50001596C1 /* Rule.swift */,
+				EEB32E582786E6B000D639F6 /* Token.swift */,
+				EE5DBF17278F273400CCF1D2 /* Verify.swift */,
+				EEB499002781F5BB0082709A /* Request */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -384,8 +467,8 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EED3523127859CB7001ADE19 /* NoWifiModal */,
 				EE963D2E2734002E005070B5 /* GoogleOauthModal */,
-				EE80A7FE2730C83F00FF204C /* ManagerLoginModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
@@ -407,25 +490,18 @@
 			isa = PBXGroup;
 			children = (
 				EEA5AF302705BA8E000FF48A /* NoWifiViewController */,
-				EEA5AF312705BA9B000FF48A /* WifiSystem */,
 			);
 			path = NoWifi;
 			sourceTree = "<group>";
 		};
-		EE559239270DEC0600223D22 /* ManagerData */ = {
+		EE55C23E2780BF43001596C1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EE55923B270DEC4E00223D22 /* ManagerData.swift */,
+				EE55C2432781ECC8001596C1 /* Encodable.swift */,
+				EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */,
+				EE48374E2799957900EC4681 /* JWTOauth.swift */,
 			);
-			path = ManagerData;
-			sourceTree = "<group>";
-		};
-		EE55923A270DEC1200223D22 /* UserData */ = {
-			isa = PBXGroup;
-			children = (
-				EE3BA57D2702F2A100281096 /* UserData.swift */,
-			);
-			path = UserData;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		EE680E52271EB921006D0F03 /* Custom PostLikeOrDisLike */ = {
@@ -469,6 +545,7 @@
 			children = (
 				EE7C6F7A26EEEC960071031C /* MainViewController.swift */,
 				EE97ACF0275DEAF500A05857 /* MainReactor.swift */,
+				EEC9F38E277970CF006F7339 /* MainSection.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -478,6 +555,7 @@
 			children = (
 				EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */,
 				EE97ACFD275E0F6C00A05857 /* AcceptReactor.swift */,
+				EECD8B28277AB12600B00807 /* AcceptSection.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -487,6 +565,7 @@
 			children = (
 				EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */,
 				EED42DC62763BD4900898537 /* StandByReactor.swift */,
+				EECD8B37277B638E00B00807 /* StandBySection.swift */,
 			);
 			path = StandBy;
 			sourceTree = "<group>";
@@ -496,6 +575,7 @@
 			children = (
 				EE7CA2D6271D6D64003140CD /* RefusalViewController.swift */,
 				EED42DC82763BD6300898537 /* RefusalReactor.swift */,
+				EEB0A00E277BDB05004D7D7F /* RefusalSection.swift */,
 			);
 			path = Refusal;
 			sourceTree = "<group>";
@@ -505,6 +585,7 @@
 			children = (
 				EE7CA2D8271D6EAD003140CD /* DeleteViewController.swift */,
 				EED42DCA2763BD8500898537 /* DeleteReactor.swift */,
+				EEB0A010277C1850004D7D7F /* DeleteSection.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -513,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E5271D9234003140CD /* StandByTableViewCell.swift */,
+				EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */,
 			);
 			path = StandBy;
 			sourceTree = "<group>";
@@ -521,6 +603,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E7271D92AB003140CD /* RefusalTableViewCell.swift */,
+				EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */,
 			);
 			path = Refusal;
 			sourceTree = "<group>";
@@ -529,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7CA2E9271D92BB003140CD /* DeleteTableViewCell.swift */,
+				EE1B8865279E4E3C00B92181 /* DeleteTableViewHeaderView.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";
@@ -549,8 +633,8 @@
 				EE7CA2E3271D9201003140CD /* Refusal */,
 				EE7CA2E1271D91E2003140CD /* StandBy */,
 				EEAA0631270D8462000EA78D /* Accept */,
-				EE30E5792706E7D000B9AF8A /* DropDownTableView */,
-				EE30E5782706E5E600B9AF8A /* MainPageTableView */,
+				EE30E5782706E5E600B9AF8A /* MainPage */,
+				EEE75CDF27905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -562,23 +646,6 @@
 				EEB3E482276F269A009BC98D /* RefusalModalReactor.swift */,
 			);
 			path = RefusalModal;
-			sourceTree = "<group>";
-		};
-		EE80A7FE2730C83F00FF204C /* ManagerLoginModal */ = {
-			isa = PBXGroup;
-			children = (
-				EE80A8012730C8A700FF204C /* ManagerLoginModal.swift */,
-				EEE8149B275BB5E10008B06A /* ManagerLoginModalReactor.swift */,
-			);
-			path = ManagerLoginModal;
-			sourceTree = "<group>";
-		};
-		EE8141F627018A1900ECFDCC /* RuleText */ = {
-			isa = PBXGroup;
-			children = (
-				EE8141FD2701CEA000ECFDCC /* RuleText.swift */,
-			);
-			path = RuleText;
 			sourceTree = "<group>";
 		};
 		EE8141FC2701CE8B00ECFDCC /* DetailText */ = {
@@ -716,9 +783,10 @@
 			isa = PBXGroup;
 			children = (
 				EE80467426F463E8007D3206 /* TableViewCell */,
+				EED352362785B472001ADE19 /* CustomAlert */,
 				EE953A37270678A600D4E133 /* Loading */,
 				EEA3008326FD471100EA6374 /* CustomLabel */,
-				EE30E5722706B02600B9AF8A /* CustomTextView */,
+				EE30E5722706B02600B9AF8A /* CustomView + TextView */,
 				EE7C6F7726EEEC680071031C /* CustomTextfield */,
 				EE7C6F7626EEEC4E0071031C /* CustomButton */,
 			);
@@ -797,8 +865,23 @@
 			isa = PBXGroup;
 			children = (
 				EEAA062F270D8102000EA78D /* AcceptManagerTableViewCell.swift */,
+				EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */,
 			);
 			path = Accept;
+			sourceTree = "<group>";
+		};
+		EEB499002781F5BB0082709A /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EEEE9023278C2E260023AFE5 /* AlgorithmRequest.swift */,
+				EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */,
+				EEA804C2279491DE00D55C54 /* AdminAlgorithmRequest.swift */,
+				EEE2A78427971A110051FA7F /* EmojiRequest.swift */,
+				EE4837502799B49100EC4681 /* ReportRequest.swift */,
+				EE1B8867279F096B00B92181 /* LoginRequest.swift */,
+				EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		EEBDA33F26FB5BF200B966E3 /* Rule */ = {
@@ -806,7 +889,6 @@
 			children = (
 				EEBDA34326FB5C7500B966E3 /* RuleViewController.swift */,
 				EE97ACF9275E095500A05857 /* RuleReactor.swift */,
-				EE8141F627018A1900ECFDCC /* RuleText */,
 			);
 			path = Rule;
 			sourceTree = "<group>";
@@ -824,6 +906,7 @@
 		EEC43026275913C9008F802F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */,
 				EE3BA57F270301F200281096 /* Models */,
 				EE80467326F45E78007D3206 /* Extensions */,
 			);
@@ -833,10 +916,14 @@
 		EEC430272759142B008F802F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EED1FD332761D35A004AD43E /* APIEnvironment.swift */,
-				EED1FD352761D6D5004AD43E /* Networkable.swift */,
-				EEC4301C2758A8A4008F802F /* NetworkManager.swift */,
-				EEC4301E2758A952008F802F /* ManagerLoginAPI.swift */,
+				EE55C23E2780BF43001596C1 /* Common */,
+				EEB499082781F89C0082709A /* BamBooAPI.swift */,
+				EEB4990A2781F8E50082709A /* BamBooAPI+BaseURL.swift */,
+				EEB4990C2781F9E50082709A /* BamBooAPI+Method.swift */,
+				EEB4990E2781FA7C0082709A /* BamBooAPI+Path.swift */,
+				EEB499102781FAD80082709A /* BamBooAPI+Request.swift */,
+				EE9823AC2782747000C1A915 /* BamBooAPI+Task.swift */,
+				EE9823AF27827AC400C1A915 /* BamBooAPI+Header.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -851,8 +938,11 @@
 				EECCC12B275D04790068A4BD /* LabelExt.swift */,
 				EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */,
 				EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */,
-				EE98CE49277055F100AE407B /* Cell+ReusableID.swift */,
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
+				EECD8B2F277B109000B00807 /* DateExt.swift */,
+				EEB498FE2781F2770082709A /* StringExt.swift */,
+				EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */,
+				EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -861,6 +951,8 @@
 			isa = PBXGroup;
 			children = (
 				EEC4302A27591488008F802F /* StepExt.swift */,
+				EEB498FC2781F0750082709A /* RxOperation.swift */,
+				EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -890,6 +982,32 @@
 			path = "bamboo-iOSTests";
 			sourceTree = "<group>";
 		};
+		EED3523127859CB7001ADE19 /* NoWifiModal */ = {
+			isa = PBXGroup;
+			children = (
+				EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */,
+				EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */,
+				EEA5AF312705BA9B000FF48A /* WifiSystem */,
+			);
+			path = NoWifiModal;
+			sourceTree = "<group>";
+		};
+		EED352362785B472001ADE19 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				EED352372785B482001ADE19 /* NoWifiAlertView.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		EED4C3EE2798976200A4E671 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EED4C3EC2798975D00A4E671 /* Base.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		EEF42F10270BD90F0088043F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +1025,15 @@
 				EEF42F16270BDAD00088043F /* BaseVC.swift */,
 			);
 			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		EEF451BF278B362100ADA8BD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EECDE31B276A0E140075711C /* BaseService.swift */,
+				EECDE317276A0D4C0075711C /* ServiceProvider.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -935,9 +1062,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EED265572761733E00A1994A /* Build configuration list for PBXNativeTarget "bamboo-iOSTests" */;
 			buildPhases = (
+				31A41662B5547BD848300201 /* [CP] Check Pods Manifest.lock */,
 				EED2654B2761733E00A1994A /* Sources */,
 				EED2654C2761733E00A1994A /* Frameworks */,
 				EED2654D2761733E00A1994A /* Resources */,
+				F4F54EF48BB097F0F387B3B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1011,6 +1140,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		31A41662B5547BD848300201 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bamboo-iOS-bamboo-iOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C66135E8F3CB0BB5B417E75E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1050,6 +1201,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS/Pods-bamboo-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4F54EF48BB097F0F387B3B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1060,13 +1228,19 @@
 				EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */,
 				EED42DC92763BD6300898537 /* RefusalReactor.swift in Sources */,
 				EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */,
+				EED4C3ED2798975D00A4E671 /* Base.swift in Sources */,
 				EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */,
+				EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
-				EEC4301F2758A952008F802F /* ManagerLoginAPI.swift in Sources */,
+				EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */,
+				EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */,
+				EEB4990B2781F8E50082709A /* BamBooAPI+BaseURL.swift in Sources */,
+				EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */,
+				EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */,
 				EECDE31C276A0E140075711C /* BaseService.swift in Sources */,
-				EE55923C270DEC4E00223D22 /* ManagerData.swift in Sources */,
+				EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */,
 				EE7CA2EA271D92BB003140CD /* DeleteTableViewCell.swift in Sources */,
 				EE97ACF7275DFCB600A05857 /* AcceptFlow.swift in Sources */,
 				EEB198F8275F7D0A000375AB /* WritingBulletinBoardReactor.swift in Sources */,
@@ -1076,69 +1250,100 @@
 				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
 				EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */,
 				EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */,
-				EE30E57D2706E8A900B9AF8A /* DropDownTableViewCell.swift in Sources */,
 				EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */,
+				EEB4990D2781F9E60082709A /* BamBooAPI+Method.swift in Sources */,
 				EEBDA34426FB5C7500B966E3 /* RuleViewController.swift in Sources */,
 				EEC4302327591141008F802F /* BambooStep.swift in Sources */,
-				EEE8149C275BB5E10008B06A /* ManagerLoginModalReactor.swift in Sources */,
+				EE09E941277349710032F1AA /* ModelType.swift in Sources */,
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
-				EED1FD342761D35A004AD43E /* APIEnvironment.swift in Sources */,
-				EE8141FE2701CEA000ECFDCC /* RuleText.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
+				EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
 				EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */,
 				EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
 				EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */,
-				EECDE31A276A0D830075711C /* UserLoginService.swift in Sources */,
+				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
+				EECDE31A276A0D830075711C /* LoginService.swift in Sources */,
+				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,
+				EE1B8866279E4E3C00B92181 /* DeleteTableViewHeaderView.swift in Sources */,
+				EE9823AD2782747000C1A915 /* BamBooAPI+Task.swift in Sources */,
 				EE98CE4C277056DA00AE407B /* EditContentModalReactor.swift in Sources */,
+				EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */,
 				EE97ACE9275DB3A000A05857 /* MainFlow.swift in Sources */,
+				EE5DBF1A278F38D100CCF1D2 /* BulletinRequest.swift in Sources */,
 				EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */,
+				EECD8B38277B638E00B00807 /* StandBySection.swift in Sources */,
 				EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */,
+				EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */,
+				EE55C24027819B50001596C1 /* Rule.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
+				EE9823B027827AC400C1A915 /* BamBooAPI+Header.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
 				EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */,
 				EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */,
 				EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */,
+				EE5D4C9E279FE59200FFAB7E /* EditAlgorithmRequest.swift in Sources */,
 				EEA5AF332705BABE000FF48A /* NetWorkStatus.swift in Sources */,
+				EEB498FD2781F0750082709A /* RxOperation.swift in Sources */,
+				EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */,
 				EEE8149A275A7BF80008B06A /* GoogleOauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
+				EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */,
+				EEB32E592786E6B000D639F6 /* Token.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
+				EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */,
+				EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
+				EEEE9024278C2E260023AFE5 /* AlgorithmRequest.swift in Sources */,
+				EEE2A78527971A110051FA7F /* EmojiRequest.swift in Sources */,
 				EE489A992771B60200513E94 /* OSLogExt.swift in Sources */,
 				EE7CA2E8271D92AB003140CD /* RefusalTableViewCell.swift in Sources */,
+				EEE75CE027905CA000A263C0 /* TableViewActivityIndicatiorFooter.swift in Sources */,
 				EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */,
 				EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */,
+				EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */,
+				EEC9F38F277970CF006F7339 /* MainSection.swift in Sources */,
+				EE9823B42782EDAE00C1A915 /* Login.swift in Sources */,
 				EE963D34273401A6005070B5 /* GoogleOauthModalVC.swift in Sources */,
+				EEB498FF2781F2770082709A /* StringExt.swift in Sources */,
 				EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */,
-				EE3BA57E2702F2A100281096 /* UserData.swift in Sources */,
 				EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */,
 				EEA5FDD326ECF202004856F3 /* AlertTextField.swift in Sources */,
-				EEC4301D2758A8A4008F802F /* NetworkManager.swift in Sources */,
 				EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */,
 				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
+				EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
+				EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
 				EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */,
 				EE97ACEF275DB68400A05857 /* DetailFlow.swift in Sources */,
 				EEAA0630270D8102000EA78D /* AcceptManagerTableViewCell.swift in Sources */,
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
+				EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */,
+				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
+				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
+				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
+				EEA804C3279491DE00D55C54 /* AdminAlgorithmRequest.swift in Sources */,
+				EE1B8868279F096B00B92181 /* LoginRequest.swift in Sources */,
 				EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */,
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
-				EE80A8022730C8A700FF204C /* ManagerLoginModal.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
+				EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */,
+				EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */,
+				EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */,
+				EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */,
 				EED42DC72763BD4900898537 /* StandByReactor.swift in Sources */,
 				EE97ACFC275E097900A05857 /* DetailReactor.swift in Sources */,
 				EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */,
-				EE98CE4A277055F100AE407B /* Cell+ReusableID.swift in Sources */,
 				EE97B7392719E75500479A06 /* CustomDropDownBtn.swift in Sources */,
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
-				EED1FD362761D6D5004AD43E /* Networkable.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
+				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1333,6 +1538,7 @@
 		};
 		EED265552761733E00A1994A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1358,6 +1564,7 @@
 		};
 		EED265562761733E00A1994A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D6F150B42FC5487FAC2680F /* Pods-bamboo-iOS-bamboo-iOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

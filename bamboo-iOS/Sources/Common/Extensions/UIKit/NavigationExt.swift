@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import Then
+import RxSwift
 //MARK: - Navigation Setting
 extension UINavigationItem {
     func applyImageNavigation(){
@@ -23,6 +24,5 @@ extension UINavigationController{
         navigationBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = false
     }
 }

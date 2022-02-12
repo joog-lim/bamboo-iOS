@@ -6,46 +6,47 @@
 //
 
 import UIKit
+import RxSwift
 
-class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{    
-    weak var delegate : AcceptManagerTableViewCellDelegate?
+protocol AcceptManagerTableViewCellDelegate : AnyObject{
+    func cellSettingbtnClick(cell : AcceptManagerTableViewCell, id : Int)
+}
+
+final class AcceptManagerTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     
+    weak var delegate : AcceptManagerTableViewCellDelegate?
+
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var dataLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 12)
+    private let dataLabel = UILabel().then{
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var cellSettingbtn = UIButton().then{
+    private let cellSettingbtn = UIButton().then{
         $0.setTitle("수정", for: .normal)
         $0.setTitleColor(.lightGray, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
-        $0.addTarget(self, action: #selector(SettingBtnClickAction), for: .touchUpInside)
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
-    }
-    //MARK: - Selector
-    @objc private func SettingBtnClickAction(){
-        delegate?.cellSettingbtnClick(cell: self)
     }
     
     //MARK: - Configure
@@ -54,9 +55,10 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
         addSubviews()
         location()
     }
+
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,cellSettingbtn,titleLabel,contentLabel)
     }
 
     private func location(){
@@ -92,23 +94,19 @@ class AcceptManagerTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    
-    //MARK: - 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
-    }
-    
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: ManagerTextData) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 알고리즘"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
+    //MARK: - Bind
+    override func bind(_ model: Algorithm.Datas.Results) {
+        algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
+        dataLabel.text = Date().usingDate(time: model.createdAt)
+        tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
     }
-}
-protocol AcceptManagerTableViewCellDelegate : AnyObject{
-    func cellSettingbtnClick(cell : AcceptManagerTableViewCell)
+    override func bindAction(_ model: Algorithm.Datas.Results) {
+        cellSettingbtn.rx.tap
+            .subscribe({  [weak self] _ in
+                self?.delegate?.cellSettingbtnClick(cell: self!, id: model.idx)
+            }).disposed(by: disposeBag)
+    }
+
 }

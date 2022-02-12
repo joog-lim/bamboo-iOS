@@ -7,9 +7,11 @@
 
 import UIKit
 import PanModal
+import RxKeyboard
 
 final class EditContentModal : baseVC<EditContentModalReactor>{
     
+    //MARK: - Properties
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
         $0.text = "수정하기"
@@ -38,72 +40,90 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     
     //MARK: - Helper
-    override func configureUI() {
-        super.configureUI()
-        contentTv.delegate = self
-    }
-    
     override func addView() {
         super.addView()
-        [editContentTitle,titleTf,contentTv,btnStackView].forEach{view.addSubview($0)}
+        view.addSubviews(editContentTitle,titleTf,contentTv,btnStackView)
     }
     override func setLayout() {
         super.setLayout()
-        editContentTitle.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(bounds.height/27.0666)
-            $0.left.equalToSuperview().offset(bounds.width/15.625)
+        if UIDevice.current.isiPhone{
+            editContentTitle.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(bounds.height/27.0666)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+            }
+        }else{
+            editContentTitle.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(40)
+                $0.left.equalToSuperview().offset(bounds.width/15.625)
+            }
         }
         titleTf.snp.makeConstraints {
-            $0.top.equalTo(editContentTitle.snp.bottom).offset(bounds.height/81.2)
+            $0.top.equalTo(editContentTitle.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/27.0666)
+            $0.height.equalTo(35)
         }
         contentTv.snp.makeConstraints {
-            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
+            $0.top.equalTo(titleTf.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/8.12)
+            $0.height.equalTo(130)
         }
         btnStackView.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-            $0.height.equalTo(bounds.height/23.2)
-            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
+            $0.height.equalTo(35)
+            $0.top.equalTo(contentTv.snp.bottom).offset(30)
         }
     }
-
+    override func keyBoardLayout() {
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
+    }
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+
+    //MARK: - Bind
     override func bindView(reactor: EditContentModalReactor) {
         super.bindView(reactor: reactor)
         
-    }
-}
-
-extension EditContentModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "내용을 입력하세요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
-    }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
+        editBtn.rx.tap
+            .map{Reactor.Action.editBtnTap(title: self.titleTf.text ?? "" , content: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        cancelBtn.rx.tap
+            .map{ Reactor.Action.cancelBtnTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
 
 extension EditContentModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
-    var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+
+    var cornerRadius: CGFloat{return 40}
+    
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(350)
+        }
+    }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7.4)
+        }else{
+            return .contentHeight(650)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

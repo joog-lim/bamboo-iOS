@@ -6,6 +6,10 @@
 //
 
 import XCTest
+import RxNimble
+import Nimble
+import RxTest
+import RxSwift
 
 class bamboo_iOSTests: XCTestCase {
 

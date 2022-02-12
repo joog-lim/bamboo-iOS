@@ -4,51 +4,49 @@
 //
 //  Created by Ji-hoon Ahn on 2021/10/18.
 //
-
 import UIKit
+import RxSwift
 
-class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
+protocol RefusalCancelBtnDelegate : AnyObject{
+    func refusalCancelBtnAction(cell : RefusalTableViewCell, id : Int)
+}
+
+final class RefusalTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     
     //MARK: - Delegate
     weak var delegate : RefusalCancelBtnDelegate?
     
     //MARK: - Properties
-    private lazy var view = UIView().then{
+    private let view = UIView().then{
         $0.backgroundColor = .white
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
-    private lazy var algorithm = UILabel().then{
+    private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemRed
     }
-    private lazy var dataLabel = UILabel().then{
+    private let dataLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .lightGray
     }
-    private lazy var tagLabel = UILabel().then{
+    private let tagLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 11)
         $0.textColor = .bamBoo_57CC4D
     }
-    private lazy var refusalCancelBtn = UIButton().then{
+    private let refusalCancelBtn = UIButton().then{
         $0.setTitle("거절취소", for: .normal)
         $0.setTitleColor(.systemRed, for: .normal)
         $0.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 11)
-        $0.addTarget(self, action: #selector(clickRefusalBtn), for: .touchUpInside)
     }
-    private lazy var titleLabel = UILabel().then{
+    private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .black
     }
-    private lazy var contentLabel = UILabel().then{
+    private let contentLabel = UILabel().then{
         $0.numberOfLines = 0
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .black
-    }
-    
-    //MARK: - Selector
-    @objc private func clickRefusalBtn(){
-        self.delegate?.refusalCancelBtnAction(cell: self)
     }
 
     //MARK: - Configure
@@ -57,10 +55,10 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
         addSubviews()
         location()
     }
-    
+
     private func addSubviews(){
         contentView.addSubview(view)
-        [algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel].forEach { view.addSubview($0)}
+        view.addSubviews(algorithm,dataLabel,tagLabel,refusalCancelBtn,titleLabel,contentLabel)
     }
     private func location(){
         view.snp.makeConstraints { make in
@@ -95,25 +93,20 @@ class RefusalTableViewCell : BaseTableViewCell<ManagerTextData>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    
-    //MARK: - 재사용
-    override func reuse() {
-        super.reuse()
-        self.delegate = nil
-    }
-    
-    //MARK: - bind로 데이터 넘겨줌
-    override func bind(_ model: ManagerTextData) {
-        super.bind(model)
-        algorithm.text = "#\(model.numberOfAlgorithm)번째 거절됨"
-        dataLabel.text = model.data
-        tagLabel.text = "#" +  model.tag.rawValue
+    //MARK: - Bind
+    override func bind(_ model: Algorithm.Datas.Results) {
+        algorithm.text = "#\(model.algorithmNumber)번째 거절됨"
+        dataLabel.text = Date().usingDate(time: model.createdAt)
+        tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
     }
+    
+    override func bindAction(_ model: Algorithm.Datas.Results) {
+        refusalCancelBtn.rx.tap
+            .subscribe({ [self] _ in
+                self.delegate?.refusalCancelBtnAction(cell: self, id: model.idx)
+            }).disposed(by: disposeBag)
+    }
 }
 
-//MARK: - Refusal Button action Protocol
-protocol RefusalCancelBtnDelegate : AnyObject{
-    func refusalCancelBtnAction(cell : RefusalTableViewCell)
-}

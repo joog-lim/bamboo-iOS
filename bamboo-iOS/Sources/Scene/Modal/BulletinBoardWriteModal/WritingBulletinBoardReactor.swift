@@ -9,7 +9,6 @@ import ReactorKit
 import RxFlow
 import RxCocoa
 
-
 final class WritingBulletinBoardReactor: Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()
@@ -17,28 +16,68 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case dismissModal
+        case viewWillAppear
+        case sendBtnTap(_ title : String? , _ content : String? ,_ tag : String?,_ answer : String?)
     }
     enum Mutation{
-        
+        case setQuestion(_ id : String , _ question : String)
+        case postSuccess
     }
     struct State{
-        
+        var id , question : String?
     }
     
+    //MARK: - Properties
+    let provider : ServiceProviderType
     let initialState: State
+    var id : String?
     
-    init(){
+    init(with provider : ServiceProviderType){
         self.initialState = State()
+        self.provider = provider
     }
 }
 
+//MARK: - Mutation
 extension WritingBulletinBoardReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case.dismissModal:
-            steps.accept(BambooStep.dismiss)
-            return .empty()
+        case .viewWillAppear:
+            return getVerify()
+        case let .sendBtnTap(title,content,tag,answer):
+            return postBulletin(title: title ?? "", content: content ?? "", tag: tag ?? "", answer: answer ?? "")
         }
+    }
+}
+
+//MARK: - reduce
+extension WritingBulletinBoardReactor{
+    func reduce(state: State, mutation: Mutation) -> State {
+        var new = state
+        switch mutation{
+        case let .setQuestion(id, question):
+            self.id = id
+            new.question = question
+        case .postSuccess:
+            steps.accept(BambooStep.dismiss)
+        }
+        return new
+    }
+}
+
+//MARK: - Get Qeustion
+extension WritingBulletinBoardReactor{
+    private func getVerify() -> Observable<Mutation>{
+        return self.provider.userService.getVerify()
+            .map{Mutation.setQuestion($0.data.id, $0.data.question)}
+    }
+}
+
+//MARK: - Post Bulletin
+extension WritingBulletinBoardReactor{
+    private func postBulletin(title : String, content : String, tag: String, answer : String) -> Observable<Mutation>{
+        let bulletRequest = BulletinRequest(title: title, content: content, tag: tag, verify: .init(id: id ?? "", answer: answer))
+        return  self.provider.userService.postBulletin(bulletinRequest: bulletRequest)
+            .map{Mutation.postSuccess}
     }
 }

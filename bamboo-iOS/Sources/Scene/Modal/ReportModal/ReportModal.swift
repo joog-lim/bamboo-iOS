@@ -9,6 +9,7 @@ import PanModal
 import RxSwift
 import RxCocoa
 import RxFlow
+import RxKeyboard
 
 final class ReportModal : baseVC<ReportReactor>{
     
@@ -33,10 +34,6 @@ final class ReportModal : baseVC<ReportReactor>{
     }
 
     //MARK: - Helper
-    override func configureUI() {
-        super.configureUI()
-        contentTv.delegate = self
-    }
     override func setLayout() {
         super.setLayout()
         if UIDevice.current.isiPhone{
@@ -84,39 +81,53 @@ final class ReportModal : baseVC<ReportReactor>{
     
     override func addView() {
         super.addView()
-        [editContentTitle,titleTf,contentTv,reportBtn].forEach{view.addSubview($0)}
+        view.addSubviews(editContentTitle,titleTf,contentTv,reportBtn)
     }
 
     //MARK: - KeyboardDown
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-}
-
-extension ReportModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "사유를 입력해주세요.\nex) 욕설이 들어가있어요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
     }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
+    
+    override func bindView(reactor: ReportReactor) {
+        reportBtn.rx.tap
+            .map{ Reactor.Action.reportBtnTap(reason: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
-
+//MARK: - panModal Setting
 extension ReportModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
+
     var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+    
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2)
+        }else{
+            return .contentHeight(350)
+        }
+    }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/5)
+        }else{
+            return .contentHeight(650)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

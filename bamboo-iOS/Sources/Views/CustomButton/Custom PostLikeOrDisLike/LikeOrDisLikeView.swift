@@ -24,7 +24,9 @@ class LikeOrDisLikeView : UIButton{
             if isSelected{
                 iv.image = UIImage(named: "BAMBOO_Good_Leaf_Select")
                 label.textColor = .bamBoo_57CC4D
+                label.text = "\((Int(label.text ?? "") ?? 0) + 1)"
             }else{
+                label.text = "\((Int(label.text ?? "") ?? 0) - 1)"
                 iv.image = UIImage(named: "BAMBOO_Good_Leaf")
                 label.textColor = .gray
             }
@@ -54,6 +56,7 @@ class LikeOrDisLikeView : UIButton{
         }
         label.snp.makeConstraints{
             $0.left.equalTo(iv.snp.right).offset(5)
+            $0.right.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }

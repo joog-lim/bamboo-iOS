@@ -51,10 +51,9 @@ final class LoginViewController : baseVC<LoginReactor> {
         super.configureUI()
         self.navigationController?.navigationBar.isHidden = true
     }
-    
     override func addView() {
         super.addView()
-        [logo,btnStackView,divider,guestBtn].forEach { view.addSubview($0)}
+        view.addSubviews(logo,btnStackView,divider,guestBtn)
     }
     override func setLayout() {
         super.setLayout()
@@ -89,7 +88,7 @@ final class LoginViewController : baseVC<LoginReactor> {
             $0.bottom.equalToSuperview().inset(bounds.height/7.185)
         }
     }
-    
+    //MARK: - Bind
     override func bindView(reactor: LoginReactor) {
         userBtn.rx.tap
             .map{Reactor.Action.userLoginButtonDidTap}

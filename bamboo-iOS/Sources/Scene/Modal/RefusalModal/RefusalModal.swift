@@ -8,11 +8,10 @@
 import UIKit
 import RxSwift
 import PanModal
+import RxKeyboard
 
 final class RefusalModal : baseVC<RefusalModalReactor>{
     //MARK: - Delegate
-    private var i = 10
-    
     private let editContentTitle = UILabel().then{
         let string : NSMutableAttributedString = NSMutableAttributedString(string: "알고리즘 거절")
         $0.font = UIFont(name: "NanumSquareRoundB", size: 16)
@@ -21,11 +20,8 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
         $0.attributedText = string
     }
     private lazy var refusaleditTitle = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "#\(i)번째 알고리즘을 거절합니다.")
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
-        $0.textColor = .black
-        string.setColorForText(textToFind: "#\(i)번째 알고리즘", withColor: .systemRed)
-        $0.attributedText = string
+        $0.textColor = .red
     }
     private let contentTv = AlertTextView(placeholder: "사유를 입력해주세요",fontSize: 11)
     
@@ -39,14 +35,9 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
     }
     
     //MARK: - Helper
-    override func configureUI() {
-        super.configureUI()
-        contentTv.delegate = self
-    }
-    
     override func addView() {
         super.addView()
-        [editContentTitle,refusaleditTitle,contentTv,refusalBtn].forEach{ view.addSubview($0)}
+        view.addSubviews(editContentTitle,refusaleditTitle,contentTv,refusalBtn)
     }
     
     override func setLayout() {
@@ -76,31 +67,54 @@ final class RefusalModal : baseVC<RefusalModalReactor>{
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-}
-extension RefusalModal : UITextViewDelegate{
-    // TextView Place Holder
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "내용을 입력하세요."
-            textView.textColor = UIColor.rgb(red: 196, green: 196, blue: 196)
-        }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
     }
-    // TextView Place Holder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.rgb(red: 196, green: 196, blue: 196) {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
+    
+    override func bindView(reactor: RefusalModalReactor) {
+        refusalBtn.rx.tap
+            .map{ Reactor.Action.refusalBtnTap(reason: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    override func bindState(reactor: RefusalModalReactor) {
+        reactor.state.map{ $0.algorithmNumber}
+        .distinctUntilChanged()
+        .map{ "# \($0) 번째 알고리즘 거절"}
+        .bind(to: refusaleditTitle.rx.text)
+        .disposed(by: disposeBag)
     }
 }
 
 extension RefusalModal : PanModalPresentable{
-    var panScrollable: UIScrollView? {return nil}
+    override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
+    var panScrollable: UIScrollView?{return nil}
     var panModalBackgroundColor: UIColor{return .black.withAlphaComponent(0.1)}
-    var cornerRadius: CGFloat{return 20}
-    var longFormHeight: PanModalHeight {return .contentHeight(bounds.height/3)}
-    var shortFormHeight: PanModalHeight{return .contentHeight(bounds.height/2)}
+
+    var cornerRadius: CGFloat{return 40}
+    
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2.3)
+        }else{
+            return .contentHeight(400)
+        }
+    }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7)
+        }else{
+            return .contentHeight(700)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
-    var shouldRoundTopCorners: Bool {return true}
     var showDragIndicator: Bool { return false}
 }

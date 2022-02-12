@@ -9,6 +9,7 @@ import UIKit.UINavigationController
 import RxSwift
 import RxFlow
 import UIKit
+import PanModal
 
 final class ManagerMainFlow : Flow{
     enum TabIndex : Int{
@@ -27,16 +28,18 @@ final class ManagerMainFlow : Flow{
         $0.tabBar.tintColor = .bamBoo_57CC4D
         $0.tabBar.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 0, blur: 10, spread: 0)
     }
+    private let provider : ServiceProviderType
     private let acceptFlow : AcceptFlow
     private let standByFlow : StandByFlow
     private let refusalFlow : RefusalFlow
     private let deleteFlow : DeleteFlow
     
-    init(){
-        self.acceptFlow = .init(stepper: .init())
-        self.standByFlow = .init(stepper: .init())
-        self.refusalFlow = .init(stepper: .init())
-        self.deleteFlow = .init(stepper: .init())
+    init(with provider : ServiceProviderType){
+        self.provider = provider
+        self.acceptFlow = .init(stepper: .init(), provider: provider)
+        self.standByFlow = .init(stepper: .init(), provider: provider)
+        self.refusalFlow = .init(stepper: .init(), provider: provider)
+        self.deleteFlow = .init(stepper: .init(), provider: provider)
     }
     deinit{
         print("\(type(of: self)): \(#function)") 
@@ -49,8 +52,8 @@ final class ManagerMainFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
         case .managerMainTabBarIsRequired:
             return coordinateToMainTabBar()
-        case .ruleIsRequired:
-            return coordinateToRule()
+        case .noWifiRequiered:
+            return coordinatorToNoWifiModal()
         default:
             return .none
         }
@@ -68,7 +71,6 @@ final class ManagerMainFlow : Flow{
             let standByImage : UIImage? = UIImage(systemName: "stop.circle")?.withRenderingMode(.alwaysTemplate)
             let refusalImage : UIImage? = UIImage(systemName: "exclamationmark.circle")?.withRenderingMode(.alwaysTemplate)
             let deleteImage : UIImage? = UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate)
-
             
             let acceptItem : UITabBarItem = .init(title: "수락", image: acceptImage, selectedImage: nil)
             let standByItem : UITabBarItem = .init(title: "대기", image: standByImage, selectedImage: nil)
@@ -79,10 +81,8 @@ final class ManagerMainFlow : Flow{
             root2.tabBarItem = standByItem
             root3.tabBarItem = refusalItem
             root4.tabBarItem = deleteItem
-            [root1,root2,root3,root4].forEach{
-                $0.navigationCustomBar()
-                $0.navigationItem.applyImageNavigation()
-            }
+            [root1,root2,root3,root4].forEach{$0.navigationCustomBar()}
+            
             self.rootViewController.setViewControllers([root1,root2,root3,root4], animated: true)
         }
         return .multiple(flowContributors: [
@@ -94,12 +94,15 @@ final class ManagerMainFlow : Flow{
     }
 }
 
-private extension ManagerMainFlow{
-    func coordinateToRule() -> FlowContributors{
-        let reactor = RuleReactor()
-        let vc = RuleViewController(reactor: reactor)
-        self.rootViewController.navigationController?.pushViewController(vc, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: vc,
-                                                withNextStepper: reactor))
+//MARK: - Method
+extension ManagerMainFlow{
+    private func coordinatorToNoWifiModal() -> FlowContributors{
+        let reactor = NoWifiModalReactor()
+        let vc = NoWifiModalVC(reactor: reactor)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc,animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }

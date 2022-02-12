@@ -25,10 +25,15 @@ final class HomeFlow : Flow{
     }
     let stepper: HomeStepper
     private let rootViewController = UINavigationController()
+    private let provider : ServiceProviderType
     
     //MARK: - Initalizer
-    init(stepper : HomeStepper){
+    init(
+        stepper : HomeStepper,
+        with services : ServiceProviderType
+    ){
         self.stepper = stepper
+        self.provider = services
     }
     deinit{
         print("\(type(of: self)): \(#function)")
@@ -37,7 +42,6 @@ final class HomeFlow : Flow{
     
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
-        
         switch step{
         case.homeIsRequired:
             return coordinatorToHome()
@@ -55,23 +59,29 @@ final class HomeFlow : Flow{
 
 private extension HomeFlow{
     func coordinatorToHome() -> FlowContributors{
-        let reactor = MainReactor()
+        let reactor = MainReactor(provider: provider)
         let vc = MainViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     
     func coordinatorWriteModal() -> FlowContributors{
-        let reactor = WritingBulletinBoardReactor()
+        let reactor = WritingBulletinBoardReactor(with: provider)
         let vc = WritingBulletinBoardModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     
-    func coordinatorReportModal(idx : String,index : Int) -> FlowContributors{
-        let reactor = ReportReactor()
+    func coordinatorReportModal(idx : Int,index : Int) -> FlowContributors{
+        let reactor = ReportReactor(provider: provider, idx: idx)
         let vc =  ReportModal(reactor: reactor)
-        self.rootViewController.presentPanModal(vc)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
