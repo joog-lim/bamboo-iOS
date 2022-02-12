@@ -24,9 +24,7 @@ class LikeOrDisLikeView : UIButton{
             if isSelected{
                 iv.image = UIImage(named: "BAMBOO_Good_Leaf_Select")
                 label.textColor = .bamBoo_57CC4D
-                label.text = "\((Int(label.text ?? "") ?? 0) + 1)"
             }else{
-                label.text = "\((Int(label.text ?? "") ?? 0) - 1)"
                 iv.image = UIImage(named: "BAMBOO_Good_Leaf")
                 label.textColor = .gray
             }
