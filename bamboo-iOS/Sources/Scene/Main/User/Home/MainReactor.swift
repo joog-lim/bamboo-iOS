@@ -4,10 +4,11 @@
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
+import UIKit
+
 import ReactorKit
 import RxFlow
-import RxCocoa
-import Differentiator
+import RxRelay
 
 final class MainReactor : Reactor, Stepper{
     //MARK: - Stepper
@@ -24,9 +25,11 @@ final class MainReactor : Reactor, Stepper{
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
+        case updateRefreshDataSource([MainSection.Item])
         case postEmoji(indexPath : Int)
         case deleteEmoji(indexPath : Int)
     }
@@ -40,9 +43,10 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     var currentPage = 0
-    let initialState = State()
+    let initialState : State
         
     init(provider : ServiceProviderType){
+        self.initialState = State()
         self.provider = provider
     }
 }
@@ -53,6 +57,8 @@ extension MainReactor{
         switch action{
         case .viewDidLoad:
             return getAlgorithm()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
@@ -71,18 +77,29 @@ extension MainReactor{
         }
     }
 }
+
 //MARK: - reduce
 extension MainReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let .updateDataSource(sectionItem):
+            state.mainSection.items.append(contentsOf: sectionItem)
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
         case let .postEmoji(indexPath):
-//            state.mainSection.items.map{$0.main(isClicked) = false}(indexPath)
-            print("\(state.mainSection.items[indexPath])")
+            switch state.mainSection.items[indexPath]{
+            case let .main(data):
+                data.isClicked = true
+                data.emojiCount += 1
+            }
         case let .deleteEmoji(indexPath):
-            print("\(state.mainSection.items[indexPath])")
+            switch state.mainSection.items[indexPath]{
+            case let .main(data):
+                data.isClicked = false
+                data.emojiCount -= 1
+            }
         }
         return state
     }
@@ -98,6 +115,17 @@ private extension MainReactor{
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
+    }
+    
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let algorithmRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
+            .map{(algorithm: Algorithm) -> [MainSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(MainSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
     }
 }
 

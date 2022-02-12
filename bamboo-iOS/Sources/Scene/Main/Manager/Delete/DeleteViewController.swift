@@ -8,10 +8,15 @@
 import UIKit
 import Reusable
 
+import RxSwift
 import RxDataSources
 
 final class DeleteViewController : baseVC<DeleteReactor>{
     //MARK: - Properties
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
+    }
+    
     private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.register(headerFooterViewType: DeleteTableViewHeaderView.self)
         $0.register(cellType: DeleteTableViewCell.self)
@@ -24,7 +29,7 @@ final class DeleteViewController : baseVC<DeleteReactor>{
         super.configureUI()
         navigationItem.applyImageNavigation()
         setDelegate()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        mainTableView.refreshControl = refreshControl
     }
     override func addView() {
         super.addView()
@@ -43,6 +48,15 @@ final class DeleteViewController : baseVC<DeleteReactor>{
     }
     
     //MARK: - Bind
+    override func bindView(reactor: DeleteReactor) {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
     override func bindAction(reactor: DeleteReactor) {
         self.rx.viewDidLoad
             .map{ _ in Reactor.Action.viewDidLoad}

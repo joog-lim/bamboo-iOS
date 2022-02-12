@@ -12,10 +12,12 @@ import RxFlow
 import RxRelay
 
 final class DeleteReactor : Reactor, Stepper{
+    //MARK: - Stepper
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
         case viewDidLoad
+        case refreshDataLoad
         case deleteBtnTap(titleText : String, message : String, idx : Int, index : Int, algorithmNumber : Int)
         case alertRefusalTap(Int,Int,Int)
         case alertDeleteTap(Int,Int)
@@ -27,6 +29,8 @@ final class DeleteReactor : Reactor, Stepper{
     }
     enum Mutation{
         case updateDataSource([DeleteSection.Item])
+        case updateRefreshDataSource([DeleteSection.Item])
+
         case deleteSuccess(indexPath : Int)
     }
     struct State{
@@ -51,6 +55,8 @@ extension DeleteReactor{
         switch action{
         case .viewDidLoad:
             return getDelete()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case let .deleteBtnTap(titleText, message,idx,index,algorithmNumber):
             steps.accept(BambooStep.alert(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber))
             return .empty()
@@ -66,7 +72,6 @@ extension DeleteReactor{
             }else{
                 return .empty()
             }
-
         }
     }
 }
@@ -75,17 +80,20 @@ extension DeleteReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let.updateDataSource( sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
-            
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
+            state.mainSection.items.append(contentsOf: sectionItem)
         case let .deleteSuccess(indexPath):
+
             state.mainSection.items.remove(at: indexPath)
         }
         return state
     }
 }
 
-//MARK: - Method
+//MARK: - Get
 private extension DeleteReactor{
     private func getDelete() -> Observable<Mutation>{
         self.currentPage += 1
@@ -97,7 +105,19 @@ private extension DeleteReactor{
             }
             .map(Mutation.updateDataSource)
     }
-    
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let deleteRequest = AdminAlgorithmRequest(page: currentPage, status: "REPORTED")
+        return self.provider.managerService.getAdminAlgorithm(algorithmRequest: deleteRequest)
+            .map{(algorithm : Algorithm) -> [DeleteSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(DeleteSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
+    }
+}
+//MARK: - Patch
+private extension DeleteReactor{
     private func patchDelete(idx : Int, indexPath : Int) -> Observable<Mutation>{
         return self.provider.managerService.deleteAlgorithm(idx: idx)
             .map{Mutation.deleteSuccess(indexPath: indexPath)}
