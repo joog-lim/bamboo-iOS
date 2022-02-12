@@ -77,7 +77,6 @@ extension MainReactor{
         }
     }
 }
-
 //MARK: - reduce
 extension MainReactor{
     func reduce(state: State, mutation: Mutation) -> State {
