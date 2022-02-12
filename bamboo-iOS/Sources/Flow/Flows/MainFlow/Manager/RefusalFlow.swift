@@ -43,6 +43,8 @@ final class RefusalFlow : Flow{
         switch step{
         case.managerRefusalIsRequired:
             return coordinatorToRefusal()
+        case .dismiss:
+            return dismissVC()
         default:
             return.none
         }
@@ -55,5 +57,9 @@ private extension RefusalFlow{
         let vc = RefusalViewController(reactor: reactor)
         self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
+    private func dismissVC() -> FlowContributors{
+        self.rootViewController.visibleViewController?.dismiss(animated: true)
+        return .none
     }
 }

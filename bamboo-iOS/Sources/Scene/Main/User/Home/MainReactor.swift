@@ -4,10 +4,11 @@
 //
 //  Created by Ji-hoon Ahn on 2021/12/06.
 //
+import UIKit
+
 import ReactorKit
 import RxFlow
-import RxCocoa
-import Differentiator
+import RxRelay
 
 final class MainReactor : Reactor, Stepper{
     //MARK: - Stepper
@@ -17,16 +18,20 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case viewDidLoad
         case writeData
-        case emojiBtnClick(idx : Int)
+        case emojiBtnClick(idx : Int,indexPath : Int,state : Bool)
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
             contentOffsetY: CGFloat,
             scrollViewHeight: CGFloat
         )
+        case refreshDataLoad
     }
     enum Mutation{
         case updateDataSource([MainSection.Item])
+        case updateRefreshDataSource([MainSection.Item])
+        case postEmoji(indexPath : Int)
+        case deleteEmoji(indexPath : Int)
     }
     struct State{
         var mainSection = MainSection.Model(
@@ -38,10 +43,10 @@ final class MainReactor : Reactor, Stepper{
     //MARK: - Properties
     let provider : ServiceProviderType
     var currentPage = 0
-    var ispaginating = false
-    let initialState = State()
+    let initialState : State
         
     init(provider : ServiceProviderType){
+        self.initialState = State()
         self.provider = provider
     }
 }
@@ -52,6 +57,8 @@ extension MainReactor{
         switch action{
         case .viewDidLoad:
             return getAlgorithm()
+        case .refreshDataLoad:
+            return getRefreshAlgorithm()
         case .writeData:
             steps.accept(BambooStep.writeModalIsRequired)
             return .empty()
@@ -65,18 +72,34 @@ extension MainReactor{
             }else{
                 return .empty()
             }
-        case let .emojiBtnClick(idx):
-            return postEmoji(idx: idx)
+        case let .emojiBtnClick(idx,indexPath,status):
+            return postEmoji(idx: idx,indexPath: indexPath, status: status)
         }
     }
 }
+
 //MARK: - reduce
 extension MainReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation{
-        case .updateDataSource(let sectionItem):
+        case let .updateDataSource(sectionItem):
             state.mainSection.items.append(contentsOf: sectionItem)
+        case let .updateRefreshDataSource(sectionItem):
+            state.mainSection.items.removeAll()
+            state.mainSection.items.append(contentsOf: sectionItem)
+        case let .postEmoji(indexPath):
+            switch state.mainSection.items[indexPath]{
+            case let .main(data):
+                data.isClicked = true
+                data.emojiCount += 1
+            }
+        case let .deleteEmoji(indexPath):
+            switch state.mainSection.items[indexPath]{
+            case let .main(data):
+                data.isClicked = false
+                data.emojiCount -= 1
+            }
         }
         return state
     }
@@ -88,19 +111,34 @@ private extension MainReactor{
         let algorithmRequest = AlgorithmRequest(page: currentPage)
         return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
             .map{(algorithm: Algorithm) -> [MainSection.Item] in
-                let mainSectionItem = algorithm.result.map(MainSection.Item.main)
+                let mainSectionItem = algorithm.data.data.map(MainSection.Item.main)
                 return mainSectionItem
             }
             .map(Mutation.updateDataSource)
     }
+    
+    private func getRefreshAlgorithm() -> Observable<Mutation>{
+        self.currentPage = 1
+        let algorithmRequest = AlgorithmRequest(page: currentPage)
+        return self.provider.userService.getAlgorithm(algorithmRequest: algorithmRequest)
+            .map{(algorithm: Algorithm) -> [MainSection.Item] in
+                let mainSectionItem = algorithm.data.data.map(MainSection.Item.main)
+                return mainSectionItem
+            }
+            .map(Mutation.updateRefreshDataSource)
+    }
 }
 
-//MARK: - PostEmoji
+//MARK: - Emoji
 private extension MainReactor{
-    private func postEmoji(idx : Int) -> Observable<Mutation>{
-        print("id : \(idx)")
+    private func postEmoji(idx : Int,indexPath : Int,status : Bool) -> Observable<Mutation>{
         let emojiRequest = EmojiRequest(number: idx)
-//        return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-        return .empty()
+        if status{
+            return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
+                .map(Mutation.postEmoji(indexPath: indexPath))
+        }else{
+            return self.provider.userService.deleteEmoji(emojiRequest: emojiRequest)
+                .map(Mutation.deleteEmoji(indexPath: indexPath))
+        }
     }
 }

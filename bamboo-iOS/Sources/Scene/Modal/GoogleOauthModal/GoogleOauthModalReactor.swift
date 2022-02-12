@@ -23,11 +23,12 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
         case googleModalDismiss
     }
     enum Mutation{
-        case setLogin(accessToken : String , refreshToken : String)
+        case setLogin(accessToken : String , refreshToken : String, isAdmin : Bool)
     }
     struct State{
         var access :String = .init()
         var refresh : String = .init()
+        var isAdmin : Bool = .init()
     }
     let initialState: State
     let provider : ServiceProviderType
@@ -53,11 +54,14 @@ extension GoogleOauthModalReactor{
 //MARK: - Reduce
 extension GoogleOauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
-        var new = state
+        let new = state
         switch mutation{
-        case let .setLogin(accessToken, refreshToken):
-            new.access = accessToken
-            new.refresh = refreshToken
+        case let .setLogin(accessToken, refreshToken,isAdmin):
+            KeychainSwift().set(accessToken, forKey: "accessToken")
+            KeychainSwift().set(refreshToken, forKey: "refreshToken")
+            UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
+            UserDefaults.standard.set(true, forKey: "LoginStatus")
+            steps.accept(BambooStep.dismiss)
         }
         return new
     }
@@ -67,6 +71,6 @@ extension GoogleOauthModalReactor{
 private extension GoogleOauthModalReactor{
     func postLogin(_ idToken : String) -> Observable<Mutation>{
         return self.provider.loginService.postLogin(idToken: idToken)
-            .map{Mutation.setLogin(accessToken: $0.access, refreshToken: $0.refresh)}
+            .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}
     }
 }

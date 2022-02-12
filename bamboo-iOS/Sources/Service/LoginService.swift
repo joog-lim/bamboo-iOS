@@ -1,9 +1,12 @@
 import Foundation
 import RxSwift
+import Moya
 
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
+    var isAdminObservable : Observable<Bool> {get}
     func postLogin(idToken : String) -> Observable<Login>
+    func postRefresh() -> Single<Response>
 }
 final class LoginService : BaseService, LoginServiceType{
     //MARK: - Login 됬는지 안됬는지 여부 판단
@@ -14,17 +17,28 @@ final class LoginService : BaseService, LoginServiceType{
             .observe(Bool.self,"LoginStatus")
             .map{ $0 ?? false}
     }
+    var isAdminObservable: Observable<Bool>{
+        return defaults.rx
+            .observe(Bool.self,"isAdmin")
+            .map{ $0 ?? false}
+    }
 }
 
 //MARK: - Post
 extension LoginService {
     //Login
-    func postLogin(idToken : String) -> Observable<Login>{
-        return BamBooAPI.postLogin(idToken: idToken)
+    func postLogin(idToken : String) -> Observable<Login> {
+        BamBooAPI.postLogin(idToken: idToken)
             .request()
-            .map(Login.self,using: BamBooAPI.jsonDecoder)
-            .do(onError: {print($0)})
+            .map(Login.self, using : BamBooAPI.jsonDecoder)
+            .do(onError:{print($0)})
             .asObservable()
     }
+    
     //RefreshToken
+    func postRefresh() -> Single<Response>{
+        BamBooAPI.postRenewalToken
+            .request()
+    }
 }
+

@@ -9,6 +9,7 @@ import PanModal
 import RxSwift
 import RxCocoa
 import RxFlow
+import RxKeyboard
 
 final class ReportModal : baseVC<ReportReactor>{
     
@@ -87,10 +88,19 @@ final class ReportModal : baseVC<ReportReactor>{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    override func keyBoardLayout() {
+        super.keyBoardLayout()
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
+            }).disposed(by: disposeBag)
+    }
     
     override func bindView(reactor: ReportReactor) {
         reportBtn.rx.tap
-            .map{ Reactor.Action.reportBtnTap}
+            .map{ Reactor.Action.reportBtnTap(reason: self.contentTv.tvContent ?? "")}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -103,9 +113,21 @@ extension ReportModal : PanModalPresentable{
 
     var cornerRadius: CGFloat{return 20}
     
-    var longFormHeight: PanModalHeight{
-        return .maxHeightWithTopInset(bounds.height/2.8)
+    var shortFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/2)
+        }else{
+            return .contentHeight(350)
+        }
     }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/5)
+        }else{
+            return .contentHeight(650)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }

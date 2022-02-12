@@ -50,10 +50,12 @@ final class StandByFlow : Flow{
         switch step{
         case.managerStandByIsRequired:
             return coordinatorToStandBy()
-        case let .alert(titleText, message, idx,index):
-            return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index)
-        case let .refusalRequired(idx, index):
-            return coordinatorToRefusalModalRequired(idx: idx, index: index)
+        case let .alert(titleText, message, idx,index, algorithmNumber):
+            return navigateToAlertScreen(titleText: titleText, message: message, idx: idx, index: index, algorithmNumber: algorithmNumber)
+        case let .refusalRequired(idx,index, algorithmNumber):
+            return coordinatorToRefusalModalRequired(idx: idx, algorithmNumber: algorithmNumber,index: index)
+        case .dismiss:
+            return dismissVC()
         default:
             return.none
         }
@@ -67,24 +69,39 @@ private extension StandByFlow{
         return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
     
-    func navigateToAlertScreen(titleText : String, message : String, idx : Int, index : Int) -> FlowContributors{
+    func navigateToAlertScreen(titleText : String, message : String, idx : Int, index : Int,algorithmNumber:Int) -> FlowContributors{
         let alert = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: "수락", style: .default,handler: { _ in
+        alert.addAction(.init(title: "수락", style: .default,handler: { _  in
+            self.reactor.action.onNext(.alertAcceptTap(idx, index))
         }))
         alert.addAction(.init(title: "거절", style: .destructive, handler: {_ in
-            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index))
+            _ = self.reactor.mutate(action: .alertRefusalTap(idx, index,algorithmNumber ))
         }))
         rootViewController.present(alert, animated: true)
         return .none
     }
     
-    func coordinatorToRefusalModalRequired(idx : Int, index :Int) -> FlowContributors{
-        let reactor = RefusalModalReactor()
+    func coordinatorToRefusalModalRequired(idx : Int,algorithmNumber : Int,index :Int) -> FlowContributors{
+        let reactor = RefusalModalReactor(provider: provider, idx: idx, algorithmNumber: algorithmNumber, index: index)
         let vc = RefusalModal(reactor: reactor)
         vc.modalPresentationStyle = .custom
         vc.modalPresentationCapturesStatusBarAppearance = true
         vc.transitioningDelegate = PanModalPresentationDelegate.default
         rootViewController.present(vc, animated: true, completion: nil)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    func coor() -> FlowContributors{
+        let reactor = NoWifiModalReactor()
+        let vc = NoWifiModalVC(reactor: reactor)
+        vc.modalPresentationStyle = .custom
+        vc.modalPresentationCapturesStatusBarAppearance = true
+        vc.transitioningDelegate = PanModalPresentationDelegate.default
+        rootViewController.present(vc,animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    
+    private func dismissVC() -> FlowContributors{
+        self.rootViewController.visibleViewController?.dismiss(animated: true)
+        return .none
     }
 }

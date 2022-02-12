@@ -6,12 +6,12 @@
 //
 
 import UIKit
-
+import RxSwift
 protocol StandBytableViewCellBtnClickDelegate : AnyObject{
-    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int)
+    func clickSeeMoreDetailBtn(cell : StandByTableViewCell, id : Int, algorithmNumber : Int)
 }
 
-final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class StandByTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     //MARK: - connect Protocol
     weak var delegate : StandBytableViewCellBtnClickDelegate?
     
@@ -21,7 +21,6 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
         $0.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
         $0.layer.cornerRadius = 5
     }
-    
     private let algorithm = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 13)
         $0.textColor = .systemYellow
@@ -55,6 +54,8 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
         addSubviews()
         location()
     }
+
+    //MARK: - AddView
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubviews(algorithm,dataLabel,tagLabel,cellSeeMoreDetailBtn,titleLabel,contentLabel)
@@ -94,17 +95,20 @@ final class StandByTableViewCell : BaseTableViewCell<Algorithm.Results>{
             $0.bottom.equalToSuperview().inset(10)
         }
     }
+
     
-    override func bind(_ model: Algorithm.Results) {
+    //MARK: - Bind
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번째 대기중"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        
+    }
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSeeMoreDetailBtn.rx.tap
             .subscribe({[self] _ in
-                delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx)
+                delegate?.clickSeeMoreDetailBtn(cell: self, id: model.idx, algorithmNumber: model.algorithmNumber)
             }).disposed(by: disposeBag)
     }
 }

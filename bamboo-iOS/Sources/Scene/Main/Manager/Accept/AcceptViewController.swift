@@ -15,7 +15,9 @@ import RxDataSources
 final class AcceptViewController : baseVC<AcceptReactor> {
     
     //MARK: - Properties
-    private var isLoaing : Bool = false
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
+    }
     
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
@@ -24,27 +26,19 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     }
     
     //MARK: - TableView
-    private let mainTableView = UITableView().then {
+    private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
+        $0.register(headerFooterViewType: AcceptTableViewHeaderView.self)
         $0.register(cellType: AcceptManagerTableViewCell.self)
-        $0.showsVerticalScrollIndicator = false
-        $0.separatorColor = .clear
-        $0.allowsSelection = false
-        $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 300
+        $0.register(headerFooterViewType: CustomFooterView.self)
+        $0.sameSetting()
     }
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/10.15))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
 
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
-        //navigationItem
         navigationItem.applyImageNavigation()
-        //tableView
-        tableViewHeaderSetting()
-        tableFooterViewSetting()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-        mainTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        setDelegate()
+        mainTableView.refreshControl = refreshControl
     }
     //MARK: - AddView
     override func addView() {
@@ -60,28 +54,22 @@ final class AcceptViewController : baseVC<AcceptReactor> {
         }
     }
     
-    //MARK: - Header Setting
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.centerY.equalTo(tableViewHeader)
-            $0.left.equalToSuperview().offset(bounds.width/18.75)
-        }
-    }
-    //MARK: - Footer Setting
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        activityIndicatorView.tintColor = .lightGray
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Bind
+    override func bindView(reactor: AcceptReactor) {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
     override func bindAction(reactor: AcceptReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}
@@ -123,5 +111,15 @@ extension AcceptViewController : AcceptManagerTableViewCellDelegate {
     func cellSettingbtnClick(cell: AcceptManagerTableViewCell, id: Int) {
         guard let indexPath = mainTableView.indexPath(for: cell) else {return}
         reactor?.steps.accept(BambooStep.editContentModalsRequired(idx: id, index: indexPath.row))
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension AcceptViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(AcceptTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }

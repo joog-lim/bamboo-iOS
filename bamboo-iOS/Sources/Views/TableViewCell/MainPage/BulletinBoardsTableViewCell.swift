@@ -14,7 +14,7 @@ protocol ClickReportBtnActionDelegate : AnyObject{
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,id : Int, state : Bool)
 }
 
-final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
+final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Results>{
     //MARK: - Delegate
     weak var delegate : ClickReportBtnActionDelegate?
     
@@ -55,7 +55,8 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         $0.iv.image = UIImage(named: "BAMBOO_Good_Leaf")
         $0.isSelected = false
     }
-
+    
+    
     //MARK: - Configure
     override func configure() {
         super.configure()
@@ -63,12 +64,13 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
         location()
         contentView.layer.applySketchShadow(color: .black, alpha: 0.25, x: -1, y: 1, blur: 4, spread: 0)
     }
-    
+
     //MARK: - AddSubView
     private func addSubviews(){
         contentView.addSubview(view)
         view.addSubviews(algorithm,dataLabel,tagLabel,titleLabel,contentLabel,footerView,likeBtn,cellSettingbtn)
     }
+    
     
     //MARK: - Location(나중 정리 예정)
     private func location(){
@@ -114,24 +116,29 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Results>{
             $0.height.equalTo(18)
         }
     }
+    
+    
     //MARK: - bind
-    override func bind(_ model: Algorithm.Results) {
+    override func bind(_ model: Algorithm.Datas.Results) {
         algorithm.text = "#\(model.algorithmNumber)번 알고리즘"
-        dataLabel.text = model.createdAt
+        dataLabel.text = Date().usingDate(time: model.createdAt)
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
         likeBtn.label.text = "\(model.emojiCount)"
         likeBtn.isSelected = model.isClicked
-        
+    }
+    
+    override func bindAction(_ model: Algorithm.Datas.Results) {
         cellSettingbtn.rx.tap
             .subscribe({[weak self] _ in
                 self?.delegate?.clickReportBtnAction(cell: self!, id: model.idx)
             }).disposed(by: disposeBag)
         
         likeBtn.rx.tap
+            .map{self.likeBtn.isSelected = !self.likeBtn.isSelected}
             .subscribe({[weak self] _ in
-                self?.likeBtn.isSelected = !self!.likeBtn.isSelected
+                self?.likeBtn.label.text = (self?.likeBtn.isSelected)! ?  "\((Int(self?.likeBtn.label.text ?? "") ?? 0) + 1)" : "\((Int(self?.likeBtn.label.text ?? "") ?? 0) - 1)"
                 self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
     }

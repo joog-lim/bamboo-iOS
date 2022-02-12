@@ -10,6 +10,7 @@ import PanModal
 import RxKeyboard
 
 final class EditContentModal : baseVC<EditContentModalReactor>{
+    
     //MARK: - Properties
     private let editContentTitle = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 14)
@@ -73,10 +74,11 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
         }
     }
     override func keyBoardLayout() {
-        RxKeyboard.instance.visibleHeight
-            .drive(onNext: { [panScrollable] KeyboardVisibleHeight in
-                print(KeyboardVisibleHeight)                
-                panScrollable?.contentOffset.y += KeyboardVisibleHeight
+        RxKeyboard.instance.isHidden
+            .skip(1)
+            .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
+            .drive(onNext:{ [weak self] state in
+                self?.panModalTransition(to: state)
             }).disposed(by: disposeBag)
     }
     //MARK: - KeyboardDown
@@ -87,6 +89,12 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     //MARK: - Bind
     override func bindView(reactor: EditContentModalReactor) {
         super.bindView(reactor: reactor)
+        
+        editBtn.rx.tap
+            .map{Reactor.Action.editBtnTap(title: self.titleTf.text ?? "" , content: self.contentTv.tvContent ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         cancelBtn.rx.tap
             .map{ Reactor.Action.cancelBtnTap}
             .bind(to: reactor.action)
@@ -101,13 +109,21 @@ extension EditContentModal : PanModalPresentable{
 
     var cornerRadius: CGFloat{return 40}
     
-    var longFormHeight: PanModalHeight{
+    var shortFormHeight: PanModalHeight{
         if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/2.3)
         }else{
-            return .contentHeight(400)
+            return .contentHeight(350)
         }
     }
+    var longFormHeight: PanModalHeight{
+        if UIDevice.current.isiPhone{
+            return .maxHeightWithTopInset(bounds.height/7.4)
+        }else{
+            return .contentHeight(650)
+        }
+    }
+    
     var anchorModalToLongForm: Bool {return false}
     var showDragIndicator: Bool { return false}
 }

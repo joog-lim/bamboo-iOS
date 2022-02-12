@@ -17,30 +17,55 @@ final class ReportReactor: Reactor , Stepper{
     
     enum Action{
         case dismissModal
-        case reportBtnTap
+        case reportBtnTap(reason : String)
     }
     enum Mutation{
-        
+        case reportPatchSuccess
     }
     struct State{
         
     }
-    
+    //MARK: - Properties
     let initialState: State
+    let provider : ServiceProviderType
+    var idx : Int
     
-    init(){
+    init(provider : ServiceProviderType, idx: Int){
         self.initialState = State()
+        self.provider = provider
+        self.idx = idx
     }
 }
-
+//MARK: - Mutation
 extension ReportReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case.dismissModal:
             steps.accept(BambooStep.dismiss)
             return .empty()
-        case .reportBtnTap:
-            return .empty()
+        case let .reportBtnTap(reason):
+            return patchReport(reason: reason)
         }
+    }
+}
+//MARK: - Reduce
+extension ReportReactor{
+    func reduce(state: State, mutation: Mutation) -> State {
+        let new = state
+        switch mutation{
+        case .reportPatchSuccess:
+            steps.accept(BambooStep.dismiss)
+            
+        }
+        return new
+    }
+}
+
+//MARK: - Method
+extension ReportReactor{
+    private func patchReport(reason : String) -> Observable<Mutation>{
+        let reportRequest = EditStatusRequest(status: "REPORTED", reason: reason)
+        return provider.userService.patchReported(reportedRequest: reportRequest, idx: idx)
+            .map(Mutation.reportPatchSuccess)
     }
 }

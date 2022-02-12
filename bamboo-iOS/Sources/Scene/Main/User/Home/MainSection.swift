@@ -12,7 +12,7 @@ enum MainSection{
     typealias Model = SectionModel<Int,Item>
     
     enum Item{
-        case main(Algorithm.Results)
+        case main(Algorithm.Datas.Results)
     }
 }
 extension MainSection.Item : Equatable{}

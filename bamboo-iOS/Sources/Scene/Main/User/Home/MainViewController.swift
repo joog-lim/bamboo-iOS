@@ -5,33 +5,18 @@ import RxCocoa
 import RxDataSources
 
 final class MainViewController : baseVC<MainReactor>{
-    
     //MARK: - Properties
-    private var isLoaing : Bool = false
-    
-    private let titleLabel = UILabel().then{
-        let string : NSMutableAttributedString = NSMutableAttributedString(string: "하고 싶던 말,\n무엇인가요?")
-        $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
-        $0.textColor = .bamBoo_57CC4D
-        $0.numberOfLines = 2
-        string.setColorForText(textToFind: "무엇인가요?", withColor: .black)
-        $0.attributedText = string
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
     }
 
-    private let mainTableView = UITableView(frame: .zero).then {
+    private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
+        $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
         $0.register(cellType: BulletinBoardsTableViewCell.self)
         $0.register(headerFooterViewType: CustomFooterView.self)
-        $0.separatorColor = .clear
-        $0.showsVerticalScrollIndicator = false
-        $0.allowsSelection = false
-        $0.rowHeight = UITableView.automaticDimension
-        $0.sectionHeaderHeight = 152
-        $0.estimatedRowHeight = 300
+        $0.sameSetting()
     }
-    
-    private lazy var tableViewHeader = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
-    private lazy var tableViewFooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: bounds.height/20))
-    
+        
     private let writeBtn = UIButton(type: .system).then{
         $0.backgroundColor = .bamBoo_57CC4D
         $0.imageView?.contentMode = .scaleAspectFit
@@ -40,25 +25,22 @@ final class MainViewController : baseVC<MainReactor>{
         $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
 
-    private func likeBtnClick(indexPath : Int, state : Bool){
-        print("좋아요 :: \(indexPath)번째 \(state)")
-        //        data[indexPath].isSelected = state
-    }
 
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
-
-        tableViewHeaderSetting()
-        tableFooterViewSetting()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
+        setDelegate()
+        mainTableView.refreshControl = refreshControl
     }
+    
     //MARK: - addView
     override func addView() {
         super.addView()
         view.addSubviews(mainTableView,writeBtn)
     }
+    
+    //MARK: - layout
     override func setLayout() {
         super.setLayout()
         mainTableView.snp.makeConstraints { (make) in
@@ -73,39 +55,36 @@ final class MainViewController : baseVC<MainReactor>{
         super.viewDidLayoutSubviews()
         writeBtn.layer.cornerRadius = writeBtn.frame.height/2
     }
-    
-    //MARK: - Header
-    private func tableViewHeaderSetting(){
-        mainTableView.tableHeaderView = tableViewHeader
-        mainTableView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.top.left.equalToSuperview().offset(20)
-        }
-    }
-    //MARK: - Footer
-    private func tableFooterViewSetting(){
-        let activityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.startAnimating()
-        mainTableView.tableFooterView = tableViewFooter
-        mainTableView.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(tableViewFooter)
-        }
+    //MARK: - Delegate
+    private func setDelegate(){
+        mainTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     //MARK: -  Bind
+    // - UI
     override func bindView(reactor: MainReactor) {
         writeBtn.rx.tap
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
+    // - Action
     override func bindAction(reactor: MainReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
     }
+    // - State
     override func bindState(reactor: MainReactor) {
         let dataSource = RxTableViewSectionedReloadDataSource<MainSection.Model>{ dataSource, tableView, indexPath, sectionItem in
             switch sectionItem{
@@ -128,27 +107,34 @@ final class MainViewController : baseVC<MainReactor>{
             }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-            
+        
         reactor.state.map(\.mainSection)
             .distinctUntilChanged()
             .map(Array.init(with:))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
     }
 }
-
-
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
-    
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else{ return }
-        reactor?.steps.accept(BambooStep.reportModalsRequired(idx: id, index: indexPath.row))
+        _ = reactor?.mutate(action: Reactor.Action.reportBtnClickAction(idx: id, index: indexPath.row))
     }
     
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
-        self.likeBtnClick(indexPath: indexPath.item, state: state)
-        _ = reactor?.mutate(action: Reactor.Action.emojiBtnClick(idx: id))
+         reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension MainViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }
