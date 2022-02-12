@@ -20,7 +20,7 @@ final class EditContentModalReactor : Reactor,Stepper{
         case cancelBtnTap
     }
     enum Mutation{
-        case editSuccess(String,String)
+        case editSuccess
     }
     struct State{
         
@@ -58,9 +58,8 @@ extension EditContentModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         let new = state
         switch mutation{
-        case let .editSuccess(title, content):
+        case .editSuccess:
             steps.accept(BambooStep.dismiss)
-            reactor.action.onNext(.editSuccess(index: indexPath, title: title , content: content))
         }
         return new
     }
@@ -71,6 +70,6 @@ extension EditContentModalReactor{
     private func patchEdit(_ title: String, _ content : String) -> Observable<Mutation>{
         let editRequest = EditAlgorithmRequest(title: title, content: content)
         return self.provider.managerService.patchEditAlgorithm(editRequest: editRequest, idx: idx)
-            .map(Mutation.editSuccess(title,content))
+            .map(Mutation.editSuccess)
     }
 }

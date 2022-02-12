@@ -23,12 +23,10 @@ final class AcceptReactor : Reactor, Stepper{
             scrollViewHeight: CGFloat
         )
         case refreshDataLoad
-        case editSuccess(index: Int, title : String, content: String)
     }
     enum Mutation{
         case updateDataSource([AcceptSection.Item])
         case updateRefreshDataSource([AcceptSection.Item])
-        case editSuccess(Int,String,String)
     }
     struct State{
         var mainSection = AcceptSection.Model(model: 0, items: [])
@@ -62,8 +60,6 @@ extension AcceptReactor {
             }else{
                 return .empty()
             }
-        case let .editSuccess(index, title, content):
-            return Observable.just(Mutation.editSuccess(index, title, content))
         }
     }
 }
@@ -78,8 +74,6 @@ extension AcceptReactor{
         case .updateRefreshDataSource(let sectionItem):
             state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
-        case let .editSuccess(indexPath, title, content):
-            print("edit index: \(indexPath), title : \(title), content : \(content)")
         }
         return state
     }
