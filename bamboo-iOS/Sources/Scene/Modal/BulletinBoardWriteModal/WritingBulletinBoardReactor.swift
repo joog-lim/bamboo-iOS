@@ -16,7 +16,7 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case viewWillAppear
+        case viewDidLoad
         case sendBtnTap(_ title : String? , _ content : String? ,_ tag : String?,_ answer : String?)
     }
     enum Mutation{
@@ -42,7 +42,7 @@ final class WritingBulletinBoardReactor: Reactor , Stepper{
 extension WritingBulletinBoardReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .viewWillAppear:
+        case .viewDidLoad:
             return getVerify()
         case let .sendBtnTap(title,content,tag,answer):
             return postBulletin(title: title ?? "", content: content ?? "", tag: tag ?? "", answer: answer ?? "")

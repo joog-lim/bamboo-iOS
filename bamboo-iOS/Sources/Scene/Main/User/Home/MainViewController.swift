@@ -6,6 +6,10 @@ import RxDataSources
 
 final class MainViewController : baseVC<MainReactor>{
     //MARK: - Properties
+    private let refreshControl = UIRefreshControl().then{
+        $0.tintColor = UIColor.bamBoo_57CC4D
+    }
+
     private let mainTableView = UITableView(frame: CGRect.zero, style: .grouped).then {
         $0.register(headerFooterViewType: BulletinBoardsTableViewHeaderView.self)
         $0.register(cellType: BulletinBoardsTableViewCell.self)
@@ -21,17 +25,13 @@ final class MainViewController : baseVC<MainReactor>{
         $0.layer.applySketchShadow(color: .bamBoo_57CC4D, alpha: 0.25, x: 1, y: 5, blur: 5, spread: 0)
     }
 
-    private func likeBtnClick(indexPath : Int, state : Bool){
-        print("좋아요 :: \(indexPath)번째 \(state)")
-    }
 
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
         navigationItem.applyImageNavigation()
         setDelegate()
-        mainTableView.refreshControl = UIRefreshControl()
-        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bounds.height/22, right: 0)
+        mainTableView.refreshControl = refreshControl
     }
     
     //MARK: - addView
@@ -68,6 +68,13 @@ final class MainViewController : baseVC<MainReactor>{
             .map{Reactor.Action.writeData}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map(Reactor.Action.refreshDataLoad)
+            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
+            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
+                .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     // - Action
     override func bindAction(reactor: MainReactor) {
@@ -75,6 +82,7 @@ final class MainViewController : baseVC<MainReactor>{
             .map{_ in Reactor.Action.viewDidLoad}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
     }
     // - State
     override func bindState(reactor: MainReactor) {
@@ -105,19 +113,9 @@ final class MainViewController : baseVC<MainReactor>{
             .map(Array.init(with:))
             .bind(to: self.mainTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
     }
 }
-//MARK: - TableViewHeader & Footer Setting
-extension MainViewController : UITableViewDelegate{
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
-    }
-}
-
-
 //MARK: - tableView Cell inside ReportBtn Click Action Protocol
 extension MainViewController : ClickReportBtnActionDelegate{
     func clickReportBtnAction(cell: BulletinBoardsTableViewCell, id: Int) {
@@ -127,7 +125,16 @@ extension MainViewController : ClickReportBtnActionDelegate{
     
     func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
         guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
-        self.likeBtnClick(indexPath: indexPath.row, state: state)
          reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
+    }
+}
+
+//MARK: - TableViewHeader & Footer Setting
+extension MainViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(BulletinBoardsTableViewHeaderView.self)
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return tableView.dequeueReusableHeaderFooterView(CustomFooterView.self)
     }
 }

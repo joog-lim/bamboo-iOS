@@ -8,14 +8,16 @@
 import Foundation
 import UIKit
 import Reusable
+import Then
 
 class CustomFooterView : BaseTableViewHeaderFooterView<Void>{
     
-    private lazy var activityIndicator = UIActivityIndicatorView()
+    private let activityIndicator = UIActivityIndicatorView()
     
     override func configure() {
         super.configure()
         contentView.addSubviews(activityIndicator)
+
         activityIndicator.snp.makeConstraints{
             $0.center.equalToSuperview()
         }

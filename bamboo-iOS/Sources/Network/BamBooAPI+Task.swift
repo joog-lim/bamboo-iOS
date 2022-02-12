@@ -11,7 +11,7 @@ extension BamBooAPI{
     func getTask() -> Task{
         switch self{
             //get
-        case .getAlgorithm(let algorithmRequest):
+        case let .getAlgorithm( algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)
         case let .getAdminAlgorithm(algorithmRequest):
             return .requestParameters(parameters: algorithmRequest.toDictionary(), encoding: URLEncoding.queryString)

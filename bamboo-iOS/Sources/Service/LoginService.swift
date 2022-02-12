@@ -1,10 +1,12 @@
 import Foundation
 import RxSwift
+import Moya
 
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
     var isAdminObservable : Observable<Bool> {get}
     func postLogin(idToken : String) -> Observable<Login>
+    func postRefresh() -> Single<Response>
 }
 final class LoginService : BaseService, LoginServiceType{
     //MARK: - Login 됬는지 안됬는지 여부 판단
@@ -34,5 +36,9 @@ extension LoginService {
     }
     
     //RefreshToken
+    func postRefresh() -> Single<Response>{
+        BamBooAPI.postRenewalToken
+            .request()
+    }
 }
 
