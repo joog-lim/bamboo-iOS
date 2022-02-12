@@ -30,14 +30,12 @@ final class EditContentModalReactor : Reactor,Stepper{
     let provider : ServiceProviderType
     var idx : Int
     let indexPath : Int
-    let reactor : AcceptReactor
     
     init(provider : ServiceProviderType, idx : Int, indexPath : Int){
         self.initialState = State()
         self.provider = provider
         self.idx = idx
         self.indexPath = indexPath
-        self.reactor = AcceptReactor(provider: provider)
     }
 }
 //MARK: - Mutation
@@ -49,6 +47,7 @@ extension EditContentModalReactor{
         case.cancelBtnTap:
             steps.accept(BambooStep.dismiss)
             return .empty()
+
         }
     }
 }

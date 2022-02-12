@@ -55,7 +55,6 @@ extension ReportReactor{
         switch mutation{
         case .reportPatchSuccess:
             steps.accept(BambooStep.dismiss)
-            
         }
         return new
     }

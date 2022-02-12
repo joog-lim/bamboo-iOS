@@ -118,8 +118,8 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        self.rx.viewDidLoad
-            .map{ Reactor.Action.viewDidLoad}
+        self.rx.viewWillAppear
+            .map{ Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }

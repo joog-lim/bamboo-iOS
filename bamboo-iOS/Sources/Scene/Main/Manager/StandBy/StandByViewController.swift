@@ -13,12 +13,8 @@ import RxCocoa
 import RxDataSources
 
 final class StandByViewController : baseVC<StandByReactor>{
-    
     //MARK: - Properties
-    private let refreshControl = UIRefreshControl().then{
-        $0.tintColor = UIColor.bamBoo_57CC4D
-    }
-    
+
     private let mainTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.register(headerFooterViewType: StandByTableViewHeaderView.self)
         $0.register(cellType: StandByTableViewCell.self)
@@ -33,7 +29,7 @@ final class StandByViewController : baseVC<StandByReactor>{
         navigationItem.applyImageNavigation()
         setDelegate()
         //tableView
-        mainTableView.refreshControl = refreshControl
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     
     override func addView() {
@@ -53,16 +49,6 @@ final class StandByViewController : baseVC<StandByReactor>{
             .disposed(by: disposeBag)
     }
     //MARK: - Bind
-    
-    override func bindView(reactor: StandByReactor) {
-        refreshControl.rx.controlEvent(.valueChanged)
-            .map(Reactor.Action.refreshDataLoad)
-            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
-            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
-                .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-    }
-    
     override func bindAction(reactor: StandByReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}
