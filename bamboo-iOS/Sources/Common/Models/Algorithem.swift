@@ -1,10 +1,10 @@
-class Algorithm : ModelType{
+struct Algorithm : ModelType{
     var data : Datas
     
-    class Datas : ModelType{
+    struct Datas : ModelType{
         var data : [Results]
         
-        class Results: ModelType{
+        struct Results: ModelType{
             var idx  : Int
             var algorithmNumber : Int
             var title : String

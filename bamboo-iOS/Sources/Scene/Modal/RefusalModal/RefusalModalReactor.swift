@@ -36,7 +36,6 @@ final class RefusalModalReactor : Reactor,Stepper{
         self.idx = idx
         self.algorithmNumber = algorithmNumber
         self.initialState = State(algorithmNumber: algorithmNumber)
-        
     }
 }
 //MARK: - Mutation

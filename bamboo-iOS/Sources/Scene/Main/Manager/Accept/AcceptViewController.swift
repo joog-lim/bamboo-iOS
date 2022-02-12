@@ -14,11 +14,7 @@ import RxDataSources
 
 final class AcceptViewController : baseVC<AcceptReactor> {
     
-    //MARK: - Properties
-    private let refreshControl = UIRefreshControl().then{
-        $0.tintColor = UIColor.bamBoo_57CC4D
-    }
-    
+    //MARK: - Properties    
     private let titleLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundB", size: 20)
         $0.text = "수락"
@@ -36,9 +32,11 @@ final class AcceptViewController : baseVC<AcceptReactor> {
     //MARK: - Helper
     override func configureUI() {
         super.configureUI()
+        //navigationItem
         navigationItem.applyImageNavigation()
         setDelegate()
-        mainTableView.refreshControl = refreshControl
+        //tableView
+        mainTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
     }
     //MARK: - AddView
     override func addView() {
@@ -59,17 +57,7 @@ final class AcceptViewController : baseVC<AcceptReactor> {
         mainTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
-    
     //MARK: - Bind
-    override func bindView(reactor: AcceptReactor) {
-        refreshControl.rx.controlEvent(.valueChanged)
-            .map(Reactor.Action.refreshDataLoad)
-            .delay(.seconds(1), scheduler: MainScheduler.asyncInstance)
-            .do(onNext: {[weak self] _ in self?.refreshControl.endRefreshing()})
-                .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-    }
-    
     override func bindAction(reactor: AcceptReactor) {
         self.rx.viewDidLoad
             .map{_ in Reactor.Action.viewDidLoad}

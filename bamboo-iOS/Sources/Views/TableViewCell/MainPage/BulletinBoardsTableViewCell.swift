@@ -125,7 +125,7 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Resu
         tagLabel.text = model.tag
         titleLabel.text = model.title
         contentLabel.text = model.content
-        likeBtn.label.text = "\(model.emojiCount)"
+        likeBtn.label.text = "\(model.emojiCount + 1)"
         likeBtn.isSelected = model.isClicked
     }
     
@@ -138,7 +138,6 @@ final class BulletinBoardsTableViewCell : BaseTableViewCell<Algorithm.Datas.Resu
         likeBtn.rx.tap
             .map{self.likeBtn.isSelected = !self.likeBtn.isSelected}
             .subscribe({[weak self] _ in
-                self?.likeBtn.label.text = (self?.likeBtn.isSelected)! ?  "\((Int(self?.likeBtn.label.text ?? "") ?? 0) + 1)" : "\((Int(self?.likeBtn.label.text ?? "") ?? 0) - 1)"
                 self?.delegate?.clickLikeBtnAction(cell: self!, id: model.idx, state: self!.likeBtn.isSelected)
             }).disposed(by: disposeBag)
     }
