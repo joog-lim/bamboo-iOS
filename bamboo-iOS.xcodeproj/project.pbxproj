@@ -23,12 +23,12 @@
 		EE3BA58327032ACC00281096 /* WritingBulletinBoardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */; };
 		EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5852703D47400281096 /* noWifiViewController.swift */; };
 		EE3BA5882703EDED00281096 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3BA5872703EDED00281096 /* Network.framework */; };
-		EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48374E2799957900EC4681 /* JWTOauth.swift */; };
 		EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4837502799B49100EC4681 /* ReportRequest.swift */; };
 		EE489A992771B60200513E94 /* OSLogExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE489A982771B60200513E94 /* OSLogExt.swift */; };
 		EE55C23B2780B204001596C1 /* Moya+NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */; };
 		EE55C24027819B50001596C1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C23F27819B50001596C1 /* Rule.swift */; };
 		EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55C2432781ECC8001596C1 /* Encodable.swift */; };
+		EE5C417327B9D91500D14E62 /* handleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5C417227B9D91500D14E62 /* handleResponse.swift */; };
 		EE5D4C9E279FE59200FFAB7E /* EditAlgorithmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */; };
 		EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */; };
 		EE5DBF12278DF3A800CCF1D2 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */; };
@@ -173,12 +173,12 @@
 		EE3BA58227032ACC00281096 /* WritingBulletinBoardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingBulletinBoardModal.swift; sourceTree = "<group>"; };
 		EE3BA5852703D47400281096 /* noWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiViewController.swift; sourceTree = "<group>"; };
 		EE3BA5872703EDED00281096 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
-		EE48374E2799957900EC4681 /* JWTOauth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTOauth.swift; sourceTree = "<group>"; };
 		EE4837502799B49100EC4681 /* ReportRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportRequest.swift; sourceTree = "<group>"; };
 		EE489A982771B60200513E94 /* OSLogExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExt.swift; sourceTree = "<group>"; };
 		EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moya+NetworkError.swift"; sourceTree = "<group>"; };
 		EE55C23F27819B50001596C1 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		EE55C2432781ECC8001596C1 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		EE5C417227B9D91500D14E62 /* handleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = handleResponse.swift; sourceTree = "<group>"; };
 		EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlgorithmRequest.swift; sourceTree = "<group>"; };
 		EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIndexable.swift; sourceTree = "<group>"; };
 		EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
@@ -499,7 +499,7 @@
 			children = (
 				EE55C2432781ECC8001596C1 /* Encodable.swift */,
 				EE55C23A2780B204001596C1 /* Moya+NetworkError.swift */,
-				EE48374E2799957900EC4681 /* JWTOauth.swift */,
+				EE5C417227B9D91500D14E62 /* handleResponse.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1293,7 +1293,6 @@
 				EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */,
 				EEB32E592786E6B000D639F6 /* Token.swift in Sources */,
 				EECCC12E275D04A10068A4BD /* NSMutableAttributedStringExt.swift in Sources */,
-				EE48374F2799957900EC4681 /* JWTOauth.swift in Sources */,
 				EEB0A00F277BDB05004D7D7F /* RefusalSection.swift in Sources */,
 				EE8064292727034E0040B295 /* RefusalModal.swift in Sources */,
 				EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */,
@@ -1316,6 +1315,7 @@
 				EE97ACFE275E0F6C00A05857 /* AcceptReactor.swift in Sources */,
 				EEC430192758A57B008F802F /* LoginReactor.swift in Sources */,
 				EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */,
+				EE5C417327B9D91500D14E62 /* handleResponse.swift in Sources */,
 				EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */,
 				EEF451C5278B474A00ADA8BD /* BulletinBoardsTableViewHeaderView.swift in Sources */,
 				EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */,
