@@ -119,6 +119,15 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
                 GoogleLogin.shared.SignInOauth(vc: self)
             }).disposed(by: disposeBag)
         
-        
+        appleSignBtn.rx
+            .loginOnTap(scope: [.fullName, .email])
+            .subscribe(onNext: { result in
+                guard let auth = result.credential as? ASAuthorizationAppleIDCredential else { return }
+                print(auth.user)
+                print(auth.email)
+                print(auth.fullName?.givenName)
+                print(auth.fullName?.familyName)
+            })
+            .disposed(by: disposeBag)
     }
 }

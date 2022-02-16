@@ -23,7 +23,6 @@ extension Reactive where Base: ASAuthorizationAppleIDProvider{
         
         controller.presentationContextProvider = proxy
         controller.performRequests()
-        
         return proxy.didComplete
     }
 }
@@ -31,7 +30,7 @@ extension Reactive where Base: ASAuthorizationAppleIDProvider{
 @available(iOS 13.0, *)
 extension Reactive where Base: ASAuthorizationAppleIDButton {
     public func loginOnTap(scope: [ASAuthorization.Scope]? = nil) -> Observable<ASAuthorization> {
-        let window = base.window!
+        let window = base.window ?? UIWindow()
         return controlEvent(.touchUpInside)
             .flatMap {
                 ASAuthorizationAppleIDProvider().rx.login(scope: scope, on: window)
