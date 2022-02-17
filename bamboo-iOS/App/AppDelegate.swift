@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetWorkStatus.shared.StartMonitoring()
         appleForcedDisConnect()
+//        appleAutomaticLogin()
         googleAutomaticLogin()
         return true
     }
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             switch credentialState{
             case .revoked:
                 // The Apple ID credential is valid.
-                defaults.set(true, forKey: "LoginStatus")
+                print("게스트 로그인 완료")
             case .authorized:
                 // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
                 print("ID 가 연동되어있지 않습니다.")
@@ -70,8 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let defaults = UserDefaults.standard
         NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
             print("No user")
-            defaults.removeObject(forKey: "LoginStatus")
-            defaults.removeObject(forKey: "isAdmin")
+            defaults.removeObject(forKey: "gest")
             //Show the app's signed out state
         }
     }

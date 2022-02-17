@@ -27,6 +27,7 @@ enum BambooStep: Step{
     case managerIsLoggedIn
     //Guest일때
     case guestLoginIsRequired
+    case guestLoggedIn
     
     //MARK: - Main
     //User

@@ -120,6 +120,8 @@
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
+		EED2CAA327BE8E1D009C6A3A /* GestLoginModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2CAA227BE8E1D009C6A3A /* GestLoginModal.swift */; };
+		EED2CAA527BE8E9A009C6A3A /* AppleLoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2CAA427BE8E9A009C6A3A /* AppleLoginReactor.swift */; };
 		EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */; };
 		EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */; };
 		EED352382785B482001ADE19 /* NoWifiAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED352372785B482001ADE19 /* NoWifiAlertView.swift */; };
@@ -276,6 +278,8 @@
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
+		EED2CAA227BE8E1D009C6A3A /* GestLoginModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestLoginModal.swift; sourceTree = "<group>"; };
+		EED2CAA427BE8E9A009C6A3A /* AppleLoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginReactor.swift; sourceTree = "<group>"; };
 		EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalVC.swift; sourceTree = "<group>"; };
 		EED352342785B3C1001ADE19 /* NoWifiModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiModalReactor.swift; sourceTree = "<group>"; };
 		EED352372785B482001ADE19 /* NoWifiAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWifiAlertView.swift; sourceTree = "<group>"; };
@@ -472,8 +476,9 @@
 		EE3BA58027032A3D00281096 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				EED2CAA127BE8E09009C6A3A /* AppleOauthModal */,
 				EED3523127859CB7001ADE19 /* NoWifiModal */,
-				EE963D2E2734002E005070B5 /* OauthModal */,
+				EE963D2E2734002E005070B5 /* GoogleOauthModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
@@ -727,14 +732,14 @@
 			path = ReportModal;
 			sourceTree = "<group>";
 		};
-		EE963D2E2734002E005070B5 /* OauthModal */ = {
+		EE963D2E2734002E005070B5 /* GoogleOauthModal */ = {
 			isa = PBXGroup;
 			children = (
 				EE963D33273401A6005070B5 /* GoogleOauthModalVC.swift */,
 				EEE81499275A7BF80008B06A /* GoogleOauthModalReactor.swift */,
 				EE8343F62742A97100991D32 /* GoogleLoginSystem */,
 			);
-			path = OauthModal;
+			path = GoogleOauthModal;
 			sourceTree = "<group>";
 		};
 		EE97ACF2275DFBDB00A05857 /* User */ = {
@@ -988,6 +993,15 @@
 				EED265512761733E00A1994A /* bamboo_iOSTests.swift */,
 			);
 			path = "bamboo-iOSTests";
+			sourceTree = "<group>";
+		};
+		EED2CAA127BE8E09009C6A3A /* AppleOauthModal */ = {
+			isa = PBXGroup;
+			children = (
+				EED2CAA227BE8E1D009C6A3A /* GestLoginModal.swift */,
+				EED2CAA427BE8E9A009C6A3A /* AppleLoginReactor.swift */,
+			);
+			path = AppleOauthModal;
 			sourceTree = "<group>";
 		};
 		EED3523127859CB7001ADE19 /* NoWifiModal */ = {
@@ -1270,6 +1284,7 @@
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
 				EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
+				EED2CAA527BE8E9A009C6A3A /* AppleLoginReactor.swift in Sources */,
 				EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */,
 				EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
@@ -1354,6 +1369,7 @@
 				EED42DC52763BAA100898537 /* DeleteFlow.swift in Sources */,
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
 				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,
+				EED2CAA327BE8E1D009C6A3A /* GestLoginModal.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
