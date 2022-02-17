@@ -35,7 +35,9 @@ final class LoginFlow : Flow{
             return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
-        case .userIsLoggedIn, .userMainTabBarIsRequired:
+        case .guestLoginIsRequired:
+            return coordinateToGestLoginModalVC()
+        case .userIsLoggedIn, .guestLoggedIn:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
@@ -62,6 +64,16 @@ final class LoginFlow : Flow{
         self.rootVC.visibleViewController?.present(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
+    
+    private func coordinateToGestLoginModalVC() -> FlowContributors{
+        let reactor = AppleLoginReactor(with: provider)
+        let vc = AppleLoginModal(reactor: reactor)
+        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.rootVC.visibleViewController?.present(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    
     
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)

@@ -7,14 +7,17 @@
 
 import UIKit
 import GoogleSignIn
-
+import AuthenticationServices
 import RxAppState
+import KeychainSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetWorkStatus.shared.StartMonitoring()
-        automaticLogin()
+        appleForcedDisConnect()
+//        appleAutomaticLogin()
+        googleAutomaticLogin()
         return true
     }
     
@@ -26,9 +29,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         }
         return false
     }
-    
-    //자동 로그인
-    private func automaticLogin(){
+    //애플 자동 로그인
+    private func appleAutomaticLogin(){
+        let defaults = UserDefaults.standard
+
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: KeychainSwift().get("appleID") ?? "") { (credentialState, error) in
+            switch credentialState{
+            case .revoked:
+                // The Apple ID credential is valid.
+                print("게스트 로그인 완료")
+            case .authorized:
+                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                print("ID 가 연동되어있지 않습니다.")
+            case .notFound:
+                // The Apple ID credential is either was not found, so show the sign-in UI.
+                print("ID 를 찾을수 없습니다.")
+            default:
+                break
+            }
+        }
+    }
+    //구글 자동 로그인
+    private func googleAutomaticLogin(){
         let defaults = UserDefaults.standard
         GIDSignIn.sharedInstance.restorePreviousSignIn { user , error in
             if error != nil || user == nil{
@@ -37,10 +60,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
                 defaults.removeObject(forKey: "isAdmin")
                 //Show the app's signed out state
             }else{
-                print("Login")
+                print("google Login")
                 defaults.set(true, forKey: "LoginStatus")
                 //show the app's Signed- in state
             }
+        }
+    }
+    //애플 강제 연결 취소
+    private func appleForcedDisConnect(){
+        let defaults = UserDefaults.standard
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
+            print("No user")
+            defaults.removeObject(forKey: "gest")
+            //Show the app's signed out state
         }
     }
 }
