@@ -62,8 +62,10 @@ extension LoginReactor{
             return .empty()
             //guestLogin
         case .guestLoginButtonDidTap:
-            GoogleLogin.shared.SignOutOauth()
-            steps.accept(BambooStep.userMainTabBarIsRequired)
+            provider.loginService.gestLoginObservable
+                .map{ $0 ? BambooStep.guestLoggedIn : BambooStep.guestLoginIsRequired}
+                .bind(to: steps)
+                .disposed(by: disposeBag)
             return .empty()
         }
     }

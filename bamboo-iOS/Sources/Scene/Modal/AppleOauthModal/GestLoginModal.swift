@@ -1,19 +1,19 @@
 //
-//  GoogleOauthModalVC.swift
+//  GestLoginModal.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2021/11/04.
+//  Created by Ji-hoon Ahn on 2022/02/17.
 //
 
 import UIKit
-import GoogleSignIn
 import RxSwift
 import RxCocoa
 import RxGesture
 import ReactorKit
 import RxKeyboard
+import AuthenticationServices
 
-final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
+final class AppleLoginModal : baseVC<AppleLoginReactor> {
     
     //MARK: - Properties
     private let transparentView = UIView().then{
@@ -30,10 +30,10 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     }
     private let humanAffairsLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
-        $0.text = "로그인 하시겠습니까?"
+        $0.text = "게스트 로그인"
         $0.textColor = .rgb(red: 87, green: 204, blue: 77)
     }
-    private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE")
+    private let appleSignBtn = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
     
     //MARK: - Helper
     override func configureUI() {
@@ -43,7 +43,7 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
     override func addView() {
         super.addView()
         view.addSubviews(transparentView,bgView)
-        bgView.addSubviews(titleLabel,humanAffairsLabel,googleSignBtn)
+        bgView.addSubviews(titleLabel,humanAffairsLabel,appleSignBtn)
     }
     
     override func setLayout() {
@@ -58,7 +58,7 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
                 $0.height.equalTo(bounds.height/3.5771)
                 $0.width.equalTo(bounds.width/1.1718)
             }
-            googleSignBtn.snp.makeConstraints{
+            appleSignBtn.snp.makeConstraints{
                 $0.center.equalToSuperview()
                 $0.height.equalTo(bounds.height/23.2)
                 $0.width.equalToSuperview().inset(30)
@@ -70,7 +70,7 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
                 $0.height.equalTo(220)
                 $0.width.equalTo(292)
             }
-            googleSignBtn.snp.makeConstraints{
+            appleSignBtn.snp.makeConstraints{
                 $0.center.equalToSuperview()
                 $0.height.equalTo(35)
                 $0.left.right.equalToSuperview().inset(30)
@@ -81,26 +81,23 @@ final class GoogleOauthModalVC : baseVC<GoogleOauthModalReactor> {
             $0.centerX.equalToSuperview()
         }
         humanAffairsLabel.snp.makeConstraints {
-            $0.bottom.equalTo(googleSignBtn.snp.top).offset(-10)
-            $0.left.equalTo(googleSignBtn)
+            $0.bottom.equalTo(appleSignBtn.snp.top).offset(-10)
+            $0.left.equalTo(appleSignBtn)
         }
     }
-
-    private func googleOauth(){
-        GoogleLogin.shared.SignInOauth(vc: self)
-    }
-
     
-    override func bindView(reactor: GoogleOauthModalReactor) {
+    override func bindView(reactor: AppleLoginReactor) {
         transparentView.rx.tapGesture()
             .when(.recognized)
-            .map{_ in Reactor.Action.googleModalDismiss}
+            .map{_ in Reactor.Action.dismiss}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        googleSignBtn.rx.tap
-            .subscribe(onNext:{
-                GoogleLogin.shared.SignInOauth(vc: self)
-            }).disposed(by: disposeBag)
+
+        appleSignBtn.rx
+            .loginOnTap(scope: [.fullName, .email])
+            .subscribe(onNext: { _ in
+                reactor.action.onNext(.appleLogin)
+            })
+            .disposed(by: disposeBag)
     }
 }
