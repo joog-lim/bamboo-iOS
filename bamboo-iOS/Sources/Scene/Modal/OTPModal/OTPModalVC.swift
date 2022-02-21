@@ -17,22 +17,38 @@ import RxKeyboard
 final class OTPModalVC : baseVC<OTPModalReactor>{
     
     //MARK: - Properties
+    private let backBar = LoginBar()
+
     private let titleLabel = UILabel().then{
-        $0.text = "인증번호 인증"
-        $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
-        $0.textColor = .rgb(red: 196, green: 196, blue: 196)
+        $0.text = "OTP"
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 20)
+        $0.textColor = .bamBoo_57CC4D
+    }
+    private let contentLabel = UILabel().then{
+        $0.numberOfLines = 0
+        $0.text = "이메일로 발송된 번호를 \n입력해주세요!"
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
+        $0.textColor = .gray
     }
     //MARK: - LifeCycle
     override func addView() {
         super.addView()
-        view.addSubviews(titleLabel)
+        view.addSubviews(backBar,titleLabel,contentLabel)
     }
     override func setLayout() {
         super.setLayout()
-
+        backBar.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(bounds.height/40)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(50)
+        }
         titleLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(20)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(backBar.snp.bottom).offset(bounds.height/40)
+            $0.left.equalToSuperview().offset(20)
+        }
+        contentLabel.snp.makeConstraints{
+            $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/43)
+            $0.left.equalTo(titleLabel.snp.left)
         }
     }
     

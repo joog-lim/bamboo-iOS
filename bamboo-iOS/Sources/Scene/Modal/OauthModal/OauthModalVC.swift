@@ -58,14 +58,15 @@ final class OauthModalVC : baseVC<OauthModalReactor> {
             }
         }else if UIDevice.current.isiPad{
             googleSignBtn.snp.makeConstraints{
-                $0.height.equalTo(bounds.height/30)
-                $0.left.right.equalToSuperview().inset(40)
-                $0.center.equalToSuperview()
+                $0.bottom.equalTo(appleSignBtn.snp.top).offset(-20)
+                $0.centerX.equalToSuperview()
+                $0.height.equalTo(40)
+                $0.width.equalTo(375)
             }
             appleSignBtn.snp.makeConstraints{
-                $0.top.equalTo(googleSignBtn.snp.bottom).offset(20)
-                $0.width.equalTo(375)
+                $0.bottom.equalToSuperview().inset(200)
                 $0.centerX.equalToSuperview()
+                $0.width.equalTo(375)
                 $0.height.equalTo(40)
             }
         }
