@@ -17,46 +17,57 @@ import AuthenticationServices
 final class OauthModalVC : baseVC<OauthModalReactor> {
     
     //MARK: - Properties
+    private let backBar = LoginBar()
     private let titleLabel = UILabel().then{
         $0.text = "로그인"
         $0.font = UIFont(name: "NanumSquareRoundR", size: 20)
         $0.textColor = .bamBoo_57CC4D
     }
-    private let humanAffairsLabel = UILabel().then{
-        $0.font = UIFont(name: "NanumSquareRoundR", size: 10)
-        $0.text = "로그인 하시겠습니까?"
-        $0.textColor = .rgb(red: 87, green: 204, blue: 77)
-    }
+
     private let googleSignBtn = CustomGoogleOauthBtn(image: UIImage(named: "BAMBOO_Google_icon") ?? UIImage() , btnText: "SIGN IN WITH GOOGLE")
     private let appleSignBtn = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
 
     //MARK: - Helper
     override func addView() {
         super.addView()
-        view.addSubviews(titleLabel,humanAffairsLabel,googleSignBtn,appleSignBtn)
+        view.addSubviews(backBar,titleLabel,googleSignBtn,appleSignBtn)
     }
     
     override func setLayout() {
         super.setLayout()
-        
+        backBar.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(bounds.height/40)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(50)
+        }
         titleLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(bounds.height/40)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(backBar.snp.bottom).offset(bounds.height/40)
+            $0.left.equalToSuperview().offset(20)
         }
-        
-        googleSignBtn.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(200)
-        }
-        appleSignBtn.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(googleSignBtn.snp.bottom).offset(10)
-            $0.width.height.equalTo(googleSignBtn)
-        }
-
-        humanAffairsLabel.snp.makeConstraints {
-            $0.bottom.equalTo(googleSignBtn.snp.top).offset(-10)
-            $0.left.equalTo(googleSignBtn)
+        if UIDevice.current.isiPhone{
+            googleSignBtn.snp.makeConstraints{
+                $0.height.equalTo(bounds.height/20)
+                $0.left.right.equalToSuperview().inset(40)
+                $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/2.3)
+            }
+            appleSignBtn.snp.makeConstraints{
+                $0.height.equalTo(bounds.height/20)
+                $0.top.equalTo(googleSignBtn.snp.bottom).offset(20)
+                $0.width.equalTo(googleSignBtn)
+                $0.centerX.equalToSuperview()
+            }
+        }else if UIDevice.current.isiPad{
+            googleSignBtn.snp.makeConstraints{
+                $0.height.equalTo(bounds.height/30)
+                $0.left.right.equalToSuperview().inset(40)
+                $0.center.equalToSuperview()
+            }
+            appleSignBtn.snp.makeConstraints{
+                $0.top.equalTo(googleSignBtn.snp.bottom).offset(20)
+                $0.width.equalTo(375)
+                $0.centerX.equalToSuperview()
+                $0.height.equalTo(40)
+            }
         }
     }
 
