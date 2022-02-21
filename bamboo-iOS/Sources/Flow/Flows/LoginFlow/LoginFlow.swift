@@ -8,6 +8,7 @@
 import UIKit
 import RxFlow
 import RxRelay
+import PanModal
 
 final class LoginFlow : Flow{
     //MARK: - Properties
@@ -35,9 +36,9 @@ final class LoginFlow : Flow{
             return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
-        case .guestLoginIsRequired:
-            return coordinateToGestLoginModalVC()
-        case .userIsLoggedIn, .guestLoggedIn:
+        case .otpLoginIsRequired:
+            return coordinateToOTPModalVC()
+        case .userIsLoggedIn, .guestLoginIsRequired, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
@@ -57,23 +58,18 @@ final class LoginFlow : Flow{
     }
     
     private func coordinateToLoginModalVC() -> FlowContributors{
-        let reactor = GoogleOauthModalReactor(with: provider)
-        let vc = GoogleOauthModalVC(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
+        let reactor = OauthModalReactor(with: provider)
+        let vc = OauthModalVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
-    private func coordinateToGestLoginModalVC() -> FlowContributors{
-        let reactor = AppleLoginReactor(with: provider)
-        let vc = AppleLoginModal(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
+    private func coordinateToOTPModalVC() -> FlowContributors{
+        let reactor = OTPModalReactor(with: provider)
+        let vc = OTPModalVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-    
     
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)

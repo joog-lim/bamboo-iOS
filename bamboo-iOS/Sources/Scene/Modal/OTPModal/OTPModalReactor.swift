@@ -1,18 +1,16 @@
 //
-//  AppleLoginReactor.swift
+//  OTPModalReactor.swift
 //  bamboo-iOS
 //
-//  Created by Ji-hoon Ahn on 2022/02/17.
+//  Created by Ji-hoon Ahn on 2022/02/22.
 //
 
 import ReactorKit
 import RxFlow
+import RxSwift
 import RxCocoa
-import Network
-import Moya
-import KeychainSwift
 
-final class AppleLoginReactor : Reactor , Stepper{
+final class OTPModalReactor : Reactor, Stepper{
     
     var disposeBag : DisposeBag = .init()
     
@@ -20,10 +18,9 @@ final class AppleLoginReactor : Reactor , Stepper{
     
     enum Action{
         case dismiss
-        case appleLogin
     }
     enum Mutation{
-
+        
     }
     struct State{
         
@@ -36,16 +33,11 @@ final class AppleLoginReactor : Reactor , Stepper{
         self.provider = provider
     }
 }
-
-//MARK: - Mutation
-extension AppleLoginReactor{
+//MARK: - Mutate
+extension OTPModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .dismiss:
-            steps.accept(BambooStep.dismiss)
-            return .empty()
-        case .appleLogin:
-            UserDefaults.standard.set(true, forKey: "gest")
             steps.accept(BambooStep.dismiss)
             return .empty()
         }

@@ -11,8 +11,9 @@ import RxCocoa
 import Network
 import Moya
 import KeychainSwift
+import AuthenticationServices
 
-final class GoogleOauthModalReactor : Reactor , Stepper{
+final class OauthModalReactor : Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()
     
@@ -21,6 +22,7 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
     enum Action{
         case googleLoginBERequied(idToken: String)
         case googleModalDismiss
+        case appleLoginBERequest(result: ASAuthorizationAppleIDCredential)
     }
     enum Mutation{
         case setLogin(accessToken : String , refreshToken : String, isAdmin : Bool)
@@ -40,7 +42,7 @@ final class GoogleOauthModalReactor : Reactor , Stepper{
 }
 
 //MARK: - Mutation
-extension GoogleOauthModalReactor{
+extension OauthModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case.googleModalDismiss:
@@ -48,17 +50,23 @@ extension GoogleOauthModalReactor{
             return .empty()
         case let .googleLoginBERequied(idToken):
             return postLogin(idToken)
+        case let .appleLoginBERequest(result):
+            print(String(data: result.identityToken!, encoding: .utf8) ?? "")
+            print("\(result.fullName?.familyName ?? "")\(result.fullName?.givenName ?? "")")
+            steps.accept(BambooStep.otpLoginIsRequired)
+            return .empty()
         }
     }
 }
 //MARK: - Reduce
-extension GoogleOauthModalReactor{
+extension OauthModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         let new = state
         switch mutation{
         case let .setLogin(accessToken, refreshToken,isAdmin):
             KeychainSwift().set(accessToken, forKey: "accessToken")
             KeychainSwift().set(refreshToken, forKey: "refresgToken")
+            print(isAdmin)
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             steps.accept(BambooStep.dismiss)
@@ -68,7 +76,7 @@ extension GoogleOauthModalReactor{
 }
 
 //MARK: - Method
-private extension GoogleOauthModalReactor{
+private extension OauthModalReactor{
     func postLogin(_ idToken : String) -> Observable<Mutation>{
         return self.provider.loginService.postLogin(idToken: idToken)
             .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}

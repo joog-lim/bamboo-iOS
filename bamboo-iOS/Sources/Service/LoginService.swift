@@ -5,7 +5,6 @@ import Moya
 protocol LoginServiceType {
     var didLoginObservable : Observable<Bool> {get}
     var isAdminObservable : Observable<Bool> {get}
-    var gestLoginObservable: Observable<Bool> {get}
 
     func postLogin(idToken : String) -> Observable<Login>
     func postRefresh() -> Single<Response>
@@ -25,11 +24,7 @@ final class LoginService : BaseService, LoginServiceType{
             .observe(Bool.self,"isAdmin")
             .map{ $0 ?? false}
     }
-    var gestLoginObservable: Observable<Bool>{
-        return defaults.rx
-            .observe(Bool.self,"gest")
-            .map{ $0 ?? false}
-    }
+
 }
 
 //MARK: - Post

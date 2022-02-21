@@ -27,7 +27,6 @@ enum BambooStep: Step{
     case managerIsLoggedIn
     //Guest일때
     case guestLoginIsRequired
-    case guestLoggedIn
     
     //MARK: - Main
     //User
@@ -55,8 +54,8 @@ enum BambooStep: Step{
     case writeModalIsRequired
     //report
     case reportModalsRequired(idx : Int, index : Int)
-    //googleLogin
-    case googleLoginIsRequired
+    //OTP
+    case otpLoginIsRequired
     //EditContent
     case editContentModalsRequired(idx : Int, index : Int)
     // Refusal
