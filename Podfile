@@ -15,6 +15,8 @@ target 'bamboo-iOS' do
   pod 'PanModal'
   pod 'Reusable'
   pod 'DropDown'
+  pod 'OTPFieldView'
+
 
   # Networking
   pod 'Moya/RxSwift'

@@ -13,6 +13,7 @@ import RxCocoa
 import RxGesture
 import ReactorKit
 import RxKeyboard
+import OTPFieldView
 
 final class OTPModalVC : baseVC<OTPModalReactor>{
     
@@ -30,10 +31,28 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 12)
         $0.textColor = .gray
     }
+    private let otpInputView = OTPFieldView().then{
+        $0.fieldsCount = 4
+        $0.fieldBorderWidth = 2
+        $0.defaultBorderColor = .black
+        $0.filledBorderColor = .bamBoo_57CC4D
+        $0.cursorColor = .bamBoo_57CC4D
+        $0.displayType = .underlinedBottom
+        $0.fieldSize = 40
+        $0.separatorSpace = 10
+        $0.shouldAllowIntermediateEditing = false
+        $0.initializeUI()
+    }
+    
     //MARK: - LifeCycle
+    override func configureUI() {
+        super.configureUI()
+        otpInputView.delegate = self
+    }
+    
     override func addView() {
         super.addView()
-        view.addSubviews(backBar,titleLabel,contentLabel)
+        view.addSubviews(backBar,titleLabel,contentLabel,otpInputView)
     }
     override func setLayout() {
         super.setLayout()
@@ -50,10 +69,28 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/43)
             $0.left.equalTo(titleLabel.snp.left)
         }
+        otpInputView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
     }
     
     //MARK: - Bind
     override func bindView(reactor: OTPModalReactor) {
 
     }
+}
+extension OTPModalVC : OTPFieldViewDelegate{
+    func shouldBecomeFirstResponderForOTP(otpTextFieldIndex index: Int) -> Bool {
+        return true
+    }
+    
+    func enteredOTP(otp: String) {
+        print(otp)
+    }
+    
+    func hasEnteredAllOTP(hasEnteredAll: Bool) -> Bool {
+        print("Has entered all OTP? \(hasEnteredAll)")
+        return false
+    }
+    
 }

@@ -33,7 +33,7 @@ final class LoginFlow : Flow{
         
         switch step{
         case .LoginIsRequired:
-            return coordinateToLoginVC()
+            return coordinateToOTPModalVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
         case .otpLoginIsRequired:

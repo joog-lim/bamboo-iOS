@@ -15,4 +15,14 @@ extension String{
         let removedEscape = removedEscapeWithQuotationMark.replacingOccurrences(of: "\\", with: "")
         return removedEscape
     }
+    func checkBackspace() -> Bool{
+        if let char = self.cString(using: String.Encoding.utf8){
+            let isBackSpace = strcmp(char, "\\b")
+            if (isBackSpace == -92){
+                return true
+            }
+            return false
+        }
+        return false
+    }
 }
