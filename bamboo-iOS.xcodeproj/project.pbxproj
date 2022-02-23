@@ -20,7 +20,6 @@
 		EE29D21A27C4207A004887CC /* OTPModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21927C4207A004887CC /* OTPModalVC.swift */; };
 		EE29D21C27C420D3004887CC /* OTPModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21B27C420D3004887CC /* OTPModalReactor.swift */; };
 		EE29D21F27C443EF004887CC /* LoginBar .swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21E27C443EF004887CC /* LoginBar .swift */; };
-		EE29D22227C45CF8004887CC /* OtpTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D22127C45CF8004887CC /* OtpTextField.swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
 		EE3BA57C2702F0B200281096 /* BulletinBoardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */; };
@@ -40,7 +39,6 @@
 		EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF17278F273400CCF1D2 /* Verify.swift */; };
 		EE5DBF1A278F38D100CCF1D2 /* BulletinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
-		EE74D47427C497DE00E822FE /* OTPInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE74D47327C497DE00E822FE /* OTPInputView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
 		EE7CA2D5271D6D1E003140CD /* StandByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */; };
@@ -177,7 +175,6 @@
 		EE29D21927C4207A004887CC /* OTPModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModalVC.swift; sourceTree = "<group>"; };
 		EE29D21B27C420D3004887CC /* OTPModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModalReactor.swift; sourceTree = "<group>"; };
 		EE29D21E27C443EF004887CC /* LoginBar .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginBar .swift"; sourceTree = "<group>"; };
-		EE29D22127C45CF8004887CC /* OtpTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpTextField.swift; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		EE3BA57B2702F0B200281096 /* BulletinBoardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinBoardsTableViewCell.swift; sourceTree = "<group>"; };
@@ -197,7 +194,6 @@
 		EE5DBF17278F273400CCF1D2 /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
 		EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinRequest.swift; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
-		EE74D47327C497DE00E822FE /* OTPInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPInputView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
 		EE7CA2D4271D6D1E003140CD /* StandByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByViewController.swift; sourceTree = "<group>"; };
@@ -548,7 +544,6 @@
 		EE74D47227C497D000E822FE /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				EE74D47327C497DE00E822FE /* OTPInputView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -576,7 +571,6 @@
 		EE7C6F7726EEEC680071031C /* CustomTextfield */ = {
 			isa = PBXGroup;
 			children = (
-				EE29D22127C45CF8004887CC /* OtpTextField.swift */,
 				EEA5FDD226ECF202004856F3 /* AlertTextField.swift */,
 			);
 			path = CustomTextfield;
@@ -1328,7 +1322,6 @@
 				EECCC12A275D045B0068A4BD /* NavigationExt.swift in Sources */,
 				EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */,
 				EE55C24027819B50001596C1 /* Rule.swift in Sources */,
-				EE29D22227C45CF8004887CC /* OtpTextField.swift in Sources */,
 				EE3BA5862703D47400281096 /* noWifiViewController.swift in Sources */,
 				EE9823B027827AC400C1A915 /* BamBooAPI+Header.swift in Sources */,
 				EECCC12C275D04790068A4BD /* LabelExt.swift in Sources */,
@@ -1398,7 +1391,6 @@
 				EECCC126275D04000068A4BD /* ViewExt.swift in Sources */,
 				EE5DBF10278D970D00CCF1D2 /* ItemIndexable.swift in Sources */,
 				EEF42F17270BDAD00088043F /* BaseVC.swift in Sources */,
-				EE74D47427C497DE00E822FE /* OTPInputView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

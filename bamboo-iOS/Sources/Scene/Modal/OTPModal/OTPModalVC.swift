@@ -39,15 +39,16 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
         $0.cursorColor = .bamBoo_57CC4D
         $0.displayType = .underlinedBottom
         $0.fieldSize = 40
-        $0.separatorSpace = 10
+        $0.separatorSpace = 8
         $0.shouldAllowIntermediateEditing = false
-        $0.initializeUI()
+
     }
     
     //MARK: - LifeCycle
     override func configureUI() {
         super.configureUI()
         otpInputView.delegate = self
+        otpInputView.initializeUI()
     }
     
     override func addView() {
@@ -70,7 +71,10 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             $0.left.equalTo(titleLabel.snp.left)
         }
         otpInputView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(contentLabel.snp.bottom).offset(30)
+            $0.centerX.equalToSuperview()
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(200)
         }
     }
     
@@ -79,18 +83,21 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
 
     }
 }
-extension OTPModalVC : OTPFieldViewDelegate{
+extension OTPModalVC: OTPFieldViewDelegate {
+    func deletedOTP() {
+        print("no")
+    }
+    
+    func hasEnteredAllOTP(hasEnteredAll hasEntered: Bool) -> Bool {
+        print("Has entered all OTP? \(hasEntered)")
+        return false
+    }
+    
     func shouldBecomeFirstResponderForOTP(otpTextFieldIndex index: Int) -> Bool {
         return true
     }
     
-    func enteredOTP(otp: String) {
-        print(otp)
+    func enteredOTP(otp otpString: String) {
+        print("OTPString: \(otpString)")
     }
-    
-    func hasEnteredAllOTP(hasEnteredAll: Bool) -> Bool {
-        print("Has entered all OTP? \(hasEnteredAll)")
-        return false
-    }
-    
 }

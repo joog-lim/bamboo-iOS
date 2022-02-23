@@ -15,14 +15,42 @@ extension String{
         let removedEscape = removedEscapeWithQuotationMark.replacingOccurrences(of: "\\", with: "")
         return removedEscape
     }
-    func checkBackspace() -> Bool{
-        if let char = self.cString(using: String.Encoding.utf8){
-            let isBackSpace = strcmp(char, "\\b")
-            if (isBackSpace == -92){
-                return true
+}
+
+extension String {
+    func substring(from: Int?, to: Int?) -> String {
+        if let start = from {
+            guard start < self.count else {
+                return ""
             }
-            return false
         }
-        return false
+
+        if let end = to {
+            guard end >= 0 else {
+                return ""
+            }
+        }
+
+        if let start = from, let end = to {
+            guard end - start >= 0 else {
+                return ""
+            }
+        }
+
+        let startIndex: String.Index
+        if let start = from, start >= 0 {
+            startIndex = self.index(self.startIndex, offsetBy: start)
+        } else {
+            startIndex = self.startIndex
+        }
+
+        let endIndex: String.Index
+        if let end = to, end >= 0, end < self.count {
+            endIndex = self.index(self.startIndex, offsetBy: end + 1)
+        } else {
+            endIndex = self.endIndex
+        }
+
+        return String(self[startIndex ..< endIndex])
     }
 }
