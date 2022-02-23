@@ -98,6 +98,21 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             .map{ Reactor.Action.backBtnRequired}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        self.rx.viewWillAppear
+            .map{ Reactor.Action.refreshOTPBtnRequired}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    override func bindState(reactor: OTPModalReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ [weak self]  in
+                if $0.time ?? 0 == 0{
+                    self?.countLabel.text = "메일 인증이 만료되었습니다."
+                }else{
+                    self?.countLabel.text = "\($0.minute ?? 0)분 \($0.second ?? 0)초"
+                }
+            }).disposed(by: disposeBag)
     }
 }
 extension OTPModalVC: OTPFieldViewDelegate {

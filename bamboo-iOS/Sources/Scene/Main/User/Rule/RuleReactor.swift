@@ -55,7 +55,7 @@ extension RuleReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var new = state
         switch mutation{
-        case .setRule(let rule, thirteen: let thriteen, fifteen: let fifteen):
+        case let .setRule( rule, thriteen, fifteen):
             new.rule = rule
             new.thirteen = thriteen
             new.fifteen = fifteen
