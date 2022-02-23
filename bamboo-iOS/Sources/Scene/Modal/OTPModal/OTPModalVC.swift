@@ -34,26 +34,33 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     private let otpInputView = OTPFieldView().then{
         $0.fieldsCount = 4
         $0.fieldBorderWidth = 2
+
         $0.defaultBorderColor = .black
         $0.filledBorderColor = .bamBoo_57CC4D
         $0.cursorColor = .bamBoo_57CC4D
         $0.displayType = .underlinedBottom
-        $0.fieldSize = 40
-        $0.separatorSpace = 8
         $0.shouldAllowIntermediateEditing = false
-
     }
-    
+    private let countLabel = UILabel().then{
+        $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
+        $0.textColor = .bamBoo_57CC4D
+        $0.text = "1초"
+    }
+    private let refreshOTPBtn = UIButton(type: .system).then{
+        $0.setTitle("인증번호 재전송", for: .normal)
+    }
     //MARK: - LifeCycle
     override func configureUI() {
         super.configureUI()
         otpInputView.delegate = self
+        otpInputView.fieldSize = bounds.width/6.7
+        otpInputView.separatorSpace = bounds.width/13.89
         otpInputView.initializeUI()
     }
     
     override func addView() {
         super.addView()
-        view.addSubviews(backBar,titleLabel,contentLabel,otpInputView)
+        view.addSubviews(backBar,titleLabel,contentLabel,otpInputView,countLabel,refreshOTPBtn)
     }
     override func setLayout() {
         super.setLayout()
@@ -71,10 +78,15 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             $0.left.equalTo(titleLabel.snp.left)
         }
         otpInputView.snp.makeConstraints{
-            $0.top.equalTo(contentLabel.snp.bottom).offset(30)
-            $0.centerX.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.height.equalTo(200)
+            $0.edges.equalToSuperview()
+        }
+        countLabel.snp.makeConstraints{
+            $0.bottom.equalToSuperview().inset(bounds.height/2.5)
+            $0.left.equalTo(contentLabel)
+        }
+        refreshOTPBtn.snp.makeConstraints{
+            $0.top.equalTo(countLabel.snp.top)
+            $0.right.equalToSuperview().inset(20)
         }
     }
     
@@ -84,10 +96,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     }
 }
 extension OTPModalVC: OTPFieldViewDelegate {
-    func deletedOTP() {
-        print("no")
-    }
-    
+
     func hasEnteredAllOTP(hasEnteredAll hasEntered: Bool) -> Bool {
         print("Has entered all OTP? \(hasEntered)")
         return false

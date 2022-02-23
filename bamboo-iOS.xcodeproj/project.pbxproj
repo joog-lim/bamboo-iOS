@@ -541,13 +541,6 @@
 			path = "Custom PostLikeOrDisLike";
 			sourceTree = "<group>";
 		};
-		EE74D47227C497D000E822FE /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
 		EE7C6F7526EEEC410071031C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,7 +812,6 @@
 		EE9F0CDE26E748650015E81B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EE74D47227C497D000E822FE /* CustomView */,
 				EE29D21D27C443D4004887CC /* LoginBar */,
 				EE80467426F463E8007D3206 /* TableViewCell */,
 				EED352362785B472001ADE19 /* CustomAlert */,
@@ -1560,7 +1552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JiHoonAHN.bamboo-iOS";
 				PRODUCT_NAME = "광대숲";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1582,7 +1574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JiHoonAHN.bamboo-iOS";
 				PRODUCT_NAME = "광대숲";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
