@@ -13,7 +13,7 @@ extension BamBooAPI{
         switch self{
         case .postRenewalToken:
             return ["Authorization": KeychainSwift().get("refreshToken") ?? ""]
-        case let.postLogin(idToken):
+        case let.postLogin(idToken), let .postAppleLogin(idToken, _), let .postAuthenticationMail(idToken, _ ), let .postAuthenticationNumber(idToken, _):
             return ["Authorization" : idToken]
         case .getAlgorithm, .getAdminAlgorithm, .postEmoji, .patchEditAlgorithm, .patchStatus,.deleteAlgorithm,.deleteEmoji:
             return ["Authorization": KeychainSwift().get("accessToken") ?? ""]

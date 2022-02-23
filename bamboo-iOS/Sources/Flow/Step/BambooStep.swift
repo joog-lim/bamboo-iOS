@@ -6,6 +6,7 @@
 //
 
 import RxFlow
+import AuthenticationServices
 
 enum BambooStep: Step{
     //Global
@@ -55,7 +56,7 @@ enum BambooStep: Step{
     //report
     case reportModalsRequired(idx : Int, index : Int)
     //OTP
-    case otpLoginIsRequired
+    case otpLoginIsRequired(sub: String, result : ASAuthorizationAppleIDCredential)
     //EditContent
     case editContentModalsRequired(idx : Int, index : Int)
     // Refusal

@@ -129,7 +129,7 @@ private extension MainReactor{
     }
 }
 
-//MARK: - Emoji
+//MARK: - Post
 private extension MainReactor{
     private func postEmoji(idx : Int,indexPath : Int,status : Bool) -> Observable<Mutation>{
         let emojiRequest = EmojiRequest(number: idx)

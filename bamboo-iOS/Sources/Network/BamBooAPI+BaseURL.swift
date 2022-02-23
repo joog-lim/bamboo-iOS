@@ -9,6 +9,6 @@ import Foundation
 
 extension BamBooAPI{
     func getBaseURL() -> URL{
-        return URL(string: "https://server.joog-lim.info/apiV3/")!
+        return URL(string: "https://server.joog-lim.info/apiV3/test/")!
     }
 }

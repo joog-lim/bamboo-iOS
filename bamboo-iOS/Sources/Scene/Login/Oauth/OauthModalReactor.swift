@@ -26,6 +26,7 @@ final class OauthModalReactor : Reactor , Stepper{
     }
     enum Mutation{
         case setLogin(accessToken : String , refreshToken : String, isAdmin : Bool)
+        case setAppleLogin(isAuth : Bool , sub : String? ,accessToken : String?, refreshToken : String?, isAdmin : Bool?,result : ASAuthorizationAppleIDCredential)
     }
     struct State{
         var access :String = .init()
@@ -52,10 +53,7 @@ extension OauthModalReactor{
         case let .googleLoginBERequied(idToken):
             return postLogin(idToken)
         case let .appleLoginBERequest(result):
-            print(String(data: result.identityToken!, encoding: .utf8) ?? "")
-            print("\(result.fullName?.familyName ?? "")\(result.fullName?.givenName ?? "")")
-            steps.accept(BambooStep.otpLoginIsRequired)
-            return .empty()
+            return postAppleLogin(result: result)
         }
     }
 }
@@ -71,6 +69,17 @@ extension OauthModalReactor{
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             steps.accept(BambooStep.dismiss)
+        case let .setAppleLogin(isAuth, sub, accessToken, refreshToken, isAdmin,result):
+            if isAuth{
+                KeychainSwift().set(accessToken ?? "", forKey: "accessToken")
+                KeychainSwift().set(refreshToken ?? "", forKey: "refresgToken")
+                UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
+                UserDefaults.standard.set(true, forKey: "LoginStatus")
+                steps.accept(BambooStep.backBtnRequired)
+            }else{
+                print((String(data: result.identityToken!, encoding: .utf8) ?? ""))
+                steps.accept(BambooStep.otpLoginIsRequired(sub: sub ?? "", result: result))
+            }
         }
         return new
     }
@@ -78,8 +87,13 @@ extension OauthModalReactor{
 
 //MARK: - Method
 private extension OauthModalReactor{
-    func postLogin(_ idToken : String) -> Observable<Mutation>{
+    private func postLogin(_ idToken : String) -> Observable<Mutation>{
         return self.provider.loginService.postLogin(idToken: idToken)
             .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}
+    }
+    private func postAppleLogin(result : ASAuthorizationAppleIDCredential) -> Observable<Mutation>{
+        let appleLoginRequest = AppleLoginRequest(name: ("\(result.fullName?.familyName ?? "")\(result.fullName?.givenName ?? "")"))
+        return self.provider.loginService.postAppleLogin(idToken: (String(data: result.identityToken!, encoding: .utf8) ?? ""), appleLoginRequest: appleLoginRequest)
+            .map{ Mutation.setAppleLogin(isAuth: $0.data.isAuth, sub: $0.data.sub, accessToken: $0.data.access, refreshToken: $0.data.refresh, isAdmin: $0.data.isAdmin, result: result)}
     }
 }

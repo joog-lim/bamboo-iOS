@@ -8,6 +8,9 @@ protocol LoginServiceType {
 
     func postLogin(idToken : String) -> Observable<Login>
     func postRefresh() -> Single<Response>
+    func postAppleLogin(idToken : String, appleLoginRequest: AppleLoginRequest) -> Observable<AppleLogin>
+    func postAuthenticationMail(sub : String, authenticationMailRequest : AuthenticationMailRequest) -> Observable<Base>
+    func postAuthenticationNumber(sub: String, authenticationNumberRequest : AuthenticationNumberRequest) -> Observable<AppleLogin>
 }
 final class LoginService : BaseService, LoginServiceType{
     
@@ -42,6 +45,30 @@ extension LoginService {
     func postRefresh() -> Single<Response>{
         BamBooAPI.postRenewalToken
             .request()
+    }
+    
+    func postAppleLogin(idToken: String, appleLoginRequest: AppleLoginRequest) -> Observable<AppleLogin> {
+        BamBooAPI.postAppleLogin(idToken: idToken, appleLoginRequest: appleLoginRequest)
+            .request()
+            .map(AppleLogin.self,using: BamBooAPI.jsonDecoder)
+            .do(onError: {print($0)})
+            .asObservable()
+    }
+    
+    func postAuthenticationMail(sub : String, authenticationMailRequest : AuthenticationMailRequest) -> Observable<Base>{
+        BamBooAPI.postAuthenticationMail(sub: sub, authenticationMailRequest: authenticationMailRequest)
+            .request()
+            .map(Base.self, using: BamBooAPI.jsonDecoder)
+            .do(onError : {print($0)})
+            .asObservable()
+    }
+    
+    func postAuthenticationNumber(sub: String, authenticationNumberRequest: AuthenticationNumberRequest) -> Observable<AppleLogin> {
+        BamBooAPI.postAuthenticationNumber(sub: sub, authenticationNumberRequest: authenticationNumberRequest)
+            .request()
+            .map(AppleLogin.self,using: BamBooAPI.jsonDecoder)
+            .do(onError : {print($0)})
+            .asObservable()
     }
 }
 

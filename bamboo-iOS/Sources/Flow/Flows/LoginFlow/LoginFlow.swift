@@ -9,6 +9,7 @@ import UIKit
 import RxFlow
 import RxRelay
 import PanModal
+import AuthenticationServices
 
 final class LoginFlow : Flow{
     //MARK: - Properties
@@ -36,8 +37,8 @@ final class LoginFlow : Flow{
             return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
-        case .otpLoginIsRequired:
-            return coordinateToOTPModalVC()
+        case let .otpLoginIsRequired(sub,result):
+            return coordinateToOTPModalVC(sub: sub, result: result)
         case .userIsLoggedIn, .guestLoginIsRequired, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
@@ -66,8 +67,8 @@ final class LoginFlow : Flow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     
-    private func coordinateToOTPModalVC() -> FlowContributors{
-        let reactor = OTPModalReactor(with: provider)
+    private func coordinateToOTPModalVC(sub : String,result : ASAuthorizationAppleIDCredential) -> FlowContributors{
+        let reactor = OTPModalReactor(with: provider, sub: sub,result: result)
         let vc = OTPModalVC(reactor: reactor)
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))

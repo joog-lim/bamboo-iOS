@@ -13,7 +13,9 @@ enum BamBooAPI {
     case postRenewalToken
     //Login
     case postLogin(idToken : String)
-    
+    case postAppleLogin(idToken : String, appleLoginRequest : AppleLoginRequest)
+    case postAuthenticationMail(sub : String, authenticationMailRequest : AuthenticationMailRequest)
+    case postAuthenticationNumber(sub : String , authenticationNumberRequest : AuthenticationNumberRequest)
     //User
     case getAlgorithm(algorithmRequest : AlgorithmRequest)
     case getRule

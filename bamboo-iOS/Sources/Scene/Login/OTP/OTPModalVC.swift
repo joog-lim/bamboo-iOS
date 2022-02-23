@@ -44,7 +44,6 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     private let countLabel = UILabel().then{
         $0.font = UIFont(name: "NanumSquareRoundR", size: 13)
         $0.textColor = .bamBoo_57CC4D
-        $0.text = "1초"
     }
     private let refreshOTPBtn = UIButton(type: .system).then{
         $0.setTitle("인증번호 재전송", for: .normal)
@@ -99,8 +98,19 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        self.refreshOTPBtn.rx.tap
+            .map{Reactor.Action.refreshOTPBtnRequired}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    override func bindAction(reactor: OTPModalReactor) {
+        self.rx.viewDidLoad
+            .map{ Reactor.Action.viewDidLoad}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         self.rx.viewWillAppear
-            .map{ Reactor.Action.refreshOTPBtnRequired}
+            .map{ Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
@@ -127,6 +137,6 @@ extension OTPModalVC: OTPFieldViewDelegate {
     }
     
     func enteredOTP(otp otpString: String) {
-        print("OTPString: \(otpString)")
+        reactor?.action.onNext(.sendOTPBtnRequired(Int(otpString)!))
     }
 }

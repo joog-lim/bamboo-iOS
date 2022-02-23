@@ -133,6 +133,10 @@
 		EED4C3ED2798975D00A4E671 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED4C3EC2798975D00A4E671 /* Base.swift */; };
 		EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */; };
 		EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */; };
+		EEDC423E27C6363F006059DD /* AppleLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC423D27C6363F006059DD /* AppleLoginRequest.swift */; };
+		EEDC424027C63A71006059DD /* AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC423F27C63A71006059DD /* AppleLogin.swift */; };
+		EEDC424327C64CB8006059DD /* AuthenticationMailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC424227C64CB8006059DD /* AuthenticationMailRequest.swift */; };
+		EEDC424527C65A54006059DD /* AuthenticationNumberRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC424427C65A54006059DD /* AuthenticationNumberRequest.swift */; };
 		EEDEF94C276AE54C00585C26 /* ReportReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEF94B276AE54C00585C26 /* ReportReactor.swift */; };
 		EEDEF950276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */; };
 		EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE2A7822795DD720051FA7F /* ManagerService.swift */; };
@@ -292,6 +296,10 @@
 		EED4C3EC2798975D00A4E671 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		EEDBB050279E194F008FF4BB /* AcceptTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
+		EEDC423D27C6363F006059DD /* AppleLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequest.swift; sourceTree = "<group>"; };
+		EEDC423F27C63A71006059DD /* AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLogin.swift; sourceTree = "<group>"; };
+		EEDC424227C64CB8006059DD /* AuthenticationMailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMailRequest.swift; sourceTree = "<group>"; };
+		EEDC424427C65A54006059DD /* AuthenticationNumberRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNumberRequest.swift; sourceTree = "<group>"; };
 		EEDEF94B276AE54C00585C26 /* ReportReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReactor.swift; sourceTree = "<group>"; };
 		EEDEF94F276B3E8600585C26 /* client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		EEE2A7822795DD720051FA7F /* ManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerService.swift; sourceTree = "<group>"; };
@@ -434,13 +442,13 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
-		EE29D21827C42061004887CC /* OTPModal */ = {
+		EE29D21827C42061004887CC /* OTP */ = {
 			isa = PBXGroup;
 			children = (
 				EE29D21927C4207A004887CC /* OTPModalVC.swift */,
 				EE29D21B27C420D3004887CC /* OTPModalReactor.swift */,
 			);
-			path = OTPModal;
+			path = OTP;
 			sourceTree = "<group>";
 		};
 		EE29D21D27C443D4004887CC /* LoginBar */ = {
@@ -487,6 +495,7 @@
 				EE55C23F27819B50001596C1 /* Rule.swift */,
 				EEB32E582786E6B000D639F6 /* Token.swift */,
 				EE5DBF17278F273400CCF1D2 /* Verify.swift */,
+				EEDC423F27C63A71006059DD /* AppleLogin.swift */,
 				EEB499002781F5BB0082709A /* Request */,
 			);
 			path = Models;
@@ -496,8 +505,6 @@
 			isa = PBXGroup;
 			children = (
 				EED3523127859CB7001ADE19 /* NoWifiModal */,
-				EE963D2E2734002E005070B5 /* OauthModal */,
-				EE29D21827C42061004887CC /* OTPModal */,
 				EE9582C92729AC2800AAEC8A /* ReportModal */,
 				EE806425272701170040B295 /* RefusalModal */,
 				EE210FEB2725A13800320FFD /* EditContentModal */,
@@ -544,8 +551,9 @@
 		EE7C6F7526EEEC410071031C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */,
-				EEC430182758A57B008F802F /* LoginReactor.swift */,
+				EEDC424127C63C3B006059DD /* Login */,
+				EE29D21827C42061004887CC /* OTP */,
+				EE963D2E2734002E005070B5 /* Oauth */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -751,14 +759,14 @@
 			path = ReportModal;
 			sourceTree = "<group>";
 		};
-		EE963D2E2734002E005070B5 /* OauthModal */ = {
+		EE963D2E2734002E005070B5 /* Oauth */ = {
 			isa = PBXGroup;
 			children = (
 				EE963D33273401A6005070B5 /* OauthModalVC.swift */,
 				EEE81499275A7BF80008B06A /* OauthModalReactor.swift */,
 				EE8343F62742A97100991D32 /* GoogleLoginSystem */,
 			);
-			path = OauthModal;
+			path = Oauth;
 			sourceTree = "<group>";
 		};
 		EE97ACF2275DFBDB00A05857 /* User */ = {
@@ -911,6 +919,9 @@
 				EE4837502799B49100EC4681 /* ReportRequest.swift */,
 				EE1B8867279F096B00B92181 /* LoginRequest.swift */,
 				EE5D4C9D279FE59200FFAB7E /* EditAlgorithmRequest.swift */,
+				EEDC423D27C6363F006059DD /* AppleLoginRequest.swift */,
+				EEDC424227C64CB8006059DD /* AuthenticationMailRequest.swift */,
+				EEDC424427C65A54006059DD /* AuthenticationNumberRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1039,6 +1050,15 @@
 				EED4C3EC2798975D00A4E671 /* Base.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		EEDC424127C63C3B006059DD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				EE9F0D5426E8B7F00015E81B /* LoginViewController.swift */,
+				EEC430182758A57B008F802F /* LoginReactor.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		EEF42F10270BD90F0088043F /* Manager */ = {
@@ -1266,6 +1286,7 @@
 				EE8BC61C27BDA66900D21A99 /* AuthenticationServices+Rx.swift in Sources */,
 				EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
+				EEDC424027C63A71006059DD /* AppleLogin.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
 				EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */,
 				EED352352785B3C1001ADE19 /* NoWifiModalReactor.swift in Sources */,
@@ -1294,6 +1315,8 @@
 				EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */,
 				EE7CA2D7271D6D64003140CD /* RefusalViewController.swift in Sources */,
 				EE7CA2E6271D9234003140CD /* StandByTableViewCell.swift in Sources */,
+				EEDC423E27C6363F006059DD /* AppleLoginRequest.swift in Sources */,
+				EEDC424327C64CB8006059DD /* AuthenticationMailRequest.swift in Sources */,
 				EEB499112781FAD80082709A /* BamBooAPI+Request.swift in Sources */,
 				EEBDA34126FB5C0300B966E3 /* DetailViewController.swift in Sources */,
 				EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */,
@@ -1325,6 +1348,7 @@
 				EEB498FD2781F0750082709A /* RxOperation.swift in Sources */,
 				EEDC3DF5279CC72100D9B031 /* TableViewExt.swift in Sources */,
 				EE29D21F27C443EF004887CC /* LoginBar .swift in Sources */,
+				EEDC424527C65A54006059DD /* AuthenticationNumberRequest.swift in Sources */,
 				EEE8149A275A7BF80008B06A /* OauthModalReactor.swift in Sources */,
 				EE9F0D5526E8B7F00015E81B /* LoginViewController.swift in Sources */,
 				EE4837512799B49100EC4681 /* ReportRequest.swift in Sources */,
