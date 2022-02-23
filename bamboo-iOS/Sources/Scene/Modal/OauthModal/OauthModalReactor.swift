@@ -21,7 +21,7 @@ final class OauthModalReactor : Reactor , Stepper{
     
     enum Action{
         case googleLoginBERequied(idToken: String)
-        case googleModalDismiss
+        case backBtnRequired
         case appleLoginBERequest(result: ASAuthorizationAppleIDCredential)
     }
     enum Mutation{
@@ -45,8 +45,9 @@ final class OauthModalReactor : Reactor , Stepper{
 extension OauthModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case.googleModalDismiss:
-            steps.accept(BambooStep.dismiss)
+            
+        case.backBtnRequired:
+            steps.accept(BambooStep.backBtnRequired)
             return .empty()
         case let .googleLoginBERequied(idToken):
             return postLogin(idToken)

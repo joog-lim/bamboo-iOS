@@ -33,7 +33,7 @@ final class LoginFlow : Flow{
         
         switch step{
         case .LoginIsRequired:
-            return coordinateToOTPModalVC()
+            return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
         case .otpLoginIsRequired:
@@ -44,6 +44,8 @@ final class LoginFlow : Flow{
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()
+        case .backBtnRequired:
+            return navigationPop()
         default :
             return .none
         }
@@ -70,7 +72,10 @@ final class LoginFlow : Flow{
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-    
+    private func navigationPop() -> FlowContributors{
+        self.rootVC.popViewController(animated: true)
+        return .none
+    }
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)
         return .none

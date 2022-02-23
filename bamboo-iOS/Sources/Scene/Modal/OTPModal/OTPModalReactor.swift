@@ -17,7 +17,7 @@ final class OTPModalReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case dismiss
+        case backBtnRequired
     }
     enum Mutation{
         
@@ -37,8 +37,9 @@ final class OTPModalReactor : Reactor, Stepper{
 extension OTPModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .dismiss:
-            steps.accept(BambooStep.dismiss)
+        case .backBtnRequired:
+            print("backbtn")
+            steps.accept(BambooStep.backBtnRequired)
             return .empty()
         }
     }

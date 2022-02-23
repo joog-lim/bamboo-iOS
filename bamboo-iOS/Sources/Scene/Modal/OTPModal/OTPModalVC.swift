@@ -48,6 +48,8 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     }
     private let refreshOTPBtn = UIButton(type: .system).then{
         $0.setTitle("인증번호 재전송", for: .normal)
+        $0.setTitleColor(.gray, for: .normal)
+        $0.titleLabel?.font  = UIFont(name: "NanumSquareRoundR", size: 13)
     }
     //MARK: - LifeCycle
     override func configureUI() {
@@ -60,7 +62,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     
     override func addView() {
         super.addView()
-        view.addSubviews(backBar,titleLabel,contentLabel,otpInputView,countLabel,refreshOTPBtn)
+        view.addSubviews(titleLabel,contentLabel,otpInputView,backBar,countLabel,refreshOTPBtn)
     }
     override func setLayout() {
         super.setLayout()
@@ -92,7 +94,10 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     
     //MARK: - Bind
     override func bindView(reactor: OTPModalReactor) {
-
+        self.backBar.backBtn.rx.tap
+            .map{ Reactor.Action.backBtnRequired}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
 extension OTPModalVC: OTPFieldViewDelegate {

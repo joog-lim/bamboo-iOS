@@ -78,6 +78,10 @@ final class OauthModalVC : baseVC<OauthModalReactor> {
 
     
     override func bindView(reactor: OauthModalReactor) {
+        backBar.backBtn.rx.tap
+            .map(Reactor.Action.backBtnRequired)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
         googleSignBtn.rx.tap
             .subscribe(onNext:{

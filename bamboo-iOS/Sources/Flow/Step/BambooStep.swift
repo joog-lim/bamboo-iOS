@@ -10,7 +10,7 @@ import RxFlow
 enum BambooStep: Step{
     //Global
     case alert(titleText : String, message : String, idx : Int, index: Int, algorithmNumber: Int)
-
+    
     case dismiss
     //navigation Action
     case backBtnRequired
