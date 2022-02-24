@@ -28,6 +28,10 @@ enum BambooStep: Step{
     case managerIsLoggedIn
     //Guest일때
     case guestLoginIsRequired
+    //Email 입력창
+    case enterEmailIsRequired(sub : String)
+    //Email 인증
+    case otpLoginIsRequired(sub: String, email: String)
     
     //MARK: - Main
     //User
@@ -55,8 +59,6 @@ enum BambooStep: Step{
     case writeModalIsRequired
     //report
     case reportModalsRequired(idx : Int, index : Int)
-    //OTP
-    case otpLoginIsRequired(sub: String, result : ASAuthorizationAppleIDCredential)
     //EditContent
     case editContentModalsRequired(idx : Int, index : Int)
     // Refusal

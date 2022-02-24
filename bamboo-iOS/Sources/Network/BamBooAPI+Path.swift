@@ -45,8 +45,6 @@ extension BamBooAPI {
         return "algorithm/\(idx)"
     case .deleteEmoji:
         return "leaf/"
-
-
     }
   }
 }

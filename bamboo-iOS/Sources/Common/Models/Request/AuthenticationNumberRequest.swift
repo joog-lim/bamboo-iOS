@@ -8,7 +8,7 @@
 import Foundation
 
 struct AuthenticationNumberRequest : ModelType{
-    let authenticationNumber : Int
+    let authenticationNumber : String
     enum CodingKeys : String , CodingKey{
         case authenticationNumber
     }

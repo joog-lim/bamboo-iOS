@@ -21,7 +21,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     private let backBar = LoginBar()
 
     private let titleLabel = UILabel().then{
-        $0.text = "OTP"
+        $0.text = "Email 인증"
         $0.font = UIFont(name: "NanumSquareRoundR", size: 20)
         $0.textColor = .bamBoo_57CC4D
     }
@@ -104,11 +104,6 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             .disposed(by: disposeBag)
     }
     override func bindAction(reactor: OTPModalReactor) {
-        self.rx.viewDidLoad
-            .map{ Reactor.Action.viewDidLoad}
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
         self.rx.viewWillAppear
             .map{ Reactor.Action.viewWillAppear}
             .bind(to: reactor.action)
@@ -137,6 +132,6 @@ extension OTPModalVC: OTPFieldViewDelegate {
     }
     
     func enteredOTP(otp otpString: String) {
-        reactor?.action.onNext(.sendOTPBtnRequired(Int(otpString)!))
+        reactor?.action.onNext(.sendOTPBtnRequired(otpString))
     }
 }

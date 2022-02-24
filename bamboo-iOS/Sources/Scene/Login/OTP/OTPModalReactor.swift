@@ -19,11 +19,10 @@ final class OTPModalReactor : Reactor, Stepper{
     var steps: PublishRelay<Step> = .init()
     
     enum Action{
-        case viewDidLoad
         case viewWillAppear
         case backBtnRequired
         case refreshOTPBtnRequired
-        case sendOTPBtnRequired(Int)
+        case sendOTPBtnRequired(String)
     }
     enum Mutation{
         case countDownOTP(time:Int)
@@ -37,30 +36,27 @@ final class OTPModalReactor : Reactor, Stepper{
     }
     let initialState: State
     let provider : ServiceProviderType
-    let sub : String
-    let result : ASAuthorizationAppleIDCredential
+    let sub, email : String
     var coundDown = 300
 
-    init(with provider : ServiceProviderType, sub : String,result : ASAuthorizationAppleIDCredential){
+    init(with provider : ServiceProviderType, sub : String,email : String){
         self.initialState = State()
         self.provider = provider
         self.sub = sub
-        self.result = result
+        self.email = email
     }
 }
 //MARK: - Mutate
 extension OTPModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .viewDidLoad:
-            return postOTPauthenticationMail(sub: sub, result: result)
         case .viewWillAppear:
             return fetchCountDown()
         case .backBtnRequired:
             steps.accept(BambooStep.backBtnRequired)
             return .empty()
         case .refreshOTPBtnRequired:
-            return postOTPauthenticationMail(sub: sub, result: result)
+            return postOTPauthenticationMail(sub: sub, email: email)
         case let .sendOTPBtnRequired(number):
             return postSendOTPNumber(sub: sub, number: number)
         }
@@ -76,12 +72,13 @@ extension OTPModalReactor{
             new.minute = time/60
             new.second = time%60
         case .refreshAuthenticationMail:
-            self.coundDown = 300
+            new.time = 300
         case let .sendAuthenticationNumber(access, refresh, isAdmin):
             KeychainSwift().set(access , forKey: "accessToken")
             KeychainSwift().set(refresh , forKey: "refresgToken")
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
+            print(isAdmin)
             steps.accept(BambooStep.LoginIsRequired)
         }
         return new
@@ -102,12 +99,12 @@ private extension OTPModalReactor{
 
 //MARK: - Post
 private extension OTPModalReactor{
-    private func postOTPauthenticationMail(sub : String, result : ASAuthorizationAppleIDCredential) -> Observable<Mutation>{
-        let request = AuthenticationMailRequest(email: result.email ?? "")
+    private func postOTPauthenticationMail(sub : String, email : String) -> Observable<Mutation>{
+        let request = AuthenticationMailRequest(email: email)
         return self.provider.loginService.postAuthenticationMail(sub: sub, authenticationMailRequest: request)
             .map{ Mutation.refreshAuthenticationMail}
     }
-    private func postSendOTPNumber(sub : String, number : Int) -> Observable<Mutation>{
+    private func postSendOTPNumber(sub : String, number : String) -> Observable<Mutation>{
         let request = AuthenticationNumberRequest(authenticationNumber: number)
         return self.provider.loginService.postAuthenticationNumber(sub: sub, authenticationNumberRequest: request)
             .map{ Mutation.sendAuthenticationNumber(access: $0.data.access ?? "", refresh: $0.data.refresh ?? "", isAdmin: $0.data.isAdmin ?? Bool())}

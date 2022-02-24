@@ -37,8 +37,10 @@ final class LoginFlow : Flow{
             return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
-        case let .otpLoginIsRequired(sub,result):
-            return coordinateToOTPModalVC(sub: sub, result: result)
+        case let .enterEmailIsRequired(sub):
+            return coordinateToEnterMailVC(sub: sub)
+        case let .otpLoginIsRequired(sub,email):
+            return coordinateToOTPModalVC(sub: sub, email: email)
         case .userIsLoggedIn, .guestLoginIsRequired, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
@@ -66,9 +68,14 @@ final class LoginFlow : Flow{
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-    
-    private func coordinateToOTPModalVC(sub : String,result : ASAuthorizationAppleIDCredential) -> FlowContributors{
-        let reactor = OTPModalReactor(with: provider, sub: sub,result: result)
+    private func coordinateToEnterMailVC(sub: String) -> FlowContributors{
+        let reactor = EmailWriteReactor(with: provider,sub: sub)
+        let vc = EmailWriteVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    private func coordinateToOTPModalVC(sub : String,email : String) -> FlowContributors{
+        let reactor = OTPModalReactor(with: provider, sub: sub,email: email)
         let vc = OTPModalVC(reactor: reactor)
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))

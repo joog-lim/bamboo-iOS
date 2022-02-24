@@ -10,7 +10,7 @@ import Foundation
 struct AppleLogin : ModelType{
     let data : Datas
     struct Datas : ModelType{
-        let isAuth : Bool
+        let isAuth : Bool?
         let sub : String?
         let access : String?
         let refresh : String?
@@ -21,9 +21,6 @@ struct AppleLogin : ModelType{
             case access = "accessToken"
             case refresh = "refreshToken"
             case isAdmin
-        }
-        static func  == (lhs : Datas, rhs : Datas) -> Bool{
-            lhs.isAuth == rhs.isAuth
         }
     }
     static func  == (lhs : AppleLogin, rhs : AppleLogin) -> Bool{
