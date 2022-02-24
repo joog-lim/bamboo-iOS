@@ -23,7 +23,7 @@ final class EmailWriteReactor : Stepper, Reactor{
         case postEmailSuccess(email : String)
     }
     struct State{
-        
+
     }
     let initialState: State
     let provider : ServiceProviderType

@@ -16,6 +16,7 @@ target 'bamboo-iOS' do
   pod 'Reusable'
   pod 'DropDown'
   pod 'OTPFieldView'
+  pod 'JGProgressHUD'
 
 
   # Networking

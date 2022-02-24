@@ -80,7 +80,15 @@ final class EmailWriteVC : baseVC<EmailWriteReactor>{
     override func bindView(reactor: EmailWriteReactor) {
         sendBtn.rx.tap
             .map{ Reactor.Action.sendEmail(self.titleTf.text ?? "")}
+            .do(onNext: {[weak self] _ in self?.showLoading()})
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
+    override func bindAction(reactor: EmailWriteReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ [weak self] _ in
+                self?.hideLoading()
+            }).disposed(by: disposeBag)
+    }
+    
 }
