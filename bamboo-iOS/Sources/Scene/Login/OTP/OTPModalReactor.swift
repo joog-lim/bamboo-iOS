@@ -72,7 +72,7 @@ extension OTPModalReactor{
             new.minute = time/60
             new.second = time%60
         case .refreshAuthenticationMail:
-            new.time = 300
+            print("refresh'")
         case let .sendAuthenticationNumber(access, refresh, isAdmin):
             KeychainSwift().set(access , forKey: "accessToken")
             KeychainSwift().set(refresh , forKey: "refresgToken")

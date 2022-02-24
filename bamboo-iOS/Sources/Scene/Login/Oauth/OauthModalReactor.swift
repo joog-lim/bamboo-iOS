@@ -90,7 +90,7 @@ private extension OauthModalReactor{
             .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}
     }
     private func postAppleLogin(result : ASAuthorizationAppleIDCredential) -> Observable<Mutation>{
-        let appleLoginRequest = AppleLoginRequest(name: ("\(result.fullName?.familyName ?? "")\(result.fullName?.givenName ?? "")"))
+        let appleLoginRequest = AppleLoginRequest(name: UserDefaults.standard.string(forKey: "name")!)
         print( (String(data: result.identityToken!, encoding: .utf8) ?? ""))
         return self.provider.loginService.postAppleLogin(idToken: (String(data: result.identityToken!, encoding: .utf8) ?? ""), appleLoginRequest: appleLoginRequest)
             .map{ Mutation.setAppleLogin(isAuth: $0.data.isAuth ?? Bool(), sub: $0.data.sub, accessToken: $0.data.access, refreshToken: $0.data.refresh, isAdmin: $0.data.isAdmin)}

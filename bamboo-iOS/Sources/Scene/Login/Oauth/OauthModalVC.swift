@@ -92,6 +92,7 @@ final class OauthModalVC : baseVC<OauthModalReactor> {
             .loginOnTap(scope: [.fullName, .email])
             .subscribe(onNext: { result in
                 guard let auth = result.credential as? ASAuthorizationAppleIDCredential else {return }
+                UserDefaults().set(("\(auth.fullName?.familyName ?? "")\(auth.fullName?.givenName ?? "")"), forKey: "name")
                 reactor.action.onNext(.appleLoginBERequest(result: auth))
             })
             .disposed(by: disposeBag)
