@@ -71,6 +71,12 @@ final class EmailWriteVC : baseVC<EmailWriteReactor>{
             $0.left.right.equalTo(titleTf)
         }
     }
+    private func isValidEmail(testStr:String) -> Bool {
+          let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+          let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+          return emailTest.evaluate(with: testStr)
+    }
+    
     //MARK: - Keyboard Setting
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -78,6 +84,12 @@ final class EmailWriteVC : baseVC<EmailWriteReactor>{
     
     //MARK: - Bind
     override func bindView(reactor: EmailWriteReactor) {
+        titleTf.rx.text
+            .orEmpty
+            .map(isValidEmail(testStr:))
+            .subscribe(onNext:{ [weak self] isValid in
+                self?.sendBtn.isEnabled = isValid
+            }).disposed(by: disposeBag)
         sendBtn.rx.tap
             .map{ Reactor.Action.sendEmail(self.titleTf.text ?? "")}
             .do(onNext: {[weak self] _ in self?.showLoading()})
