@@ -103,7 +103,7 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     
     //MARK: - Bind
-    override func bindAction(reactor: WritingBulletinBoardReactor) {
+    override func bindView(reactor: WritingBulletinBoardReactor) {
         tagChooseBtn.rx.tap
             .subscribe(onNext:{ [weak self] in
                 self?.dropDown.show()
@@ -116,6 +116,13 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
                 self.tagChooseBtn.titleLabel?.text == "태그선택" ? ""  : self.tagChooseBtn.titleLabel?.text,
                 self.passwordTf.text)}
             .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    override func bindAction(reactor: WritingBulletinBoardReactor) {
+        self.passwordTf.rx.text
+            .orEmpty
+            .subscribe(onNext:{[weak self] tf in
+                self?.sendBtn.isEnabled = !tf.isEmpty})
             .disposed(by: disposeBag)
         
         self.rx.viewWillAppear

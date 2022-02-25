@@ -84,6 +84,11 @@ final class EmailWriteVC : baseVC<EmailWriteReactor>{
     
     //MARK: - Bind
     override func bindView(reactor: EmailWriteReactor) {
+        backBar.backBtn.rx.tap
+            .map{ Reactor.Action.backbtnTap}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag
+            )
         titleTf.rx.text
             .orEmpty
             .map(isValidEmail(testStr:))
