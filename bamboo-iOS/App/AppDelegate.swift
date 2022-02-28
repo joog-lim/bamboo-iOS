@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     //애플 자동 로그인
     private func appleAutomaticLogin(){
-
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         appleIDProvider.getCredentialState(forUserID: KeychainSwift().get("appleID") ?? "") { (credentialState, error) in
             switch credentialState{
