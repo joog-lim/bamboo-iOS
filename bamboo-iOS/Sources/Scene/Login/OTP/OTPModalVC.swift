@@ -110,6 +110,8 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
 
 
     override func bindState(reactor: OTPModalReactor) {
+        var secondTime = 0
+        
         let driver = Driver<Int>.interval(.seconds(1)).map{ _ in
             return 1
         }
@@ -117,11 +119,13 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             .map{self.countDown - $0}
             .take(countDown + 1)
             .subscribe(onNext:{ [weak self] in
+                
                 self?.secondTimerValue -= $0
-                if $0 == 0{
+                secondTime = 301 - self!.secondTimerValue
+                if secondTime == 0{
                     self?.countLabel.text = "메일 인증이 만료되었습니다."
                 }else{
-                    self?.countLabel.text = "\((301 - self!.secondTimerValue) / 60 )분 \((301 - self!.secondTimerValue) % 60 )초"
+                    self?.countLabel.text = "\(secondTime / 60 )분 \(secondTime % 60 )초"
                 }
             }).disposed(by: disposeBag)
 
