@@ -65,7 +65,6 @@ extension OauthReactor{
         case let .setLogin(accessToken, refreshToken,isAdmin):
             KeychainSwift().set(accessToken, forKey: "accessToken")
             KeychainSwift().set(refreshToken, forKey: "refreshToken")
-            
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
             steps.accept(BambooStep.LoginIsRequired)
