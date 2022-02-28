@@ -18,27 +18,24 @@ final class OTPModalReactor : Reactor, Stepper{
     
     var steps: PublishRelay<Step> = .init()
     
+    private  let isRunningFirst: BehaviorRelay = BehaviorRelay(value: false)
+
     enum Action{
-        case viewWillAppear
         case backBtnRequired
         case refreshOTPBtnRequired
         case sendOTPBtnRequired(String)
     }
     enum Mutation{
-        case countDownOTP(time:Int)
         case refreshAuthenticationMail
         case sendAuthenticationNumber(access :  String, refresh : String, isAdmin : Bool)
     }
     struct State{
         var time : Int?
-        var minute : Int?
-        var second : Int?
     }
     let initialState: State
     let provider : ServiceProviderType
     let sub, email : String
-    var coundDown = 300
-
+    
     init(with provider : ServiceProviderType, sub : String,email : String){
         self.initialState = State()
         self.provider = provider
@@ -50,8 +47,7 @@ final class OTPModalReactor : Reactor, Stepper{
 extension OTPModalReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-        case .viewWillAppear:
-            return fetchCountDown()
+
         case .backBtnRequired:
             steps.accept(BambooStep.backBtnRequired)
             return .empty()
@@ -67,12 +63,8 @@ extension OTPModalReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var new = state
         switch mutation{
-        case let .countDownOTP(time):
-            new.time = time
-            new.minute = time/60
-            new.second = time%60
         case .refreshAuthenticationMail:
-            print("refresh'")
+            new.time = 0
         case let .sendAuthenticationNumber(access, refresh, isAdmin):
             KeychainSwift().set(access , forKey: "accessToken")
             KeychainSwift().set(refresh , forKey: "refresgToken")
@@ -82,18 +74,6 @@ extension OTPModalReactor{
             steps.accept(BambooStep.LoginIsRequired)
         }
         return new
-    }
-}
-
-//MARK: - Method
-private extension OTPModalReactor{
-    private func fetchCountDown() -> Observable<Mutation>{
-        return Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
-            .map { self.coundDown - $0 }
-            .take(coundDown + 1)
-            .map{ timePassed in
-                Mutation.countDownOTP(time: timePassed)
-            }
     }
 }
 

@@ -16,7 +16,7 @@ import RxKeyboard
 import OTPFieldView
 
 final class OTPModalVC : baseVC<OTPModalReactor>{
-    
+        
     //MARK: - Properties
     private let backBar = LoginBar()
 
@@ -50,6 +50,9 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
         $0.setTitleColor(.gray, for: .normal)
         $0.titleLabel?.font  = UIFont(name: "NanumSquareRoundR", size: 13)
     }
+    var countDown = 300
+    var secondTimerValue: Int = 300
+
     //MARK: - LifeCycle
     override func configureUI() {
         super.configureUI()
@@ -102,21 +105,31 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             .map{Reactor.Action.refreshOTPBtnRequired}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+            
     }
-    override func bindAction(reactor: OTPModalReactor) {
-        self.rx.viewWillAppear
-            .map{ Reactor.Action.viewWillAppear}
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-    }
+
+
     override func bindState(reactor: OTPModalReactor) {
-        reactor.state.observe(on: MainScheduler.instance)
-            .subscribe(onNext:{ [weak self]  in
-                if $0.time ?? 0 == 0{
+        let driver = Driver<Int>.interval(.seconds(1)).map{ _ in
+            return 1
+        }
+        driver.asObservable()
+            .map{self.countDown - $0}
+            .take(countDown + 1)
+            .subscribe(onNext:{ [weak self] in
+                self?.secondTimerValue -= $0
+                if $0 == 0{
                     self?.countLabel.text = "메일 인증이 만료되었습니다."
                 }else{
-                    self?.countLabel.text = "\($0.minute ?? 0)분 \($0.second ?? 0)초"
+                    self?.countLabel.text = "\((301 - self!.secondTimerValue) / 60 )분 \((301 - self!.secondTimerValue) % 60 )초"
                 }
+            }).disposed(by: disposeBag)
+
+        reactor.state
+            .map{ $0.time ?? 0}
+            .subscribe(onNext:{ [weak self]  in
+                self?.countDown = $0
+                self?.secondTimerValue = $0
             }).disposed(by: disposeBag)
     }
 }
