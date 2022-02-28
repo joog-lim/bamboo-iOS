@@ -119,7 +119,6 @@ final class EmailOauthVC : baseVC<EmailOauthReactor>{
             .map{self.countDown - $0}
             .take(countDown + 1)
             .subscribe(onNext:{ [weak self] in
-                
                 self?.secondTimerValue -= $0
                 secondTime = 301 - self!.secondTimerValue
                 if secondTime == 0{
