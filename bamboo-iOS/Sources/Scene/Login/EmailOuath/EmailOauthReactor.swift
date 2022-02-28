@@ -67,10 +67,9 @@ extension EmailOauthReactor{
             new.time = 0
         case let .sendAuthenticationNumber(access, refresh, isAdmin):
             KeychainSwift().set(access , forKey: "accessToken")
-            KeychainSwift().set(refresh , forKey: "refresgToken")
+            KeychainSwift().set(refresh , forKey: "refreshToken")
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
-            print(isAdmin)
             steps.accept(BambooStep.LoginIsRequired)
         }
         return new
