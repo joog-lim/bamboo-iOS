@@ -17,8 +17,8 @@
 		EE1B8868279F096B00B92181 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8867279F096B00B92181 /* LoginRequest.swift */; };
 		EE210FED2725A1DE00320FFD /* EditContentModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE210FEC2725A1DE00320FFD /* EditContentModal.swift */; };
 		EE23E19A27736AE3001171EB /* Algorithem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23E19927736AE3001171EB /* Algorithem.swift */; };
-		EE29D21A27C4207A004887CC /* OTPModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21927C4207A004887CC /* OTPModalVC.swift */; };
-		EE29D21C27C420D3004887CC /* OTPModalReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21B27C420D3004887CC /* OTPModalReactor.swift */; };
+		EE29D21A27C4207A004887CC /* EmailOauthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21927C4207A004887CC /* EmailOauthVC.swift */; };
+		EE29D21C27C420D3004887CC /* EmailOauthReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21B27C420D3004887CC /* EmailOauthReactor.swift */; };
 		EE29D21F27C443EF004887CC /* LoginBar .swift in Sources */ = {isa = PBXBuildFile; fileRef = EE29D21E27C443EF004887CC /* LoginBar .swift */; };
 		EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE30E5732706B04A00B9AF8A /* AlertTextView.swift */; };
 		EE3BA5792702EFBE00281096 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */; };
@@ -178,8 +178,8 @@
 		EE1B8867279F096B00B92181 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		EE210FEC2725A1DE00320FFD /* EditContentModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContentModal.swift; sourceTree = "<group>"; };
 		EE23E19927736AE3001171EB /* Algorithem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithem.swift; sourceTree = "<group>"; };
-		EE29D21927C4207A004887CC /* OTPModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModalVC.swift; sourceTree = "<group>"; };
-		EE29D21B27C420D3004887CC /* OTPModalReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModalReactor.swift; sourceTree = "<group>"; };
+		EE29D21927C4207A004887CC /* EmailOauthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOauthVC.swift; sourceTree = "<group>"; };
+		EE29D21B27C420D3004887CC /* EmailOauthReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOauthReactor.swift; sourceTree = "<group>"; };
 		EE29D21E27C443EF004887CC /* LoginBar .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginBar .swift"; sourceTree = "<group>"; };
 		EE30E5732706B04A00B9AF8A /* AlertTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTextView.swift; sourceTree = "<group>"; };
 		EE3BA5782702EFBE00281096 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -446,13 +446,13 @@
 			path = EditContentModal;
 			sourceTree = "<group>";
 		};
-		EE29D21827C42061004887CC /* OTP */ = {
+		EE29D21827C42061004887CC /* EmailOuath */ = {
 			isa = PBXGroup;
 			children = (
-				EE29D21927C4207A004887CC /* OTPModalVC.swift */,
-				EE29D21B27C420D3004887CC /* OTPModalReactor.swift */,
+				EE29D21927C4207A004887CC /* EmailOauthVC.swift */,
+				EE29D21B27C420D3004887CC /* EmailOauthReactor.swift */,
 			);
-			path = OTP;
+			path = EmailOuath;
 			sourceTree = "<group>";
 		};
 		EE29D21D27C443D4004887CC /* LoginBar */ = {
@@ -565,7 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDC424127C63C3B006059DD /* Login */,
-				EE29D21827C42061004887CC /* OTP */,
+				EE29D21827C42061004887CC /* EmailOuath */,
 				EE57BD3227C74B330075D910 /* EmailWrite */,
 				EE963D2E2734002E005070B5 /* Oauth */,
 			);
@@ -1318,7 +1318,7 @@
 				EE7CA2D9271D6EAD003140CD /* DeleteViewController.swift in Sources */,
 				EEC4302B27591488008F802F /* StepExt.swift in Sources */,
 				EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */,
-				EE29D21C27C420D3004887CC /* OTPModalReactor.swift in Sources */,
+				EE29D21C27C420D3004887CC /* EmailOauthReactor.swift in Sources */,
 				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
 				EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */,
 				EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */,
@@ -1411,7 +1411,7 @@
 				EE30E5742706B04A00B9AF8A /* AlertTextView.swift in Sources */,
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */,
-				EE29D21A27C4207A004887CC /* OTPModalVC.swift in Sources */,
+				EE29D21A27C4207A004887CC /* EmailOauthVC.swift in Sources */,
 				EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */,
 				EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */,
 				EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */,

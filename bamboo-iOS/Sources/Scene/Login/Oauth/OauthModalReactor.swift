@@ -13,7 +13,7 @@ import Moya
 import KeychainSwift
 import AuthenticationServices
 
-final class OauthModalReactor : Reactor , Stepper{
+final class OauthReactor : Reactor , Stepper{
     
     var disposeBag : DisposeBag = .init()
     
@@ -43,7 +43,7 @@ final class OauthModalReactor : Reactor , Stepper{
 }
 
 //MARK: - Mutation
-extension OauthModalReactor{
+extension OauthReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
             
@@ -58,7 +58,7 @@ extension OauthModalReactor{
     }
 }
 //MARK: - Reduce
-extension OauthModalReactor{
+extension OauthReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         let new = state
         switch mutation{
@@ -84,7 +84,7 @@ extension OauthModalReactor{
 }
 
 //MARK: - Method
-private extension OauthModalReactor{
+private extension OauthReactor{
     private func postLogin(_ idToken : String) -> Observable<Mutation>{
         return self.provider.loginService.postLogin(idToken: idToken)
             .map{ Mutation.setLogin(accessToken: $0.data.access, refreshToken: $0.data.refresh,isAdmin: $0.data.admin)}

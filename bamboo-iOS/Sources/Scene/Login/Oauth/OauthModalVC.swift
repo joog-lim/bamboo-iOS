@@ -14,7 +14,7 @@ import ReactorKit
 import RxKeyboard
 import AuthenticationServices
 
-final class OauthModalVC : baseVC<OauthModalReactor> {
+final class OauthVC : baseVC<OauthReactor> {
     
     //MARK: - Properties
     private let backBar = LoginBar()
@@ -77,7 +77,7 @@ final class OauthModalVC : baseVC<OauthModalReactor> {
     }
 
     
-    override func bindView(reactor: OauthModalReactor) {
+    override func bindView(reactor: OauthReactor) {
         backBar.backBtn.rx.tap
             .map(Reactor.Action.backBtnRequired)
             .bind(to: reactor.action)

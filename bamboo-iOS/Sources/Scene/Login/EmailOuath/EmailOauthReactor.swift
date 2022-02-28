@@ -12,7 +12,7 @@ import RxCocoa
 import KeychainSwift
 import AuthenticationServices
 
-final class OTPModalReactor : Reactor, Stepper{
+final class EmailOauthReactor : Reactor, Stepper{
     
     var disposeBag : DisposeBag = .init()
     
@@ -44,7 +44,7 @@ final class OTPModalReactor : Reactor, Stepper{
     }
 }
 //MARK: - Mutate
-extension OTPModalReactor{
+extension EmailOauthReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
 
@@ -59,7 +59,7 @@ extension OTPModalReactor{
     }
 }
 //MARK: - Reduce
-extension OTPModalReactor{
+extension EmailOauthReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var new = state
         switch mutation{
@@ -78,7 +78,7 @@ extension OTPModalReactor{
 }
 
 //MARK: - Post
-private extension OTPModalReactor{
+private extension EmailOauthReactor{
     private func postOTPauthenticationMail(sub : String, email : String) -> Observable<Mutation>{
         let request = AuthenticationMailRequest(email: email)
         return self.provider.loginService.postAuthenticationMail(sub: sub, authenticationMailRequest: request)

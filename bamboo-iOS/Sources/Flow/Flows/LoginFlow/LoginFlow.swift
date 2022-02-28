@@ -63,8 +63,8 @@ final class LoginFlow : Flow{
     }
     
     private func coordinateToLoginModalVC() -> FlowContributors{
-        let reactor = OauthModalReactor(with: provider)
-        let vc = OauthModalVC(reactor: reactor)
+        let reactor = OauthReactor(with: provider)
+        let vc = OauthVC(reactor: reactor)
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
@@ -75,8 +75,8 @@ final class LoginFlow : Flow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     private func coordinateToOTPModalVC(sub : String,email : String) -> FlowContributors{
-        let reactor = OTPModalReactor(with: provider, sub: sub,email: email)
-        let vc = OTPModalVC(reactor: reactor)
+        let reactor = EmailOauthReactor(with: provider, sub: sub,email: email)
+        let vc = EmailOauthVC(reactor: reactor)
         self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }

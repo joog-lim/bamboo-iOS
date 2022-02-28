@@ -12,7 +12,7 @@ import ReactorKit
 
 final class GoogleLogin{
     static let shared = GoogleLogin(with: ServiceProvider())
-    let reactor : OauthModalReactor
+    let reactor : OauthReactor
     
     private let sign : GIDSignIn
     private let signInConfig = GIDConfiguration.init(clientID:   "469455837990-lkd2grmq4c947eierj7m6rh83259m2ro.apps.googleusercontent.com")

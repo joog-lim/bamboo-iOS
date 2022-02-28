@@ -15,7 +15,7 @@ import ReactorKit
 import RxKeyboard
 import OTPFieldView
 
-final class OTPModalVC : baseVC<OTPModalReactor>{
+final class EmailOauthVC : baseVC<EmailOauthReactor>{
         
     //MARK: - Properties
     private let backBar = LoginBar()
@@ -95,7 +95,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     }
     
     //MARK: - Bind
-    override func bindView(reactor: OTPModalReactor) {
+    override func bindView(reactor: EmailOauthReactor) {
         self.backBar.backBtn.rx.tap
             .map{ Reactor.Action.backBtnRequired}
             .bind(to: reactor.action)
@@ -109,7 +109,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
     }
 
 
-    override func bindState(reactor: OTPModalReactor) {
+    override func bindState(reactor: EmailOauthReactor) {
         var secondTime = 0
         
         let driver = Driver<Int>.interval(.seconds(1)).map{ _ in
@@ -137,7 +137,7 @@ final class OTPModalVC : baseVC<OTPModalReactor>{
             }).disposed(by: disposeBag)
     }
 }
-extension OTPModalVC: OTPFieldViewDelegate {
+extension EmailOauthVC: OTPFieldViewDelegate {
 
     func hasEnteredAllOTP(hasEnteredAll hasEntered: Bool) -> Bool {
         print("Has entered all OTP? \(hasEntered)")
