@@ -9,10 +9,13 @@ import UIKit
 import RxViewController
 import RxSwift
 import ReactorKit
+import JGProgressHUD
 
 class baseVC<T: Reactor>: UIViewController{
     let bounds = UIScreen.main.bounds
     var disposeBag: DisposeBag = .init()
+    
+    lazy var hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,17 @@ class baseVC<T: Reactor>: UIViewController{
     func setLayout(){}
     func configureUI(){}
     func keyBoardLayout(){}
+    //MARK: - Loading Animation
+    func showLoading(){
+        DispatchQueue.main.async {
+            self.hud.show(in: self.view, animated: true)
+        }
+    }
+    func hideLoading(){
+        DispatchQueue.main.async {
+            self.hud.dismiss(animated: true)
+        }
+    }
     
     //MARK: - Bind
     func bindView(reactor: T){}

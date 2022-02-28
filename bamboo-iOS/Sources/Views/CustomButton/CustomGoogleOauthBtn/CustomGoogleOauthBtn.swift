@@ -31,7 +31,7 @@ class CustomGoogleOauthBtn : UIButton{
         super.layoutSubviews()
         iv.snp.makeConstraints{
             $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().offset(30)
+            $0.right.equalTo(titleLabel!.snp.left).offset(-10)
             $0.height.width.equalTo(15)
         }
     }

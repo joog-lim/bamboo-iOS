@@ -15,6 +15,10 @@ extension BamBooAPI {
         return "login"
     case .postRenewalToken:
         return  "token"
+    case .postAuthenticationMail:
+        return "authentication/mail"
+    case .postAuthenticationNumber:
+        return "authentication/number"
         //get
     case .getAlgorithm:
         return "algorithm/list/page"
@@ -29,6 +33,8 @@ extension BamBooAPI {
         return "algorithm/"
     case .postEmoji:
         return "leaf/"
+    case .postAppleLogin:
+        return "apple/login"
        //patch
     case let .patchStatus(_, idx):
         return "algorithm/\(idx)/status"

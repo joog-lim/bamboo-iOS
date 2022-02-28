@@ -8,6 +8,8 @@
 import UIKit
 import RxFlow
 import RxRelay
+import PanModal
+import AuthenticationServices
 
 final class LoginFlow : Flow{
     //MARK: - Properties
@@ -35,14 +37,18 @@ final class LoginFlow : Flow{
             return coordinateToLoginVC()
         case .userLoginIsRequired,.managerLoginIsRequired:
             return coordinateToLoginModalVC()
-        case .guestLoginIsRequired:
-            return coordinateToGestLoginModalVC()
-        case .userIsLoggedIn, .guestLoggedIn:
+        case let .enterEmailIsRequired(sub):
+            return coordinateToEnterMailVC(sub: sub)
+        case let .otpLoginIsRequired(sub,email):
+            return coordinateToOTPModalVC(sub: sub, email: email)
+        case .userIsLoggedIn, .guestLoginIsRequired, .userMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.userMainTabBarIsRequired)
         case .managerIsLoggedIn ,.managerMainTabBarIsRequired:
             return .end(forwardToParentFlowWithStep: BambooStep.managerMainTabBarIsRequired)
         case .dismiss:
             return dismissVC()
+        case .backBtnRequired:
+            return navigationPop()
         default :
             return .none
         }
@@ -57,24 +63,27 @@ final class LoginFlow : Flow{
     }
     
     private func coordinateToLoginModalVC() -> FlowContributors{
-        let reactor = GoogleOauthModalReactor(with: provider)
-        let vc = GoogleOauthModalVC(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
+        let reactor = OauthReactor(with: provider)
+        let vc = OauthVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-    
-    private func coordinateToGestLoginModalVC() -> FlowContributors{
-        let reactor = AppleLoginReactor(with: provider)
-        let vc = AppleLoginModal(reactor: reactor)
-        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.rootVC.visibleViewController?.present(vc, animated: true)
+    private func coordinateToEnterMailVC(sub: String) -> FlowContributors{
+        let reactor = EmailWriteReactor(with: provider,sub: sub)
+        let vc = EmailWriteVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
-    
-    
+    private func coordinateToOTPModalVC(sub : String,email : String) -> FlowContributors{
+        let reactor = EmailOauthReactor(with: provider, sub: sub,email: email)
+        let vc = EmailOauthVC(reactor: reactor)
+        self.rootVC.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    private func navigationPop() -> FlowContributors{
+        self.rootVC.popViewController(animated: true)
+        return .none
+    }
     private func dismissVC() -> FlowContributors{
         self.rootVC.visibleViewController?.dismiss(animated: true)
         return .none

@@ -20,7 +20,13 @@ extension BamBooAPI{
             return .post
         case .postEmoji:
             return .post
-        // Get
+        case .postAppleLogin:
+            return .post
+        case .postAuthenticationMail:
+            return .post
+        case .postAuthenticationNumber:
+            return .post
+            // Get
         case .getAlgorithm:
             return  .get
         case .getRule:
@@ -29,6 +35,7 @@ extension BamBooAPI{
             return .get
         case .getAdminAlgorithm:
             return .get
+            
         // Patch
         case .patchStatus:
             return .patch

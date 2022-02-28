@@ -62,10 +62,7 @@ extension LoginReactor{
             return .empty()
             //guestLogin
         case .guestLoginButtonDidTap:
-            provider.loginService.gestLoginObservable
-                .map{ $0 ? BambooStep.guestLoggedIn : BambooStep.guestLoginIsRequired}
-                .bind(to: steps)
-                .disposed(by: disposeBag)
+            steps.accept(BambooStep.guestLoginIsRequired)
             return .empty()
         }
     }

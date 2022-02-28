@@ -1,8 +1,8 @@
 struct Verify : ModelType{
-    var data : Datas
+    let data : Datas
     
     struct Datas : ModelType{
-        var id , question : String
+        let id , question : String
         enum CodingKeys : String,CodingKey{
             case id
             case question
