@@ -46,16 +46,9 @@ final class EditContentModal : baseVC<EditContentModalReactor>{
     }
     override func setLayout() {
         super.setLayout()
-        if UIDevice.current.isiPhone{
-            editContentTitle.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(bounds.height/27.0666)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-            }
-        }else{
-            editContentTitle.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(40)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-            }
+        editContentTitle.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(bounds.height/27.0666)
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
         }
         titleTf.snp.makeConstraints {
             $0.top.equalTo(editContentTitle.snp.bottom).offset(10)
