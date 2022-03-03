@@ -101,18 +101,10 @@ extension RefusalModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var shortFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/2.3)
-        }else{
-            return .contentHeight(400)
-        }
+        return .maxHeightWithTopInset(bounds.height/2.3)
     }
     var longFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
             return .maxHeightWithTopInset(bounds.height/7)
-        }else{
-            return .contentHeight(700)
-        }
     }
     
     var anchorModalToLongForm: Bool {return false}

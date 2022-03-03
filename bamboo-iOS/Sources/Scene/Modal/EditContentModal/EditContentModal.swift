@@ -103,18 +103,10 @@ extension EditContentModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 40}
     
     var shortFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/2.3)
-        }else{
-            return .contentHeight(350)
-        }
+        return .maxHeightWithTopInset(bounds.height/2.3)
     }
     var longFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/7.4)
-        }else{
-            return .contentHeight(650)
-        }
+        return .maxHeightWithTopInset(bounds.height/7.4)
     }
     
     var anchorModalToLongForm: Bool {return false}

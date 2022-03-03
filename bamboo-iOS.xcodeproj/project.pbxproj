@@ -60,7 +60,6 @@
 		EE8BC61C27BDA66900D21A99 /* AuthenticationServices+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BC61B27BDA66900D21A99 /* AuthenticationServices+Rx.swift */; };
 		EE8BC61E27BDA68D00D21A99 /* ASAuthorizationControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BC61D27BDA68D00D21A99 /* ASAuthorizationControllerProxy.swift */; };
 		EE8BD66E2741581D003D419F /* CustomGoogleOauthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */; };
-		EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E5CA12759D74C0042CB70 /* DeviceExt.swift */; };
 		EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E5CA32759EB250042CB70 /* LoginFlow.swift */; };
 		EE953A3A270678CC00D4E133 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE953A39270678CC00D4E133 /* LoadingIndicator.swift */; };
 		EE9582D02729AD1600AAEC8A /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9582CF2729AD1600AAEC8A /* ReportModal.swift */; };
@@ -224,7 +223,6 @@
 		EE8BC61B27BDA66900D21A99 /* AuthenticationServices+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationServices+Rx.swift"; sourceTree = "<group>"; };
 		EE8BC61D27BDA68D00D21A99 /* ASAuthorizationControllerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerProxy.swift; sourceTree = "<group>"; };
 		EE8BD66D2741581D003D419F /* CustomGoogleOauthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGoogleOauthBtn.swift; sourceTree = "<group>"; };
-		EE8E5CA12759D74C0042CB70 /* DeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExt.swift; sourceTree = "<group>"; };
 		EE8E5CA32759EB250042CB70 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		EE953A39270678CC00D4E133 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		EE9582CF2729AD1600AAEC8A /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
@@ -987,7 +985,6 @@
 		EEC4302827591464008F802F /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				EE8E5CA12759D74C0042CB70 /* DeviceExt.swift */,
 				EECCC125275D04000068A4BD /* ViewExt.swift */,
 				EECCC127275D041C0068A4BD /* ColorExt.swift */,
 				EECCC129275D045B0068A4BD /* NavigationExt.swift */,
@@ -1337,7 +1334,6 @@
 				EE8E5CA42759EB250042CB70 /* LoginFlow.swift in Sources */,
 				EE97ACED275DB5F100A05857 /* RuleFlow.swift in Sources */,
 				EE9F0D5C26E8CFD40015E81B /* LoginButton.swift in Sources */,
-				EE8E5CA22759D74C0042CB70 /* DeviceExt.swift in Sources */,
 				EEB499092781F89C0082709A /* BamBooAPI.swift in Sources */,
 				EECDE31A276A0D830075711C /* LoginService.swift in Sources */,
 				EECD8B29277AB12600B00807 /* AcceptSection.swift in Sources */,

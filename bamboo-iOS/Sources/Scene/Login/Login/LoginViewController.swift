@@ -63,18 +63,10 @@ final class LoginViewController : baseVC<LoginReactor> {
             $0.width.equalTo(bounds.width/2.30)
             $0.top.equalToSuperview().offset(bounds.height/3.776744)
         }
-        if UIDevice.current.isiPad{
-            btnStackView.snp.makeConstraints {
-                $0.height.equalTo(95)
-                $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
-                $0.left.right.equalToSuperview().inset(bounds.width/18.75)
-            }
-        }else if UIDevice.current.isiPhone{
-            btnStackView.snp.makeConstraints {
-                $0.height.equalTo(bounds.height/8.55)
-                $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
-                $0.left.right.equalToSuperview().inset(bounds.width/18.75)
-            }
+        btnStackView.snp.makeConstraints {
+            $0.height.equalTo(bounds.height/8.55)
+            $0.bottom.equalTo(divider.snp.top).inset(bounds.height/25.375 * -1)
+            $0.left.right.equalToSuperview().inset(bounds.width/18.75)
         }
         divider.snp.makeConstraints{
             $0.height.equalTo(0.5)
