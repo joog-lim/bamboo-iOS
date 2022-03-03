@@ -36,46 +36,24 @@ final class ReportModal : baseVC<ReportReactor>{
     //MARK: - Helper
     override func setLayout() {
         super.setLayout()
-        if UIDevice.current.isiPhone{
-            editContentTitle.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(30)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-            }
-            titleTf.snp.makeConstraints {
-                $0.top.equalTo(editContentTitle.snp.bottom).offset(bounds.height/81.2)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/27.0666)
-            }
-            contentTv.snp.makeConstraints {
-                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/8.12)
-            }
-            reportBtn.snp.makeConstraints {
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/23.2)
-                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
-            }
-        }else if UIDevice.current.isiPad{
-            editContentTitle.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(30)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-            }
-            titleTf.snp.makeConstraints {
-                $0.top.equalTo(editContentTitle.snp.bottom).offset(20)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/27.0666)
-            }
-            contentTv.snp.makeConstraints {
-                $0.top.equalTo(titleTf.snp.bottom).offset(15)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(120)
-            }
-            reportBtn.snp.makeConstraints {
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(40)
-                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
-            }
+        editContentTitle.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(30)
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
+        }
+        titleTf.snp.makeConstraints {
+            $0.top.equalTo(editContentTitle.snp.bottom).offset(bounds.height/81.2)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/27.0666)
+        }
+        contentTv.snp.makeConstraints {
+            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/81.2)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/8.12)
+        }
+        reportBtn.snp.makeConstraints {
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/23.2)
+            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/40.6)
         }
     }
     
@@ -114,18 +92,10 @@ extension ReportModal : PanModalPresentable{
     var cornerRadius: CGFloat{return 20}
     
     var shortFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/2)
-        }else{
-            return .contentHeight(350)
-        }
+        return .maxHeightWithTopInset(bounds.height/2)
     }
     var longFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/5)
-        }else{
-            return .contentHeight(650)
-        }
+        return .maxHeightWithTopInset(bounds.height/5)
     }
     
     var anchorModalToLongForm: Bool {return false}
