@@ -45,31 +45,16 @@ final class OauthVC : baseVC<OauthReactor> {
             $0.top.equalTo(backBar.snp.bottom).offset(bounds.height/40)
             $0.left.equalToSuperview().offset(20)
         }
-        if UIDevice.current.isiPhone{
-            googleSignBtn.snp.makeConstraints{
-                $0.height.equalTo(bounds.height/20)
-                $0.left.right.equalToSuperview().inset(40)
-                $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/2.3)
-            }
-            appleSignBtn.snp.makeConstraints{
-                $0.height.equalTo(bounds.height/20)
-                $0.top.equalTo(googleSignBtn.snp.bottom).offset(20)
-                $0.width.equalTo(googleSignBtn)
-                $0.centerX.equalToSuperview()
-            }
-        }else if UIDevice.current.isiPad{
-            googleSignBtn.snp.makeConstraints{
-                $0.bottom.equalTo(appleSignBtn.snp.top).offset(-20)
-                $0.centerX.equalToSuperview()
-                $0.height.equalTo(40)
-                $0.width.equalTo(375)
-            }
-            appleSignBtn.snp.makeConstraints{
-                $0.bottom.equalToSuperview().inset(200)
-                $0.centerX.equalToSuperview()
-                $0.width.equalTo(375)
-                $0.height.equalTo(40)
-            }
+        googleSignBtn.snp.makeConstraints{
+            $0.height.equalTo(bounds.height/20)
+            $0.left.right.equalToSuperview().inset(40)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/2.3)
+        }
+        appleSignBtn.snp.makeConstraints{
+            $0.height.equalTo(bounds.height/20)
+            $0.top.equalTo(googleSignBtn.snp.bottom).offset(20)
+            $0.width.equalTo(googleSignBtn)
+            $0.centerX.equalToSuperview()
         }
     }
 
