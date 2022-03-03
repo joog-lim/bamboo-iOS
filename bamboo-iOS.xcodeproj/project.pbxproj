@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0DE5110F3AF51649AF7D0E45 /* Pods_bamboo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */; };
 		EE09E9372772CDF50032F1AA /* noWifiReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9362772CDF50032F1AA /* noWifiReactor.swift */; };
-		EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */; };
 		EE09E941277349710032F1AA /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09E940277349710032F1AA /* ModelType.swift */; };
 		EE1B8862279E4CED00B92181 /* StandByTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */; };
 		EE1B8864279E4DC900B92181 /* RefusalTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */; };
@@ -169,7 +168,6 @@
 		C33F7F11005C1FA2558983EB /* Pods_bamboo_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bamboo_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEFDC54AF795E6AFB6F26B4 /* Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-bamboo-iOS-bamboo-iOSTests/Pods-bamboo-iOS-bamboo-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE09E9362772CDF50032F1AA /* noWifiReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noWifiReactor.swift; sourceTree = "<group>"; };
-		EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EE09E940277349710032F1AA /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		EE1B8861279E4CED00B92181 /* StandByTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByTableViewHeaderView.swift; sourceTree = "<group>"; };
 		EE1B8863279E4DC900B92181 /* RefusalTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -960,7 +958,6 @@
 		EEC43026275913C9008F802F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EE09E9382772ED8F0032F1AA /* ActivityIndicator.swift */,
 				EE3BA57F270301F200281096 /* Models */,
 				EE80467326F45E78007D3206 /* Extensions */,
 			);
@@ -1296,7 +1293,6 @@
 				EEB198FA275FA650000375AB /* StandByFlow.swift in Sources */,
 				EE57BD3427C74B440075D910 /* EmailWriteVC.swift in Sources */,
 				EE8BC61C27BDA66900D21A99 /* AuthenticationServices+Rx.swift in Sources */,
-				EE09E9392772ED8F0032F1AA /* ActivityIndicator.swift in Sources */,
 				EECCC128275D041C0068A4BD /* ColorExt.swift in Sources */,
 				EEDC424027C63A71006059DD /* AppleLogin.swift in Sources */,
 				EEC4301B2758A812008F802F /* AppFlow.swift in Sources */,
