@@ -78,10 +78,39 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     //MARK: - Location
     override func setLayout() {
         super.setLayout()
-        iphoneLocation()
-        iPadLocation()
         dropDown.anchorView = tagChooseBtn
-
+        dropDown.bottomOffset = CGPoint(x: 0, y:bounds.height/27.0666 + 5)
+        titleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
+            $0.top.equalToSuperview().offset(bounds.height/33.8333)
+        }
+        titleTf.snp.makeConstraints{
+            $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
+            $0.left.equalToSuperview().offset(bounds.width/15.625)
+            $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
+            $0.height.equalTo(bounds.height/27.0666)
+        }
+        tagChooseBtn.snp.makeConstraints {
+            $0.top.equalTo(titleTf)
+            $0.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.width.equalTo(bounds.width/5.77)
+            $0.height.equalTo(titleTf)
+        }
+        contentTv.snp.makeConstraints {
+            $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/7.51851)
+        }
+        passwordStackView.snp.makeConstraints {
+            $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/12)
+        }
+        sendBtn.snp.makeConstraints {
+            $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
+            $0.left.right.equalToSuperview().inset(bounds.width/15.625)
+            $0.height.equalTo(bounds.height/20.3)
+        }
         questionTitle.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(bounds.height/58)
             $0.left.right.equalToSuperview().inset(bounds.width/15.625)
@@ -93,7 +122,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
     override func keyBoardLayout() {
         super.keyBoardLayout()
-
         RxKeyboard.instance.isHidden
             .skip(1)
             .map{ $0 ? PanModalPresentationController.PresentationState.shortForm : .longForm}
@@ -139,84 +167,6 @@ final class WritingBulletinBoardModal: baseVC<WritingBulletinBoardReactor>{
     }
 }
 
-//MARK: - Location
-extension WritingBulletinBoardModal{
-    //MARK: - iPAD
-    private func iPadLocation(){
-        if UIDevice.current.isiPad{
-            dropDown.bottomOffset = CGPoint(x: 0, y: 40)
-            titleLabel.snp.makeConstraints {
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-                $0.top.equalToSuperview().offset(24)
-            }
-            titleTf.snp.makeConstraints{
-                $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-                $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
-                $0.height.equalTo(30)
-            }
-            tagChooseBtn.snp.makeConstraints {
-                $0.top.equalTo(titleTf)
-                $0.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.width.equalTo(60)
-                $0.height.equalTo(titleTf)
-            }
-            contentTv.snp.makeConstraints {
-                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(154)
-            }
-            passwordStackView.snp.makeConstraints {
-                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(60)
-            }
-            sendBtn.snp.makeConstraints {
-                $0.top.equalTo(passwordStackView.snp.bottom).offset(27)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(30)
-            }
-        }
-    }
-    //MARK: - iPhone
-    private func iphoneLocation(){
-        if UIDevice.current.isiPhone{
-            dropDown.bottomOffset = CGPoint(x: 0, y:bounds.height/27.0666 + 5)
-            titleLabel.snp.makeConstraints {
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-                $0.top.equalToSuperview().offset(bounds.height/33.8333)
-            }
-            titleTf.snp.makeConstraints{
-                $0.top.equalTo(questionTitle.snp.bottom).offset(bounds.height/162.4)
-                $0.left.equalToSuperview().offset(bounds.width/15.625)
-                $0.right.equalTo(tagChooseBtn.snp.left).inset(bounds.width/75 * -1)
-                $0.height.equalTo(bounds.height/27.0666)
-            }
-            tagChooseBtn.snp.makeConstraints {
-                $0.top.equalTo(titleTf)
-                $0.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.width.equalTo(bounds.width/5.77)
-                $0.height.equalTo(titleTf)
-            }
-            contentTv.snp.makeConstraints {
-                $0.top.equalTo(titleTf.snp.bottom).offset(bounds.height/162.4)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/7.51851)
-            }
-            passwordStackView.snp.makeConstraints {
-                $0.top.equalTo(contentTv.snp.bottom).offset(bounds.height/50.75)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/12)
-            }
-            sendBtn.snp.makeConstraints {
-                $0.top.equalTo(passwordStackView.snp.bottom).offset(bounds.height/30.074)
-                $0.left.right.equalToSuperview().inset(bounds.width/15.625)
-                $0.height.equalTo(bounds.height/20.3)
-            }
-        }
-    }
-}
-
 //MARK: - PanModal Setting
 extension WritingBulletinBoardModal : PanModalPresentable{
     override var preferredStatusBarStyle: UIStatusBarStyle{return .lightContent}
@@ -225,18 +175,10 @@ extension WritingBulletinBoardModal : PanModalPresentable{
 
     var cornerRadius: CGFloat{return 40}
     var shortFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/2.6)
-        }else{
-            return .contentHeight(500)
-        }
+        return .maxHeightWithTopInset(bounds.height/2.6)
     }
     var longFormHeight: PanModalHeight{
-        if UIDevice.current.isiPhone{
-            return .maxHeightWithTopInset(bounds.height/17)
-        }else{
-            return .contentHeight(850)
-        }
+        return .maxHeightWithTopInset(bounds.height/17)
     }
     
     var anchorModalToLongForm: Bool {return false}
