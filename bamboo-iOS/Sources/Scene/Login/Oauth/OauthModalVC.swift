@@ -13,6 +13,7 @@ import RxGesture
 import ReactorKit
 import RxKeyboard
 import AuthenticationServices
+import KeychainSwift
 
 final class OauthVC : baseVC<OauthReactor> {
     
@@ -75,8 +76,7 @@ final class OauthVC : baseVC<OauthReactor> {
     private func googleOauth(){
         GoogleLogin.shared.SignInOauth(vc: self)
     }
-
-    
+    //MARK: - Bind
     override func bindView(reactor: OauthReactor) {
         backBar.backBtn.rx.tap
             .map(Reactor.Action.backBtnRequired)
@@ -90,11 +90,20 @@ final class OauthVC : baseVC<OauthReactor> {
         
         appleSignBtn.rx
             .loginOnTap(scope: [.fullName, .email])
+            .do(onNext: {[weak self] _ in self?.showLoading()})
             .subscribe(onNext: { result in
                 guard let auth = result.credential as? ASAuthorizationAppleIDCredential else {return }
                 UserDefaults().set(("\(auth.fullName?.familyName ?? "")\(auth.fullName?.givenName ?? "")"), forKey: "name")
+                KeychainSwift().set(auth.user, forKey: "appleID")
+                print(auth.user)
                 reactor.action.onNext(.appleLoginBERequest(result: auth))
             })
             .disposed(by: disposeBag)
+    }
+    override func bindState(reactor: OauthReactor) {
+        reactor.state.observe(on: MainScheduler.instance)
+            .subscribe(onNext:{ [weak self] _ in
+                self?.hideLoading()
+            }).disposed(by: disposeBag)
     }
 }

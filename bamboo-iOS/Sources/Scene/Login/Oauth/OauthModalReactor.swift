@@ -67,7 +67,8 @@ extension OauthReactor{
             KeychainSwift().set(refreshToken, forKey: "refreshToken")
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
-            steps.accept(BambooStep.LoginIsRequired)
+            print("backBtnRequied")
+            steps.accept(BambooStep.backBtnRequired)
         case let .setAppleLogin(isAuth, sub, accessToken, refreshToken, isAdmin):
             if isAuth{
                 KeychainSwift().set(accessToken ?? "", forKey: "accessToken")

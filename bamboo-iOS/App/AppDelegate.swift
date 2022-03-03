@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NetWorkStatus.shared.StartMonitoring()
         appleForcedDisConnect()
-//        appleAutomaticLogin()
+        appleAutomaticLogin()
         googleAutomaticLogin()
         return true
     }
@@ -66,10 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     //애플 강제 연결 취소
     private func appleForcedDisConnect(){
-        let defaults = UserDefaults.standard
         NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
             print("No user")
-            defaults.removeObject(forKey: "gest")
+            KeychainSwift().delete("appleID")
             //Show the app's signed out state
         }
     }
