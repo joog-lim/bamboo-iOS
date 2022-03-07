@@ -80,7 +80,6 @@ final class OauthVC : baseVC<OauthReactor> {
                 guard let auth = result.credential as? ASAuthorizationAppleIDCredential else {return }
                 UserDefaults().set(("\(auth.fullName?.familyName ?? "")\(auth.fullName?.givenName ?? "")"), forKey: "name")
                 KeychainSwift().set(auth.user, forKey: "appleID")
-                print(auth.user)
                 reactor.action.onNext(.appleLoginBERequest(result: auth))
             })
             .disposed(by: disposeBag)

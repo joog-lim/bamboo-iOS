@@ -46,7 +46,6 @@ final class OauthReactor : Reactor , Stepper{
 extension OauthReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
-            
         case.backBtnRequired:
             steps.accept(BambooStep.backBtnRequired)
             return .empty()
@@ -67,8 +66,7 @@ extension OauthReactor{
             KeychainSwift().set(refreshToken, forKey: "refreshToken")
             UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
             UserDefaults.standard.set(true, forKey: "LoginStatus")
-            print("backBtnRequied")
-            steps.accept(BambooStep.backBtnRequired)
+            steps.accept(BambooStep.LoginIsRequired)
         case let .setAppleLogin(isAuth, sub, accessToken, refreshToken, isAdmin):
             if isAuth{
                 KeychainSwift().set(accessToken ?? "", forKey: "accessToken")

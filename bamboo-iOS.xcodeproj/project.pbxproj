@@ -39,6 +39,7 @@
 		EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */; };
 		EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF17278F273400CCF1D2 /* Verify.swift */; };
 		EE5DBF1A278F38D100CCF1D2 /* BulletinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */; };
+		EE5DC6CA27D1C917005DA351 /* GIDSignIn + Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -198,6 +199,7 @@
 		EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EE5DBF17278F273400CCF1D2 /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
 		EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinRequest.swift; sourceTree = "<group>"; };
+		EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIDSignIn + Rx.swift"; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 				EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */,
 				EE8BC61B27BDA66900D21A99 /* AuthenticationServices+Rx.swift */,
 				EE8BC61D27BDA68D00D21A99 /* ASAuthorizationControllerProxy.swift */,
+				EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1394,6 +1397,7 @@
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
 				EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */,
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
+				EE5DC6CA27D1C917005DA351 /* GIDSignIn + Rx.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
 				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
