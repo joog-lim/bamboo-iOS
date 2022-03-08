@@ -66,15 +66,15 @@ final class OauthVC : baseVC<OauthReactor> {
             .disposed(by: disposeBag)
         
         googleSignBtn.rx.tap
-            .subscribe(onNext:{
-                GIDSignIn.sharedInstance.signIn(with: googleConfigure().gid, presenting: self) { user, err in
+            .subscribe(onNext:{ [weak self] in
+                GIDSignIn.sharedInstance.signIn(with: googleConfigure().gid, presenting: self!) { user, err in
                     guard err == nil else{return}
                     guard let user = user else{return }
                     user.authentication.do { authentication, error in
                         guard error == nil else {return }
                         guard let authentication = authentication else {return}
                         reactor.action.onNext(.googleLoginBERequied(idToken: authentication.idToken!))
-                        self.showLoading()
+                        self?.showLoading()
                     }
                 }
             }).disposed(by: disposeBag)
