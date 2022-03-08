@@ -58,9 +58,6 @@ final class OauthVC : baseVC<OauthReactor> {
         }
     }
 
-    private func googleOauth(){
-        GoogleLogin.shared.SignInOauth(vc: self)
-    }
     //MARK: - Bind
     override func bindView(reactor: OauthReactor) {
         backBar.backBtn.rx.tap
