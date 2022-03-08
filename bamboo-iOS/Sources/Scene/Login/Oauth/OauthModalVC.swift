@@ -74,6 +74,7 @@ final class OauthVC : baseVC<OauthReactor> {
                         guard error == nil else {return }
                         guard let authentication = authentication else {return}
                         reactor.action.onNext(.googleLoginBERequied(idToken: authentication.idToken!))
+                        self.showLoading()
                     }
                 }
             }).disposed(by: disposeBag)
