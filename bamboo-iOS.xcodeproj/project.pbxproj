@@ -39,7 +39,6 @@
 		EE5DBF16278EFF9A00CCF1D2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */; };
 		EE5DBF18278F273400CCF1D2 /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF17278F273400CCF1D2 /* Verify.swift */; };
 		EE5DBF1A278F38D100CCF1D2 /* BulletinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */; };
-		EE5DC6CA27D1C917005DA351 /* GIDSignIn + Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */; };
 		EE680E54271EB93C006D0F03 /* LikeOrDisLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */; };
 		EE7C6F7B26EEEC960071031C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7C6F7A26EEEC960071031C /* MainViewController.swift */; };
 		EE7CA2D0271D3B45003140CD /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */; };
@@ -52,7 +51,6 @@
 		EE8064292727034E0040B295 /* RefusalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8064282727034E0040B295 /* RefusalModal.swift */; };
 		EE8141F827018AAA00ECFDCC /* DetailText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F727018AAA00ECFDCC /* DetailText.swift */; };
 		EE8141FA27018E0C00ECFDCC /* ExplanationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */; };
-		EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8343F72742A98000991D32 /* GoogleLogin.swift */; };
 		EE89810A26E5FD400086D2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810926E5FD400086D2D6 /* AppDelegate.swift */; };
 		EE89810C26E5FD400086D2D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */; };
 		EE89811326E5FD410086D2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE89811226E5FD410086D2D6 /* Assets.xcassets */; };
@@ -122,6 +120,7 @@
 		EECDE318276A0D4C0075711C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE317276A0D4C0075711C /* ServiceProvider.swift */; };
 		EECDE31A276A0D830075711C /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE319276A0D830075711C /* LoginService.swift */; };
 		EECDE31C276A0E140075711C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECDE31B276A0E140075711C /* BaseService.swift */; };
+		EECE515C27D6EEA1000E9943 /* GIDSignConfigureExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE515B27D6EEA1000E9943 /* GIDSignConfigureExt.swift */; };
 		EED1FD382761E5D5004AD43E /* RefusalFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1FD372761E5D5004AD43E /* RefusalFlow.swift */; };
 		EED265522761733E00A1994A /* bamboo_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED265512761733E00A1994A /* bamboo_iOSTests.swift */; };
 		EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED3523227859CCF001ADE19 /* NoWifiModalVC.swift */; };
@@ -199,7 +198,6 @@
 		EE5DBF15278EFF9A00CCF1D2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		EE5DBF17278F273400CCF1D2 /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
 		EE5DBF19278F38D100CCF1D2 /* BulletinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinRequest.swift; sourceTree = "<group>"; };
-		EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIDSignIn + Rx.swift"; sourceTree = "<group>"; };
 		EE680E53271EB93C006D0F03 /* LikeOrDisLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOrDisLikeView.swift; sourceTree = "<group>"; };
 		EE7C6F7A26EEEC960071031C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EE7CA2CF271D3B45003140CD /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 		EE8064282727034E0040B295 /* RefusalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalModal.swift; sourceTree = "<group>"; };
 		EE8141F727018AAA00ECFDCC /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
 		EE8141F927018E0C00ECFDCC /* ExplanationLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationLabel.swift; sourceTree = "<group>"; };
-		EE8343F72742A98000991D32 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
 		EE89810626E5FD400086D2D6 /* 광대숲.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "광대숲.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE89810926E5FD400086D2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE89810B26E5FD400086D2D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +282,7 @@
 		EECDE317276A0D4C0075711C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		EECDE319276A0D830075711C /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		EECDE31B276A0E140075711C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		EECE515B27D6EEA1000E9943 /* GIDSignConfigureExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIDSignConfigureExt.swift; sourceTree = "<group>"; };
 		EED1FD372761E5D5004AD43E /* RefusalFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefusalFlow.swift; sourceTree = "<group>"; };
 		EED2654F2761733E00A1994A /* bamboo-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bamboo-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED265512761733E00A1994A /* bamboo_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bamboo_iOSTests.swift; sourceTree = "<group>"; };
@@ -669,6 +667,7 @@
 		EE80467326F45E78007D3206 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EECE515A27D6EE7E000E9943 /* Foundation */,
 				EEC4302927591472008F802F /* Rx */,
 				EEC4302827591464008F802F /* UIKit */,
 			);
@@ -703,14 +702,6 @@
 				EE8141F727018AAA00ECFDCC /* DetailText.swift */,
 			);
 			path = DetailText;
-			sourceTree = "<group>";
-		};
-		EE8343F62742A97100991D32 /* GoogleLoginSystem */ = {
-			isa = PBXGroup;
-			children = (
-				EE8343F72742A98000991D32 /* GoogleLogin.swift */,
-			);
-			path = GoogleLoginSystem;
 			sourceTree = "<group>";
 		};
 		EE8980FD26E5FD400086D2D6 = {
@@ -776,7 +767,6 @@
 			children = (
 				EE963D33273401A6005070B5 /* OauthModalVC.swift */,
 				EEE81499275A7BF80008B06A /* OauthModalReactor.swift */,
-				EE8343F62742A97100991D32 /* GoogleLoginSystem */,
 			);
 			path = Oauth;
 			sourceTree = "<group>";
@@ -991,9 +981,6 @@
 				EECCC12D275D04A10068A4BD /* NSMutableAttributedStringExt.swift */,
 				EE9F0D5726E8B82C0015E81B /* CALayerExt.swift */,
 				EE489A982771B60200513E94 /* OSLogExt.swift */,
-				EECD8B2F277B109000B00807 /* DateExt.swift */,
-				EEB498FE2781F2770082709A /* StringExt.swift */,
-				EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */,
 				EEDC3DF4279CC72100D9B031 /* TableViewExt.swift */,
 			);
 			path = UIKit;
@@ -1007,7 +994,6 @@
 				EE5DBF0F278D970D00CCF1D2 /* ItemIndexable.swift */,
 				EE8BC61B27BDA66900D21A99 /* AuthenticationServices+Rx.swift */,
 				EE8BC61D27BDA68D00D21A99 /* ASAuthorizationControllerProxy.swift */,
-				EE5DC6C927D1C917005DA351 /* GIDSignIn + Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1027,6 +1013,17 @@
 				EE97ACF2275DFBDB00A05857 /* User */,
 			);
 			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		EECE515A27D6EE7E000E9943 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				EECD8B2F277B109000B00807 /* DateExt.swift */,
+				EE5DBF11278DF3A800CCF1D2 /* ArrayExt.swift */,
+				EEB498FE2781F2770082709A /* StringExt.swift */,
+				EECE515B27D6EEA1000E9943 /* GIDSignConfigureExt.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		EED265502761733E00A1994A /* bamboo-iOSTests */ = {
@@ -1315,7 +1312,6 @@
 				EEC4302B27591488008F802F /* StepExt.swift in Sources */,
 				EE97ACEB275DB43400A05857 /* HomeFlow.swift in Sources */,
 				EE29D21C27C420D3004887CC /* EmailOauthReactor.swift in Sources */,
-				EE8343F82742A98000991D32 /* GoogleLogin.swift in Sources */,
 				EEB3E483276F269A009BC98D /* RefusalModalReactor.swift in Sources */,
 				EE97ACF5275DFBF700A05857 /* ManagerMainFlow.swift in Sources */,
 				EE97ACFA275E095500A05857 /* RuleReactor.swift in Sources */,
@@ -1397,7 +1393,6 @@
 				EE9F0D5826E8B82C0015E81B /* CALayerExt.swift in Sources */,
 				EEDBB051279E194F008FF4BB /* AcceptTableViewHeaderView.swift in Sources */,
 				EECD8B30277B109000B00807 /* DateExt.swift in Sources */,
-				EE5DC6CA27D1C917005DA351 /* GIDSignIn + Rx.swift in Sources */,
 				EED42DCB2763BD8500898537 /* DeleteReactor.swift in Sources */,
 				EEB4990F2781FA7D0082709A /* BamBooAPI+Path.swift in Sources */,
 				EE55C2442781ECC8001596C1 /* Encodable.swift in Sources */,
@@ -1408,6 +1403,7 @@
 				EE97ACF1275DEAF500A05857 /* MainReactor.swift in Sources */,
 				EEE2A7832795DD720051FA7F /* ManagerService.swift in Sources */,
 				EE29D21A27C4207A004887CC /* EmailOauthVC.swift in Sources */,
+				EECE515C27D6EEA1000E9943 /* GIDSignConfigureExt.swift in Sources */,
 				EEF451C1278B3DEC00ADA8BD /* BaseTableViewHeaderFooterView.swift in Sources */,
 				EEB0A011277C1850004D7D7F /* DeleteSection.swift in Sources */,
 				EED3523327859CCF001ADE19 /* NoWifiModalVC.swift in Sources */,

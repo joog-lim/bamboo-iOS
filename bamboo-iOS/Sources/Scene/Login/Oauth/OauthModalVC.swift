@@ -70,7 +70,15 @@ final class OauthVC : baseVC<OauthReactor> {
         
         googleSignBtn.rx.tap
             .subscribe(onNext:{
-                GoogleLogin.shared.SignInOauth(vc: self)
+                GIDSignIn.sharedInstance.signIn(with: googleConfigure().gid, presenting: self) { user, err in
+                    guard err == nil else{return}
+                    guard let user = user else{return }
+                    user.authentication.do { authentication, error in
+                        guard error == nil else {return }
+                        guard let authentication = authentication else {return}
+                        reactor.action.onNext(.googleLoginBERequied(idToken: authentication.idToken!))
+                    }
+                }
             }).disposed(by: disposeBag)
         
         appleSignBtn.rx
