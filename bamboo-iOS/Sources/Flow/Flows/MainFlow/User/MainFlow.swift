@@ -46,8 +46,6 @@ final class MainFlow : Flow{
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asBambooStep else {return .none}
         switch step{
-        case .LoginIsRequired:
-            return .end(forwardToParentFlowWithStep: BambooStep.LoginIsRequired)
         case .userMainTabBarIsRequired:
             return coordinateToMainTabBar()
         default:

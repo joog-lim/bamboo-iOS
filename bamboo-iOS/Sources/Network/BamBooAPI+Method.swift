@@ -12,20 +12,9 @@ extension BamBooAPI{
     func getMethod() -> Moya.Method{
         switch self{
         //Post
-        case .postRenewalToken:
-            return .post
-        case .postLogin:
-            return .post
         case .postBulletin:
             return .post
-        case .postEmoji:
-            return .post
-        case .postAppleLogin:
-            return .post
-        case .postAuthenticationMail:
-            return .post
-        case .postAuthenticationNumber:
-            return .post
+
             // Get
         case .getAlgorithm:
             return  .get
@@ -33,20 +22,9 @@ extension BamBooAPI{
             return .get
         case .getVerify:
             return .get
-        case .getAdminAlgorithm:
-            return .get
-            
         // Patch
         case .patchStatus:
             return .patch
-        case .patchEditAlgorithm:
-            return .patch
-            
-        //Delete
-        case .deleteAlgorithm:
-            return .delete
-        case .deleteEmoji:
-            return .delete
         }
     }
 }
