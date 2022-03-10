@@ -123,10 +123,6 @@ extension MainViewController : ClickReportBtnActionDelegate{
         _ = reactor?.mutate(action: Reactor.Action.reportBtnClickAction(idx: id, index: indexPath.row))
     }
     
-    func clickLikeBtnAction(cell: BulletinBoardsTableViewCell,  id: Int, state: Bool) {
-        guard let indexPath = self.mainTableView.indexPath(for: cell) else {return}
-         reactor?.action.onNext(.emojiBtnClick(idx: id, indexPath: indexPath.row, state: state))
-    }
 }
 
 //MARK: - TableViewHeader & Footer Setting

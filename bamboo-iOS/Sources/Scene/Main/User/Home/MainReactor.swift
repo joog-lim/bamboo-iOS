@@ -18,7 +18,6 @@ final class MainReactor : Reactor, Stepper{
     enum Action{
         case viewDidLoad
         case writeData
-        case emojiBtnClick(idx : Int,indexPath : Int,state : Bool)
         case reportBtnClickAction(idx : Int, index : Int)
         case pagination(
             contentHeight: CGFloat,
@@ -30,8 +29,6 @@ final class MainReactor : Reactor, Stepper{
     enum Mutation{
         case updateDataSource([MainSection.Item])
         case updateRefreshDataSource([MainSection.Item])
-        case postEmoji(indexPath : Int)
-        case deleteEmoji(indexPath : Int)
     }
     struct State{
         var mainSection = MainSection.Model(
@@ -72,8 +69,6 @@ extension MainReactor{
             }else{
                 return .empty()
             }
-        case let .emojiBtnClick(idx,indexPath,status):
-            return postEmoji(idx: idx,indexPath: indexPath, status: status)
         }
     }
 }
@@ -88,18 +83,6 @@ extension MainReactor{
         case let .updateRefreshDataSource(sectionItem):
             state.mainSection.items.removeAll()
             state.mainSection.items.append(contentsOf: sectionItem)
-        case let .postEmoji(indexPath):
-            switch state.mainSection.items[indexPath]{
-            case let .main(data):
-                data.isClicked = true
-                data.emojiCount += 1
-            }
-        case let .deleteEmoji(indexPath):
-            switch state.mainSection.items[indexPath]{
-            case let .main(data):
-                data.isClicked = false
-                data.emojiCount -= 1
-            }
         }
         return state
     }
@@ -129,16 +112,3 @@ private extension MainReactor{
     }
 }
 
-//MARK: - Post
-private extension MainReactor{
-    private func postEmoji(idx : Int,indexPath : Int,status : Bool) -> Observable<Mutation>{
-        let emojiRequest = EmojiRequest(number: idx)
-        if status{
-            return self.provider.userService.postEmoji(emojiRequest: emojiRequest)
-                .map(Mutation.postEmoji(indexPath: indexPath))
-        }else{
-            return self.provider.userService.deleteEmoji(emojiRequest: emojiRequest)
-                .map(Mutation.deleteEmoji(indexPath: indexPath))
-        }
-    }
-}

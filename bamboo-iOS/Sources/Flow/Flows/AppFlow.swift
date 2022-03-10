@@ -21,7 +21,7 @@ struct AppStepper : Stepper{
     }
     
     func readyToEmitSteps() {
-        steps.accept(BambooStep.LoginIsRequired)
+        steps.accept(BambooStep.userMainTabBarIsRequired)
     }
 }
 
@@ -50,43 +50,20 @@ final class AppFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         switch step{
             //앱 처음 시작하면 로그인이 되어 있지 않을 경우 로그인 화면으로 이동
-        case .LoginIsRequired:
-            return coordinateToLoginVC()
             //mainTabbarRequired호출시 MainFlow와 nextStep을 넘겨줌
-        case .userMainTabBarIsRequired,.userIsLoggedIn:
+        case .userMainTabBarIsRequired:
             return coordinateToUserMainVC()
-        case .managerMainTabBarIsRequired , .managerIsLoggedIn :
-            return coordinateToManagerVC()
         default:
             return .none
         }
     }
-    
-    private func coordinateToLoginVC() ->FlowContributors{
-        let flow = LoginFlow(with: provider)
-        Flows.use(flow, when: .created) { [unowned self] root in
-            rootWindow.rootViewController = root
-        }
-        let nextStep = OneStepper(withSingleStep: BambooStep.LoginIsRequired)
-        return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
-    }
-    
+
     private func coordinateToUserMainVC() -> FlowContributors{
         let flow = MainFlow(with: provider)
         Flows.use(flow, when: .created) { [unowned self] root in
             rootWindow.rootViewController = root
         }
         let nextStep = OneStepper(withSingleStep: BambooStep.userMainTabBarIsRequired)
-        
-        return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
-    }
-    
-    private func coordinateToManagerVC() -> FlowContributors{
-        let flow = ManagerMainFlow(with: provider)
-        Flows.use(flow, when: .created) { [unowned self] root in
-            rootWindow.rootViewController = root
-        }
-        let nextStep = OneStepper(withSingleStep: BambooStep.managerMainTabBarIsRequired)
         
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: nextStep))
     }
