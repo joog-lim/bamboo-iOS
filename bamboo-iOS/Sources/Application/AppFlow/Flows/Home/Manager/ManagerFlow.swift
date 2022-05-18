@@ -48,10 +48,10 @@ private extension ManagerFlow{
             when: .created
         ) { [unowned self]  root in
             
-            let acceptItem = UITabBarItem(title: "수락", image: UIImage(systemName: "house"))
-            let standByItem = UITabBarItem(title: "대기", image: UIImage(systemName: "exclamationmark"))
+            let acceptItem = UITabBarItem(title: "수락", image: UIImage(systemName: "lock.open"))
+            let standByItem = UITabBarItem(title: "대기", image: UIImage(systemName: "stop.circle"))
             let refusalItem = UITabBarItem(title: "거절", image: UIImage(systemName: "exclamationmark.triangle"))
-            let deleteItem = UITabBarItem(title: "삭제", image: UIImage(systemName: ""))
+            let deleteItem = UITabBarItem(title: "삭제", image: UIImage(systemName: "trash"))
             
             root[0].tabBarItem = acceptItem
             root[1].tabBarItem = standByItem
