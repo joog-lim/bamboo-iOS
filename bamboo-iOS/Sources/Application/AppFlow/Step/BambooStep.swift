@@ -9,6 +9,7 @@ enum BambooStep : Step{
     case popToRoot
     
     //MARK: - Manage Users
+    case onBoardingIsRequired
     case loginIsRequired
     
     //MARK: - User Service

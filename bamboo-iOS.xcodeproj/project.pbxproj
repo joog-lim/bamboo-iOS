@@ -36,6 +36,7 @@
 		EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEE2834818000C44C6F /* AppDI.swift */; };
 		EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */; };
 		EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */; };
+		EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		EEB8ADEE2834818000C44C6F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
 		EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactorView.swift; sourceTree = "<group>"; };
+		EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 		EEB8ADE528347D0000C44C6F /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADF728348FE100C44C6F /* Manage User */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -259,6 +262,14 @@
 			isa = PBXGroup;
 			children = (
 				EEB8ADF028348B3400C44C6F /* OnBoarding */,
+			);
+			path = "Manage User";
+			sourceTree = "<group>";
+		};
+		EEB8ADF728348FE100C44C6F /* Manage User */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */,
 			);
 			path = "Manage User";
 			sourceTree = "<group>";
@@ -377,6 +388,7 @@
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
 				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
+				EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

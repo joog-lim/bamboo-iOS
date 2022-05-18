@@ -12,6 +12,6 @@ import Base
 
 final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     
-
+    
     
 }

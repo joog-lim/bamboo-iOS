@@ -8,7 +8,7 @@ struct AppStepper: Stepper{
     private let disposeBag: DisposeBag = .init()
     
     func readyToEmitSteps() {
-        steps.accept(BambooStep.loginIsRequired)
+        steps.accept(BambooStep.onBoardingIsRequired)
     }
 }
 
@@ -31,7 +31,10 @@ final class AppFlow: Flow{
         print("\(type(of: self)): \(#function)")
     }
     func navigate(to step: Step) -> FlowContributors {
+        guard let step = step.asBambooStep else { return .none }
         switch step{
+        case .onBoardingIsRequired:
+            return coordinateToUserManage()
         default:
             return .none
         }
@@ -41,5 +44,22 @@ final class AppFlow: Flow{
 
 //MARK: - Method
 private extension AppFlow{
-    
+    func coordinateToUserManage() -> FlowContributors{
+        let flow = OnBoardingFlow()
+        Flows.use(
+            flow,
+            when: .created
+        ) { [unowned self] root in
+            root.modalPresentationStyle = .fullScreen
+            root.modalTransitionStyle = .crossDissolve
+            DispatchQueue.main.async {
+                self.rootVC.dismiss(animated: false)
+                self.rootVC.present(root, animated: true)
+            }
+        }
+        return.one(flowContributor: .contribute(
+            withNextPresentable: flow,
+            withNextStepper: OneStepper(withSingleStep: BambooStep.onBoardingIsRequired)
+        ))
+    }
 }
