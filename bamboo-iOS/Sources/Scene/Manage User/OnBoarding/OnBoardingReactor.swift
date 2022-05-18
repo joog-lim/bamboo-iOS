@@ -18,7 +18,9 @@ final class OnBoardingReactor: Reactor ,Stepper{
     
     //MARK: - Reactor
     enum Action {
-        // actiom cases
+        case userLoginButtonDidTap
+         case managerLoginButtonDidTap
+         case guestLoginButtonDidTap
     }
     
     enum Mutation {
@@ -40,8 +42,18 @@ final class OnBoardingReactor: Reactor ,Stepper{
 //MARK: - Mutate
 extension OnBoardingReactor {
     func mutate(action: Action) -> Observable<Mutation> {
-        // switch action {
-        // }
+         switch action {
+         case .userLoginButtonDidTap:
+             print("UserLogin")
+             return .empty()
+             
+         case .managerLoginButtonDidTap:
+             print("ManagerLogin")
+             return .empty()
+         case .guestLoginButtonDidTap:
+             print("GuestLogin")
+             return .empty()
+         }
     }
 }
 

@@ -35,7 +35,7 @@
 		EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEC283480FE00C44C6F /* StepExt.swift */; };
 		EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEE2834818000C44C6F /* AppDI.swift */; };
 		EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */; };
-		EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */; };
+		EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactor.swift */; };
 		EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */; };
 		EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADFB2834957D00C44C6F /* LoginButton.swift */; };
 		EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADFD283495FD00C44C6F /* BamBooColor */; };
@@ -58,7 +58,7 @@
 		EEB8ADEC283480FE00C44C6F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
 		EEB8ADEE2834818000C44C6F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
 		EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
-		EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactorView.swift; sourceTree = "<group>"; };
+		EEB8ADF428348BF400C44C6F /* OnBoardingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactor.swift; sourceTree = "<group>"; };
 		EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlow.swift; sourceTree = "<group>"; };
 		EEB8ADFB2834957D00C44C6F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -251,7 +251,7 @@
 			children = (
 				EEB8ADFA2834942E00C44C6F /* View */,
 				EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */,
-				EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */,
+				EEB8ADF428348BF400C44C6F /* OnBoardingReactor.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -398,7 +398,7 @@
 				EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */,
 				EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */,
 				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
-				EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */,
+				EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */,
 				EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */,
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
