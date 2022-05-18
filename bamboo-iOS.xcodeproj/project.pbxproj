@@ -21,7 +21,11 @@
 		EEB8AD8628346FA400C44C6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EEB8AD8B28346FA500C44C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEB8AD8E28346FA500C44C6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EEB8AD9028346FA500C44C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEB8AD9028346FA500C44C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
+		EEB8ADA82834736200C44C6F /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		EEB8ADA92834736200C44C6F /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
+		EEB8ADAA2834736200C44C6F /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
+		EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +61,6 @@
 				EEB8ADA3283472ED00C44C6F /* Supporting */,
 				EEB8ADA2283472E800C44C6F /* Resources */,
 				EEB8ADA1283472E000C44C6F /* Sources */,
-				EEB8AD8628346FA400C44C6F /* ViewController.swift */,
-				EEB8AD8B28346FA500C44C6F /* Assets.xcassets */,
-				EEB8AD8D28346FA500C44C6F /* LaunchScreen.storyboard */,
-				EEB8AD9028346FA500C44C6F /* Info.plist */,
 			);
 			path = "bamboo-iOS";
 			sourceTree = "<group>";
@@ -68,6 +68,7 @@
 		EEB8ADA1283472E000C44C6F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AD8628346FA400C44C6F /* ViewController.swift */,
 				EEB8ADA4283472F800C44C6F /* App */,
 			);
 			path = Sources;
@@ -76,6 +77,9 @@
 		EEB8ADA2283472E800C44C6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADA72834733700C44C6F /* Font */,
+				EEB8ADA62834733100C44C6F /* Splash */,
+				EEB8ADA52834732700C44C6F /* Assets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -83,6 +87,7 @@
 		EEB8ADA3283472ED00C44C6F /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AD9028346FA500C44C6F /* Info.plist */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -94,6 +99,33 @@
 				EEB8AD8428346FA400C44C6F /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		EEB8ADA52834732700C44C6F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AD8B28346FA500C44C6F /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		EEB8ADA62834733100C44C6F /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AD8D28346FA500C44C6F /* LaunchScreen.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		EEB8ADA72834733700C44C6F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADA82834736200C44C6F /* NanumSquareRoundB.ttf */,
+				EEB8ADA92834736200C44C6F /* NanumSquareRoundEB.ttf */,
+				EEB8ADAA2834736200C44C6F /* NanumSquareRoundL.ttf */,
+				EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q2JZBR7H7Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "bamboo-iOS/Info.plist";
+				INFOPLIST_FILE = "bamboo-iOS/Supporting/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -336,7 +368,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q2JZBR7H7Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "bamboo-iOS/Info.plist";
+				INFOPLIST_FILE = "bamboo-iOS/Supporting/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
