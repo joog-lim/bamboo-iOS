@@ -40,7 +40,9 @@
 		EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADFB2834957D00C44C6F /* LoginButton.swift */; };
 		EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADFD283495FD00C44C6F /* BamBooColor */; };
 		EEB8AE0128349D5E00C44C6F /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AE0028349D5E00C44C6F /* PinLayout */; };
-		EEB8AE0428349DFA00C44C6F /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AE0328349DFA00C44C6F /* FlexLayout */; };
+		EEB8AF0F2834AC8400C44C6F /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AF0E2834AC8400C44C6F /* FlexLayout */; };
+		EEB8AF112834AC8400C44C6F /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AF102834AC8400C44C6F /* FlexLayoutYoga */; };
+		EEB8AF132834AC8400C44C6F /* FlexLayoutYogaKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AF122834AC8400C44C6F /* FlexLayoutYogaKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,10 +81,12 @@
 				EEB8ADD6283478A900C44C6F /* RxCocoa in Frameworks */,
 				EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */,
 				EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */,
-				EEB8AE0428349DFA00C44C6F /* FlexLayout in Frameworks */,
+				EEB8AF0F2834AC8400C44C6F /* FlexLayout in Frameworks */,
 				EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */,
 				EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */,
 				EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */,
+				EEB8AF112834AC8400C44C6F /* FlexLayoutYoga in Frameworks */,
+				EEB8AF132834AC8400C44C6F /* FlexLayoutYogaKit in Frameworks */,
 				EEB8AE0128349D5E00C44C6F /* PinLayout in Frameworks */,
 				EEB8ADCF283475F700C44C6F /* Then in Frameworks */,
 				EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */,
@@ -329,7 +333,9 @@
 				EEB8ADE128347AE200C44C6F /* UIUtil */,
 				EEB8ADFD283495FD00C44C6F /* BamBooColor */,
 				EEB8AE0028349D5E00C44C6F /* PinLayout */,
-				EEB8AE0328349DFA00C44C6F /* FlexLayout */,
+				EEB8AF0E2834AC8400C44C6F /* FlexLayout */,
+				EEB8AF102834AC8400C44C6F /* FlexLayoutYoga */,
+				EEB8AF122834AC8400C44C6F /* FlexLayoutYogaKit */,
 			);
 			productName = "bamboo-iOS";
 			productReference = EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */;
@@ -374,7 +380,7 @@
 				EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */,
 				EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				EEB8ADFF28349D5E00C44C6F /* XCRemoteSwiftPackageReference "PinLayout" */,
-				EEB8AE0228349DFA00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */,
+				EEB8AF0D2834ABFC00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */,
 			);
 			productRefGroup = EEB8AD8028346FA400C44C6F /* Products */;
 			projectDirPath = "";
@@ -733,7 +739,7 @@
 				kind = branch;
 			};
 		};
-		EEB8AE0228349DFA00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+		EEB8AF0D2834ABFC00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/layoutBox/FlexLayout.git";
 			requirement = {
@@ -845,10 +851,20 @@
 			package = EEB8ADFF28349D5E00C44C6F /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
 		};
-		EEB8AE0328349DFA00C44C6F /* FlexLayout */ = {
+		EEB8AF0E2834AC8400C44C6F /* FlexLayout */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EEB8AE0228349DFA00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			package = EEB8AF0D2834ABFC00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */;
 			productName = FlexLayout;
+		};
+		EEB8AF102834AC8400C44C6F /* FlexLayoutYoga */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8AF0D2834ABFC00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYoga;
+		};
+		EEB8AF122834AC8400C44C6F /* FlexLayoutYogaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8AF0D2834ABFC00C44C6F /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYogaKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

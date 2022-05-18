@@ -11,8 +11,8 @@ import RxSwift
 import Base
 import UIUtil
 import Then
-import FlexLayout
 import PinLayout
+import FlexLayout
 
 final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     //MARK: - Properties
@@ -25,8 +25,8 @@ final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     
     //MARK: - Method
     override func configureUI() {
-        self.flexContainer.flex
-            .direction(.row)
+        
+        
     }
     
     override func addView() {
@@ -34,6 +34,7 @@ final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     }
     
     override func setLayout() {
+//        flexContainer.pin.all(self.pin.safeArea)
         
     }
     
