@@ -34,7 +34,7 @@ final class HomeFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         switch step{
         case .HomeIsRequired :
-            return .none
+            return coordinatorToHome()
         default: return .none
         }
     }
@@ -42,5 +42,10 @@ final class HomeFlow : Flow{
 
 //MARK: - Method
 private extension HomeFlow {
-    let 
+    func coordinatorToHome() -> FlowContributors{
+        let vc = AppDelegate.container.resolve(HomeViewController.self)!
+        let reactor = AppDelegate.container.resolve(HomeReactor.self)!
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
+    }
 }

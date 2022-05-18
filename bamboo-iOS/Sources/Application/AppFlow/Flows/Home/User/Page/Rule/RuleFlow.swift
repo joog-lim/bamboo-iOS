@@ -34,7 +34,7 @@ final class RuleFlow : Flow{
         guard let step = step.asBambooStep else {return .none}
         switch step{
         case .RuleIsRequired :
-            return .none
+            return coordinatorToRule()
         default: return .none
         }
     }
@@ -43,6 +43,9 @@ final class RuleFlow : Flow{
 //MARK: - Method
 private extension RuleFlow {
     func coordinatorToRule() -> FlowContributors{
-        
+        let vc = AppDelegate.container.resolve(RuleViewController.self)!
+        let reactor = AppDelegate.container.resolve(RuleReactor.self)!
+        self.rootViewController.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc,withNextStepper: reactor))
     }
 }

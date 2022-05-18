@@ -17,6 +17,12 @@ extension Container{
         self.register(HomeViewController.self) { r in
             return HomeViewController(reactor: r.resolve(HomeReactor.self))
         }
+        self.register(RuleViewController.self) { r in
+            return RuleViewController(reactor: r.resolve(RuleReactor.self))
+        }
+        self.register(DetailViewController.self) { r in
+            return DetailViewController(reactor: r.resolve(DetailReactor.self))
+        }
         
     }
     
@@ -28,6 +34,12 @@ extension Container{
         //MARK: - User
         self.register(HomeReactor.self) { _ in
             return HomeReactor()
+        }
+        self.register(RuleReactor.self) { _ in
+            return RuleReactor()
+        }
+        self.register(DetailReactor.self) { _ in
+            return DetailReactor()
         }
     }
 }

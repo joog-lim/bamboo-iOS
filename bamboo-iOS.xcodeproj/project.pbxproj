@@ -54,6 +54,8 @@
 		EEB8AFCC2834D91900C44C6F /* RuleReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCA2834D91900C44C6F /* RuleReactorView.swift */; };
 		EEB8AFCF2834D94C00C44C6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCD2834D94C00C44C6F /* DetailViewController.swift */; };
 		EEB8AFD02834D94C00C44C6F /* DetailReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCE2834D94C00C44C6F /* DetailReactorView.swift */; };
+		EEB8AFD32834DD7200C44C6F /* AcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFD12834DD7200C44C6F /* AcceptViewController.swift */; };
+		EEB8AFD42834DD7200C44C6F /* AcceptReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFD22834DD7200C44C6F /* AcceptReactorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		EEB8AFCA2834D91900C44C6F /* RuleReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleReactorView.swift; sourceTree = "<group>"; };
 		EEB8AFCD2834D94C00C44C6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EEB8AFCE2834D94C00C44C6F /* DetailReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactorView.swift; sourceTree = "<group>"; };
+		EEB8AFD12834DD7200C44C6F /* AcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptViewController.swift; sourceTree = "<group>"; };
+		EEB8AFD22834DD7200C44C6F /* AcceptReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptReactorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +405,8 @@
 		EEB8AFB02834C86400C44C6F /* Accept */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AFD12834DD7200C44C6F /* AcceptViewController.swift */,
+				EEB8AFD22834DD7200C44C6F /* AcceptReactorView.swift */,
 			);
 			path = Accept;
 			sourceTree = "<group>";
@@ -571,9 +577,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB8AFD32834DD7200C44C6F /* AcceptViewController.swift in Sources */,
 				EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */,
 				EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */,
 				EEB8AFCB2834D91900C44C6F /* RuleViewController.swift in Sources */,
+				EEB8AFD42834DD7200C44C6F /* AcceptReactorView.swift in Sources */,
 				EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */,
 				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
 				EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */,
