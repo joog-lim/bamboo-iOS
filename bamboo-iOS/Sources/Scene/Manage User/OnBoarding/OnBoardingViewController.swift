@@ -11,10 +11,12 @@ import RxSwift
 import Base
 import UIUtil
 import Then
-import SnapKit
+import FlexLayout
+import PinLayout
 
 final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     //MARK: - Properties
+    private let flexContainer = UIView()
     private let logo = UIImageView(image: UIImage(named: "BAMBOO_Logo"),contentMode: .scaleAspectFit)
     private let userLoginButton = LoginButton(placeholder: "사용자", cornerRadius: 15,font: UIFont.systemFont(ofSize: 10))
     private let managerBtn = LoginButton(placeholder: "관리자", cornerRadius: 15,font:  UIFont.systemFont(ofSize: 10))
@@ -22,17 +24,17 @@ final class OnBoardingViewController: BaseVC<OnBoardingReactor>{
     private let guestBtn = UIButton(title: "게스트로 사용하기", font: UIFont.systemFont(ofSize: 14), titleColor: .lightGray)
     
     //MARK: - Method
+    override func configureUI() {
+        self.flexContainer.flex
+            .direction(.row)
+    }
+    
     override func addView() {
-        view.addSubViews(logo,userLoginButton,managerBtn,divider,guestBtn)
+        view.addSubview(flexContainer)
     }
     
     override func setLayout() {
-        logo.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-                       $0.height.equalTo(69)
-                       $0.width.equalTo(bound.width/2.30)
-                       $0.top.equalToSuperview().offset(bound.height/3.776744)
-        }
+        
     }
     
     //MARK: - Bind

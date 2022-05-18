@@ -9,7 +9,6 @@ open class BaseVC<T: Reactor> : UIViewController{
     public override func viewDidLoad() {
         setupBackgroundIfNotSet()
         addView()
-        setLayout()
         configureUI()
         keyBoardLayout()
     }
@@ -21,6 +20,11 @@ open class BaseVC<T: Reactor> : UIViewController{
     @available(*, unavailable)
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setLayout()
     }
     
     deinit{
