@@ -42,5 +42,7 @@ final class RuleFlow : Flow{
 
 //MARK: - Method
 private extension RuleFlow {
-    
+    func coordinatorToRule() -> FlowContributors{
+        
+    }
 }
