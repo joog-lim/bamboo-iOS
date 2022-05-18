@@ -44,7 +44,7 @@ extension OnBoardingReactor {
     func mutate(action: Action) -> Observable<Mutation> {
          switch action {
          case .userLoginButtonDidTap:
-             steps.accept(BambooStep.UserHomeIsRequired)
+             steps.accept(BambooStep.UserIsRequired)
              print("UserLogin")
              return .empty()
          case .managerLoginButtonDidTap:

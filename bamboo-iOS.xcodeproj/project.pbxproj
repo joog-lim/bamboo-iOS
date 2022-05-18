@@ -48,6 +48,12 @@
 		EEB8AFC02834D26100C44C6F /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFBF2834D26100C44C6F /* HomeFlow.swift */; };
 		EEB8AFC22834D26900C44C6F /* RuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC12834D26900C44C6F /* RuleFlow.swift */; };
 		EEB8AFC42834D27500C44C6F /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC32834D27500C44C6F /* DetailFlow.swift */; };
+		EEB8AFC72834D8BE00C44C6F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC52834D8BE00C44C6F /* HomeViewController.swift */; };
+		EEB8AFC82834D8BE00C44C6F /* HomeReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC62834D8BE00C44C6F /* HomeReactorView.swift */; };
+		EEB8AFCB2834D91900C44C6F /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC92834D91900C44C6F /* RuleViewController.swift */; };
+		EEB8AFCC2834D91900C44C6F /* RuleReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCA2834D91900C44C6F /* RuleReactorView.swift */; };
+		EEB8AFCF2834D94C00C44C6F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCD2834D94C00C44C6F /* DetailViewController.swift */; };
+		EEB8AFD02834D94C00C44C6F /* DetailReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFCE2834D94C00C44C6F /* DetailReactorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +81,12 @@
 		EEB8AFBF2834D26100C44C6F /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		EEB8AFC12834D26900C44C6F /* RuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFlow.swift; sourceTree = "<group>"; };
 		EEB8AFC32834D27500C44C6F /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
+		EEB8AFC52834D8BE00C44C6F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EEB8AFC62834D8BE00C44C6F /* HomeReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactorView.swift; sourceTree = "<group>"; };
+		EEB8AFC92834D91900C44C6F /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
+		EEB8AFCA2834D91900C44C6F /* RuleReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleReactorView.swift; sourceTree = "<group>"; };
+		EEB8AFCD2834D94C00C44C6F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EEB8AFCE2834D94C00C44C6F /* DetailReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReactorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +348,8 @@
 		EEB8AFA42834C53D00C44C6F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AFC52834D8BE00C44C6F /* HomeViewController.swift */,
+				EEB8AFC62834D8BE00C44C6F /* HomeReactorView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -343,6 +357,8 @@
 		EEB8AFA52834C54400C44C6F /* Rule */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AFC92834D91900C44C6F /* RuleViewController.swift */,
+				EEB8AFCA2834D91900C44C6F /* RuleReactorView.swift */,
 			);
 			path = Rule;
 			sourceTree = "<group>";
@@ -350,6 +366,8 @@
 		EEB8AFA62834C54900C44C6F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AFCD2834D94C00C44C6F /* DetailViewController.swift */,
+				EEB8AFCE2834D94C00C44C6F /* DetailReactorView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -555,15 +573,21 @@
 			files = (
 				EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */,
 				EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */,
+				EEB8AFCB2834D91900C44C6F /* RuleViewController.swift in Sources */,
 				EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */,
 				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
 				EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */,
 				EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */,
+				EEB8AFCF2834D94C00C44C6F /* DetailViewController.swift in Sources */,
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AFAC2834C6ED00C44C6F /* UserFlow.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
+				EEB8AFCC2834D91900C44C6F /* RuleReactorView.swift in Sources */,
 				EEB8AFC22834D26900C44C6F /* RuleFlow.swift in Sources */,
+				EEB8AFC82834D8BE00C44C6F /* HomeReactorView.swift in Sources */,
 				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
+				EEB8AFD02834D94C00C44C6F /* DetailReactorView.swift in Sources */,
+				EEB8AFC72834D8BE00C44C6F /* HomeViewController.swift in Sources */,
 				EEB8AFC02834D26100C44C6F /* HomeFlow.swift in Sources */,
 				EEB8AFC42834D27500C44C6F /* DetailFlow.swift in Sources */,
 				EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */,

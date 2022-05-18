@@ -31,7 +31,7 @@ final class OnBoardingFlow: Flow{
         switch step{
         case .onBoardingIsRequired: 
             return coordinateToOnBoarding()
-        case .UserHomeIsRequired:
+        case .UserIsRequired:
             return coordinateToOnBoarding()
         default:
             return.none
@@ -46,4 +46,5 @@ private extension OnBoardingFlow{
         self.rootVC.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vc.reactor!))
     }
+    
 }

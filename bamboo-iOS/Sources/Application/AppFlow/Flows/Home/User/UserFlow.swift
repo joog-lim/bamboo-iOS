@@ -2,6 +2,7 @@ import RxFlow
 import RxRelay
 import RxSwift
 import UIKit
+import UIUtil
 
 final class UserFlow : Flow{
     
@@ -45,9 +46,9 @@ private extension UserFlow{
             , when: .created
         ) { [unowned self]  root in
             
-            let homeItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: nil)
-            let ruleItem = UITabBarItem(title: "규칙", image: UIImage(systemName: "exclamationmark"), selectedImage: nil)
-            let detailItem = UITabBarItem(title: "더보기", image: UIImage(systemName: "ellipsis"), selectedImage: nil)
+            let homeItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"))
+            let ruleItem = UITabBarItem(title: "규칙", image: UIImage(systemName: "exclamationmark"))
+            let detailItem = UITabBarItem(title: "더보기", image: UIImage(systemName: "ellipsis"))
             
             root[0].tabBarItem = homeItem
             root[1].tabBarItem = ruleItem

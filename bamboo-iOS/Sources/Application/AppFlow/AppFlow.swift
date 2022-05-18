@@ -35,7 +35,7 @@ final class AppFlow: Flow{
         switch step{
         case .onBoardingIsRequired:
             return coordinateToUserManage()
-        case .UserHomeIsRequired:
+        case .UserIsRequired:
             return coordinateToUserService()
         default:
             return .none
@@ -80,7 +80,7 @@ private extension AppFlow{
         return .one(
             flowContributor: .contribute(
                 withNextPresentable: flow,
-                withNextStepper: OneStepper(withSingleStep: BambooStep.UserHomeIsRequired)
+                withNextStepper: OneStepper(withSingleStep: BambooStep.UserIsRequired)
             ))
     }
 }
