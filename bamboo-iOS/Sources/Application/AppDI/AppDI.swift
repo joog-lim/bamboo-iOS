@@ -23,6 +23,8 @@ extension Container{
         self.register(DetailViewController.self) { r in
             return DetailViewController(reactor: r.resolve(DetailReactor.self))
         }
+        //MARK: - Manager
+        
         
     }
     
@@ -41,5 +43,6 @@ extension Container{
         self.register(DetailReactor.self) { _ in
             return DetailReactor()
         }
+        //MARK: - Manager
     }
 }

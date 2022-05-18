@@ -45,13 +45,12 @@ extension OnBoardingReactor {
          switch action {
          case .userLoginButtonDidTap:
              steps.accept(BambooStep.UserIsRequired)
-             print("UserLogin")
              return .empty()
          case .managerLoginButtonDidTap:
-             print("ManagerLogin")
+             steps.accept(BambooStep.ManagerIsRequired)
              return .empty()
          case .guestLoginButtonDidTap:
-             print("GuestLogin")
+             steps.accept(BambooStep.UserIsRequired)
              return .empty()
          }
     }

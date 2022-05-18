@@ -7,11 +7,9 @@ enum BambooStep : Step{
     case alert(title : String?, message: String?, style: UIAlertController.Style, actions: [UIAlertAction])
     case dismiss
     case popToRoot
-    
     //MARK: - Manage Users
     case onBoardingIsRequired
     case loginIsRequired
-    
     //MARK: - User Service
     case UserIsRequired
     case HomeIsRequired
@@ -19,4 +17,8 @@ enum BambooStep : Step{
     case DetailIsRequired
     //MARK: - Manager Service
     case ManagerIsRequired
+    case AcceptIsRequired
+    case StandByIsRequired
+    case RefusalIsRequired
+    case DeleteIsRequired
 }

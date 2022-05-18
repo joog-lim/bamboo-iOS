@@ -1,5 +1,5 @@
 //
-//  AcceptReactorView.swift
+//  RefusalReactorView.swift
 //  bamboo-iOS
 //
 //  Created by Ji-hoon Ahn on 2022/05/18.
@@ -11,7 +11,7 @@ import RxSwift
 import RxFlow
 import RxRelay
 
-final class AcceptReactor: Reactor ,Stepper{
+final class RefusalReactor: Reactor ,Stepper{
     
     var steps: PublishRelay<Step> = .init()
     private let disposeBag: DisposeBag = .init()
@@ -38,7 +38,7 @@ final class AcceptReactor: Reactor ,Stepper{
 }
 
 //MARK: - Mutate
-extension AcceptReactor {
+extension RefusalReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         // switch action {
         // }
@@ -46,7 +46,7 @@ extension AcceptReactor {
 }
 
 //MARK: - reduce
-extension AcceptReactor {
+extension RefusalReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         // switch mutation {
