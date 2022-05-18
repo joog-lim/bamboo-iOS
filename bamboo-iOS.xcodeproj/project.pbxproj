@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AD8228346FA400C44C6F /* AppDelegate.swift */; };
 		EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AD8428346FA400C44C6F /* SceneDelegate.swift */; };
-		EEB8AD8728346FA400C44C6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AD8628346FA400C44C6F /* ViewController.swift */; };
 		EEB8AD8C28346FA500C44C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEB8AD8B28346FA500C44C6F /* Assets.xcassets */; };
 		EEB8AD8F28346FA500C44C6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB8AD8D28346FA500C44C6F /* LaunchScreen.storyboard */; };
 		EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADAD283473BE00C44C6F /* RxFlow */; };
@@ -24,13 +23,23 @@
 		EEB8ADC92834756400C44C6F /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADC82834756400C44C6F /* DropDown */; };
 		EEB8ADCC283475BE00C44C6F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADCB283475BE00C44C6F /* SnapKit */; };
 		EEB8ADCF283475F700C44C6F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADCE283475F700C44C6F /* Then */; };
+		EEB8ADD6283478A900C44C6F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADD5283478A900C44C6F /* RxCocoa */; };
+		EEB8ADD8283478B300C44C6F /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADD7283478B300C44C6F /* RxBlocking */; };
+		EEB8ADDA283478B300C44C6F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADD9283478B300C44C6F /* RxRelay */; };
+		EEB8ADDC283478B300C44C6F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADDB283478B300C44C6F /* RxSwift */; };
+		EEB8ADDE28347AE200C44C6F /* Base in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADDD28347AE200C44C6F /* Base */; };
+		EEB8ADE028347AE200C44C6F /* RxUtil in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADDF28347AE200C44C6F /* RxUtil */; };
+		EEB8ADE228347AE200C44C6F /* UIUtil in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADE128347AE200C44C6F /* UIUtil */; };
+		EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADE728347D1600C44C6F /* AppFlow.swift */; };
+		EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADE928347DA900C44C6F /* BambooStep.swift */; };
+		EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEC283480FE00C44C6F /* StepExt.swift */; };
+		EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEE2834818000C44C6F /* AppDI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bamboo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB8AD8228346FA400C44C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEB8AD8428346FA400C44C6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EEB8AD8628346FA400C44C6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EEB8AD8B28346FA500C44C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEB8AD8E28346FA500C44C6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEB8AD9028346FA500C44C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "bamboo-iOS/Supporting/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -38,6 +47,11 @@
 		EEB8ADA92834736200C44C6F /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
 		EEB8ADAA2834736200C44C6F /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
+		EEB8ADD22834770400C44C6F /* Platform */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Platform; sourceTree = "<group>"; };
+		EEB8ADE728347D1600C44C6F /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		EEB8ADE928347DA900C44C6F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
+		EEB8ADEC283480FE00C44C6F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
+		EEB8ADEE2834818000C44C6F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,18 +59,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB8ADDE28347AE200C44C6F /* Base in Frameworks */,
+				EEB8ADE228347AE200C44C6F /* UIUtil in Frameworks */,
+				EEB8ADDA283478B300C44C6F /* RxRelay in Frameworks */,
 				EEB8ADBA2834742300C44C6F /* IQKeyboardManagerSwift in Frameworks */,
 				EEB8ADC92834756400C44C6F /* DropDown in Frameworks */,
 				EEB8ADBD2834743F00C44C6F /* RxKeyboard in Frameworks */,
+				EEB8ADD6283478A900C44C6F /* RxCocoa in Frameworks */,
 				EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */,
 				EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */,
 				EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */,
 				EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */,
 				EEB8ADCF283475F700C44C6F /* Then in Frameworks */,
 				EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */,
+				EEB8ADE028347AE200C44C6F /* RxUtil in Frameworks */,
 				EEB8ADB4283473E300C44C6F /* Swinject in Frameworks */,
 				EEB8ADC6283474A300C44C6F /* PanModal in Frameworks */,
 				EEB8ADCC283475BE00C44C6F /* SnapKit in Frameworks */,
+				EEB8ADDC283478B300C44C6F /* RxSwift in Frameworks */,
+				EEB8ADD8283478B300C44C6F /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +87,10 @@
 		EEB8AD7628346FA400C44C6F = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADD22834770400C44C6F /* Platform */,
 				EEB8AD8128346FA400C44C6F /* bamboo-iOS */,
 				EEB8AD8028346FA400C44C6F /* Products */,
+				EEB8ADD4283478A900C44C6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +115,9 @@
 		EEB8ADA1283472E000C44C6F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EEB8AD8628346FA400C44C6F /* ViewController.swift */,
-				EEB8ADA4283472F800C44C6F /* App */,
+				EEB8ADA4283472F800C44C6F /* Application */,
+				EEB8ADD02834769D00C44C6F /* Scene */,
+				EEB8ADEB283480F200C44C6F /* Util */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -116,13 +140,15 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		EEB8ADA4283472F800C44C6F /* App */ = {
+		EEB8ADA4283472F800C44C6F /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADE428347CEE00C44C6F /* AppDI */,
+				EEB8ADE328347CE700C44C6F /* AppFlow */,
 				EEB8AD8228346FA400C44C6F /* AppDelegate.swift */,
 				EEB8AD8428346FA400C44C6F /* SceneDelegate.swift */,
 			);
-			path = App;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		EEB8ADA52834732700C44C6F /* Assets */ = {
@@ -150,6 +176,61 @@
 				EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		EEB8ADD02834769D00C44C6F /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		EEB8ADD4283478A900C44C6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEB8ADE328347CE700C44C6F /* AppFlow */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADE628347D0500C44C6F /* Step */,
+				EEB8ADE528347D0000C44C6F /* Flows */,
+				EEB8ADE728347D1600C44C6F /* AppFlow.swift */,
+			);
+			path = AppFlow;
+			sourceTree = "<group>";
+		};
+		EEB8ADE428347CEE00C44C6F /* AppDI */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADEE2834818000C44C6F /* AppDI.swift */,
+			);
+			path = AppDI;
+			sourceTree = "<group>";
+		};
+		EEB8ADE528347D0000C44C6F /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		EEB8ADE628347D0500C44C6F /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADE928347DA900C44C6F /* BambooStep.swift */,
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
+		EEB8ADEB283480F200C44C6F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADEC283480FE00C44C6F /* StepExt.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +262,13 @@
 				EEB8ADC82834756400C44C6F /* DropDown */,
 				EEB8ADCB283475BE00C44C6F /* SnapKit */,
 				EEB8ADCE283475F700C44C6F /* Then */,
+				EEB8ADD5283478A900C44C6F /* RxCocoa */,
+				EEB8ADD7283478B300C44C6F /* RxBlocking */,
+				EEB8ADD9283478B300C44C6F /* RxRelay */,
+				EEB8ADDB283478B300C44C6F /* RxSwift */,
+				EEB8ADDD28347AE200C44C6F /* Base */,
+				EEB8ADDF28347AE200C44C6F /* RxUtil */,
+				EEB8ADE128347AE200C44C6F /* UIUtil */,
 			);
 			productName = "bamboo-iOS";
 			productReference = EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */;
@@ -223,6 +311,7 @@
 				EEB8ADC72834756400C44C6F /* XCRemoteSwiftPackageReference "DropDown" */,
 				EEB8ADCA283475BE00C44C6F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */,
+				EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = EEB8AD8028346FA400C44C6F /* Products */;
 			projectDirPath = "";
@@ -250,9 +339,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB8AD8728346FA400C44C6F /* ViewController.swift in Sources */,
+				EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */,
 				EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */,
+				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
+				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
+				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +650,14 @@
 				kind = branch;
 			};
 		};
+		EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -620,6 +720,38 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		EEB8ADD5283478A900C44C6F /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		EEB8ADD7283478B300C44C6F /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		EEB8ADD9283478B300C44C6F /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		EEB8ADDB283478B300C44C6F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		EEB8ADDD28347AE200C44C6F /* Base */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Base;
+		};
+		EEB8ADDF28347AE200C44C6F /* RxUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RxUtil;
+		};
+		EEB8ADE128347AE200C44C6F /* UIUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UIUtil;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
