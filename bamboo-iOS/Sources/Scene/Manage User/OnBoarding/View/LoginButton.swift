@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import BamBooColor
+import BamBooSetting
 import UIUtil
 
 final class LoginButton: UIButton {

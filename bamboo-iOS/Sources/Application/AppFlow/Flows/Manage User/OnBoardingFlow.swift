@@ -31,6 +31,8 @@ final class OnBoardingFlow: Flow{
         switch step{
         case .onBoardingIsRequired: 
             return coordinateToOnBoarding()
+        case .UserHomeIsRequired:
+            return coordinateToOnBoarding()
         default:
             return.none
         }

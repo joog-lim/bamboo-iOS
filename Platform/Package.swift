@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Platform",
+    platforms: [.iOS(.v10)],
     products: [
         .library(
             name: "Base",
@@ -16,13 +17,15 @@ let package = Package(
             name: "RxUtil",
             targets: ["RxUtil"]),
         .library(
-            name: "BamBooColor",
-            targets: ["BamBooColor"]),
+            name: "BamBooSetting",
+            targets: ["BamBooSetting"]),
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift", .branchItem("main")),
         .package(url: "https://github.com/ReactorKit/ReactorKit", .branchItem("master")),
-        .package(url: "https://github.com/RxSwiftCommunity/RxFlow", .branchItem("main"))
+        .package(url: "https://github.com/RxSwiftCommunity/RxFlow", .branchItem("main")),
+        .package(url: "https://github.com/SnapKit/SnapKit", .branchItem("develop")),
+        .package(url: "https://github.com/devxoul/Then", .branchItem("master"))
     ],
     targets: [
         .target(
@@ -41,9 +44,11 @@ let package = Package(
                 "RxFlow"
             ]),
         .target(
-            name: "BamBooColor",
+            name: "BamBooSetting",
             dependencies: [
-                "UIUtil"
+                "UIUtil",
+                "SnapKit",
+                "Then"
             ]),
     ]
 )

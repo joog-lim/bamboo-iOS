@@ -13,8 +13,10 @@ enum BambooStep : Step{
     case loginIsRequired
     
     //MARK: - User Service
-    
-    
+    case UserIsRequired
+    case HomeIsRequired
+    case RuleIsRequired
+    case DetailIsRequired
     //MARK: - Manager Service
-    
+    case ManagerIsRequired
 }

@@ -35,6 +35,8 @@ final class AppFlow: Flow{
         switch step{
         case .onBoardingIsRequired:
             return coordinateToUserManage()
+        case .UserHomeIsRequired:
+            return coordinateToUserService()
         default:
             return .none
         }
@@ -61,5 +63,24 @@ private extension AppFlow{
             withNextPresentable: flow,
             withNextStepper: OneStepper(withSingleStep: BambooStep.onBoardingIsRequired)
         ))
+    }
+    func coordinateToUserService() -> FlowContributors{
+        let flow = UserFlow()
+        Flows.use(
+            flow,
+            when: .created
+        ) { [unowned self] root in
+            root.modalPresentationStyle = .fullScreen
+            root.modalTransitionStyle = .crossDissolve
+            DispatchQueue.main.async {
+                self.rootVC.dismiss(animated: false)
+                self.rootVC.present(root, animated: true)
+            }
+        }
+        return .one(
+            flowContributor: .contribute(
+                withNextPresentable: flow,
+                withNextStepper: OneStepper(withSingleStep: BambooStep.UserHomeIsRequired)
+            ))
     }
 }

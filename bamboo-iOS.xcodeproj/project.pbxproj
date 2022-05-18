@@ -38,11 +38,16 @@
 		EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactor.swift */; };
 		EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */; };
 		EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADFB2834957D00C44C6F /* LoginButton.swift */; };
-		EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADFD283495FD00C44C6F /* BamBooColor */; };
 		EEB8AF9D2834C3C400C44C6F /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */; };
 		EEB8AF9E2834C3C700C44C6F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADAA2834736200C44C6F /* NanumSquareRoundL.ttf */; };
 		EEB8AF9F2834C3C900C44C6F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADA92834736200C44C6F /* NanumSquareRoundEB.ttf */; };
 		EEB8AFA02834C3CB00C44C6F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADA82834736200C44C6F /* NanumSquareRoundB.ttf */; };
+		EEB8AFAC2834C6ED00C44C6F /* UserFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFAB2834C6ED00C44C6F /* UserFlow.swift */; };
+		EEB8AFAE2834C6F400C44C6F /* ManagerFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFAD2834C6F400C44C6F /* ManagerFlow.swift */; };
+		EEB8AFB52834C8D700C44C6F /* BamBooSetting in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AFB42834C8D700C44C6F /* BamBooSetting */; };
+		EEB8AFC02834D26100C44C6F /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFBF2834D26100C44C6F /* HomeFlow.swift */; };
+		EEB8AFC22834D26900C44C6F /* RuleFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC12834D26900C44C6F /* RuleFlow.swift */; };
+		EEB8AFC42834D27500C44C6F /* DetailFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AFC32834D27500C44C6F /* DetailFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +70,11 @@
 		EEB8ADF428348BF400C44C6F /* OnBoardingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactor.swift; sourceTree = "<group>"; };
 		EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlow.swift; sourceTree = "<group>"; };
 		EEB8ADFB2834957D00C44C6F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		EEB8AFAB2834C6ED00C44C6F /* UserFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlow.swift; sourceTree = "<group>"; };
+		EEB8AFAD2834C6F400C44C6F /* ManagerFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerFlow.swift; sourceTree = "<group>"; };
+		EEB8AFBF2834D26100C44C6F /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		EEB8AFC12834D26900C44C6F /* RuleFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFlow.swift; sourceTree = "<group>"; };
+		EEB8AFC32834D27500C44C6F /* DetailFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +89,10 @@
 				EEB8ADC92834756400C44C6F /* DropDown in Frameworks */,
 				EEB8ADBD2834743F00C44C6F /* RxKeyboard in Frameworks */,
 				EEB8ADD6283478A900C44C6F /* RxCocoa in Frameworks */,
+				EEB8AFB52834C8D700C44C6F /* BamBooSetting in Frameworks */,
 				EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */,
 				EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */,
 				EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */,
-				EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */,
 				EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */,
 				EEB8ADCF283475F700C44C6F /* Then in Frameworks */,
 				EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */,
@@ -196,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB8ADF228348B4600C44C6F /* Manage User */,
+				EEB8AFA12834C4F200C44C6F /* Main */,
 				EEB8ADF128348B3D00C44C6F /* Modals */,
 			);
 			path = Scene;
@@ -230,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB8ADF728348FE100C44C6F /* Manage User */,
+				EEB8AFA72834C68400C44C6F /* Home */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -291,6 +303,145 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		EEB8AFA12834C4F200C44C6F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFA22834C4FE00C44C6F /* User */,
+				EEB8AFA32834C50400C44C6F /* Manager */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EEB8AFA22834C4FE00C44C6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFA42834C53D00C44C6F /* Home */,
+				EEB8AFA52834C54400C44C6F /* Rule */,
+				EEB8AFA62834C54900C44C6F /* Detail */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		EEB8AFA32834C50400C44C6F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFB02834C86400C44C6F /* Accept */,
+				EEB8AFB12834C86800C44C6F /* StandBy */,
+				EEB8AFB32834C88100C44C6F /* Delete */,
+				EEB8AFB22834C86D00C44C6F /* Refusal */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EEB8AFA42834C53D00C44C6F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EEB8AFA52834C54400C44C6F /* Rule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rule;
+			sourceTree = "<group>";
+		};
+		EEB8AFA62834C54900C44C6F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		EEB8AFA72834C68400C44C6F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFAA2834C6B400C44C6F /* User */,
+				EEB8AFA92834C6AE00C44C6F /* Manager */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EEB8AFA92834C6AE00C44C6F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFAD2834C6F400C44C6F /* ManagerFlow.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EEB8AFAA2834C6B400C44C6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFBB2834D16600C44C6F /* Page */,
+				EEB8AFAB2834C6ED00C44C6F /* UserFlow.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		EEB8AFB02834C86400C44C6F /* Accept */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accept;
+			sourceTree = "<group>";
+		};
+		EEB8AFB12834C86800C44C6F /* StandBy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StandBy;
+			sourceTree = "<group>";
+		};
+		EEB8AFB22834C86D00C44C6F /* Refusal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Refusal;
+			sourceTree = "<group>";
+		};
+		EEB8AFB32834C88100C44C6F /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		EEB8AFBB2834D16600C44C6F /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFBE2834D18000C44C6F /* Detail */,
+				EEB8AFBD2834D17400C44C6F /* Rule */,
+				EEB8AFBC2834D16F00C44C6F /* Home */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
+		EEB8AFBC2834D16F00C44C6F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFBF2834D26100C44C6F /* HomeFlow.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EEB8AFBD2834D17400C44C6F /* Rule */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFC12834D26900C44C6F /* RuleFlow.swift */,
+			);
+			path = Rule;
+			sourceTree = "<group>";
+		};
+		EEB8AFBE2834D18000C44C6F /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8AFC32834D27500C44C6F /* DetailFlow.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,7 +478,7 @@
 				EEB8ADDD28347AE200C44C6F /* Base */,
 				EEB8ADDF28347AE200C44C6F /* RxUtil */,
 				EEB8ADE128347AE200C44C6F /* UIUtil */,
-				EEB8ADFD283495FD00C44C6F /* BamBooColor */,
+				EEB8AFB42834C8D700C44C6F /* BamBooSetting */,
 			);
 			productName = "bamboo-iOS";
 			productReference = EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */;
@@ -409,9 +560,14 @@
 				EEB8ADF628348BF400C44C6F /* OnBoardingReactor.swift in Sources */,
 				EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */,
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
+				EEB8AFAC2834C6ED00C44C6F /* UserFlow.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
+				EEB8AFC22834D26900C44C6F /* RuleFlow.swift in Sources */,
 				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
+				EEB8AFC02834D26100C44C6F /* HomeFlow.swift in Sources */,
+				EEB8AFC42834D27500C44C6F /* DetailFlow.swift in Sources */,
 				EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */,
+				EEB8AFAE2834C6F400C44C6F /* ManagerFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,9 +976,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = UIUtil;
 		};
-		EEB8ADFD283495FD00C44C6F /* BamBooColor */ = {
+		EEB8AFB42834C8D700C44C6F /* BamBooSetting */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = BamBooColor;
+			productName = BamBooSetting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
