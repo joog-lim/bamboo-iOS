@@ -14,7 +14,7 @@ open class BaseVC<T: Reactor> : UIViewController{
         keyBoardLayout()
     }
     
-    public init(reactor : T){
+    public init(reactor : T?){
             super.init(nibName: nil, bundle: nil)
             self.reactor = reactor
     }

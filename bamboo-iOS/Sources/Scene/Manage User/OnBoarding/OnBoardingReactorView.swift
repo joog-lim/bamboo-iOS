@@ -8,9 +8,12 @@
 import Foundation
 import ReactorKit
 import RxSwift
+import RxFlow
+import RxRelay
 
-final class OnBoardingReactor: Reactor {
-    
+final class OnBoardingReactor: Reactor ,Stepper{
+    // MARK: - Properties
+    var steps: PublishRelay<Step> = .init()
     private let disposeBag: DisposeBag = .init()
     
     //MARK: - Reactor
