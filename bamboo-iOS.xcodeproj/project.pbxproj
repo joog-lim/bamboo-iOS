@@ -37,6 +37,9 @@
 		EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */; };
 		EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */; };
 		EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */; };
+		EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADFB2834957D00C44C6F /* LoginButton.swift */; };
+		EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADFD283495FD00C44C6F /* BamBooColor */; };
+		EEB8AE0128349D5E00C44C6F /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8AE0028349D5E00C44C6F /* PinLayout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,7 @@
 		EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactorView.swift; sourceTree = "<group>"; };
 		EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlow.swift; sourceTree = "<group>"; };
+		EEB8ADFB2834957D00C44C6F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +79,9 @@
 				EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */,
 				EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */,
 				EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */,
+				EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */,
 				EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */,
+				EEB8AE0128349D5E00C44C6F /* PinLayout in Frameworks */,
 				EEB8ADCF283475F700C44C6F /* Then in Frameworks */,
 				EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */,
 				EEB8ADE028347AE200C44C6F /* RxUtil in Frameworks */,
@@ -245,6 +251,7 @@
 		EEB8ADF028348B3400C44C6F /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADFA2834942E00C44C6F /* View */,
 				EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */,
 				EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */,
 			);
@@ -272,6 +279,14 @@
 				EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */,
 			);
 			path = "Manage User";
+			sourceTree = "<group>";
+		};
+		EEB8ADFA2834942E00C44C6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADFB2834957D00C44C6F /* LoginButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +325,8 @@
 				EEB8ADDD28347AE200C44C6F /* Base */,
 				EEB8ADDF28347AE200C44C6F /* RxUtil */,
 				EEB8ADE128347AE200C44C6F /* UIUtil */,
+				EEB8ADFD283495FD00C44C6F /* BamBooColor */,
+				EEB8AE0028349D5E00C44C6F /* PinLayout */,
 			);
 			productName = "bamboo-iOS";
 			productReference = EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */;
@@ -353,6 +370,7 @@
 				EEB8ADCA283475BE00C44C6F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */,
 				EEB8ADD32834789600C44C6F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				EEB8ADFF28349D5E00C44C6F /* XCRemoteSwiftPackageReference "PinLayout" */,
 			);
 			productRefGroup = EEB8AD8028346FA400C44C6F /* Products */;
 			projectDirPath = "";
@@ -385,6 +403,7 @@
 				EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */,
 				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
 				EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */,
+				EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */,
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
 				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
@@ -702,6 +721,14 @@
 				kind = branch;
 			};
 		};
+		EEB8ADFF28349D5E00C44C6F /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -796,6 +823,15 @@
 		EEB8ADE128347AE200C44C6F /* UIUtil */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIUtil;
+		};
+		EEB8ADFD283495FD00C44C6F /* BamBooColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BamBooColor;
+		};
+		EEB8AE0028349D5E00C44C6F /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADFF28349D5E00C44C6F /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,7 +12,6 @@ struct OnBoardingStepper: Stepper{
 }
 
 final class OnBoardingFlow: Flow{
-
     
     // MARK: - Properties
     var root: Presentable{

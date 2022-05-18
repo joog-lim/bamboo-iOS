@@ -3,7 +3,7 @@ import ReactorKit
 import RxSwift
 
 open class BaseVC<T: Reactor> : UIViewController{
-    let bound = UIScreen.main.bounds
+    public let bound = UIScreen.main.bounds
     public var disposeBag: DisposeBag = .init()
 
     public override func viewDidLoad() {

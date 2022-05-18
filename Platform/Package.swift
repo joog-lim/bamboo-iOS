@@ -15,6 +15,9 @@ let package = Package(
         .library(
             name: "RxUtil",
             targets: ["RxUtil"]),
+        .library(
+            name: "BamBooColor",
+            targets: ["BamBooColor"]),
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift", .branchItem("main")),
@@ -36,6 +39,11 @@ let package = Package(
             dependencies: [
                 "RxSwift",
                 "RxFlow"
+            ]),
+        .target(
+            name: "BamBooColor",
+            dependencies: [
+                "UIUtil"
             ]),
     ]
 )
