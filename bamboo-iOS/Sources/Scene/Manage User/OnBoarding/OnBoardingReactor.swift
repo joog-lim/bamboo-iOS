@@ -56,13 +56,3 @@ extension OnBoardingReactor {
          }
     }
 }
-
-//MARK: - reduce
-extension OnBoardingReactor {
-    func reduce(state: State, mutation: Mutation) -> State {
-        let newState = state
-        // switch mutation {
-        // }
-        return newState
-    }
-}

@@ -9,6 +9,6 @@ public extension UIFont{
     }
     
     static func bamboo(size: CGFloat, family: Family) -> UIFont! {
-        return UIFont(name: "NanumSquareRound\(family)", size: size)
+        return UIFont(name: "NanumSquareRound\(family.rawValue)", size: size)
     }
 }

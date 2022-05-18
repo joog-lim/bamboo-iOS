@@ -39,6 +39,10 @@
 		EEB8ADF92834901600C44C6F /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF82834901600C44C6F /* OnBoardingFlow.swift */; };
 		EEB8ADFC2834957D00C44C6F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADFB2834957D00C44C6F /* LoginButton.swift */; };
 		EEB8ADFE283495FD00C44C6F /* BamBooColor in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADFD283495FD00C44C6F /* BamBooColor */; };
+		EEB8AF9D2834C3C400C44C6F /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADAB2834736200C44C6F /* NanumSquareRoundR.ttf */; };
+		EEB8AF9E2834C3C700C44C6F /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADAA2834736200C44C6F /* NanumSquareRoundL.ttf */; };
+		EEB8AF9F2834C3C900C44C6F /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADA92834736200C44C6F /* NanumSquareRoundEB.ttf */; };
+		EEB8AFA02834C3CB00C44C6F /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEB8ADA82834736200C44C6F /* NanumSquareRoundB.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -382,8 +386,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB8AF9F2834C3C900C44C6F /* NanumSquareRoundEB.ttf in Resources */,
 				EEB8AD8F28346FA500C44C6F /* LaunchScreen.storyboard in Resources */,
+				EEB8AF9E2834C3C700C44C6F /* NanumSquareRoundL.ttf in Resources */,
 				EEB8AD8C28346FA500C44C6F /* Assets.xcassets in Resources */,
+				EEB8AF9D2834C3C400C44C6F /* NanumSquareRoundR.ttf in Resources */,
+				EEB8AFA02834C3CB00C44C6F /* NanumSquareRoundB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

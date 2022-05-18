@@ -11,7 +11,7 @@ import UIUtil
 
 final class LoginButton: UIButton {
 
-    init(placeholder : String, cornerRadius : CGFloat, font : UIFont) {
+    init(placeholder : String, cornerRadius : CGFloat, font : UIFont? = UIFont.bamboo(size: 15, family: .Regular)) {
         super.init(frame: .zero)
         self.backgroundColor = .bambooGreen
         layer.cornerRadius = cornerRadius
