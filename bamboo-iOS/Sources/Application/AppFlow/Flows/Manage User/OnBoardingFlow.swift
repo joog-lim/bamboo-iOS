@@ -32,7 +32,7 @@ final class OnBoardingFlow: Flow{
         case .onBoardingIsRequired: 
             return coordinateToOnBoarding()
         case .UserIsRequired:
-            return coordinateToOnBoarding()
+            return .end(forwardToParentFlowWithStep: BambooStep.UserIsRequired)
         default:
             return.none
         }

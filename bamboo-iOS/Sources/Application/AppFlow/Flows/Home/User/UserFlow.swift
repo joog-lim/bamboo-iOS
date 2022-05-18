@@ -53,7 +53,12 @@ private extension UserFlow{
             root[0].tabBarItem = homeItem
             root[1].tabBarItem = ruleItem
             root[2].tabBarItem = detailItem
+            self.rootViewController.setViewControllers(root, animated: true)
         }
-        return.none
+        return .multiple(flowContributors: [
+            .contribute(withNextPresentable: homeFlow,withNextStepper: homeFlow.stepper),
+            .contribute(withNextPresentable: ruleFlow,withNextStepper: ruleFlow.stepper),
+            .contribute(withNextPresentable: detailFlow,withNextStepper: detailFlow.stepper)
+        ])
     }
 }
