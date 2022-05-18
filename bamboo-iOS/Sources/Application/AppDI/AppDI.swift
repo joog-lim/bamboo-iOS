@@ -24,8 +24,18 @@ extension Container{
             return DetailViewController(reactor: r.resolve(DetailReactor.self))
         }
         //MARK: - Manager
-        
-        
+        self.register(AcceptViewController.self) { r in
+            return AcceptViewController(reactor: r.resolve(AcceptReactor.self))
+        }
+        self.register(StandByViewController.self) { r in
+            return StandByViewController(reactor: r.resolve(StandByReactor.self))
+        }
+        self.register(RefusalViewController.self) { r in
+            return RefusalViewController(reactor: r.resolve(RefusalReactor.self))
+        }
+        self.register(DeleteViewController.self) { r in
+            return DeleteViewController(reactor: r.resolve(DeleteReactor.self))
+        }
     }
     
     private func registerReactor() {
@@ -44,5 +54,17 @@ extension Container{
             return DetailReactor()
         }
         //MARK: - Manager
+        self.register(AcceptReactor.self) { _ in
+            return AcceptReactor()
+        }
+        self.register(StandByReactor.self) { _ in
+            return StandByReactor()
+        }
+        self.register(RefusalReactor.self) { _ in
+            return RefusalReactor()
+        }
+        self.register(DeleteReactor.self) { _ in
+            return DeleteReactor()
+        }
     }
 }
