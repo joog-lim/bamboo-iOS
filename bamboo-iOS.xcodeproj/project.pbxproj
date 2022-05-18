@@ -12,6 +12,18 @@
 		EEB8AD8728346FA400C44C6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8AD8628346FA400C44C6F /* ViewController.swift */; };
 		EEB8AD8C28346FA500C44C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEB8AD8B28346FA500C44C6F /* Assets.xcassets */; };
 		EEB8AD8F28346FA500C44C6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB8AD8D28346FA500C44C6F /* LaunchScreen.storyboard */; };
+		EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADAD283473BE00C44C6F /* RxFlow */; };
+		EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADB0283473D300C44C6F /* ReactorKit */; };
+		EEB8ADB4283473E300C44C6F /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADB3283473E300C44C6F /* Swinject */; };
+		EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADB6283473F300C44C6F /* KeychainSwift */; };
+		EEB8ADBA2834742300C44C6F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADB92834742300C44C6F /* IQKeyboardManagerSwift */; };
+		EEB8ADBD2834743F00C44C6F /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADBC2834743F00C44C6F /* RxKeyboard */; };
+		EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADBF2834746200C44C6F /* RxMoya */; };
+		EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADC22834746E00C44C6F /* KeychainSwift */; };
+		EEB8ADC6283474A300C44C6F /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADC5283474A300C44C6F /* PanModal */; };
+		EEB8ADC92834756400C44C6F /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADC82834756400C44C6F /* DropDown */; };
+		EEB8ADCC283475BE00C44C6F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADCB283475BE00C44C6F /* SnapKit */; };
+		EEB8ADCF283475F700C44C6F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = EEB8ADCE283475F700C44C6F /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +45,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEB8ADBA2834742300C44C6F /* IQKeyboardManagerSwift in Frameworks */,
+				EEB8ADC92834756400C44C6F /* DropDown in Frameworks */,
+				EEB8ADBD2834743F00C44C6F /* RxKeyboard in Frameworks */,
+				EEB8ADB1283473D300C44C6F /* ReactorKit in Frameworks */,
+				EEB8ADAE283473BE00C44C6F /* RxFlow in Frameworks */,
+				EEB8ADC02834746200C44C6F /* RxMoya in Frameworks */,
+				EEB8ADB7283473F300C44C6F /* KeychainSwift in Frameworks */,
+				EEB8ADCF283475F700C44C6F /* Then in Frameworks */,
+				EEB8ADC32834746E00C44C6F /* KeychainSwift in Frameworks */,
+				EEB8ADB4283473E300C44C6F /* Swinject in Frameworks */,
+				EEB8ADC6283474A300C44C6F /* PanModal in Frameworks */,
+				EEB8ADCC283475BE00C44C6F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +168,20 @@
 			dependencies = (
 			);
 			name = "bamboo-iOS";
+			packageProductDependencies = (
+				EEB8ADAD283473BE00C44C6F /* RxFlow */,
+				EEB8ADB0283473D300C44C6F /* ReactorKit */,
+				EEB8ADB3283473E300C44C6F /* Swinject */,
+				EEB8ADB6283473F300C44C6F /* KeychainSwift */,
+				EEB8ADB92834742300C44C6F /* IQKeyboardManagerSwift */,
+				EEB8ADBC2834743F00C44C6F /* RxKeyboard */,
+				EEB8ADBF2834746200C44C6F /* RxMoya */,
+				EEB8ADC22834746E00C44C6F /* KeychainSwift */,
+				EEB8ADC5283474A300C44C6F /* PanModal */,
+				EEB8ADC82834756400C44C6F /* DropDown */,
+				EEB8ADCB283475BE00C44C6F /* SnapKit */,
+				EEB8ADCE283475F700C44C6F /* Then */,
+			);
 			productName = "bamboo-iOS";
 			productReference = EEB8AD7F28346FA400C44C6F /* bamboo-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -172,6 +210,20 @@
 				Base,
 			);
 			mainGroup = EEB8AD7628346FA400C44C6F;
+			packageReferences = (
+				EEB8ADAC283473BE00C44C6F /* XCRemoteSwiftPackageReference "RxFlow" */,
+				EEB8ADAF283473D300C44C6F /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				EEB8ADB2283473E300C44C6F /* XCRemoteSwiftPackageReference "Swinject" */,
+				EEB8ADB5283473F300C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				EEB8ADB82834742300C44C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				EEB8ADBB2834743F00C44C6F /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				EEB8ADBE2834746200C44C6F /* XCRemoteSwiftPackageReference "Moya" */,
+				EEB8ADC12834746E00C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				EEB8ADC4283474A300C44C6F /* XCRemoteSwiftPackageReference "PanModal" */,
+				EEB8ADC72834756400C44C6F /* XCRemoteSwiftPackageReference "DropDown" */,
+				EEB8ADCA283475BE00C44C6F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = EEB8AD8028346FA400C44C6F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,6 +460,168 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EEB8ADAC283473BE00C44C6F /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		EEB8ADAF283473D300C44C6F /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADB2283473E300C44C6F /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADB5283473F300C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADB82834742300C44C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADBB2834743F00C44C6F /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADBE2834746200C44C6F /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADC12834746E00C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADC4283474A300C44C6F /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADC72834756400C44C6F /* XCRemoteSwiftPackageReference "DropDown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AssistoLab/DropDown";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		EEB8ADCA283475BE00C44C6F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EEB8ADAD283473BE00C44C6F /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADAC283473BE00C44C6F /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
+		};
+		EEB8ADB0283473D300C44C6F /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADAF283473D300C44C6F /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		EEB8ADB3283473E300C44C6F /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADB2283473E300C44C6F /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+		EEB8ADB6283473F300C44C6F /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADB5283473F300C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		EEB8ADB92834742300C44C6F /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADB82834742300C44C6F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		EEB8ADBC2834743F00C44C6F /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADBB2834743F00C44C6F /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
+		};
+		EEB8ADBF2834746200C44C6F /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADBE2834746200C44C6F /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		EEB8ADC22834746E00C44C6F /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADB5283473F300C44C6F /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		EEB8ADC5283474A300C44C6F /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADC4283474A300C44C6F /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
+		};
+		EEB8ADC82834756400C44C6F /* DropDown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADC72834756400C44C6F /* XCRemoteSwiftPackageReference "DropDown" */;
+			productName = DropDown;
+		};
+		EEB8ADCB283475BE00C44C6F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADCA283475BE00C44C6F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		EEB8ADCE283475F700C44C6F /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEB8ADCD283475F700C44C6F /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EEB8AD7728346FA400C44C6F /* Project object */;
 }
