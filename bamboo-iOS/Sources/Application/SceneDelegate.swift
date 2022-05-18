@@ -15,11 +15,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let disposeBag: DisposeBag = .init()
     private let coordinator: FlowCoordinator = .init()
     
+    let appFlow = AppFlow()
+    let appStepper = AppStepper()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         coordinateLogger()
+        coordinateToAppFlow(with: windowScene)
     }
-
+    private func coordinateToAppFlow(with scene: UIWindowScene){
+        let window = UIWindow(windowScene: scene)
+        self.window = window
+        
+        coordinator.coordinate(flow: appFlow, with: appStepper)
+        Flows.use(
+            appFlow,
+            when: .created
+        ) { [weak self] root in
+            self?.window?.rootViewController = root
+            self?.window?.makeKeyAndVisible()
+        }
+    }
+    
     private func coordinateLogger(){
         coordinator.rx.willNavigate
             .subscribe(onNext: { flow, step in

@@ -34,6 +34,8 @@
 		EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADE928347DA900C44C6F /* BambooStep.swift */; };
 		EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEC283480FE00C44C6F /* StepExt.swift */; };
 		EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADEE2834818000C44C6F /* AppDI.swift */; };
+		EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */; };
+		EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		EEB8ADE928347DA900C44C6F /* BambooStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BambooStep.swift; sourceTree = "<group>"; };
 		EEB8ADEC283480FE00C44C6F /* StepExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepExt.swift; sourceTree = "<group>"; };
 		EEB8ADEE2834818000C44C6F /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
+		EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingReactorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 		EEB8ADD02834769D00C44C6F /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8ADF228348B4600C44C6F /* Manage User */,
+				EEB8ADF128348B3D00C44C6F /* Modals */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -231,6 +237,30 @@
 				EEB8ADEC283480FE00C44C6F /* StepExt.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		EEB8ADF028348B3400C44C6F /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADF328348BF400C44C6F /* OnBoardingViewController.swift */,
+				EEB8ADF428348BF400C44C6F /* OnBoardingReactorView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		EEB8ADF128348B3D00C44C6F /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		EEB8ADF228348B4600C44C6F /* Manage User */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8ADF028348B3400C44C6F /* OnBoarding */,
+			);
+			path = "Manage User";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,7 +371,9 @@
 			files = (
 				EEB8ADEF2834818000C44C6F /* AppDI.swift in Sources */,
 				EEB8AD8328346FA400C44C6F /* AppDelegate.swift in Sources */,
+				EEB8ADF528348BF400C44C6F /* OnBoardingViewController.swift in Sources */,
 				EEB8ADE828347D1600C44C6F /* AppFlow.swift in Sources */,
+				EEB8ADF628348BF400C44C6F /* OnBoardingReactorView.swift in Sources */,
 				EEB8ADED283480FE00C44C6F /* StepExt.swift in Sources */,
 				EEB8AD8528346FA400C44C6F /* SceneDelegate.swift in Sources */,
 				EEB8ADEA28347DA900C44C6F /* BambooStep.swift in Sources */,
